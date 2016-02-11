@@ -10,12 +10,9 @@
 [submodule "layers/meta-resin"]
 	path = layers/meta-resin
 	url = https://github.com/resin-os/meta-resin.git
-	branch = master-next
 [submodule "resin-device-types"]
 	path = resin-device-types
 	url = https://github.com/resin-io/resin-device-types.git
-	branch = master
 [submodule "resin-yocto-scripts"]
 	path = resin-yocto-scripts
 	url = https://github.com/resin-os/resin-yocto-scripts.git
-	branch = master
