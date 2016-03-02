@@ -9,8 +9,7 @@ shared-*/
 
 # device type manifest stuff
 /node_modules
-package.json
-beaglebone-black.json
+*.json
 
 # dynamically created by the build script
 conf-notes.txt
