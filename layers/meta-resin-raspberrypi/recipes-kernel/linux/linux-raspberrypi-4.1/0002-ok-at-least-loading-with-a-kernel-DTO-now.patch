@@ -23,13 +23,13 @@ index e096eb8..5bb771e 100644
  #include <linux/timer.h>
 +#include <linux/of.h>
 +#include <linux/of_gpio.h>
- 
+
  #include <linux/input/ft6x06_ts.h>
- 
+
 @@ -184,27 +186,139 @@ static irqreturn_t ft6x06_ts_interrupt(int irq, void *dev_id)
  	return IRQ_HANDLED;
  }
- 
+
 +
 +
 +#ifdef CONFIG_OF
@@ -101,7 +101,7 @@ index e096eb8..5bb771e 100644
 +	if (pdata->irq_gpio < 0)
 +		return pdata->irq_gpio;
 +
-+	
++
 +	return 0;
 +}
 +#else
@@ -121,7 +121,7 @@ index e096eb8..5bb771e 100644
  	struct ft6x06_ts_data *ft6x06_ts;
  	struct input_dev *input_dev;
  	int err = 0;
- 
+
 +printk(KERN_ALERT "DEBUG: Passed %s %d \n",__FUNCTION__,__LINE__);
 +
 +	if (client->dev.of_node) {
@@ -153,16 +153,16 @@ index e096eb8..5bb771e 100644
  		err = -ENODEV;
  		goto exit_check_functionality_failed;
  	}
- 
+
 +printk(KERN_ALERT "DEBUG: Passed %s %d \n",__FUNCTION__,__LINE__);
 +
  	ft6x06_ts = kzalloc(sizeof(struct ft6x06_ts_data), GFP_KERNEL);
- 
+
  	if (!ft6x06_ts) {
  		err = -ENOMEM;
  		goto exit_alloc_data_failed;
  	}
--	
+-
 +
 +printk(KERN_ALERT "DEBUG: Passed %s %d \n",__FUNCTION__,__LINE__);
 +
@@ -172,7 +172,7 @@ index e096eb8..5bb771e 100644
 @@ -223,13 +337,19 @@ static int ft6x06_ts_probe(struct i2c_client *client,
  	}
  #endif
- 
+
 +printk(KERN_ALERT "DEBUG: Passed %s %d \n",__FUNCTION__,__LINE__);
 +
 +/* ???
@@ -186,7 +186,7 @@ index e096eb8..5bb771e 100644
 +	printk(KERN_ALERT "IRQ gpio is %d", pdata->irq_gpio);
  	ft6x06_ts->irq = gpio_to_irq(pdata->irq_gpio);
 +	printk(KERN_ALERT "IRQ # is %d", ft6x06_ts->irq);
- 
+
  	err = devm_request_threaded_irq(&client->dev, ft6x06_ts->irq,
  					NULL, ft6x06_ts_interrupt,
 @@ -262,11 +382,10 @@ static int ft6x06_ts_probe(struct i2c_client *client,
@@ -200,13 +200,13 @@ index e096eb8..5bb771e 100644
 -	input_set_abs_params(input_dev, ABS_PRESSURE, 0x0, PRESS_MAX, 0, 0);
 +	input_set_abs_params(input_dev,
 +			     ABS_MT_TRACKING_ID, 0, CFG_MAX_TOUCH_POINTS, 0, 0);
- 
+
  	set_bit(EV_KEY, input_dev->evbit);
  	set_bit(EV_ABS, input_dev->evbit);
 @@ -357,6 +476,16 @@ static const struct i2c_device_id ft6x06_ts_id[] = {
- 
+
  MODULE_DEVICE_TABLE(i2c, ft6x06_ts_id);
- 
+
 +#ifdef CONFIG_OF
 +static struct of_device_id ft6x06_match_table[] = {
 +	{ .compatible = "focaltech,ft6x06",},
@@ -227,7 +227,7 @@ index e096eb8..5bb771e 100644
 +		.of_match_table=ft6x06_match_table,
  	},
  };
- 
+
  static int __init ft6x06_ts_init(void)
  {
  	int ret;
@@ -239,7 +239,7 @@ index e096eb8..5bb771e 100644
 +	printk(KERN_ALERT "DEBUG: Passed %s %d \n",__FUNCTION__,__LINE__);
  	return ret;
  }
- 
--- 
+
+--
 2.6.2
 

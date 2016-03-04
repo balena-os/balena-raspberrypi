@@ -19,7 +19,7 @@ index d7e74a1..8ca6e7f 100644
 @@ -295,6 +295,13 @@ config TOUCHSCREEN_EGALAX
  	  To compile this driver as a module, choose M here: the
  	  module will be called egalax_ts.
- 
+
 +config TOUCHSCREEN_FT6X06
 +    tristate "FT6x06 I2C toucscreen"
 +    depends on I2C
@@ -38,10 +38,10 @@ index a1be09f..f562568 100644
  obj-$(CONFIG_TOUCHSCREEN_ELAN)		+= elants_i2c.o
  obj-$(CONFIG_TOUCHSCREEN_ELO)		+= elo.o
  obj-$(CONFIG_TOUCHSCREEN_EGALAX)	+= egalax_ts.o
-+obj-$(CONFIG_TOUCHSCREEN_FT6X06)	+= ft6x06_ts.o
++obj-$(CONFIG_TOUCHSCREEN_FT6X06)  += ft6x06_ts.o
+ obj-$(CONFIG_TOUCHSCREEN_FT6236)	+= ft6236.o
  obj-$(CONFIG_TOUCHSCREEN_FUJITSU)	+= fujitsu_ts.o
  obj-$(CONFIG_TOUCHSCREEN_GOODIX)	+= goodix.o
- obj-$(CONFIG_TOUCHSCREEN_ILI210X)	+= ili210x.o
 diff --git a/drivers/input/touchscreen/ft6x06_ts.c b/drivers/input/touchscreen/ft6x06_ts.c
 new file mode 100644
 index 0000000..e096eb8
@@ -254,7 +254,7 @@ index 0000000..e096eb8
 +		err = -ENOMEM;
 +		goto exit_alloc_data_failed;
 +	}
-+	
++
 +	i2c_set_clientdata(client, ft6x06_ts);
 +	ft6x06_ts->client = client;
 +	ft6x06_ts->pdata = pdata;
@@ -476,6 +476,6 @@ index 0000000..2233051
 +};
 +
 +#endif
--- 
+--
 2.6.2
 
