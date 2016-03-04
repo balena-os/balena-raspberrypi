@@ -1,6 +1,7 @@
 # Supported machines
 #MACHINE ?= "raspberrypi"
 #MACHINE ?= "raspberrypi2"
+#MACHINE ?= "raspberrypi3"
 
 # RaspberryPi specific variables
 GPU_MEM = "16"
