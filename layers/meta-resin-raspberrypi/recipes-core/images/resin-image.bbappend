@@ -12,7 +12,6 @@ RESIN_BOOT_PARTITION_FILES_rpi = " \
     ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-bcm2708-rpi-b.dtb:/bcm2708-rpi-b.dtb \
     ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-bcm2708-rpi-b-plus.dtb:/bcm2708-rpi-b-plus.dtb \
     ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-bcm2709-rpi-2-b.dtb:/bcm2709-rpi-2-b.dtb \
-    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-bcm2710-rpi-3-b.dtb:/bcm2710-rpi-3-b.dtb \
     ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-hifiberry-amp-overlay.dtb:/overlays/hifiberry-amp-overlay.dtb \
     ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-hifiberry-dac-overlay.dtb:/overlays/hifiberry-dac-overlay.dtb\
     ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-hifiberry-dacplus-overlay.dtb:/overlays/hifiberry-dacplus-overlay.dtb \
@@ -26,3 +25,5 @@ RESIN_BOOT_PARTITION_FILES_rpi = " \
     ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-w1-gpio-pullup-overlay.dtb:/overlays/w1-gpio-pullup-overlay.dtb \
     ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-rpi-ft5406-overlay.dtb:/overlays/rpi-ft5406-overlay.dtb \
     "
+
+RESIN_BOOT_PARTITION_FILES_append_raspberrypi3 = " ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-bcm2710-rpi-3-b.dtb:/bcm2710-rpi-3-b.dtb"
