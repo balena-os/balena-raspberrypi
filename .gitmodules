@@ -16,3 +16,6 @@
 [submodule "resin-yocto-scripts"]
 	path = resin-yocto-scripts
 	url = https://github.com/resin-os/resin-yocto-scripts.git
+[submodule "layers/oe-meta-go"]
+	path = layers/oe-meta-go
+	url = https://github.com/mem/oe-meta-go.git
