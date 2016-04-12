@@ -15,6 +15,7 @@ BBLAYERS ?= " \
     ${TOPDIR}/../layers/meta-resin/meta-resin-common \
     ${TOPDIR}/../layers/meta-resin/meta-resin-jethro \
     ${TOPDIR}/../layers/meta-resin-raspberrypi \
+    ${TOPDIR}/../layers/oe-meta-go \
     "
 
 BBLAYERS_NON_REMOVABLE ?= " \
