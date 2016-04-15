@@ -23,6 +23,7 @@ module.exports =
 		fstype: 'resin-sdcard'
 		version: 'yocto-jethro'
 		deployArtifact: 'resin-image-raspberrypi.resin-sdcard'
+		compressed: true
 
 	configuration:
 		config:
