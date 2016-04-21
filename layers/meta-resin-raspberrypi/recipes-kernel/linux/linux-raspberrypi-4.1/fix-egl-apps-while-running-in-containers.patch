@@ -1,0 +1,37 @@
+From 219d8ab2487510a31153baf50ff2819a8b92c11c Mon Sep 17 00:00:00 2001
+From: Andrei Gherzan <andrei@resin.io>
+Date: Thu, 21 Apr 2016 14:06:21 +0200
+Subject: [PATCH] vchiq_arm.c: When registering the calling process use
+ namespace pid
+
+Upstream-Status: Submitted [https://github.com/raspberrypi/linux/pull/1279]
+
+Signed-off-by: Andrei Gherzan <andrei@resin.io>
+---
+ drivers/misc/vc04_services/interface/vchiq_arm/vchiq_arm.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/misc/vc04_services/interface/vchiq_arm/vchiq_arm.c b/drivers/misc/vc04_services/interface/vchiq_arm/vchiq_arm.c
+index e11c0e0..399e485 100644
+--- a/drivers/misc/vc04_services/interface/vchiq_arm/vchiq_arm.c
++++ b/drivers/misc/vc04_services/interface/vchiq_arm/vchiq_arm.c
+@@ -48,6 +48,7 @@
+ #include <linux/of.h>
+ #include <linux/platform_device.h>
+ #include <soc/bcm2835/raspberrypi-firmware.h>
++#include <linux/sched.h>
+ 
+ #include "vchiq_core.h"
+ #include "vchiq_ioctl.h"
+@@ -1136,7 +1137,7 @@ vchiq_open(struct inode *inode, struct file *file)
+ 			return -ENOMEM;
+ 
+ 		instance->state = state;
+-		instance->pid = current->tgid;
++		instance->pid = task_pid_vnr(current);
+ 
+ 		ret = vchiq_debugfs_add_instance(instance);
+ 		if (ret != 0) {
+-- 
+2.1.4
+
