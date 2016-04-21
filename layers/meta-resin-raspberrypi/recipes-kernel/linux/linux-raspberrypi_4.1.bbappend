@@ -13,6 +13,13 @@ FT6X06_PATCHES = "\
     "
 SRC_URI += "${FT6X06_PATCHES}"
 
+# Workaround for egl apps in containers
+# This is WIP and should be activated only for specific usecases
+# https://github.com/raspberrypi/linux/issues/1382
+# https://github.com/raspberrypi/linux/pull/1279
+RPI_FIX_VCHIQ ?= "0"
+SRC_URI += "${@bb.utils.contains('RPI_FIX_VCHIQ', '1', ' file://fix-egl-apps-while-running-in-containers.patch', '', d)}"
+
 RESIN_CONFIGS_append = " ft6x06"
 RESIN_CONFIGS[ft6x06] = " \
    CONFIG_TOUCHSCREEN_FT6X06=m \
