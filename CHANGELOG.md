@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Update meta-raspberrypi BSP layer to pick up changes and set console=tty1 in production [Andrei]
+
 # v1.1.4 - 2016-04-16
 
 * Be able to workaround the issues with egl apps in containers using RPI_FIX_VCHIQ [Andrei]
