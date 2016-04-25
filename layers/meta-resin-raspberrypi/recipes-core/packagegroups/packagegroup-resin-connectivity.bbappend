@@ -1,1 +1,1 @@
-CONNECTIVITY_FIRMWARES_append_raspberrypi3 = " linux-firmware-nonfree-bcm43430"
+CONNECTIVITY_FIRMWARES_append_raspberrypi3 = " linux-firmware-brcm43430"
