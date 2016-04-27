@@ -27,8 +27,3 @@ RESIN_CONFIGS[ft6x06] = " \
 
 # Overlay for the RPI 7" DSI display
 KERNEL_DEVICETREE_append = " overlays/rpi-ft5406-overlay.dtb"
-
-# Pending Upstream update
-LINUX_VERSION = "4.1.18"
-
-SRCREV = "fcc9ad149fbe78e9931b8e769ac54d5430587465"

@@ -1,3 +1,5 @@
+inherit linux-raspberrypi-base
+
 IMAGE_FSTYPES_append_rpi = " resin-sdcard"
 
 # Kernel image name is different on Raspberry Pi 1/2
@@ -9,21 +11,25 @@ RESIN_IMAGE_BOOTLOADER_rpi = "bcm2835-bootfiles"
 RESIN_BOOT_PARTITION_FILES_rpi = " \
     ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-${MACHINE}.bin:/${SDIMG_KERNELIMAGE} \
     bcm2835-bootfiles:/ \
-    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-bcm2708-rpi-b.dtb:/bcm2708-rpi-b.dtb \
-    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-bcm2708-rpi-b-plus.dtb:/bcm2708-rpi-b-plus.dtb \
-    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-bcm2709-rpi-2-b.dtb:/bcm2709-rpi-2-b.dtb \
-    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-hifiberry-amp-overlay.dtb:/overlays/hifiberry-amp-overlay.dtb \
-    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-hifiberry-dac-overlay.dtb:/overlays/hifiberry-dac-overlay.dtb\
-    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-hifiberry-dacplus-overlay.dtb:/overlays/hifiberry-dacplus-overlay.dtb \
-    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-hifiberry-digi-overlay.dtb:/overlays/hifiberry-digi-overlay.dtb \
-    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-i2c-rtc-overlay.dtb:/overlays/i2c-rtc-overlay.dtb \
-    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-iqaudio-dac-overlay.dtb:/overlays/iqaudio-dac-overlay.dtb \
-    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-iqaudio-dacplus-overlay.dtb:/overlays/iqaudio-dacplus-overlay.dtb \
-    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-lirc-rpi-overlay.dtb:/overlays/lirc-rpi-overlay.dtb \
-    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-pps-gpio-overlay.dtb:/overlays/pps-gpio-overlay.dtb \
-    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-w1-gpio-overlay.dtb:/overlays/w1-gpio-overlay.dtb \
-    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-w1-gpio-pullup-overlay.dtb:/overlays/w1-gpio-pullup-overlay.dtb \
-    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-rpi-ft5406-overlay.dtb:/overlays/rpi-ft5406-overlay.dtb \
     "
 
-RESIN_BOOT_PARTITION_FILES_append_raspberrypi3 = " ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-bcm2710-rpi-3-b.dtb:/bcm2710-rpi-3-b.dtb"
+python () {
+    # Add all the dtb files programatically
+    if d.getVar('SOC_FAMILY', True) == 'rpi':
+        kernel_imagetype = d.getVar('KERNEL_IMAGETYPE', True)
+        kernel_initramfs = d.getVar('KERNEL_INITRAMFS', True)
+        resin_boot_partition_files = d.getVar('RESIN_BOOT_PARTITION_FILES', True)
+
+        overlay_dtbs = split_overlays(d, 0)
+        root_dtbs = split_overlays(d, 1)
+
+        for dtb in root_dtbs.split():
+            dtb = os.path.basename(dtb)
+            resin_boot_partition_files += "\t%s%s-%s:/%s" % (kernel_imagetype, kernel_initramfs, dtb, dtb)
+
+        for dtb in overlay_dtbs.split():
+            dtb = os.path.basename(dtb)
+            resin_boot_partition_files += "\t%s%s-%s:/overlay/%s" % (kernel_imagetype, kernel_initramfs, dtb, dtb)
+
+        d.setVar('RESIN_BOOT_PARTITION_FILES', resin_boot_partition_files)
+}
