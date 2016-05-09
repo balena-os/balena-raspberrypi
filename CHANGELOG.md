@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Bump meta-resin to include switch from rce to docker [Andrei]
 * Update meta-raspberrypi BSP layer to pick up changes and set console=tty1 in production [Andrei]
 
 # v1.1.4 - 2016-04-16
