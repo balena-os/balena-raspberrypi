@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Configure builds with RM_OLD_IMAGE [Theodor]
 * Bump meta-raspberypi to include bluetooth support for raspberypi3 [Andrei]
 * Bump meta-resin to include switch from rce to docker [Andrei]
 * Update meta-raspberrypi BSP layer to pick up changes and set console=tty1 in production [Andrei]
