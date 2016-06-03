@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Bump yocto-resin-scripts to bring in improvements for in-docker builds [Andrei]
 * Configure builds with RM_OLD_IMAGE [Theodor]
 * Bump meta-raspberypi to include bluetooth support for raspberypi3 [Andrei]
 * Bump meta-resin to include switch from rce to docker [Andrei]
