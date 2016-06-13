@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Add support for optional supervisor image [Andrei]
+
 # v1.2.1 - 2016-06-18
 
 # v1.2.0 - 2016-06-10
