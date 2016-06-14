@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Remove RPI_FIX_VCHIQ workaround as fix is included in our base images [Andrei]
 * Add support for optional supervisor image [Andrei]
 
 # v1.2.1 - 2016-06-18
