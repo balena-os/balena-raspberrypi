@@ -1,7 +1,9 @@
 Change log
 -----------
 
+* Remove RPI_FIX_VCHIQ workaround as fix is included in our base images [Andrei]
 * Add support for optional supervisor image [Andrei]
+
 # v1.2.0 - 2016-06-10
 
 * Mask brcm43438.service [Florin]
