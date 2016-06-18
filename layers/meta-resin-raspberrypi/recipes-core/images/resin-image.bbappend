@@ -29,7 +29,7 @@ python () {
 
         for dtb in overlay_dtbs.split():
             dtb = os.path.basename(dtb)
-            resin_boot_partition_files += "\t%s%s-%s:/overlay/%s" % (kernel_imagetype, kernel_initramfs, dtb, dtb)
+            resin_boot_partition_files += "\t%s%s-%s:/overlays/%s" % (kernel_imagetype, kernel_initramfs, dtb, dtb)
 
         d.setVar('RESIN_BOOT_PARTITION_FILES', resin_boot_partition_files)
 }
