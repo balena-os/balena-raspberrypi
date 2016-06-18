@@ -1,6 +1,8 @@
 Change log
 -----------
 
+# v1.2.1 - 2016-06-18
+
 # v1.2.0 - 2016-06-10
 
 * Mask brcm43438.service [Florin]
