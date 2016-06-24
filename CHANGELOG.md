@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Compress kernel modules [Andrei]
 * Replace SUPERVISOR_TAG by TARGET_TAG [Andrei]
 * Custom docker images in connectable builds [Andrei]
 * Bump meta-resin to include connectable builds [Andrei]

@@ -1,4 +1,4 @@
-inherit kernel-resin
+inherit kernel-resin compress-kernel-modules
 
 # Set console accordingly to build type
 STAGING_CMDLINE = "dwc_otg.lpm_enable=0 console=tty1 console=serial0,115200 root=/dev/mmcblk0p2 rootfstype=ext4 rootwait"
