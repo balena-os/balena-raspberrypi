@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Replace SUPERVISOR_TAG by TARGET_TAG [Andrei]
 * Custom docker images in connectable builds [Andrei]
 * Bump meta-resin to include connectable builds [Andrei]
 * Remove RPI_FIX_VCHIQ workaround as fix is included in our base images [Andrei]
