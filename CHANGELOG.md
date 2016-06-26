@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Replace RESIN_STAGING_BUILD by DEBUG_IMAGE [Andrei]
 # v1.3.0 - 2016-06-24
 
 * Update meta-resin to v1.3 [Florin]
