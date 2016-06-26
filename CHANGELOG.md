@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Bump meta-resin to fix various issues [Andrei]
 * Fix a small syntax error in meta-resin [Andrei]
 * Fix automation fix for debug image [Andrei]
 * Replace RESIN_STAGING_BUILD by DEBUG_IMAGE [Andrei]
