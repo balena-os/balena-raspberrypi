@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update meta-resin to allow patching of kernel-modules-headers [Florin]
 * Bump meta-resin to fix various issues [Andrei]
 * Fix a small syntax error in meta-resin [Andrei]
 * Fix automation fix for debug image [Andrei]
