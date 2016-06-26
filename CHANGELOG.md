@@ -1,6 +1,9 @@
 Change log
 -----------
 
+# v1.4.0 - 2016-06-27
+
+* Update meta-resin to v1.4 [Florin]
 * Update meta-resin to allow let error out [Florin]
 * Update meta-resin to allow patching of kernel-modules-headers [Florin]
 * Bump meta-resin to fix various issues [Andrei]
