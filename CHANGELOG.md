@@ -1,6 +1,9 @@
 Change log
 -----------
 
+# v1.5.0rc2 - 2016-06-28
+
+* Update meta-resin to include docker key.json fix [Florin]
 * Update meta-resin to include flasher fixes [Florin]
 
 # v1.4.0 - 2016-06-27
