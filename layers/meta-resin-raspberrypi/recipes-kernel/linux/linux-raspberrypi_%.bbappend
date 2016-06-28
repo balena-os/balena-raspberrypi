@@ -1,9 +1,9 @@
 inherit kernel-resin compress-kernel-modules
 
 # Set console accordingly to build type
-STAGING_CMDLINE = "dwc_otg.lpm_enable=0 console=tty1 console=serial0,115200 root=/dev/mmcblk0p2 rootfstype=ext4 rootwait"
+DEBUG_CMDLINE = "dwc_otg.lpm_enable=0 console=tty1 console=serial0,115200 root=/dev/mmcblk0p2 rootfstype=ext4 rootwait"
 PRODUCTION_CMDLINE = "dwc_otg.lpm_enable=0 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 rootwait"
-CMDLINE = "${@bb.utils.contains('DISTRO_FEATURES','resin-staging',"${STAGING_CMDLINE}","${PRODUCTION_CMDLINE}",d)}"
+CMDLINE = "${@bb.utils.contains('DISTRO_FEATURES','debug-image',"${DEBUG_CMDLINE}","${PRODUCTION_CMDLINE}",d)}"
 CMDLINE_DEBUG = ""
 
 RESIN_CONFIGS_append = " fbtft"
