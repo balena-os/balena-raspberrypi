@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Update meta-resin to include flasher fixes [Florin]
+
 # v1.4.0 - 2016-06-27
 
 * Update meta-resin to v1.4 [Florin]
