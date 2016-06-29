@@ -1,6 +1,10 @@
 Change log
 -----------
 
+# v1.5.0rc3 - 2016-06-29
+
+* Update meta-resin to include openvpn-resin.service refactoring [Florin]
+
 # v1.5.0rc2 - 2016-06-28
 
 * Update meta-resin to include docker key.json fix [Florin]
