@@ -1,6 +1,10 @@
 Change log
 -----------
 
+# v1.5.0 - 2016-07-04
+
+* Update meta-resin to v1.5 [Florin]
+
 # v1.5.0rc4 - 2016-06-29
 
 * Update meta-resin to include supervisor update to v1.11.6 [Florin]
