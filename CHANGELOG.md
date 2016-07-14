@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Fix boot log messages over HDMI (i.e. device connected to tty1) [Theodor]
+
 # v1.6.0 - 2016-07-06
 
 * Update meta-resin to v1.6 [Florin]
