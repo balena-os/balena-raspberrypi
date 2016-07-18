@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* No more debug images in staging
+
 # v1.7.0 - 2016-07-14
 
 * Update meta-resin to v1.7
