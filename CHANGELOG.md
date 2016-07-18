@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Bump resin-device-types to include partial manifest support [Andrei]
 * No more debug images in staging
 
 # v1.7.0 - 2016-07-14
