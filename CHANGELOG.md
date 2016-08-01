@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Disable firmware splash and firmware related warnings [Theodor]
 * Fix kernel log messages over HDMI (i.e. device connected to tty1) [Theodor]
 * Bump resin-device-types to include partial manifest support [Andrei]
 * No more debug images in staging
