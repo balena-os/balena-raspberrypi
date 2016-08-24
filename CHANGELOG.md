@@ -1,6 +1,9 @@
 Change log
 -----------
 
+# v1.9.0 - 2016-08-24
+
+* Update meta-resin to v1.9 [Florin]
 * Update resin-yocto-scripts for including kernel modules headers deploy [Florin]
 * Update yocto-resin-scripts for host nodejs detection improvements [Florin]
 
