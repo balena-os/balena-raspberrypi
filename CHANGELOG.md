@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update resin-yocto-scripts for including kernel modules headers deploy [Florin]
 * Update yocto-resin-scripts for host nodejs detection improvements [Florin]
 
 # v1.8.0 - 2016-08-02
