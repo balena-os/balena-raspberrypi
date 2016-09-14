@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update meta-resin [Florin]
 * Change .coffee to announce partition 1 now holds config.json and also introduce versioning (v1) [Florin]
 
 # v1.11.0 - 2016-08-31
