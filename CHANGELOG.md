@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update resin-yocto-scripts to include resinhup upload to dockerhub [Florin]
 * Update meta-resin [Florin]
 * Change .coffee to announce partition 1 now holds config.json and also introduce versioning (v1) [Florin]
 
