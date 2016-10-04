@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Update resin-yocto-scripts to include kernel headers handling as gzip [Florin]
+
 # v1.16.1 - 2016-10-01
 
 * Update meta-resin to include supervisor v2.5.0 [Pablo]
