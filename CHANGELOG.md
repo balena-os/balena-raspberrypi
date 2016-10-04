@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Replace the concept of a debug image with a development image [Theodor]
 * Update meta-resin to include avahi [Florin]
 * Update resin-yocto-scripts to include kernel headers handling as gzip [Florin]
 
