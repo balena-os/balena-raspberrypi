@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update meta-resin to include avahi [Florin]
 * Update resin-yocto-scripts to include kernel headers handling as gzip [Florin]
 
 # v1.16.1 - 2016-10-01
