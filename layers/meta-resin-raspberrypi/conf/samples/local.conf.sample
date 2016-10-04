@@ -6,8 +6,8 @@
 # RaspberryPi specific variables
 GPU_MEM = "16"
 
-# Set this to 1 if debug image is desired
-#DEBUG_IMAGE = "1"
+# Set this to 1 if development image is desired
+#DEVELOPMENT_IMAGE = "1"
 
 # Set this to make build system generate resinhup bundles
 #RESINHUP ?= "yes"
