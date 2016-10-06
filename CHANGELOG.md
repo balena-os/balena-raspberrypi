@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Add build support for resinos [Andrei]
 * Update resin-yocto-script to include changes in our image types [Theodor]
 * Replace the concept of a debug image with a development image [Theodor]
 * Update meta-resin to include avahi [Florin]
