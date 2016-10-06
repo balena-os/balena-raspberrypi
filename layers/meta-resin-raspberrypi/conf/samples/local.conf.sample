@@ -3,6 +3,12 @@
 #MACHINE ?= "raspberrypi2"
 #MACHINE ?= "raspberrypi3"
 
+# More info meta-resin/README.md
+#RESIN_CONNECTABLE ?= "1"
+#RESIN_CONNECTABLE_ENABLE_SERVICES ?= "0"
+#TARGET_REPOSITORY ?= ""
+#TARGET_TAG ?= ""
+
 # RaspberryPi specific variables
 GPU_MEM = "16"
 
