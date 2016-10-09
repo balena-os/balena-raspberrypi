@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Add meta-filesystem as we need aufs-utils [Andrei]
 * Add build support for resinos [Andrei]
 * Update resin-yocto-script to include changes in our image types [Theodor]
 * Replace the concept of a debug image with a development image [Theodor]
