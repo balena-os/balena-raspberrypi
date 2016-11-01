@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update meta-resin to v2.0-beta.2 [Florin]
 * Don't compress kernel modules [Michal]
 
 # v2.0.0-beta.1 - 2016-10-11
