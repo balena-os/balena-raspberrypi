@@ -1,6 +1,9 @@
 Change log
 -----------
 
+# v2.0.0-beta.3 - 2016-11-07
+
+* Update meta-resin to v2.0-beta.3 [Andrei]
 * Cleanup docker-resin-supervisor-disk of unneeded variables [Andrei]
 * Update resin-yocto-scripts to fix logging in container builds
 
