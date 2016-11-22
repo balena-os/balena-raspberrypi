@@ -1,6 +1,8 @@
 Change log
 -----------
 
+# v1.21.0 - 2016-11-22
+
 * Update meta-resin to v1.21 [Florin]
 * Autoload the rpi watchdog kernel module (bcm2708_wdog) [Florin]
 
