@@ -39,3 +39,5 @@ RESIN_CONFIGS[fbtft] = " \
     CONFIG_FB_FLEX=m \
     CONFIG_FB_TFT_FBTFT_DEVICE=m \
     "
+
+KERNEL_MODULE_AUTOLOAD += "bcm2708_wdog"
