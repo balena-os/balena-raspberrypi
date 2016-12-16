@@ -1,6 +1,8 @@
 Change log
 -----------
 
+# v1.24.1 - 2016-12-16
+
 * Update the bootloader to the latest version, this adds support for rpi2 rev1.2 [Michal]
 
 # v1.24.0 - 2016-12-05
