@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Update the bootloader to the latest version, this adds support for rpi2 rev1.2 [Michal]
+
 # v1.24.0 - 2016-12-05
 
 * Update meta-resin to v1.24 [Florin]
