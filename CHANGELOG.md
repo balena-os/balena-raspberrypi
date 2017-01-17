@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update resin-yocto-scripts to HEAD of the master branch [Florin]
 * Update the bootloader to the latest version, this adds support for rpi2 rev1.2 [Michal]
 
 # v2.0.0-beta.7 - 2016-12-05
