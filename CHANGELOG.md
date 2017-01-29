@@ -1,6 +1,9 @@
 Change log
 -----------
 
+# v2.0.0-beta.8 - 2017-01-29
+
+* Update meta-resin to v2.0-beta.8 [Andrei]
 * Update resin-yocto-scripts to HEAD of the master branch [Florin]
 * Update the bootloader to the latest version, this adds support for rpi2 rev1.2 [Michal]
 
