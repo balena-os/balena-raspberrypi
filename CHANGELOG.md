@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Deploy all the overlay dt files for RaspberryPi [Andrei]
+
 # v2.0.0-beta.8 - 2017-01-29
 
 * Update meta-resin to v2.0-beta.8 [Andrei]
