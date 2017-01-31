@@ -17,6 +17,3 @@ RESIN_CONFIGS_append = " ft6x06"
 RESIN_CONFIGS[ft6x06] = " \
    CONFIG_TOUCHSCREEN_FT6X06=m \
    "
-
-# Overlay for the RPI 7" DSI display
-KERNEL_DEVICETREE_append = " overlays/rpi-ft5406-overlay.dtb"
