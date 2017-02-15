@@ -1,27 +1,27 @@
 # LAYER_CONF_VERSION is increased each time build/conf/bblayers.conf
 # changes incompatibly
-LCONF_VERSION = "6"
+POKY_BBLAYERS_CONF_VERSION = "2"
 
 BBPATH = "${TOPDIR}"
 BBFILES ?= ""
 
 BBLAYERS ?= " \
     ${TOPDIR}/../layers/poky/meta \
-    ${TOPDIR}/../layers/poky/meta-yocto \
+    ${TOPDIR}/../layers/poky/meta-poky \
     ${TOPDIR}/../layers/meta-openembedded/meta-oe \
     ${TOPDIR}/../layers/meta-openembedded/meta-filesystems \
     ${TOPDIR}/../layers/meta-openembedded/meta-networking \
     ${TOPDIR}/../layers/meta-openembedded/meta-python \
     ${TOPDIR}/../layers/meta-raspberrypi \
     ${TOPDIR}/../layers/meta-resin/meta-resin-common \
-    ${TOPDIR}/../layers/meta-resin/meta-resin-jethro \
+    ${TOPDIR}/../layers/meta-resin/meta-resin-morty \
     ${TOPDIR}/../layers/meta-resin-raspberrypi \
     ${TOPDIR}/../layers/oe-meta-go \
     "
 
 BBLAYERS_NON_REMOVABLE ?= " \
     ${TOPDIR}/../layers/poky/meta \
-    ${TOPDIR}/../layers/poky/meta-yocto \
+    ${TOPDIR}/../layers/poky/meta-poky \
     ${TOPDIR}/../layers/meta-resin/meta-resin-common \
-    ${TOPDIR}/../layers/meta-resin/meta-resin-jethro \
+    ${TOPDIR}/../layers/meta-resin/meta-resin-morty \
     "
