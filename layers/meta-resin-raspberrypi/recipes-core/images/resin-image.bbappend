@@ -13,7 +13,7 @@ RESIN_BOOT_PARTITION_FILES_rpi = " \
     bcm2835-bootfiles:/ \
     "
 
-python () {
+python overlay_dtbs_handler () {
     # Add all the dtb files programatically
     if d.getVar('SOC_FAMILY', True) == 'rpi':
         kernel_imagetype = d.getVar('KERNEL_IMAGETYPE', True)
@@ -33,3 +33,6 @@ python () {
 
         d.setVar('RESIN_BOOT_PARTITION_FILES', resin_boot_partition_files)
 }
+
+addhandler overlay_dtbs_handler
+overlay_dtbs_handler[eventmask] = "bb.event.RecipePreFinalise"
