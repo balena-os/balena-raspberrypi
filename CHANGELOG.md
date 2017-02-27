@@ -1,6 +1,8 @@
 Change log
 -----------
 
+# v2.0.0-beta12.rev1 - 2017-02-27
+
 * Bump resin-yocto-scripts to current HEAD [Andrei]
 * Update meta-resin to v2.0.0-beta.12 [Andrei]
 * Don't load audio module (snd_bcm2835) automatically [Andrei]
