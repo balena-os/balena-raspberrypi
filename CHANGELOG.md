@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update meta-resin to v2.0.0-beta.12 [Andrei]
 * Don't load audio module (snd_bcm2835) automatically [Andrei]
 
 # v2.0.0-beta11.rev1 - 2017-02-15
