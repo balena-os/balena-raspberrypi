@@ -21,8 +21,8 @@ GPU_MEM = "16"
 # Set this to change the supervisor tag used
 #TARGET_TAG ?= "master"
 
-# Compress final SD image with xz
-#RESIN_SDIMG_COMPRESSION ?= "xz"
+# Compress final raw image
+#RESIN_RAW_IMG_COMPRESSION ?= "xz"
 
 # Parallelism Options
 BB_NUMBER_THREADS ?= "${@oe.utils.cpu_count()}"
