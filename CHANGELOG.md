@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Deploy all available overlay dt files for Raspberry Pi [Michal]
+
 # v2.0.0-beta13.rev2 - 2017-03-01
 
 * Include linux-firmware-bcm43430 for all RaspberryPi boards [Andrei]
