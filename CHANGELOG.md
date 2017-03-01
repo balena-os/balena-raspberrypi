@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Deploy all available overlay dt files for Raspberry Pi [Michal]
 * Update to Morty [Michal]
 
 # v2.0.0-beta12.rev1 - 2017-02-27
