@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Include linux-firmware-bcm43430 for all RaspberryPi boards [Andrei]
 * Update to Morty [Michal]
 
 # v2.0.0-beta12.rev1 - 2017-02-27
