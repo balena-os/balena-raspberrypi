@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Load the i2c-dev kernel module at startup [Michal]
+
 # v2.0.0-beta13.rev3 - 2017-03-03
 
 * Deploy all available overlay dt files for Raspberry Pi [Michal]
