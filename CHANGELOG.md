@@ -1,6 +1,8 @@
 Change log
 -----------
 
+# v2.0.0-rc1.rev2 - 2017-03-10
+
 * Temporary fix for boot fail on production images [Andrei]
 
 # v2.0.0-rc1.rev1 - 2017-03-10
