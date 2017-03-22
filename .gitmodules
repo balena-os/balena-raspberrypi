@@ -16,3 +16,6 @@
 [submodule "layers/oe-meta-go"]
 	path = layers/oe-meta-go
 	url = https://github.com/mem/oe-meta-go.git
+[submodule "tests/autohat"]
+	path = tests/autohat
+	url = https://github.com/resin-io/autohat.git

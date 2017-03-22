@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Enable AutoHAT tests through Jenkins [Praneeth]
+
 # v2.0.0-rc4.rev1 - 2017-03-20
 
 * Update meta-resin to v2.0.0-rc4 [Andrei]
