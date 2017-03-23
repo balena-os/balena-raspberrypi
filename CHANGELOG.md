@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Change console output to tty2 for production images [Theodor]
 * Enable AutoHAT tests through Jenkins [Praneeth]
 
 # v2.0.0-rc4.rev1 - 2017-03-20
