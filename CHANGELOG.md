@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Avoid cursor on virtual terminal in production [Andrei]
 * Enable AutoHAT tests through Jenkins [Praneeth]
 
 # v2.0.0-rc4.rev1 - 2017-03-20
