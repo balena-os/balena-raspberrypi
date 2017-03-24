@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Re-add console=null for production builds [Florin]
 * Update meta-resin to v2.0.0-rc5 [Florin]
 * Avoid cursor on virtual terminal in production [Andrei]
 * Enable AutoHAT tests through Jenkins [Praneeth]
