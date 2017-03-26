@@ -1,6 +1,8 @@
 Change log
 -----------
 
+# v2.0.0-rc5.rev1 - 2017-03-26
+
 * Re-add console=null for production builds [Florin]
 * Update meta-resin to v2.0.0-rc5 [Florin]
 * Avoid cursor on virtual terminal in production [Andrei]
