@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Enable audio by default [Andrei]
+
 # v2.0.0-rc5.rev1 - 2017-03-26
 
 * Re-add console=null for production builds [Florin]

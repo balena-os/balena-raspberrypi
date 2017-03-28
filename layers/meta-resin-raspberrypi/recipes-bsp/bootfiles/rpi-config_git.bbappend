@@ -9,6 +9,8 @@ do_deploy_append() {
     if ! ${@bb.utils.contains('DISTRO_FEATURES','debug-image','true','false',d)}; then
         echo "avoid_warnings=1" >>${DEPLOYDIR}/bcm2835-bootfiles/config.txt
     fi
+    # Enable audio (loads snd_bcm2835)
+    echo "dtparam=audio=on" >> ${DEPLOYDIR}/bcm2835-bootfiles/config.txt
 }
 
 # On Raspberry Pi 3 serial console on ttyS0 is only usable if ENABLE_UART = 1
