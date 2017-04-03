@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Bump resin-yocto-scripts to fix resinOS docker registry push [Andrei]
+
 # v2.0.0+rev1 - 2017-04-03
 
 * Fix OS version to be semver compliant [Andrei]
