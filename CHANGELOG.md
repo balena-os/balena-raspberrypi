@@ -1,6 +1,10 @@
 Change log
 -----------
 
+# v2.0.0+rev1 - 2017-04-03
+
+* Fix OS version to be semver compliant [Andrei]
+
 # v2.0.0.rev1 - 2017-04-01
 
 * Update the meta-resin submodule to version v2.0.0 [Andrei]
