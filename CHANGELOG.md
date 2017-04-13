@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Bump resin-yocto-scripts to include deployment routine [Andrei]
+
 # v2.0.0+rev2 - 2017-04-04
 
 * Bump resin-yocto-scripts to fix resinOS docker registry push [Andrei]
