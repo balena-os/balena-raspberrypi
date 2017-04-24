@@ -1,6 +1,9 @@
 Change log
 -----------
 
+* Use aliases for serial devices [Andrei]
+* Add support for Raspberry Pi Zero WiFi [Andrei]
+* Add support for 64bit Raspberry Pi 3 [Andrei]
 * Update the meta-resin submodule to version v2.0.2 [Andrei]
 
 # v2.0.0+rev3 - 2017-04-13
