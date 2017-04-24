@@ -2,9 +2,10 @@ inherit linux-raspberrypi-base
 
 IMAGE_FSTYPES_append_rpi = " resinos-img"
 
-# Kernel image name is different on Raspberry Pi 1/2
+# Kernel image name is different on Raspberry Pi 1/2/3-64bit
 SDIMG_KERNELIMAGE_raspberrypi  ?= "kernel.img"
 SDIMG_KERNELIMAGE_raspberrypi2 ?= "kernel7.img"
+SDIMG_KERNELIMAGE_raspberrypi3-64 ?= "kernel8.img"
 
 # Customize resinos-img
 RESIN_IMAGE_BOOTLOADER_rpi = "bcm2835-bootfiles"
