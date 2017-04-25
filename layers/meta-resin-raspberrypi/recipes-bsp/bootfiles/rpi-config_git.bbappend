@@ -13,6 +13,7 @@ do_deploy_append() {
     echo "dtparam=audio=on" >> ${DEPLOYDIR}/bcm2835-bootfiles/config.txt
 }
 
-# On Raspberry Pi 3 serial console on ttyS0 is only usable if ENABLE_UART = 1
-# On builds set with DEBUG_IMAGE, we want serial console available on Raspberry Pi 3
-ENABLE_UART_raspberrypi3 = "${@bb.utils.contains('DISTRO_FEATURES','development-image','1','0',d)}"
+# On Raspberry Pi 3 and Raspberry Pi Zero WiFi, serial ttyS0 console is only
+# usable if ENABLE_UART = 1. On development images, we want serial console
+# available.
+ENABLE_UART = "${@bb.utils.contains('DISTRO_FEATURES','development-image','1','0',d)}"
