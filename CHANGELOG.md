@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Update resin-yocto-scripts to HEAD [Andrei]
+
 # v1.26.0-rc0 - 2017-01-27
 
 * Update meta-resin to v1.26-rc0 [Andrei]
