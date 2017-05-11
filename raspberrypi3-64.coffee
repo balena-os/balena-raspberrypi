@@ -8,7 +8,6 @@ module.exports =
 	name: 'Raspberry Pi 3 64bits'
 	arch: 'aarch64'
 	state: 'experimental'
-	isDefault: true
 
 	instructions: commonImg.instructions
 	gettingStartedLink:
