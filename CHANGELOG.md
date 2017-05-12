@@ -1,6 +1,10 @@
 Change log
 -----------
 
+# v2.0.3+rev1 - 2017-05-12
+
+* Update the meta-resin submodule to version v2.0.3 [Florin]
+
 # v2.0.2+rev2 - 2017-05-01
 
 * Bump resin-yocto-scripts to fix Jenkins deployment [Andrei]
