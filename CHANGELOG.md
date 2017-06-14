@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Add support for bluetooth on the Raspberry Pi Zero WiFi [Michal]
+
 # v2.0.6+rev1 - 2017-06-06
 
 * Update the meta-resin submodule to version v2.0.6 [Andrei]
