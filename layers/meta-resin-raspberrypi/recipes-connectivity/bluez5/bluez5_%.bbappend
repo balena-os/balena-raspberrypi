@@ -18,6 +18,14 @@ pkg_postinst_${PN}_append_raspberrypi () {
 	systemctl $OPTS mask brcm43438.service
 }
 
+# XXX raspberrypi3-64 inherits raspberrypi and raspberrypi3.
+# this is a type of uniq(SRC_URI)
+do_patch_prepend() {
+    src_uri = d.getVar("SRC_URI", True)
+    unique = " ".join(list(set(src_uri.split())))
+    d.setVar("SRC_URI", unique)
+}
+
 SRC_URI_append_raspberrypi = " \
     file://BCM43430A1.hcd \
     file://0001-bcm43xx-Add-bcm43xx-3wire-variant.patch \
