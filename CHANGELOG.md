@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update the resin-yocto-scripts submodule to HEAD of master [Florin]
 * Add support for bluetooth on the Raspberry Pi Zero WiFi [Michal]
 
 # v2.0.6+rev1 - 2017-06-06
