@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update the getting started links in the .coffee files [Florin]
 * Update the resin-yocto-scripts submodule to HEAD of master [Florin]
 * Add support for bluetooth on the Raspberry Pi Zero WiFi [Michal]
 
