@@ -10,6 +10,13 @@ module.exports =
 	state: 'released'
 	isDefault: true
 
+	imageDownloadAlerts: [
+		{
+			type: 'warning'
+			message: 'The Raspberry Pi 3 is not capable of connecting to 5GHz WiFi networks unless you use an external WiFi adapter that supports it.'
+		}
+	]
+
 	instructions: commonImg.instructions
 	gettingStartedLink:
 		windows: 'https://docs.resin.io/raspberrypi3/nodejs/getting-started/#adding-your-first-device'
