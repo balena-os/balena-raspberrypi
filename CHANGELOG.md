@@ -1,6 +1,9 @@
 Change log
 -----------
 
+# v2.1.0+rev1 - 2017-07-20
+
+* Update the meta-resin submodule to version v2.1.0 [Michal]
 * Update the resin-yocto-scripts submodule to HEAD of master [Michal]
 * Add WiFi 5GHz connectivity warning for RPi 3 & Zero W [Thodoris]
 
