@@ -14,15 +14,14 @@ BBLAYERS ?= " \
     ${TOPDIR}/../layers/meta-openembedded/meta-python \
     ${TOPDIR}/../layers/meta-raspberrypi \
     ${TOPDIR}/../layers/meta-resin/meta-resin-common \
-    ${TOPDIR}/../layers/meta-resin/meta-resin-morty \
+    ${TOPDIR}/../layers/meta-resin/meta-resin-pyro \
     ${TOPDIR}/../layers/meta-resin-raspberrypi \
     ${TOPDIR}/../layers/meta-rust \
-    ${TOPDIR}/../layers/oe-meta-go \
     "
 
 BBLAYERS_NON_REMOVABLE ?= " \
     ${TOPDIR}/../layers/poky/meta \
     ${TOPDIR}/../layers/poky/meta-poky \
     ${TOPDIR}/../layers/meta-resin/meta-resin-common \
-    ${TOPDIR}/../layers/meta-resin/meta-resin-morty \
+    ${TOPDIR}/../layers/meta-resin/meta-resin-pyro \
     "
