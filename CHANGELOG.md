@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update resin-yocto-scripts to latest 1.X [Will]
 * Update resin-yocto-scripts to master [Will]
 
 # v1.26.0 - 2017-04-25
