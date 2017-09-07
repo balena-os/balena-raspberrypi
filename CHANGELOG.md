@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update layers to Yocto Pyro [Will]
 * Update meta-openembedded to latest morty branch [Will]
 * Update poky to latest morty branch [Will]
 
