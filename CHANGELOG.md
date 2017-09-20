@@ -1,6 +1,10 @@
 Change log
 -----------
 
+# v2.6.0+rev1 - 2017-09-20
+
+* Update the meta-resin submodule to version v2.6.0 [Andrei]
+* Integrate with hostapps [Andrei]
 * Update the resin-yocto-scripts again to fix Pyro build [Will]
 * Update the resin-yocto-scripts to fix Pyro build [Will]
 * Update the resin-yocto-scripts submodule to HEAD of master [Will]
