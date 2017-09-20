@@ -30,7 +30,7 @@ module.exports =
 		machine: 'raspberrypi3'
 		image: 'resin-image'
 		fstype: 'resinos-img'
-		version: 'yocto-morty'
+		version: 'yocto-pyro'
 		deployArtifact: 'resin-image-raspberrypi3.resinos-img'
 		compressed: true
 
