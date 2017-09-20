@@ -1,0 +1,20 @@
+#!/bin/sh
+
+#
+# Script which configures the cmdline.txt for RaspberryPi to use an updated
+# root kernel argument
+#
+
+set -o errexit
+
+new_part=$(findmnt --noheadings --canonicalize --output SOURCE "/mnt/sysroot/inactive")
+blockdev=$(basename "$new_part")
+new_part_idx=$(cat "/sys/class/block/$blockdev/partition")
+
+printf "[INFO] Switching RaspberryPi bootloader root partition index to %s..." "$new_part_idx..."
+cp /mnt/boot/cmdline.txt /mnt/boot/cmdline.txt.new
+sed -i "s#mmcblk0p.#mmcblk0p$new_part_idx#g" /mnt/boot/cmdline.txt.new
+sync -f /mnt/boot
+mv /mnt/boot/cmdline.txt.new /mnt/boot/cmdline.txt
+sync -f /mnt/boot
+printf " done.\n"
