@@ -1,6 +1,8 @@
 Change log
 -----------
 
+# v2.6.0+rev2 - 2017-09-20
+
 * Update resin-yocto-scripts to include deployment of docker images [Andrei]
 
 # v2.6.0+rev1 - 2017-09-20
