@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Enabled always overcommit VM mode [Yossi]
 * Add meta-rust submodule [Will]
 * Update resin-yocto-scripts to include deployment of docker images [Andrei]
 
