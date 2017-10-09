@@ -1,0 +1,19 @@
+#!/bin/sh
+
+usbflasher_enabled() {
+	grep -q 'resinos.usbflasher' /proc/cmdline
+        if [ $? -eq 0 ]; then
+		echo "Raspberry Pi USB flasher mode enabled"
+		return 0
+	fi
+	return 1
+}
+
+usbflasher_run() {
+	hardware=$(grep ^Hardware /proc/cpuinfo | cut -f 2 -d :)
+	revision=$(grep ^Revision /proc/cpuinfo | cut -f 2 -d :)
+	modprobe g_mass_storage file=/dev/mmcblk0 iProduct="RPi${hardware}${revision}"
+	while true; do
+		sleep 60
+	done
+}
