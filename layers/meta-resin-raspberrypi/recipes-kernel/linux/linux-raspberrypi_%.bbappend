@@ -40,4 +40,10 @@ RESIN_CONFIGS[fbtft] = " \
     CONFIG_FB_TFT_FBTFT_DEVICE=m \
     "
 
+RESIN_CONFIGS_append = " pca955_gpio_expander"
+RESIN_CONFIGS[pca955_gpio_expander] = " \
+    GPIO_PCA953X=y \
+    GPIO_PCA953X_IRQ=y \
+    "
+
 KERNEL_MODULE_AUTOLOAD += "bcm2708_wdog"
