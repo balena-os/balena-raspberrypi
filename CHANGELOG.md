@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update the meta-raspberrypi BSP layer to revision 40447de4782d76f1e23e67ba05e272c27f6ec250 (pyro branch) [Florin]
 * Enable PCA955x IO expander in kernel config [Florin]
 * Update the resin-yocto-scripts submodule to e3a06d48a2f8b7e32d3047c33066a5b896e6ae93 [Florin]
 * Update layers to Yocto Pyro [Will]
