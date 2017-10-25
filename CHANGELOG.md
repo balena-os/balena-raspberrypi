@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update the resin-yocto-scripts submodule to e3a06d48a2f8b7e32d3047c33066a5b896e6ae93 [Florin]
 * Update layers to Yocto Pyro [Will]
 * Update meta-openembedded to latest morty branch [Will]
 * Update poky to latest morty branch [Will]
