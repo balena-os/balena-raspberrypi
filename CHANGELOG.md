@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Exclude from resinOS the debug versions of boot firmware [Florin]
 * Fix obsolete reference to older debug-image [Florin]
 * Fix typo in enabling support for PCA955 GPIO expander [Florin]
 
