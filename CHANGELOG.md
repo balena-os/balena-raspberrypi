@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Fix typo in enabling support for PCA955 GPIO expander [Florin]
+
 # v2.7.4+rev1
 ## (2017-10-25)
 
