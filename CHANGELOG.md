@@ -1,6 +1,10 @@
 Change log
 -----------
 
+# v2.7.5+rev1
+## (2017-11-01)
+
+* Update the meta-resin submodule to version v2.7.5 [Florin]
 * Exclude from resinOS the debug versions of boot firmware [Florin]
 * Fix obsolete reference to older debug-image [Florin]
 * Fix typo in enabling support for PCA955 GPIO expander [Florin]
