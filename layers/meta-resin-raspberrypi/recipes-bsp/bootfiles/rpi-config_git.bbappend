@@ -6,7 +6,7 @@ do_deploy_append() {
     # Disable firmware splash by default
     echo "disable_splash=1" >>${DEPLOYDIR}/bcm2835-bootfiles/config.txt
     # Disable firmware warnings showing in non-debug images
-    if ! ${@bb.utils.contains('DISTRO_FEATURES','debug-image','true','false',d)}; then
+    if ! ${@bb.utils.contains('DISTRO_FEATURES','development-image','true','false',d)}; then
         echo "avoid_warnings=1" >>${DEPLOYDIR}/bcm2835-bootfiles/config.txt
     fi
     # Enable audio (loads snd_bcm2835)
