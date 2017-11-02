@@ -13,6 +13,9 @@
 # RaspberryPi specific variables
 GPU_MEM = "16"
 
+# RPI BSP uses uncompressed kernel images by default
+KERNEL_IMAGETYPE="zImage"
+
 # Set this to 1 if development image is desired
 #DEVELOPMENT_IMAGE = "1"
 
