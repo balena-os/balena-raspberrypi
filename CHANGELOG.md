@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Default to compressed kernel image [Andrei]
+
 # v2.7.5+rev1
 ## (2017-11-01)
 
