@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Increase initramfs maximum size to 12 MB (12288 KB) [Florin]
+
 # v2.7.5+rev2
 ## (2017-11-04)
 
