@@ -1,6 +1,10 @@
 Change log
 -----------
 
+# v2.7.8+rev1
+## (2017-11-17)
+
+* Update the meta-resin submodule to version v2.7.8 [Florin]
 * Increase initramfs maximum size to 12 MB (12288 KB) [Florin]
 
 # v2.7.5+rev2
