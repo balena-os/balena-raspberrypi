@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Update submodules to include multistaging support [Andrei]
+
 # v2.9.6+rev1
 ## (2018-01-13)
 
