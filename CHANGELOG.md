@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Make the 99-rpi-bootloader hostapp hook detect where it is run from [Florin]
 * Bump kernel to version 4.9.59 [Florin]
 
 # v2.7.8+rev1
