@@ -1,6 +1,10 @@
 Change log
 -----------
 
+# v2.9.1+rev1
+## (2017-12-12)
+
+* Update the meta-resin submodule to version v2.9.1 [Florin]
 * Make the 99-rpi-bootloader hostapp hook detect where it is run from [Florin]
 * Bump kernel to version 4.9.59 [Florin]
 
