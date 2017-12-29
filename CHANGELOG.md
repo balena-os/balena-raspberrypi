@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Add the latest SD8887 Marvel Wi-Fi firmware from linux-firmware git into image [Sebastian]
+
 # v2.9.1+rev1
 ## (2017-12-12)
 
