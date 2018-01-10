@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.9.4+rev1
+## (2018-01-10)
+
+* Update the meta-resin submodule to version v2.9.4 [Florin]
+
 # v2.9.3+rev1
 ## (2018-01-10)
 
