@@ -1,6 +1,10 @@
 Change log
 -----------
 
+# v2.9.3+rev1
+## (2018-01-10)
+
+* Update the meta-resin submodule to version v2.9.3 [Florin]
 * Update the resin-yocto-scripts submodule to 6f7a9ab326bb822196e3e48b08ef1d73d08caec6 (on master branch) [Florin]
 * Make bluetooth be enabled by default in the host OS [Florin]
 * Add the latest SD8887 Marvel Wi-Fi firmware from linux-firmware git into image [Sebastian]
