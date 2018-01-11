@@ -51,3 +51,6 @@ RESIN_CONFIGS[pca955_gpio_expander] = " \
     "
 
 KERNEL_MODULE_AUTOLOAD += "bcm2708_wdog"
+
+KERNEL_MODULE_PROBECONF += "rtl8192cu"
+module_conf_rtl8192cu = "blacklist rtl8192cu"
