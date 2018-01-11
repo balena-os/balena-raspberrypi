@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.9.5+rev1
+## (2018-01-11)
+
+* Update the meta-resin submodule to version v2.9.5 [Florin]
+* Blacklist the upstream rtl8192cu wifi driver in favour of the out of tree 8192cu wifi driver [Florin]
+
 # v2.9.4+rev1
 ## (2018-01-10)
 
