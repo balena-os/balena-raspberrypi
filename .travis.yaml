@@ -1,0 +1,37 @@
+sudo: required
+
+services:
+  - docker
+
+git:
+  depth: 3
+
+# addons:
+#   apt:
+#     packages:
+#       - docker-ce
+#       - nodejs
+#       - npm
+#   artifacts: true
+
+before_install:
+  - sudo apt-get update
+  - sudo apt-get install -y gawk wget git-core diffstat unzip texinfo gcc-multilib build-essential chrpath socat cpio python python3 python3-pip python3-pexpect xz-utils debianutils iputils-ping curl dosfstools mtools parted syslinux tree docker-ce nodejs npm
+  - sudo curl -sfL https://balena.io/install.sh | sh
+  - sudo groupadd docker
+  - sudo groupadd balena
+  - sudo usermod -aG docker $USER
+  - sudo usermod -aG balena $USER
+  - exec su -l $USER
+
+script:
+  - ./resin-yocto-scripts/build/barys -r --shared-downloads $(pwd)/shared-downloads/ --shared-sstate $(pwd)/shared-sstate/ -m raspberrypi3
+
+
+# deploy:
+#   provider: releases
+#   api_key: "GITHUB OAUTH TOKEN"
+#   file: "FILE TO UPLOAD"
+#   skip_cleanup: true
+#   on:
+#     tags: true
