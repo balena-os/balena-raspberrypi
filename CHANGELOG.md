@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Revert patch which disables memory cgroup controller by default [Andrei]
+
 # v2.9.6+rev1
 ## (2018-01-13)
 
