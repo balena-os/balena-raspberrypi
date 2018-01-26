@@ -1,5 +1,9 @@
 inherit kernel-resin
 
+FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+
+SRC_URI_append = " file://0001-Revert-cgroup-Add-kernel-param-to-enable-memory-grou.patch"
+
 # temporarily bump kernel to version 4.9.59 until BSP catches up
 LINUX_VERSION = "4.9.59"
 SRCREV = "e7976b2affa8c05bd299ead0ad9c36ddaf135b9d"

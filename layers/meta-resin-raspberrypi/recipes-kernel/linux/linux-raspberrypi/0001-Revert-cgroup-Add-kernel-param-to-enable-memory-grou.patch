@@ -1,0 +1,51 @@
+From e8cdacbb45260ab115ba45c89f6f7af5fd68041a Mon Sep 17 00:00:00 2001
+From: Andrei Gherzan <andrei@resin.io>
+Date: Fri, 26 Jan 2018 14:03:50 +0000
+Subject: [PATCH] Revert "cgroup: Add kernel param to enable memory group"
+
+This reverts commit ba742b52e5099b3ed964e78f227dc96460b5cdc0.
+
+---
+ kernel/cgroup.c | 12 ------------
+ 1 file changed, 12 deletions(-)
+
+diff --git a/kernel/cgroup.c b/kernel/cgroup.c
+index c3f5abf..2c785f9 100644
+--- a/kernel/cgroup.c
++++ b/kernel/cgroup.c
+@@ -5638,8 +5638,6 @@ int __init cgroup_init_early(void)
+ }
+
+ static u16 cgroup_disable_mask __initdata;
+-static bool cgroup_enable_memory;
+-static int __init cgroup_disable(char *str);
+
+ /**
+  * cgroup_init - cgroup initialization
+@@ -5678,9 +5676,6 @@ int __init cgroup_init(void)
+
+ 	mutex_unlock(&cgroup_mutex);
+
+-	if (!cgroup_enable_memory)
+-		cgroup_disable("memory");
+-
+ 	for_each_subsys(ss, ssid) {
+ 		if (ss->early_init) {
+ 			struct cgroup_subsys_state *css =
+@@ -6156,13 +6151,6 @@ static int __init cgroup_disable(char *str)
+ }
+ __setup("cgroup_disable=", cgroup_disable);
+
+-static int __init cgroup_memory(char *str)
+-{
+-	kstrtobool(str, &cgroup_enable_memory);
+-	return 1;
+-}
+-__setup("cgroup_memory=", cgroup_memory);
+-
+ static int __init cgroup_no_v1(char *str)
+ {
+ 	struct cgroup_subsys *ss;
+--
+2.7.4
+
