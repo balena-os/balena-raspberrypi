@@ -1,6 +1,7 @@
 Change log
 -----------
-
+* Modify linux-raspberrypi_%.bbappend: Use filesystem labels for the root cmdline kernel parameter [TheOnlyZby]
+* Modify 99-rpi-bootloader hostapp hook to work with Partition Labels instead of physical mount point [TheOnlyZby]
 * Revert patch which disables memory cgroup controller by default [Andrei]
 
 # v2.9.6+rev1
