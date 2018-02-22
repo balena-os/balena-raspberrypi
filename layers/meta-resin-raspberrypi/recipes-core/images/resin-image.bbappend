@@ -1,5 +1,3 @@
-inherit linux-raspberrypi-base
-
 IMAGE_FSTYPES_append_rpi = " resinos-img"
 
 # Kernel image name is different on Raspberry Pi 1/2/3-64bit
