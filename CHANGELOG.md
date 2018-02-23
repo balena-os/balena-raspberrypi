@@ -1,6 +1,9 @@
 Change log
 -----------
 
+* Modify linux-raspberrypi_%.bbappend: Use filesystem labels for the root cmdline kernel parameter [TheOnlyZby]
+* Modify 99-rpi-bootloader hostapp hook to switch Partition Labels instead of physical mount point [TheOnlyZby]
+
 # v2.9.7+rev1
 ## (2018-02-07)
 
