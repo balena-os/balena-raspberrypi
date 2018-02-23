@@ -14,7 +14,6 @@ PRODUCTION_CMDLINE = "dwc_otg.lpm_enable=0 console=null root=LABEL=resin-rootA r
 CMDLINE = "${@bb.utils.contains('DISTRO_FEATURES','development-image',"${DEBUG_CMDLINE}","${PRODUCTION_CMDLINE}",d)}"
 CMDLINE_DEBUG = ""
 
-
 RESIN_CONFIGS_append = " fbtft"
 RESIN_CONFIGS[fbtft] = " \
     CONFIG_STAGING=y \
