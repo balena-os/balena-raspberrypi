@@ -15,13 +15,11 @@ else
        SYSROOT="/mnt/sysroot/active"
 fi
 
-new_part=$(findmnt --noheadings --canonicalize --output SOURCE $SYSROOT)
-blockdev=$(basename "$new_part")
-new_part_idx=$(cat "/sys/class/block/$blockdev/partition")
+new_root_filesystem_label=$(findmnt --noheadings --canonicalize --output LABEL $SYSROOT)
 
-printf "[INFO] Switching RaspberryPi bootloader root partition index to %s..." "$new_part_idx..."
+printf "[INFO] Switching RaspberryPi bootloader root partition to %s..." "$new_root_filesystem_label..."
 cp /mnt/boot/cmdline.txt /mnt/boot/cmdline.txt.new
-sed -i "s#mmcblk0p.#mmcblk0p$new_part_idx#g" /mnt/boot/cmdline.txt.new
+sed -i "s#root=LABEL=[^ ]*#root=LABEL=$new_root_filesystem_label#g" /mnt/boot/cmdline.txt.new
 sync -f /mnt/boot
 mv /mnt/boot/cmdline.txt.new /mnt/boot/cmdline.txt
 sync -f /mnt/boot

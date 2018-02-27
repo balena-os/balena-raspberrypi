@@ -9,8 +9,8 @@ LINUX_VERSION = "4.9.59"
 SRCREV = "e7976b2affa8c05bd299ead0ad9c36ddaf135b9d"
 
 # Set console accordingly to build type
-DEBUG_CMDLINE = "dwc_otg.lpm_enable=0 console=tty1 console=serial0,115200 root=/dev/mmcblk0p2 rootfstype=ext4 rootwait"
-PRODUCTION_CMDLINE = "dwc_otg.lpm_enable=0 console=null root=/dev/mmcblk0p2 rootfstype=ext4 rootwait vt.global_cursor_default=0"
+DEBUG_CMDLINE = "dwc_otg.lpm_enable=0 console=tty1 console=serial0,115200 root=LABEL=resin-rootA rootfstype=ext4 rootwait"
+PRODUCTION_CMDLINE = "dwc_otg.lpm_enable=0 console=null root=LABEL=resin-rootA rootfstype=ext4 rootwait vt.global_cursor_default=0"
 CMDLINE = "${@bb.utils.contains('DISTRO_FEATURES','development-image',"${DEBUG_CMDLINE}","${PRODUCTION_CMDLINE}",d)}"
 CMDLINE_DEBUG = ""
 
