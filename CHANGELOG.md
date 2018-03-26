@@ -1,6 +1,10 @@
 Change log
 -----------
 
+# v2.12.5+rev1
+## (2018-03-27)
+
+* Update the meta-resin submodule to version v2.12.5 [Florin]
 * Add boot firmware and WiFi firmware for Raspberry Pi 3 B+ [Florin]
 * Update the resin-yocto-scripts submodule to 9cecb1ca4d9d4713dd337148b7d04a17afdba772 (on master branch) [Florin]
 
