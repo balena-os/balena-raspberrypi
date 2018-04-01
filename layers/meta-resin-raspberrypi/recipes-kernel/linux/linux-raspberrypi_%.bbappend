@@ -4,9 +4,8 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 SRC_URI_append = " file://0001-Revert-cgroup-Add-kernel-param-to-enable-memory-grou.patch"
 
-# temporarily bump kernel to version 4.9.59 until BSP catches up
-LINUX_VERSION = "4.9.59"
-SRCREV = "e7976b2affa8c05bd299ead0ad9c36ddaf135b9d"
+LINUX_VERSION ?= "4.14.22"
+SRCREV = "daa138dae512b374c5be05f492e7c62838359b53"
 
 # Set console accordingly to build type
 DEBUG_CMDLINE = "dwc_otg.lpm_enable=0 console=tty1 console=serial0,115200 root=/dev/mmcblk0p2 rootfstype=ext4 rootwait"
