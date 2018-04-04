@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.12.5+rev2
+## (2018-04-03)
+
+* Add udev rule and systemd service to switch U-Blox modem from RNDIS to ECM mode [Sebastian]
+
 # v2.12.5+rev1
 ## (2018-03-27)
 
