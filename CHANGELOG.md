@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Modify the 99-rpi-bootloader hostapp hook use filesystem label instead of physical partition number [TheOnlyZby]
 * Use filesystem label instead of physical partition number for the kernel cmdline root parameter [TheOnlyZby]
 * Include balena fin dtbo in OS [Andrei]
 * Update warning in the dashboard regarding the RPi3 wifi connectivity [Gergely]
