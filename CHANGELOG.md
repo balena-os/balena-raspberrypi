@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Include balena fin dtbo in OS [Andrei]
 * Update warning in the dashboard regarding the RPi3 wifi connectivity [Gergely]
 
 # v2.12.5+rev2
