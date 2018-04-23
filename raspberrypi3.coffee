@@ -13,7 +13,7 @@ module.exports =
 	imageDownloadAlerts: [
 		{
 			type: 'warning'
-			message: 'The Raspberry Pi 3 is not capable of connecting to 5GHz WiFi networks unless you use an external WiFi adapter that supports it.'
+			message: 'The Raspberry Pi 3 is not capable of connecting to 5GHz WiFi networks unless you use an external WiFi adapter that supports it. The Raspberry Pi 3 B+ is capable of connecting to both 5GHz and 2.4GHz networks.'
 		}
 	]
 
