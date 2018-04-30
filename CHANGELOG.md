@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update the resin-yocto-scripts submodule to f7718efbbf53369aaacb7eb54e707ee8a5d4fc4b (on master branch) [Florin]
 * Modify the 99-rpi-bootloader hostapp hook use filesystem label instead of physical partition number [TheOnlyZby]
 * Use filesystem label instead of physical partition number for the kernel cmdline root parameter [TheOnlyZby]
 * Include balena fin dtbo in OS [Andrei]
