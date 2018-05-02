@@ -4,7 +4,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 SRC_URI_append = " \
 	file://0001-Revert-cgroup-Add-kernel-param-to-enable-memory-grou.patch \
-	file://0002-Add-balena-fin-dts.patch \
+	file://0002-overlays-Add-support-for-Balena-Fin-board.patch \
 	"
 
 # temporarily bump kernel to version 4.9.59 until BSP catches up
