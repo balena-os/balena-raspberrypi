@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Backport Balena Fin overlay patch which adds the correct overlay source [Florin]
+
 # v2.12.6+rev1
 ## (2018-04-30)
 
