@@ -1,6 +1,7 @@
 FILESEXTRAPATHS_append := ":${THISDIR}/files"
 
 SRC_URI += " \
+    file://fincm3-dt-blob.bin \
     file://fixup.dat \
     file://fixup_cd.dat \
     file://fixup_x.dat \
@@ -21,4 +22,9 @@ do_deploy_append() {
     for i in ${WORKDIR}/*.dat ; do
         cp $i ${DEPLOYDIR}/${PN}
     done
+}
+
+do_deploy_append_fincm3() {
+    # Install the dt-blob needed for camera support in Balena Fin CM3
+    install -m 644 ${WORKDIR}/fincm3-dt-blob.bin ${DEPLOYDIR}/${PN}/dt-blob.bin
 }
