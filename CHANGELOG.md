@@ -1,6 +1,10 @@
 Change log
 -----------
 
+# v2.12.7+rev1
+## (2018-05-04)
+
+* Update the meta-resin submodule to version v2.12.7 [Andrei]
 * Add Balena Fin device type and support [Andrei]
 * Backport Balena Fin overlay patch which adds the correct overlay source [Florin]
 
