@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Add Balena Fin device type and support [Andrei]
 * Backport Balena Fin overlay patch which adds the correct overlay source [Florin]
 
 # v2.12.6+rev1
