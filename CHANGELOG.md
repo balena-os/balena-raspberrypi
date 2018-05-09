@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Remove superfluous wait instruction from the fincm3.coffee file [Florin]
+
 # v2.12.7+rev1
 ## (2018-05-04)
 
