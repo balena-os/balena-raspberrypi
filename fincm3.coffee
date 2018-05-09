@@ -22,7 +22,6 @@ module.exports =
 		FIN_WRITE
 		FIN_POWEROFF
 		instructions.CONNECT_AND_BOOT
-		instructions.WAIT
 	]
 
 	gettingStartedLink:
