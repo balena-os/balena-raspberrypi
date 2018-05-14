@@ -1,3 +1,9 @@
+FILESEXTRAPATHS_append := ":${THISDIR}/files"
+
+SRC_URI += " \
+    file://fincm3-dt-blob.bin \
+"
+
 do_deploy_append() {
     # exclude from resinOS the binaries with additional debug assertions (they
     # grow the used size in resin-boot and this potentially breaks hostapps
