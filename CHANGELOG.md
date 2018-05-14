@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Update the BSP to include the latest changes in rocko branch (fixes MAC address for ethernet on RaspberryPi 3B+ [Andrei]
 * Remove superfluous wait instruction from the fincm3.coffee file [Florin]
 
 # v2.12.7+rev1
