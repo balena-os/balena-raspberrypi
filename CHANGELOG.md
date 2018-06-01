@@ -1,6 +1,9 @@
 Change log
 -----------
 
+
+* Update to yocto sumo and matching dependencies [Andrei]
+
 # v2.13.0+rev1
 ## (2018-06-11)
 
