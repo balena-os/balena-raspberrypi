@@ -3,8 +3,7 @@ inherit kernel-resin
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 SRC_URI_append = " \
-	file://0001-Revert-cgroup-Add-kernel-param-to-enable-memory-grou.patch \
-	file://0002-overlays-Add-support-for-Balena-Fin-board.patch \
+	file://0001-Revert-cgroup-Disable-cgroup-memory-by-default.patch \
 	"
 
 # Set console accordingly to build type
