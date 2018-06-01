@@ -36,7 +36,7 @@ module.exports =
 		machine: 'fincm3'
 		image: 'resin-image'
 		fstype: 'resinos-img'
-		version: 'yocto-rocko'
+		version: 'yocto-sumo'
 		deployArtifact: 'resin-image-fincm3.resinos-img'
 		compressed: true
 
