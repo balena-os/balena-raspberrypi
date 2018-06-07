@@ -14,8 +14,6 @@ module.exports =
 	arch: 'armv7hf'
 	state: 'released'
 
-	subtype_of: 'raspberrypi3'
-
 	instructions: [
 	 	FIN_DEBUG
 		FIN_POWER

@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Remove subtype_of from fincm3.coffee [Florin]
 * Update to yocto sumo and matching dependencies [Andrei]
 * Cleanup bcm2835-bootfiles and fix fincm3 build [Andrei]
 * Update fincm3 icon [Andrei]
