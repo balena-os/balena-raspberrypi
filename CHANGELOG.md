@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Remove subtype_of from fincm3.coffee [Florin]
 * Cleanup bcm2835-bootfiles and fix fincm3 build [Andrei]
 * Update fincm3 icon [Andrei]
 * Update the BSP to include the latest changes in rocko branch (fixes MAC address for ethernet on RaspberryPi 3B+ [Andrei]
