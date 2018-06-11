@@ -1,6 +1,10 @@
 Change log
 -----------
 
+# v2.13.0+rev1
+## (2018-06-11)
+
+* Update the meta-resin submodule to version v2.13.0 [Florin]
 * Remove subtype_of from fincm3.coffee [Florin]
 * Cleanup bcm2835-bootfiles and fix fincm3 build [Andrei]
 * Update fincm3 icon [Andrei]
