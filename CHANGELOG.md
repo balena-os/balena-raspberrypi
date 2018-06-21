@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Add u-boot in the bootchain [ZubairLK]
 * Update the resin-yocto-scripts submodule to 8312741e13604a9d166370349061876afb22c0fa (on master branch) [Florin]
 * Backport kernel qmi fix for supporting SIMCOM SIM7600E-H modem [Florin]
 
