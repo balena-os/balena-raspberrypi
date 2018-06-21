@@ -13,6 +13,10 @@ GPU_MEM = "16"
 
 # RPI BSP uses uncompressed kernel images by default
 KERNEL_IMAGETYPE="zImage"
+KERNEL_BOOTCMD="bootz"
+
+# RPI Use u-boot. This needs to be 1 as we use u-boot
+RPI_USE_U_BOOT = "1"
 
 # Set this to 1 if development image is desired
 #DEVELOPMENT_IMAGE = "1"
