@@ -1,0 +1,17 @@
+The environment variable set by this rule for the MS2372 modem, makes the NetworkManager to use modem's NCM interface.
+Even though the NCM interface gets connected, it doesn't work well and it continously reports RX errors.
+By deleting this rule, NetworkManager will use the PPP mode for this modem, which works fine.
+
+Signed-off-by: Sebastian Panceac <sebastian@resin.io>
+Upstream-Status: Pending
+
+--- a/plugins/huawei/77-mm-huawei-net-port-types.rules	2018-06-22 14:15:12.532870000 +0200
++++ b/plugins/huawei/77-mm-huawei-net-port-types.rules	2018-06-22 14:15:20.964870000 +0200
+@@ -23,7 +23,4 @@
+ SUBSYSTEMS=="usb", ATTRS{bInterfaceClass}=="02", ATTRS{bInterfaceSubClass}=="06",ATTRS{bInterfaceProtocol}=="00", ENV{ID_MM_HUAWEI_NDISDUP_SUPPORTED}="1"
+ SUBSYSTEMS=="usb", ATTRS{bInterfaceClass}=="02", ATTRS{bInterfaceSubClass}=="0d",ATTRS{bInterfaceProtocol}=="00", ENV{ID_MM_HUAWEI_NDISDUP_SUPPORTED}="1"
+ 
+-# Airtel branded E3372h-607, using huawei-cdc-ncm driver but with unresponsive cdc-wdm port
+-ATTRS{idVendor}=="12d1", ATTRS{idProduct}=="1506", ENV{ID_MM_HUAWEI_NDISDUP_SUPPORTED}="1"
+-
+ LABEL="mm_huawei_port_types_end"

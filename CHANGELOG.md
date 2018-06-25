@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* modemmanager: fix support for Huawei MS2372 modem [Sebastian]
+
 # v2.13.1+rev1
 ## (2018-06-18)
 
