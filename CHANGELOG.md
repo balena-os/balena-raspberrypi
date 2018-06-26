@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Fix bluetooth on rpi zero wireless [Florin]
 * modemmanager: fix support for Huawei MS2372 modem [Sebastian]
 
 # v2.13.1+rev1
