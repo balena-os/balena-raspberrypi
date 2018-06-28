@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.13.2+rev1
+## (2018-06-28)
+
+* Update the meta-resin submodule to version v2.13.2 [Florin]
+* Update the resin-yocto-scripts submodule to 6eddcc9a637e00dbca94815f9af0f2b7bf61eb88 (on master branch) [Florin]
 * Disable WiFi power saving mode on the Balena Fin board [Florin]
 * Fix bluetooth on rpi zero wireless [Florin]
 * modemmanager: fix support for Huawei MS2372 modem [Sebastian]
