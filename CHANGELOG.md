@@ -1,6 +1,7 @@
 Change log
 -----------
 
+* Disable WiFi power saving mode on the Balena Fin board [Florin]
 * Fix bluetooth on rpi zero wireless [Florin]
 * modemmanager: fix support for Huawei MS2372 modem [Sebastian]
 
