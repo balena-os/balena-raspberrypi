@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Update the resin-yocto-scripts submodule to 59ccd8558435ff6424827fb36ccb43b14650f4d4 (on master branch) [Florin]
+
 # v2.13.3+rev1
 ## (2018-07-05)
 
