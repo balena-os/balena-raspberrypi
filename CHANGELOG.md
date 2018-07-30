@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Backport kernel qmi fix for supporting SIMCOM SIM7600E-H modem [Florin]
+
 # v2.14.0+rev1
 ## (2018-07-18)
 
