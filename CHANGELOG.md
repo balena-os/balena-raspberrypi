@@ -1,6 +1,9 @@
 Change log
 -----------
 
+* Update the resin-yocto-scripts submodule to 8312741e13604a9d166370349061876afb22c0fa (on master branch) [Florin]
+* Backport kernel qmi fix for supporting SIMCOM SIM7600E-H modem [Florin]
+
 # v2.14.0+rev1
 ## (2018-07-18)
 
