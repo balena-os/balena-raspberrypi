@@ -4,7 +4,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 SRC_URI_append = " \
 	file://0001-Revert-cgroup-Disable-cgroup-memory-by-default.patch \
-	file://0002-qmi_wwan:-apply-SET-DTR-quirk-to-the-SIMCOM-shared-device-ID.patch \
+	file://0002-qmi_wwan-apply-SET-DTR-quirk-to-the-SIMCOM-shared-device-ID.patch \
 	"
 
 # Set console accordingly to build type
