@@ -1,0 +1,32 @@
+From 7fe2ab4151b436ba80ac3ddc5249414b2cabdd5e Mon Sep 17 00:00:00 2001
+From: Alex Kiernan <alex.kiernan@gmail.com>
+Date: Wed, 7 Feb 2018 20:01:54 +0000
+Subject: [PATCH] Fix misaligned buffer in env_fat_save
+
+When saving the environment on a platform which has DMA alignment
+larger than the natural alignment, env_fat_save triggers a debug
+message in file_fat_write:
+
+  Saving Environment to FAT... writing uboot.env
+  FAT: Misaligned buffer address (9df1c8e0)
+  OK
+
+Signed-off-by: Alex Kiernan <alex.kiernan@gmail.com>
+Upstream-Status: Backport from v2018.03
+---
+ env/fat.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/env/fat.c b/env/fat.c
+index ec49c39..c84a7cb 100644
+--- a/env/fat.c
++++ b/env/fat.c
+@@ -36,7 +36,7 @@ DECLARE_GLOBAL_DATA_PTR;
+ #ifdef CMD_SAVEENV
+ static int env_fat_save(void)
+ {
+-	env_t	env_new;
++	env_t __aligned(ARCH_DMA_MINALIGN) env_new;
+ 	struct blk_desc *dev_desc = NULL;
+ 	disk_partition_t info;
+ 	int dev, part;

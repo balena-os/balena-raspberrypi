@@ -1,0 +1,33 @@
+From df5e05594eeb044da05ecc929feb97067de5e7c5 Mon Sep 17 00:00:00 2001
+From: Seung-Woo Kim <sw0312.kim@samsung.com>
+Date: Mon, 4 Jun 2018 20:45:54 +0900
+Subject: [PATCH] fs: fat: fix wrong casting to unsigned value of
+ sect_to_cluster()
+
+After the commit 265edc03d5a1 ("fs/fat: Clean up open-coded sector
+<-> cluster conversions"), it is hung up writing new file to FAT16
+disk with more than 19 files in armv7. It is because result value
+of sect_to_cluster() is not proper by casting from signed value to
+unsigned value. Fix the wrong casting of sect_to_cluster().
+
+Reported-by: Jaehoon Chung <jh80.chung@samsung.com>
+Signed-off-by: Seung-Woo Kim <sw0312.kim@samsung.com>
+Reviewed-by: Lukasz Majewski <lukma@denx.de>
+Upstream-Status: Backport from v2018.07
+---
+ include/fat.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/fat.h b/include/fat.h
+index bdeda95..a413882 100644
+--- a/include/fat.h
++++ b/include/fat.h
+@@ -182,7 +182,7 @@ static inline u32 clust_to_sect(fsdata *fsdata, u32 clust)
+ 	return fsdata->data_begin + clust * fsdata->clust_size;
+ }
+
+-static inline u32 sect_to_clust(fsdata *fsdata, u32 sect)
++static inline u32 sect_to_clust(fsdata *fsdata, int sect)
+ {
+ 	return (sect - fsdata->data_begin) / fsdata->clust_size;
+ }

@@ -1,0 +1,8 @@
+setenv resin_kernel_load_addr ${kernel_addr_r}
+run resin_set_kernel_root
+fdt addr ${fdt_addr}
+fdt get value bootargs /chosen bootargs
+env set bootargs "${bootargs} ${resin_kernel_root} rootwait"
+fdt rm /chosen bootargs
+fatload ${resin_dev_type} ${resin_dev_index}:${resin_boot_part} ${resin_kernel_load_addr} @@KERNEL_IMAGETYPE@@
+@@KERNEL_BOOTCMD@@ ${resin_kernel_load_addr} - ${fdt_addr}

@@ -8,7 +8,9 @@ SDIMG_KERNELIMAGE_raspberrypi3-64 ?= "kernel8.img"
 # Customize resinos-img
 RESIN_IMAGE_BOOTLOADER_rpi = "bcm2835-bootfiles"
 RESIN_BOOT_PARTITION_FILES_rpi = " \
-    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-${MACHINE}.bin:/${SDIMG_KERNELIMAGE} \
+    u-boot.bin:/${SDIMG_KERNELIMAGE} \
+    boot.scr:/boot.scr \
+    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-${MACHINE}.bin:/${KERNEL_IMAGETYPE} \
     bcm2835-bootfiles:/ \
     "
 
@@ -35,4 +37,4 @@ python overlay_dtbs_handler () {
 addhandler overlay_dtbs_handler
 overlay_dtbs_handler[eventmask] = "bb.event.RecipePreFinalise"
 
-IMAGE_INSTALL_append_rpi = " enable-overcommit"
+IMAGE_INSTALL_append_rpi = " enable-overcommit u-boot"

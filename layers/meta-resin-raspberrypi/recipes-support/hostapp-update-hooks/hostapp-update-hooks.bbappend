@@ -1,3 +1,1 @@
-FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
-
-HOSTAPP_HOOKS += " 99-rpi-bootloader"
+HOSTAPP_HOOKS += " 99-resin-uboot"
