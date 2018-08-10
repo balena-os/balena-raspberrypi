@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Add u-boot v2018.07 recipe and use that [ZubairLK]
+
 # v2.14.1+rev1
 ## (2018-08-03)
 
