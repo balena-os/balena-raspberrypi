@@ -1,6 +1,10 @@
 Change log
 -----------
 
+# v2.14.2+rev1
+## (2018-08-13)
+
+* Update the meta-resin submodule to version v2.14.2 [Florin]
 * Add u-boot v2018.07 recipe and use that [ZubairLK]
 
 # v2.14.1+rev1
