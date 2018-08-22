@@ -1,6 +1,8 @@
 Change log
 -----------
 
+* Use the DTB loaded by the pi firmware in u-boot [ZubairLK]
+
 # v2.14.3+rev1
 ## (2018-08-14)
 
