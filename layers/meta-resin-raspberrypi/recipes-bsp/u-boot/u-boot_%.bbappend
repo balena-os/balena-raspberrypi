@@ -11,4 +11,5 @@ SRC_URI_remove = " file://resin-specific-env-integration-kconfig.patch "
 
 SRC_URI += "file://rpi-Add-autoboot-configuration-in-defconfigs.patch \
             file://0001-Integrate-machine-independent-resin-environment-conf.patch \
+            file://rpi-Use-CONFIG_OF_BOARD-instead-of-CONFIG_EMBED.patch \
             "
