@@ -57,3 +57,16 @@ KERNEL_MODULE_AUTOLOAD += "bcm2708_wdog"
 
 KERNEL_MODULE_PROBECONF += "rtl8192cu"
 module_conf_rtl8192cu = "blacklist rtl8192cu"
+
+# requested by customer (support for Kontron PLD devices)
+RESIN_CONFIGS_append = " gpio_i2c_kempld"
+RESIN_CONFIGS_DEPS[gpio_i2c_kempld] = " \
+    CONFIG_GPIOLIB=y \
+    CONFIG_I2C=y \
+    CONFIG_HAS_IOMEM=y \
+    CONFIG_MFD_KEMPLD=m \
+"
+RESIN_CONFIGS[gpio_i2c_kempld] = " \
+    CONFIG_GPIO_KEMPLD=m \
+    CONFIG_I2C_KEMPLD=m \
+"
