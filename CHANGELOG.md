@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.14.3+rev3
+## (2018-08-27)
+
+* Enable kernel I2C and GPIO support for Kontron PLD devices [Florin Sarbu]
+
 # v2.14.3+rev2
 ## (2018-08-26)
 
