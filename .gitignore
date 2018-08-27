@@ -10,6 +10,7 @@ shared-*/
 # device type manifest stuff
 /node_modules
 *.json
+!package.json
 
 # dynamically created by the build script
 conf-notes.txt
