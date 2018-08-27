@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.14.3+rev2
+## (2018-08-26)
+
+* Add versionist support [Florin Sarbu]
+
 * Use the DTB loaded by the pi firmware in u-boot [ZubairLK]
 
 # v2.14.3+rev1
