@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.14.3+rev4
+## (2018-08-27)
+
+* Switch the Balena Fin wifi and bluetooth driver to the proprietary one [Florin Sarbu]
+
 # v2.14.3+rev3
 ## (2018-08-27)
 
