@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.14.3+rev5
+## (2018-08-28)
+
+* Backport "media: uvcvideo: Fix driver reference counting" patch [Florin Sarbu]
+
 # v2.14.3+rev4
 ## (2018-08-27)
 
