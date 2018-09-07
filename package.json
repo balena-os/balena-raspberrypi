@@ -1,8 +1,0 @@
-{
-  "private": true,
-  "devDependencies": {
-    "lodash": "^4.17.10",
-    "semver": "^5.5.1",
-    "shelljs": "^0.8.2"
-  }
-}
