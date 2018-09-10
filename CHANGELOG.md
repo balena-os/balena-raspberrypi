@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.15.1+rev2
+## (2018-09-08)
+
+* Set Huawei 12d1:1506 modems back to NCM mode [Florin Sarbu]
+
 # v2.15.1+rev1
 ## (2018-08-30)
 
