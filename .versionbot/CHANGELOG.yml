@@ -1,3 +1,19 @@
+- commits:
+    - subject: Add repo and changelog yml files
+      hash: 7448d0df446d7fe3d1f29359d61380c46f963275
+      body: |
+        This adds a yml version of the changelog that is automatically updated
+        by versionbot. It also enables nested-changelogs from meta-resin.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Giovanni Garufi <giovanni@resin.io>
+        signed-off-by: Giovanni Garufi <giovanni@resin.io>
+        Changelog-entry: Add repo and changelog yml files
+        changelog-entry: Add repo and changelog yml files
+      author: Giovanni Garufi
+  version: 2.15.1+rev3
+  date: 2018-09-14T15:14:49.798Z
 - version: v2.15.1+rev2
   date: 2018-09-08T00:00:00.000Z
   commits:

@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.15.1+rev3
+## (2018-09-14)
+
+* Add repo and changelog yml files [Giovanni Garufi]
+
 # v2.15.1+rev2
 ## (2018-09-08)
 
