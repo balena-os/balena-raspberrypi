@@ -1,0 +1,6 @@
+---
+type: 'yocto-based OS image'
+reviewers: 1
+upstream:
+  repo: 'meta-resin'
+  url: 'http://github.com/resin-os/meta-resin'
