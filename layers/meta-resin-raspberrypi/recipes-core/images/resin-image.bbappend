@@ -10,7 +10,6 @@ RESIN_IMAGE_BOOTLOADER_rpi = "bcm2835-bootfiles"
 RESIN_BOOT_PARTITION_FILES_rpi = " \
     u-boot.bin:/${SDIMG_KERNELIMAGE} \
     boot.scr:/boot.scr \
-    ${KERNEL_IMAGETYPE}${KERNEL_INITRAMFS}-${MACHINE}.bin:/${KERNEL_IMAGETYPE} \
     bcm2835-bootfiles:/ \
     "
 
