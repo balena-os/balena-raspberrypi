@@ -1,0 +1,87 @@
+From f6b655bef2062d874b6c6fca4194bf2ddc80dd55 Mon Sep 17 00:00:00 2001
+From: Zubair Lutfullah Kakakhel <zubair@resin.io>
+Date: Wed, 19 Sep 2018 10:55:47 +0100
+Subject: [PATCH] configs: Add bootcount configs to rpi defconfigs
+
+The value of CONFIG_SYS_BOOTCOUNT_ADDR=0x02300000 reduces the maximum
+size of the kernel binary by a few meg.
+The kernel load address range is now 0x00080000-0x02300000
+
+Signed-off-by: Zubair Lutfullah Kakakhel <zubair@resin.io>
+Upstream-Status: Inappropriate [configuration]
+---
+ configs/rpi_0_w_defconfig   | 5 +++++
+ configs/rpi_2_defconfig     | 5 +++++
+ configs/rpi_3_32b_defconfig | 5 +++++
+ configs/rpi_3_defconfig     | 5 +++++
+ configs/rpi_defconfig       | 5 +++++
+ 5 files changed, 25 insertions(+)
+
+diff --git a/configs/rpi_0_w_defconfig b/configs/rpi_0_w_defconfig
+index 9dfa22a..0cba611 100644
+--- a/configs/rpi_0_w_defconfig
++++ b/configs/rpi_0_w_defconfig
+@@ -44,3 +44,8 @@ CONFIG_AUTOBOOT_PROMPT="autoboot in 1 second (type stop to abort or \" \" to del
+ CONFIG_BOOT_RETRY_TIME=15
+ CONFIG_RESET_TO_RETRY=y
+ CONFIG_BOOTDELAY=1
++CONFIG_BOOTCOUNT_LIMIT=y
++CONFIG_SYS_BOOTCOUNT_ADDR=0x02300000
++CONFIG_BOOTCOUNT_EXT=y
++CONFIG_SYS_BOOTCOUNT_EXT_DEVPART=0:1
++CONFIG_SYS_BOOTCOUNT_EXT_NAME="bootcount.env"
+diff --git a/configs/rpi_2_defconfig b/configs/rpi_2_defconfig
+index e54718b..02c38af 100644
+--- a/configs/rpi_2_defconfig
++++ b/configs/rpi_2_defconfig
+@@ -44,3 +44,8 @@ CONFIG_AUTOBOOT_PROMPT="autoboot in 1 second (type stop to abort or \" \" to del
+ CONFIG_BOOT_RETRY_TIME=15
+ CONFIG_RESET_TO_RETRY=y
+ CONFIG_BOOTDELAY=1
++CONFIG_BOOTCOUNT_LIMIT=y
++CONFIG_SYS_BOOTCOUNT_ADDR=0x02300000
++CONFIG_BOOTCOUNT_EXT=y
++CONFIG_SYS_BOOTCOUNT_EXT_DEVPART=0:1
++CONFIG_SYS_BOOTCOUNT_EXT_NAME="bootcount.env"
+diff --git a/configs/rpi_3_32b_defconfig b/configs/rpi_3_32b_defconfig
+index 5727d96..8e825d0 100644
+--- a/configs/rpi_3_32b_defconfig
++++ b/configs/rpi_3_32b_defconfig
+@@ -47,3 +47,8 @@ CONFIG_AUTOBOOT_PROMPT="autoboot in 1 second (type stop to abort or \" \" to del
+ CONFIG_BOOT_RETRY_TIME=15
+ CONFIG_RESET_TO_RETRY=y
+ CONFIG_BOOTDELAY=1
++CONFIG_BOOTCOUNT_LIMIT=y
++CONFIG_SYS_BOOTCOUNT_ADDR=0x02300000
++CONFIG_BOOTCOUNT_EXT=y
++CONFIG_SYS_BOOTCOUNT_EXT_DEVPART=0:1
++CONFIG_SYS_BOOTCOUNT_EXT_NAME="bootcount.env"
+diff --git a/configs/rpi_3_defconfig b/configs/rpi_3_defconfig
+index ab65320..9ae2d0d 100644
+--- a/configs/rpi_3_defconfig
++++ b/configs/rpi_3_defconfig
+@@ -47,3 +47,8 @@ CONFIG_AUTOBOOT_PROMPT="autoboot in 1 second (type stop to abort or \" \" to del
+ CONFIG_BOOT_RETRY_TIME=15
+ CONFIG_RESET_TO_RETRY=y
+ CONFIG_BOOTDELAY=1
++CONFIG_BOOTCOUNT_LIMIT=y
++CONFIG_SYS_BOOTCOUNT_ADDR=0x02300000
++CONFIG_BOOTCOUNT_EXT=y
++CONFIG_SYS_BOOTCOUNT_EXT_DEVPART=0:1
++CONFIG_SYS_BOOTCOUNT_EXT_NAME="bootcount.env"
+diff --git a/configs/rpi_defconfig b/configs/rpi_defconfig
+index ee91c58..3507c4c 100644
+--- a/configs/rpi_defconfig
++++ b/configs/rpi_defconfig
+@@ -44,3 +44,8 @@ CONFIG_AUTOBOOT_PROMPT="autoboot in 1 second (type stop to abort or \" \" to del
+ CONFIG_BOOT_RETRY_TIME=15
+ CONFIG_RESET_TO_RETRY=y
+ CONFIG_BOOTDELAY=1
++CONFIG_BOOTCOUNT_LIMIT=y
++CONFIG_SYS_BOOTCOUNT_ADDR=0x02300000
++CONFIG_BOOTCOUNT_EXT=y
++CONFIG_SYS_BOOTCOUNT_EXT_DEVPART=0:1
++CONFIG_SYS_BOOTCOUNT_EXT_NAME="bootcount.env"
+-- 
+2.7.4
+
