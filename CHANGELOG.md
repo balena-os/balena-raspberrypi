@@ -1,6 +1,14 @@
 Change log
 -----------
 
+# v2.19.0+rev3
+## (2018-10-19)
+
+* Add hook to remove kernel from boot parition after a HUP [Zubair Lutfullah Kakakhel]
+* Add Automated Rollback support [Zubair Lutfullah Kakakhel]
+* Remove the kernel from the boot partition [Zubair Lutfullah Kakakhel]
+* Load the kernel from the rootfs [Zubair Lutfullah Kakakhel]
+
 # v2.19.0+rev2
 ## (2018-10-11)
 

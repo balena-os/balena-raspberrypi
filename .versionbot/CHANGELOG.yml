@@ -1,4 +1,62 @@
 - commits:
+    - subject: Add hook to remove kernel from boot parition after a HUP
+      hash: d3e94e69adaadb3cb4ad0db643b6455a9455852a
+      body: |
+        The kernel in the root partition in the /boot folder is now used to
+        boot resinOS. After a HUP, there will be a redundant vmlinuz file
+        left in the boot partition.
+
+        This hooks tests for its presence and removes the redundant file.
+      footer:
+        Changelog-entry: Add hook to remove kernel from boot parition after a HUP
+        changelog-entry: Add hook to remove kernel from boot parition after a HUP
+        Signed-off-by: Zubair Lutfullah Kakakhel <zubair@resin.io>
+        signed-off-by: Zubair Lutfullah Kakakhel <zubair@resin.io>
+      author: Zubair Lutfullah Kakakhel
+    - subject: Add Automated Rollback support
+      hash: c067c2c0148e0943eef8791876b0aa28b235f3c8
+      body: |
+        To enable Automated Rollback support, we have to make u-boot read
+        upgrade_available from resinOS_uEnv.txt and we have to make u-boot
+        store the bootcount variable in a file called bootcount.env in the
+        boot partition.
+        The patches do the following
+        - Enable the bootcount config options.
+        - Add support to the ext bootcount driver to write bootcount
+        in the fat partition.
+        - u-boot runs altbootcmd if bootlimit is exceeded.
+        We handle this manually in env_resin.h where the resin_root_part is
+        switched. Hence use the same bootcmd for altbootcmd.
+      footer:
+        Changelog-entry: Add Automated Rollback support
+        changelog-entry: Add Automated Rollback support
+        Signed-off-by: Zubair Lutfullah Kakakhel <zubair@resin.io>
+        signed-off-by: Zubair Lutfullah Kakakhel <zubair@resin.io>
+      author: Zubair Lutfullah Kakakhel
+    - subject: Remove the kernel from the boot partition
+      hash: 77e46fd4e352b5350cd339dada73f9cdf51ff656
+      body: |
+        The kernel is now installed into the rootfs in rootfs/boot/KERNEL.
+        Remove the kernel from the boot partitions.
+      footer:
+        Changelog-entry: Remove the kernel from the boot partition
+        changelog-entry: Remove the kernel from the boot partition
+        Signed-off-by: Zubair Lutfullah Kakakhel <zubair@resin.io>
+        signed-off-by: Zubair Lutfullah Kakakhel <zubair@resin.io>
+      author: Zubair Lutfullah Kakakhel
+    - subject: Load the kernel from the rootfs
+      hash: efb9e34cc6fef4a0c77ba28548c99fc12d675ce3
+      body: |
+        The kernel is now in rootfs/boot/KERNEL. Load the kernel from there.
+      footer:
+        Changelog-entry: Load the kernel from the rootfs
+        changelog-entry: Load the kernel from the rootfs
+        Signed-off-by: Zubair Lutfullah Kakakhel <zubair@resin.io>
+        signed-off-by: Zubair Lutfullah Kakakhel <zubair@resin.io>
+      author: Zubair Lutfullah Kakakhel
+  version: 2.19.0+rev3
+  date: 2018-10-19T09:20:45.561Z
+- commits:
     - subject: Move udev rules from /etc to /lib
       hash: 40a3a005f648091127be7becf744b9299d4c5bab
       body: |
