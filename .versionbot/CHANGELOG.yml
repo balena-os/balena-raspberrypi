@@ -1,4 +1,18 @@
 - commits:
+    - subject: Move udev rules from /etc to /lib
+      hash: 40a3a005f648091127be7becf744b9299d4c5bab
+      body: |
+        The /etc/udev/rules.d directory is used by custom udev rules now.
+        Move the rules in /etc/udev/rules.d to /lib/udev/rules.d
+      footer:
+        Changelog-entry: Move udev rules from /etc to /lib
+        changelog-entry: Move udev rules from /etc to /lib
+        Signed-off-by: Zubair Lutfullah Kakakhel <zubair@resin.io>
+        signed-off-by: Zubair Lutfullah Kakakhel <zubair@resin.io>
+      author: Zubair Lutfullah Kakakhel
+  version: 2.19.0+rev2
+  date: 2018-10-11T15:33:51.251Z
+- commits:
     - subject: Update meta-resin from v2.15.1 to v2.19.0
       hash: 9808b2e8c21bc03eeb31395a476a01623cd4b9bf
       body: |

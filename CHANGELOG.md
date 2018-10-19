@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.19.0+rev2
+## (2018-10-11)
+
+* Move udev rules from /etc to /lib [Zubair Lutfullah Kakakhel]
+
 # v2.19.0+rev1
 ## (2018-10-01)
 
