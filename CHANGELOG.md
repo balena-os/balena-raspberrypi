@@ -1,6 +1,29 @@
 Change log
 -----------
 
+# v2.22.0+rev1
+## (2018-10-19)
+
+* Update meta-resin from v2.21.0 to v2.22.0 [Andrei Gherzan]
+
+<details>
+<summary> View details </summary>
+
+## meta-resin-2.22.0
+### (2018-10-19)
+
+* Update resin-supervisor to v7.25.2
+* Include a CONTRIBUTING.md file
+* Update to ModemManager v1.8.2
+* Updates on contributing-device-support.md
+
+## meta-resin-2.21.0
+### (2018-10-18)
+
+* Improve systemd service ordering in rollbacks
+* Update resin-supervisor to v7.24.1
+</details>
+
 # v2.21.0+rev1
 ## (2018-10-19)
 

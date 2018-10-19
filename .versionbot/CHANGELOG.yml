@@ -1,4 +1,92 @@
 - commits:
+    - subject: Update meta-resin from v2.21.0 to v2.22.0
+      hash: 17a787ccffe4ebac12f39efd1a3fc72990cbcb7f
+      body: |
+        Update meta-resin from 2.21.0 to 2.22.0
+      footer:
+        Changelog-entry: Update meta-resin from v2.21.0 to v2.22.0
+        changelog-entry: Update meta-resin from v2.21.0 to v2.22.0
+        Signed-off-by: Andrei Gherzan <andrei@balena.io>
+        signed-off-by: Andrei Gherzan <andrei@balena.io>
+      author: Andrei Gherzan
+      nested:
+        - commits:
+            - subject: Update resin-supervisor to v7.25.2
+              hash: 999d0e07e426d175168da46557855f4dee724ee2
+              body: ''
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Update resin-supervisor to v7.25.2
+                changelog-entry: Update resin-supervisor to v7.25.2
+                Signed-off-by: Andrei Gherzan <andrei@balena.io>
+                signed-off-by: Andrei Gherzan <andrei@balena.io>
+              author: Andrei Gherzan
+            - subject: Include a CONTRIBUTING.md file
+              hash: a38f167752e68db524f55bb5bec97d8a03692283
+              body: |
+                Fixes #422
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Include a CONTRIBUTING.md file
+                changelog-entry: Include a CONTRIBUTING.md file
+                Signed-off-by: Andrei Gherzan <andrei@balena.io>
+                signed-off-by: Andrei Gherzan <andrei@balena.io>
+              author: Andrei Gherzan
+            - subject: Update to ModemManager v1.8.2
+              hash: cd6386ffedbe4e4c4959b0f2941826c324029cb1
+              body: |
+                Fixes #1209
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Update to ModemManager v1.8.2
+                changelog-entry: Update to ModemManager v1.8.2
+                Signed-off-by: Andrei Gherzan <andrei@balena.io>
+                signed-off-by: Andrei Gherzan <andrei@balena.io>
+              author: Andrei Gherzan
+            - subject: Updates on contributing-device-support.md
+              hash: 75ee54d48a40476e6de5076ffc238cb6fad25041
+              body: ''
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Updates on contributing-device-support.md
+                changelog-entry: Updates on contributing-device-support.md
+                Signed-off-by: Vicentiu Galanopulo <vicentiu@resin.io>
+                signed-off-by: Vicentiu Galanopulo <vicentiu@resin.io>
+              author: Vicentiu Galanopulo
+          version: meta-resin-2.22.0
+          date: 2018-10-19T18:42:10.962Z
+        - commits:
+            - subject: Improve systemd service ordering in rollbacks
+              hash: 1d729dec436d0cb2eeb8a6799a8b978aceba8f8d
+              body: ''
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Improve systemd service ordering in rollbacks
+                changelog-entry: Improve systemd service ordering in rollbacks
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: Update resin-supervisor to v7.24.1
+              hash: e5a882a75ca49828cabcba227c4972d9e4d753d9
+              body: ''
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Update resin-supervisor to v7.24.1
+                changelog-entry: Update resin-supervisor to v7.24.1
+                Signed-off-by: Andrei Gherzan <andrei@balena.io>
+                signed-off-by: Andrei Gherzan <andrei@balena.io>
+              author: Andrei Gherzan
+          version: meta-resin-2.21.0
+          date: 2018-10-18T17:23:01.640Z
+  version: 2.22.0+rev1
+  date: 2018-10-19T22:00:22.483Z
+- commits:
     - subject: Update meta-resin from v2.19.0 to v2.21.0
       hash: 457e4aebca7bafbbfe20f14bdc08aa24e328f2a9
       body: |
