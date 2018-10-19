@@ -1,6 +1,60 @@
 Change log
 -----------
 
+# v2.21.0+rev1
+## (2018-10-19)
+
+* Update meta-resin from v2.19.0 to v2.21.0 [Florin Sarbu]
+
+<details>
+<summary> View details </summary>
+
+## meta-resin-2.21.0
+### (2018-10-18)
+
+* Improve systemd service ordering in rollbacks
+* Update resin-supervisor to v7.24.1
+
+## meta-resin-2.20.0
+### (2018-10-18)
+
+* Avoid expander on flasher based on root kernel argument
+* Resin-vars: Implement custom ssh keys service
+* Fix redsocks interface creation when no proxy configured
+* Replace NM's DHCP request option "Client indentifier" with udhcpc style option
+* Fix for rollbacks in case of old balenaOS version
+* Update resin-supervisor to v7.21.4
+* Warn if rules are found in /etc/udev/rules.d
+* Add support to load custom udev rules from config.json
+* Aufs-util: Package auplink separately
+* Enable kernel config dependencies for MBIM and QMI
+* Set UPX to use LZMA compression by default
+* Downgrade UPX to 3.94 for ARM
+* Balena update for rollbacks. mobynit can now mount rootfs from sysroot.
+* Fix proxy when using containers over bridge network
+* Add support for aufs 4.9.9+, 4.9.94+, 4.18
+* Add rollback-altboot service before balena service
+* Add Automated Rollback recipe
+* Add Automated Rollback support in u-boot env_resin.h
+* Add a hook to support Automated Rollbacks
+* Update HUP grub hook to support Automated Rollbacks
+* Update HUP u-boot hook to support Automated Rollbacks
+* Move kernel-image-initramfs from resin-image recipe to packagegroup-resin.inc
+* Have 99-resin-grub hostapp-update-hook decide which grub to use
+
+## meta-resin-2.19.0
+### (2018-09-23)
+
+* Update Balena to fix tty console hanging in some cases
+* Pin down cargo deps (using Cargo.lock) to versions known working with rust 1.24.1 (for sumo)
+* Remove duplicate packaging of bcm43143
+* Set ModemManager to ignore Inca Roads Serial Device
+* Add support for aufs 4.14.56+
+* Update resin-supervisor to v7.19.7
+</details>
+
+* Disable u-boot autoboot delay option and enable CTRL^C autoboot stop feature [Florin Sarbu]
+
 # v2.19.0+rev3
 ## (2018-10-19)
 
