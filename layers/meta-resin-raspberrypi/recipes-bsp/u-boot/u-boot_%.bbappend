@@ -13,6 +13,4 @@ SRC_URI += "file://rpi-Add-autoboot-configuration-in-defconfigs.patch \
             file://0001-Integrate-machine-independent-resin-environment-conf.patch \
             file://rpi-Use-CONFIG_OF_BOARD-instead-of-CONFIG_EMBED.patch \
             file://bootcount-Add-support-to-write-bootcount-to-any-file.patch \
-            file://configs-Add-bootcount-configs-to-rpi-defconfigs.patch \
-            file://rpi.h-Add-bootlimit-and-altbootcmd-to-environment.patch \
             "
