@@ -1,4 +1,96 @@
 - commits:
+    - subject: Update meta-resin from v2.22.0 to v2.22.1
+      hash: dfeefd3c45507c8d0492523e81a011c27f8c9c6c
+      body: |
+        Update meta-resin from 2.22.0 to 2.22.1
+      footer:
+        Changelog-entry: Update meta-resin from v2.22.0 to v2.22.1
+        changelog-entry: Update meta-resin from v2.22.0 to v2.22.1
+        Signed-off-by: Andrei Gherzan <andrei@balena.io>
+        signed-off-by: Andrei Gherzan <andrei@balena.io>
+      author: Andrei Gherzan
+      nested:
+        - commits:
+            - subject: Update resin-supervisor to v7.25.3
+              hash: dd4966235420be328f6280fa170d17f5570dbfa2
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Update resin-supervisor to v7.25.3
+                changelog-entry: Update resin-supervisor to v7.25.3
+                Signed-off-by: Pablo Carranza Velez <pablo@balena.io>
+                signed-off-by: Pablo Carranza Velez <pablo@balena.io>
+              author: Pablo Carranza Velez
+          version: meta-resin-2.22.1
+          date: 2018-10-20T04:01:35.497Z
+        - commits:
+            - subject: Update resin-supervisor to v7.25.2
+              hash: 999d0e07e426d175168da46557855f4dee724ee2
+              body: ''
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Update resin-supervisor to v7.25.2
+                changelog-entry: Update resin-supervisor to v7.25.2
+                Signed-off-by: Andrei Gherzan <andrei@balena.io>
+                signed-off-by: Andrei Gherzan <andrei@balena.io>
+              author: Andrei Gherzan
+            - subject: Include a CONTRIBUTING.md file
+              hash: a38f167752e68db524f55bb5bec97d8a03692283
+              body: |
+                Fixes #422
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Include a CONTRIBUTING.md file
+                changelog-entry: Include a CONTRIBUTING.md file
+                Signed-off-by: Andrei Gherzan <andrei@balena.io>
+                signed-off-by: Andrei Gherzan <andrei@balena.io>
+              author: Andrei Gherzan
+            - subject: Update to ModemManager v1.8.2
+              hash: cd6386ffedbe4e4c4959b0f2941826c324029cb1
+              body: |
+                Fixes #1209
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Update to ModemManager v1.8.2
+                changelog-entry: Update to ModemManager v1.8.2
+                Signed-off-by: Andrei Gherzan <andrei@balena.io>
+                signed-off-by: Andrei Gherzan <andrei@balena.io>
+              author: Andrei Gherzan
+            - subject: Updates on contributing-device-support.md
+              hash: 75ee54d48a40476e6de5076ffc238cb6fad25041
+              body: ''
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Updates on contributing-device-support.md
+                changelog-entry: Updates on contributing-device-support.md
+                Signed-off-by: Vicentiu Galanopulo <vicentiu@resin.io>
+                signed-off-by: Vicentiu Galanopulo <vicentiu@resin.io>
+              author: Vicentiu Galanopulo
+          version: meta-resin-2.22.0
+          date: 2018-10-19T18:42:10.962Z
+    - subject: Disable rollbacks
+      hash: fba99ed87e2385c613b0a2b04daa542efeef8a1c
+      body: |
+        The current integration in uboot uses the ext bootcount driver which
+        doesn't use upgrade_available. The entire rollback support design is
+        currently based on this variable (upgrade_available) so if that is not
+        taken into consideration the board will increment bootcount with every
+        boot breaking the board after the first boot. Disable for now this
+        feature.
+      footer:
+        Changelog-entry: Disable rollbacks
+        changelog-entry: Disable rollbacks
+        Signed-off-by: Andrei Gherzan <andrei@balena.io>
+        signed-off-by: Andrei Gherzan <andrei@balena.io>
+      author: Andrei Gherzan
+  version: 2.22.1+rev1
+  date: 2018-10-20T05:17:33.132Z
+- commits:
     - subject: Update meta-resin from v2.21.0 to v2.22.0
       hash: 17a787ccffe4ebac12f39efd1a3fc72990cbcb7f
       body: |

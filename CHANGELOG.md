@@ -1,6 +1,30 @@
 Change log
 -----------
 
+# v2.22.1+rev1
+## (2018-10-20)
+
+* Update meta-resin from v2.22.0 to v2.22.1 [Andrei Gherzan]
+
+<details>
+<summary> View details </summary>
+
+## meta-resin-2.22.1
+### (2018-10-20)
+
+* Update resin-supervisor to v7.25.3
+
+## meta-resin-2.22.0
+### (2018-10-19)
+
+* Update resin-supervisor to v7.25.2
+* Include a CONTRIBUTING.md file
+* Update to ModemManager v1.8.2
+* Updates on contributing-device-support.md
+</details>
+
+* Disable rollbacks [Andrei Gherzan]
+
 # v2.22.0+rev1
 ## (2018-10-19)
 
