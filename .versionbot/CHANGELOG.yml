@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update meta-resin submodule from v2.22.1 to v2.24.0
+      hash: 8ee6e1e7a30b9a82061987ca5436f671fb7c92c1
+      body: |
+        Update meta-resin from 2.22.1 to 2.24.0
+      footer:
+        Changelog-entry: Update meta-resin submodule from v2.22.1 to v2.24.0
+        changelog-entry: Update meta-resin submodule from v2.22.1 to v2.24.0
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+  version: 2.24.0+rev1
+  date: 2018-10-24T08:02:30.357Z
+- commits:
     - subject: Update meta-resin from v2.22.0 to v2.22.1
       hash: dfeefd3c45507c8d0492523e81a011c27f8c9c6c
       body: |
