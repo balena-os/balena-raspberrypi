@@ -1,6 +1,35 @@
 Change log
 -----------
 
+# v2.25.0+rev1
+## (2018-11-05)
+
+* Update meta-resin from v2.24.0 to v2.25.0 [Florin Sarbu]
+
+<details>
+<summary> View details </summary>
+
+## meta-resin-2.25.0
+### (2018-11-02)
+
+* Generate ssh host key at first boot (not at first connection) [Andrei Gherzan]
+* Fix extraneous space in kernel-resin.bbclass config [Florin Sarbu]
+* Drop obsolete eval from kernel-resin's do_kernel_resin_reconfigure [Florin Sarbu]
+* Add SyslogIdentifier for balena and resin-supervisor healthdog services [Matthew McGinn]
+
+## meta-resin-2.24.1
+### (2018-11-01)
+
+* Update resin-supervisor to v8.0.0 [Pablo Carranza Velez]
+
+## meta-resin-2.24.0
+### (2018-10-24)
+
+* resin-info: Small tweak for balenaCloud product [Andrei Gherzan]
+* Update resin-supervisor to v7.25.8 [Pablo Carranza Velez]
+* Rename resinOS to balenaOS [Andrei Gherzan]
+</details>
+
 # v2.24.0+rev1
 ## (2018-10-24)
 
