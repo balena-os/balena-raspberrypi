@@ -1,4 +1,118 @@
 - commits:
+    - subject: Update meta-resin from v2.25.0 to v2.26.0
+      hash: 9187e984e44e10928ceef19ee5496ae5c7a4569f
+      body: |
+        Update meta-resin from 2.25.0 to 2.26.0
+      footer:
+        Changelog-entry: Update meta-resin from v2.25.0 to v2.26.0
+        changelog-entry: Update meta-resin from v2.25.0 to v2.26.0
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: Rename resin-unique-key to balena-unique-key
+              hash: da871aeb64dffcb84c2fad75b299f661cab40c3d
+              body: ''
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Rename resin-unique-key to balena-unique-key
+                changelog-entry: Rename resin-unique-key to balena-unique-key
+                Signed-off-by: Andrei Gherzan <andrei@balena.io>
+                signed-off-by: Andrei Gherzan <andrei@balena.io>
+              author: Andrei Gherzan
+            - subject: Don't let resin-unique-key rewrite config.json
+              hash: 58685dd3accb19b159adc933d3b203c615675343
+              body: |
+                Fixes #1262
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Don't let resin-unique-key rewrite config.json
+                changelog-entry: Don't let resin-unique-key rewrite config.json
+                Signed-off-by: Andrei Gherzan <andrei@balena.io>
+                signed-off-by: Andrei Gherzan <andrei@balena.io>
+              author: Andrei Gherzan
+          version: meta-resin-2.26.0
+          date: 2018-11-05T15:22:47.685Z
+        - commits:
+            - subject: Generate ssh host key at first boot (not at first connection)
+              hash: aea0382c5e6c26933767a931f3a0df45e3cde233
+              body: ''
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Generate ssh host key at first boot (not at first connection)
+                changelog-entry: Generate ssh host key at first boot (not at first connection)
+                Signed-off-by: Andrei Gherzan <andrei@balena.io>
+                signed-off-by: Andrei Gherzan <andrei@balena.io>
+              author: Andrei Gherzan
+            - subject: Fix extraneous space in kernel-resin.bbclass config
+              hash: bf3124d468dfce8e9b4909965dfea05752835b33
+              body: |
+                This extra space leads to kernel config check error
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Fix extraneous space in kernel-resin.bbclass config
+                changelog-entry: Fix extraneous space in kernel-resin.bbclass config
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+            - subject: >-
+                Drop obsolete eval from kernel-resin's
+                do_kernel_resin_reconfigure
+              hash: 1b882e69d125c4cd84a8ebd8298eb294d52d5574
+              body: >
+                This is not needed as bitbake already expands
+                KERNEL_CONFIG_COMMAND
+
+                See Poky commit 95909bc788bef1baabead94231dffb3b7f59fb00 for
+                details
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: >-
+                  Drop obsolete eval from kernel-resin's
+                  do_kernel_resin_reconfigure
+                changelog-entry: >-
+                  Drop obsolete eval from kernel-resin's
+                  do_kernel_resin_reconfigure
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+            - subject: >-
+                Add SyslogIdentifier for balena and resin-supervisor healthdog
+                services
+              hash: 23fadcc59cc2b353b68264220e35fa1c06b97444
+              body: ''
+              footer:
+                Changelog-entry: >-
+                  Add SyslogIdentifier for balena and resin-supervisor healthdog
+                  services
+                changelog-entry: >-
+                  Add SyslogIdentifier for balena and resin-supervisor healthdog
+                  services
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Matthew McGinn <mamcgi@gmail.com>
+                signed-off-by: Matthew McGinn <mamcgi@gmail.com>
+              author: Matthew McGinn
+          version: meta-resin-2.25.0
+          date: 2018-11-02T15:58:49.876Z
+    - subject: Update the resin-yocto-scripts submodule to master HEAD
+      hash: 31c37bc86bc625b228998b34b1bf488317dc3fde
+      body: ''
+      footer:
+        Changelog-entry: Update the resin-yocto-scripts submodule to master HEAD
+        changelog-entry: Update the resin-yocto-scripts submodule to master HEAD
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.26.0+rev1
+  date: 2018-11-06T10:35:20.966Z
+- commits:
     - subject: Update meta-resin from v2.24.0 to v2.25.0
       hash: aabc4fce2329911696fc4e1cf2d7515ead1194c5
       body: |

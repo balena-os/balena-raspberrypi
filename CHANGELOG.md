@@ -1,6 +1,31 @@
 Change log
 -----------
 
+# v2.26.0+rev1
+## (2018-11-06)
+
+* Update meta-resin from v2.25.0 to v2.26.0 [Florin Sarbu]
+
+<details>
+<summary> View details </summary>
+
+## meta-resin-2.26.0
+### (2018-11-05)
+
+* Rename resin-unique-key to balena-unique-key [Andrei Gherzan]
+* Don't let resin-unique-key rewrite config.json [Andrei Gherzan]
+
+## meta-resin-2.25.0
+### (2018-11-02)
+
+* Generate ssh host key at first boot (not at first connection) [Andrei Gherzan]
+* Fix extraneous space in kernel-resin.bbclass config [Florin Sarbu]
+* Drop obsolete eval from kernel-resin's do_kernel_resin_reconfigure [Florin Sarbu]
+* Add SyslogIdentifier for balena and resin-supervisor healthdog services [Matthew McGinn]
+</details>
+
+* Update the resin-yocto-scripts submodule to master HEAD [Florin Sarbu]
+
 # v2.25.0+rev1
 ## (2018-11-05)
 
