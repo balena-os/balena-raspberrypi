@@ -1,4 +1,17 @@
 - commits:
+    - subject: Use new balena source repo for SRC_URI
+      hash: e1cd90478c5bc87bbb741f32104f88e12fb767b4
+      body: |
+        This was moved when renamed from resin to balena
+      footer:
+        Changelog-entry: Use new balena source repo for SRC_URI
+        changelog-entry: Use new balena source repo for SRC_URI
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.26.0+rev2
+  date: 2018-11-07T08:04:54.318Z
+- commits:
     - subject: Update meta-resin from v2.25.0 to v2.26.0
       hash: 9187e984e44e10928ceef19ee5496ae5c7a4569f
       body: |

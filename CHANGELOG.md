@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.26.0+rev2
+## (2018-11-07)
+
+* Use new balena source repo for SRC_URI [Florin Sarbu]
+
 # v2.26.0+rev1
 ## (2018-11-06)
 
