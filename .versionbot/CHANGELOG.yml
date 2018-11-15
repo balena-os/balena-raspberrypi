@@ -1,4 +1,19 @@
 - commits:
+    - subject: Clean-up old bcm2708_wdog watchdog module
+      hash: 9c8ab6d7c04df71cd524f4375e8ee821798e62f5
+      body: |
+        We use currently kernel 4.14.68 and in this version bcm2708_wdog
+        is no longer present, instead bcm2835_wdt is used. So we remove
+        the obsolete module and make sure the new module is built-in.
+      footer:
+        Changelog-entry: Clean-up old bcm2708_wdog watchdog module
+        changelog-entry: Clean-up old bcm2708_wdog watchdog module
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.26.0+rev3
+  date: 2018-11-15T13:04:50.717Z
+- commits:
     - subject: Use new balena source repo for SRC_URI
       hash: e1cd90478c5bc87bbb741f32104f88e12fb767b4
       body: |
