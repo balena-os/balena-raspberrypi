@@ -53,8 +53,6 @@ RESIN_CONFIGS[pca955_gpio_expander] = " \
     CONFIG_GPIO_PCA953X_IRQ=y \
     "
 
-KERNEL_MODULE_AUTOLOAD += "bcm2708_wdog"
-
 KERNEL_MODULE_PROBECONF += "rtl8192cu"
 module_conf_rtl8192cu = "blacklist rtl8192cu"
 
@@ -69,4 +67,13 @@ RESIN_CONFIGS_DEPS[gpio_i2c_kempld] = " \
 RESIN_CONFIGS[gpio_i2c_kempld] = " \
     CONFIG_GPIO_KEMPLD=m \
     CONFIG_I2C_KEMPLD=m \
+"
+
+# make sure watchdog gets enabled no matter of the BSP changes
+RESIN_CONFIGS_append = " rpi_watchdog"
+RESIN_CONFIGS_DEPS[rpi_watchdog] = " \
+    CONFIG_WATCHDOG=y \
+"
+RESIN_CONFIGS[rpi_watchdog] = " \
+    CONFIG_BCM2835_WDT=y \
 "
