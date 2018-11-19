@@ -1,4 +1,20 @@
 - commits:
+    - subject: 'Set autoboot with no delay, with no check for abort'
+      hash: d72a554e60ed0828b1379e2a465df9d370e16ae9
+      body: |
+        We disable autoboot stopping by pressing any key combinations because
+        there are cases where other ICs are connected to the pi's UART and it
+        is possible that the other ICs are sending the particular autoboot
+        stop combination over UART.
+      footer:
+        Changelog-entry: 'Set autoboot with no delay, with no check for abort'
+        changelog-entry: 'Set autoboot with no delay, with no check for abort'
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.26.0+rev4
+  date: 2018-11-19T09:39:48.251Z
+- commits:
     - subject: Clean-up old bcm2708_wdog watchdog module
       hash: 9c8ab6d7c04df71cd524f4375e8ee821798e62f5
       body: |
