@@ -1,0 +1,26 @@
+From 29c5fb50584bc4abafb2dfe11c8f7b70c97357da Mon Sep 17 00:00:00 2001
+From: Sebastian Panceac <sebastian@balena.io>
+Date: Tue, 27 Nov 2018 10:35:45 +0100
+Subject: [PATCH] Add 10ms sleep between I2C messages in bitbanged I2C
+
+Upstream-Status: Pending
+Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+---
+ drivers/i2c/algos/i2c-algo-bit.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/drivers/i2c/algos/i2c-algo-bit.c b/drivers/i2c/algos/i2c-algo-bit.c
+index 1147bdd..e38b0f1 100644
+--- a/drivers/i2c/algos/i2c-algo-bit.c
++++ b/drivers/i2c/algos/i2c-algo-bit.c
+@@ -604,6 +604,7 @@ static int bit_xfer(struct i2c_adapter *i2c_adap,
+ 
+ 	if (adap->post_xfer)
+ 		adap->post_xfer(i2c_adap);
++	usleep_range(9000, 10000);
+ 	return ret;
+ }
+ 
+-- 
+2.7.4
+

@@ -5,6 +5,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 SRC_URI_append = " \
 	file://0001-Revert-cgroup-Disable-cgroup-memory-by-default.patch \
 	file://0003-media-uvcvideo-Fix-driver-reference-counting.patch \
+	file://0001-Add-10ms-sleep-between-I2C-messages-in-bitbanged-I2C.patch \
 	"
 
 # Set console accordingly to build type
