@@ -1,6 +1,41 @@
 Change log
 -----------
 
+# v2.27.0+rev1
+## (2018-11-26)
+
+* Update meta-resin from v2.26.0 to v2.27.0 [Florin Sarbu]
+
+<details>
+<summary> View details </summary>
+
+## meta-resin-2.27.0
+### (2018-11-23)
+
+* Expose randomMacAddressScan config.json knob [Andrei Gherzan]
+* Move modemmanager udev rules in /lib/udev/rules.d [Andrei Gherzan]
+* Fix modemmanager bbappend files [Andrei Gherzan]
+* dnsmasq: Define 8.8.8.8 as a fallback nameserver [Andrei Gherzan]
+* Increase timeout for filesystem label [Vicentiu Galanopulo]
+* Add support for Huawei ME936 modem in MBIM mode [Florin Sarbu]
+* Backport systemd sd-shutdown improvements for sumo versions [Florin Sarbu]
+* Include avahi d-bus introspection files in rootfs [Andrei Gherzan]
+* Fix custom udev rules when rule is removed from config.json [Zubair Lutfullah Kakakhel]
+* resin-mounts: Add NetworkManager conf.d bind mounts [Zubair Lutfullah Kakakhel]
+* Add support to pass custom configuration to NetworkManager [Zubair Lutfullah Kakakhel]
+* README.md: Add info about SSH and Avahi services [Andrei Gherzan]
+* Avoid xtables lock in resin-proxy-config [Andrei Gherzan]
+* Migrate the supervisor to balena repositories [Florin Sarbu]
+* Update balena-supervisor to v8.3.5 [Cameron Diver]
+* Update supported modems list [Florin Sarbu]
+
+## meta-resin-2.26.0
+### (2018-11-05)
+
+* Rename resin-unique-key to balena-unique-key [Andrei Gherzan]
+* Don't let resin-unique-key rewrite config.json [Andrei Gherzan]
+</details>
+
 # v2.26.0+rev4
 ## (2018-11-19)
 
