@@ -1,4 +1,19 @@
 - commits:
+    - subject: Updated firmware to v20180924
+      hash: e5e6bf141927f354761e6a3131603d8ae535962a
+      body: |
+        Raspberry Pi 3A+ needs this newer firmware in order
+        to boot. Updated to the revison currently found in
+        the thud branch.
+      footer:
+        Changelog-entry: Updated firmware to v20180924
+        changelog-entry: Updated firmware to v20180924
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+  version: 2.27.0+rev2
+  date: 2018-12-05T15:46:55.502Z
+- commits:
     - subject: Update meta-resin from v2.26.0 to v2.27.0
       hash: 9eef3de2aa6024631c5a5df0511c8783402da2f0
       body: |
