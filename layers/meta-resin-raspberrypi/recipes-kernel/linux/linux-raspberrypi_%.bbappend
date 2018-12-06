@@ -4,8 +4,10 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 SRC_URI_append = " \
 	file://0001-Revert-cgroup-Disable-cgroup-memory-by-default.patch \
-	file://0003-media-uvcvideo-Fix-driver-reference-counting.patch \
 	"
+
+LINUX_VERSION = "4.14.79"
+SRCREV = "36612d5d7a88672a3e7dd6cb458dbbbca0d75efe"
 
 # Set console accordingly to build type
 DEBUG_CMDLINE = "dwc_otg.lpm_enable=0 console=tty1 console=serial0,115200 rootfstype=ext4 rootwait"
