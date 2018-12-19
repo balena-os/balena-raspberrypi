@@ -1,4 +1,25 @@
 - commits:
+    - subject: Update meta-resin from v2.28.0 to v2.29.0
+      hash: 60289f2ad69cfc33806b4a96ad9d2237d06f97bf
+      body: ''
+      footer:
+        Changelog-entry: Update meta-resin from v2.28.0 to v2.29.0
+        changelog-entry: Update meta-resin from v2.28.0 to v2.29.0
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+    - subject: Update balena-yocto-scripts submodule to v1.0.1
+      hash: f2b5f6f7fd987fbc5b8231fd817d70d4b0771f0d
+      body: ''
+      footer:
+        Changelog-entry: Update balena-yocto-scripts submodule to v1.0.1
+        changelog-entry: Update balena-yocto-scripts submodule to v1.0.1
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+  version: 2.29.0+rev1
+  date: 2018-12-19T15:14:30.662Z
+- commits:
     - subject: Update meta-resin from v2.27.0 to v2.28.0
       hash: 0c1f0dadcfbcdc9d650e8ff2eabbb496ae9a0b4f
       body: |

@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.29.0+rev1
+## (2018-12-19)
+
+* Update meta-resin from v2.28.0 to v2.29.0 [Sebastian Panceac]
+* Update balena-yocto-scripts submodule to v1.0.1 [Sebastian Panceac]
+
 # v2.28.0+rev1
 ## (2018-12-06)
 
