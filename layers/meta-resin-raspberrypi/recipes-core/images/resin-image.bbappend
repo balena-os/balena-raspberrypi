@@ -1,3 +1,8 @@
+# Due to an issue on CM3 we use FAT32 for boot partition on RaspberryPi boards
+# See:
+# https://www.raspberrypi.org/documentation/hardware/computemodule/cm-emmc-flashing.md
+BALENA_BOOT_FAT32 = "1"
+
 IMAGE_FSTYPES_append_rpi = " resinos-img"
 
 # Kernel image name is different on Raspberry Pi 1/2/3-64bit
