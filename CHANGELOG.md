@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.29.0+rev2
+## (2019-01-11)
+
+* Enable the PCA963X LED driver module so we also support boards incorporating this family of integrated circuits [curcuz]
+
 # v2.29.0+rev1
 ## (2018-12-19)
 

@@ -1,4 +1,25 @@
 - commits:
+    - subject: >-
+        Enable the PCA963X LED driver module so we also support boards
+        incorporating this family of integrated circuits
+      hash: aad83cbf92f1688edca68944aa571a671ff55b95
+      body: |
+        Enable the PCA963X LED driver module 
+        so we also support boards incorporating this family 
+        of integrated circuits
+      footer:
+        Changelog-entry: >-
+          Enable the PCA963X LED driver module so we also support boards
+          incorporating this family of integrated circuits
+        changelog-entry: >-
+          Enable the PCA963X LED driver module so we also support boards
+          incorporating this family of integrated circuits
+        Signed-off-by: Carlo Maria Curinga <carlo@balena.io>
+        signed-off-by: Carlo Maria Curinga <carlo@balena.io>
+      author: curcuz
+  version: 2.29.0+rev2
+  date: 2019-01-11T13:55:19.485Z
+- commits:
     - subject: Update meta-resin from v2.28.0 to v2.29.0
       hash: 60289f2ad69cfc33806b4a96ad9d2237d06f97bf
       body: ''
