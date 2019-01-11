@@ -79,3 +79,7 @@ RESIN_CONFIGS_DEPS[rpi_watchdog] = " \
 RESIN_CONFIGS[rpi_watchdog] = " \
     CONFIG_BCM2835_WDT=y \
 "
+RESIN_CONFIGS_append = " pca9633_led_driver"
+RESIN_CONFIGS[pca9633_led_driver] = " \
+    CONFIG_LEDS_PCA963X=y \
+    "
