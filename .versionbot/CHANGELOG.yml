@@ -1,4 +1,27 @@
 - commits:
+    - subject: Switch to FAT32 boot partition
+      hash: db475e1d07857f28ca4e1d0abeebf5bedf06a35b
+      body: ''
+      footer:
+        Changelog-entry: Switch to FAT32 boot partition
+        changelog-entry: Switch to FAT32 boot partition
+        Signed-off-by: Andrei Gherzan <andrei@balena.io>
+        signed-off-by: Andrei Gherzan <andrei@balena.io>
+      author: Andrei Gherzan
+    - subject: Update meta-resin from v2.29.0 to v2.29.1
+      hash: f8b14a24288212e329269faccb519d4a4dd4acb9
+      body: |
+        Update meta-resin from 2.29.0 to 2.29.1
+      footer:
+        Changelog-entry: Update meta-resin from v2.29.0 to v2.29.1
+        changelog-entry: Update meta-resin from v2.29.0 to v2.29.1
+        Signed-off-by: Andrei Gherzan <andrei@balena.io>
+        signed-off-by: Andrei Gherzan <andrei@balena.io>
+      author: Andrei Gherzan
+      nested: []
+  version: 2.29.1+rev1
+  date: 2019-01-13T17:54:36.901Z
+- commits:
     - subject: >-
         Enable the PCA963X LED driver module so we also support boards
         incorporating this family of integrated circuits

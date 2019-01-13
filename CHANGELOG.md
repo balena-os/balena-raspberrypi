@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.29.1+rev1
+## (2019-01-13)
+
+* Switch to FAT32 boot partition [Andrei Gherzan]
+* Update meta-resin from v2.29.0 to v2.29.1 [Andrei Gherzan]
+
 # v2.29.0+rev2
 ## (2019-01-11)
 
