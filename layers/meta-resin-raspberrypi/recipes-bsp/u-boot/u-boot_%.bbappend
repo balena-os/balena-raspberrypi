@@ -14,4 +14,5 @@ SRC_URI += " \
     file://0001-Integrate-machine-independent-resin-environment-conf.patch \
     file://rpi-Use-CONFIG_OF_BOARD-instead-of-CONFIG_EMBED.patch \
     file://bootcount-Add-support-to-write-bootcount-to-any-file.patch \
+    file://increase-usb-interface-nr.patch \
 "
