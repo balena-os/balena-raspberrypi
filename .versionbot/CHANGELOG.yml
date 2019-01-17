@@ -1,4 +1,18 @@
 - commits:
+    - subject: 'u-boot: Increase to 16 the USB interfaces number'
+      hash: ec5a64414cce2fea485b425cf4e2cbe538e4e280
+      body: |
+        This fixes the "Too many USB interfaces!" error thrown by u-boot when
+        having lots of USB devices connected to the bus
+      footer:
+        Changelog-entry: 'u-boot: Increase to 16 the USB interfaces number'
+        changelog-entry: 'u-boot: Increase to 16 the USB interfaces number'
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+  version: 2.29.1+rev2
+  date: 2019-01-15T11:10:01.391Z
+- commits:
     - subject: Switch to FAT32 boot partition
       hash: db475e1d07857f28ca4e1d0abeebf5bedf06a35b
       body: ''

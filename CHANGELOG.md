@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.29.1+rev2
+## (2019-01-15)
+
+* u-boot: Increase to 16 the USB interfaces number [Sebastian Panceac]
+
 # v2.29.1+rev1
 ## (2019-01-13)
 
