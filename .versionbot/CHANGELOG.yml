@@ -1,4 +1,18 @@
 - commits:
+    - subject: Update meta-resin from v2.29.1 to v2.29.2
+      hash: 9c081e3170fea18524aed508ee2b304bb4722d09
+      body: |
+        Update meta-resin from 2.29.1 to 2.29.2
+      footer:
+        Changelog-entry: Update meta-resin from v2.29.1 to v2.29.2
+        changelog-entry: Update meta-resin from v2.29.1 to v2.29.2
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.29.2+rev1
+  date: 2019-01-17T09:42:34.295Z
+- commits:
     - subject: 'u-boot: Increase to 16 the USB interfaces number'
       hash: ec5a64414cce2fea485b425cf4e2cbe538e4e280
       body: |
@@ -41,8 +55,8 @@
         incorporating this family of integrated circuits
       hash: aad83cbf92f1688edca68944aa571a671ff55b95
       body: |
-        Enable the PCA963X LED driver module 
-        so we also support boards incorporating this family 
+        Enable the PCA963X LED driver module
+        so we also support boards incorporating this family
         of integrated circuits
       footer:
         Changelog-entry: >-
