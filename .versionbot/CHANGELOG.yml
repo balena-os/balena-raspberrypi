@@ -1,4 +1,19 @@
 - commits:
+    - subject: Update bcm2835-bootfiles for CM3+ support
+      hash: b9d2dd8a5362a300ceed1b20b13fca20910890c0
+      body: |
+        This update includes support for Raspberry Pi Compute Module 3+.
+
+        Fixes #286
+      footer:
+        Changelog-entry: Update bcm2835-bootfiles for CM3+ support
+        changelog-entry: Update bcm2835-bootfiles for CM3+ support
+        Signed-off-by: Andrei Gherzan <andrei@balena.io>
+        signed-off-by: Andrei Gherzan <andrei@balena.io>
+      author: Andrei Gherzan
+  version: 2.29.2+rev2
+  date: 2019-02-04T19:08:19.448Z
+- commits:
     - subject: Update meta-resin from v2.29.1 to v2.29.2
       hash: 9c081e3170fea18524aed508ee2b304bb4722d09
       body: |

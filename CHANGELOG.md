@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.29.2+rev2
+## (2019-02-04)
+
+* Update bcm2835-bootfiles for CM3+ support [Andrei Gherzan]
+
 # v2.29.2+rev1
 ## (2019-01-17)
 
