@@ -3,8 +3,11 @@ inherit kernel-resin
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 SRC_URI_append = " \
-	file://0001-Revert-cgroup-Disable-cgroup-memory-by-default.patch \
-	"
+    file://0001-Revert-cgroup-Disable-cgroup-memory-by-default.patch \
+    file://0002-Bring-back-ndo_do_ioctl-fallback.patch \
+    file://0003-balenaFin-v1.1.0-overlay.patch \
+    file://0004-leds-pca963x-Fix-MODE2-initialization.patch \
+    "
 
 LINUX_VERSION = "4.14.79"
 SRCREV = "36612d5d7a88672a3e7dd6cb458dbbbca0d75efe"

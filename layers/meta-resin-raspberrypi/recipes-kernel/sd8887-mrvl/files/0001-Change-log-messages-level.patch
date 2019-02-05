@@ -1,0 +1,48 @@
+From 0c7abbde050eabe00afce123ae8764a11fb179a8 Mon Sep 17 00:00:00 2001
+From: Zahari Petkov <zahari@balena.io>
+Date: Tue, 5 Feb 2019 13:22:59 +0100
+Subject: [PATCH] Change log messages level
+
+---
+ wlan_src/mlan/mlan_11n_rxreorder.c  | 2 +-
+ wlan_src/mlinux/moal_sta_cfg80211.c | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/wlan_src/mlan/mlan_11n_rxreorder.c b/wlan_src/mlan/mlan_11n_rxreorder.c
+index 8dcf532..47f5f8f 100755
+--- a/wlan_src/mlan/mlan_11n_rxreorder.c
++++ b/wlan_src/mlan/mlan_11n_rxreorder.c
+@@ -1219,7 +1219,7 @@ wlan_ret_11n_addba_resp(mlan_private *priv, HostCmd_DS_COMMAND *resp)
+ 				rx_reor_tbl_ptr->amsdu = MFALSE;
+ 		}
+ 	} else {
+-		PRINTM(MERROR, "ADDBA RSP: Failed(" MACSTR " tid=%d)\n",
++		PRINTM(MMSG, "ADDBA RSP: Failed(" MACSTR " tid=%d)\n",
+ 		       MAC2STR(padd_ba_rsp->peer_mac_addr), tid);
+ 		rx_reor_tbl_ptr = wlan_11n_get_rxreorder_tbl(priv, tid,
+ 							     padd_ba_rsp->
+diff --git a/wlan_src/mlinux/moal_sta_cfg80211.c b/wlan_src/mlinux/moal_sta_cfg80211.c
+index 44e49b6..37c89a5 100755
+--- a/wlan_src/mlinux/moal_sta_cfg80211.c
++++ b/wlan_src/mlinux/moal_sta_cfg80211.c
+@@ -4348,7 +4348,7 @@ woal_cfg80211_get_channel(struct wiphy *wiphy,
+ 				return -EFAULT;
+ 			}
+ 		} else {
+-			PRINTM(MERROR, "get_channel when AP is not started\n");
++			PRINTM(MMSG, "get_channel when AP is not started\n");
+ 			return -EFAULT;
+ 		}
+ 	} else
+@@ -4362,7 +4362,7 @@ woal_cfg80211_get_channel(struct wiphy *wiphy,
+ 				return -EFAULT;
+ 			}
+ 		} else {
+-			PRINTM(MERROR,
++			PRINTM(MMSG,
+ 			       "get_channel when STA is not connected\n");
+ 			return -EFAULT;
+ 		}
+-- 
+2.17.1
+

@@ -1,0 +1,94 @@
+From ef2ce2b1a053d99b227d331cdd50b186a143769a Mon Sep 17 00:00:00 2001
+From: Zahari Petkov <zahari@balena.io>
+Date: Mon, 4 Feb 2019 21:35:23 +0100
+Subject: [PATCH] balenaFin v1.1.0 overlay
+
+---
+ .../boot/dts/overlays/balena-fin-overlay.dts  | 47 +++++++++++++++++--
+ 1 file changed, 43 insertions(+), 4 deletions(-)
+
+diff --git a/arch/arm/boot/dts/overlays/balena-fin-overlay.dts b/arch/arm/boot/dts/overlays/balena-fin-overlay.dts
+index 269ab7d72938..7e6df244f389 100644
+--- a/arch/arm/boot/dts/overlays/balena-fin-overlay.dts
++++ b/arch/arm/boot/dts/overlays/balena-fin-overlay.dts
+@@ -11,6 +11,7 @@
+ 			pinctrl-0 = <&sdio_pins>;
+ 			bus-width = <4>;
+ 			brcm,overclock-50 = <35>;
++			non-removable;
+ 			status = "okay";
+ 		};
+ 	};
+@@ -34,9 +35,7 @@
+ 	fragment@2 {
+ 		target-path = "/";
+ 		__overlay__ {
+-			// We should investigate how to switch to mmc-pwrseq-sd8787
+-			// Currently that module requires two GPIOs to function since it
+-			// targets a slightly different chip
++			// We need to switch to mmc-pwrseq-sd8787 after patching it
+ 			power_ctrl: power_ctrl {
+ 				compatible = "gpio-poweroff";
+ 				gpios = <&gpio 40 1>;
+@@ -46,10 +45,21 @@
+ 			i2c_soft: i2c@0 {
+ 				compatible = "i2c-gpio";
+ 				gpios = <&gpio 43 0 /* sda */ &gpio 42 0 /* scl */>;
+-				i2c-gpio,delay-us = <2>; /* ~100 kHz */
++				i2c-gpio,delay-us = <5>; /* ~100 kHz */
++				i2c-gpio,scl-open-drain;
++				i2c-gpio,sda-open-drain;
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+ 			};
++
++			sd8xxx-wlan {
++				drvdbg = <0x6>;
++				drv_mode = <0x1>;
++				cfg80211_wext = <0xf>;
++				sta_name = "wlan";
++				wfd_name = "p2p";
++				cal_data_cfg = "none";
++			};
+ 		};
+ 	};
+ 
+@@ -74,6 +84,35 @@
+ 				reg = <0x68>;
+ 				status = "okay";
+ 			};
++
++			// RGB LED (>= v1.1.0)
++			pca9633: pca9633@62 {
++				compatible = "nxp,pca9633";
++				reg = <0x62>;
++				status = "okay";
++				#address-cells = <1>;
++				#size-cells = <0>;
++				red@0 {
++					label = "red";
++					reg = <0>;
++					linux,default-trigger = "none";
++				};
++				green@1 {
++					label = "green";
++					reg = <1>;
++					linux,default-trigger = "none";
++				};
++				blue@2 {
++					label = "blue";
++					reg = <2>;
++					linux,default-trigger = "none";
++				};
++				unused@3 {
++					label = "unused";
++					reg = <3>;
++					linux,default-trigger = "none";
++				};
++			};
+ 		};
+ 	};
+ };
+-- 
+2.17.1
+
