@@ -1,0 +1,30 @@
+From 1b18039631adfbc193f96c714ee60e00d28a11b3 Mon Sep 17 00:00:00 2001
+From: Sebastian Panceac <sebastian@resin.io>
+Date: Wed, 29 Aug 2018 09:38:27 +0200
+Subject: [PATCH] Search config file in /mnt/boot
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Sebastian Panceac <sebastian@resin.io>
+---
+ piControl.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/piControl.h b/piControl.h
+index 6f95c83..d46f456 100755
+--- a/piControl.h
++++ b/piControl.h
+@@ -58,9 +58,9 @@
+ 
+ #define PICONTROL_DEVICE        "/dev/piControl0"
+ 
+-// The config file moved to /etc/revpi.
++// The config file is found in /mnt/boot/
+ // If it cannot be found there, the old location should be used.
+-#define PICONFIG_FILE           "/etc/revpi/config.rsc"
++#define PICONFIG_FILE           "/mnt/boot/config.rsc"
+ #define PICONFIG_FILE_WHEEZY    "/opt/KUNBUS/config.rsc"
+ 
+ #define REV_PI_DEV_FIRST_RIGHT      32      // address of first module on the right side of the RevPi Core
+-- 
+2.7.4
+
