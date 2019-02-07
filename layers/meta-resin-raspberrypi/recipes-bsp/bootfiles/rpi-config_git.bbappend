@@ -18,6 +18,23 @@ do_deploy_append_fincm3() {
 	echo "dtoverlay=balena-fin" >> ${DEPLOYDIR}/bcm2835-bootfiles/config.txt
 }
 
+do_deploy_append_revpi-core-3() {
+    cat >> ${DEPLOYDIR}/bcm2835-bootfiles/config.txt << EOF
+# Enable RevPi specific pins for i2c
+dtoverlay=i2c1-bcm2708,sda1_pin=44,scl1_pin=45,pin_func=6
+
+# Enable RevPi realtime clock
+dtoverlay=i2c-rtc,pcf2127
+
+# Enable RevPi specific pins for spi
+dtparam=spi=on
+dtoverlay=kunbus
+
+dtoverlay=mmc
+
+EOF
+}
+
 # On Raspberry Pi 3 and Raspberry Pi Zero WiFi, serial ttyS0 console is only
 # usable if ENABLE_UART = 1. On development images, we want serial console
 # available.
