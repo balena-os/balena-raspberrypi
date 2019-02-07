@@ -1,6 +1,13 @@
 Change log
 -----------
 
+# v2.29.2+rev3
+## (2019-02-06)
+
+* resin-mounts: Mount boot partition before loading kernel modules [Sebastian Panceac]
+* rpi-config: Add in config.txt specific overlays for RevPi Core3 [Sebastian Panceac]
+* linux-kunbus: Add Revolution Pi Core3 kernel [Sebastian Panceac]
+
 # v2.29.2+rev2
 ## (2019-02-04)
 

@@ -1,4 +1,39 @@
 - commits:
+    - subject: 'resin-mounts: Mount boot partition before loading kernel modules'
+      hash: 18e1699a3b0cbdf3dea8c4e515729928f18445f9
+      body: |
+        Because the kernel modules are loaded before mounting
+        /mnt/boot partition, the piControl module is unable to
+        find the configuration file which resides in /mnt/boot.
+        This modification forces the mounting of the boot partition
+        before starting the kernel module loading service
+      footer:
+        Changelog-entry: 'resin-mounts: Mount boot partition before loading kernel modules'
+        changelog-entry: 'resin-mounts: Mount boot partition before loading kernel modules'
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+    - subject: 'rpi-config: Add in config.txt specific overlays for RevPi Core3'
+      hash: eae7e280b5e348c97d486b2b70b63c039883bbe2
+      body: ''
+      footer:
+        Changelog-entry: 'rpi-config: Add in config.txt specific overlays for RevPi Core3'
+        changelog-entry: 'rpi-config: Add in config.txt specific overlays for RevPi Core3'
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+    - subject: 'linux-kunbus: Add Revolution Pi Core3 kernel'
+      hash: b55f85095756a1f5ec5a4d4c85fd6444cf79ed39
+      body: ''
+      footer:
+        Changelog-entry: 'linux-kunbus: Add Revolution Pi Core3 kernel'
+        changelog-entry: 'linux-kunbus: Add Revolution Pi Core3 kernel'
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+  version: 2.29.2+rev3
+  date: 2019-02-06T07:42:47.436Z
+- commits:
     - subject: Update bcm2835-bootfiles for CM3+ support
       hash: b9d2dd8a5362a300ceed1b20b13fca20910890c0
       body: |
