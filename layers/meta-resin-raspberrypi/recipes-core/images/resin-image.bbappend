@@ -42,3 +42,5 @@ addhandler overlay_dtbs_handler
 overlay_dtbs_handler[eventmask] = "bb.event.RecipePreFinalise"
 
 IMAGE_INSTALL_append_rpi = " enable-overcommit u-boot"
+
+IMAGE_INSTALL_append_revpi-core-3 = " picontrol"
