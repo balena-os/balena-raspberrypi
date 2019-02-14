@@ -1,6 +1,13 @@
 Change log
 -----------
 
+# v2.29.2+rev4
+## (2019-02-13)
+
+* systemd: Remove serial consoles on RevPi Core3 regardless of image type [Sebastian Panceac]
+* linux-kunbus: Disable serial console in development image [Sebastian Panceac]
+* Fix config.txt options for RevPi Core3 [Sebastian Panceac]
+
 # v2.29.2+rev3
 ## (2019-02-06)
 

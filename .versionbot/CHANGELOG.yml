@@ -1,4 +1,51 @@
 - commits:
+    - subject: 'systemd: Remove serial consoles on RevPi Core3 regardless of image type'
+      hash: f2c2c3d342b80d0b15134ef6892a7e3ebc23bb7b
+      body: |
+        We need to remove serial consoles on RevPi Core3 regardless of image
+        type. We do this because the serial port is used by picontrol driver
+        for RS485 communication with the Kunbus modules on the RevPi Core3
+        board
+      footer:
+        Changelog-entry: >-
+          systemd: Remove serial consoles on RevPi Core3 regardless of image
+          type
+        changelog-entry: >-
+          systemd: Remove serial consoles on RevPi Core3 regardless of image
+          type
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+    - subject: 'linux-kunbus: Disable serial console in development image'
+      hash: 0a027fbe49d03c6e54f399953f2de33cdb8b76ed
+      body: |
+        Serial port is used by picontrol driver for RS485 communication
+        with the Kunbus modules on the RevPi Core3 board
+      footer:
+        Changelog-entry: 'linux-kunbus: Disable serial console in development image'
+        changelog-entry: 'linux-kunbus: Disable serial console in development image'
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+    - subject: Fix config.txt options for RevPi Core3
+      hash: 63bbe4cb88e1d86c671d6674d5a84bee5fb796ca
+      body: |
+        We disable the mmc dtoverlay from config.txt so RevPi Core3 can
+        booot.
+        If this overlay is enabled u-boot will try to boot OS from a
+        different mmc interface.
+        Also we disable overlay warnings so the uart interface is silent.
+        RevPi Core3 uses this uart interface to communicate with the
+        modules on RS485.
+      footer:
+        Changelog-entry: Fix config.txt options for RevPi Core3
+        changelog-entry: Fix config.txt options for RevPi Core3
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+  version: 2.29.2+rev4
+  date: 2019-02-13T10:07:11.571Z
+- commits:
     - subject: 'resin-mounts: Mount boot partition before loading kernel modules'
       hash: 18e1699a3b0cbdf3dea8c4e515729928f18445f9
       body: |
