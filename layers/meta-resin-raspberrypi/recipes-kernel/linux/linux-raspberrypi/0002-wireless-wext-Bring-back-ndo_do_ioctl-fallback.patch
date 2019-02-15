@@ -1,0 +1,33 @@
+From 9d7d7f117929884208ecce6046b5478d9f80a26a Mon Sep 17 00:00:00 2001
+From: Zahari Petkov <zahari@balena.io>
+Date: Fri, 15 Feb 2019 12:38:34 +0100
+Subject: [PATCH] wireless: wext: Bring back ndo_do_ioctl fallback
+
+Needed for the iwpriv support of the Marvell sd8xxx driver.
+
+Upstream-Status: Inappropriate [proprietary driver]
+
+Signed-off-by: Zahari Petkov <zahari@balena.io>
+---
+ net/wireless/wext-core.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/net/wireless/wext-core.c b/net/wireless/wext-core.c
+index 6cdb054484d6..28e5c4c24554 100644
+--- a/net/wireless/wext-core.c
++++ b/net/wireless/wext-core.c
+@@ -956,6 +956,11 @@ static int wireless_process_ioctl(struct net *net, struct iwreq *iwr,
+ 		else if (private)
+ 			return private(dev, iwr, cmd, info, handler);
+ 	}
++
++	if (dev->netdev_ops->ndo_do_ioctl) {
++		return dev->netdev_ops->ndo_do_ioctl(dev, (struct ifreq *) iwr, cmd);
++	}
++
+ 	return -EOPNOTSUPP;
+ }
+ 
+-- 
+2.17.1
+
