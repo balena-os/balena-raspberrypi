@@ -4,10 +4,12 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 SRC_URI_append = " \
 	file://0001-Revert-cgroup-Disable-cgroup-memory-by-default.patch \
+	file://0002-wireless-wext-Bring-back-ndo_do_ioctl-fallback.patch \
+	file://0003-leds-pca963x-Fix-MODE2-initialization.patch \
 	"
 
-LINUX_VERSION = "4.14.79"
-SRCREV = "36612d5d7a88672a3e7dd6cb458dbbbca0d75efe"
+LINUX_VERSION = "4.14.98"
+SRCREV = "5d63a4595d32a8505590d5fea5c4ec1ca79fd49d"
 
 # Set console accordingly to build type
 DEBUG_CMDLINE = "dwc_otg.lpm_enable=0 console=tty1 console=serial0,115200 rootfstype=ext4 rootwait"
@@ -79,7 +81,3 @@ RESIN_CONFIGS_DEPS[rpi_watchdog] = " \
 RESIN_CONFIGS[rpi_watchdog] = " \
     CONFIG_BCM2835_WDT=y \
 "
-RESIN_CONFIGS_append = " pca9633_led_driver"
-RESIN_CONFIGS[pca9633_led_driver] = " \
-    CONFIG_LEDS_PCA963X=y \
-    "
