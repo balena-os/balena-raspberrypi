@@ -1,4 +1,21 @@
 - commits:
+    - subject: 'rpi-config: Prevent u-boot UART logging on RevPi Core3'
+      hash: 22fe8b9ed747d99d11a551630fa97eb30ebc1b4a
+      body: |
+        This commit removes the "enable_uart=1" from config.txt
+        in debug builds to prevent u-boot from sending logs on
+        UART of RevPi Core3.
+        RevPi Core3 uses the UART interface to communicate with the
+        modules on RS485
+      footer:
+        Changelog-entry: 'rpi-config: Prevent u-boot UART logging on RevPi Core3'
+        changelog-entry: 'rpi-config: Prevent u-boot UART logging on RevPi Core3'
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+  version: 2.29.2+rev7
+  date: 2019-02-18T12:34:35.342Z
+- commits:
     - subject: 'linux-kunbus: Enable video console in debug builds'
       hash: 21586dc7bc0ecf84c1b2fdd5c5105dbed82fe124
       body: |

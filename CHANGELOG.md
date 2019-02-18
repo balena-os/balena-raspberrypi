@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.29.2+rev7
+## (2019-02-18)
+
+* rpi-config: Prevent u-boot UART logging on RevPi Core3 [Sebastian Panceac]
+
 # v2.29.2+rev6
 ## (2019-02-18)
 
