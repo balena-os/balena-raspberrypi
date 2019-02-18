@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.29.2+rev6
+## (2019-02-18)
+
+* linux-kunbus: Enable video console in debug builds [Sebastian Panceac]
+
 # v2.29.2+rev5
 ## (2019-02-15)
 

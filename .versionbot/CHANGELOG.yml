@@ -1,3 +1,17 @@
+- commits:
+    - subject: 'linux-kunbus: Enable video console in debug builds'
+      hash: 21586dc7bc0ecf84c1b2fdd5c5105dbed82fe124
+      body: |
+        We only need to disable the serial console in the debug
+        build. The video console should be enabled
+      footer:
+        Changelog-entry: 'linux-kunbus: Enable video console in debug builds'
+        changelog-entry: 'linux-kunbus: Enable video console in debug builds'
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+  version: 2.29.2+rev6
+  date: 2019-02-18T11:01:45.518Z
 - commits: []
   version: 2.29.2+rev5
   date: 2019-02-15T19:10:12.379Z
