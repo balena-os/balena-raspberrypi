@@ -35,6 +35,8 @@ dtparam=spi=on
 dtoverlay=kunbus
 
 EOF
+    # prevent u-boot logging on uart
+    sed -i 's/enable_uart=1//' ${DEPLOYDIR}/bcm2835-bootfiles/config.txt
 }
 
 # On Raspberry Pi 3 and Raspberry Pi Zero WiFi, serial ttyS0 console is only
