@@ -1,6 +1,40 @@
 Change log
 -----------
 
+# v2.29.2+rev7
+## (2019-02-18)
+
+* rpi-config: Prevent u-boot UART logging on RevPi Core3 [Sebastian Panceac]
+
+# v2.29.2+rev6
+## (2019-02-18)
+
+* linux-kunbus: Enable video console in debug builds [Sebastian Panceac]
+
+# v2.29.2+rev5
+## (2019-02-15)
+
+* balenaFin v1.1.0 compatibility
+
+# v2.29.2+rev4
+## (2019-02-13)
+
+* systemd: Remove serial consoles on RevPi Core3 regardless of image type [Sebastian Panceac]
+* linux-kunbus: Disable serial console in development image [Sebastian Panceac]
+* Fix config.txt options for RevPi Core3 [Sebastian Panceac]
+
+# v2.29.2+rev3
+## (2019-02-06)
+
+* resin-mounts: Mount boot partition before loading kernel modules [Sebastian Panceac]
+* rpi-config: Add in config.txt specific overlays for RevPi Core3 [Sebastian Panceac]
+* linux-kunbus: Add Revolution Pi Core3 kernel [Sebastian Panceac]
+
+# v2.29.2+rev2
+## (2019-02-04)
+
+* Update bcm2835-bootfiles for CM3+ support [Andrei Gherzan]
+
 # v2.29.2+rev1
 ## (2019-01-17)
 

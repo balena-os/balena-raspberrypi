@@ -4,16 +4,13 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 SRC_URI_append = " \
 	file://0001-Revert-cgroup-Disable-cgroup-memory-by-default.patch \
-	file://0002-wireless-wext-Bring-back-ndo_do_ioctl-fallback.patch \
-	file://0003-leds-pca963x-Fix-MODE2-initialization.patch \
+	file://0001-Add-kunbus-overlay.patch \
+	file://0001-Add-poe-overlay-for-compatiibility.patch \
 	"
 
-LINUX_VERSION = "4.14.98"
-SRCREV = "5d63a4595d32a8505590d5fea5c4ec1ca79fd49d"
-
 # Set console accordingly to build type
-DEBUG_CMDLINE = "dwc_otg.lpm_enable=0 console=tty1 console=serial0,115200 rootfstype=ext4 rootwait"
-PRODUCTION_CMDLINE = "dwc_otg.lpm_enable=0 console=null rootfstype=ext4 rootwait vt.global_cursor_default=0"
+DEBUG_CMDLINE = "dwc_otg.lpm_enable=0 console=tty1 root=LABEL=resin-rootA rootfstype=ext4 rootwait"
+PRODUCTION_CMDLINE = "dwc_otg.lpm_enable=0 console=null root=LABEL=resin-rootA rootfstype=ext4 rootwait vt.global_cursor_default=0"
 CMDLINE = "${@bb.utils.contains('DISTRO_FEATURES','development-image',"${DEBUG_CMDLINE}","${PRODUCTION_CMDLINE}",d)}"
 CMDLINE_DEBUG = ""
 
@@ -57,27 +54,10 @@ RESIN_CONFIGS[pca955_gpio_expander] = " \
     CONFIG_GPIO_PCA953X_IRQ=y \
     "
 
+RESIN_CONFIGS_append = " max3191x"
+RESIN_CONFIGS[max3191x] = " \
+    CONFIG_GPIO_MAX3191X=y \
+"
+
 KERNEL_MODULE_PROBECONF += "rtl8192cu"
 module_conf_rtl8192cu = "blacklist rtl8192cu"
-
-# requested by customer (support for Kontron PLD devices)
-RESIN_CONFIGS_append = " gpio_i2c_kempld"
-RESIN_CONFIGS_DEPS[gpio_i2c_kempld] = " \
-    CONFIG_GPIOLIB=y \
-    CONFIG_I2C=y \
-    CONFIG_HAS_IOMEM=y \
-    CONFIG_MFD_KEMPLD=m \
-"
-RESIN_CONFIGS[gpio_i2c_kempld] = " \
-    CONFIG_GPIO_KEMPLD=m \
-    CONFIG_I2C_KEMPLD=m \
-"
-
-# make sure watchdog gets enabled no matter of the BSP changes
-RESIN_CONFIGS_append = " rpi_watchdog"
-RESIN_CONFIGS_DEPS[rpi_watchdog] = " \
-    CONFIG_WATCHDOG=y \
-"
-RESIN_CONFIGS[rpi_watchdog] = " \
-    CONFIG_BCM2835_WDT=y \
-"

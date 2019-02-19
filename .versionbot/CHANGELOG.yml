@@ -1,4 +1,135 @@
 - commits:
+    - subject: 'rpi-config: Prevent u-boot UART logging on RevPi Core3'
+      hash: 22fe8b9ed747d99d11a551630fa97eb30ebc1b4a
+      body: |
+        This commit removes the "enable_uart=1" from config.txt
+        in debug builds to prevent u-boot from sending logs on
+        UART of RevPi Core3.
+        RevPi Core3 uses the UART interface to communicate with the
+        modules on RS485
+      footer:
+        Changelog-entry: 'rpi-config: Prevent u-boot UART logging on RevPi Core3'
+        changelog-entry: 'rpi-config: Prevent u-boot UART logging on RevPi Core3'
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+  version: 2.29.2+rev7
+  date: 2019-02-18T12:34:35.342Z
+- commits:
+    - subject: 'linux-kunbus: Enable video console in debug builds'
+      hash: 21586dc7bc0ecf84c1b2fdd5c5105dbed82fe124
+      body: |
+        We only need to disable the serial console in the debug
+        build. The video console should be enabled
+      footer:
+        Changelog-entry: 'linux-kunbus: Enable video console in debug builds'
+        changelog-entry: 'linux-kunbus: Enable video console in debug builds'
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+  version: 2.29.2+rev6
+  date: 2019-02-18T11:01:45.518Z
+- commits: []
+  version: 2.29.2+rev5
+  date: 2019-02-15T19:10:12.379Z
+- commits:
+    - subject: 'systemd: Remove serial consoles on RevPi Core3 regardless of image type'
+      hash: f2c2c3d342b80d0b15134ef6892a7e3ebc23bb7b
+      body: |
+        We need to remove serial consoles on RevPi Core3 regardless of image
+        type. We do this because the serial port is used by picontrol driver
+        for RS485 communication with the Kunbus modules on the RevPi Core3
+        board
+      footer:
+        Changelog-entry: >-
+          systemd: Remove serial consoles on RevPi Core3 regardless of image
+          type
+        changelog-entry: >-
+          systemd: Remove serial consoles on RevPi Core3 regardless of image
+          type
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+    - subject: 'linux-kunbus: Disable serial console in development image'
+      hash: 0a027fbe49d03c6e54f399953f2de33cdb8b76ed
+      body: |
+        Serial port is used by picontrol driver for RS485 communication
+        with the Kunbus modules on the RevPi Core3 board
+      footer:
+        Changelog-entry: 'linux-kunbus: Disable serial console in development image'
+        changelog-entry: 'linux-kunbus: Disable serial console in development image'
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+    - subject: Fix config.txt options for RevPi Core3
+      hash: 63bbe4cb88e1d86c671d6674d5a84bee5fb796ca
+      body: |
+        We disable the mmc dtoverlay from config.txt so RevPi Core3 can
+        booot.
+        If this overlay is enabled u-boot will try to boot OS from a
+        different mmc interface.
+        Also we disable overlay warnings so the uart interface is silent.
+        RevPi Core3 uses this uart interface to communicate with the
+        modules on RS485.
+      footer:
+        Changelog-entry: Fix config.txt options for RevPi Core3
+        changelog-entry: Fix config.txt options for RevPi Core3
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+  version: 2.29.2+rev4
+  date: 2019-02-13T10:07:11.571Z
+- commits:
+    - subject: 'resin-mounts: Mount boot partition before loading kernel modules'
+      hash: 18e1699a3b0cbdf3dea8c4e515729928f18445f9
+      body: |
+        Because the kernel modules are loaded before mounting
+        /mnt/boot partition, the piControl module is unable to
+        find the configuration file which resides in /mnt/boot.
+        This modification forces the mounting of the boot partition
+        before starting the kernel module loading service
+      footer:
+        Changelog-entry: 'resin-mounts: Mount boot partition before loading kernel modules'
+        changelog-entry: 'resin-mounts: Mount boot partition before loading kernel modules'
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+    - subject: 'rpi-config: Add in config.txt specific overlays for RevPi Core3'
+      hash: eae7e280b5e348c97d486b2b70b63c039883bbe2
+      body: ''
+      footer:
+        Changelog-entry: 'rpi-config: Add in config.txt specific overlays for RevPi Core3'
+        changelog-entry: 'rpi-config: Add in config.txt specific overlays for RevPi Core3'
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+    - subject: 'linux-kunbus: Add Revolution Pi Core3 kernel'
+      hash: b55f85095756a1f5ec5a4d4c85fd6444cf79ed39
+      body: ''
+      footer:
+        Changelog-entry: 'linux-kunbus: Add Revolution Pi Core3 kernel'
+        changelog-entry: 'linux-kunbus: Add Revolution Pi Core3 kernel'
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+  version: 2.29.2+rev3
+  date: 2019-02-06T07:42:47.436Z
+- commits:
+    - subject: Update bcm2835-bootfiles for CM3+ support
+      hash: b9d2dd8a5362a300ceed1b20b13fca20910890c0
+      body: |
+        This update includes support for Raspberry Pi Compute Module 3+.
+
+        Fixes #286
+      footer:
+        Changelog-entry: Update bcm2835-bootfiles for CM3+ support
+        changelog-entry: Update bcm2835-bootfiles for CM3+ support
+        Signed-off-by: Andrei Gherzan <andrei@balena.io>
+        signed-off-by: Andrei Gherzan <andrei@balena.io>
+      author: Andrei Gherzan
+  version: 2.29.2+rev2
+  date: 2019-02-04T19:08:19.448Z
+- commits:
     - subject: Update meta-resin from v2.29.1 to v2.29.2
       hash: 9c081e3170fea18524aed508ee2b304bb4722d09
       body: |

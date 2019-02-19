@@ -1,0 +1,71 @@
+From df91f0bc3fd8fac73f8dc54cfff8934c9d8bf9b0 Mon Sep 17 00:00:00 2001
+From: Sebastian Panceac <sebastian@resin.io>
+Date: Thu, 19 Jul 2018 14:58:32 +0200
+Subject: [PATCH] Add kunbus overlay
+
+Upstream-Status: Pending
+Signed-off-by: Sebastian Panceac <sebastian@resin.io>
+---
+ arch/arm/boot/dts/overlays/Makefile   |  3 ++-
+ arch/arm/boot/dts/overlays/kunbus-overlay.dts | 35 +++++++++++++++++++++++++++++++++++
+ 2 files changed, 37 insertions(+), 1 deletion(-)
+ create mode 100644 arch/arm/boot/dts/overlays/kunbus.dts
+
+diff --git a/arch/arm/boot/dts/overlays/Makefile b/arch/arm/boot/dts/overlays/Makefile
+index a22141d..048863c 100644
+--- a/arch/arm/boot/dts/overlays/Makefile
++++ b/arch/arm/boot/dts/overlays/Makefile
+@@ -135,7 +135,8 @@ dtbo-$(CONFIG_ARCH_BCM2835) += \
+ 	vga666.dtbo \
+ 	w1-gpio.dtbo \
+ 	w1-gpio-pullup.dtbo \
+-	wittypi.dtbo
++	wittypi.dtbo \
++	kunbus.dtbo
+ 
+ targets += dtbs dtbs_install
+ targets += $(dtbo-y)
+diff --git a/arch/arm/boot/dts/overlays/kunbus-overlay.dts b/arch/arm/boot/dts/overlays/kunbus-overlay.dts
+new file mode 100644
+index 0000000..fcaf73e
+--- /dev/null
++++ b/arch/arm/boot/dts/overlays/kunbus-overlay.dts
+@@ -0,0 +1,35 @@
++/dts-v1/;
++
++/ {
++	compatible = "brcm,bcm2835", "brcm,bcm2836", "brcm,bcm2708", "brcm,bcm2709", "brcm,bcm2710";
++
++	fragment@0 {
++		target = <0xdeadbeef>;
++
++		__overlay__ {
++			status = "okay";
++			bcm2835,rt_prio = <60>;
++
++			spidev@0 {
++				status = "disabled";
++			};
++
++			spidev@1 {
++				status = "disabled";
++			};
++		};
++	};
++
++	fragment@1 {
++		target = <0xdeadbeef>;
++
++		__overlay__ {
++			brcm,pins = <0x3 0x4 0x25 0x26 0x27>;
++		};
++	};
++
++	__fixups__ {
++		spi0 = "/fragment@0:target:0";
++		spi0_pins = "/fragment@1:target:0";
++	};
++};
+-- 
+2.7.4
+
