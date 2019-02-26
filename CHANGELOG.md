@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.29.2+rev8
+## (2019-02-26)
+
+* Set kernel image type for rpi3 64 bits to Image instead of zImage [Florin Sarbu]
+* Update the balena-yocto-scripts submodule to v1.0.2 [Florin Sarbu]
+
 # v2.29.2+rev7
 ## (2019-02-18)
 

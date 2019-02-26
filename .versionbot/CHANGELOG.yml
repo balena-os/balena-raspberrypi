@@ -1,4 +1,27 @@
 - commits:
+    - subject: Set kernel image type for rpi3 64 bits to Image instead of zImage
+      hash: 1bec141349e8bd53c28d21dc54e484ea8760c133
+      body: |
+        The zImage kernel image type is not supported on arm64 and ".gz" images
+        are not supported by bootloader yet.
+      footer:
+        Changelog-entry: Set kernel image type for rpi3 64 bits to Image instead of zImage
+        changelog-entry: Set kernel image type for rpi3 64 bits to Image instead of zImage
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+    - subject: Update the balena-yocto-scripts submodule to v1.0.2
+      hash: 085732e6b81cfbf054dec41894a4b180bba09e82
+      body: ''
+      footer:
+        Changelog-entry: Update the balena-yocto-scripts submodule to v1.0.2
+        changelog-entry: Update the balena-yocto-scripts submodule to v1.0.2
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.29.2+rev8
+  date: 2019-02-26T10:57:12.455Z
+- commits:
     - subject: 'rpi-config: Prevent u-boot UART logging on RevPi Core3'
       hash: 22fe8b9ed747d99d11a551630fa97eb30ebc1b4a
       body: |
