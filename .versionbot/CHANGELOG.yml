@@ -1,4 +1,36 @@
 - commits:
+    - subject: Fix kernel-devsrc compilation on raspberrypi 3 arm64
+      hash: 72a1f8197861b1b88e9e43bb43aaa7fe06af2151
+      body: |
+        On the rpi3 64 bits the build fails with the following error:
+
+        | /yocto/resin-board/build/tmp/work/raspberrypi3_64-poky-linux/
+        kernel-devsrc/1.0-r0/image/usr/src/kernel/scripts/Makefile.clean:15
+        /yocto/resin-board/build/tmp/work/raspberrypi3_64-poky-linux/
+        kernel-devsrc/1.0-r0/image/usr/src/kernel/arch/arm64/boot/dts/broadcom/
+        ../overlays/Makefile: No such file or directory
+        | make[4]: *** No rule to make target '/yocto/resin-board/build/tmp/work
+        /raspberrypi3_64-poky-linux/kernel-devsrc/1.0-r0/image/usr/src/kernel/
+        arch/arm64/boot/dts/broadcom/../overlays/Makefile'.  Stop.
+        | /yocto/resin-board/build/tmp/work/raspberrypi3_64-poky-linux/
+        kernel-devsrc/1.0-r0/image/usr/src/kernel/scripts/Makefile.clean:89
+        recipe for target 'arch/arm64/boot/dts/broadcom/../overlays' failed
+        | make[3]: *** [arch/arm64/boot/dts/broadcom/../overlays] Error 2
+        | /yocto/resin-board/build/tmp/work/raspberrypi3_64-poky-linux/
+        kernel-devsrc/1.0-r0/image/usr/src/kernel/scripts/Makefile.clean:89:
+        recipe for target 'arch/arm64/boot/dts/broadcom' failed
+        | make[2]: *** [arch/arm64/boot/dts/broadcom] Error 2
+        | make[2]: *** Waiting for unfinished jobs....
+        | arch/arm64/Makefile:152: recipe for target 'archclean' failed
+      footer:
+        Changelog-entry: Fix kernel-devsrc compilation on raspberrypi 3 arm64
+        changelog-entry: Fix kernel-devsrc compilation on raspberrypi 3 arm64
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.29.2+rev9
+  date: 2019-02-28T11:22:50.453Z
+- commits:
     - subject: Set kernel image type for rpi3 64 bits to Image instead of zImage
       hash: 1bec141349e8bd53c28d21dc54e484ea8760c133
       body: |

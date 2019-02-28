@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.29.2+rev9
+## (2019-02-28)
+
+* Fix kernel-devsrc compilation on raspberrypi 3 arm64 [Florin Sarbu]
+
 # v2.29.2+rev8
 ## (2019-02-26)
 
