@@ -61,3 +61,8 @@ RESIN_CONFIGS[max3191x] = " \
 
 KERNEL_MODULE_PROBECONF += "rtl8192cu"
 module_conf_rtl8192cu = "blacklist rtl8192cu"
+
+RESIN_CONFIGS_append = " preempt_rt"
+RESIN_CONFIGS[preempt_rt] = " \
+    CONFIG_PREEMPT_RT_FULL=y \
+"
