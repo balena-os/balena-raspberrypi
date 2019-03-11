@@ -54,15 +54,22 @@ RESIN_CONFIGS[pca955_gpio_expander] = " \
     CONFIG_GPIO_PCA953X_IRQ=y \
     "
 
-RESIN_CONFIGS_append = " max3191x"
-RESIN_CONFIGS[max3191x] = " \
-    CONFIG_GPIO_MAX3191X=y \
-"
-
 KERNEL_MODULE_PROBECONF += "rtl8192cu"
 module_conf_rtl8192cu = "blacklist rtl8192cu"
 
 RESIN_CONFIGS_append = " preempt_rt"
 RESIN_CONFIGS[preempt_rt] = " \
     CONFIG_PREEMPT_RT_FULL=y \
+"
+
+RESIN_CONFIGS_append = " revpi_expansion_modules_support"
+RESIN_CONFIGS[revpi_expansion_modules_support] = " \
+    CONFIG_KS8851=m \
+    CONFIG_GPIO_74X164=m \
+    CONFIG_GPIO_MAX3191X=m \
+    CONFIG_TI_DAC082S085=m \
+    CONFIG_MULTIPLEXER=m \
+    CONFIG_MUX_GPIO=m \
+    CONFIG_IIO_MUX=m \
+    CONFIG_CAN_HI311X=m \
 "
