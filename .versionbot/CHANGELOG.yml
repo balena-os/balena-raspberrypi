@@ -1,4 +1,16 @@
 - commits:
+    - subject: Add info for PR contributions to README.md
+      hash: e57b9556a3ccf84ecedd5c4e213a9f922dc9382d
+      body: ''
+      footer:
+        Changelog-entry: Add info for PR contributions to README.md
+        changelog-entry: Add info for PR contributions to README.md
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.31.0+rev2
+  date: 2019-03-11T18:44:20.496Z
+- commits:
     - subject: Update meta-resin from v2.30.0 to v2.31.0
       hash: 576394b4addc8eca17a13117d14a4b14c8d031df
       body: |

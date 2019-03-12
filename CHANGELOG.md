@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.31.0+rev2
+## (2019-03-11)
+
+* Add info for PR contributions to README.md [Florin Sarbu]
+
 # v2.31.0+rev1
 ## (2019-03-11)
 
