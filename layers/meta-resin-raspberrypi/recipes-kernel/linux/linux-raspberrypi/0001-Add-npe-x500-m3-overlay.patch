@@ -1,0 +1,218 @@
+From 04d81c9c444a99affc3f2a5e88ae60f9cd9a7fb6 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Adolfo=20E=2E=20Garc=C3=ADa=20Castro?=
+ <adolfo.garcia.cr@gmail.com>
+Date: Fri, 1 Mar 2019 19:42:57 -0600
+Subject: [PATCH] Add npe-x500-m3 overlay
+
+This patch adds a device tree overlay to support TECHBASE's NPE X500 M3 carrier board for CM3.
+
+Upstream-Status: Pending
+Signed-off-by: Adolfo E. García Castro <adolfo.garcia.cr@gmail.com>
+
+---
+ .../boot/dts/overlays/npe-x500-m3-overlay.dts | 194 ++++++++++++++++++
+ 1 file changed, 194 insertions(+)
+ create mode 100644 arch/arm/boot/dts/overlays/npe-x500-m3-overlay.dts
+
+diff --git a/arch/arm/boot/dts/overlays/npe-x500-m3-overlay.dts b/arch/arm/boot/dts/overlays/npe-x500-m3-overlay.dts
+new file mode 100644
+index 000000000000..a3f2924539b4
+--- /dev/null
++++ b/arch/arm/boot/dts/overlays/npe-x500-m3-overlay.dts
+@@ -0,0 +1,194 @@
++/dts-v1/;
++/plugin/;
++
++/ {
++  compatible = "brcm,bcm2710","brcm,bcm2709";
++
++  /* disable spi-dev for spi0.0 */
++  fragment@0 {
++      target = <&spi0>;
++      __overlay__ {
++          status = "okay";
++      };
++  };
++
++  fragment@1 {
++    target = <&spidev0>;
++    __overlay__ {
++      status = "disabled";
++    };
++  };
++
++  /* the interrupt pin of the can-controller */
++  fragment@2 {
++      target = <&gpio>;
++      __overlay__ {
++          can0_pins: can0_pins {
++              brcm,pins = <29>;
++              brcm,function = <0>; /* input */
++          };
++      };
++  };
++
++  /* the clock/oscillator of the can-controller */
++  fragment@3 {
++      target-path = "/clocks";
++      __overlay__ {
++          /* external oscillator of mcp2515 on SPI0.0 */
++          can0_osc: can0_osc {
++              compatible = "fixed-clock";
++              #clock-cells = <0>;
++              clock-frequency  = <16000000>;
++          };
++          /* external oscillator of sc16is740 on I2C0 */
++          sc_osc: sc_osc {
++            compatible = "fixed-clock";
++            #clock-cells = <1>;
++            clock-frequency  = <14745600>;
++            clock-output-names = "sc_osc";
++          };
++      };
++  };
++
++  /* the spi config of the can-controller itself binding everything together */
++  fragment@4 {
++      target = <&spi0>;
++      __overlay__ {
++          /* needed to avoid dtc warning */
++          #address-cells = <1>;
++          #size-cells = <0>;
++          cs-gpios = <0>, <0>;
++          status = "okay";
++          can0: mcp2515@0 {
++              reg = <0>;
++              compatible = "microchip,mcp2515";
++              pinctrl-names = "default";
++              pinctrl-0 = <&can0_pins>;
++              spi-max-frequency = <10000000>;
++              interrupt-parent = <&gpio>;
++              interrupts = <29 8>; /* IRQ_TYPE_LEVEL_LOW */
++              clocks = <&can0_osc>;
++          };
++      };
++  };
++
++	fragment@5 {
++		target = <&spi0_cs_pins>;
++		__overlay__ {
++			brcm,pins = <8 7>;
++			brcm,function = <4>; /* alt0 */
++		};
++	};
++
++  fragment@6 {
++    target = <&i2c0>;
++    __overlay__ {
++      pinctrl-names = "default";
++      pinctrl-0 = <&i2c0_pins>;
++      clock-frequency = <400000>;
++      #address-cells = <1>;
++      #size-cells = <0>;
++      status = "okay";
++
++      sc16is740: sc16is740@77 {
++        compatible = "nxp,sc16is740";
++        reg = <0x4d>;
++        clocks = <&sc_osc 0>;
++        interrupt-parent = <&gpio>;
++        interrupts = <45 2>;
++        status = "okay";
++      };
++
++      adc: adc@6c {
++        compatible = "microchip,mcp3424";
++        reg = <0x6c>;
++        status = "okay";
++      };
++
++      ds1307: ds1307@68 {
++        compatible = "maxim,ds1307";
++        reg = <0x68>;
++        status = "okay";
++      };
++    };
++  };
++
++  fragment@7 {
++    target = <&i2c2>;
++    __overlay__ {
++      clock-frequency = <100000>;
++    };
++  };
++
++  fragment@8 {
++     target = <&i2c0_pins>;
++     frag1: __overlay__ {
++        brcm,pins = <0 1>;
++        brcm,function = <4>; /* alt0 */
++     };
++  };
++
++  fragment@9 {
++    target = <&i2s_pins>;
++    __overlay__ {
++      brcm,pins = <18 19 20 21>;
++      brcm,function = <4>;  /* alt0 */
++    };
++  };
++
++  fragment@10 {
++    target = <&sdhost>;
++    frag0: __overlay__ {
++      pinctrl-names = "default";
++      pinctrl-0 = <&sdhost_pins>;
++      brcm,overclock-50 = <0>;
++      non-removable;
++      bus-width = <4>;
++      status = "okay";
++    };
++  };
++
++  fragment@11 {
++    target = <&sdhost_pins>;
++    __overlay__ {
++      brcm,pins = <48 49 50 51 52 53>;
++      brcm,function = <4>; /* alt0 */
++      brcm,pull = <0 2 2 2 2 2>;
++    };
++  };
++
++  fragment@12 {
++    target = <&mmc>;
++    __overlay__ {
++      status = "disabled";
++    };
++  };
++
++  fragment@13 {
++    target = <&leds>;
++    __overlay__ {
++      pwr_led: pwr {
++        label = "led0";
++        linux,default-trigger = "input";
++        gpios = <&gpio 43 0>;
++      };
++      act_led: act {
++        label = "led1";
++        linux,default-trigger = "heartbeat";
++        gpios = <&gpio 35 0>;
++      };
++      buzzer: buzzer {
++      label = "buzzer0";
++      gpios = <&gpio 27 0>;
++      };
++    };
++  };
++
++  fragment@14 {
++    target = <&hdmi>;
++    __overlay__ {
++      hpd-gpios = <&gpio 46 1>; /* GPIO_ACTIVE_LOW=1 */
++    };
++  };
++
++};
+--
+2.20.1
