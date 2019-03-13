@@ -6,7 +6,8 @@ SRC_URI_append = " \
 	file://0001-Revert-cgroup-Disable-cgroup-memory-by-default.patch \
 	file://0002-wireless-wext-Bring-back-ndo_do_ioctl-fallback.patch \
 	file://0003-leds-pca963x-Fix-MODE2-initialization.patch \
-	"
+	file://0001-Add-npe-x500-m3-overlay.patch \
+"
 
 LINUX_VERSION = "4.14.98"
 SRCREV = "5d63a4595d32a8505590d5fea5c4ec1ca79fd49d"
@@ -80,4 +81,55 @@ RESIN_CONFIGS_DEPS[rpi_watchdog] = " \
 "
 RESIN_CONFIGS[rpi_watchdog] = " \
     CONFIG_BCM2835_WDT=y \
+"
+
+RESIN_CONFIGS_append = " mcp251x_can_driver"
+
+RESIN_CONFIGS[mcp251x_can_driver] = " \
+    CONFIG_CAN_MCP251X=m \
+"
+
+RESIN_CONFIGS_DEPS[mcp251x_can_driver] = " \
+    CONFIG_SPI=y \
+    CONFIG_HAS_DMA=y \
+"
+
+RESIN_CONFIGS_append = " can_calc_bittiming"
+
+RESIN_CONFIGS[can_calc_bittiming] = " \
+		CONFIG_CAN_CALC_BITTIMING=y \
+"
+
+RESIN_CONFIGS_DEPS[can_calc_bittiming] = " \
+		CONFIG_CAN_DEV=y \
+"
+
+RESIN_CONFIGS_append = " ds1307_rtc_driver"
+
+RESIN_CONFIGS[ds1307_rtc_driver] = " \
+    CONFIG_RTC_DRV_DS1307=m \
+"
+
+RESIN_CONFIGS_DEPS[ds1307_rtc_driver] = " \
+    CONFIG_I2C=y \
+"
+
+RESIN_CONFIGS_append = " sc16is7xx_serial_driver"
+
+RESIN_CONFIGS[sc16is7xx_serial_driver] = " \
+    CONFIG_SERIAL_SC16IS7XX=m \
+"
+
+RESIN_CONFIGS_DEPS[sc16is7xx_serial_driver] = " \
+    CONFIG_I2C=y \
+"
+
+RESIN_CONFIGS_append = " mcp3422_adc_driver"
+
+RESIN_CONFIGS[mcp3422_adc_driver] = " \
+    CONFIG_MCP3422=m \
+"
+
+RESIN_CONFIGS_DEPS[mcp3422_adc_driver] = " \
+    CONFIG_I2C=y \
 "
