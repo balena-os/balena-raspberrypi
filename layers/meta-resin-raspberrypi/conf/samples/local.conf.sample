@@ -4,6 +4,7 @@
 #MACHINE ?= "raspberrypi3"
 #MACHINE ?= "raspberrypi3-64"
 #MACHINE ?= "revpi-core-3"
+#MACHINE ?= "npe-x500-m3"
 
 # More info meta-resin/README.md
 #TARGET_REPOSITORY ?= ""
