@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.31.0+rev3
+## (2019-03-14)
+
+* Prevent u-boot from scanning for usb devices on boot [Zubair Lutfullah Kakakhel]
+
 # v2.31.0+rev2
 ## (2019-03-11)
 

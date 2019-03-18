@@ -1,4 +1,18 @@
 - commits:
+    - subject: Prevent u-boot from scanning for usb devices on boot
+      hash: 8632ab910f096524b03f98de6019c12eec44a398
+      body: |
+        This prevents u-boot from scanning for usb devices and speeds up
+        boot by ~2 seconds
+      footer:
+        Changelog-entry: Prevent u-boot from scanning for usb devices on boot
+        changelog-entry: Prevent u-boot from scanning for usb devices on boot
+        Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+        signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+      author: Zubair Lutfullah Kakakhel
+  version: 2.31.0+rev3
+  date: 2019-03-14T15:15:30.242Z
+- commits:
     - subject: Add info for PR contributions to README.md
       hash: e57b9556a3ccf84ecedd5c4e213a9f922dc9382d
       body: ''
