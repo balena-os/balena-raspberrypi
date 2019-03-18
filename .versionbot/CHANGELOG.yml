@@ -1,4 +1,18 @@
 - commits:
+    - subject: Update meta-resin from v2.31.0 to v2.31.1
+      hash: 710b6b6a0eed72b2ac755fd6257cb65aee4b5ab1
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: Update meta-resin from v2.31.0 to v2.31.1
+        changelog-entry: Update meta-resin from v2.31.0 to v2.31.1
+        Signed-off-by: Pablo Carranza Velez <pablocarranza@gmail.com>
+        signed-off-by: Pablo Carranza Velez <pablocarranza@gmail.com>
+      author: Pablo Carranza Velez
+  version: 2.31.1+rev1
+  date: 2019-03-18T20:32:24.895Z
+- commits:
     - subject: Prevent u-boot from scanning for usb devices on boot
       hash: 8632ab910f096524b03f98de6019c12eec44a398
       body: |
