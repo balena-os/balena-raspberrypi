@@ -1,4 +1,18 @@
 - commits:
+    - subject: Update meta-resin from v2.31.1 to v2.31.2
+      hash: 33209f5470f6f883cc653ee37e30d3365b62bd8e
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: Update meta-resin from v2.31.1 to v2.31.2
+        changelog-entry: Update meta-resin from v2.31.1 to v2.31.2
+        Signed-off-by: Pablo Carranza Velez <pablo@balena.io>
+        signed-off-by: Pablo Carranza Velez <pablo@balena.io>
+      author: Pablo Carranza Velez
+  version: 2.31.2+rev1
+  date: 2019-03-19T23:59:56.547Z
+- commits:
     - subject: Update meta-resin from v2.31.0 to v2.31.1
       hash: 710b6b6a0eed72b2ac755fd6257cb65aee4b5ab1
       body: ''

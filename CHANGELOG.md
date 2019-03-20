@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.31.2+rev1
+## (2019-03-19)
+
+* Update meta-resin from v2.31.1 to v2.31.2 [Pablo Carranza Velez]
+
 # v2.31.1+rev1
 ## (2019-03-18)
 
