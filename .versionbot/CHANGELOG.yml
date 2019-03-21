@@ -1,4 +1,102 @@
 - commits:
+    - subject: Add the NPE X500 M3 board in local.conf template file
+      hash: b98580b83f2ad121cda2e7bb9dff34502a51e353
+      body: |
+        Adds the NPE X500 M3 board as a machine option in local.conf
+        template file.
+      footer:
+        Changelog-entry: Add the NPE X500 M3 board in local.conf template file
+        changelog-entry: Add the NPE X500 M3 board in local.conf template file
+        Signed-off-by: Adolfo E. García Castro <adolfo.garcia.cr@gmail.com>
+        signed-off-by: Adolfo E. García Castro <adolfo.garcia.cr@gmail.com>
+      author: Adolfo E. García Castro
+    - subject: Add .svg file for the NPE X500 M3 board
+      hash: 27fa3aa56bfa777b94016bc28e3e0b2e7dd46d22
+      body: |
+        Adds an SVG file with representative (not official) icon for the
+        NPE X500 M3 board.
+      footer:
+        Changelog-entry: Add .svg file for the NPE X500 M3 board
+        changelog-entry: Add .svg file for the NPE X500 M3 board
+        Signed-off-by: Adolfo E. García Castro <adolfo.garcia.cr@gmail.com>
+        signed-off-by: Adolfo E. García Castro <adolfo.garcia.cr@gmail.com>
+      author: Adolfo E. García Castro
+    - subject: Add .coffe file for the NPE X500 M3 board
+      hash: 5a91415714e7921f99c56e2ecb46e5e64bbf82e0
+      body: |
+        Adds the npe-x500-m3.coffe file for the NPE X500 M3 board.
+      footer:
+        Changelog-entry: Add .coffe file for the NPE X500 M3 board
+        changelog-entry: Add .coffe file for the NPE X500 M3 board
+        Signed-off-by: Adolfo E. García Castro <adolfo.garcia.cr@gmail.com>
+        signed-off-by: Adolfo E. García Castro <adolfo.garcia.cr@gmail.com>
+      author: Adolfo E. García Castro
+    - subject: Enable NPE X500 M3's overaly in RPI's config.txt
+      hash: 7358b2fd1b434ff2b68c160b677cd41298eaeb9a
+      body: |
+        The rpi-config_git.bbappend is modified to add support for the
+        NPE X500 M3 board.
+      footer:
+        Changelog-entry: Enable NPE X500 M3's overaly in RPI's config.txt
+        changelog-entry: Enable NPE X500 M3's overaly in RPI's config.txt
+        Signed-off-by: Adolfo E. García Castro <adolfo.garcia.cr@gmail.com>
+        signed-off-by: Adolfo E. García Castro <adolfo.garcia.cr@gmail.com>
+      author: Adolfo E. García Castro
+    - subject: Add directive in layer.conf to include npe-x500-m3.dtbo
+      hash: 8bde8c67fdff5c365a8bf9b0641316927218cb33
+      body: |
+        Adds a directive in conf/layer.conf to include the npe-x500-m3.dtbo
+        compiled device tree overlay file, needed to support the NPE X500 M3
+        board.
+      footer:
+        Changelog-entry: Add directive in layer.conf to include npe-x500-m3.dtbo
+        changelog-entry: Add directive in layer.conf to include npe-x500-m3.dtbo
+        Signed-off-by: Adolfo E. García Castro <adolfo.garcia.cr@gmail.com>
+        signed-off-by: Adolfo E. García Castro <adolfo.garcia.cr@gmail.com>
+      author: Adolfo E. García Castro
+    - subject: Add machine configuration file for the NPE X500 M3 board
+      hash: 35762620073e3069c4006a33cfd1dfeaedae8dd4
+      body: |
+        Adds a machine configuration file for the NPE X500 M3 board.
+      footer:
+        Changelog-entry: Add machine configuration file for the NPE X500 M3 board
+        changelog-entry: Add machine configuration file for the NPE X500 M3 board
+        Signed-off-by: Adolfo E. García Castro <adolfo.garcia.cr@gmail.com>
+        signed-off-by: Adolfo E. García Castro <adolfo.garcia.cr@gmail.com>
+      author: Adolfo E. García Castro
+    - subject: Modify kernel recipe to support the NPE X500 M3 board
+      hash: 5ef7aa7001fe5fb95b6301834a7172892771c5ca
+      body: |
+        Modifies the kernel recipe to include the patch file that adds a device
+        tree overlay for the NPE X500 M3 board and to enable building of the
+        following device drivers as kernel modules:
+        RTC_DRV_DS1307, SERIAL_SC16IS7XX, MCP3422, CAN_MCP251X.
+        The kernel's CAN_CALC_BITTIMING option is also enabled.
+        These drivers are required by the NPE X500 M3 board.
+      footer:
+        Changelog-entry: Modify kernel recipe to support the NPE X500 M3 board
+        changelog-entry: Modify kernel recipe to support the NPE X500 M3 board
+        Signed-off-by: Adolfo E. García Castro <adolfo.garcia.cr@gmail.com>
+        signed-off-by: Adolfo E. García Castro <adolfo.garcia.cr@gmail.com>
+      author: Adolfo E. García Castro
+    - subject: Add device tree overlay for the NPE X500 M3 board
+      hash: fe3cd79b58a1b7bba76b890621e06434c8ef223d
+      body: >
+        Adds a patch file for creating a device tree overlay for the NPE X500
+        M3,
+
+        a carrierboard for the CM3 manufactured by TECHBASE Group Sp. z o.o..
+
+        For details on this board's hardware, refer to [Issue #292].
+      footer:
+        Changelog-entry: Add device tree overlay for the NPE X500 M3 board
+        changelog-entry: Add device tree overlay for the NPE X500 M3 board
+        Signed-off-by: Adolfo E. García Castro <adolfo.garcia.cr@gmail.com>
+        signed-off-by: Adolfo E. García Castro <adolfo.garcia.cr@gmail.com>
+      author: Adolfo E. García Castro
+  version: 2.31.3+rev2
+  date: 2019-03-21T10:09:45.296Z
+- commits:
     - subject: Update meta-resin from v2.31.2 to v2.31.3
       hash: afa032db053aa7c00449827ee09b0f5bb7e631f4
       body: |

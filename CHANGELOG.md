@@ -1,6 +1,18 @@
 Change log
 -----------
 
+# v2.31.3+rev2
+## (2019-03-21)
+
+* Add the NPE X500 M3 board in local.conf template file [Adolfo E. García Castro]
+* Add .svg file for the NPE X500 M3 board [Adolfo E. García Castro]
+* Add .coffe file for the NPE X500 M3 board [Adolfo E. García Castro]
+* Enable NPE X500 M3's overaly in RPI's config.txt [Adolfo E. García Castro]
+* Add directive in layer.conf to include npe-x500-m3.dtbo [Adolfo E. García Castro]
+* Add machine configuration file for the NPE X500 M3 board [Adolfo E. García Castro]
+* Modify kernel recipe to support the NPE X500 M3 board [Adolfo E. García Castro]
+* Add device tree overlay for the NPE X500 M3 board [Adolfo E. García Castro]
+
 # v2.31.3+rev1
 ## (2019-03-21)
 
