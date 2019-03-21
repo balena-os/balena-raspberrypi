@@ -18,6 +18,11 @@ do_deploy_append_fincm3() {
 	echo "dtoverlay=balena-fin" >> ${DEPLOYDIR}/bcm2835-bootfiles/config.txt
 }
 
+do_deploy_append_npe-x500-m3() {
+  # Use the NPE X500 M3 device tree overlay
+  echo "dtoverlay=npe-x500-m3" >> ${DEPLOYDIR}/bcm2835-bootfiles/config.txt
+}
+
 do_deploy_append_revpi-core-3() {
     cat >> ${DEPLOYDIR}/bcm2835-bootfiles/config.txt << EOF
 
