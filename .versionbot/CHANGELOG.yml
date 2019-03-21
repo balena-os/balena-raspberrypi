@@ -1,4 +1,54 @@
 - commits:
+    - subject: Update meta-resin from v2.31.2 to v2.31.3
+      hash: afa032db053aa7c00449827ee09b0f5bb7e631f4
+      body: |
+        Update meta-resin from 2.31.2 to 2.31.3
+      footer:
+        Changelog-entry: Update meta-resin from v2.31.2 to v2.31.3
+        changelog-entry: Update meta-resin from v2.31.2 to v2.31.3
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: Update resin-supervisor to v9.11.2
+              hash: abb864096b5b473893aa7011a685ed8df97a28ee
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Update resin-supervisor to v9.11.2
+                changelog-entry: Update resin-supervisor to v9.11.2
+                Signed-off-by: Pablo Carranza Velez <pablo@balena.io>
+                signed-off-by: Pablo Carranza Velez <pablo@balena.io>
+              author: Pablo Carranza Velez
+          version: meta-resin-2.31.3
+          date: 2019-03-20T20:18:02.522Z
+    - subject: Change picontrol git tag to match kernel 4.9 revision
+      hash: 491490a7f154c80efd75979117805a0602985205
+      body: |
+        We switched the kernel to a 4.9 revision so we must match picontrol
+        to the same kernel revision.
+      footer:
+        Changelog-entry: Change picontrol git tag to match kernel 4.9 revision
+        changelog-entry: Change picontrol git tag to match kernel 4.9 revision
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+    - subject: Switch revolution pi kernel to version 4.9
+      hash: 4a37889b5c459ae05ad5a1f4ea1c7593368ad62f
+      body: |
+        The kernel branch that Kunbus currently ships for their hardware
+        is revpi-4.9.
+      footer:
+        Changelog-entry: Switch revolution pi kernel to version 4.9
+        changelog-entry: Switch revolution pi kernel to version 4.9
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.31.3+rev1
+  date: 2019-03-21T09:21:07.548Z
+- commits:
     - subject: Update meta-resin from v2.31.1 to v2.31.2
       hash: 33209f5470f6f883cc653ee37e30d3365b62bd8e
       body: ''

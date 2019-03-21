@@ -1,6 +1,23 @@
 Change log
 -----------
 
+# v2.31.3+rev1
+## (2019-03-21)
+
+* Update meta-resin from v2.31.2 to v2.31.3 [Florin Sarbu]
+
+<details>
+<summary> View details </summary>
+
+## meta-resin-2.31.3
+### (2019-03-20)
+
+* Update resin-supervisor to v9.11.2 [Pablo Carranza Velez]
+</details>
+
+* Change picontrol git tag to match kernel 4.9 revision [Florin Sarbu]
+* Switch revolution pi kernel to version 4.9 [Florin Sarbu]
+
 # v2.31.2+rev1
 ## (2019-03-19)
 
