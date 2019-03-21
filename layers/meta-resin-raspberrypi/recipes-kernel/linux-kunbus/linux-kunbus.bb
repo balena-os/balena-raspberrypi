@@ -8,3 +8,5 @@ SRC_URI = " \
 "
 
 require linux-raspberrypi.inc
+
+RPI_KERNEL_DEVICETREE_remove = "bcm2710-rpi-3-b-plus.dtb"
