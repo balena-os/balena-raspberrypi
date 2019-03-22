@@ -3,7 +3,7 @@ inherit kernel-resin
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 SRC_URI_append = " \
-	file://0001-Revert-cgroup-Disable-cgroup-memory-by-default.patch \
+	file://0001-Revert-cgroup-Add-kernel-param-to-enable-memory-grou.patch \
 	file://0001-Add-kunbus-overlay.patch \
 	file://0001-Add-poe-overlay-for-compatiibility.patch \
 	"

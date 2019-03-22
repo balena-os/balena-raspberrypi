@@ -1,0 +1,54 @@
+From f7817cc0a55aa5d453cec09d652639d2bebac4eb Mon Sep 17 00:00:00 2001
+From: Andrei Gherzan <andrei@resin.io>
+Date: Mon, 14 May 2018 15:55:13 +0100
+Subject: [PATCH] Revert "cgroup: Add kernel param to enable memory group"
+
+This reverts commit ba742b52e5099b3ed964e78f227dc96460b5cdc0.
+
+Rebased on 4.9.80.
+
+Signed-off-by: Andrei Gherzan <andrei@resin.io>
+---
+ kernel/cgroup.c | 12 ------------
+ 1 file changed, 12 deletions(-)
+
+diff --git a/kernel/cgroup.c b/kernel/cgroup.c
+index 29f27f7..1bbc4a4 100644
+--- a/kernel/cgroup.c
++++ b/kernel/cgroup.c
+@@ -5639,8 +5639,6 @@ int __init cgroup_init_early(void)
+
+ static u16 cgroup_disable_mask __initdata;
+ static u16 cgroup_enable_mask __initdata;
+-static bool cgroup_enable_memory;
+-static int __init cgroup_disable(char *str);
+
+ /**
+  * cgroup_init - cgroup initialization
+@@ -5679,10 +5677,6 @@ int __init cgroup_init(void)
+
+ 	mutex_unlock(&cgroup_mutex);
+
+-	/* Apply an implicit disable... */
+-	if (!cgroup_enable_memory)
+-		cgroup_disable("memory");
+-
+ 	/* ...knowing that an explicit enable will override it. */
+ 	cgroup_disable_mask &= ~cgroup_enable_mask;
+
+@@ -6210,12 +6204,6 @@ static int __init cgroup_enable(char *str)
+ }
+ __setup("cgroup_enable=", cgroup_enable);
+
+-static int __init cgroup_memory(char *str)
+-{
+-	return !kstrtobool(str, &cgroup_enable_memory);
+-}
+-__setup("cgroup_memory=", cgroup_memory);
+-
+ /**
+  * css_tryget_online_from_dir - get corresponding css from a cgroup dentry
+  * @dentry: directory dentry of interest
+--
+2.7.4
+

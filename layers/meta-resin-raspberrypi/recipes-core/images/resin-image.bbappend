@@ -44,3 +44,5 @@ overlay_dtbs_handler[eventmask] = "bb.event.RecipePreFinalise"
 IMAGE_INSTALL_append_rpi = " enable-overcommit u-boot"
 
 IMAGE_INSTALL_append_revpi-core-3 = " picontrol"
+
+RPI_KERNEL_DEVICETREE_remove_revpi-core-3 = "bcm2710-rpi-3-b-plus.dtb"
