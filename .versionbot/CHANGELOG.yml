@@ -1,4 +1,92 @@
 - commits:
+    - subject: Update meta-resin from v2.31.3 to v2.31.5
+      hash: ae31e4a27674d36156ef7b82d5c37459c3622ba5
+      body: |
+        Update meta-resin from 2.31.3 to 2.31.5
+      footer:
+        Changelog-entry: Update meta-resin from v2.31.3 to v2.31.5
+        changelog-entry: Update meta-resin from v2.31.3 to v2.31.5
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: Update resin-supervisor to v9.11.3
+              hash: 7ad04ea5594fc1cf5f378b9cab3c75b2ee6f0e6e
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Update resin-supervisor to v9.11.3
+                changelog-entry: Update resin-supervisor to v9.11.3
+                Signed-off-by: Andrei Gherzan <andrei@balena.io>
+                signed-off-by: Andrei Gherzan <andrei@balena.io>
+              author: Andrei Gherzan
+          version: meta-resin-2.31.5
+          date: 2019-03-21T14:43:57.016Z
+        - commits:
+            - subject: 'resin-supervisor: Recreate on start if config has changed'
+              hash: 20032211302d25300c09310e169cafa01375e35e
+              body: >
+                Fix the ordering of the conditional check when starting the
+                supervisor container;
+
+                only check that the values being passed into the environment
+                match the ones held
+
+                in the config IF the container already exists.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Rich Bayliss <rich@balena.io>
+                signed-off-by: Rich Bayliss <rich@balena.io>
+              author: Rich Bayliss
+          version: meta-resin-2.31.4
+          date: 2019-03-20T23:25:52.136Z
+    - subject: >-
+        Remove non-existent pi3 B plus dtb (using 4.9 revpi kernel) from
+        resin-image recipe
+      hash: 07bd61d0ba2717fc5447b5b8ef24cc9366e26b60
+      body: |
+        We switched to an older kernel which does not have the pi3 B plus dtb.
+      footer:
+        Changelog-entry: >-
+          Remove non-existent pi3 B plus dtb (using 4.9 revpi kernel) from
+          resin-image recipe
+        changelog-entry: >-
+          Remove non-existent pi3 B plus dtb (using 4.9 revpi kernel) from
+          resin-image recipe
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+    - subject: Remove non-existent pi3 B plus dtb from revpi kernel recipe version 4.9
+      hash: 58a77ec0bc0d5e0fbe688aee3eb01d3100ffbe6f
+      body: |
+        We switched to an older kernel which does not have the pi3 B plus dtb.
+      footer:
+        Changelog-entry: >-
+          Remove non-existent pi3 B plus dtb from revpi kernel recipe version
+          4.9
+        changelog-entry: >-
+          Remove non-existent pi3 B plus dtb from revpi kernel recipe version
+          4.9
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+    - subject: Rework patch revert for cgroup memory disabling in revpi kernel 4.9
+      hash: 7eed2c2c5d3cdacda7946e75e8de028e8ac0774a
+      body: |
+        We switched back to kernel 4.9 so we need to use an appropriate patch
+        for that kernel version.
+      footer:
+        Changelog-entry: Rework patch revert for cgroup memory disabling in revpi kernel 4.9
+        changelog-entry: Rework patch revert for cgroup memory disabling in revpi kernel 4.9
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.31.5+rev1
+  date: 2019-03-21T22:57:56.845Z
+- commits:
     - subject: Add the NPE X500 M3 board in local.conf template file
       hash: b98580b83f2ad121cda2e7bb9dff34502a51e353
       body: |
