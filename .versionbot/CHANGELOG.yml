@@ -1,4 +1,24 @@
 - commits:
+    - subject: Add config.txt entry removal quirk for revpi-core-3
+      hash: c6cccef1d8c22eb6cbccb6b9c2ceb7281243f91f
+      body: |
+        New balenaOS for revpi-core-3 will not boot if the config.txt
+        has an older dtoverlay=mmc entry.
+        Therefore we must add a hostapp update hook to remove this entry.
+
+        We name this quirk 9999-bootfiles to be sure it is run at the very
+        end so that no other hooks that may fail would run after it and as
+        such ending up rebooting in the older OS but with config.txt modified
+        by this quirk hook.
+      footer:
+        Changelog-entry: Add config.txt entry removal quirk for revpi-core-3
+        changelog-entry: Add config.txt entry removal quirk for revpi-core-3
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.31.5+rev2
+  date: 2019-03-29T05:26:55.340Z
+- commits:
     - subject: Update meta-resin from v2.31.3 to v2.31.5
       hash: ae31e4a27674d36156ef7b82d5c37459c3622ba5
       body: |

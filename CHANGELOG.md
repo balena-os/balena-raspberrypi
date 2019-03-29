@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.31.5+rev2
+## (2019-03-29)
+
+* Add config.txt entry removal quirk for revpi-core-3 [Florin Sarbu]
+
 # v2.31.5+rev1
 ## (2019-03-21)
 
