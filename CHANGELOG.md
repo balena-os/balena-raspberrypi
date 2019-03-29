@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.31.5+rev3
+## (2019-03-29)
+
+* Add mt7601u firmware to rootfs for rpi0 [Florin Sarbu]
+
 # v2.31.5+rev2
 ## (2019-03-29)
 

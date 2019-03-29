@@ -1,4 +1,17 @@
 - commits:
+    - subject: Add mt7601u firmware to rootfs for rpi0
+      hash: 993dacfeb3d7f46afb5bb2fcecfaf8a7de8ed1f0
+      body: |
+        Customers are using wifi chipsets needing mt7601u firmware on rpi0
+      footer:
+        Changelog-entry: Add mt7601u firmware to rootfs for rpi0
+        changelog-entry: Add mt7601u firmware to rootfs for rpi0
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.31.5+rev3
+  date: 2019-03-29T06:39:35.564Z
+- commits:
     - subject: Add config.txt entry removal quirk for revpi-core-3
       hash: c6cccef1d8c22eb6cbccb6b9c2ceb7281243f91f
       body: |
