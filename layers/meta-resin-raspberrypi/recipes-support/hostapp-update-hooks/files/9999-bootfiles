@@ -1,0 +1,15 @@
+#!/bin/sh
+
+#
+# Script which applies a quirk to revpi-core-3's config.txt to remove an incompatible dtoverlay setting
+#
+
+set -o errexit
+
+printf "[INFO] Applying quirk to remove dtoverlay=mmc from config.txt"
+sed "/dtoverlay=mmc/d" /mnt/boot/config.txt > /mnt/boot/config.txt.new
+
+sync -f /mnt/boot
+mv /mnt/boot/config.txt.new /mnt/boot/config.txt
+sync -f /mnt/boot
+printf " done.\n"
