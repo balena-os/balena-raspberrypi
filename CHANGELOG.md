@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.31.5+rev5
+## (2019-04-01)
+
+* Change the pretty name for Raspberry Pi 3 on 64 bits [Florin Sarbu]
+
 # v2.31.5+rev4
 ## (2019-04-01)
 

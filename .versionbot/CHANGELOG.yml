@@ -1,4 +1,16 @@
 - commits:
+    - subject: Change the pretty name for Raspberry Pi 3 on 64 bits
+      hash: 599643d85f6c195879844a3b39d20c1e6c4b7937
+      body: ''
+      footer:
+        Changelog-entry: Change the pretty name for Raspberry Pi 3 on 64 bits
+        changelog-entry: Change the pretty name for Raspberry Pi 3 on 64 bits
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.31.5+rev5
+  date: 2019-04-01T14:49:31.077Z
+- commits:
     - subject: Change the poky submodule to our github mirror
       hash: a2ea077ed5ab5e93f2b4c73e086a0cf745e4f642
       body: ''
