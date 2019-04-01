@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.31.5+rev4
+## (2019-04-01)
+
+* Change the poky submodule to our github mirror [Florin Sarbu]
+* Remove brcm43438 service from the Balena Fin rootfs [Florin Sarbu]
+
 # v2.31.5+rev3
 ## (2019-03-29)
 

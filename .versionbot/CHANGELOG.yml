@@ -1,4 +1,26 @@
 - commits:
+    - subject: Change the poky submodule to our github mirror
+      hash: a2ea077ed5ab5e93f2b4c73e086a0cf745e4f642
+      body: ''
+      footer:
+        Changelog-entry: Change the poky submodule to our github mirror
+        changelog-entry: Change the poky submodule to our github mirror
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+    - subject: Remove brcm43438 service from the Balena Fin rootfs
+      hash: f204dc67a4b5dd002218914c9a8419b32e5b5384
+      body: |
+        The Balena Fin does not use this chipset
+      footer:
+        Changelog-entry: Remove brcm43438 service from the Balena Fin rootfs
+        changelog-entry: Remove brcm43438 service from the Balena Fin rootfs
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.31.5+rev4
+  date: 2019-04-01T09:18:32.669Z
+- commits:
     - subject: Add mt7601u firmware to rootfs for rpi0
       hash: 993dacfeb3d7f46afb5bb2fcecfaf8a7de8ed1f0
       body: |
