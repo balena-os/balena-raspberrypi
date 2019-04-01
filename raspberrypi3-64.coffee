@@ -5,7 +5,7 @@ module.exports =
 	version: 1
 	slug: 'raspberrypi3-64'
 	aliases: [ 'raspberrypi3-64' ]
-	name: 'Raspberry Pi 3 64bits'
+	name: 'Raspberry Pi 3 (using 64bit OS)'
 	arch: 'aarch64'
 	state: 'experimental'
 
