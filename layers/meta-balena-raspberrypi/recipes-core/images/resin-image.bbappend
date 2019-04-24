@@ -21,7 +21,6 @@ RESIN_BOOT_PARTITION_FILES_rpi = " \
 python overlay_dtbs_handler () {
     # Add all the dtb files programatically
     if d.getVar('SOC_FAMILY', True) == 'rpi':
-        kernel_imagetype = d.getVar('KERNEL_IMAGETYPE', True)
         resin_boot_partition_files = d.getVar('RESIN_BOOT_PARTITION_FILES', True)
 
         overlay_dtbs = split_overlays(d, 0)
@@ -29,11 +28,11 @@ python overlay_dtbs_handler () {
 
         for dtb in root_dtbs.split():
             dtb = os.path.basename(dtb)
-            resin_boot_partition_files += "\t%s-%s:/%s" % (kernel_imagetype, dtb, dtb)
+            resin_boot_partition_files += "\t%s:/%s" % (dtb, dtb)
 
         for dtb in overlay_dtbs.split():
             dtb = os.path.basename(dtb)
-            resin_boot_partition_files += "\t%s-%s:/overlays/%s" % (kernel_imagetype, dtb, dtb)
+            resin_boot_partition_files += "\t%s:/overlays/%s" % (dtb, dtb)
 
         d.setVar('RESIN_BOOT_PARTITION_FILES', resin_boot_partition_files)
 }
