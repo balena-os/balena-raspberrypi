@@ -35,7 +35,7 @@ module.exports =
 		machine: 'revpi-core-3'
 		image: 'resin-image'
 		fstype: 'resinos-img'
-		version: 'yocto-sumo'
+		version: 'yocto-thud'
 		deployArtifact: 'resin-image-revpi-core-3.resinos-img'
 		compressed: true
 
