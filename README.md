@@ -1,4 +1,4 @@
-#  resin-raspberrypi repository
+#  balena-raspberrypi repository
 
 ## Clone/Initialize the repository
 
@@ -14,7 +14,7 @@ bring in all the needed dependencies.
 
 ### Build flags
 
-* Consult layers/meta-resin/README.md for info on various build flags (setting
+* Consult layers/meta-balena/README.md for info on various build flags (setting
 up serial console support for example) and build prerequisites. Build flags can
 be set by using the build script (barys) or by manually modifying `local.conf`.
 
@@ -23,14 +23,14 @@ See below for using the build script.
 ### Build this repository
 
 * Run the build script:
-  `./resin-yocto-scripts/build/barys`
+  `./balena-yocto-scripts/build/barys`
 
 * You can also run barys with the -h switch to inspect the available options
 
 ### Custom build using this repository
 
 * Run the build script in dry run mode to setup an empty `build` directory
-    `./resin-yocto-scripts/build/barys --remove-build --dry-run`
+    `./balena-yocto-scripts/build/barys --remove-build --dry-run`
 
 * Edit the `local.conf` in the `build/conf` directory
 
@@ -43,7 +43,7 @@ See below for using the build script.
 
 ### Issues
 
-For issues we use an aggregated github repository available [here](https://github.com/resin-os/resinos/issues). When you create issue make sure you select the right labels.
+For issues we use an aggregated github repository available [here](https://github.com/balena-os/balenaos/issues). When you create issue make sure you select the right labels.
 
 ### Pull requests
 
@@ -71,16 +71,16 @@ The subject and the footer of each commit must be separated by an empty line.
 
 Every pull request must contain at least one commit annotated with the `Changelog-entry` footer. The messages contained in these footers will be used to automatically fill the changelog on every new version.
 
-Also, every update to `meta-resin` should be separated into its own commit, if the body of that commit contains the following line `Updated meta-resin from X to Y` the generated changelog will include a button to show all the updates in `meta-resin` from the version after `X` to `Y`.
+Also, every update to `meta-balena` should be separated into its own commit, if the body of that commit contains the following line `Updated meta-balena from X to Y` the generated changelog will include a button to show all the updates in `meta-balena` from the version after `X` to `Y`.
 
-An example of a valid commit updating `meta-resin` is:
+An example of a valid commit updating `meta-balena` is:
 
 ```
-layers/meta-resin: Update to v2.24.0
+layers/meta-balena: Update to v2.24.0
 
-Update meta-resin from 2.19.0 to 2.24.0
+Update meta-balena from 2.19.0 to 2.24.0
 
-Changelog-entry: Update the meta-resin submodule from v2.19.0 to v2.24.0
+Changelog-entry: Update the meta-balena submodule from v2.19.0 to v2.24.0
 ```
 
 Make sure you mention the issue addressed by a PR. See:
