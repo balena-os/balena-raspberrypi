@@ -7,9 +7,9 @@
 [submodule "layers/meta-raspberrypi"]
 	path = layers/meta-raspberrypi
 	url = https://git.yoctoproject.org/git/meta-raspberrypi
-[submodule "layers/meta-resin"]
-	path = layers/meta-resin
-	url = https://github.com/resin-os/meta-resin.git
+[submodule "layers/meta-balena"]
+	path = layers/meta-balena
+	url = https://github.com/balena-os/meta-balena.git
 [submodule "balena-yocto-scripts"]
 	path = balena-yocto-scripts
 	url = https://github.com/balena-os/balena-yocto-scripts.git

@@ -1,0 +1,24 @@
+This works around a core dump when running the usb_modeswitch systemd service
+on 64 bits platforms (generic Intel x86-64 platforms, NVidia Jetson TX2 etc.):
+
+usb_modeswitch_dispatcher[1376]: usb_modeswitch_dispatcher: malloc.c:2415: sysmalloc:
+Assertion `(old_top == initial_top (av) && old_size == 0) || ((unsigned long) (old_size) >= MINSIZE &&prev_inuse (old_top) &&
+((unsigned long) old_end & (pagesize - 1)) == 0)' failed. Oct 25 07:59:22 6f166e9 systemd[1]: usb_modeswitch@1-2:1.0.service:
+Main process exited, code=dumped, status=6/ABRT Oct 25 07:59:22 6f166e9 systemd[1]: usb_modeswitch@1-2:1.0.service:
+Unit entered failed state. Oct 25 07:59:22 6f166e9 systemd[1]: usb_modeswitch@1-2:1.0.service: Failed with result 'core-dump'.
+
+Signed-off-by: Florin Sarbu <florin@balena.io>
+Upstream-status: Pending
+
+Index: usb-modeswitch-2.5.0/usb_modeswitch@.service
+===================================================================
+--- usb-modeswitch-2.5.0.orig/usb_modeswitch@.service
++++ usb-modeswitch-2.5.0/usb_modeswitch@.service
+@@ -2,6 +2,7 @@
+ Description=USB_ModeSwitch_%i
+ 
+ [Service]
++StandardOutput=journal+console
+ Type=oneshot
+ ExecStart=/usr/sbin/usb_modeswitch_dispatcher --switch-mode %i
+ #ExecStart=/bin/echo %i
