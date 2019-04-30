@@ -1,4 +1,340 @@
 - commits:
+    - subject: Update meta-balena from v2.31.5 to v2.32.0
+      hash: 250e3e3cfac3a47b98c3ad51618a83d8f433a147
+      body: |
+        Update meta-balena from 2.31.5 to 2.32.0
+      footer:
+        Changelog-entry: Update meta-balena from v2.31.5 to v2.32.0
+        changelog-entry: Update meta-balena from v2.31.5 to v2.32.0
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: 'balena-supervisor: Update to v9.14.0'
+              hash: 215ba6f6e03ac7a9575046ebdf054cd6091cd8f4
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Cameron Diver <cameron@balena.io>
+                signed-off-by: Cameron Diver <cameron@balena.io>
+              author: Cameron Diver
+            - subject: 'readme: Replace resin with balena where appropriate'
+              hash: ab578aecc50d9f2e88e935251a5d9025ccd95069
+              body: |
+                To be more consistent in naming.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Roman Mazur <mazur.roman@gmail.com>
+                signed-off-by: Roman Mazur <mazur.roman@gmail.com>
+              author: Roman Mazur
+            - subject: Add systemd-analyze to production images as well
+              hash: ae99502356d994dee5896164afbe7df8bde00d6a
+              body: |
+                We'd like to track boot time in production images as well.
+                As we currently have space in the OS, lets add it.
+
+                Size increase 1.2Mb (pi3)
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Add systemd-analyze to production images as well
+                changelog-entry: Add systemd-analyze to production images as well
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: Enable dbus interface for dnsmasq
+              hash: 6886d08e1b37fa52055e743b05a68b069319dfd5
+              body: >
+                The dbus interface is useful for containers to qeury dnsmasq if
+                needed.
+
+                Fixes #1453
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Enable dbus interface for dnsmasq
+                changelog-entry: Enable dbus interface for dnsmasq
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: >-
+                Disable docker bridge while pulling the supervisor container to
+                remove runtime balena-engine warnings
+              hash: 0764b2949784f5c34cf20f56b8a42c38f6d475c1
+              body: >
+                By default, the supervisor container is created with the default
+                bridge
+
+                network docker0. Which causes spurious warnings in balenaOS.
+
+
+                Disable the bridge network during build as we don't need it
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: >-
+                  Disable docker bridge while pulling the supervisor container
+                  to remove runtime balena-engine warnings
+                changelog-entry: >-
+                  Disable docker bridge while pulling the supervisor container
+                  to remove runtime balena-engine warnings
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: Fix typo in os-networkmanager that prevented it from working
+              hash: d649dd317d9ca0a9c1aa4abcb5cf0c0ae8798f95
+              body: >
+                The device section in networkmanager.conf is [device] not
+                [Device].
+
+                Fix the typo
+
+                Fixes #1448
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Fix typo in os-networkmanager that prevented it from working
+                changelog-entry: Fix typo in os-networkmanager that prevented it from working
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: >-
+                Fix bug where fsck was run on the data partition on every boot
+                even if it wasn't needed due to old system time.
+              hash: aa0d2154eb8aeee220807211317eafe153f46378
+              body: >
+                e2fsck by default checks differences between the system time and
+                the
+
+                last filesystem mount timestamp.
+
+
+                As we run on devices without an rtc, and we run the
+                filesystem-expand
+
+                service which runs fsck before ntp sync happens, this results in
+                errors
+
+                like
+
+
+                Superblock last mount time (Thu Mar 14 17:13:02 2019,
+                      now = Mon Mar 11 15:29:56 2019) is in the future.
+                Fix? yes
+
+
+                This results in fsck running on the data partition on every boot
+                which
+
+                slows down the boot time.
+
+
+                Add e2fsck.conf file with the broken_system_clock flag to
+                prevent this
+
+                check from running fsck on every boot. Quite a few distros do
+                this as
+
+                well.
+
+                Fixes #1438
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: >-
+                  Fix bug where fsck was run on the data partition on every boot
+                  even if it wasn't needed due to old system time.
+                changelog-entry: >-
+                  Fix bug where fsck was run on the data partition on every boot
+                  even if it wasn't needed due to old system time.
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: Fix the balena version string reported by balena-engine info
+              hash: 19c7a0e368ea4ff3d0ac525a7743bc9ee00257e7
+              body: >
+                The version is 17.13.3. We'll need to bump the version string as
+                well
+
+                now that versionbot is being used in the balena-engine repo.
+
+                Fixes 1433
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Fix the balena version string reported by balena-engine info
+                changelog-entry: Fix the balena version string reported by balena-engine info
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: Only check mmc devices for flasher image presence by default.
+              hash: 5da7792e8c85f49fed15488ca983c1252f120d8b
+              body: >
+                Currently mmc and usb devices are checked at every boot for the
+                presence
+
+                of flasher images. USB initialization is slow 1-3 seconds. This
+                slows
+
+                boot time significantly.
+
+
+                Most device types dont need to check for the presence of flasher
+                images
+
+                in usb devies. Modify u-boot to only check for mmc devices.
+
+
+                usb initialization happens in devices via the "usb start"
+                command. This
+
+                is usually configured in CONFIG_PREBOOT for devices. Devices
+                will need
+
+                to remove "usb start" from CONFIG_PREBOOT to benefit from any
+                boot time
+
+                optimization.
+
+
+                We will need to run "usb start" ourselves via env_resin for any
+                device
+
+                that happens to be searching for flasher images in usb device
+                types.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Only check mmc devices for flasher image presence by default.
+                changelog-entry: Only check mmc devices for flasher image presence by default.
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: Remove an extra redundant copy of udev rules database
+              hash: 2e5a48350f359d516b4cf395d46c453434d53422
+              body: >
+                These files are used to generate /etc/udev/hwdb.bin at build
+                time.
+
+                "During runtime, only the binary database is used." from
+
+                https://www.freedesktop.org/software/systemd/man/hwdb.html
+
+
+                Remove these files from the final os image to save us 5.9Mb.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Remove an extra redundant copy of udev rules database
+                changelog-entry: Remove an extra redundant copy of udev rules database
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: >-
+                Un-upx mobynit and os-config to speed them up a bit. Approx 1
+                second boost to boot time.
+              hash: d1e710fd78ddbcc2142d10d1bade43b54a99dee7
+              body: >
+                We have space in the OS now. Avoid compressing os-config to
+                speed it
+
+                up a bit.
+
+
+                Example compression levels for pi0
+
+
+                root@62d0b9a:/mnt/data# du -hs os-config*
+
+                2.6M    os-config
+
+                700K    os-config_upxed
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: >-
+                  Un-upx mobynit and os-config to speed them up a bit. Approx 1
+                  second boost to boot time.
+                changelog-entry: >-
+                  Un-upx mobynit and os-config to speed them up a bit. Approx 1
+                  second boost to boot time.
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+          version: meta-balena-2.32.0
+          date: 2019-04-08T17:06:17.364Z
+    - subject: Workaround for usb_modeswitch crash on rpi3 64 bits
+      hash: 985ad42b3464cc0e3faefa0fa835302741ea3cf5
+      body: |
+        On 64 bits platforms (Intel x86-64, NVidia Jetson TX2, rpi3 64 bits),
+        the systemd usb-modeswitch service will core dump when starting.
+      footer:
+        Changelog-entry: Workaround for usb_modeswitch crash on rpi3 64 bits
+        changelog-entry: Workaround for usb_modeswitch crash on rpi3 64 bits
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+    - subject: >-
+        Do not try to package the missing uart0 overlay in the revpi-core-3
+        rootfs
+      hash: d1e575f30476b01faee9270e57d17856517f32c9
+      body: |
+        We previously added the uart0 overlay to the rootfs. However,
+        revpi-core-3 uses an older kernel which lacks this overlay.
+      footer:
+        Changelog-entry: >-
+          Do not try to package the missing uart0 overlay in the revpi-core-3
+          rootfs
+        changelog-entry: >-
+          Do not try to package the missing uart0 overlay in the revpi-core-3
+          rootfs
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+    - subject: Add the uart0 overlay to rootfs
+      hash: efc8bd4dfa800e9a1b250d979a65a8808965e4f3
+      body: |
+        We add the uart0 overlay to the rootfs alongside the
+        existing uart1 overlay.
+      footer:
+        Changelog-entry: Add the uart0 overlay to rootfs
+        changelog-entry: Add the uart0 overlay to rootfs
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+    - subject: Update the balena-yocto-scripts submodule to v1.0.6
+      hash: 2bf6c874e3b76f076ae0fde4b5ba371c5a235e9e
+      body: ''
+      footer:
+        Changelog-entry: Update the balena-yocto-scripts submodule to v1.0.6
+        changelog-entry: Update the balena-yocto-scripts submodule to v1.0.6
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+    - subject: Update repo.yml to be able to trigger VersionBot with `meta-balena`
+      hash: a53cbb3ce793fb21948107dca03181b2e9d7ff59
+      body: ''
+      footer:
+        Changelog-entry: Update repo.yml to be able to trigger VersionBot with `meta-balena`
+        changelog-entry: Update repo.yml to be able to trigger VersionBot with `meta-balena`
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+    - subject: Rename meta-resin to meta-balena in repository
+      hash: ccb83bb38e28e1f5b93a1a9f2c6b36f17ac5a112
+      body: ''
+      footer:
+        Changelog-entry: Rename meta-resin to meta-balena in repository
+        changelog-entry: Rename meta-resin to meta-balena in repository
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.32.0+rev1
+  date: 2019-04-30T07:09:45.488Z
+- commits:
     - subject: Change the pretty name for Raspberry Pi 3 on 64 bits
       hash: 599643d85f6c195879844a3b39d20c1e6c4b7937
       body: ''

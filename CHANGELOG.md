@@ -1,6 +1,37 @@
 Change log
 -----------
 
+# v2.32.0+rev1
+## (2019-04-30)
+
+* Update meta-balena from v2.31.5 to v2.32.0 [Florin Sarbu]
+
+<details>
+<summary> View details </summary>
+
+## meta-balena-2.32.0
+### (2019-04-08)
+
+* balena-supervisor: Update to v9.14.0 [Cameron Diver]
+* readme: Replace resin with balena where appropriate [Roman Mazur]
+* Add systemd-analyze to production images as well [Zubair Lutfullah Kakakhel]
+* Enable dbus interface for dnsmasq [Zubair Lutfullah Kakakhel]
+* Disable docker bridge while pulling the supervisor container to remove runtime balena-engine warnings [Zubair Lutfullah Kakakhel]
+* Fix typo in os-networkmanager that prevented it from working [Zubair Lutfullah Kakakhel]
+* Fix bug where fsck was run on the data partition on every boot even if it wasn't needed due to old system time. [Zubair Lutfullah Kakakhel]
+* Fix the balena version string reported by balena-engine info [Zubair Lutfullah Kakakhel]
+* Only check mmc devices for flasher image presence by default. [Zubair Lutfullah Kakakhel]
+* Remove an extra redundant copy of udev rules database [Zubair Lutfullah Kakakhel]
+* Un-upx mobynit and os-config to speed them up a bit. Approx 1 second boost to boot time. [Zubair Lutfullah Kakakhel]
+</details>
+
+* Workaround for usb_modeswitch crash on rpi3 64 bits [Florin Sarbu]
+* Do not try to package the missing uart0 overlay in the revpi-core-3 rootfs [Florin Sarbu]
+* Add the uart0 overlay to rootfs [Florin Sarbu]
+* Update the balena-yocto-scripts submodule to v1.0.6 [Florin Sarbu]
+* Update repo.yml to be able to trigger VersionBot with `meta-balena` [Florin Sarbu]
+* Rename meta-resin to meta-balena in repository [Florin Sarbu]
+
 # v2.31.5+rev5
 ## (2019-04-01)
 
