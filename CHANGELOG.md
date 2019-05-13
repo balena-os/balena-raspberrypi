@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.33.0+rev2
+## (2019-05-07)
+
+* Update to yocto thud [Andrei Gherzan]
+
 # v2.33.0+rev1
 ## (2019-05-02)
 

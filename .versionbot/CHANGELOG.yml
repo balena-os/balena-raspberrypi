@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update to yocto thud
+      hash: 07e42b2e5047c9b051e5a63dd1cad174090a325d
+      body: ''
+      footer:
+        Changelog-entry: Update to yocto thud
+        changelog-entry: Update to yocto thud
+        Signed-off-by: Andrei Gherzan <andrei@balena.io>
+        signed-off-by: Andrei Gherzan <andrei@balena.io>
+      author: Andrei Gherzan
+  version: 2.33.0+rev2
+  date: 2019-05-07T13:55:28.284Z
+- commits:
     - subject: Update rust to 1.33
       hash: 7e49b73e295d97fc99ace0b4c1aa1a422d9e404b
       body: ''
