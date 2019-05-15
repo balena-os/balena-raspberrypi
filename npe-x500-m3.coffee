@@ -30,7 +30,7 @@ module.exports =
 		machine: 'npe-x500-m3'
 		image: 'resin-image'
 		fstype: 'resinos-img'
-		version: 'yocto-sumo'
+		version: 'yocto-thud'
 		deployArtifact: 'resin-image-npe-x500-m3.resinos-img'
 		compressed: true
 
