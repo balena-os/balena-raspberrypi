@@ -1,4 +1,16 @@
 - commits:
+    - subject: Set yocto version to thud for board NPE X500 M3
+      hash: bd0df9e0afc220d0befa8dfce65c7c897fb26428
+      body: ''
+      footer:
+        Changelog-entry: Set yocto version to thud for board NPE X500 M3
+        changelog-entry: Set yocto version to thud for board NPE X500 M3
+        Signed-off-by: Adolfo E. García Castro <adolfo.garcia.cr@gmail.com>
+        signed-off-by: Adolfo E. García Castro <adolfo.garcia.cr@gmail.com>
+      author: Adolfo E. García
+  version: 2.34.1+rev2
+  date: 2019-05-15T20:17:03.829Z
+- commits:
     - subject: Update meta-balena from v2.33.0 to v2.34.1
       hash: 889c9cc253caf327a3ce135803c4642f84d6337a
       body: |

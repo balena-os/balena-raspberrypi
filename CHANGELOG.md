@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.34.1+rev2
+## (2019-05-15)
+
+* Set yocto version to thud for board NPE X500 M3 [Adolfo E. García]
+
 # v2.34.1+rev1
 ## (2019-05-15)
 
