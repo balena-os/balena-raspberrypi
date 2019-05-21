@@ -1,6 +1,33 @@
 Change log
 -----------
 
+# v2.36.0+rev1
+## (2019-05-21)
+
+* Update meta-balena from v2.34.1 to v2.36.0 [Florin Sarbu]
+
+<details>
+<summary> View details </summary>
+
+## meta-balena-2.36.0
+### (2019-05-20)
+
+* Cleanup old versions of iwlwifi firmware files in Yocto Thud [Florin Sarbu]
+
+## meta-balena-2.35.0
+### (2019-05-18)
+
+* Update kernel-module-headers to version v0.0.16 [Florin Sarbu]
+* Add uboot support for unified kernel cmdline arguments [Andrei Gherzan]
+* Switch flasher detection in initramfs to flasher boot parameter [Andrei Gherzan]
+* Update balena-supervisor to v9.15.0 [Cameron Diver]
+* Improve boot speed by only mounting the inactive partition when needed [Zubair Lutfullah Kakakhel]
+* Fix openssl dependency of balena-unique-key [Andrei Gherzan]
+* Do not spawn getty in production images [Florin Sarbu]
+</details>
+
+* Update the balena-yocto-scripts submodule to v1.1.0 [Florin Sarbu]
+
 # v2.34.1+rev2
 ## (2019-05-15)
 
