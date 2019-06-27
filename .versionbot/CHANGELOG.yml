@@ -1,4 +1,104 @@
 - commits:
+    - subject: Update meta-balena from v2.38.0 to v2.38.1
+      hash: 518a1fa201fd9216c149c2b421570b5f82d982dd
+      body: |
+        Update meta-balena from 2.38.0 to 2.38.1
+      footer:
+        Changelog-entry: Update meta-balena from v2.38.0 to v2.38.1
+        changelog-entry: Update meta-balena from v2.38.0 to v2.38.1
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: Add warrior to compatible layers for meta-balena-common
+              hash: 0ba0bc35ceeb78e03baebf79b738885d532734fc
+              body: |
+                In addition we delete krogoth and morty from the supported list
+                as we also removed the actual layers from the repository.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Add warrior to compatible layers for meta-balena-common
+                changelog-entry: Add warrior to compatible layers for meta-balena-common
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+            - subject: Fix image-resin.bbclass to be able to use deprecated layers
+              hash: 9e8fed3a7170040d4ba887bfd8fc018b97de5d12
+              body: >
+                Fixes #1564
+
+
+                This bbclass uses the common layer path advertised by BBLAYERS
+                to find
+
+                the paths to different resources in board repository. For
+                example
+
+                machine json - to get the slug and advertise it in os-release.
+                After
+
+                renaming the common layer (resin to balena) and because we
+                support old
+
+                references to the old common layer name (by including a dummy
+
+                deprecation layer), we need to make sure this class can cope now
+                with
+
+                both cases.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Fix image-resin.bbclass to be able to use deprecated layers
+                changelog-entry: Fix image-resin.bbclass to be able to use deprecated layers
+                Signed-off-by: Andrei Gherzan <andrei@balena.io>
+                signed-off-by: Andrei Gherzan <andrei@balena.io>
+              author: Andrei Gherzan
+            - subject: Fix kernel-devsrc on thud when kernel version < 4.10
+              hash: c4cd6307ac3ae86a8d34b91d9dc82b6d3310db9b
+              body: >
+                Thud breaks when building against kernel version < 4.10. This is
+                a known
+
+                issue which is fixed in poky warrior[1]. This patch includes a
+
+                workaround for thud.
+
+
+                [1]
+                http://lists.openembedded.org/pipermail/openembedded-core/2019-February/278695.html
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Fix kernel-devsrc on thud when kernel version < 4.10
+                changelog-entry: Fix kernel-devsrc on thud when kernel version < 4.10
+                Signed-off-by: Andrei Gherzan <andrei@balena.io>
+                signed-off-by: Andrei Gherzan <andrei@balena.io>
+              author: Andrei Gherzan
+          version: meta-balena-2.38.1
+          date: 2019-06-20T12:30:28.452Z
+    - subject: Add bluetooth dependency for the raspberrypi machine
+      hash: c5944402341f71ea0198889ff2f98b91b88ee351
+      body: |
+        The pi-bluetooth gets chained in through
+        a dependency in bluetooth, in thud. This dependency
+        is defined in bluez5 and matches the machine.
+        Currently, the raspberrypi BSP only does it for
+        raspberrypi zero wireless and raspberrypi3.
+        To adapt this for the balena machine setup (which has
+        raspberrypi and raspberrypi zero wireless support in the
+        same machine) the same dependency needs to be added.
+      footer:
+        Changelog-entry: Add bluetooth dependency for the raspberrypi machine
+        changelog-entry: Add bluetooth dependency for the raspberrypi machine
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+  version: 2.38.1+rev1
+  date: 2019-06-27T03:44:55.435Z
+- commits:
     - subject: Update meta-balena from v2.37.0 to v2.38.0
       hash: 2bc927ee3ca96893c678d2e095c9b3854759e8cc
       body: |
