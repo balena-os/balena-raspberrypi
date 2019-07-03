@@ -1,0 +1,77 @@
+Date: Sat,  8 Jun 2019 10:38:06 -0700
+Subject: [PATCH net 2/4] tcp: tcp_fragment() should apply sane memory limits
+From: Eric Dumazet <edumazet@google.com>
+
+Jonathan Looney reported that a malicious peer can force a sender
+to fragment its retransmit queue into tiny skbs, inflating memory
+usage and/or overflow 32bit counters.
+
+TCP allows an application to queue up to sk_sndbuf bytes,
+so we need to give some allowance for non malicious splitting
+of retransmit queue.
+
+A new SNMP counter is added to monitor how many times TCP
+did not allow to split an skb if the allowance was exceeded.
+
+Note that this counter might increase in the case applications
+use SO_SNDBUF socket option to lower sk_sndbuf.
+
+Signed-off-by: Eric Dumazet <edumazet@google.com>
+Reported-by: Jonathan Looney <jtl@netflix.com>
+Acked-by: Neal Cardwell <ncardwell@google.com>
+Acked-by: Yuchung Cheng <ycheng@google.com>
+Reviewed-by: Tyler Hicks <tyhicks@canonical.com>
+Cc: Bruce Curtis <brucec@netflix.com>
+Cc: Jonathan Lemon <jonathan.lemon@gmail.com>
+
+Upstream-Status: Inappropriate [not author]
+Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+---
+ include/uapi/linux/snmp.h | 1 +
+ net/ipv4/proc.c           | 1 +
+ net/ipv4/tcp_output.c     | 5 +++++
+ 3 files changed, 7 insertions(+)
+
+diff --git a/include/uapi/linux/snmp.h b/include/uapi/linux/snmp.h
+index f5d753e..bf31965 100644
+--- a/include/uapi/linux/snmp.h
++++ b/include/uapi/linux/snmp.h
+@@ -278,6 +278,7 @@ enum
+ 	LINUX_MIB_TCPKEEPALIVE,			/* TCPKeepAlive */
+ 	LINUX_MIB_TCPMTUPFAIL,			/* TCPMTUPFail */
+ 	LINUX_MIB_TCPMTUPSUCCESS,		/* TCPMTUPSuccess */
++	LINUX_MIB_TCPWQUEUETOOBIG,		/* TCPWqueueTooBig */
+ 	__LINUX_MIB_MAX
+ };
+ 
+diff --git a/net/ipv4/proc.c b/net/ipv4/proc.c
+index 3fbf688..88aaf14 100644
+--- a/net/ipv4/proc.c
++++ b/net/ipv4/proc.c
+@@ -299,6 +299,7 @@ static const struct snmp_mib snmp4_net_list[] = {
+ 	SNMP_MIB_ITEM("TCPKeepAlive", LINUX_MIB_TCPKEEPALIVE),
+ 	SNMP_MIB_ITEM("TCPMTUPFail", LINUX_MIB_TCPMTUPFAIL),
+ 	SNMP_MIB_ITEM("TCPMTUPSuccess", LINUX_MIB_TCPMTUPSUCCESS),
++	SNMP_MIB_ITEM("TCPWqueueTooBig", LINUX_MIB_TCPWQUEUETOOBIG),
+ 	SNMP_MIB_SENTINEL
+ };
+ 
+diff --git a/net/ipv4/tcp_output.c b/net/ipv4/tcp_output.c
+index def09d1..36d1945 100644
+--- a/net/ipv4/tcp_output.c
++++ b/net/ipv4/tcp_output.c
+@@ -1274,6 +1274,11 @@ int tcp_fragment(struct sock *sk, struct sk_buff *skb, u32 len,
+ 	if (nsize < 0)
+ 		nsize = 0;
+ 
++	if (unlikely((sk->sk_wmem_queued >> 1) > sk->sk_sndbuf)) {
++		NET_INC_STATS(sock_net(sk), LINUX_MIB_TCPWQUEUETOOBIG);
++		return -ENOMEM;
++	}
++
+ 	if (skb_unclone(skb, gfp))
+ 		return -ENOMEM;
+ 
+-- 
+2.7.4
+
