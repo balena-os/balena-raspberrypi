@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v2.38.2+rev1
+## (2019-07-03)
+
+* Update the balena-yocto-scripts submodule to v1.2.3 [Florin Sarbu]
+
+<details>
+<summary> Update meta-balena from v2.38.1 to v2.38.2 [Florin Sarbu] </summary>
+
+> ## meta-balena-2.38.2
+> ### (2019-06-27)
+> 
+> * Update to kernel-modules-headers v0.0.20 to fix missing target modpost binary on kernel 5.0.3 [Florin Sarbu]
+> * Update to kernel-modules-headers v0.0.19 to fix target objtool compile issue on kernel 5.0.3 [Florin Sarbu]
+</details>
+
 # v2.38.1+rev2
 ## (2019-07-03)
 
