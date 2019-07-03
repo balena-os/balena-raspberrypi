@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.38.1+rev2
+## (2019-07-03)
+
+* Patches for TCP-based remote denial of service vulnerabilities [Vicentiu Galanopulo]
+
 # v2.38.1+rev1
 ## (2019-06-27)
 

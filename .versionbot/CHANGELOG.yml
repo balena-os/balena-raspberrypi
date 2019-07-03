@@ -1,4 +1,34 @@
 - commits:
+    - subject: Patches for TCP-based remote denial of service vulnerabilities
+      hash: e5d92f9ac7ed96c17680d641f1f7aa034f80eb55
+      body: >
+        Netflix has identified several TCP networking vulnerabilities
+
+        in FreeBSD and Linux kernels. The vulnerabilities specifically
+
+        relate to the Maximum Segment Size (MSS) and TCP
+
+        Selective Acknowledgement (SACK) capabilities.
+
+        The most serious, dubbed SACK Panic, allows a
+
+        remotely-triggered kernel panic on recent Linux kernels.
+
+
+        These patches address most of these vulnerabilities.
+
+        Patch source:
+
+        https://github.com/Netflix/security-bulletins/blob/master/advisories/third-party/2019-001.md
+      footer:
+        Changelog-entry: Patches for TCP-based remote denial of service vulnerabilities
+        changelog-entry: Patches for TCP-based remote denial of service vulnerabilities
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+  version: 2.38.1+rev2
+  date: 2019-07-03T12:58:59.449Z
+- commits:
     - subject: Update meta-balena from v2.38.0 to v2.38.1
       hash: 518a1fa201fd9216c149c2b421570b5f82d982dd
       body: |
