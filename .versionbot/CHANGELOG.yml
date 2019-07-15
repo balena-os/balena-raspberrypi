@@ -1,4 +1,48 @@
 - commits:
+    - subject: Update the balena-yocto-scripts submodule to v1.3.1
+      hash: 77fbbdc32514c20e23c985d87ba692f91c4228f9
+      body: ''
+      footer:
+        Changelog-entry: Update the balena-yocto-scripts submodule to v1.3.1
+        changelog-entry: Update the balena-yocto-scripts submodule to v1.3.1
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+    - subject: Update to Poky warrior-21.0.0
+      hash: 750cb3abf6cd46f4955c488bbfa314f3480cf23a
+      body: ''
+      footer:
+        Changelog-entry: Update to Poky warrior-21.0.0
+        changelog-entry: Update to Poky warrior-21.0.0
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+    - subject: Update meta-balena from v2.38.2 to v2.38.3
+      hash: a537780e4f63a94f5f3c9792e667e82556a1e981
+      body: |
+        Update meta-balena from 2.38.2 to 2.38.3
+      footer:
+        Changelog-entry: Update meta-balena from v2.38.2 to v2.38.3
+        changelog-entry: Update meta-balena from v2.38.2 to v2.38.3
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: 'resin-proxy-config: fix up incorrect bash subshell command'
+              hash: 0c8de756c22f635b2ef499848b724f1350f555b0
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Matthew McGinn <matthew@balena.io>
+                signed-off-by: Matthew McGinn <matthew@balena.io>
+              author: Matthew McGinn
+          version: meta-balena-2.38.3
+          date: 2019-07-10T08:16:25.713Z
+  version: 2.38.3+rev1
+  date: 2019-07-14T14:46:35.766Z
+- commits:
     - subject: Update the balena-yocto-scripts submodule to v1.2.3
       hash: 792c84424b2db30a0e8ac7ce47821b7d2fab12c9
       body: ''

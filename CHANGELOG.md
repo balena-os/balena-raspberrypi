@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v2.38.3+rev1
+## (2019-07-14)
+
+* Update the balena-yocto-scripts submodule to v1.3.1 [Florin Sarbu]
+* Update to Poky warrior-21.0.0 [Florin Sarbu]
+
+<details>
+<summary> Update meta-balena from v2.38.2 to v2.38.3 [Florin Sarbu] </summary>
+
+> ## meta-balena-2.38.3
+> ### (2019-07-10)
+> 
+> * resin-proxy-config: fix up incorrect bash subshell command [Matthew McGinn]
+</details>
+
 # v2.38.2+rev1
 ## (2019-07-03)
 
