@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.38.3+rev2
+## (2019-07-15)
+
+* Update the balena-yocto-scripts submodule to v1.3.2 [Florin Sarbu]
+
 # v2.38.3+rev1
 ## (2019-07-14)
 
