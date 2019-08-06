@@ -1,4 +1,49 @@
 - commits:
+    - subject: Use the bcm2835-bootfiles version from the BSP layer
+      hash: 0a4f43de5a3da2f0373833028599f74a76289a4f
+      body: |
+        The BSP updated the bootfiles in the meanwhile so let's follow the BSP
+        update.
+      footer:
+        Changelog-entry: Use the bcm2835-bootfiles version from the BSP layer
+        changelog-entry: Use the bcm2835-bootfiles version from the BSP layer
+        Signed-off-by: Andrei Gherzan <andrei@balena.io>
+        signed-off-by: Andrei Gherzan <andrei@balena.io>
+      author: Andrei Gherzan
+    - subject: 'meta-raspberrypi: Update to latest commit on warrior'
+      hash: 6a167fb9b4a1600e895865bbe1a012630a532a14
+      body: ''
+      footer:
+        Changelog-entry: 'meta-raspberrypi: Update to latest commit on warrior'
+        changelog-entry: 'meta-raspberrypi: Update to latest commit on warrior'
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+    - subject: 'linux-raspberrypi: Use version from BSP layer'
+      hash: 631b4d56c126e04f59183674404d84a6016bdf29
+      body: |
+        We also remove the Netflix networking patches that are now
+        applied in the BSP 4.19 kernel
+      footer:
+        Changelog-entry: 'linux-raspberrypi: Use version from BSP layer'
+        changelog-entry: 'linux-raspberrypi: Use version from BSP layer'
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+    - subject: 'u-boot: Use version dictated by meta-raspberrypi BSP layer'
+      hash: 2a4e07ba4f29ce7a7999749c6d68066d395a10d0
+      body: |
+        This commit removes the recipes that compiled u-boot 2018 version
+        and use instead the u-boot version from the BSP layer
+      footer:
+        Changelog-entry: 'u-boot: Use version dictated by meta-raspberrypi BSP layer'
+        changelog-entry: 'u-boot: Use version dictated by meta-raspberrypi BSP layer'
+        Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+        signed-off-by: Sebastian Panceac <sebastian@balena.io>
+      author: Sebastian Panceac
+  version: 2.38.3+rev5
+  date: 2019-08-06T10:56:13.094Z
+- commits:
     - subject: Update the balena-yocto-scripts submodule to v1.3.5
       hash: 2198d19e823f17363f4fc1d6a72a8a20a4dd6c1c
       body: ''
