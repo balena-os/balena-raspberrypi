@@ -1,11 +1,5 @@
 FILESEXTRAPATHS_append := ":${THISDIR}/files"
 
-RPIFW_DATE = "20181112"
-SRCREV = "12e0bf86e08d6067372bc0a45d7e8a10d3113210"
-
-SRC_URI[md5sum] = "1d6b3dc59aa4fc4ff53470682e709fbc"
-SRC_URI[sha256sum] = "4cc835ba0f437de494b391df7fdb88c96e6264a6c06a2c9e8371e304945e7540"
-
 SRC_URI += " \
     file://fincm3-dt-blob.bin \
 "
