@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.38.3+rev6
+## (2019-08-11)
+
+* revpi-core-3: Remove references to non-existent device tree files in linux-kunbus version 4.9.76 [Florin Sarbu]
+
 # v2.38.3+rev5
 ## (2019-08-06)
 

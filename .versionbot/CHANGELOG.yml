@@ -1,4 +1,25 @@
 - commits:
+    - subject: >-
+        revpi-core-3: Remove references to non-existent device tree files in
+        linux-kunbus version 4.9.76
+      hash: 761b33d48a4e9b242cba6d83fd870edeb4b1480a
+      body: |
+        The linux-kunbus source at version 4.9.76 has no device tree
+        called bcm2708-rpi-zero-w.dtb, bcm2711-rpi-4-b.dtb so we remove
+        the reference to them in order to avoid a kernel build error.
+      footer:
+        Changelog-entry: >-
+          revpi-core-3: Remove references to non-existent device tree files in
+          linux-kunbus version 4.9.76
+        changelog-entry: >-
+          revpi-core-3: Remove references to non-existent device tree files in
+          linux-kunbus version 4.9.76
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.38.3+rev6
+  date: 2019-08-11T19:46:32.308Z
+- commits:
     - subject: Use the bcm2835-bootfiles version from the BSP layer
       hash: 0a4f43de5a3da2f0373833028599f74a76289a4f
       body: |
