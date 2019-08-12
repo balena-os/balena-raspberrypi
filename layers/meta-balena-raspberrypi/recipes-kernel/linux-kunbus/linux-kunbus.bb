@@ -9,4 +9,5 @@ SRC_URI = " \
 
 require linux-raspberrypi.inc
 
-RPI_KERNEL_DEVICETREE_remove = "bcm2710-rpi-3-b-plus.dtb"
+# the following device tree files are not available in this kernel version
+RPI_KERNEL_DEVICETREE_remove = "bcm2708-rpi-zero-w.dtb bcm2710-rpi-3-b-plus.dtb bcm2711-rpi-4-b.dtb"
