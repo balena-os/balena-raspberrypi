@@ -1,5 +1,25 @@
 - commits:
     - subject: >-
+        Update sd8887-mrvl driver to 15.68.19.p22 for wlan and 15.26.19.p22 for
+        bt
+      hash: 89f0be7011e00f52526fdfc13d10f98199ff87a2
+      body: |
+        We update to release 15.68.19.p22 for wlan and
+        15.26.19.p22 for bt.
+      footer:
+        Changelog-entry: >-
+          Update sd8887-mrvl driver to 15.68.19.p22 for wlan and 15.26.19.p22
+          for bt
+        changelog-entry: >-
+          Update sd8887-mrvl driver to 15.68.19.p22 for wlan and 15.26.19.p22
+          for bt
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.38.3+rev7
+  date: 2019-08-12T06:30:03.073Z
+- commits:
+    - subject: >-
         revpi-core-3: Remove references to non-existent device tree files in
         linux-kunbus version 4.9.76
       hash: 761b33d48a4e9b242cba6d83fd870edeb4b1480a

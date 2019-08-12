@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.38.3+rev7
+## (2019-08-12)
+
+* Update sd8887-mrvl driver to 15.68.19.p22 for wlan and 15.26.19.p22 for bt [Florin Sarbu]
+
 # v2.38.3+rev6
 ## (2019-08-11)
 
