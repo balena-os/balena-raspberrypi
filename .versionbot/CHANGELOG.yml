@@ -1,4 +1,17 @@
 - commits:
+    - subject: Remove unused patch of the kernel
+      hash: 9f0f79558ebc823bbdc80b6c87b142ca3e940f63
+      body: |
+        It's not used since 631b4d56c126e04f59183674404d84a6016bdf29.
+      footer:
+        Changelog-entry: Remove unused patch of the kernel
+        changelog-entry: Remove unused patch of the kernel
+        Signed-off-by: Gergely Imreh <gergely@balena.io>
+        signed-off-by: Gergely Imreh <gergely@balena.io>
+      author: Gergely Imreh
+  version: 2.38.3+rev8
+  date: 2019-08-14T15:56:39.004Z
+- commits:
     - subject: >-
         Update sd8887-mrvl driver to 15.68.19.p22 for wlan and 15.26.19.p22 for
         bt
