@@ -1,4 +1,33 @@
 - commits:
+    - subject: Repurpose Marvell pwrseq driver to support balenaFin
+      hash: f44e0d287b3b5e1340b48c372854b03b640fec15
+      body: >
+        The original version had a reset pin, which does not exist for this
+        chipset. The
+
+        related dts property is purged from the source code.
+
+
+        A `post_power_on` hook is now used instead of `pre_power_on`.
+        Specifications
+
+        for all Marvel chips require the PDn pin to be asserted AFTER the chip
+        is powered
+
+        on. The original implementation using `pre_power_on` was incorrect.
+
+
+        The balenaFin device tree overlay is adjusted to be using the patched
+        driver.
+      footer:
+        Changelog-entry: Repurpose Marvell pwrseq driver to support balenaFin
+        changelog-entry: Repurpose Marvell pwrseq driver to support balenaFin
+        Signed-off-by: Zahari Petkov <zahari@balena.io>
+        signed-off-by: Zahari Petkov <zahari@balena.io>
+      author: Zahari Petkov
+  version: 2.38.3+rev9
+  date: 2019-08-15T12:55:40.919Z
+- commits:
     - subject: Remove unused patch of the kernel
       hash: 9f0f79558ebc823bbdc80b6c87b142ca3e940f63
       body: |

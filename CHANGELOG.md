@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.38.3+rev9
+## (2019-08-15)
+
+* Repurpose Marvell pwrseq driver to support balenaFin [Zahari Petkov]
+
 # v2.38.3+rev8
 ## (2019-08-14)
 
