@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.38.3+rev8
+## (2019-08-14)
+
+* Remove unused patch of the kernel [Gergely Imreh]
+
 # v2.38.3+rev7
 ## (2019-08-12)
 
