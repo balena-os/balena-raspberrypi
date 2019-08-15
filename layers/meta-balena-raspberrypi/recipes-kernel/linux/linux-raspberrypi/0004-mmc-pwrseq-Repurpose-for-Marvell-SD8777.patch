@@ -1,0 +1,122 @@
+From ae3314ccf309e25b0b6617655da43ae23757d761 Mon Sep 17 00:00:00 2001
+From: Zahari Petkov <zahari@balena.io>
+Date: Thu, 15 Aug 2019 12:19:02 +0200
+Subject: [PATCH] mmc: pwrseq: Repurpose for Marvell SD8777
+
+Repurposes the mmc-pwrseq-sd8787 driver to be compatible with SD8777 instead.
+
+The original version has a reset pin, which does not exist for this chipset. The
+related dts property is purged from the source code.
+
+A `post_power_on` hook is now used instead of `pre_power_on`. Specifications
+for all Marvel chips require the PDn pin to be asserted AFTER the chip is powered
+on. The original implementation using `pre_power_on` was incorrect.
+
+The balenaFin device tree overlay is adjusted to be using the patched driver.
+
+Upstream-Status: Pending
+
+Signed-off-by: Zahari Petkov <zahari@balena.io>
+
+---
+ arch/arm/boot/dts/overlays/balena-fin-overlay.dts | 14 ++++----------
+ drivers/mmc/core/Kconfig                          |  2 +-
+ drivers/mmc/core/pwrseq_sd8787.c                  | 12 ++----------
+ 3 files changed, 7 insertions(+), 21 deletions(-)
+
+diff --git a/arch/arm/boot/dts/overlays/balena-fin-overlay.dts b/arch/arm/boot/dts/overlays/balena-fin-overlay.dts
+index 249c8202b2ed..a2cf8dcce782 100644
+--- a/arch/arm/boot/dts/overlays/balena-fin-overlay.dts
++++ b/arch/arm/boot/dts/overlays/balena-fin-overlay.dts
+@@ -11,6 +11,7 @@
+ 			pinctrl-0 = <&sdio_pins>;
+ 			bus-width = <4>;
+ 			brcm,overclock-50 = <35>;
++			mmc-pwrseq = <&wifi_pwrseq>;
+ 			status = "okay";
+ 		};
+ 	};
+@@ -34,16 +35,9 @@
+ 	fragment@2 {
+ 		target-path = "/";
+ 		__overlay__ {
+-			// We should switch to mmc-pwrseq-sd8787 after making it
+-			// compatible with sd8887
+-			// Currently that module requires two GPIOs to function since it
+-			// targets a slightly different chip
+-			power_ctrl: power_ctrl {
+-				compatible = "gpio-poweroff";
+-				gpios = <&gpio 40 1>;
+-				force;
+-				pinctrl-names = "default";
+-				pinctrl-0 = <&power_ctrl_pins>;
++			wifi_pwrseq: wifi_pwrseq {
++				compatible = "mmc-pwrseq-sd8787";
++				powerdown-gpios = <&gpio 40 0>;
+ 			};
+ 
+ 			i2c_soft: i2c@0 {
+diff --git a/drivers/mmc/core/Kconfig b/drivers/mmc/core/Kconfig
+index 42e89060cd41..3522fbaa997d 100644
+--- a/drivers/mmc/core/Kconfig
++++ b/drivers/mmc/core/Kconfig
+@@ -14,7 +14,7 @@ config PWRSEQ_EMMC
+ 
+ config PWRSEQ_SD8787
+ 	tristate "HW reset support for SD8787 BT + Wifi module"
+-	depends on OF && (MWIFIEX || BT_MRVL_SDIO)
++	depends on OF
+ 	help
+ 	  This selects hardware reset support for the SD8787 BT + Wifi
+ 	  module. By default this option is set to n.
+diff --git a/drivers/mmc/core/pwrseq_sd8787.c b/drivers/mmc/core/pwrseq_sd8787.c
+index 1a21e14458d3..57d4663c463d 100644
+--- a/drivers/mmc/core/pwrseq_sd8787.c
++++ b/drivers/mmc/core/pwrseq_sd8787.c
+@@ -35,18 +35,15 @@
+ 
+ struct mmc_pwrseq_sd8787 {
+ 	struct mmc_pwrseq pwrseq;
+-	struct gpio_desc *reset_gpio;
+ 	struct gpio_desc *pwrdn_gpio;
+ };
+ 
+ #define to_pwrseq_sd8787(p) container_of(p, struct mmc_pwrseq_sd8787, pwrseq)
+ 
+-static void mmc_pwrseq_sd8787_pre_power_on(struct mmc_host *host)
++static void mmc_pwrseq_sd8787_post_power_on(struct mmc_host *host)
+ {
+ 	struct mmc_pwrseq_sd8787 *pwrseq = to_pwrseq_sd8787(host->pwrseq);
+ 
+-	gpiod_set_value_cansleep(pwrseq->reset_gpio, 1);
+-
+ 	msleep(300);
+ 	gpiod_set_value_cansleep(pwrseq->pwrdn_gpio, 1);
+ }
+@@ -56,11 +53,10 @@ static void mmc_pwrseq_sd8787_power_off(struct mmc_host *host)
+ 	struct mmc_pwrseq_sd8787 *pwrseq = to_pwrseq_sd8787(host->pwrseq);
+ 
+ 	gpiod_set_value_cansleep(pwrseq->pwrdn_gpio, 0);
+-	gpiod_set_value_cansleep(pwrseq->reset_gpio, 0);
+ }
+ 
+ static const struct mmc_pwrseq_ops mmc_pwrseq_sd8787_ops = {
+-	.pre_power_on = mmc_pwrseq_sd8787_pre_power_on,
++	.post_power_on = mmc_pwrseq_sd8787_post_power_on,
+ 	.power_off = mmc_pwrseq_sd8787_power_off,
+ };
+ 
+@@ -83,10 +79,6 @@ static int mmc_pwrseq_sd8787_probe(struct platform_device *pdev)
+ 	if (IS_ERR(pwrseq->pwrdn_gpio))
+ 		return PTR_ERR(pwrseq->pwrdn_gpio);
+ 
+-	pwrseq->reset_gpio = devm_gpiod_get(dev, "reset", GPIOD_OUT_LOW);
+-	if (IS_ERR(pwrseq->reset_gpio))
+-		return PTR_ERR(pwrseq->reset_gpio);
+-
+ 	pwrseq->pwrseq.dev = dev;
+ 	pwrseq->pwrseq.ops = &mmc_pwrseq_sd8787_ops;
+ 	pwrseq->pwrseq.owner = THIS_MODULE;
+-- 
+2.17.1
+
