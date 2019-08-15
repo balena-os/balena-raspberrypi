@@ -6,6 +6,7 @@ SRC_URI_append = " \
 	file://0002-wireless-wext-Bring-back-ndo_do_ioctl-fallback.patch \
 	file://0003-leds-pca963x-Fix-MODE2-initialization.patch \
 	file://0001-Add-npe-x500-m3-overlay.patch \
+	file://0004-mmc-pwrseq-Repurpose-for-Marvell-SD8777.patch \
 "
 
 # Set console accordingly to build type
@@ -128,4 +129,14 @@ RESIN_CONFIGS[mcp3422_adc_driver] = " \
 
 RESIN_CONFIGS_DEPS[mcp3422_adc_driver] = " \
     CONFIG_I2C=y \
+"
+
+RESIN_CONFIGS_append = " sd8787_pwrseq_driver"
+
+RESIN_CONFIGS[sd8787_pwrseq_driver] = " \
+    CONFIG_PWRSEQ_SD8787=y \
+"
+
+RESIN_CONFIGS_DEPS[sd8787_pwrseq_driver] = " \
+    CONFIG_OF=y \
 "
