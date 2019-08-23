@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v2.41.0+rev1
+## (2019-08-23)
+
+
+<details>
+<summary> layers/meta-balena: Update to v2.41.0 [Sebastian Panceac] </summary>
+
+> ## meta-balena-2.41.0
+> ### (2019-08-22)
+> 
+> * Fix a hang in initramfs for warrior production images [Zubair Lutfullah Kakakhel]
+> * Update balena-engine to 18.09.8 [Robert Günzler]
+> * Avoid overlayfs mounts in poky's volatile-binds [Andrei Gherzan]
+</details>
+
 # v2.40.0+rev1
 ## (2019-08-15)
 
