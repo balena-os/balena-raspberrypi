@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.41.0+rev2
+## (2019-08-26)
+
+* Stop using older systemd version because the underlying issue has been addressed in meta-balena now and will be solved in poky hopefully [Florin Sarbu]
+
 # v2.41.0+rev1
 ## (2019-08-23)
 

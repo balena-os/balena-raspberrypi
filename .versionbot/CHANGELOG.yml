@@ -1,4 +1,21 @@
 - commits:
+    - subject: >-
+        Stop using older systemd version because the underlying issue has been
+        addressed in meta-balena now and will be solved in poky hopefully
+      hash: 4964c50b5f62b915c871dc0ab5d88734ccb054e5
+      body: |
+        This reverts commit b28409b8c9b000ec7a39a11088c0e7a67a1449d6.
+      footer:
+        Changelog-entry: >-
+          Stop using older systemd version because the underlying issue has been
+          addressed in meta-balena now and will be solved in poky hopefully
+        changelog-entry: >-
+          Stop using older systemd version because the underlying issue has been
+          addressed in meta-balena now and will be solved in poky hopefully
+      author: Florin Sarbu
+  version: 2.41.0+rev2
+  date: 2019-08-26T07:24:59.487Z
+- commits:
     - subject: 'layers/meta-balena: Update to v2.41.0'
       hash: 4ed23561dc12975a434f69b1b7bcf9295a09fdda
       body: |
