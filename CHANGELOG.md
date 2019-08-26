@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.41.0+rev3
+## (2019-08-26)
+
+* Add support for Raspberry Pi 4 (64bit) [Andrei Gherzan]
+
 # v2.41.0+rev2
 ## (2019-08-26)
 

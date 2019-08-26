@@ -1,4 +1,16 @@
 - commits:
+    - subject: Add support for Raspberry Pi 4 (64bit)
+      hash: a1c80397945b9faab9f5f8f6abdb45cc391de35a
+      body: ''
+      footer:
+        Changelog-entry: Add support for Raspberry Pi 4 (64bit)
+        changelog-entry: Add support for Raspberry Pi 4 (64bit)
+        Signed-off-by: Andrei Gherzan <andrei@balena.io>
+        signed-off-by: Andrei Gherzan <andrei@balena.io>
+      author: Andrei Gherzan
+  version: 2.41.0+rev3
+  date: 2019-08-26T09:44:29.219Z
+- commits:
     - subject: >-
         Stop using older systemd version because the underlying issue has been
         addressed in meta-balena now and will be solved in poky hopefully
