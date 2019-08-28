@@ -1,4 +1,29 @@
 - commits:
+    - subject: >-
+        Remove debug and extra boot firmware based on the actual balenaOS being
+        built
+      hash: 6ad946f7680348bfcfaa8479a737308a575af636
+      body: |
+        Do not add in balenaOS the files fixup4db.dat and start4db.elf which
+        are esentially versions of fixup4x.dat and start4x.elf with debug
+        assertions enabled.
+        Also remove all the extra boot firmware which is present in the boot
+        partition (this extra boot firmware comes from the fact that now the
+        RaspberryPi 4 has different boot firmware from the previous versions
+        so we need to clean all builds accordingly)
+      footer:
+        Changelog-entry: >-
+          Remove debug and extra boot firmware based on the actual balenaOS
+          being built
+        changelog-entry: >-
+          Remove debug and extra boot firmware based on the actual balenaOS
+          being built
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.41.0+rev4
+  date: 2019-08-28T13:52:06.994Z
+- commits:
     - subject: Add support for Raspberry Pi 4 (64bit)
       hash: a1c80397945b9faab9f5f8f6abdb45cc391de35a
       body: ''

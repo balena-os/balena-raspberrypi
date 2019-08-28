@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.41.0+rev4
+## (2019-08-28)
+
+* Remove debug and extra boot firmware based on the actual balenaOS being built [Florin Sarbu]
+
 # v2.41.0+rev3
 ## (2019-08-26)
 
