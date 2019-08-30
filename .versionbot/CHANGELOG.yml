@@ -1,5 +1,25 @@
 - commits:
     - subject: >-
+        Use latest boot firmware from here:
+        https://github.com/raspberrypi/firmware/commit/18bf532d97f73acd4b476429518e89f0e3d7007c
+      hash: c13950bb0223a332c2997f3b2ac7f551defcb750
+      body: |
+        We update to latest rpi firmware and will revert this change once
+        the BSP catches up
+      footer:
+        Changelog-entry: >-
+          Use latest boot firmware from here:
+          https://github.com/raspberrypi/firmware/commit/18bf532d97f73acd4b476429518e89f0e3d7007c
+        changelog-entry: >-
+          Use latest boot firmware from here:
+          https://github.com/raspberrypi/firmware/commit/18bf532d97f73acd4b476429518e89f0e3d7007c
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.41.0+rev5
+  date: 2019-08-29T14:04:20.754Z
+- commits:
+    - subject: >-
         Remove debug and extra boot firmware based on the actual balenaOS being
         built
       hash: 6ad946f7680348bfcfaa8479a737308a575af636

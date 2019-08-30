@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.41.0+rev5
+## (2019-08-29)
+
+* Use latest boot firmware from here: https://github.com/raspberrypi/firmware/commit/18bf532d97f73acd4b476429518e89f0e3d7007c [Florin Sarbu]
+
 # v2.41.0+rev4
 ## (2019-08-28)
 
