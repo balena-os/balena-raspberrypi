@@ -1,0 +1,53 @@
+From 070ad28495cfe0269a1400e4ee5b3a2639aa12b8 Mon Sep 17 00:00:00 2001
+From: Zahari Petkov <zahari@balena.io>
+Date: Tue, 27 Aug 2019 15:40:53 +0200
+Subject: [PATCH] Switch balenaFin WiFi to STA+uAP mode and add DTS overrides
+
+In addition to enabling the uap0 interface, two parameters are exposed for
+overriding through config.txt.
+
+`wifi_dbg` could be used for tuning the verbosity of the WiFi driver.
+
+`wifi_mode` could be used for activating/deactivating WiFi interfaces. For
+example `dtparam=wifi_mode=1` will only expose the `wlan0` interface.
+
+For more information refer to the user manual:
+https://github.com/balena-io/sd8887-mrvl/tree/master/wlan_src
+
+Upstream-Status: Pending
+
+Signed-off-by: Zahari Petkov <zahari@balena.io>
+
+---
+ arch/arm/boot/dts/overlays/balena-fin-overlay.dts | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm/boot/dts/overlays/balena-fin-overlay.dts b/arch/arm/boot/dts/overlays/balena-fin-overlay.dts
+index a2cf8dcce782..e2bb06402c21 100644
+--- a/arch/arm/boot/dts/overlays/balena-fin-overlay.dts
++++ b/arch/arm/boot/dts/overlays/balena-fin-overlay.dts
+@@ -50,9 +50,9 @@
+ 				#size-cells = <0>;
+ 			};
+ 
+-			sd8xxx-wlan {
++			sd8xxx: sd8xxx-wlan {
+ 				drvdbg = <0x6>;
+-				drv_mode = <0x1>;
++				drv_mode = <0x3>;
+ 				cfg80211_wext = <0xf>;
+ 				sta_name = "wlan";
+ 				wfd_name = "p2p";
+@@ -113,4 +113,9 @@
+ 			};
+ 		};
+ 	};
++
++	__overrides__ {
++		wifi_mode       = <&sd8xxx>,"drv_mode:0";
++		wifi_dbg        = <&sd8xxx>,"drvdbg:0";
++	};
+ };
+-- 
+2.17.1
+
