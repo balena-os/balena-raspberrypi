@@ -1,6 +1,13 @@
 Change log
 -----------
 
+# v2.41.0+rev6
+## (2019-09-02)
+
+* Add an udev rule for unmanaging balenaFin uAP interface [Zahari Petkov]
+* Switch balenaFin WiFi to STA+uAP mode and add DTS overrides [Zahari Petkov]
+* Update sd8887-mrvl driver to fix uAP mode crash [Zahari Petkov]
+
 # v2.41.0+rev5
 ## (2019-08-29)
 

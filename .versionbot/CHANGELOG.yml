@@ -1,4 +1,60 @@
 - commits:
+    - subject: Add an udev rule for unmanaging balenaFin uAP interface
+      hash: 4bc11e1f851cb60f68637f104de8f40f15710ce2
+      body: >
+        balenaFin uAP interface needs to be unmanaged by default as
+        NetworkManager does
+
+        not support well AP mode. If not added, NetworkManager may try to
+        connect to
+
+        defined networks through `uap0` instead of `wlan0`, which is not
+        possible.
+      footer:
+        Changelog-entry: Add an udev rule for unmanaging balenaFin uAP interface
+        changelog-entry: Add an udev rule for unmanaging balenaFin uAP interface
+        Signed-off-by: Zahari Petkov <zahari@balena.io>
+        signed-off-by: Zahari Petkov <zahari@balena.io>
+      author: Zahari Petkov
+    - subject: Switch balenaFin WiFi to STA+uAP mode and add DTS overrides
+      hash: df698f4bb68edcaa8eb6236c3f9dfd88f4a4b8b7
+      body: >
+        In addition to enabling the uap0 interface, two parameters are exposed
+        for
+
+        overriding through config.txt.
+
+
+        `wifi_dbg` could be used for tuning the verbosity of the WiFi driver.
+
+
+        `wifi_mode` could be used for activating/deactivating WiFi interfaces.
+        For
+
+        example `dtparam=wifi_mode=1` will only expose the `wlan0` interface.
+
+
+        For more information refer to the user manual:
+
+        https://github.com/balena-io/sd8887-mrvl/tree/master/wlan_src
+      footer:
+        Changelog-entry: Switch balenaFin WiFi to STA+uAP mode and add DTS overrides
+        changelog-entry: Switch balenaFin WiFi to STA+uAP mode and add DTS overrides
+        Signed-off-by: Zahari Petkov <zahari@balena.io>
+        signed-off-by: Zahari Petkov <zahari@balena.io>
+      author: Zahari Petkov
+    - subject: Update sd8887-mrvl driver to fix uAP mode crash
+      hash: b02413198312fd5d16d0532ae0cfc1aa605c70e3
+      body: ''
+      footer:
+        Changelog-entry: Update sd8887-mrvl driver to fix uAP mode crash
+        changelog-entry: Update sd8887-mrvl driver to fix uAP mode crash
+        Signed-off-by: Zahari Petkov <zahari@balena.io>
+        signed-off-by: Zahari Petkov <zahari@balena.io>
+      author: Zahari Petkov
+  version: 2.41.0+rev6
+  date: 2019-09-02T06:31:23.252Z
+- commits:
     - subject: >-
         Use latest boot firmware from here:
         https://github.com/raspberrypi/firmware/commit/18bf532d97f73acd4b476429518e89f0e3d7007c
