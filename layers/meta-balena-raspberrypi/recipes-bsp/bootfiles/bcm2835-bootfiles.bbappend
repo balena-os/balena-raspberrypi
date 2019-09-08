@@ -34,6 +34,8 @@ do_deploy_append() {
         rm -f ${DEPLOYDIR}/${PN}/start.elf
         rm -f ${DEPLOYDIR}/${PN}/start_cd.elf
         rm -f ${DEPLOYDIR}/${PN}/start_x.elf
+	# bootcode.bin is not used anymore on rpi4 as the boot code is now in an EEPROM (https://www.raspberrypi.org/documentation/hardware/raspberrypi/booteeprom.md)
+	rm -f ${DEPLOYDIR}/${PN}/bootcode.bin
     fi
 }
 
