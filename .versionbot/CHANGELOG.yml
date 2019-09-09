@@ -1,4 +1,25 @@
 - commits:
+    - subject: >-
+        Do not deploy bootcode.bin to boot partition for rpi4 as now the
+        bootcode lives in an EEPROM
+      hash: 2266dd398f206996512bf378803d7a7fd714c16c
+      body: |
+        For rpi4 the bootcode is in an SPI EEPROM:
+        https://www.raspberrypi.org/documentation/hardware/
+        raspberrypi/booteeprom.md
+      footer:
+        Changelog-entry: >-
+          Do not deploy bootcode.bin to boot partition for rpi4 as now the
+          bootcode lives in an EEPROM
+        changelog-entry: >-
+          Do not deploy bootcode.bin to boot partition for rpi4 as now the
+          bootcode lives in an EEPROM
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.41.1+rev2
+  date: 2019-09-08T13:31:33.879Z
+- commits:
     - subject: Disable bcm2708_fb driver (kernel 4.19.66) so we have working graphics
       hash: 75e145baa917e9cc3b9cde5402148370406057b0
       body: |

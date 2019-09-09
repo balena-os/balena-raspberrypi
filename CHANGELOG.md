@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.41.1+rev2
+## (2019-09-08)
+
+* Do not deploy bootcode.bin to boot partition for rpi4 as now the bootcode lives in an EEPROM [Florin Sarbu]
+
 # v2.41.1+rev1
 ## (2019-09-05)
 
