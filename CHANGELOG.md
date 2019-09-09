@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.41.1+rev4
+## (2019-09-09)
+
+* Update the BSP layer to latest warrior so we have kernel 4.19.71 [Florin Sarbu]
+
 # v2.41.1+rev3
 ## (2019-09-09)
 

@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update the BSP layer to latest warrior so we have kernel 4.19.71
+      hash: c101fb8eaadc6d52aded2ef654d947f985a26cf5
+      body: |
+        This update brings in kernel version 4.19.71
+      footer:
+        Changelog-entry: Update the BSP layer to latest warrior so we have kernel 4.19.71
+        changelog-entry: Update the BSP layer to latest warrior so we have kernel 4.19.71
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.41.1+rev4
+  date: 2019-09-09T18:43:18.036Z
+- commits:
     - subject: Disable simplefb from u-boot and re-enable bcm2708_fb from the kernel
       hash: 8554b28a42056d39dc8162e1d05765b47262e329
       body: |
