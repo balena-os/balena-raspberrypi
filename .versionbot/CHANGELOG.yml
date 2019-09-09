@@ -1,4 +1,18 @@
 - commits:
+    - subject: Disable simplefb from u-boot and re-enable bcm2708_fb from the kernel
+      hash: 8554b28a42056d39dc8162e1d05765b47262e329
+      body: |
+        We disable simplefb support from u-boot and re-enable kernel
+        driver bcm2708_fb so we are aligned with Raspbian.
+      footer:
+        Changelog-entry: Disable simplefb from u-boot and re-enable bcm2708_fb from the kernel
+        changelog-entry: Disable simplefb from u-boot and re-enable bcm2708_fb from the kernel
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.41.1+rev3
+  date: 2019-09-09T14:14:58.523Z
+- commits:
     - subject: >-
         Do not deploy bootcode.bin to boot partition for rpi4 as now the
         bootcode lives in an EEPROM

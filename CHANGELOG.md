@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.41.1+rev3
+## (2019-09-09)
+
+* Disable simplefb from u-boot and re-enable bcm2708_fb from the kernel [Florin Sarbu]
+
 # v2.41.1+rev2
 ## (2019-09-08)
 
