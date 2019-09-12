@@ -16,5 +16,4 @@ SRC_URI += " \
     file://bootcount-Add-support-to-write-bootcount-to-any-file.patch \
     file://increase-usb-interface-nr.patch \
     file://rpi.h-Remove-usb-start-from-CONFIG_PREBOOT.patch \
-    file://0002-raspberrypi-Disable-simple-framebuffer-support.patch \
 "
