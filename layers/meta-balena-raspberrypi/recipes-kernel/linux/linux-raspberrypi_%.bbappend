@@ -141,3 +141,10 @@ RESIN_CONFIGS[sd8787_pwrseq_driver] = " \
 RESIN_CONFIGS_DEPS[sd8787_pwrseq_driver] = " \
     CONFIG_OF=y \
 "
+
+# disable the simple framebuffer driver (because we also use u-boot which adds the node for simple framebuffer,
+# the kernel simple framebuffer driver will then clash with the bcm2708_fb driver and mess up the graphics)
+RESIN_CONFIGS_append = " disable_simplefb"
+RESIN_CONFIGS[disable_simplefb] = " \
+    CONFIG_FB_SIMPLE=n \
+"
