@@ -1,4 +1,27 @@
 - commits:
+    - subject: >-
+        Rework the simplefb removal patch from u-boot in order to fix a reboot
+        loop issue on .dev images that did not use the vc4-kms-v3d overlay
+      hash: 5e78d16a519261c62affa4f4ff69f79718db11a7
+      body: |
+        The previous patch was faulty and caused a reboot loop when
+        booting without the vc4-kms-v3d overlay and also having console
+        defined to something other than null. (for example .dev images
+        from which one would remove the vc4-kms-v3d overlay defined in
+        config.txt)
+      footer:
+        Changelog-entry: >-
+          Rework the simplefb removal patch from u-boot in order to fix a reboot
+          loop issue on .dev images that did not use the vc4-kms-v3d overlay
+        changelog-entry: >-
+          Rework the simplefb removal patch from u-boot in order to fix a reboot
+          loop issue on .dev images that did not use the vc4-kms-v3d overlay
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.41.1+rev5
+  date: 2019-09-12T10:50:15.253Z
+- commits:
     - subject: Update the BSP layer to latest warrior so we have kernel 4.19.71
       hash: c101fb8eaadc6d52aded2ef654d947f985a26cf5
       body: |

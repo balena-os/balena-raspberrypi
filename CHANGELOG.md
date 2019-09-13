@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.41.1+rev5
+## (2019-09-12)
+
+* Rework the simplefb removal patch from u-boot in order to fix a reboot loop issue on .dev images that did not use the vc4-kms-v3d overlay [Florin Sarbu]
+
 # v2.41.1+rev4
 ## (2019-09-09)
 
