@@ -43,7 +43,7 @@ See below for using the build script.
 
 ### Issues
 
-For issues we use an aggregated github repository available [here](https://github.com/balena-os/balenaos/issues). When you create issue make sure you select the right labels.
+For issues we use an aggregated github repository available [here](https://github.com/balena-os/balena-os/issues). When you create issue make sure you select the right labels.
 
 ### Pull requests
 
