@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update balena-yocto-scripts to v1.3.7
+      hash: 555a58b51bff4470c963978ea66dc0b6ad1d53a1
+      body: ''
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to v1.3.7
+        changelog-entry: Update balena-yocto-scripts to v1.3.7
+        Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+        signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+      author: Zubair Lutfullah Kakakhel
+  version: 2.41.1+rev6
+  date: 2019-09-16T04:56:07.043Z
+- commits:
     - subject: >-
         Rework the simplefb removal patch from u-boot in order to fix a reboot
         loop issue on .dev images that did not use the vc4-kms-v3d overlay
