@@ -1,6 +1,29 @@
 Change log
 -----------
 
+# v2.43.0+rev1
+## (2019-09-16)
+
+* Do not enable the vc4-kms-v3d overlay for non-64 bits machines devices [Florin Sarbu]
+
+<details>
+<summary> Update meta-balena from v2.41.1 to v2.43.0 [Florin Sarbu] </summary>
+
+> ## meta-balena-2.43.0
+> ### (2019-09-13)
+> 
+> * Update NetworkManager to 1.20.2 [Andrei Gherzan]
+> * Update ModemManager to 1.10.6 [Andrei Gherzan]
+
+> ## meta-balena-2.42.0
+> ### (2019-09-13)
+> 
+> * A small fix in initramfs when /dev/console is invalid due to whatever reason [Zubair Lutfullah Kakakhel]
+> * Add automated testing for external kernel module header tarballs [Zubair Lutfullah Kakakhel]
+> * Make sure correct utsrelease.h is packaged [Zubair Lutfullah Kakakhel]
+> * Fix a bug where application containers with new systemd versions were failing to start in cases. Switch to systemd cgroup driver in balenaEngine [Zubair Lutfullah Kakakhel]
+</details>
+
 # v2.41.1+rev6
 ## (2019-09-16)
 
