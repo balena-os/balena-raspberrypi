@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update balena-yocto-scripts to v1.3.8
+      hash: 4c207046b5cefdd415e4531d345838faa148e73b
+      body: ''
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to v1.3.8
+        changelog-entry: Update balena-yocto-scripts to v1.3.8
+        Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+        signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+      author: Zubair Lutfullah Kakakhel
+  version: 2.43.0+rev2
+  date: 2019-09-30T12:11:24.580Z
+- commits:
     - subject: Do not enable the vc4-kms-v3d overlay for non-64 bits machines devices
       hash: e2b92c3926e389083f58bc8cf7d4a0476f29ce5b
       body: |
