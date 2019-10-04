@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.43.0+rev3
+## (2019-10-02)
+
+* Cleanup redundant u-boot patches as functionality has moved into meta-balena [Zubair Lutfullah Kakakhel]
+
 # v2.43.0+rev2
 ## (2019-09-30)
 

@@ -1,4 +1,25 @@
 - commits:
+    - subject: >-
+        Cleanup redundant u-boot patches as functionality has moved into
+        meta-balena
+      hash: 2226245a633344a51b2696297d54f4baafcc2438
+      body: |
+        Since https://github.com/balena-os/meta-balena/pull/1349 bootcount,
+        autoboot and bootdelay will be handled from meta-balena. Clean up
+        these patches from meta-balena-raspberrypi
+      footer:
+        Changelog-entry: >-
+          Cleanup redundant u-boot patches as functionality has moved into
+          meta-balena
+        changelog-entry: >-
+          Cleanup redundant u-boot patches as functionality has moved into
+          meta-balena
+        Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+        signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+      author: Zubair Lutfullah Kakakhel
+  version: 2.43.0+rev3
+  date: 2019-10-02T17:01:38.169Z
+- commits:
     - subject: Update balena-yocto-scripts to v1.3.8
       hash: 4c207046b5cefdd415e4531d345838faa148e73b
       body: ''
