@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.43.0+rev4
+## (2019-10-04)
+
+* resin-image: Install spi eeprom fw binary and tools [Alexandru Costache]
+
 # v2.43.0+rev3
 ## (2019-10-02)
 

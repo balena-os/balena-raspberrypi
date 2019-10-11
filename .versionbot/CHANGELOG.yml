@@ -1,4 +1,19 @@
 - commits:
+    - subject: 'resin-image: Install spi eeprom fw binary and tools'
+      hash: 749a843c67d0d5351a5b5a30d5ce6336ae9b6cd7
+      body: |
+        Add dependency to bootloader file generation and install
+        it in the root partition. Install necessary packages and
+        tools in the hostOS for updating bootloader at hup.
+      footer:
+        Changelog-entry: 'resin-image: Install spi eeprom fw binary and tools'
+        changelog-entry: 'resin-image: Install spi eeprom fw binary and tools'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+  version: 2.43.0+rev4
+  date: 2019-10-04T14:35:02.387Z
+- commits:
     - subject: >-
         Cleanup redundant u-boot patches as functionality has moved into
         meta-balena
