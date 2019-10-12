@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.43.0+rev5
+## (2019-10-11)
+
+* Do not filter balenaFin uAP interface by address [Zahari Petkov]
+
 # v2.43.0+rev4
 ## (2019-10-04)
 

@@ -1,4 +1,20 @@
 - commits:
+    - subject: Do not filter balenaFin uAP interface by address
+      hash: aa7568e890a74975c5402dd5a67a9b39a79cae49
+      body: >
+        The maker of the balenaFin WiFi module (Taiyo Yuden) has two MAC address
+        ranges, so we should not
+
+        filter the uAP interface by MAC address range, but only by name.
+      footer:
+        Changelog-entry: Do not filter balenaFin uAP interface by address
+        changelog-entry: Do not filter balenaFin uAP interface by address
+        Signed-off-by: Zahari Petkov <zahari@balena.io>
+        signed-off-by: Zahari Petkov <zahari@balena.io>
+      author: Zahari Petkov
+  version: 2.43.0+rev5
+  date: 2019-10-11T14:14:01.151Z
+- commits:
     - subject: 'resin-image: Install spi eeprom fw binary and tools'
       hash: 749a843c67d0d5351a5b5a30d5ce6336ae9b6cd7
       body: |
