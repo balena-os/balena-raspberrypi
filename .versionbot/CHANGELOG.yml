@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update balena-yocto-scripts to v1.4.0
+      hash: b2bfd0d885111d26df6381356096f7b99a7fb2d7
+      body: ''
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to v1.4.0
+        changelog-entry: Update balena-yocto-scripts to v1.4.0
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.43.0+rev6
+  date: 2019-10-14T07:28:52.707Z
+- commits:
     - subject: Do not filter balenaFin uAP interface by address
       hash: aa7568e890a74975c5402dd5a67a9b39a79cae49
       body: >
