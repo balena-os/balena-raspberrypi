@@ -8,6 +8,7 @@ SRC_URI_append = " \
 	file://0001-Add-npe-x500-m3-overlay.patch \
 	file://0004-mmc-pwrseq-Repurpose-for-Marvell-SD8777.patch \
 	file://0005-balena-fin-wifi-sta-uap-mode.patch \
+	file://0006-overlays-Add-Hyperpixel4-overlays.patch \
 "
 
 # Set console accordingly to build type

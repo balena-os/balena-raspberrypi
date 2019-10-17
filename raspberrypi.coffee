@@ -5,7 +5,7 @@ module.exports =
 	version: 1
 	slug: 'raspberry-pi'
 	aliases: [ 'raspberrypi' ]
-	name: 'Raspberry Pi (v1 and Zero)'
+	name: 'Raspberry Pi (v1 / Zero / Zero W)'
 	arch: 'rpi'
 	state: 'released'
 
