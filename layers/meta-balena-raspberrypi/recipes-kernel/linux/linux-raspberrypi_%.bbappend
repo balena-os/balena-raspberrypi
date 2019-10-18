@@ -11,6 +11,10 @@ SRC_URI_append = " \
 	file://0006-overlays-Add-Hyperpixel4-overlays.patch \
 "
 
+SRC_URI_append_raspberrypi4-64 = " \
+        file://0001-Fbcon-ignore-events-for-rpi-sense-fb.patch \
+"
+
 # Set console accordingly to build type
 DEBUG_CMDLINE = "dwc_otg.lpm_enable=0 console=tty1 console=serial0,115200 rootfstype=ext4 rootwait"
 PRODUCTION_CMDLINE = "dwc_otg.lpm_enable=0 console=null rootfstype=ext4 rootwait vt.global_cursor_default=0"
