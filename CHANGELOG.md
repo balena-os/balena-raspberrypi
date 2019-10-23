@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.44.0+rev2
+## (2019-10-18)
+
+* linux-raspberrypi: Avoid kernel panic if booting with Sensehat [Alexandru Costache]
+
 # v2.44.0+rev1
 ## (2019-10-17)
 

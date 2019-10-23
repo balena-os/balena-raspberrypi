@@ -1,4 +1,28 @@
 - commits:
+    - subject: 'linux-raspberrypi: Avoid kernel panic if booting with Sensehat'
+      hash: 111c8d964a0ed660c94a65d9260729d86482a5a3
+      body: |
+        If a framebuffer console is used with the
+        Sensehat's 8x8 display framebuffer, various
+        issues will appear when attempting to draw
+        images on it.
+
+        This small display is not meant for console,
+        therefore fbcon should not takeover the fb
+        created by its' driver.
+
+        This issue does not occurr if another
+        framebuffer is already present and used,
+        as console is not switched to the new one.
+      footer:
+        Changelog-entry: 'linux-raspberrypi: Avoid kernel panic if booting with Sensehat'
+        changelog-entry: 'linux-raspberrypi: Avoid kernel panic if booting with Sensehat'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+  version: 2.44.0+rev2
+  date: 2019-10-18T15:15:06.187Z
+- commits:
     - subject: Mention Pi Zero W in the raspberrypi.coffee board name
       hash: b7019912a63708b0e083e6fa7ace8e036a460655
       body: ''
