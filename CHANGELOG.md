@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.44.0+rev3
+## (2019-10-25)
+
+* hostapp-update-hooks: Disable eeprom update temporarily [Alexandru Costache]
+
 # v2.44.0+rev2
 ## (2019-10-18)
 

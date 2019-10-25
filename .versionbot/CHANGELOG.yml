@@ -1,4 +1,23 @@
 - commits:
+    - subject: 'hostapp-update-hooks: Disable eeprom update temporarily'
+      hash: 16ac8ab30bdb698d2f886eb6796ce413df3bd74e
+      body: |
+        Kernel update uncovered an issue with modules
+        being loaded from the new os container during hup.
+        Loading modules with a new version from the new OS
+        will trigger failure of the hup hook.
+
+        Disable this hook temporarily so we can fix
+        the issues we uncovered during release testing.
+      footer:
+        Changelog-entry: 'hostapp-update-hooks: Disable eeprom update temporarily'
+        changelog-entry: 'hostapp-update-hooks: Disable eeprom update temporarily'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+  version: 2.44.0+rev3
+  date: 2019-10-25T13:39:31.437Z
+- commits:
     - subject: 'linux-raspberrypi: Avoid kernel panic if booting with Sensehat'
       hash: 111c8d964a0ed660c94a65d9260729d86482a5a3
       body: |
