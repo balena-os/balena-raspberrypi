@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# Module re-loading and SPI fblock switch
+# is being performed in _before & _after hooks.
+# If EEPROM update cannot be done during current HUP,
+# it will be done on the next iteration, when
+# all dependencies are satisfied.
+
+set -o errexit
+
+if [ ! -f /usr/bin/vcmailbox ]; then
+    echo "[WARN] Update tools not found in image! If necessary, RPi bootloader eeprom will be updated on next HostOS update!"
+    exit 0
+fi
+
+# Under no circumstance should HUP fail,
+# even if EEPROM cannot be updated.
+rmmod spidev || true
+rmmod spi-bcm2835 || true
+
+/usr/bin/vcmailbox 0x00030056 4 4 0 > /dev/null || true
+/usr/bin/dtparam -d /mnt/boot/overlays/ audio=off || true
+/usr/bin/dtoverlay -d /mnt/boot/overlays/ spi-gpio40-45 || true
+
+modprobe spidev || true
+modprobe spi-bcm2835 || true
