@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.44.0+rev4
+## (2019-10-29)
+
+* hostapp-update-hooks: Handle modules in old hostOS for pieeprom [Alexandru Costache]
+
 # v2.44.0+rev3
 ## (2019-10-25)
 

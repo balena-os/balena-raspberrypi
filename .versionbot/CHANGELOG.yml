@@ -1,4 +1,25 @@
 - commits:
+    - subject: 'hostapp-update-hooks: Handle modules in old hostOS for pieeprom'
+      hash: 3aa79a4a1331283ccc168f408c9d903ad400f801
+      body: |
+        When kernel is updated, modules cannot be loaded from
+        the hook running in a container with the new hostOS,
+        to which we are updating.
+
+        Switch module handling to old hostOS so modules version
+        match current running kernel.
+
+        Also, ensure failures in updating EEPROM do not
+        trigger failure of HUP.
+      footer:
+        Changelog-entry: 'hostapp-update-hooks: Handle modules in old hostOS for pieeprom'
+        changelog-entry: 'hostapp-update-hooks: Handle modules in old hostOS for pieeprom'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+  version: 2.44.0+rev4
+  date: 2019-10-29T14:48:44.354Z
+- commits:
     - subject: 'hostapp-update-hooks: Disable eeprom update temporarily'
       hash: 16ac8ab30bdb698d2f886eb6796ce413df3bd74e
       body: |
