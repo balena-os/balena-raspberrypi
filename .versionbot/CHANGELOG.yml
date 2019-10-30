@@ -1,4 +1,18 @@
 - commits:
+    - subject: Add warning advising of no WiFi on Pi 2
+      hash: 83c9a94ac9fc2cf0991cba0956c488da2a6b96ff
+      body: ''
+      footer:
+        Changelog-entry: Add warning advising of no WiFi on Pi 2
+        changelog-entry: Add warning advising of no WiFi on Pi 2
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Chris Crocker-White <chriscw@balena.io>
+        signed-off-by: Chris Crocker-White <chriscw@balena.io>
+      author: Chris Crocker-White
+  version: 2.44.0+rev4
+  date: 2019-10-29T07:56:09.072Z
+- commits:
     - subject: 'hostapp-update-hooks: Disable eeprom update temporarily'
       hash: 16ac8ab30bdb698d2f886eb6796ce413df3bd74e
       body: |

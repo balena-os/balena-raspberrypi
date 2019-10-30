@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.44.0+rev4
+## (2019-10-29)
+
+* Add warning advising of no WiFi on Pi 2 [Chris Crocker-White]
+
 # v2.44.0+rev3
 ## (2019-10-25)
 
