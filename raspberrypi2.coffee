@@ -9,6 +9,13 @@ module.exports =
 	arch: 'armv7hf'
 	state: 'released'
 
+	imageDownloadAlerts: [
+		{
+			type: 'warning'
+			message: 'The Raspberry Pi 2 is not capable of connecting to WiFi networks without an external adapter.'
+		}
+	]
+
 	instructions: commonImg.instructions
 	gettingStartedLink:
 		windows: 'https://docs.resin.io/raspberrypi2/nodejs/getting-started/#adding-your-first-device'
