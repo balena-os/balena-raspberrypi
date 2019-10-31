@@ -1,6 +1,9 @@
 ---
 type: 'yocto-based OS image'
 reviewers: 1
+esr:
+  line: next
+  version: 2019.10
 upstream:
   - repo: 'meta-resin'
     url: 'http://github.com/resin-os/meta-resin'
