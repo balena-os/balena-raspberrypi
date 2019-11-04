@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2019.07.0
+## (2019-11-04)
+
+* Declare ESR current
+
 # v2.38.3+rev9
 ## (2019-08-15)
 
@@ -55,7 +60,7 @@ Change log
 
 > ## meta-balena-2.38.3
 > ### (2019-07-10)
-> 
+>
 > * resin-proxy-config: fix up incorrect bash subshell command [Matthew McGinn]
 </details>
 
@@ -69,7 +74,7 @@ Change log
 
 > ## meta-balena-2.38.2
 > ### (2019-06-27)
-> 
+>
 > * Update to kernel-modules-headers v0.0.20 to fix missing target modpost binary on kernel 5.0.3 [Florin Sarbu]
 > * Update to kernel-modules-headers v0.0.19 to fix target objtool compile issue on kernel 5.0.3 [Florin Sarbu]
 </details>
