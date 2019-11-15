@@ -16,3 +16,7 @@ SRC_URI += " \
     file://rpi.h-Remove-usb-start-from-CONFIG_PREBOOT.patch \
     file://0002-raspberrypi-Disable-simple-framebuffer-support.patch \
 "
+
+SRC_URI_append_raspberrypi3-64 = " \
+    file://0001-otp-regs-Read-customer-otp-register.patch \
+"

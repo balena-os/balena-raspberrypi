@@ -1,0 +1,126 @@
+From 3ef485ecbb2f1fc7f5e5f1917dae181319649e39 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Fri, 15 Nov 2019 16:00:35 +0100
+Subject: [PATCH] otp regs: Read customer otp register
+
+Add support for reading the first customer
+OTP register value
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ arch/arm/mach-bcm283x/include/mach/mbox.h | 21 ++++++++++
+ board/raspberrypi/rpi/rpi.c               | 51 +++++++++++++++++++++++
+ 2 files changed, 72 insertions(+)
+
+diff --git a/arch/arm/mach-bcm283x/include/mach/mbox.h b/arch/arm/mach-bcm283x/include/mach/mbox.h
+index 2776a396c7..88e28f86a9 100644
+--- a/arch/arm/mach-bcm283x/include/mach/mbox.h
++++ b/arch/arm/mach-bcm283x/include/mach/mbox.h
+@@ -174,6 +174,27 @@ struct bcm2835_mbox_tag_get_arm_mem {
+ 	} body;
+ };
+ 
++/* There are 8 customer OTP registers and
++ * they range from 36 to 43
++ */
++#define CUSTOMER_OTP_REGS                       8
++#define BCM2835_MBOX_TAG_GET_CUSTOMER_OTP       0x00030021
++
++struct bcm2835_mbox_tag_get_customer_otp {
++        struct bcm2835_mbox_tag_hdr tag_hdr;
++        union {
++                struct {
++                       u32 first;
++                       u32 len;
++                } req;
++                struct {
++                        u32 status;
++                        u32 len;
++                        u32 regs[CUSTOMER_OTP_REGS];
++                } resp;
++        } body;
++};
++
+ #define BCM2835_MBOX_POWER_DEVID_SDHCI		0
+ #define BCM2835_MBOX_POWER_DEVID_UART0		1
+ #define BCM2835_MBOX_POWER_DEVID_UART1		2
+diff --git a/board/raspberrypi/rpi/rpi.c b/board/raspberrypi/rpi/rpi.c
+index c7bd3992f8..51dd725d0b 100644
+--- a/board/raspberrypi/rpi/rpi.c
++++ b/board/raspberrypi/rpi/rpi.c
+@@ -61,6 +61,12 @@ struct msg_get_clock_rate {
+ 	u32 end_tag;
+ };
+ 
++struct msg_get_customer_otp {
++        struct bcm2835_mbox_hdr hdr;
++        struct bcm2835_mbox_tag_get_customer_otp get_customer_otp;
++        u32 end_tag;
++};
++
+ #ifdef CONFIG_ARM64
+ #define DTB_DIR "broadcom/"
+ #else
+@@ -346,6 +352,47 @@ static void set_usbethaddr(void)
+ 	return;
+ }
+ 
++static void set_otp_val(void)
++{
++        ALLOC_CACHE_ALIGN_BUFFER(struct msg_get_customer_otp, msg, 1);
++        int ret;
++        
++        // let's ensure this is not run twice
++        if (env_get("otpval"))
++                return;
++
++        BCM2835_MBOX_INIT_HDR(msg);
++        BCM2835_MBOX_INIT_TAG(&msg->get_customer_otp, GET_CUSTOMER_OTP);
++
++	 /* Query for one register starting with the first one.
++	  * For the purpose of this test, flashed customer register
++	  * one with value 'bootcode':
++	  *   /opt/vc/bin/vcmailbox 0x00038021 12 12 1 1 0xb001c0de
++	  */
++        msg->get_customer_otp.body.req.first = 1;
++        msg->get_customer_otp.body.req.len = 1;
++
++        ret = bcm2835_mbox_call_prop(BCM2835_MBOX_PROP_CHAN, &msg->hdr);
++
++        if (ret) {
++                printf("bcm2835: Could not query OTP!!!\n");
++                return;
++        }
++
++        printf("bcm2835: get_customer_otp response status 0x%x\n", msg->get_customer_otp.body.resp.status);
++        printf("bcm2835: Customer OTP register value is 0x%x\n", msg->get_customer_otp.body.resp.regs[0]);
++
++        env_set("otpval", msg->get_customer_otp.body.resp.regs[1]);
++
++        if (0xb001c0de == msg->get_customer_otp.body.resp.regs[0]) {
++                printf("bcm2835: Switch boot_targets\n");
++                env_set("boot_targets", "usb0 mmc0 mmc1 pxe dhcp");
++        }
++
++        return;
++}
++
++
+ #ifdef CONFIG_ENV_VARS_UBOOT_RUNTIME_CONFIG
+ static void set_board_info(void)
+ {
+@@ -396,6 +443,10 @@ int misc_init_r(void)
+ #endif
+ 	set_serial_number();
+ 
++        // Check OTP regs 
++        set_otp_val();
++       
++
+ 	return 0;
+ }
+ 
+-- 
+2.17.1
+
