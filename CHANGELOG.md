@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.44.0+rev5
+## (2019-11-18)
+
+* resin-image: Install vl805 binary and firmware [Alexandru Costache]
+
 # v2.44.0+rev4
 ## (2019-10-29)
 

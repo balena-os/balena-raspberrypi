@@ -1,4 +1,19 @@
 - commits:
+    - subject: 'resin-image: Install vl805 binary and firmware'
+      hash: 1e7180913aee90c8766bf8f8b8d96c9b465b574c
+      body: |
+        Both vl805 statically linked binary and
+        vl805-latest-stable.bin firmware come from
+        the same rpi-eeprom package.
+      footer:
+        Changelog-entry: 'resin-image: Install vl805 binary and firmware'
+        changelog-entry: 'resin-image: Install vl805 binary and firmware'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+  version: 2.44.0+rev5
+  date: 2019-11-18T15:30:54.224Z
+- commits:
     - subject: Add warning advising of no WiFi on Pi 2
       hash: 83c9a94ac9fc2cf0991cba0956c488da2a6b96ff
       body: ''
