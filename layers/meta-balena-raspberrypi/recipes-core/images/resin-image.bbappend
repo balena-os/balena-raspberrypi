@@ -20,6 +20,7 @@ RESIN_BOOT_PARTITION_FILES_rpi = " \
 
 RESIN_BOOT_PARTITION_FILES_append_raspberrypi4-64 = " \
     rpi-eeprom/pieeprom-latest-stable.bin:/pieeprom-latest-stable.bin \
+    rpi-eeprom/vl805-latest-stable.bin:/vl805-latest-stable.bin \
 "
 
 python overlay_dtbs_handler () {
@@ -48,9 +49,9 @@ IMAGE_INSTALL_append_rpi = " enable-overcommit u-boot"
 
 IMAGE_INSTALL_append_revpi-core-3 = " picontrol"
 
-# Tools necessary for SPI EEPROM bootloader update during HUP.
-# dtc is called internally at runtime by userlandtools/dtoverlay.
-IMAGE_INSTALL_append_raspberrypi4-64 = " flashrom userlandtools dtc"
-DEPENDS_append_raspberrypi4-64 = " rpi-eeprom"
+# Tools necessary for SPI EEPROM bootloader and vl805 firmware
+# update during HUP. dtc is called internally at runtime by
+# userlandtools/dtoverlay.
+IMAGE_INSTALL_append_raspberrypi4-64 = " flashrom userlandtools dtc rpi-eeprom"
 
 RPI_KERNEL_DEVICETREE_remove_revpi-core-3 = "bcm2708-rpi-zero-w.dtb bcm2710-rpi-3-b-plus.dtb bcm2711-rpi-4-b.dtb"

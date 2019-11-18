@@ -16,17 +16,17 @@ COMPATIBLE_MACHINE = "raspberrypi4-64"
 
 SRCBRANCH = "master"
 SRCFORK = "raspberrypi"
-SRCREV = "b959175b447941b9b25b0712bd11bb80e7b8c6ed"
+SRCREV = "3916889699bc1457830ad0ceaa343408e10769b4"
 
 inherit deploy pythonnative
 
 # Use the date of the above commit as the package version. Update this when
 # SRCREV is changed.
-PV = "20190925"
+PV = "20191029"
 
 # We use the latest stable version
 # which is available in "critical"
-LATEST_STABLE_FW = "2019-09-10"
+LATEST_STABLE_PIEEPROM_FW = "2019-09-10"
 
 S = "${WORKDIR}/git"
 
@@ -35,7 +35,7 @@ S = "${WORKDIR}/git"
 # the configuration that exists in the binary
 do_compile() {
     cd ${WORKDIR} && cp ${S}/rpi-eeprom-config .
-    $(which python) ./rpi-eeprom-config ${S}/firmware/critical/pieeprom-${LATEST_STABLE_FW}.bin \
+    $(which python) ./rpi-eeprom-config ${S}/firmware/critical/pieeprom-${LATEST_STABLE_PIEEPROM_FW}.bin \
         --config ./default-config.txt \
         --out ./pieeprom-latest-stable.bin
 }
@@ -47,13 +47,35 @@ do_deploy () {
     mkdir ${DEPLOY_DIR_IMAGE}/rpi-eeprom/
 
     cp "${WORKDIR}/pieeprom-latest-stable.bin" ${DEPLOY_DIR_IMAGE}/rpi-eeprom/pieeprom-latest-stable.bin
+
+    VL805_FW_REV=$(cat ${S}/firmware/critical/vl805.latest)
+
+    if [ -z ${VL805_FW_REV} ]; then
+        bberror "Unknown version for vl805 firmware!"
+    fi
+
+    cp ${S}/firmware/critical/vl805-${VL805_FW_REV=}.bin ${DEPLOY_DIR_IMAGE}/${PN}/vl805-latest-stable.bin
 }
+
+do_install() {
+    install -d ${D}/${sbindir}
+    install -m 0755 ${S}/vl805 ${D}/${sbindir}/vl805
+}
+
+FILES_${PN} += " ${sbindir}/vl805"
 
 addtask do_deploy before do_package after do_compile
 
 INHIBIT_PACKAGE_STRIP = "1"
 INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 
-# Ensure binary really is deployed
+# Ensure binaries are really deployed
 # on each build
 do_deploy[nostamp] = "1"
+
+# vl805 tool sources are not available (yet),
+# as it comes as a precompiled binary only.
+# It has ARM architecture whereas target machine
+# is Aarch64. We need to disable arch check for it
+# otherwise it cannot packed.
+QAPATHTEST[arch] = ""
