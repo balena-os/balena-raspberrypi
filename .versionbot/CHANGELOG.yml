@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update balena-yocto-scripts to v1.5.2
+      hash: 9a98f3b6960d8f14e7924614078073c07bb5afeb
+      body: ''
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to v1.5.2
+        changelog-entry: Update balena-yocto-scripts to v1.5.2
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.44.0+rev6
+  date: 2019-11-19T10:02:48.139Z
+- commits:
     - subject: 'resin-image: Install vl805 binary and firmware'
       hash: 1e7180913aee90c8766bf8f8b8d96c9b465b574c
       body: |
