@@ -1,4 +1,18 @@
 - commits:
+    - subject: Remove the 64 bits OS reference from the rpi4 device pretty name
+      hash: 2fda69b9c1c664386935f30f564a592ad643d5d0
+      body: |
+        We only support 64 bits OS for the pi4 so let's not
+        explicitly mention it.
+      footer:
+        Changelog-entry: Remove the 64 bits OS reference from the rpi4 device pretty name
+        changelog-entry: Remove the 64 bits OS reference from the rpi4 device pretty name
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.44.0+rev7
+  date: 2019-11-19T17:28:03.688Z
+- commits:
     - subject: Update balena-yocto-scripts to v1.5.2
       hash: 9a98f3b6960d8f14e7924614078073c07bb5afeb
       body: ''

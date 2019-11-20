@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.44.0+rev7
+## (2019-11-19)
+
+* Remove the 64 bits OS reference from the rpi4 device pretty name [Florin Sarbu]
+
 # v2.44.0+rev6
 ## (2019-11-19)
 
