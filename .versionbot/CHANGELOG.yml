@@ -1,4 +1,31 @@
 - commits:
+    - subject: Update balena yocto scripts to 1.5.0
+      hash: d43fa40ce5e9ac4c611338f6fcd770dbb306486f
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: Update balena yocto scripts to 1.5.0
+        changelog-entry: Update balena yocto scripts to 1.5.0
+        Signed-off-by: Giovanni Garufi <giovanni@balena.io>
+        signed-off-by: Giovanni Garufi <giovanni@balena.io>
+      author: Giovanni Garufi
+    - subject: Update meta-balena from v2.44.0 to v2.44.2
+      hash: 00db5a2f081d16111c13a2fa3ca830c09979fd28
+      body: |
+        Update meta-balena from 2.44.0 to 2.44.2
+      footer:
+        Backport-to: next
+        backport-to: next
+        Changelog-entry: Update meta-balena from v2.44.0 to v2.44.2
+        changelog-entry: Update meta-balena from v2.44.0 to v2.44.2
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2019.10.1
+  date: 2019-12-03T18:18:29.553Z
+- commits:
     - subject: Add warning advising of no WiFi on Pi 2
       hash: 83c9a94ac9fc2cf0991cba0956c488da2a6b96ff
       body: ''
