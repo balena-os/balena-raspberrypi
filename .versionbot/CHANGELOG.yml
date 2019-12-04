@@ -1,4 +1,31 @@
 - commits:
+    - subject: Update balena yocto scripts to 1.5.2
+      hash: d1e5a8666e4d0db6781b4bdc1b941d2bf254571b
+      body: ''
+      footer:
+        Changelog-entry: Update balena yocto scripts to 1.5.2
+        changelog-entry: Update balena yocto scripts to 1.5.2
+        Change-type: patch
+        change-type: patch
+        Backport-to: current
+        backport-to: current
+        Signed-off-by: Giovanni Garufi <giovanni@balena.io>
+        signed-off-by: Giovanni Garufi <giovanni@balena.io>
+      author: Giovanni Garufi
+    - subject: Update balena-yocto-scripts to v1.5.0
+      hash: 1fda90a14fe5c7e604d2ef68328ad36139d0eef6
+      body: ''
+      footer:
+        Change-type: none
+        change-type: none
+        Changelog-entry: Update balena-yocto-scripts to v1.5.0
+        changelog-entry: Update balena-yocto-scripts to v1.5.0
+        Signed-off-by: Giovanni Garufi <giovanni@balena.io>
+        signed-off-by: Giovanni Garufi <giovanni@balena.io>
+      author: Giovanni Garufi
+  version: 2019.07.1
+  date: 2019-12-04T17:29:26.080Z
+- commits:
     - subject: Repurpose Marvell pwrseq driver to support balenaFin
       hash: f44e0d287b3b5e1340b48c372854b03b640fec15
       body: >

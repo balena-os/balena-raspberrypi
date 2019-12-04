@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2019.07.1
+## (2019-12-04)
+
+* Update balena yocto scripts to 1.5.2 [Giovanni Garufi]
+* Update balena-yocto-scripts to v1.5.0 [Giovanni Garufi]
+
 # v2019.07.0
 ## (2019-11-04)
 
