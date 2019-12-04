@@ -1,15 +1,20 @@
 - commits:
-    - subject: Update balena yocto scripts to 1.5.0
-      hash: d43fa40ce5e9ac4c611338f6fcd770dbb306486f
+    - subject: Update balena yocto scripts to 1.5.2
+      hash: a227cc77d4e3280a7ef8519b647db0e9b2e4830a
       body: ''
       footer:
+        Changelog-entry: Update balena yocto scripts to 1.5.2
+        changelog-entry: Update balena yocto scripts to 1.5.2
         Change-type: patch
         change-type: patch
-        Changelog-entry: Update balena yocto scripts to 1.5.0
-        changelog-entry: Update balena yocto scripts to 1.5.0
+        Backport-to: next
+        backport-to: next
         Signed-off-by: Giovanni Garufi <giovanni@balena.io>
         signed-off-by: Giovanni Garufi <giovanni@balena.io>
       author: Giovanni Garufi
+  version: 2019.10.2
+  date: 2019-12-04T17:12:27.033Z
+- commits:
     - subject: Update meta-balena from v2.44.0 to v2.44.2
       hash: 00db5a2f081d16111c13a2fa3ca830c09979fd28
       body: |
@@ -23,8 +28,19 @@
         signed-off-by: Florin Sarbu <florin@balena.io>
       author: Florin Sarbu
       nested: []
+    - subject: Update balena yocto scripts to 1.5.0
+      hash: d43fa40ce5e9ac4c611338f6fcd770dbb306486f
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: Update balena yocto scripts to 1.5.0
+        changelog-entry: Update balena yocto scripts to 1.5.0
+        Signed-off-by: Giovanni Garufi <giovanni@balena.io>
+        signed-off-by: Giovanni Garufi <giovanni@balena.io>
+      author: Giovanni Garufi
   version: 2019.10.1
-  date: 2019-12-03T18:18:29.553Z
+  date: 2019-12-03T16:10:21.033Z
 - commits:
     - subject: Add warning advising of no WiFi on Pi 2
       hash: 83c9a94ac9fc2cf0991cba0956c488da2a6b96ff
