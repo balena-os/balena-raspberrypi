@@ -16,3 +16,11 @@ SRC_URI += " \
     file://rpi.h-Remove-usb-start-from-CONFIG_PREBOOT.patch \
     file://0002-raspberrypi-Disable-simple-framebuffer-support.patch \
 "
+
+# Disable flasher check since it starts usb unnecessarily
+# and we don't generate flasher images for any of the RPIs.
+SRC_URI_append = " \
+    file://0001-rpi-Disable-image-flasher-check.patch \
+"
+
+RESIN_UBOOT_DEVICE_TYPES_append = " usb"
