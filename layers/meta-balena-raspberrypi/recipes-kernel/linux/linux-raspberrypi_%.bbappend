@@ -2,12 +2,15 @@ inherit kernel-resin
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
+SRC_URI_append_fincm3 = " \
+	file://0004-mmc-pwrseq-Repurpose-for-Marvell-SD8777.patch \
+	file://0005-balena-fin-wifi-sta-uap-mode.patch \
+"
+
 SRC_URI_append = " \
 	file://0002-wireless-wext-Bring-back-ndo_do_ioctl-fallback.patch \
 	file://0003-leds-pca963x-Fix-MODE2-initialization.patch \
 	file://0001-Add-npe-x500-m3-overlay.patch \
-	file://0004-mmc-pwrseq-Repurpose-for-Marvell-SD8777.patch \
-	file://0005-balena-fin-wifi-sta-uap-mode.patch \
 	file://0006-overlays-Add-Hyperpixel4-overlays.patch \
 "
 
