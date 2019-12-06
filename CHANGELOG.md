@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.44.0+rev8
+## (2019-12-06)
+
+* Enable spi3 to spi6 device tree overlays [Vicentiu Galanopulo]
+
 # v2.44.0+rev7
 ## (2019-11-19)
 

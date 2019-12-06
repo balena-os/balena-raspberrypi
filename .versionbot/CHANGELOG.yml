@@ -1,4 +1,18 @@
 - commits:
+    - subject: Enable spi3 to spi6 device tree overlays
+      hash: 47580d5c04505245a45096302aec2872e8d29c0b
+      body: |
+        Customer request to have spi 3 to 6 enabled
+        in balenaOS
+      footer:
+        Changelog-entry: Enable spi3 to spi6 device tree overlays
+        changelog-entry: Enable spi3 to spi6 device tree overlays
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+  version: 2.44.0+rev8
+  date: 2019-12-06T15:05:52.309Z
+- commits:
     - subject: Remove the 64 bits OS reference from the rpi4 device pretty name
       hash: 2fda69b9c1c664386935f30f564a592ad643d5d0
       body: |
