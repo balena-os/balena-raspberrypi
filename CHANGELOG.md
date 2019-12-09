@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.44.0+rev9
+## (2019-12-06)
+
+* Fix rpi4-64 kernel freeze by moving specific fincm3 patches [Vicentiu Galanopulo]
+
 # v2.44.0+rev8
 ## (2019-12-06)
 

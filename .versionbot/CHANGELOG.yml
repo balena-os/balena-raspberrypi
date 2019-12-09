@@ -1,4 +1,22 @@
 - commits:
+    - subject: Fix rpi4-64 kernel freeze by moving specific fincm3 patches
+      hash: 55293b9129ccef96812187d185c23582e2d9385f
+      body: |
+        Some specific fincm3 patches were applying to
+        all the raspberry pi machines.
+        This lead to kernel startup failure of the pi4-64
+        machine. No serial output was shown after the
+        "Starting kernel..." log and the board would
+        freeze.
+      footer:
+        Changelog-entry: Fix rpi4-64 kernel freeze by moving specific fincm3 patches
+        changelog-entry: Fix rpi4-64 kernel freeze by moving specific fincm3 patches
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+  version: 2.44.0+rev9
+  date: 2019-12-06T15:54:01.456Z
+- commits:
     - subject: Enable spi3 to spi6 device tree overlays
       hash: 47580d5c04505245a45096302aec2872e8d29c0b
       body: |
