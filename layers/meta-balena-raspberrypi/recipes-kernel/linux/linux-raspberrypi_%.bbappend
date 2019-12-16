@@ -15,7 +15,8 @@ SRC_URI_append = " \
 "
 
 SRC_URI_append_raspberrypi4-64 = " \
-        file://0001-Fbcon-ignore-events-for-rpi-sense-fb.patch \
+	file://0001-Fbcon-ignore-events-for-rpi-sense-fb.patch \
+	file://0001-4.19_to_5.4_bcmgenet_update.patch \
 "
 
 # Set console accordingly to build type

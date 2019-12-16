@@ -1,0 +1,386 @@
+From b08b3e7ec9b036f42d285d1d35b3bf96a1e4760f Mon Sep 17 00:00:00 2001
+From: Vicentiu Galanopulo <vicentiu@balena.io>
+Date: Tue, 3 Dec 2019 11:29:18 +0100
+Subject: [PATCH] 4.19_to_5.4_bcmgenet_update
+
+---
+ .../net/ethernet/broadcom/genet/bcmgenet.c    | 90 +++++++++++++------
+ .../net/ethernet/broadcom/genet/bcmgenet.h    |  4 +-
+ .../ethernet/broadcom/genet/bcmgenet_wol.c    |  2 +
+ drivers/net/ethernet/broadcom/genet/bcmmii.c  | 81 ++++++++++++-----
+ 4 files changed, 128 insertions(+), 49 deletions(-)
+
+diff --git a/drivers/net/ethernet/broadcom/genet/bcmgenet.c b/drivers/net/ethernet/broadcom/genet/bcmgenet.c
+index 251166dfb8a8..36c9f3d111d3 100644
+--- a/drivers/net/ethernet/broadcom/genet/bcmgenet.c
++++ b/drivers/net/ethernet/broadcom/genet/bcmgenet.c
+@@ -1902,7 +1902,7 @@ static int bcmgenet_rx_poll(struct napi_struct *napi, int budget)
+ {
+ 	struct bcmgenet_rx_ring *ring = container_of(napi,
+ 			struct bcmgenet_rx_ring, napi);
+-	struct net_dim_sample dim_sample;
++	struct net_dim_sample dim_sample = {};
+ 	unsigned int work_done;
+ 
+ 	work_done = bcmgenet_desc_rx(ring, budget);
+@@ -1997,18 +1997,11 @@ static void reset_umac(struct bcmgenet_priv *priv)
+ 	bcmgenet_rbuf_ctrl_set(priv, 0);
+ 	udelay(10);
+ 
+-	if (skip_umac_reset) {
+-		pr_warn("Skipping UMAC reset\n");
+-		return;
+-	}
+-
+ 	/* disable MAC while updating its registers */
+ 	bcmgenet_umac_writel(priv, 0, UMAC_CMD);
+ 
+ 	/* issue soft reset with (rg)mii loopback to ensure a stable rxclk */
+ 	bcmgenet_umac_writel(priv, CMD_SW_RESET | CMD_LCL_LOOP_EN, UMAC_CMD);
+-	udelay(2);
+-	bcmgenet_umac_writel(priv, 0, UMAC_CMD);
+ }
+ 
+ static void bcmgenet_intr_disable(struct bcmgenet_priv *priv)
+@@ -2029,6 +2022,8 @@ static void bcmgenet_link_intr_enable(struct bcmgenet_priv *priv)
+ 	 */
+ 	if (priv->internal_phy) {
+ 		int0_enable |= UMAC_IRQ_LINK_EVENT;
++		if (GENET_IS_V1(priv) || GENET_IS_V2(priv) || GENET_IS_V3(priv))
++			int0_enable |= UMAC_IRQ_PHY_DET_R;
+ 	} else if (priv->ext_phy) {
+ 		int0_enable |= UMAC_IRQ_LINK_EVENT;
+ 	} else if (priv->phy_interface == PHY_INTERFACE_MODE_MOCA) {
+@@ -2156,7 +2151,7 @@ static void bcmgenet_init_tx_ring(struct bcmgenet_priv *priv,
+ 
+ 	bcmgenet_tdma_ring_writel(priv, index, 0, TDMA_PROD_INDEX);
+ 	bcmgenet_tdma_ring_writel(priv, index, 0, TDMA_CONS_INDEX);
+-	bcmgenet_tdma_ring_writel(priv, index, 10, DMA_MBUF_DONE_THRESH);
++	bcmgenet_tdma_ring_writel(priv, index, 1, DMA_MBUF_DONE_THRESH);
+ 	/* Disable rate control for now */
+ 	bcmgenet_tdma_ring_writel(priv, index, flow_period_val,
+ 				  TDMA_FLOW_PERIOD);
+@@ -2527,19 +2522,14 @@ static int bcmgenet_dma_teardown(struct bcmgenet_priv *priv)
+ static void bcmgenet_fini_dma(struct bcmgenet_priv *priv)
+ {
+ 	struct netdev_queue *txq;
+-	struct sk_buff *skb;
+-	struct enet_cb *cb;
+ 	int i;
+ 
+ 	bcmgenet_fini_rx_napi(priv);
+ 	bcmgenet_fini_tx_napi(priv);
+ 
+-	for (i = 0; i < priv->num_tx_bds; i++) {
+-		cb = priv->tx_cbs + i;
+-		skb = bcmgenet_free_tx_cb(&priv->pdev->dev, cb);
+-		if (skb)
+-			dev_kfree_skb(skb);
+-	}
++	for (i = 0; i < priv->num_tx_bds; i++)
++		dev_kfree_skb(bcmgenet_free_tx_cb(&priv->pdev->dev,
++						  priv->tx_cbs + i));
+ 
+ 	for (i = 0; i < priv->hw_params->tx_queues; i++) {
+ 		txq = netdev_get_tx_queue(priv->dev, priv->tx_rings[i].queue);
+@@ -2592,7 +2582,8 @@ static int bcmgenet_init_dma(struct bcmgenet_priv *priv)
+ 	}
+ 
+ 	/* Init rDma */
+-	bcmgenet_rdma_writel(priv, DMA_MAX_BURST_LENGTH, DMA_SCB_BURST_SIZE);
++	bcmgenet_rdma_writel(priv, priv->dma_max_burst_length,
++			     DMA_SCB_BURST_SIZE);
+ 
+ 	/* Initialize Rx queues */
+ 	ret = bcmgenet_init_rx_queues(priv->dev);
+@@ -2605,7 +2596,8 @@ static int bcmgenet_init_dma(struct bcmgenet_priv *priv)
+ 	}
+ 
+ 	/* Init tDma */
+-	bcmgenet_tdma_writel(priv, DMA_MAX_BURST_LENGTH, DMA_SCB_BURST_SIZE);
++	bcmgenet_tdma_writel(priv, priv->dma_max_burst_length,
++			     DMA_SCB_BURST_SIZE);
+ 
+ 	/* Initialize Tx queues */
+ 	bcmgenet_init_tx_queues(priv->dev);
+@@ -2627,11 +2619,16 @@ static void bcmgenet_irq_task(struct work_struct *work)
+ 	priv->irq0_stat = 0;
+ 	spin_unlock_irq(&priv->lock);
+ 
++	//if (status & UMAC_IRQ_PHY_DET_R &&
++	//    priv->dev->phydev->autoneg != AUTONEG_ENABLE) {
++	//	phy_init_hw(priv->dev->phydev);
++	//	genphy_config_aneg(priv->dev->phydev);
++	//}
++
+ 	/* Link UP/DOWN event */
+-	if (status & UMAC_IRQ_LINK_EVENT) {
+-		priv->dev->phydev->link = !!(status & UMAC_IRQ_LINK_UP);
++	if (status & UMAC_IRQ_LINK_EVENT)
+ 		phy_mac_interrupt(priv->dev->phydev);
+-	}
++
+ }
+ 
+ /* bcmgenet_isr1: handle Rx and Tx priority queues */
+@@ -2726,7 +2723,7 @@ static irqreturn_t bcmgenet_isr0(int irq, void *dev_id)
+ 	}
+ 
+ 	/* all other interested interrupts handled in bottom half */
+-	status &= UMAC_IRQ_LINK_EVENT;
++	status &= (UMAC_IRQ_LINK_EVENT | UMAC_IRQ_PHY_DET_R);
+ 	if (status) {
+ 		/* Save irq status for bottom-half processing. */
+ 		spin_lock_irqsave(&priv->lock, flags);
+@@ -3431,12 +3428,48 @@ static void bcmgenet_set_hw_params(struct bcmgenet_priv *priv)
+ 		params->words_per_bd);
+ }
+ 
++struct bcmgenet_plat_data {
++	enum bcmgenet_version version;
++	u32 dma_max_burst_length;
++};
++
++static const struct bcmgenet_plat_data v1_plat_data = {
++	.version = GENET_V1,
++	.dma_max_burst_length = DMA_MAX_BURST_LENGTH,
++};
++
++static const struct bcmgenet_plat_data v2_plat_data = {
++	.version = GENET_V2,
++	.dma_max_burst_length = DMA_MAX_BURST_LENGTH,
++};
++
++static const struct bcmgenet_plat_data v3_plat_data = {
++	.version = GENET_V3,
++	.dma_max_burst_length = DMA_MAX_BURST_LENGTH,
++};
++
++static const struct bcmgenet_plat_data v4_plat_data = {
++	.version = GENET_V4,
++	.dma_max_burst_length = DMA_MAX_BURST_LENGTH,
++};
++
++static const struct bcmgenet_plat_data v5_plat_data = {
++	.version = GENET_V5,
++	.dma_max_burst_length = DMA_MAX_BURST_LENGTH,
++};
++
++static const struct bcmgenet_plat_data bcm2711_plat_data = {
++	.version = GENET_V5,
++	.dma_max_burst_length = 0x08,
++};
++
+ static const struct of_device_id bcmgenet_match[] = {
+-	{ .compatible = "brcm,genet-v1", .data = (void *)GENET_V1 },
+-	{ .compatible = "brcm,genet-v2", .data = (void *)GENET_V2 },
+-	{ .compatible = "brcm,genet-v3", .data = (void *)GENET_V3 },
+-	{ .compatible = "brcm,genet-v4", .data = (void *)GENET_V4 },
+-	{ .compatible = "brcm,genet-v5", .data = (void *)GENET_V5 },
++	{ .compatible = "brcm,genet-v1", .data = &v1_plat_data },
++	{ .compatible = "brcm,genet-v2", .data = &v2_plat_data },
++	{ .compatible = "brcm,genet-v3", .data = &v3_plat_data },
++	{ .compatible = "brcm,genet-v4", .data = &v4_plat_data },
++	{ .compatible = "brcm,genet-v5", .data = &v5_plat_data },
++	{ .compatible = "brcm,bcm2711-genet-v5", .data = &bcm2711_plat_data },
+ 	{ },
+ };
+ MODULE_DEVICE_TABLE(of, bcmgenet_match);
+@@ -3682,6 +3715,7 @@ static int bcmgenet_resume(struct device *d)
+ 	phy_init_hw(dev->phydev);
+ 
+ 	/* Speed settings must be restored */
++	genphy_config_aneg(dev->phydev);
+ 	bcmgenet_mii_config(priv->dev, false);
+ 
+ 	bcmgenet_set_hw_addr(priv, dev->dev_addr);
+diff --git a/drivers/net/ethernet/broadcom/genet/bcmgenet.h b/drivers/net/ethernet/broadcom/genet/bcmgenet.h
+index 7730a09b9e7c..7bcf88db4572 100644
+--- a/drivers/net/ethernet/broadcom/genet/bcmgenet.h
++++ b/drivers/net/ethernet/broadcom/genet/bcmgenet.h
+@@ -31,7 +31,7 @@
+ #define ENET_PAD		8
+ #define ENET_MAX_MTU_SIZE	(ETH_DATA_LEN + ETH_HLEN + VLAN_HLEN + \
+ 				 ENET_BRCM_TAG_LEN + ETH_FCS_LEN + ENET_PAD)
+-#define DMA_MAX_BURST_LENGTH    0x08
++#define DMA_MAX_BURST_LENGTH    0x10
+ 
+ /* misc. configuration */
+ #define CLEAR_ALL_HFB			0xFF
+@@ -369,6 +369,7 @@ struct bcmgenet_mib_counters {
+ #define  EXT_PWR_DOWN_PHY_EN		(1 << 20)
+ 
+ #define EXT_RGMII_OOB_CTRL		0x0C
++#define  RGMII_MODE_EN_V123		(1 << 0)
+ #define  RGMII_LINK			(1 << 4)
+ #define  OOB_DISABLE			(1 << 5)
+ #define  RGMII_MODE_EN			(1 << 6)
+@@ -666,6 +667,7 @@ struct bcmgenet_priv {
+ 	bool crc_fwd_en;
+ 
+ 	unsigned int dma_rx_chk_bit;
++	u32 dma_max_burst_length;
+ 
+ 	u32 msg_enable;
+ 
+diff --git a/drivers/net/ethernet/broadcom/genet/bcmgenet_wol.c b/drivers/net/ethernet/broadcom/genet/bcmgenet_wol.c
+index 2fbd027f0148..57582efa362d 100644
+--- a/drivers/net/ethernet/broadcom/genet/bcmgenet_wol.c
++++ b/drivers/net/ethernet/broadcom/genet/bcmgenet_wol.c
+@@ -186,6 +186,8 @@ void bcmgenet_wol_power_up_cfg(struct bcmgenet_priv *priv,
+ 	}
+ 
+ 	reg = bcmgenet_umac_readl(priv, UMAC_MPD_CTRL);
++	if (!(reg & MPD_EN))
++		return;	/* already powered up so skip the rest */
+ 	reg &= ~MPD_EN;
+ 	bcmgenet_umac_writel(priv, reg, UMAC_MPD_CTRL);
+ 
+diff --git a/drivers/net/ethernet/broadcom/genet/bcmmii.c b/drivers/net/ethernet/broadcom/genet/bcmmii.c
+index 20689b1a220b..a051c41aa359 100644
+--- a/drivers/net/ethernet/broadcom/genet/bcmmii.c
++++ b/drivers/net/ethernet/broadcom/genet/bcmmii.c
+@@ -184,13 +184,42 @@ int bcmgenet_mii_config(struct net_device *dev, bool init)
+ 	const char *phy_name = NULL;
+ 	u32 id_mode_dis = 0;
+ 	u32 port_ctrl;
++	int bmcr = -1;
++	int ret;
+ 	u32 reg;
+ 
+-	priv->ext_phy = !priv->internal_phy &&
+-			(priv->phy_interface != PHY_INTERFACE_MODE_MOCA);
++	/* MAC clocking workaround during reset of umac state machines */
++	reg = bcmgenet_umac_readl(priv, UMAC_CMD);
++	if (reg & CMD_SW_RESET) {
++		/* An MII PHY must be isolated to prevent TXC contention */
++		if (priv->phy_interface == PHY_INTERFACE_MODE_MII) {
++			ret = phy_read(phydev, MII_BMCR);
++			if (ret >= 0) {
++				bmcr = ret;
++				ret = phy_write(phydev, MII_BMCR,
++						bmcr | BMCR_ISOLATE);
++			}
++			if (ret) {
++				netdev_err(dev, "failed to isolate PHY\n");
++				return ret;
++			}
++		}
++		/* Switch MAC clocking to RGMII generated clock */
++		bcmgenet_sys_writel(priv, PORT_MODE_EXT_GPHY, SYS_PORT_CTRL);
++		/* Ensure 5 clks with Rx disabled
++		 * followed by 5 clks with Reset asserted
++		 */
++		udelay(4);
++		reg &= ~(CMD_SW_RESET | CMD_LCL_LOOP_EN);
++		bcmgenet_umac_writel(priv, reg, UMAC_CMD);
++		/* Ensure 5 more clocks before Rx is enabled */
++		udelay(2);
++	}
+ 
+ 	switch (priv->phy_interface) {
+ 	case PHY_INTERFACE_MODE_INTERNAL:
++		phy_name = "internal PHY";
++		/* fall through */
+ 	case PHY_INTERFACE_MODE_MOCA:
+ 		/* Irrespective of the actually configured PHY speed (100 or
+ 		 * 1000) GENETv4 only has an internal GPHY so we will just end
+@@ -202,11 +231,7 @@ int bcmgenet_mii_config(struct net_device *dev, bool init)
+ 		else
+ 			port_ctrl = PORT_MODE_INT_EPHY;
+ 
+-		bcmgenet_sys_writel(priv, port_ctrl, SYS_PORT_CTRL);
+-
+-		if (priv->internal_phy) {
+-			phy_name = "internal PHY";
+-		} else if (priv->phy_interface == PHY_INTERFACE_MODE_MOCA) {
++		if (!phy_name) {
+ 			phy_name = "MoCA";
+ 			bcmgenet_moca_phy_setup(priv);
+ 		}
+@@ -214,9 +239,8 @@ int bcmgenet_mii_config(struct net_device *dev, bool init)
+ 
+ 	case PHY_INTERFACE_MODE_MII:
+ 		phy_name = "external MII";
+-		phydev->supported &= PHY_BASIC_FEATURES;
+-		bcmgenet_sys_writel(priv,
+-				    PORT_MODE_EXT_EPHY, SYS_PORT_CTRL);
++		phy_set_max_speed(phydev, SPEED_100);
++		port_ctrl = PORT_MODE_EXT_EPHY;
+ 		break;
+ 
+ 	case PHY_INTERFACE_MODE_REVMII:
+@@ -231,7 +255,6 @@ int bcmgenet_mii_config(struct net_device *dev, bool init)
+ 			port_ctrl = PORT_MODE_EXT_RVMII_25;
+ 		else
+ 			port_ctrl = PORT_MODE_EXT_RVMII_50;
+-		bcmgenet_sys_writel(priv, port_ctrl, SYS_PORT_CTRL);
+ 		break;
+ 
+ 	case PHY_INTERFACE_MODE_RGMII:
+@@ -241,27 +264,45 @@ int bcmgenet_mii_config(struct net_device *dev, bool init)
+ 		 *
+ 		 * ID is implicitly disabled for 100Mbps (RG)MII operation.
+ 		 */
++		phy_name = "external RGMII (no delay)";
+ 		id_mode_dis = BIT(16);
+-		/* fall through */
++		port_ctrl = PORT_MODE_EXT_GPHY;
++		break;
++
+ 	case PHY_INTERFACE_MODE_RGMII_TXID:
+-		if (id_mode_dis)
+-			phy_name = "external RGMII (no delay)";
+-		else
+-			phy_name = "external RGMII (TX delay)";
+-		bcmgenet_sys_writel(priv,
+-				    PORT_MODE_EXT_GPHY, SYS_PORT_CTRL);
++		/* RGMII_TXID:	Add 2ns delay on TXC (90 degree shift) */
++		phy_name = "external RGMII (TX delay)";
++		port_ctrl = PORT_MODE_EXT_GPHY;
++		break;
++
++	case PHY_INTERFACE_MODE_RGMII_RXID:
++		phy_name = "external RGMII (RX delay)";
++		port_ctrl = PORT_MODE_EXT_GPHY;
+ 		break;
+ 	default:
+ 		dev_err(kdev, "unknown phy mode: %d\n", priv->phy_interface);
+ 		return -EINVAL;
+ 	}
+ 
++	bcmgenet_sys_writel(priv, port_ctrl, SYS_PORT_CTRL);
++
++	/* Restore the MII PHY after isolation */
++	if (bmcr >= 0)
++		phy_write(phydev, MII_BMCR, bmcr);
++
++	priv->ext_phy = !priv->internal_phy &&
++			(priv->phy_interface != PHY_INTERFACE_MODE_MOCA);
++
+ 	/* This is an external PHY (xMII), so we need to enable the RGMII
+ 	 * block for the interface to work
+ 	 */
+ 	if (priv->ext_phy) {
+ 		reg = bcmgenet_ext_readl(priv, EXT_RGMII_OOB_CTRL);
+-		reg |= RGMII_MODE_EN | id_mode_dis;
++		reg |= id_mode_dis;
++		if (GENET_IS_V1(priv) || GENET_IS_V2(priv) || GENET_IS_V3(priv))
++			reg |= RGMII_MODE_EN_V123;
++		else
++			reg |= RGMII_MODE_EN;
+ 		bcmgenet_ext_writel(priv, reg, EXT_RGMII_OOB_CTRL);
+ 	}
+ 
+@@ -276,7 +317,7 @@ int bcmgenet_mii_probe(struct net_device *dev)
+ 	struct bcmgenet_priv *priv = netdev_priv(dev);
+ 	struct device_node *dn = priv->pdev->dev.of_node;
+ 	struct phy_device *phydev;
+-	u32 phy_flags;
++	u32 phy_flags = 0;
+ 	int ret;
+ 
+ 	/* Communicate the integrated PHY revision */
+-- 
+2.17.1
+
