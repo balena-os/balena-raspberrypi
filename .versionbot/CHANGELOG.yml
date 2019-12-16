@@ -1,4 +1,19 @@
 - commits:
+    - subject: 'Test update of bcmgenet driver[WIP]'
+      hash: 7ffd205f44d1855cfc0d50550fb6a081b7d2eee9
+      body: |
+        [WIP]
+        Some networking stalls were experienced with the 4.19 kernel.
+        After the update an speed increase improvement could be observed.
+      footer:
+        Changelog-entry: 'Test update of bcmgenet driver[WIP]'
+        changelog-entry: 'Test update of bcmgenet driver[WIP]'
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+  version: 2.44.0+rev10
+  date: 2019-12-16T08:38:57.329Z
+- commits:
     - subject: Fix rpi4-64 kernel freeze by moving specific fincm3 patches
       hash: 55293b9129ccef96812187d185c23582e2d9385f
       body: |

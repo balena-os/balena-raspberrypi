@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.44.0+rev10
+## (2019-12-16)
+
+* Test update of bcmgenet driver[WIP] [Vicentiu Galanopulo]
+
 # v2.44.0+rev9
 ## (2019-12-06)
 
