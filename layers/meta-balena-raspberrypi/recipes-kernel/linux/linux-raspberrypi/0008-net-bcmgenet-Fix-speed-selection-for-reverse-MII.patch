@@ -1,0 +1,41 @@
+From 00eb2243b933a496958f4ce1bcf59840fea8be16 Mon Sep 17 00:00:00 2001
+From: Andrew Lunn <andrew@lunn.ch>
+Date: Wed, 12 Sep 2018 01:53:12 +0200
+Subject: [PATCH] net: bcmgenet: Fix speed selection for reverse MII
+
+The phy supported speed is being used to determine if the MAC should
+be configured to 100 or 1G. The masking logic is broken. Instead, look
+at 1G supported speeds to enable 1G MAC support.
+
+Signed-off-by: Andrew Lunn <andrew@lunn.ch>
+Acked-by: Florian Fainelli <f.fainelli@gmail.com>
+Signed-off-by: David S. Miller <davem@davemloft.net>
+
+Upstream-status: Backport
+Signed-off-by: Florin Sarbu <florin@balena.io>
+---
+ drivers/net/ethernet/broadcom/genet/bcmmii.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/net/ethernet/broadcom/genet/bcmmii.c b/drivers/net/ethernet/broadcom/genet/bcmmii.c
+index b11d58f..b756fc7 100644
+--- a/drivers/net/ethernet/broadcom/genet/bcmmii.c
++++ b/drivers/net/ethernet/broadcom/genet/bcmmii.c
+@@ -226,11 +226,10 @@ int bcmgenet_mii_config(struct net_device *dev, bool init)
+ 		 * capabilities, use that knowledge to also configure the
+ 		 * Reverse MII interface correctly.
+ 		 */
+-		if ((dev->phydev->supported & PHY_BASIC_FEATURES) ==
+-				PHY_BASIC_FEATURES)
+-			port_ctrl = PORT_MODE_EXT_RVMII_25;
+-		else
++		if (dev->phydev->supported & PHY_1000BT_FEATURES)
+ 			port_ctrl = PORT_MODE_EXT_RVMII_50;
++		else
++			port_ctrl = PORT_MODE_EXT_RVMII_25;
+ 		bcmgenet_sys_writel(priv, port_ctrl, SYS_PORT_CTRL);
+ 		break;
+ 
+-- 
+2.7.4
+

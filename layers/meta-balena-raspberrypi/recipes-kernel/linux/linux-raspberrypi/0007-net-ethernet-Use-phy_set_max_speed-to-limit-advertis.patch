@@ -1,0 +1,537 @@
+From 58056c1e1b0e4951f3486bd552d8278194f8b84b Mon Sep 17 00:00:00 2001
+From: Andrew Lunn <andrew@lunn.ch>
+Date: Wed, 12 Sep 2018 01:53:11 +0200
+Subject: [PATCH] net: ethernet: Use phy_set_max_speed() to limit advertised
+ speed
+
+Many Ethernet MAC drivers want to limit the PHY to only advertise a
+maximum speed of 100Mbs or 1Gbps. Rather than using a mask, make use
+of the helper function phy_set_max_speed().
+
+Signed-off-by: Andrew Lunn <andrew@lunn.ch>
+Reviewed-by: Florian Fainelli <f.fainelli@gmail.com>
+Signed-off-by: David S. Miller <davem@davemloft.net>
+
+Upstream-status: Backport
+Signed-off-by: Florin Sarbu <florin@balena.io>
+---
+ drivers/net/ethernet/8390/ax88796.c               |  4 +---
+ drivers/net/ethernet/aeroflex/greth.c             |  4 ++--
+ drivers/net/ethernet/agere/et131x.c               | 12 ++----------
+ drivers/net/ethernet/allwinner/sun4i-emac.c       |  3 +--
+ drivers/net/ethernet/altera/altera_tse_main.c     |  5 +----
+ drivers/net/ethernet/amd/au1000_eth.c             | 12 +-----------
+ drivers/net/ethernet/broadcom/bcm63xx_enet.c      | 10 ++--------
+ drivers/net/ethernet/broadcom/genet/bcmmii.c      |  2 +-
+ drivers/net/ethernet/broadcom/sb1250-mac.c        | 11 ++---------
+ drivers/net/ethernet/broadcom/tg3.c               |  8 ++++----
+ drivers/net/ethernet/cadence/macb_main.c          |  4 ++--
+ drivers/net/ethernet/cortina/gemini.c             |  2 +-
+ drivers/net/ethernet/dnet.c                       |  4 ++--
+ drivers/net/ethernet/ethoc.c                      |  5 +----
+ drivers/net/ethernet/freescale/fec_main.c         |  4 ++--
+ drivers/net/ethernet/freescale/ucc_geth.c         |  7 +------
+ drivers/net/ethernet/lantiq_etop.c                | 11 ++---------
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c       |  4 ++--
+ drivers/net/ethernet/nxp/lpc_eth.c                |  3 +--
+ drivers/net/ethernet/rdc/r6040.c                  | 12 ++----------
+ drivers/net/ethernet/samsung/sxgbe/sxgbe_main.c   |  4 ++--
+ drivers/net/ethernet/smsc/smsc911x.c              |  5 +++--
+ drivers/net/ethernet/smsc/smsc9420.c              |  5 +++--
+ drivers/net/ethernet/socionext/sni_ave.c          |  6 ++----
+ drivers/net/ethernet/stmicro/stmmac/stmmac_main.c |  3 +--
+ drivers/net/ethernet/toshiba/tc35815.c            |  2 +-
+ drivers/net/ethernet/xilinx/xilinx_emaclite.c     |  3 +--
+ drivers/staging/mt7621-eth/mdio.c                 |  2 +-
+ 28 files changed, 47 insertions(+), 110 deletions(-)
+
+diff --git a/drivers/net/ethernet/8390/ax88796.c b/drivers/net/ethernet/8390/ax88796.c
+index 2a0ddec..3dcc618 100644
+--- a/drivers/net/ethernet/8390/ax88796.c
++++ b/drivers/net/ethernet/8390/ax88796.c
+@@ -377,9 +377,7 @@ static int ax_mii_probe(struct net_device *dev)
+ 		return ret;
+ 	}
+ 
+-	/* mask with MAC supported features */
+-	phy_dev->supported &= PHY_BASIC_FEATURES;
+-	phy_dev->advertising = phy_dev->supported;
++	phy_set_max_speed(phy_dev, SPEED_100);
+ 
+ 	netdev_info(dev, "PHY driver [%s] (mii_bus:phy_addr=%s, irq=%d)\n",
+ 		    phy_dev->drv->name, phydev_name(phy_dev), phy_dev->irq);
+diff --git a/drivers/net/ethernet/aeroflex/greth.c b/drivers/net/ethernet/aeroflex/greth.c
+index 4309be3..7c9348a 100644
+--- a/drivers/net/ethernet/aeroflex/greth.c
++++ b/drivers/net/ethernet/aeroflex/greth.c
+@@ -1279,9 +1279,9 @@ static int greth_mdio_probe(struct net_device *dev)
+ 	}
+ 
+ 	if (greth->gbit_mac)
+-		phy->supported &= PHY_GBIT_FEATURES;
++		phy_set_max_speed(phy, SPEED_1000);
+ 	else
+-		phy->supported &= PHY_BASIC_FEATURES;
++		phy_set_max_speed(phy, SPEED_100);
+ 
+ 	phy->advertising = phy->supported;
+ 
+diff --git a/drivers/net/ethernet/agere/et131x.c b/drivers/net/ethernet/agere/et131x.c
+index 48220b6..ea34bcb 100644
+--- a/drivers/net/ethernet/agere/et131x.c
++++ b/drivers/net/ethernet/agere/et131x.c
+@@ -3258,19 +3258,11 @@ static int et131x_mii_probe(struct net_device *netdev)
+ 		return PTR_ERR(phydev);
+ 	}
+ 
+-	phydev->supported &= (SUPPORTED_10baseT_Half |
+-			      SUPPORTED_10baseT_Full |
+-			      SUPPORTED_100baseT_Half |
+-			      SUPPORTED_100baseT_Full |
+-			      SUPPORTED_Autoneg |
+-			      SUPPORTED_MII |
+-			      SUPPORTED_TP);
++	phy_set_max_speed(phydev, SPEED_100);
+ 
+ 	if (adapter->pdev->device != ET131X_PCI_DEVICE_ID_FAST)
+-		phydev->supported |= SUPPORTED_1000baseT_Half |
+-				     SUPPORTED_1000baseT_Full;
++		phy_set_max_speed(phydev, SPEED_1000);
+ 
+-	phydev->advertising = phydev->supported;
+ 	phydev->autoneg = AUTONEG_ENABLE;
+ 
+ 	phy_attached_info(phydev);
+diff --git a/drivers/net/ethernet/allwinner/sun4i-emac.c b/drivers/net/ethernet/allwinner/sun4i-emac.c
+index 3143de4..e1acafa 100644
+--- a/drivers/net/ethernet/allwinner/sun4i-emac.c
++++ b/drivers/net/ethernet/allwinner/sun4i-emac.c
+@@ -172,8 +172,7 @@ static int emac_mdio_probe(struct net_device *dev)
+ 	}
+ 
+ 	/* mask with MAC supported features */
+-	phydev->supported &= PHY_BASIC_FEATURES;
+-	phydev->advertising = phydev->supported;
++	phy_set_max_speed(phydev, SPEED_100);
+ 
+ 	db->link = 0;
+ 	db->speed = 0;
+diff --git a/drivers/net/ethernet/altera/altera_tse_main.c b/drivers/net/ethernet/altera/altera_tse_main.c
+index baca8f7..02921d8 100644
+--- a/drivers/net/ethernet/altera/altera_tse_main.c
++++ b/drivers/net/ethernet/altera/altera_tse_main.c
+@@ -835,13 +835,10 @@ static int init_phy(struct net_device *dev)
+ 	}
+ 
+ 	/* Stop Advertising 1000BASE Capability if interface is not GMII
+-	 * Note: Checkpatch throws CHECKs for the camel case defines below,
+-	 * it's ok to ignore.
+ 	 */
+ 	if ((priv->phy_iface == PHY_INTERFACE_MODE_MII) ||
+ 	    (priv->phy_iface == PHY_INTERFACE_MODE_RMII))
+-		phydev->advertising &= ~(SUPPORTED_1000baseT_Half |
+-					 SUPPORTED_1000baseT_Full);
++		phy_set_max_speed(phydev, SPEED_100);
+ 
+ 	/* Broken HW is sometimes missing the pull-up resistor on the
+ 	 * MDIO line, which results in reads to non-existent devices returning
+diff --git a/drivers/net/ethernet/amd/au1000_eth.c b/drivers/net/ethernet/amd/au1000_eth.c
+index 73ca887..7c1eb30 100644
+--- a/drivers/net/ethernet/amd/au1000_eth.c
++++ b/drivers/net/ethernet/amd/au1000_eth.c
+@@ -564,17 +564,7 @@ static int au1000_mii_probe(struct net_device *dev)
+ 		return PTR_ERR(phydev);
+ 	}
+ 
+-	/* mask with MAC supported features */
+-	phydev->supported &= (SUPPORTED_10baseT_Half
+-			      | SUPPORTED_10baseT_Full
+-			      | SUPPORTED_100baseT_Half
+-			      | SUPPORTED_100baseT_Full
+-			      | SUPPORTED_Autoneg
+-			      /* | SUPPORTED_Pause | SUPPORTED_Asym_Pause */
+-			      | SUPPORTED_MII
+-			      | SUPPORTED_TP);
+-
+-	phydev->advertising = phydev->supported;
++	phy_set_max_speed(phydev, SPEED_100);
+ 
+ 	aup->old_link = 0;
+ 	aup->old_speed = 0;
+diff --git a/drivers/net/ethernet/broadcom/bcm63xx_enet.c b/drivers/net/ethernet/broadcom/bcm63xx_enet.c
+index 897302a..2eee945 100644
+--- a/drivers/net/ethernet/broadcom/bcm63xx_enet.c
++++ b/drivers/net/ethernet/broadcom/bcm63xx_enet.c
+@@ -890,14 +890,8 @@ static int bcm_enet_open(struct net_device *dev)
+ 		}
+ 
+ 		/* mask with MAC supported features */
+-		phydev->supported &= (SUPPORTED_10baseT_Half |
+-				      SUPPORTED_10baseT_Full |
+-				      SUPPORTED_100baseT_Half |
+-				      SUPPORTED_100baseT_Full |
+-				      SUPPORTED_Autoneg |
+-				      SUPPORTED_Pause |
+-				      SUPPORTED_MII);
+-		phydev->advertising = phydev->supported;
++		phydev->supported |= SUPPORTED_Pause;
++		phy_set_max_speed(phydev, SPEED_100);
+ 
+ 		if (priv->pause_auto && priv->pause_rx && priv->pause_tx)
+ 			phydev->advertising |= SUPPORTED_Pause;
+diff --git a/drivers/net/ethernet/broadcom/genet/bcmmii.c b/drivers/net/ethernet/broadcom/genet/bcmmii.c
+index 4241ae9..b11d58f 100644
+--- a/drivers/net/ethernet/broadcom/genet/bcmmii.c
++++ b/drivers/net/ethernet/broadcom/genet/bcmmii.c
+@@ -214,7 +214,7 @@ int bcmgenet_mii_config(struct net_device *dev, bool init)
+ 
+ 	case PHY_INTERFACE_MODE_MII:
+ 		phy_name = "external MII";
+-		phydev->supported &= PHY_BASIC_FEATURES;
++		phy_set_max_speed(phydev, SPEED_100);
+ 		bcmgenet_sys_writel(priv,
+ 				    PORT_MODE_EXT_EPHY, SYS_PORT_CTRL);
+ 		break;
+diff --git a/drivers/net/ethernet/broadcom/sb1250-mac.c b/drivers/net/ethernet/broadcom/sb1250-mac.c
+index ef4a0c32..4ce4b09 100644
+--- a/drivers/net/ethernet/broadcom/sb1250-mac.c
++++ b/drivers/net/ethernet/broadcom/sb1250-mac.c
+@@ -2357,15 +2357,8 @@ static int sbmac_mii_probe(struct net_device *dev)
+ 	}
+ 
+ 	/* Remove any features not supported by the controller */
+-	phy_dev->supported &= SUPPORTED_10baseT_Half |
+-			      SUPPORTED_10baseT_Full |
+-			      SUPPORTED_100baseT_Half |
+-			      SUPPORTED_100baseT_Full |
+-			      SUPPORTED_1000baseT_Half |
+-			      SUPPORTED_1000baseT_Full |
+-			      SUPPORTED_Autoneg |
+-			      SUPPORTED_MII |
+-			      SUPPORTED_Pause |
++	phy_set_max_speed(phy_dev, SPEED_1000);
++	phy_dev->supported |= SUPPORTED_Pause |
+ 			      SUPPORTED_Asym_Pause;
+ 
+ 	phy_attached_info(phy_dev);
+diff --git a/drivers/net/ethernet/broadcom/tg3.c b/drivers/net/ethernet/broadcom/tg3.c
+index e6f28c7..cdc3272 100644
+--- a/drivers/net/ethernet/broadcom/tg3.c
++++ b/drivers/net/ethernet/broadcom/tg3.c
+@@ -2122,15 +2122,15 @@ static int tg3_phy_init(struct tg3 *tp)
+ 	case PHY_INTERFACE_MODE_GMII:
+ 	case PHY_INTERFACE_MODE_RGMII:
+ 		if (!(tp->phy_flags & TG3_PHYFLG_10_100_ONLY)) {
+-			phydev->supported &= (PHY_GBIT_FEATURES |
+-					      SUPPORTED_Pause |
++			phy_set_max_speed(phydev, SPEED_1000);
++			phydev->supported &= (SUPPORTED_Pause |
+ 					      SUPPORTED_Asym_Pause);
+ 			break;
+ 		}
+ 		/* fallthru */
+ 	case PHY_INTERFACE_MODE_MII:
+-		phydev->supported &= (PHY_BASIC_FEATURES |
+-				      SUPPORTED_Pause |
++		phy_set_max_speed(phydev, SPEED_100);
++		phydev->supported &= (SUPPORTED_Pause |
+ 				      SUPPORTED_Asym_Pause);
+ 		break;
+ 	default:
+diff --git a/drivers/net/ethernet/cadence/macb_main.c b/drivers/net/ethernet/cadence/macb_main.c
+index 16e4ef7..bd4095c 100644
+--- a/drivers/net/ethernet/cadence/macb_main.c
++++ b/drivers/net/ethernet/cadence/macb_main.c
+@@ -544,9 +544,9 @@ static int macb_mii_probe(struct net_device *dev)
+ 
+ 	/* mask with MAC supported features */
+ 	if (macb_is_gem(bp) && bp->caps & MACB_CAPS_GIGABIT_MODE_AVAILABLE)
+-		phydev->supported &= PHY_GBIT_FEATURES;
++		phy_set_max_speed(phydev, SPEED_1000);
+ 	else
+-		phydev->supported &= PHY_BASIC_FEATURES;
++		phy_set_max_speed(phydev, SPEED_100);
+ 
+ 	if (bp->caps & MACB_CAPS_NO_GIGABIT_HALF)
+ 		phydev->supported &= ~SUPPORTED_1000baseT_Half;
+diff --git a/drivers/net/ethernet/cortina/gemini.c b/drivers/net/ethernet/cortina/gemini.c
+index 1c9ad36..2b46c0d 100644
+--- a/drivers/net/ethernet/cortina/gemini.c
++++ b/drivers/net/ethernet/cortina/gemini.c
+@@ -372,7 +372,7 @@ static int gmac_setup_phy(struct net_device *netdev)
+ 		return -ENODEV;
+ 	netdev->phydev = phy;
+ 
+-	phy->supported &= PHY_GBIT_FEATURES;
++	phy_set_max_speed(phy, SPEED_1000);
+ 	phy->supported |= SUPPORTED_Asym_Pause | SUPPORTED_Pause;
+ 	phy->advertising = phy->supported;
+ 
+diff --git a/drivers/net/ethernet/dnet.c b/drivers/net/ethernet/dnet.c
+index 5a84794..08b7ad1 100644
+--- a/drivers/net/ethernet/dnet.c
++++ b/drivers/net/ethernet/dnet.c
+@@ -284,9 +284,9 @@ static int dnet_mii_probe(struct net_device *dev)
+ 
+ 	/* mask with MAC supported features */
+ 	if (bp->capabilities & DNET_HAS_GIGABIT)
+-		phydev->supported &= PHY_GBIT_FEATURES;
++		phy_set_max_speed(phydev, SPEED_1000);
+ 	else
+-		phydev->supported &= PHY_BASIC_FEATURES;
++		phy_set_max_speed(phydev, SPEED_100);
+ 
+ 	phydev->supported |= SUPPORTED_Asym_Pause | SUPPORTED_Pause;
+ 
+diff --git a/drivers/net/ethernet/ethoc.c b/drivers/net/ethernet/ethoc.c
+index 60da049..0f3e7f2 100644
+--- a/drivers/net/ethernet/ethoc.c
++++ b/drivers/net/ethernet/ethoc.c
+@@ -721,10 +721,7 @@ static int ethoc_mdio_probe(struct net_device *dev)
+ 		return err;
+ 	}
+ 
+-	phy->advertising &= ~(ADVERTISED_1000baseT_Full |
+-			      ADVERTISED_1000baseT_Half);
+-	phy->supported &= ~(SUPPORTED_1000baseT_Full |
+-			    SUPPORTED_1000baseT_Half);
++	phy_set_max_speed(phy, SPEED_100);
+ 
+ 	return 0;
+ }
+diff --git a/drivers/net/ethernet/freescale/fec_main.c b/drivers/net/ethernet/freescale/fec_main.c
+index 2708297..5e84951 100644
+--- a/drivers/net/ethernet/freescale/fec_main.c
++++ b/drivers/net/ethernet/freescale/fec_main.c
+@@ -1946,14 +1946,14 @@ static int fec_enet_mii_probe(struct net_device *ndev)
+ 
+ 	/* mask with MAC supported features */
+ 	if (fep->quirks & FEC_QUIRK_HAS_GBIT) {
+-		phy_dev->supported &= PHY_GBIT_FEATURES;
++		phy_set_max_speed(phy_dev, 1000);
+ 		phy_dev->supported &= ~SUPPORTED_1000baseT_Half;
+ #if !defined(CONFIG_M5272)
+ 		phy_dev->supported |= SUPPORTED_Pause;
+ #endif
+ 	}
+ 	else
+-		phy_dev->supported &= PHY_BASIC_FEATURES;
++		phy_set_max_speed(phy_dev, 100);
+ 
+ 	phy_dev->advertising = phy_dev->supported;
+ 
+diff --git a/drivers/net/ethernet/freescale/ucc_geth.c b/drivers/net/ethernet/freescale/ucc_geth.c
+index 22a817d..9600837 100644
+--- a/drivers/net/ethernet/freescale/ucc_geth.c
++++ b/drivers/net/ethernet/freescale/ucc_geth.c
+@@ -1742,12 +1742,7 @@ static int init_phy(struct net_device *dev)
+ 	if (priv->phy_interface == PHY_INTERFACE_MODE_SGMII)
+ 		uec_configure_serdes(dev);
+ 
+-	phydev->supported &= (SUPPORTED_MII |
+-			      SUPPORTED_Autoneg |
+-			      ADVERTISED_10baseT_Half |
+-			      ADVERTISED_10baseT_Full |
+-			      ADVERTISED_100baseT_Half |
+-			      ADVERTISED_100baseT_Full);
++	phy_set_max_speed(phydev, SPEED_100);
+ 
+ 	if (priv->max_speed == SPEED_1000)
+ 		phydev->supported |= ADVERTISED_1000baseT_Full;
+diff --git a/drivers/net/ethernet/lantiq_etop.c b/drivers/net/ethernet/lantiq_etop.c
+index 7a637b5..7b25ba9 100644
+--- a/drivers/net/ethernet/lantiq_etop.c
++++ b/drivers/net/ethernet/lantiq_etop.c
+@@ -364,15 +364,8 @@ ltq_etop_mdio_probe(struct net_device *dev)
+ 		return PTR_ERR(phydev);
+ 	}
+ 
+-	phydev->supported &= (SUPPORTED_10baseT_Half
+-			      | SUPPORTED_10baseT_Full
+-			      | SUPPORTED_100baseT_Half
+-			      | SUPPORTED_100baseT_Full
+-			      | SUPPORTED_Autoneg
+-			      | SUPPORTED_MII
+-			      | SUPPORTED_TP);
+-
+-	phydev->advertising = phydev->supported;
++	phy_set_max_speed(phydev, SPEED_100);
++
+ 	phy_attached_info(phydev);
+ 
+ 	return 0;
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index b44bcfd..e93b537 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -359,8 +359,8 @@ static int mtk_phy_connect(struct net_device *dev)
+ 		dev->phydev->supported |=
+ 		SUPPORTED_Pause | SUPPORTED_Asym_Pause;
+ 
+-	dev->phydev->supported &= PHY_GBIT_FEATURES | SUPPORTED_Pause |
+-				   SUPPORTED_Asym_Pause;
++	phy_set_max_speed(dev->phydev, SPEED_1000);
++	dev->phydev->supported &= SUPPORTED_Pause | SUPPORTED_Asym_Pause;
+ 	dev->phydev->advertising = dev->phydev->supported |
+ 				    ADVERTISED_Autoneg;
+ 	phy_start_aneg(dev->phydev);
+diff --git a/drivers/net/ethernet/nxp/lpc_eth.c b/drivers/net/ethernet/nxp/lpc_eth.c
+index 08381ef..8b23d28 100644
+--- a/drivers/net/ethernet/nxp/lpc_eth.c
++++ b/drivers/net/ethernet/nxp/lpc_eth.c
+@@ -797,8 +797,7 @@ static int lpc_mii_probe(struct net_device *ndev)
+ 		return PTR_ERR(phydev);
+ 	}
+ 
+-	/* mask with MAC supported features */
+-	phydev->supported &= PHY_BASIC_FEATURES;
++	phy_set_max_speed(phydev, SPEED_100);
+ 
+ 	phydev->advertising = phydev->supported;
+ 
+diff --git a/drivers/net/ethernet/rdc/r6040.c b/drivers/net/ethernet/rdc/r6040.c
+index aa11b70..04aa592 100644
+--- a/drivers/net/ethernet/rdc/r6040.c
++++ b/drivers/net/ethernet/rdc/r6040.c
+@@ -1024,16 +1024,8 @@ static int r6040_mii_probe(struct net_device *dev)
+ 		return PTR_ERR(phydev);
+ 	}
+ 
+-	/* mask with MAC supported features */
+-	phydev->supported &= (SUPPORTED_10baseT_Half
+-				| SUPPORTED_10baseT_Full
+-				| SUPPORTED_100baseT_Half
+-				| SUPPORTED_100baseT_Full
+-				| SUPPORTED_Autoneg
+-				| SUPPORTED_MII
+-				| SUPPORTED_TP);
+-
+-	phydev->advertising = phydev->supported;
++	phy_set_max_speed(phydev, SPEED_100);
++
+ 	lp->old_link = 0;
+ 	lp->old_duplex = -1;
+ 
+diff --git a/drivers/net/ethernet/samsung/sxgbe/sxgbe_main.c b/drivers/net/ethernet/samsung/sxgbe/sxgbe_main.c
+index a9da1ad..690aee8 100644
+--- a/drivers/net/ethernet/samsung/sxgbe/sxgbe_main.c
++++ b/drivers/net/ethernet/samsung/sxgbe/sxgbe_main.c
+@@ -298,8 +298,8 @@ static int sxgbe_init_phy(struct net_device *ndev)
+ 	/* Stop Advertising 1000BASE Capability if interface is not GMII */
+ 	if ((phy_iface == PHY_INTERFACE_MODE_MII) ||
+ 	    (phy_iface == PHY_INTERFACE_MODE_RMII))
+-		phydev->advertising &= ~(SUPPORTED_1000baseT_Half |
+-					 SUPPORTED_1000baseT_Full);
++		phy_set_max_speed(phydev, SPEED_1000);
++
+ 	if (phydev->phy_id == 0) {
+ 		phy_disconnect(phydev);
+ 		return -ENODEV;
+diff --git a/drivers/net/ethernet/smsc/smsc911x.c b/drivers/net/ethernet/smsc/smsc911x.c
+index f0afb88..f84dbd0 100644
+--- a/drivers/net/ethernet/smsc/smsc911x.c
++++ b/drivers/net/ethernet/smsc/smsc911x.c
+@@ -1048,9 +1048,10 @@ static int smsc911x_mii_probe(struct net_device *dev)
+ 
+ 	phy_attached_info(phydev);
+ 
++	phy_set_max_speed(phydev, SPEED_100);
++
+ 	/* mask with MAC supported features */
+-	phydev->supported &= (PHY_BASIC_FEATURES | SUPPORTED_Pause |
+-			      SUPPORTED_Asym_Pause);
++	phydev->supported &= (SUPPORTED_Pause | SUPPORTED_Asym_Pause);
+ 	phydev->advertising = phydev->supported;
+ 
+ 	pdata->last_duplex = -1;
+diff --git a/drivers/net/ethernet/smsc/smsc9420.c b/drivers/net/ethernet/smsc/smsc9420.c
+index 2fa3c1d..795f60d 100644
+--- a/drivers/net/ethernet/smsc/smsc9420.c
++++ b/drivers/net/ethernet/smsc/smsc9420.c
+@@ -1135,9 +1135,10 @@ static int smsc9420_mii_probe(struct net_device *dev)
+ 		return PTR_ERR(phydev);
+ 	}
+ 
++	phy_set_max_speed(phydev, SPEED_100);
++
+ 	/* mask with MAC supported features */
+-	phydev->supported &= (PHY_BASIC_FEATURES | SUPPORTED_Pause |
+-			      SUPPORTED_Asym_Pause);
++	phydev->supported &= (SUPPORTED_Pause | SUPPORTED_Asym_Pause);
+ 	phydev->advertising = phydev->supported;
+ 
+ 	phy_attached_info(phydev);
+diff --git a/drivers/net/ethernet/socionext/sni_ave.c b/drivers/net/ethernet/socionext/sni_ave.c
+index f7eccee..76ff364 100644
+--- a/drivers/net/ethernet/socionext/sni_ave.c
++++ b/drivers/net/ethernet/socionext/sni_ave.c
+@@ -1223,10 +1223,8 @@ static int ave_init(struct net_device *ndev)
+ 	phy_ethtool_get_wol(phydev, &wol);
+ 	device_set_wakeup_capable(&ndev->dev, !!wol.supported);
+ 
+-	if (!phy_interface_is_rgmii(phydev)) {
+-		phydev->supported &= ~PHY_GBIT_FEATURES;
+-		phydev->supported |= PHY_BASIC_FEATURES;
+-	}
++	if (!phy_interface_is_rgmii(phydev))
++		phy_set_max_speed(phydev, SPEED_100);
+ 	phydev->supported |= SUPPORTED_Pause | SUPPORTED_Asym_Pause;
+ 
+ 	phy_attached_info(phydev);
+diff --git a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+index 9f458bb..3d7aec7 100644
+--- a/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
++++ b/drivers/net/ethernet/stmicro/stmmac/stmmac_main.c
+@@ -987,8 +987,7 @@ static int stmmac_init_phy(struct net_device *dev)
+ 	if ((interface == PHY_INTERFACE_MODE_MII) ||
+ 	    (interface == PHY_INTERFACE_MODE_RMII) ||
+ 		(max_speed < 1000 && max_speed > 0))
+-		phydev->advertising &= ~(SUPPORTED_1000baseT_Half |
+-					 SUPPORTED_1000baseT_Full);
++		phy_set_max_speed(phydev, SPEED_100);
+ 
+ 	/*
+ 	 * Half-duplex mode not supported with multiqueue
+diff --git a/drivers/net/ethernet/toshiba/tc35815.c b/drivers/net/ethernet/toshiba/tc35815.c
+index cce9c9e..7163a8d 100644
+--- a/drivers/net/ethernet/toshiba/tc35815.c
++++ b/drivers/net/ethernet/toshiba/tc35815.c
+@@ -628,7 +628,7 @@ static int tc_mii_probe(struct net_device *dev)
+ 	phy_attached_info(phydev);
+ 
+ 	/* mask with MAC supported features */
+-	phydev->supported &= PHY_BASIC_FEATURES;
++	phy_set_max_speed(phydev, SPEED_100);
+ 	dropmask = 0;
+ 	if (options.speed == 10)
+ 		dropmask |= SUPPORTED_100baseT_Half | SUPPORTED_100baseT_Full;
+diff --git a/drivers/net/ethernet/xilinx/xilinx_emaclite.c b/drivers/net/ethernet/xilinx/xilinx_emaclite.c
+index 42f1f51..46d3092 100644
+--- a/drivers/net/ethernet/xilinx/xilinx_emaclite.c
++++ b/drivers/net/ethernet/xilinx/xilinx_emaclite.c
+@@ -941,8 +941,7 @@ static int xemaclite_open(struct net_device *dev)
+ 		}
+ 
+ 		/* EmacLite doesn't support giga-bit speeds */
+-		lp->phy_dev->supported &= (PHY_BASIC_FEATURES);
+-		lp->phy_dev->advertising = lp->phy_dev->supported;
++		phy_set_max_speed(lp->phy_dev, SPEED_100);
+ 
+ 		/* Don't advertise 1000BASE-T Full/Half duplex speeds */
+ 		phy_write(lp->phy_dev, MII_CTRL1000, 0);
+diff --git a/drivers/staging/mt7621-eth/mdio.c b/drivers/staging/mt7621-eth/mdio.c
+index 7ad0c41..2c6e180 100644
+--- a/drivers/staging/mt7621-eth/mdio.c
++++ b/drivers/staging/mt7621-eth/mdio.c
+@@ -112,7 +112,7 @@ static void phy_init(struct mtk_eth *eth, struct mtk_mac *mac,
+ 	phy->autoneg = AUTONEG_ENABLE;
+ 	phy->speed = 0;
+ 	phy->duplex = 0;
+-	phy->supported &= PHY_BASIC_FEATURES;
++	phy_set_max_speed(phy, SPEED_100);
+ 	phy->advertising = phy->supported | ADVERTISED_Autoneg;
+ 
+ 	phy_start_aneg(phy);
+-- 
+2.7.4
+

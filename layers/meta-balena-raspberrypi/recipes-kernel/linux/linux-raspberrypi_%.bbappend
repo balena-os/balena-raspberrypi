@@ -12,10 +12,12 @@ SRC_URI_append = " \
 	file://0003-leds-pca963x-Fix-MODE2-initialization.patch \
 	file://0001-Add-npe-x500-m3-overlay.patch \
 	file://0006-overlays-Add-Hyperpixel4-overlays.patch \
+	file://0007-net-ethernet-Use-phy_set_max_speed-to-limit-advertis.patch \
+	file://0008-net-bcmgenet-Fix-speed-selection-for-reverse-MII.patch \
 "
 
 SRC_URI_append_raspberrypi4-64 = " \
-        file://0001-Fbcon-ignore-events-for-rpi-sense-fb.patch \
+	file://0001-Fbcon-ignore-events-for-rpi-sense-fb.patch \
 "
 
 # Set console accordingly to build type
