@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2019.10.3
+## (2019-12-21)
+
+* Update the BSP layer to latest warrior in order to have newer wifi firmware [Florin Sarbu]
+* Update poky to warrior-21.0.2 [Florin Sarbu]
+
 # v2019.10.2
 ## (2019-12-04)
 * Update balena yocto scripts to 1.5.2 [Giovanni Garufi]

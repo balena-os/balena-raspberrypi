@@ -1,4 +1,35 @@
 - commits:
+    - subject: >-
+        Update the BSP layer to latest warrior in order to have newer wifi
+        firmware
+      hash: 46a639238e6be344c374bb99f9c3244564a0360b
+      body: |
+        This updates brcmfmac43455-sdio.bin to version 7.45.189
+        and brcmfmac43430-sdio.bin to version 7.45.98.83
+      footer:
+        Changelog-entry: >-
+          Update the BSP layer to latest warrior in order to have newer wifi
+          firmware
+        changelog-entry: >-
+          Update the BSP layer to latest warrior in order to have newer wifi
+          firmware
+        Backport-to: next
+        backport-to: next
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+    - subject: Update poky to warrior-21.0.2
+      hash: 6392f494982dc86c55757bc3e57160b67b429841
+      body: ''
+      footer:
+        Changelog-entry: Update poky to warrior-21.0.2
+        changelog-entry: Update poky to warrior-21.0.2
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2019.10.3
+  date: 2019-12-21T09:36:16.098Z
+- commits:
     - subject: Update balena yocto scripts to 1.5.2
       hash: a227cc77d4e3280a7ef8519b647db0e9b2e4830a
       body: ''
