@@ -1,4 +1,33 @@
 - commits:
+    - subject: >-
+        Update the BSP layer to latest warrior in order to have newer wifi
+        firmware
+      hash: 7022ee2c3652c71f2c95e2d1b95e883688a1cfc6
+      body: |
+        This updates brcmfmac43455-sdio.bin to version 7.45.189
+        and brcmfmac43430-sdio.bin to version 7.45.98.83
+      footer:
+        Changelog-entry: >-
+          Update the BSP layer to latest warrior in order to have newer wifi
+          firmware
+        changelog-entry: >-
+          Update the BSP layer to latest warrior in order to have newer wifi
+          firmware
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+    - subject: Update poky to warrior-21.0.2
+      hash: 5c3860c22e00c52e0c6a1143df8f0fda96cf0649
+      body: ''
+      footer:
+        Changelog-entry: Update poky to warrior-21.0.2
+        changelog-entry: Update poky to warrior-21.0.2
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.44.0+rev10
+  date: 2019-12-20T19:21:46.847Z
+- commits:
     - subject: Fix rpi4-64 kernel freeze by moving specific fincm3 patches
       hash: 55293b9129ccef96812187d185c23582e2d9385f
       body: |

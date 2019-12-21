@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.44.0+rev10
+## (2019-12-20)
+
+* Update the BSP layer to latest warrior in order to have newer wifi firmware [Florin Sarbu]
+* Update poky to warrior-21.0.2 [Florin Sarbu]
+
 # v2.44.0+rev9
 ## (2019-12-06)
 
