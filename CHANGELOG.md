@@ -1,6 +1,57 @@
 Change log
 -----------
 
+# v2.46.1+rev1
+## (2020-01-03)
+
+
+<details>
+<summary> Update meta-balena from v2.44.0 to v2.46.1 [Florin Sarbu] </summary>
+
+> ## meta-balena-2.46.1
+> ### (2020-01-01)
+> 
+> * Disable by default the option to stop u-boot autoboot by pressing CTRL+C in all OS versions [Florin Sarbu]
+> * Increase NTP polling time to around 4.5 hours. [Alex Gonzalez]
+> * Disable the option to stop u-boot autoboot by pressing CTRL+C in production OS version [Florin Sarbu]
+
+> ## meta-balena-2.46.0
+> ### (2019-12-23)
+> 
+> * Update to ModemManager v1.12.2 [Zahari Petkov]
+> * Update libmbim to version 1.20.2 [Zahari Petkov]
+> * Update libqmi to version 1.24.2 [Zahari Petkov]
+> * Update balena-supervisor to v10.6.27 [Cameron Diver]
+> * Tweak how the flasher asserts that internal media is valid for being installed balena OS on [Florin Sarbu]
+> * Remove networkmanager stale temporary files at startup [Alex Gonzalez]
+> * networkmanager: Rework patches to remove fuzzing [Alex Gonzalez]
+> * Update openvpn to v2.4.7 [Will Boyce]
+> * Enable kernel configs for USB_SERIAL, USB_SERIAL_PL2303 and HFS for all devices [Zubair Lutfullah Kakakhel]
+> * image-resin.bbclass: Mark do_populate_lic_deploy with nostamp [Zubair Lutfullah Kakakhel]
+> * Namespace the hello-world healthcheck image [Zubair Lutfullah Kakakhel]
+> * Update balena-supervisor to v10.6.17 [Cameron Diver]
+> * Update balena-supervisor to v10.6.13 [Cameron Diver]
+> * Update CODEOWNERS [Zubair Lutfullah Kakakhel]
+
+> ## meta-balena-2.45.1
+> ### (2019-11-21)
+> 
+> * Fix for a race condition where occasionally the supervisor might not be able to come up during boot. Also can be caused by using io.balena.features.balena-socket and app container restart always policy. Affects meta-balena 2.44.0 and 2.45.0. To be fixed in 2.44.1 and 2.46.0 [Zubair Lutfullah Kakakhel]
+> * Rename resin to balena where possible [Pagan Gazzard]
+> * Add leading new line for PACKAGE_INSTALL variable [Vicentiu Galanopulo]
+> * Set `net.ipv4.ip_local_port_range` to recommended range (49152-65535) [Will Boyce]
+> * No user impact, subtle fix in rollback version checks [Zubair Lutfullah Kakakhel]
+
+> ## meta-balena-2.45.0
+> ### (2019-10-30)
+> 
+> * Increase persistent journal size to 32M [Will Boyce]
+> * Move persistent logs from state to data partition [Will Boyce]
+> * Add wpa-supplicant recipe and update to v2.9 [Will Boyce]
+> * Improve robustness by making variou services restart if they stop for some reason [Zubair Lutfullah Kakakhel]
+> * Build net/dummy as module [Alexandru Costache]
+</details>
+
 # v2.44.0+rev11
 ## (2020-01-02)
 

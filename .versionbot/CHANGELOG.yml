@@ -1,4 +1,529 @@
 - commits:
+    - subject: Update meta-balena from v2.44.0 to v2.46.1
+      hash: 7e5a0086e1d9f52a3c9cf2b04ec0e7515f6d9545
+      body: |
+        Update meta-balena from 2.44.0 to 2.46.1
+      footer:
+        Changelog-entry: Update meta-balena from v2.44.0 to v2.46.1
+        changelog-entry: Update meta-balena from v2.44.0 to v2.46.1
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: >-
+                Disable by default the option to stop u-boot autoboot by
+                pressing CTRL+C in all OS versions
+              hash: 621037371b3c272ecb6bfd50cfbdad4eca0a02ea
+              body: >
+                We do not want by default that any OS variants allow for
+                stopping the
+
+                autoboot in any way and letting users enter the u-boot shell.
+                This can
+
+                be overwritten by setting OS_DEV_UBOOT_DELAY to 1.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: >-
+                  Disable by default the option to stop u-boot autoboot by
+                  pressing CTRL+C in all OS versions
+                changelog-entry: >-
+                  Disable by default the option to stop u-boot autoboot by
+                  pressing CTRL+C in all OS versions
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+            - subject: Increase NTP polling time to around 4.5 hours.
+              hash: 4a47b9297b37277a9aece0ea322e706dbe473f12
+              body: >
+                This commit increases the default NTP poll rate to around 4.5
+                hours.
+
+
+                BalenaOS uses chronyd for time synchronization, and it allows to
+                specify
+
+                a minpoll and maxpoll values per server with a power of two
+                number of
+
+                seconds for the minimum and maximum polling time respectively.
+
+
+                With those constraints, the change set both limits to 2^14s
+                (4.55h) for
+
+                all servers.
+
+
+                An architectural decision has been made not to make this
+                configurable.
+
+
+                Fixes #1780.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Increase NTP polling time to around 4.5 hours.
+                changelog-entry: Increase NTP polling time to around 4.5 hours.
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+            - subject: >-
+                Disable the option to stop u-boot autoboot by pressing CTRL+C in
+                production OS version
+              hash: 2abb791f0df7c4936f0c6814b27291281dc922e0
+              body: >
+                We do not want that production OS variants allow for stopping
+
+                the autoboot in any way and letting users enter the u-boot
+                shell.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: >-
+                  Disable the option to stop u-boot autoboot by pressing CTRL+C
+                  in production OS version
+                changelog-entry: >-
+                  Disable the option to stop u-boot autoboot by pressing CTRL+C
+                  in production OS version
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+          version: meta-balena-2.46.1
+          date: 2020-01-01T03:50:49.765Z
+        - commits:
+            - subject: Update to ModemManager v1.12.2
+              hash: 2c4d223d90701b7dbe7ed42f2b5bdaab396db4d3
+              body: |
+                Fixes #1775
+
+                Removed the two patches we included in favor of corresponding
+                configure arguments since they had to be updated anyway.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Update to ModemManager v1.12.2
+                changelog-entry: Update to ModemManager v1.12.2
+                Signed-off-by: Zahari Petkov <zahari@balena.io>
+                signed-off-by: Zahari Petkov <zahari@balena.io>
+              author: Zahari Petkov
+            - subject: Update libmbim to version 1.20.2
+              hash: 01a15a047156c2491081e31a12c0a2a278a015d8
+              body: ''
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Update libmbim to version 1.20.2
+                changelog-entry: Update libmbim to version 1.20.2
+                Signed-off-by: Zahari Petkov <zahari@balena.io>
+                signed-off-by: Zahari Petkov <zahari@balena.io>
+              author: Zahari Petkov
+            - subject: Update libqmi to version 1.24.2
+              hash: dad937f2a5ec8c894518f683e636c17a23a20869
+              body: ''
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Update libqmi to version 1.24.2
+                changelog-entry: Update libqmi to version 1.24.2
+                Signed-off-by: Zahari Petkov <zahari@balena.io>
+                signed-off-by: Zahari Petkov <zahari@balena.io>
+              author: Zahari Petkov
+            - subject: Update balena-supervisor to v10.6.27
+              hash: 426dd85c0396f713e8f2571334bbd547b5a22642
+              body: ''
+              footer:
+                Changelog-entry: Update balena-supervisor to v10.6.27
+                changelog-entry: Update balena-supervisor to v10.6.27
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Cameron Diver <cameron@balena.io>
+                signed-off-by: Cameron Diver <cameron@balena.io>
+              author: Cameron Diver
+            - subject: >-
+                Tweak how the flasher asserts that internal media is valid for
+                being installed balena OS on
+              hash: 4b50d967db309366865b791e39f84ab00c0e9330
+              body: |
+                It is better to use fdisk to check that an internal media
+                is a suitable block device rather than using the shell
+                internal block testing feature. This is because there is
+                at least a case when the kernel lists an ASMT 2115 controller
+                as /dev/sda but that is not an actual drive so it cannot be
+                written to and the flashing procedure will error out.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: >-
+                  Tweak how the flasher asserts that internal media is valid for
+                  being installed balena OS on
+                changelog-entry: >-
+                  Tweak how the flasher asserts that internal media is valid for
+                  being installed balena OS on
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+            - subject: Remove networkmanager stale temporary files at startup
+              hash: 1234b29d7a4b007fd25247d38d9027e4f6e9e709
+              body: >
+                Reports indicate that NetworkManager can leave stale temporary
+                files on
+
+                the state partition that over time can affect the device's
+                operability.
+
+
+                This commit removes the timestamps.XXXXXX and seen-bssids.XXXXXX
+                files on
+
+                startup to avoid this situation.
+
+
+                Fixes #1747
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Remove networkmanager stale temporary files at startup
+                changelog-entry: Remove networkmanager stale temporary files at startup
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+            - subject: 'networkmanager: Rework patches to remove fuzzing'
+              hash: fbe8c83e8234c842d83c344243d2fe782c8ebb0a
+              body: |
+                This commit removes the build warning when applying patches.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+            - subject: Update openvpn to v2.4.7
+              hash: 5c7d3ae1296636dae7b0de67a9c0f8c66d996d1c
+              body: >
+                Fetched from:
+
+                *
+                https://git.openembedded.org/meta-openembedded/commit/meta-networking/recipes-support/openvpn/openvpn_2.4.7.bb?id=c1c8895609ae70a1b735e8625c19046c25184ee4
+
+                *
+                https://git.openembedded.org/meta-openembedded/commit/meta-networking/recipes-support/openvpn/openvpn/openvpn?id=910891d722085c56c474ac72788898b94c5ed193
+              footer:
+                Connects-to: '#1740'
+                connects-to: '#1740'
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Update openvpn to v2.4.7
+                changelog-entry: Update openvpn to v2.4.7
+                Signed-off-by: Will Boyce <will@balena.io>
+                signed-off-by: Will Boyce <will@balena.io>
+              author: Will Boyce
+            - subject: >-
+                Enable kernel configs for USB_SERIAL, USB_SERIAL_PL2303 and HFS
+                for all devices
+              hash: 03b95db4e073969718f0a60d8b0e80db4ce0680b
+              body: |
+                Fixes #1770
+                Fixes #1761
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: >-
+                  Enable kernel configs for USB_SERIAL, USB_SERIAL_PL2303 and
+                  HFS for all devices
+                changelog-entry: >-
+                  Enable kernel configs for USB_SERIAL, USB_SERIAL_PL2303 and
+                  HFS for all devices
+              author: Zubair Lutfullah Kakakhel
+            - subject: 'image-resin.bbclass: Mark do_populate_lic_deploy with nostamp'
+              hash: 3004762e71383e6ed8134de526966c6dd660fca2
+              body: >
+                We inherit do_populate_lic_deploy from poky. It uses IMAGE_NAME
+
+                which includes DATETIME
+
+
+                DATETIME changes between runs so we can sometimes get into a
+                state
+
+                where the do_populate_lic_deploy task has its stamp file set.
+
+
+                But when our subsequent deploy_image_license_manifest task runs,
+                the
+
+                DATETIME is different. Hence we get into a state where we have
+                to
+
+                run cleanall on the resin-image-flasher recipe to clean up
+                directories.
+
+
+                Lets mark do_populate_lic_deploy with nostamp. This should make
+                it
+
+                run every time we need to run deploy_image_license_manifest with
+                the
+
+                most up to date DATETIME variable to prevent any hiccups
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: Namespace the hello-world healthcheck image
+              hash: 4ec47419b97cf5ca6fe15436a32348e1dc7b5d9d
+              body: >
+                Fixes #1630
+
+
+                Need to make the script go in the background in ExecStartPost=.
+
+                Otherwise, the service status never gets to active/running
+                resulting
+
+                it in remaining stuck in an endless loop.
+
+
+                If the health-check load fails for whatever reason, the
+                subsequent
+
+                engine healthcheck will fail retriggering the healthcheck load.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Namespace the hello-world healthcheck image
+                changelog-entry: Namespace the hello-world healthcheck image
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: Update balena-supervisor to v10.6.17
+              hash: 72100a55f62820b0cb8a48307a70d01633744e70
+              body: ''
+              footer:
+                Changelog-entry: Update balena-supervisor to v10.6.17
+                changelog-entry: Update balena-supervisor to v10.6.17
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Cameron Diver <cameron@balena.io>
+                signed-off-by: Cameron Diver <cameron@balena.io>
+              author: Cameron Diver
+            - subject: Update balena-supervisor to v10.6.13
+              hash: 7ac91f9557f90417dc152c5621d4cff6d53c17e1
+              body: ''
+              footer:
+                Changelog-entry: Update balena-supervisor to v10.6.13
+                changelog-entry: Update balena-supervisor to v10.6.13
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Cameron Diver <cameron@balena.io>
+                signed-off-by: Cameron Diver <cameron@balena.io>
+              author: Cameron Diver
+            - subject: Update CODEOWNERS
+              hash: bb8ac081d50893d9d0881b0f08c68cbb626c3590
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+          version: meta-balena-2.46.0
+          date: 2019-12-23T17:06:33.086Z
+        - commits:
+            - subject: >-
+                Fix for a race condition where occasionally the supervisor might
+                not be able to come up during boot. Also can be caused by using
+                io.balena.features.balena-socket and app container restart
+                always policy. Affects meta-balena 2.44.0 and 2.45.0. To be
+                fixed in 2.44.1 and 2.46.0
+              hash: 7cf43d9f939b1d960cb677c48ca9f91b668d2dc3
+              body: |
+                Fixes #1748
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: >-
+                  Fix for a race condition where occasionally the supervisor
+                  might not be able to come up during boot. Also can be caused
+                  by using io.balena.features.balena-socket and app container
+                  restart always policy. Affects meta-balena 2.44.0 and 2.45.0.
+                  To be fixed in 2.44.1 and 2.46.0
+                changelog-entry: >-
+                  Fix for a race condition where occasionally the supervisor
+                  might not be able to come up during boot. Also can be caused
+                  by using io.balena.features.balena-socket and app container
+                  restart always policy. Affects meta-balena 2.44.0 and 2.45.0.
+                  To be fixed in 2.44.1 and 2.46.0
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: Rename resin to balena where possible
+              hash: 02a932405705ce28fca6137cfae16fab5bc952fb
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Pagan Gazzard
+            - subject: Add leading new line for PACKAGE_INSTALL variable
+              hash: e79c470b3eaa8d6e763103fa20858fbed61ff292
+              body: >
+                Without the leading space, the last package name
+
+                of the PACKAGE_INSTALL variable from other recipes,
+
+                is concatenated with the one added in this recipe resulting
+
+                in the following error
+
+                opkg_prepare_url_for_install
+
+                Couldn't find anything to satisfy
+
+                'kernel-module-sdhci-pciinitramfs-module-console-null-workaround'
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Add leading new line for PACKAGE_INSTALL variable
+                changelog-entry: Add leading new line for PACKAGE_INSTALL variable
+                Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+                signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+              author: Vicentiu Galanopulo
+            - subject: >-
+                Set `net.ipv4.ip_local_port_range` to recommended range
+                (49152-65535)
+              hash: 8ef6a5b56a2b7ba43081a0f30f99d6f736015533
+              body: ''
+              footer:
+                Connects-to: '#1726'
+                connects-to: '#1726'
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: >-
+                  Set `net.ipv4.ip_local_port_range` to recommended range
+                  (49152-65535)
+                changelog-entry: >-
+                  Set `net.ipv4.ip_local_port_range` to recommended range
+                  (49152-65535)
+                Signed-off-by: Will Boyce <will@balena.io>
+                signed-off-by: Will Boyce <will@balena.io>
+              author: Will Boyce
+            - subject: 'No user impact, subtle fix in rollback version checks'
+              hash: 38717507b93962d199e07d9093382b8db4ec5d81
+              body: >
+                ESR releases have the VERSION string in /etc/os-release in a
+                date
+
+                format. 2019.10.0 etc.
+
+                We added META_BALENA_VERSION in os-release from v2.38.0 via
+
+                b0e0c77a26f3fad51e2923ab416fdd2af2a5a033
+
+
+                Lets use META_BALENA_VERSION if available for our os version
+                checks.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: 'No user impact, subtle fix in rollback version checks'
+                changelog-entry: 'No user impact, subtle fix in rollback version checks'
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+          version: meta-balena-2.45.1
+          date: 2019-11-21T16:48:38.743Z
+        - commits:
+            - subject: Increase persistent journal size to 32M
+              hash: ad77ca2402f41fec5b730d556006ef5e86bdacd5
+              body: ''
+              footer:
+                Connects-to: '#1646'
+                connects-to: '#1646'
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Increase persistent journal size to 32M
+                changelog-entry: Increase persistent journal size to 32M
+                Signed-off-by: Will Boyce <will@balena.io>
+                signed-off-by: Will Boyce <will@balena.io>
+              author: Will Boyce
+            - subject: Move persistent logs from state to data partition
+              hash: f69ff379ffac39dffcc126ac374b50533dcdef31
+              body: ''
+              footer:
+                Connects-to: '#1646'
+                connects-to: '#1646'
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Move persistent logs from state to data partition
+                changelog-entry: Move persistent logs from state to data partition
+                Signed-off-by: Will Boyce <will@balena.io>
+                signed-off-by: Will Boyce <will@balena.io>
+              author: Will Boyce
+            - subject: Add wpa-supplicant recipe and update to v2.9
+              hash: 139f76b73918e12aa8082896a7a017d2ad5df739
+              body: >
+                Fetched from
+                http://cgit.openembedded.org/openembedded-core/commit/meta/recipes-connectivity/wpa-supplicant?id=95507898ad6a7b88c83ef376c1cb8b3b3a685c96
+              footer:
+                Connects-to: '#1711'
+                connects-to: '#1711'
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Add wpa-supplicant recipe and update to v2.9
+                changelog-entry: Add wpa-supplicant recipe and update to v2.9
+                Signed-off-by: Will Boyce <will@balena.io>
+                signed-off-by: Will Boyce <will@balena.io>
+              author: Will Boyce
+            - subject: >-
+                Improve robustness by making variou services restart if they
+                stop for some reason
+              hash: 074f42aeaf98d2ede68a29d7f7d97cd17dc61f15
+              body: >
+                The default behaviour is Restart=on-abort inherited from
+                upstream.
+
+                Lets make it Restart=always
+
+
+                Fixes #1702
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: >-
+                  Improve robustness by making variou services restart if they
+                  stop for some reason
+                changelog-entry: >-
+                  Improve robustness by making variou services restart if they
+                  stop for some reason
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+            - subject: Build net/dummy as module
+              hash: ffd5bd2183ca1ea4d3f62bae118b7269b8280002
+              body: |
+                Add dummy net driver support, which is used to
+                check if a container is privileged during
+                udev initialization.
+
+                Building it as module ensures that dummy
+                devices are not needlessly created during boot.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Build net/dummy as module
+                changelog-entry: Build net/dummy as module
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+          version: meta-balena-2.45.0
+          date: 2019-10-30T14:34:36.798Z
+  version: 2.46.1+rev1
+  date: 2020-01-03T09:45:23.001Z
+- commits:
     - subject: 'u-boot: Disable flasher check, add usb'
       hash: 9b64e7fc87562d1f1538360e06d7f5733369cfb7
       body: |
