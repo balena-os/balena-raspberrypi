@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.44.0+rev11
+## (2020-01-02)
+
+* u-boot: Disable flasher check, add usb [Alexandru Costache]
+
 # v2.44.0+rev10
 ## (2019-12-20)
 

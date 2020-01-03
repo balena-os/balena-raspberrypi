@@ -1,4 +1,24 @@
 - commits:
+    - subject: 'u-boot: Disable flasher check, add usb'
+      hash: 9b64e7fc87562d1f1538360e06d7f5733369cfb7
+      body: |
+        By default this comes enabled from
+        meta-balena, but none of the raspberrypi
+        machines generate a flasher image.
+
+        Disabling this allows for adding usb to
+        resin_uboot_device_types without actually
+        starting usb, unless it is confirmed that
+        there's no balena image on the sd-card.
+      footer:
+        Changelog-entry: 'u-boot: Disable flasher check, add usb'
+        changelog-entry: 'u-boot: Disable flasher check, add usb'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+  version: 2.44.0+rev11
+  date: 2020-01-02T08:07:27.937Z
+- commits:
     - subject: >-
         Update the BSP layer to latest warrior in order to have newer wifi
         firmware
