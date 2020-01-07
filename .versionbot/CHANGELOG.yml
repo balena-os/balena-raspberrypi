@@ -1,4 +1,25 @@
 - commits:
+    - subject: >-
+        Remove spi3 to spi6 overlays for revpi-core-3 because it runs an older
+        kernel which does not have them
+      hash: 9b260e9c5845814a86c27e1f27efb4fba7e67d5b
+      body: |
+        We have added at customer request the device tree overlays for the
+        spi buses 3 to 6. But revpi-core-3 is running an older kernel which
+        does not have these overlays.
+      footer:
+        Changelog-entry: >-
+          Remove spi3 to spi6 overlays for revpi-core-3 because it runs an older
+          kernel which does not have them
+        changelog-entry: >-
+          Remove spi3 to spi6 overlays for revpi-core-3 because it runs an older
+          kernel which does not have them
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.46.1+rev2
+  date: 2020-01-07T15:54:14.559Z
+- commits:
     - subject: Update meta-balena from v2.44.0 to v2.46.1
       hash: 7e5a0086e1d9f52a3c9cf2b04ec0e7515f6d9545
       body: |

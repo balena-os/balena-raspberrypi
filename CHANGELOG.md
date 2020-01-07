@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.46.1+rev2
+## (2020-01-07)
+
+* Remove spi3 to spi6 overlays for revpi-core-3 because it runs an older kernel which does not have them [Florin Sarbu]
+
 # v2.46.1+rev1
 ## (2020-01-03)
 
