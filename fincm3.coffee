@@ -1,7 +1,7 @@
 deviceTypesCommon = require '@resin.io/device-types/common'
 { networkOptions, commonImg, instructions } = deviceTypesCommon
 
-FIN_DEBUG = "While not having the Fin board powered, connect your system to the board's DBG port via a micro-USB cable.."
+FIN_DEBUG = "While not having the Fin board powered, connect your system to the board's DBG/PRG port via a micro-USB cable.."
 FIN_POWER = "Power on the Fin by attaching power to either the Barrel or the Phoenix connector."
 FIN_WRITE = "Write the OS to the internal MMC storage device. We recommend using <a href=http://www.etcher.io/>Etcher</a>."
 FIN_POWEROFF = "When flashing is complete, power off the board by detaching the power and unplug the DGB micro-USB cable."
