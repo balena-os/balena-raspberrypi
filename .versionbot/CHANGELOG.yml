@@ -1,4 +1,18 @@
 - commits:
+    - subject: Change the state to 'released' in the coffee files
+      hash: c478347bde8512fdbba54f60a120e740cea67ec4
+      body: |
+        Change the state field to 'released'
+        instead of 'experimental'
+      footer:
+        Changelog-entry: Change the state to 'released' in the coffee files
+        changelog-entry: Change the state to 'released' in the coffee files
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+  version: 2.46.1+rev3
+  date: 2020-01-15T16:06:07.343Z
+- commits:
     - subject: >-
         Remove spi3 to spi6 overlays for revpi-core-3 because it runs an older
         kernel which does not have them
