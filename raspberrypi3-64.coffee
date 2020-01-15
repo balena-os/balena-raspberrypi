@@ -7,7 +7,7 @@ module.exports =
 	aliases: [ 'raspberrypi3-64' ]
 	name: 'Raspberry Pi 3 (using 64bit OS)'
 	arch: 'aarch64'
-	state: 'experimental'
+	state: 'released'
 
 	imageDownloadAlerts: [
 		{
