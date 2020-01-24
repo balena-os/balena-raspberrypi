@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update the balenaFin coffee file instructions to match the hardware
+      hash: 931a6e02b7a424492cd3524952d351aa4892bfce
+      body: ''
+      footer:
+        Changelog-entry: Update the balenaFin coffee file instructions to match the hardware
+        changelog-entry: Update the balenaFin coffee file instructions to match the hardware
+        Signed-off-by: James Harton <jamesh@balena.io>
+        signed-off-by: James Harton <jamesh@balena.io>
+      author: James Harton
+  version: 2.46.1+rev5
+  date: 2020-01-24T15:14:05.480Z
+- commits:
     - subject: >-
         Remove the usb-modeswitch patch that fixes crashes on 64 bits
         architectures

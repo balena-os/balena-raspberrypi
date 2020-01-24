@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.46.1+rev5
+## (2020-01-24)
+
+* Update the balenaFin coffee file instructions to match the hardware [James Harton]
+
 # v2.46.1+rev4
 ## (2020-01-22)
 
