@@ -149,3 +149,8 @@ RESIN_CONFIGS[sd8787_pwrseq_driver] = " \
 RESIN_CONFIGS_DEPS[sd8787_pwrseq_driver] = " \
     CONFIG_OF=y \
 "
+
+# Enable USB FFS.
+RESIN_CONFIGS[balena] = " \
+    CONFIG_USB_FUNCTIONFS=m \
+"
