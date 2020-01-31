@@ -1,6 +1,41 @@
 Change log
 -----------
 
+# v2.47.0+rev1
+## (2020-01-31)
+
+* Add to rootfs the gpio-ir-tx overlay [Florin Sarbu]
+
+<details>
+<summary> Update meta-balena from v2.46.1 to v2.47.0 [Florin Sarbu] </summary>
+
+> ## meta-balena-2.47.0
+> ### (2020-01-29)
+> 
+> * Update usb-modeswitch-data to version 20191128 [Florin Sarbu]
+> * Update usb-modeswitch to version 2.5.2 [Florin Sarbu]
+> * Update to ModemManager v1.12.4 [Florin Sarbu]
+> * Update libmbim to version 1.22.0 [Florin Sarbu]
+> * Update libqmi to version 1.24.4 [Florin Sarbu]
+> * Add periodic vacuuming of journald log files [Alex Gonzalez]
+> * No user impact. Increase limit for maximum initramfs size from 12MB to 32MB. This helps reduce unnecessary overrides in integration layers. [Zubair Lutfullah Kakakhel]
+> * Match licenses with license files. [Alex Gonzalez]
+> * Enable sixaxis support in bluez5 [Alexis Svinartchouk]
+> * Addressing review comments [Gareth Davies]
+> * Update config.json documentation [Gareth Davies]
+> * Increase DNS clients timeout to 15 seconds [Alex Gonzalez]
+> * Fix supervisor nested changelogs [Zubair Lutfullah Kakakhel]
+> * Enable memory overcommit [Alex Gonzalez]
+> * Add uinput kernel module [Florin Sarbu]
+> * Make sure to add in rootfs the wifi firmware for wl18xx [Florin Sarbu]
+> * Add supported USB WiFi dongle [Vicentiu Galanopulo]
+
+> ## meta-balena-2.46.2
+> ### (2020-01-17)
+> 
+> * Americanize the README.md [Matthew McGinn]
+</details>
+
 # v2.46.1+rev5
 ## (2020-01-24)
 
