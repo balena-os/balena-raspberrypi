@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.47.0+rev2
+## (2020-02-03)
+
+* Backport eth patches from the raspberrypi kernel rpi-5.4.y branch [Florin Sarbu]
+
 # v2.47.0+rev1
 ## (2020-01-31)
 

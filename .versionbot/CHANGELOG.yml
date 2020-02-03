@@ -1,4 +1,18 @@
 - commits:
+    - subject: Backport eth patches from the raspberrypi kernel rpi-5.4.y branch
+      hash: dd7ddf5ee15f516df609f106039ec81fc193489c
+      body: |
+        These patches have been backported from the raspberrypi
+        kernel rpi-5.4.y branch.
+      footer:
+        Changelog-entry: Backport eth patches from the raspberrypi kernel rpi-5.4.y branch
+        changelog-entry: Backport eth patches from the raspberrypi kernel rpi-5.4.y branch
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.47.0+rev2
+  date: 2020-02-03T20:20:15.054Z
+- commits:
     - subject: Add to rootfs the gpio-ir-tx overlay
       hash: 89e81e4b991cd3c1d5b5e014ef7eb3152cd58ce5
       body: ''
