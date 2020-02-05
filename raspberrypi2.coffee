@@ -18,9 +18,9 @@ module.exports =
 
 	instructions: commonImg.instructions
 	gettingStartedLink:
-		windows: 'https://docs.resin.io/raspberrypi2/nodejs/getting-started/#adding-your-first-device'
-		osx: 'https://docs.resin.io/raspberrypi2/nodejs/getting-started/#adding-your-first-device'
-		linux: 'https://docs.resin.io/raspberrypi2/nodejs/getting-started/#adding-your-first-device'
+		windows: 'https://www.balena.io/docs/learn/getting-started/raspberry-pi2/nodejs/'
+		osx: 'https://www.balena.io/docs/learn/getting-started/raspberry-pi2/nodejs/'
+		linux: 'https://www.balena.io/docs/learn/getting-started/raspberry-pi2/nodejs/'
 	supportsBlink: true
 
 	options: [ networkOptions.group ]
