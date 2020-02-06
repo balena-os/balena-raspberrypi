@@ -155,3 +155,10 @@ RESIN_CONFIGS[sd8787_pwrseq_driver] = " \
 RESIN_CONFIGS_DEPS[sd8787_pwrseq_driver] = " \
     CONFIG_OF=y \
 "
+
+# requested by customer in issue number 453
+RESIN_CONFIGS_append = " rpivid"
+
+RESIN_CONFIGS[rpivid] = " \
+    CONFIG_RPIVID_MEM=m \
+"
