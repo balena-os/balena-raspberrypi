@@ -16,6 +16,7 @@ SRC_URI_append = " \
 
 SRC_URI_append_raspberrypi4-64 = " \
         file://0001-Fbcon-ignore-events-for-rpi-sense-fb.patch \
+	file://0007-ovl-fix-regression-caused-by-overlapping-layers-detection.patch \
 "
 
 # Set console accordingly to build type
