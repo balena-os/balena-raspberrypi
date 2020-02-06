@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update links to getting started guide from resin.io to balena.io
+      hash: 10147e45d83d31d99f2ee197222646327922b426
+      body: ''
+      footer:
+        Changelog-entry: Update links to getting started guide from resin.io to balena.io
+        changelog-entry: Update links to getting started guide from resin.io to balena.io
+        Signed-off-by: Gareth Davies <gareth@balena.io>
+        signed-off-by: Gareth Davies <gareth@balena.io>
+      author: Gareth Davies
+  version: 2.47.0+rev2
+  date: 2020-02-05T20:09:25.405Z
+- commits:
     - subject: Add to rootfs the gpio-ir-tx overlay
       hash: 89e81e4b991cd3c1d5b5e014ef7eb3152cd58ce5
       body: ''
