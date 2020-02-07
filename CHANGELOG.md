@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.47.0+rev5
+## (2020-02-06)
+
+* Add the uart2 to uart5 overlays to rootfs [Florin Sarbu]
+
 # v2.47.0+rev4
 ## (2020-02-06)
 

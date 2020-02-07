@@ -1,4 +1,18 @@
 - commits:
+    - subject: Add the uart2 to uart5 overlays to rootfs
+      hash: 99d3f32decd23e752d53147f3bc580a99fdf9efe
+      body: |
+        We add the uart2 to uart5 overlays to the rootfs alongside the
+        existing uart0 and uart1 overlays.
+      footer:
+        Changelog-entry: Add the uart2 to uart5 overlays to rootfs
+        changelog-entry: Add the uart2 to uart5 overlays to rootfs
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.47.0+rev5
+  date: 2020-02-06T23:10:02.138Z
+- commits:
     - subject: Update balena-yocto-scripts to v1.5.4
       hash: e9df26bfc1a885858e2ff12f30f7ff36be01bad8
       body: ''
