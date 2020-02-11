@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update meta-rust to include 1.36
+      hash: d2c86cbd9c2d94c47c71a6b84364942466a92cf0
+      body: ''
+      footer:
+        Changelog-entry: Update meta-rust to include 1.36
+        changelog-entry: Update meta-rust to include 1.36
+        Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+        signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+      author: Zubair Lutfullah Kakakhel
+  version: 2.47.0+rev6
+  date: 2020-02-10T17:01:29.097Z
+- commits:
     - subject: Add the uart2 to uart5 overlays to rootfs
       hash: 99d3f32decd23e752d53147f3bc580a99fdf9efe
       body: |
