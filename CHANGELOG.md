@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.47.0+rev7
+## (2020-02-25)
+
+* Update BSP to latest warrior so we now have kernel 4.19.75 [Florin Sarbu]
+
 # v2.47.0+rev6
 ## (2020-02-10)
 

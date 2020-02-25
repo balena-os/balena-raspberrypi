@@ -1,4 +1,18 @@
 - commits:
+    - subject: Update BSP to latest warrior so we now have kernel 4.19.75
+      hash: dca58cbc7c0dd301eb5b222b894ada79a349b9e6
+      body: |
+        This update bumps the kernel to 4.19.75 in order to fix
+        video rendering errors.
+      footer:
+        Changelog-entry: Update BSP to latest warrior so we now have kernel 4.19.75
+        changelog-entry: Update BSP to latest warrior so we now have kernel 4.19.75
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.47.0+rev7
+  date: 2020-02-25T10:02:12.444Z
+- commits:
     - subject: Update meta-rust to include 1.36
       hash: d2c86cbd9c2d94c47c71a6b84364942466a92cf0
       body: ''
