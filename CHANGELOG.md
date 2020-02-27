@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.47.0+rev8
+## (2020-02-27)
+
+* Update the boot firmware to 20200220 drop so we fix a rpi4 kernel issue when doing video playback in a continuous loop [Florin Sarbu]
+
 # v2.47.0+rev7
 ## (2020-02-25)
 

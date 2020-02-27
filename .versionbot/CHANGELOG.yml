@@ -1,4 +1,73 @@
 - commits:
+    - subject: >-
+        Update the boot firmware to 20200220 drop so we fix a rpi4 kernel issue
+        when doing video playback in a continuous loop
+      hash: 1d7155945f2d14ecd24936f7d712f524491f312a
+      body: >
+        This new boot firmware fixes the following error on rpi4 that
+
+        occurs when playing video in a continuous loop:
+
+
+        INFO:task kworker/2:2:319 blocked for more than 120 seconds.
+               Tainted: G         C        4.19.66 #1
+        "echo 0 > /proc/sys/kernel/hung_task_timeout_secs" disables this
+        message.
+
+        kworker/2:2     D    0   319      2 0x00000028
+
+        Workqueue:events dbs_work_handler
+
+        Call trace:
+
+        __switch_to+0xa8/0xe8
+
+        __schedule+0x254/0x850
+
+        schedule+0x38/0x98
+
+        schedule_timeout+0x324/0x458
+
+        wait_for_common+0x148/0x170
+
+        wait_for_completion+0x28/0x38
+
+        rpi_firmware_transaction+0xa0/0xf0
+
+        rpi_firmware_property_list+0x108/0x268
+
+        rpi_firmware_property+0x78/0xf8
+
+        bcm2835_cpufreq_clock_property.constprop.2+0x54/0x88
+
+        bcm2835_cpufreq_driver_target_index+0xa4/0x128
+
+        __cpufreq_driver_target+0x1a0/0x588
+
+        od_dbs_update+0x140/0x1a0
+
+        dbs_work_handler+0x44/0x78
+
+        process_one_work+0x1ec/0x458
+
+        worker_thread+0x48/0x430
+
+        kthread+0x130/0x138
+
+        ret_from_fork+0x10/0x1c
+      footer:
+        Changelog-entry: >-
+          Update the boot firmware to 20200220 drop so we fix a rpi4 kernel
+          issue when doing video playback in a continuous loop
+        changelog-entry: >-
+          Update the boot firmware to 20200220 drop so we fix a rpi4 kernel
+          issue when doing video playback in a continuous loop
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.47.0+rev8
+  date: 2020-02-27T14:07:42.594Z
+- commits:
     - subject: Update BSP to latest warrior so we now have kernel 4.19.75
       hash: dca58cbc7c0dd301eb5b222b894ada79a349b9e6
       body: |
