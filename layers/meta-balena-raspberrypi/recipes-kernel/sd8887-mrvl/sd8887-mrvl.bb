@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://${WORKDIR}/COPYING;md5=12f884d2ae1ff87c09e5b7ccc2c4ca
 inherit module
 
 SRC_URI = " \
-    git://git@github.com/balena-io/sd8887-mrvl.git;protocol=ssh;tag=v0.0.4 \
+    git://git@github.com/balena-io/sd8887-mrvl.git;protocol=ssh;tag=v0.0.5 \
     file://COPYING \
 "
 
@@ -31,7 +31,7 @@ module_do_install() {
     install -m 0644 bt8xxx.ko ${D}/lib/modules/${KERNEL_VERSION}/kernel/drivers/bluetooth/
     cd ${S}/firmware
     install -d ${D}/lib/firmware/mrvl
-    install -m 0644 15.68.19.p22/sd8887_uapsta_a2.bin ${D}/lib/firmware/mrvl/
+    install -m 0644 15.68.19.p33/sd8887_uapsta_a2.bin ${D}/lib/firmware/mrvl/
 
     # blacklist mwifi* and btmrvl* kernel modules which conflict with ours
     install -d ${D}/etc/modprobe.d
