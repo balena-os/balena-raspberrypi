@@ -1,4 +1,27 @@
 - commits:
+    - subject: Update steps to power device during flashing for Fin versions.
+      hash: b9737b5be14be415f75e799b0cccad8a63ab200d
+      body: ''
+      footer:
+        Changelog-entry: Update steps to power device during flashing for Fin versions.
+        changelog-entry: Update steps to power device during flashing for Fin versions.
+        Connects-to: '#386'
+        connects-to: '#386'
+        Signed-off-by: Gareth Davies <gareth@balena.io>
+        signed-off-by: Gareth Davies <gareth@balena.io>
+      author: Gareth Davies
+    - subject: Update links to getting started guide from resin.io to balena.io
+      hash: a7008c375be1b80b8cf4ed1a2be81a6bf9db573a
+      body: ''
+      footer:
+        Changelog-entry: Update links to getting started guide from resin.io to balena.io
+        changelog-entry: Update links to getting started guide from resin.io to balena.io
+        Signed-off-by: Gareth Davies <gareth@balena.io>
+        signed-off-by: Gareth Davies <gareth@balena.io>
+      author: Gareth Davies
+  version: 2.47.0+rev9
+  date: 2020-02-28T18:30:55.285Z
+- commits:
     - subject: >-
         Update the boot firmware to 20200220 drop so we fix a rpi4 kernel issue
         when doing video playback in a continuous loop

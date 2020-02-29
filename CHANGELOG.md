@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.47.0+rev9
+## (2020-02-28)
+
+* Update steps to power device during flashing for Fin versions. [Gareth Davies]
+* Update links to getting started guide from resin.io to balena.io [Gareth Davies]
+
 # v2.47.0+rev8
 ## (2020-02-27)
 
