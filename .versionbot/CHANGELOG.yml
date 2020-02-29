@@ -1,4 +1,80 @@
 - commits:
+    - subject: Update balena-yocto-scripts to v1.5.6
+      hash: 8a9e703e033c2313b7aecc5c0e070adb1a325169
+      body: ''
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to v1.5.6
+        changelog-entry: Update balena-yocto-scripts to v1.5.6
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+    - subject: Add new recipe for sd8887-mrvl wifi/bt prebuilt binaries
+      hash: e69de70dab1930421aadcdccda25aa6d8c2151f7
+      body: |
+        Because the sd8887-mrvl repo is private, not everybody can build it.
+        So we add here a recipe that adds these in binary form.
+        These binaries have been compiled from sd8887-mrvl at tag v0.0.5
+      footer:
+        Changelog-entry: Add new recipe for sd8887-mrvl wifi/bt prebuilt binaries
+        changelog-entry: Add new recipe for sd8887-mrvl wifi/bt prebuilt binaries
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+    - subject: >-
+        Update sd8887-mrvl to releases 15.68.19.p33 for wlan and 15.26.19.p33
+        for bt
+      hash: a27212b6cf3264d3f3bd5e2fe651d57203b714c8
+      body: |
+        This updates to releases 15.68.19.p33 for wlan and 15.26.19.p33 for bt
+      footer:
+        Changelog-entry: >-
+          Update sd8887-mrvl to releases 15.68.19.p33 for wlan and 15.26.19.p33
+          for bt
+        changelog-entry: >-
+          Update sd8887-mrvl to releases 15.68.19.p33 for wlan and 15.26.19.p33
+          for bt
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+    - subject: Update meta-balena from v2.47.0 to v2.47.1
+      hash: d7309df03dd487b37216b1fef2638fc7ff324a65
+      body: |
+        Update meta-balena from 2.47.0 to 2.47.1
+      footer:
+        Changelog-entry: Update meta-balena from v2.47.0 to v2.47.1
+        changelog-entry: Update meta-balena from v2.47.0 to v2.47.1
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: >-
+                Affects 2.45+ on all devices. Fix dangling sshd services on
+                failed connections that would grow and cause cpu load to keep
+                rising. See issue 1837 in meta-balena for more detail.
+              hash: 0759f60bda559377bfb10361167222d4e0de6d01
+              body: |
+                This reverts commit 6d5de094c3f0d9f2f06a1c58abc5eb9dc256cf79.
+                Fixes #1837
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: >-
+                  Affects 2.45+ on all devices. Fix dangling sshd services on
+                  failed connections that would grow and cause cpu load to keep
+                  rising. See issue 1837 in meta-balena for more detail.
+                changelog-entry: >-
+                  Affects 2.45+ on all devices. Fix dangling sshd services on
+                  failed connections that would grow and cause cpu load to keep
+                  rising. See issue 1837 in meta-balena for more detail.
+                Signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+                signed-off-by: Zubair Lutfullah Kakakhel <zubair@balena.io>
+              author: Zubair Lutfullah Kakakhel
+          version: meta-balena-2.47.1
+          date: 2020-02-13T11:54:53.438Z
+  version: 2.47.1+rev1
+  date: 2020-02-29T07:31:35.822Z
+- commits:
     - subject: Update steps to power device during flashing for Fin versions.
       hash: b9737b5be14be415f75e799b0cccad8a63ab200d
       body: ''
