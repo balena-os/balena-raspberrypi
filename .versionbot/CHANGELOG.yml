@@ -1,4 +1,37 @@
 - commits:
+    - subject: >-
+        Backport kernel fix for overlayfs regression caused by overlapping
+        layers detection (visible more frequently when deltas are enabled)
+      hash: 7d8d65b9672593f863da1c988e5300c91c7acbac
+      body: |
+        The kernel version we pull in from meta-raspberry seems to hang in
+        between two commits that break and subsequently "unbreak" how the
+        kernel deals with overlapping parent layers in overlayfs.
+
+        > User is not supposed to specify the same directory for upper and
+        > lower dirs or for different lower layers and user is not supposed
+        > to specify directories that are descendants of each other for overlay
+        > layers
+
+        This is something that docker relies on heavily and we've also seen
+        this fail more frequently when deltas are enabled.
+
+        This is a backport of this upstream patch:
+        https://github.com/raspberrypi/linux/commit/
+        9c13e770cca978b8d5c870f2270cdf3a10c63817
+      footer:
+        Changelog-entry: >-
+          Backport kernel fix for overlayfs regression caused by overlapping
+          layers detection (visible more frequently when deltas are enabled)
+        changelog-entry: >-
+          Backport kernel fix for overlayfs regression caused by overlapping
+          layers detection (visible more frequently when deltas are enabled)
+        Signed-off-by: Robert Günzler <robertg@balena.io>
+        signed-off-by: Robert Günzler <robertg@balena.io>
+      author: Robert Günzler
+  version: 2.47.1+rev2
+  date: 2020-03-02T19:37:29.662Z
+- commits:
     - subject: Update balena-yocto-scripts to v1.5.6
       hash: 8a9e703e033c2313b7aecc5c0e070adb1a325169
       body: ''

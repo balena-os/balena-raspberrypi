@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.47.1+rev2
+## (2020-03-02)
+
+* Backport kernel fix for overlayfs regression caused by overlapping layers detection (visible more frequently when deltas are enabled) [Robert Günzler]
+
 # v2.47.1+rev1
 ## (2020-02-29)
 
