@@ -5,6 +5,32 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 SRC_URI_append_fincm3 = " \
 	file://0004-mmc-pwrseq-Repurpose-for-Marvell-SD8777.patch \
 	file://0005-balena-fin-wifi-sta-uap-mode.patch \
+	file://0007-mmc-sdhci-add-tuning-error-codes.patch \
+	file://0008-mmc-sdhci-Export-sdhci_request.patch \
+	file://0009-mmc-sdhci-add-adma_table_cnt-member-to-struct-sdhci_.patch \
+	file://0010-mmc-sdhci-introduce-adma_write_desc-hook-to-struct-s.patch \
+	file://0011-mmc-sdhci-Add-version-V4-definition.patch \
+	file://0012-mmc-sdhci-Add-sd-host-v4-mode.patch \
+	file://0013-mmc-sdhci-Change-SDMA-address-register-for-v4-mode.patch \
+	file://0014-mmc-sdhci-Add-ADMA2-64-bit-addressing-support-for-V4.patch \
+	file://0015-mmc-sdhci-Add-32-bit-block-count-support-for-v4-mode.patch \
+	file://0016-mmc-sdhci-Add-Auto-CMD-Auto-Select-support.patch \
+	file://0017-mmc-sdhci-SDMA-may-use-Auto-CMD23-in-v4-mode.patch \
+	file://0018-mmc-sdhci-fix-__sdhci_adma_write_desc.patch \
+	file://0020-mmc-sdhci-Convert-sdhci_allocate_bounce_buffer-to-re.patch \
+	file://0024-mmc-sdhci-Add-quirk-to-disable-LED-control.patch \
+	file://0025-mmc-sdhci-Fix-sdhci_do_enable_v4_mode.patch \
+	file://0027-mmc-sdhci-add-delay-after-the-last-tuning-command.patch \
+	file://0028-mmc-sdhci-correct-the-maximum-timeout-when-enable-CM.patch \
+	file://0029-mmc-sdhci-Add-ADMA3-DMA-support-for-V4-enabled-host.patch \
+	file://0030-mmc-sdhci-use-WP-GPIO-in-sdhci_check_ro.patch \
+	file://0032-mmc-sdhci-allow-host-to-specify-maximum-tuning-loops.patch \
+	file://0033-mmc-sdhci-Reorganize-sdhci_finish_mrq-and-__sdhci_fi.patch \
+	file://0034-mmc-sdhci-Move-timer-and-has_requests-functions.patch \
+	file://0035-mmc-sdhci-Move-some-processing-to-__sdhci_finish_mrq.patch \
+	file://0036-mmc-sdhci-Call-mmc_request_done-from-IRQ-handler-if-.patch \
+	file://0037-mmc-sdhci-Remove-finish_tasklet.patch \
+	file://0038-mmc-sdhci-Fix-SDIO-IRQ-thread-deadlock.patch \
 "
 
 SRC_URI_append = " \

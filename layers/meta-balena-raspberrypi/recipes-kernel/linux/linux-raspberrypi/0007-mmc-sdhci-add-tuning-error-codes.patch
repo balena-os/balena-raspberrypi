@@ -1,0 +1,77 @@
+From 7d8bb1f46e1360a5c16d8addfc33f08089f8989d Mon Sep 17 00:00:00 2001
+From: Yinbo Zhu <yinbo.zhu@nxp.com>
+Date: Thu, 23 Aug 2018 16:48:31 +0800
+Subject: [PATCH] mmc: sdhci: add tuning error codes
+
+This patch is to add tuning error codes to
+judge tuning state
+
+Signed-off-by: Yinbo Zhu <yinbo.zhu@nxp.com>
+Acked-by: Adrian Hunter <adrian.hunter@intel.com>
+Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
+---
+ drivers/mmc/host/sdhci.c | 9 +++++----
+ drivers/mmc/host/sdhci.h | 1 +
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/mmc/host/sdhci.c b/drivers/mmc/host/sdhci.c
+index 1b3fbd9..bbac317 100644
+--- a/drivers/mmc/host/sdhci.c
++++ b/drivers/mmc/host/sdhci.c
+@@ -2219,7 +2219,7 @@ void sdhci_send_tuning(struct sdhci_host *host, u32 opcode)
+ }
+ EXPORT_SYMBOL_GPL(sdhci_send_tuning);
+ 
+-static void __sdhci_execute_tuning(struct sdhci_host *host, u32 opcode)
++static int __sdhci_execute_tuning(struct sdhci_host *host, u32 opcode)
+ {
+ 	int i;
+ 
+@@ -2236,13 +2236,13 @@ static void __sdhci_execute_tuning(struct sdhci_host *host, u32 opcode)
+ 			pr_info("%s: Tuning timeout, falling back to fixed sampling clock\n",
+ 				mmc_hostname(host->mmc));
+ 			sdhci_abort_tuning(host, opcode);
+-			return;
++			return -ETIMEDOUT;
+ 		}
+ 
+ 		ctrl = sdhci_readw(host, SDHCI_HOST_CONTROL2);
+ 		if (!(ctrl & SDHCI_CTRL_EXEC_TUNING)) {
+ 			if (ctrl & SDHCI_CTRL_TUNED_CLK)
+-				return; /* Success! */
++				return 0; /* Success! */
+ 			break;
+ 		}
+ 
+@@ -2254,6 +2254,7 @@ static void __sdhci_execute_tuning(struct sdhci_host *host, u32 opcode)
+ 	pr_info("%s: Tuning failed, falling back to fixed sampling clock\n",
+ 		mmc_hostname(host->mmc));
+ 	sdhci_reset_tuning(host);
++	return -EAGAIN;
+ }
+ 
+ int sdhci_execute_tuning(struct mmc_host *mmc, u32 opcode)
+@@ -2315,7 +2316,7 @@ int sdhci_execute_tuning(struct mmc_host *mmc, u32 opcode)
+ 
+ 	sdhci_start_tuning(host);
+ 
+-	__sdhci_execute_tuning(host, opcode);
++	host->tuning_err = __sdhci_execute_tuning(host, opcode);
+ 
+ 	sdhci_end_tuning(host);
+ out:
+diff --git a/drivers/mmc/host/sdhci.h b/drivers/mmc/host/sdhci.h
+index f0bd36c..bb8206a 100644
+--- a/drivers/mmc/host/sdhci.h
++++ b/drivers/mmc/host/sdhci.h
+@@ -554,6 +554,7 @@ struct sdhci_host {
+ 
+ 	unsigned int		tuning_count;	/* Timer count for re-tuning */
+ 	unsigned int		tuning_mode;	/* Re-tuning mode supported by host */
++	unsigned int		tuning_err;	/* Error code for re-tuning */
+ #define SDHCI_TUNING_MODE_1	0
+ #define SDHCI_TUNING_MODE_2	1
+ #define SDHCI_TUNING_MODE_3	2
+-- 
+2.7.4
+

@@ -1,0 +1,109 @@
+From 869f8a69bb3a4aec4eb914a330d4ba53a9eed495 Mon Sep 17 00:00:00 2001
+From: Adrian Hunter <adrian.hunter@intel.com>
+Date: Thu, 15 Nov 2018 15:53:42 +0200
+Subject: [PATCH] mmc: sdhci: Rename SDHCI_ACMD12_ERR and SDHCI_INT_ACMD12ERR
+
+The SDHCI_ACMD12_ERR register is used for auto-CMD23 and auto-CMD12
+errors, as is the SDHCI_INT_ACMD12ERR interrupt bit. Rename them to
+SDHCI_AUTO_CMD_STATUS and SDHCI_INT_AUTO_CMD_ERR respectively.
+
+Signed-off-by: Adrian Hunter <adrian.hunter@intel.com>
+Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
+---
+ drivers/mmc/host/sdhci-esdhc-imx.c | 12 ++++++------
+ drivers/mmc/host/sdhci.c           |  4 ++--
+ drivers/mmc/host/sdhci.h           |  4 ++--
+ 3 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/drivers/mmc/host/sdhci-esdhc-imx.c b/drivers/mmc/host/sdhci-esdhc-imx.c
+index f44e490..3f62dae 100644
+--- a/drivers/mmc/host/sdhci-esdhc-imx.c
++++ b/drivers/mmc/host/sdhci-esdhc-imx.c
+@@ -429,7 +429,7 @@ static u16 esdhc_readw_le(struct sdhci_host *host, int reg)
+ 				val = readl(host->ioaddr + ESDHC_MIX_CTRL);
+ 			else if (imx_data->socdata->flags & ESDHC_FLAG_STD_TUNING)
+ 				/* the std tuning bits is in ACMD12_ERR for imx6sl */
+-				val = readl(host->ioaddr + SDHCI_ACMD12_ERR);
++				val = readl(host->ioaddr + SDHCI_AUTO_CMD_STATUS);
+ 		}
+ 
+ 		if (val & ESDHC_MIX_CTRL_EXE_TUNE)
+@@ -494,7 +494,7 @@ static void esdhc_writew_le(struct sdhci_host *host, u16 val, int reg)
+ 			}
+ 			writel(new_val , host->ioaddr + ESDHC_MIX_CTRL);
+ 		} else if (imx_data->socdata->flags & ESDHC_FLAG_STD_TUNING) {
+-			u32 v = readl(host->ioaddr + SDHCI_ACMD12_ERR);
++			u32 v = readl(host->ioaddr + SDHCI_AUTO_CMD_STATUS);
+ 			u32 m = readl(host->ioaddr + ESDHC_MIX_CTRL);
+ 			if (val & SDHCI_CTRL_TUNED_CLK) {
+ 				v |= ESDHC_MIX_CTRL_SMPCLK_SEL;
+@@ -512,7 +512,7 @@ static void esdhc_writew_le(struct sdhci_host *host, u16 val, int reg)
+ 				v &= ~ESDHC_MIX_CTRL_EXE_TUNE;
+ 			}
+ 
+-			writel(v, host->ioaddr + SDHCI_ACMD12_ERR);
++			writel(v, host->ioaddr + SDHCI_AUTO_CMD_STATUS);
+ 			writel(m, host->ioaddr + ESDHC_MIX_CTRL);
+ 		}
+ 		return;
+@@ -957,9 +957,9 @@ static void esdhc_reset_tuning(struct sdhci_host *host)
+ 			writel(ctrl, host->ioaddr + ESDHC_MIX_CTRL);
+ 			writel(0, host->ioaddr + ESDHC_TUNE_CTRL_STATUS);
+ 		} else if (imx_data->socdata->flags & ESDHC_FLAG_STD_TUNING) {
+-			ctrl = readl(host->ioaddr + SDHCI_ACMD12_ERR);
++			ctrl = readl(host->ioaddr + SDHCI_AUTO_CMD_STATUS);
+ 			ctrl &= ~ESDHC_MIX_CTRL_SMPCLK_SEL;
+-			writel(ctrl, host->ioaddr + SDHCI_ACMD12_ERR);
++			writel(ctrl, host->ioaddr + SDHCI_AUTO_CMD_STATUS);
+ 		}
+ 	}
+ }
+@@ -1317,7 +1317,7 @@ static int sdhci_esdhc_imx_probe(struct platform_device *pdev)
+ 
+ 		/* clear tuning bits in case ROM has set it already */
+ 		writel(0x0, host->ioaddr + ESDHC_MIX_CTRL);
+-		writel(0x0, host->ioaddr + SDHCI_ACMD12_ERR);
++		writel(0x0, host->ioaddr + SDHCI_AUTO_CMD_STATUS);
+ 		writel(0x0, host->ioaddr + ESDHC_TUNE_CTRL_STATUS);
+ 	}
+ 
+diff --git a/drivers/mmc/host/sdhci.c b/drivers/mmc/host/sdhci.c
+index 2409b1f..1b83bf6 100644
+--- a/drivers/mmc/host/sdhci.c
++++ b/drivers/mmc/host/sdhci.c
+@@ -82,8 +82,8 @@ void sdhci_dumpregs(struct sdhci_host *host)
+ 	SDHCI_DUMP("Int enab:  0x%08x | Sig enab: 0x%08x\n",
+ 		   sdhci_readl(host, SDHCI_INT_ENABLE),
+ 		   sdhci_readl(host, SDHCI_SIGNAL_ENABLE));
+-	SDHCI_DUMP("AC12 err:  0x%08x | Slot int: 0x%08x\n",
+-		   sdhci_readw(host, SDHCI_ACMD12_ERR),
++	SDHCI_DUMP("ACmd stat: 0x%08x | Slot int: 0x%08x\n",
++		   sdhci_readw(host, SDHCI_AUTO_CMD_STATUS),
+ 		   sdhci_readw(host, SDHCI_SLOT_INT_STATUS));
+ 	SDHCI_DUMP("Caps:      0x%08x | Caps_1:   0x%08x\n",
+ 		   sdhci_readl(host, SDHCI_CAPABILITIES),
+diff --git a/drivers/mmc/host/sdhci.h b/drivers/mmc/host/sdhci.h
+index b001cf4..dee0656 100644
+--- a/drivers/mmc/host/sdhci.h
++++ b/drivers/mmc/host/sdhci.h
+@@ -146,7 +146,7 @@
+ #define  SDHCI_INT_DATA_CRC	0x00200000
+ #define  SDHCI_INT_DATA_END_BIT	0x00400000
+ #define  SDHCI_INT_BUS_POWER	0x00800000
+-#define  SDHCI_INT_ACMD12ERR	0x01000000
++#define  SDHCI_INT_AUTO_CMD_ERR	0x01000000
+ #define  SDHCI_INT_ADMA_ERROR	0x02000000
+ 
+ #define  SDHCI_INT_NORMAL_MASK	0x00007FFF
+@@ -168,7 +168,7 @@
+ 
+ #define SDHCI_CQE_INT_MASK (SDHCI_CQE_INT_ERR_MASK | SDHCI_INT_CQE)
+ 
+-#define SDHCI_ACMD12_ERR	0x3C
++#define SDHCI_AUTO_CMD_STATUS	0x3C
+ 
+ #define SDHCI_HOST_CONTROL2		0x3E
+ #define  SDHCI_CTRL_UHS_MASK		0x0007
+-- 
+2.7.4
+

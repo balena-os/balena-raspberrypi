@@ -1,0 +1,47 @@
+From 6d5cd068ee59fba58f49bed2fcea3634bc22f4b3 Mon Sep 17 00:00:00 2001
+From: Thomas Petazzoni <thomas.petazzoni@bootlin.com>
+Date: Tue, 12 Feb 2019 15:07:35 +0100
+Subject: [PATCH] mmc: sdhci: use WP GPIO in sdhci_check_ro()
+
+Even though SDHCI controllers may have a dedicated WP pin that can be
+queried using the SDHCI_PRESENT_STATE register, some platforms may
+chose to use a separate regular GPIO to route the WP signal. Such a
+GPIO is typically represented using the wp-gpios property in the
+Device Tree.
+
+Unfortunately, the current sdhci_check_ro() function does not make use
+of such GPIO when available: it either uses a host controller specific
+->get_ro() operation, or uses the SDHCI_PRESENT_STATE. Several host
+controller specific ->get_ro() functions are implemented just to check
+a WP GPIO state.
+
+Instead of pushing this to more controller-specific implementations,
+let's handle this in the core SDHCI code, just like it is already done
+for the CD GPIO in sdhci_get_cd().
+
+The below patch simply changes sdhci_check_ro() to use the value of
+the WP GPIO if available.
+
+Signed-off-by: Thomas Petazzoni <thomas.petazzoni@bootlin.com>
+Acked-by: Adrian Hunter <adrian.hunter@intel.com>
+Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
+---
+ drivers/mmc/host/sdhci.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/mmc/host/sdhci.c b/drivers/mmc/host/sdhci.c
+index 39bbbd75..a8141ff 100644
+--- a/drivers/mmc/host/sdhci.c
++++ b/drivers/mmc/host/sdhci.c
+@@ -2053,6 +2053,8 @@ static int sdhci_check_ro(struct sdhci_host *host)
+ 		is_readonly = 0;
+ 	else if (host->ops->get_ro)
+ 		is_readonly = host->ops->get_ro(host);
++	else if (mmc_can_gpio_ro(host->mmc))
++		is_readonly = mmc_gpio_get_ro(host->mmc);
+ 	else
+ 		is_readonly = !(sdhci_readl(host, SDHCI_PRESENT_STATE)
+ 				& SDHCI_WRITE_PROTECT);
+-- 
+2.7.4
+

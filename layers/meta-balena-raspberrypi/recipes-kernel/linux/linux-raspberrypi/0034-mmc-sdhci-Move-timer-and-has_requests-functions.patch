@@ -1,0 +1,86 @@
+From 97a1abae46a690a0d1d4c676e00a261b2c12ac1b Mon Sep 17 00:00:00 2001
+From: Adrian Hunter <adrian.hunter@intel.com>
+Date: Fri, 5 Apr 2019 15:40:17 +0300
+Subject: [PATCH] mmc: sdhci: Move timer and has_requests functions
+
+In preparation for removing finish_tasklet, move some functions.
+
+Signed-off-by: Adrian Hunter <adrian.hunter@intel.com>
+Reviewed-by: Faiz Abbas <faiz_abbas@ti.com>
+Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
+---
+ drivers/mmc/host/sdhci.c | 44 ++++++++++++++++++++++----------------------
+ 1 file changed, 22 insertions(+), 22 deletions(-)
+
+diff --git a/drivers/mmc/host/sdhci.c b/drivers/mmc/host/sdhci.c
+index 76e546a..7d16c88 100644
+--- a/drivers/mmc/host/sdhci.c
++++ b/drivers/mmc/host/sdhci.c
+@@ -446,6 +446,28 @@ static inline void sdhci_led_deactivate(struct sdhci_host *host)
+ 
+ #endif
+ 
++static void sdhci_mod_timer(struct sdhci_host *host, struct mmc_request *mrq,
++			    unsigned long timeout)
++{
++	if (sdhci_data_line_cmd(mrq->cmd))
++		mod_timer(&host->data_timer, timeout);
++	else
++		mod_timer(&host->timer, timeout);
++}
++
++static void sdhci_del_timer(struct sdhci_host *host, struct mmc_request *mrq)
++{
++	if (sdhci_data_line_cmd(mrq->cmd))
++		del_timer(&host->data_timer);
++	else
++		del_timer(&host->timer);
++}
++
++static inline bool sdhci_has_requests(struct sdhci_host *host)
++{
++	return host->cmd || host->data_cmd;
++}
++
+ /*****************************************************************************\
+  *                                                                           *
+  * Core functions                                                            *
+@@ -1316,23 +1338,6 @@ static void sdhci_finish_data(struct sdhci_host *host)
+ 	}
+ }
+ 
+-static void sdhci_mod_timer(struct sdhci_host *host, struct mmc_request *mrq,
+-			    unsigned long timeout)
+-{
+-	if (sdhci_data_line_cmd(mrq->cmd))
+-		mod_timer(&host->data_timer, timeout);
+-	else
+-		mod_timer(&host->timer, timeout);
+-}
+-
+-static void sdhci_del_timer(struct sdhci_host *host, struct mmc_request *mrq)
+-{
+-	if (sdhci_data_line_cmd(mrq->cmd))
+-		del_timer(&host->data_timer);
+-	else
+-		del_timer(&host->timer);
+-}
+-
+ void sdhci_send_command(struct sdhci_host *host, struct mmc_command *cmd)
+ {
+ 	int flags;
+@@ -2528,11 +2533,6 @@ static void sdhci_pre_req(struct mmc_host *mmc, struct mmc_request *mrq)
+ 		sdhci_pre_dma_transfer(host, mrq->data, COOKIE_PRE_MAPPED);
+ }
+ 
+-static inline bool sdhci_has_requests(struct sdhci_host *host)
+-{
+-	return host->cmd || host->data_cmd;
+-}
+-
+ static void sdhci_error_out_mrqs(struct sdhci_host *host, int err)
+ {
+ 	if (host->data_cmd) {
+-- 
+2.7.4
+

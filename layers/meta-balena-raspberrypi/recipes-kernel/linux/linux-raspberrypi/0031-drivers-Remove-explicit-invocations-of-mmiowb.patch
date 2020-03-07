@@ -1,0 +1,3397 @@
+From fb24ea52f78e0d595852e09e3a55697c8f442189 Mon Sep 17 00:00:00 2001
+From: Will Deacon <will.deacon@arm.com>
+Date: Fri, 22 Feb 2019 17:14:59 +0000
+Subject: [PATCH] drivers: Remove explicit invocations of mmiowb()
+
+mmiowb() is now implied by spin_unlock() on architectures that require
+it, so there is no reason to call it from driver code. This patch was
+generated using coccinelle:
+
+	@mmiowb@
+	@@
+	- mmiowb();
+
+and invoked as:
+
+$ for d in drivers include/linux/qed sound; do \
+spatch --include-headers --sp-file mmiowb.cocci --dir $d --in-place; done
+
+NOTE: mmiowb() has only ever guaranteed ordering in conjunction with
+spin_unlock(). However, pairing each mmiowb() removal in this patch with
+the corresponding call to spin_unlock() is not at all trivial, so there
+is a small chance that this change may regress any drivers incorrectly
+relying on mmiowb() to order MMIO writes between CPUs using lock-free
+synchronisation. If you've ended up bisecting to this commit, you can
+reintroduce the mmiowb() calls using wmb() instead, which should restore
+the old behaviour on all architectures other than some esoteric ia64
+systems.
+
+Acked-by: Linus Torvalds <torvalds@linux-foundation.org>
+Signed-off-by: Will Deacon <will.deacon@arm.com>
+---
+ drivers/crypto/cavium/nitrox/nitrox_reqmgr.c       |  4 ---
+ drivers/dma/txx9dmac.c                             |  3 ---
+ drivers/firewire/ohci.c                            |  1 -
+ drivers/gpu/drm/i915/intel_hdmi.c                  | 10 --------
+ drivers/ide/tx4939ide.c                            |  2 --
+ drivers/infiniband/hw/hfi1/chip.c                  |  3 ---
+ drivers/infiniband/hw/hfi1/pio.c                   |  1 -
+ drivers/infiniband/hw/hns/hns_roce_hw_v1.c         |  2 --
+ drivers/infiniband/hw/mlx4/qp.c                    |  6 -----
+ drivers/infiniband/hw/mlx5/qp.c                    |  1 -
+ drivers/infiniband/hw/mthca/mthca_cmd.c            |  6 -----
+ drivers/infiniband/hw/mthca/mthca_cq.c             |  5 ----
+ drivers/infiniband/hw/mthca/mthca_qp.c             | 17 -------------
+ drivers/infiniband/hw/mthca/mthca_srq.c            |  6 -----
+ drivers/infiniband/hw/qedr/verbs.c                 | 12 ---------
+ drivers/infiniband/hw/qib/qib_iba6120.c            |  4 ---
+ drivers/infiniband/hw/qib/qib_iba7220.c            |  3 ---
+ drivers/infiniband/hw/qib/qib_iba7322.c            |  3 ---
+ drivers/infiniband/hw/qib/qib_sd7220.c             |  4 ---
+ drivers/media/pci/dt3155/dt3155.c                  |  8 ------
+ drivers/memstick/host/jmb38x_ms.c                  |  4 ---
+ drivers/misc/ioc4.c                                |  2 --
+ drivers/misc/mei/hw-me.c                           |  3 ---
+ drivers/misc/tifm_7xx1.c                           |  1 -
+ drivers/mmc/host/alcor.c                           |  1 -
+ drivers/mmc/host/sdhci.c                           | 13 ----------
+ drivers/mmc/host/tifm_sd.c                         |  3 ---
+ drivers/mmc/host/via-sdmmc.c                       | 10 --------
+ drivers/mtd/nand/raw/r852.c                        |  2 --
+ drivers/mtd/nand/raw/txx9ndfmc.c                   |  1 -
+ drivers/net/ethernet/aeroflex/greth.c              |  1 -
+ drivers/net/ethernet/alacritech/slicoss.c          |  4 ---
+ drivers/net/ethernet/amazon/ena/ena_com.c          |  1 -
+ drivers/net/ethernet/atheros/atlx/atl1.c           |  1 -
+ drivers/net/ethernet/atheros/atlx/atl2.c           |  1 -
+ drivers/net/ethernet/broadcom/bnx2.c               |  4 ---
+ drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.c    |  2 --
+ drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.h    |  4 ---
+ .../net/ethernet/broadcom/bnx2x/bnx2x_ethtool.c    |  1 -
+ drivers/net/ethernet/broadcom/bnx2x/bnx2x_main.c   | 29 ----------------------
+ drivers/net/ethernet/broadcom/bnx2x/bnx2x_sp.c     |  1 -
+ drivers/net/ethernet/broadcom/bnx2x/bnx2x_sriov.c  |  2 --
+ drivers/net/ethernet/broadcom/bnx2x/bnx2x_vfpf.c   |  4 ---
+ drivers/net/ethernet/broadcom/bnxt/bnxt.c          |  3 ---
+ drivers/net/ethernet/broadcom/tg3.c                |  6 -----
+ .../net/ethernet/cavium/liquidio/cn66xx_device.c   | 10 --------
+ .../net/ethernet/cavium/liquidio/octeon_device.c   |  1 -
+ drivers/net/ethernet/cavium/liquidio/octeon_droq.c |  4 ---
+ .../net/ethernet/cavium/liquidio/request_manager.c |  1 -
+ drivers/net/ethernet/intel/e1000/e1000_main.c      |  5 ----
+ drivers/net/ethernet/intel/e1000e/netdev.c         |  7 ------
+ drivers/net/ethernet/intel/fm10k/fm10k_iov.c       |  2 --
+ drivers/net/ethernet/intel/fm10k/fm10k_main.c      |  5 ----
+ drivers/net/ethernet/intel/i40e/i40e_txrx.c        |  5 ----
+ drivers/net/ethernet/intel/iavf/iavf_txrx.c        |  5 ----
+ drivers/net/ethernet/intel/ice/ice_txrx.c          |  5 ----
+ drivers/net/ethernet/intel/igb/igb_main.c          |  5 ----
+ drivers/net/ethernet/intel/igbvf/netdev.c          |  4 ---
+ drivers/net/ethernet/intel/igc/igc_main.c          |  5 ----
+ drivers/net/ethernet/intel/ixgbe/ixgbe_main.c      |  5 ----
+ drivers/net/ethernet/marvell/sky2.c                |  4 ---
+ drivers/net/ethernet/mellanox/mlx4/catas.c         |  4 ---
+ drivers/net/ethernet/mellanox/mlx4/cmd.c           | 13 ----------
+ drivers/net/ethernet/mellanox/mlx5/core/cmd.c      |  1 -
+ drivers/net/ethernet/myricom/myri10ge/myri10ge.c   |  2 --
+ drivers/net/ethernet/neterion/s2io.c               |  2 --
+ drivers/net/ethernet/neterion/vxge/vxge-main.c     |  5 ----
+ drivers/net/ethernet/neterion/vxge/vxge-traffic.c  |  4 ---
+ drivers/net/ethernet/qlogic/qed/qed_int.c          | 13 ----------
+ drivers/net/ethernet/qlogic/qed/qed_spq.c          |  3 ---
+ drivers/net/ethernet/qlogic/qede/qede_ethtool.c    |  8 ------
+ drivers/net/ethernet/qlogic/qede/qede_fp.c         |  8 ------
+ drivers/net/ethernet/qlogic/qla3xxx.c              |  1 -
+ drivers/net/ethernet/qlogic/qlge/qlge.h            |  1 -
+ drivers/net/ethernet/qlogic/qlge/qlge_main.c       |  1 -
+ drivers/net/ethernet/renesas/ravb_main.c           |  9 -------
+ drivers/net/ethernet/renesas/ravb_ptp.c            |  3 ---
+ drivers/net/ethernet/renesas/sh_eth.c              |  1 -
+ drivers/net/ethernet/sfc/falcon/io.h               |  2 --
+ drivers/net/ethernet/sfc/io.h                      |  2 --
+ drivers/net/ethernet/silan/sc92031.c               | 14 -----------
+ drivers/net/ethernet/via/via-rhine.c               |  3 ---
+ drivers/net/ethernet/wiznet/w5100.c                |  6 -----
+ drivers/net/ethernet/wiznet/w5300.c                | 15 -----------
+ drivers/net/wireless/ath/ath5k/base.c              |  4 ---
+ drivers/net/wireless/ath/ath5k/mac80211-ops.c      |  2 --
+ drivers/net/wireless/broadcom/b43/main.c           |  7 ------
+ drivers/net/wireless/broadcom/b43/sysfs.c          |  1 -
+ drivers/net/wireless/broadcom/b43legacy/ilt.c      |  2 --
+ drivers/net/wireless/broadcom/b43legacy/main.c     | 20 ---------------
+ drivers/net/wireless/broadcom/b43legacy/phy.c      |  1 -
+ drivers/net/wireless/broadcom/b43legacy/pio.h      |  1 -
+ drivers/net/wireless/broadcom/b43legacy/radio.c    |  4 ---
+ drivers/net/wireless/broadcom/b43legacy/sysfs.c    |  1 -
+ drivers/net/wireless/intel/iwlegacy/common.h       |  7 ------
+ drivers/net/wireless/intel/iwlwifi/pcie/trans.c    |  1 -
+ drivers/ntb/hw/idt/ntb_hw_idt.c                    |  7 ------
+ drivers/ntb/test/ntb_perf.c                        |  3 ---
+ drivers/scsi/bfa/bfa.h                             |  3 +--
+ drivers/scsi/bfa/bfa_hw_cb.c                       |  2 --
+ drivers/scsi/bfa/bfa_hw_ct.c                       |  2 --
+ drivers/scsi/bnx2fc/bnx2fc_hwi.c                   |  2 --
+ drivers/scsi/bnx2i/bnx2i_hwi.c                     |  3 ---
+ drivers/scsi/megaraid/megaraid_sas_base.c          |  1 -
+ drivers/scsi/megaraid/megaraid_sas_fusion.c        |  1 -
+ drivers/scsi/mpt3sas/mpt3sas_base.c                |  1 -
+ drivers/scsi/qedf/qedf_io.c                        |  1 -
+ drivers/scsi/qedi/qedi_fw.c                        |  1 -
+ drivers/scsi/qla1280.c                             |  5 ----
+ drivers/ssb/pci.c                                  |  1 -
+ drivers/ssb/pcmcia.c                               |  4 ---
+ drivers/staging/comedi/drivers/mite.c              |  3 ---
+ drivers/staging/comedi/drivers/ni_660x.c           |  2 --
+ drivers/staging/comedi/drivers/ni_mio_common.c     |  1 -
+ drivers/staging/comedi/drivers/ni_pcidio.c         |  2 --
+ drivers/staging/comedi/drivers/ni_tio.c            |  1 -
+ drivers/staging/comedi/drivers/s626.c              |  2 --
+ drivers/tty/serial/men_z135_uart.c                 |  1 -
+ drivers/tty/serial/serial_txx9.c                   |  1 -
+ drivers/usb/early/xhci-dbc.c                       |  4 ---
+ drivers/usb/host/xhci-dbgcap.c                     |  2 --
+ include/linux/qed/qed_if.h                         |  2 --
+ sound/soc/txx9/txx9aclc-ac97.c                     |  1 -
+ 123 files changed, 1 insertion(+), 508 deletions(-)
+
+diff --git a/drivers/crypto/cavium/nitrox/nitrox_reqmgr.c b/drivers/crypto/cavium/nitrox/nitrox_reqmgr.c
+index 4c97478..5826c2c 100644
+--- a/drivers/crypto/cavium/nitrox/nitrox_reqmgr.c
++++ b/drivers/crypto/cavium/nitrox/nitrox_reqmgr.c
+@@ -303,8 +303,6 @@ static void post_se_instr(struct nitrox_softreq *sr,
+ 
+ 	/* Ring doorbell with count 1 */
+ 	writeq(1, cmdq->dbell_csr_addr);
+-	/* orders the doorbell rings */
+-	mmiowb();
+ 
+ 	cmdq->write_idx = incr_index(idx, 1, ndev->qlen);
+ 
+@@ -599,8 +597,6 @@ void pkt_slc_resp_tasklet(unsigned long data)
+ 	 * MSI-X interrupt generates if Completion count > Threshold
+ 	 */
+ 	writeq(slc_cnts.value, cmdq->compl_cnt_csr_addr);
+-	/* order the writes */
+-	mmiowb();
+ 
+ 	if (atomic_read(&cmdq->backlog_count))
+ 		schedule_work(&cmdq->backlog_qflush);
+diff --git a/drivers/dma/txx9dmac.c b/drivers/dma/txx9dmac.c
+index eb45af7..e8d0881 100644
+--- a/drivers/dma/txx9dmac.c
++++ b/drivers/dma/txx9dmac.c
+@@ -327,7 +327,6 @@ static void txx9dmac_reset_chan(struct txx9dmac_chan *dc)
+ 	channel_writel(dc, SAIR, 0);
+ 	channel_writel(dc, DAIR, 0);
+ 	channel_writel(dc, CCR, 0);
+-	mmiowb();
+ }
+ 
+ /* Called with dc->lock held and bh disabled */
+@@ -954,7 +953,6 @@ static void txx9dmac_chain_dynamic(struct txx9dmac_chan *dc,
+ 	dma_sync_single_for_device(chan2parent(&dc->chan),
+ 				   prev->txd.phys, ddev->descsize,
+ 				   DMA_TO_DEVICE);
+-	mmiowb();
+ 	if (!(channel_readl(dc, CSR) & TXX9_DMA_CSR_CHNEN) &&
+ 	    channel_read_CHAR(dc) == prev->txd.phys)
+ 		/* Restart chain DMA */
+@@ -1080,7 +1078,6 @@ static void txx9dmac_free_chan_resources(struct dma_chan *chan)
+ static void txx9dmac_off(struct txx9dmac_dev *ddev)
+ {
+ 	dma_writel(ddev, MCR, 0);
+-	mmiowb();
+ }
+ 
+ static int __init txx9dmac_chan_probe(struct platform_device *pdev)
+diff --git a/drivers/firewire/ohci.c b/drivers/firewire/ohci.c
+index 45c04875..7183ab3 100644
+--- a/drivers/firewire/ohci.c
++++ b/drivers/firewire/ohci.c
+@@ -2939,7 +2939,6 @@ static void set_multichannel_mask(struct fw_ohci *ohci, u64 channels)
+ 	reg_write(ohci, OHCI1394_IRMultiChanMaskLoClear, ~lo);
+ 	reg_write(ohci, OHCI1394_IRMultiChanMaskHiSet, hi);
+ 	reg_write(ohci, OHCI1394_IRMultiChanMaskLoSet, lo);
+-	mmiowb();
+ 	ohci->mc_channels = channels;
+ }
+ 
+diff --git a/drivers/gpu/drm/i915/intel_hdmi.c b/drivers/gpu/drm/i915/intel_hdmi.c
+index f125a62..a46bffe 100644
+--- a/drivers/gpu/drm/i915/intel_hdmi.c
++++ b/drivers/gpu/drm/i915/intel_hdmi.c
+@@ -182,7 +182,6 @@ static void g4x_write_infoframe(struct intel_encoder *encoder,
+ 
+ 	I915_WRITE(VIDEO_DIP_CTL, val);
+ 
+-	mmiowb();
+ 	for (i = 0; i < len; i += 4) {
+ 		I915_WRITE(VIDEO_DIP_DATA, *data);
+ 		data++;
+@@ -190,7 +189,6 @@ static void g4x_write_infoframe(struct intel_encoder *encoder,
+ 	/* Write every possible data byte to force correct ECC calculation. */
+ 	for (; i < VIDEO_DIP_DATA_SIZE; i += 4)
+ 		I915_WRITE(VIDEO_DIP_DATA, 0);
+-	mmiowb();
+ 
+ 	val |= g4x_infoframe_enable(type);
+ 	val &= ~VIDEO_DIP_FREQ_MASK;
+@@ -237,7 +235,6 @@ static void ibx_write_infoframe(struct intel_encoder *encoder,
+ 
+ 	I915_WRITE(reg, val);
+ 
+-	mmiowb();
+ 	for (i = 0; i < len; i += 4) {
+ 		I915_WRITE(TVIDEO_DIP_DATA(intel_crtc->pipe), *data);
+ 		data++;
+@@ -245,7 +242,6 @@ static void ibx_write_infoframe(struct intel_encoder *encoder,
+ 	/* Write every possible data byte to force correct ECC calculation. */
+ 	for (; i < VIDEO_DIP_DATA_SIZE; i += 4)
+ 		I915_WRITE(TVIDEO_DIP_DATA(intel_crtc->pipe), 0);
+-	mmiowb();
+ 
+ 	val |= g4x_infoframe_enable(type);
+ 	val &= ~VIDEO_DIP_FREQ_MASK;
+@@ -298,7 +294,6 @@ static void cpt_write_infoframe(struct intel_encoder *encoder,
+ 
+ 	I915_WRITE(reg, val);
+ 
+-	mmiowb();
+ 	for (i = 0; i < len; i += 4) {
+ 		I915_WRITE(TVIDEO_DIP_DATA(intel_crtc->pipe), *data);
+ 		data++;
+@@ -306,7 +301,6 @@ static void cpt_write_infoframe(struct intel_encoder *encoder,
+ 	/* Write every possible data byte to force correct ECC calculation. */
+ 	for (; i < VIDEO_DIP_DATA_SIZE; i += 4)
+ 		I915_WRITE(TVIDEO_DIP_DATA(intel_crtc->pipe), 0);
+-	mmiowb();
+ 
+ 	val |= g4x_infoframe_enable(type);
+ 	val &= ~VIDEO_DIP_FREQ_MASK;
+@@ -352,7 +346,6 @@ static void vlv_write_infoframe(struct intel_encoder *encoder,
+ 
+ 	I915_WRITE(reg, val);
+ 
+-	mmiowb();
+ 	for (i = 0; i < len; i += 4) {
+ 		I915_WRITE(VLV_TVIDEO_DIP_DATA(intel_crtc->pipe), *data);
+ 		data++;
+@@ -360,7 +353,6 @@ static void vlv_write_infoframe(struct intel_encoder *encoder,
+ 	/* Write every possible data byte to force correct ECC calculation. */
+ 	for (; i < VIDEO_DIP_DATA_SIZE; i += 4)
+ 		I915_WRITE(VLV_TVIDEO_DIP_DATA(intel_crtc->pipe), 0);
+-	mmiowb();
+ 
+ 	val |= g4x_infoframe_enable(type);
+ 	val &= ~VIDEO_DIP_FREQ_MASK;
+@@ -406,7 +398,6 @@ static void hsw_write_infoframe(struct intel_encoder *encoder,
+ 	val &= ~hsw_infoframe_enable(type);
+ 	I915_WRITE(ctl_reg, val);
+ 
+-	mmiowb();
+ 	for (i = 0; i < len; i += 4) {
+ 		I915_WRITE(hsw_dip_data_reg(dev_priv, cpu_transcoder,
+ 					    type, i >> 2), *data);
+@@ -416,7 +407,6 @@ static void hsw_write_infoframe(struct intel_encoder *encoder,
+ 	for (; i < data_size; i += 4)
+ 		I915_WRITE(hsw_dip_data_reg(dev_priv, cpu_transcoder,
+ 					    type, i >> 2), 0);
+-	mmiowb();
+ 
+ 	val |= hsw_infoframe_enable(type);
+ 	I915_WRITE(ctl_reg, val);
+diff --git a/drivers/ide/tx4939ide.c b/drivers/ide/tx4939ide.c
+index 67d4a7d..88d132e 100644
+--- a/drivers/ide/tx4939ide.c
++++ b/drivers/ide/tx4939ide.c
+@@ -156,7 +156,6 @@ static u16 tx4939ide_check_error_ints(ide_hwif_t *hwif)
+ 		u16 sysctl = tx4939ide_readw(base, TX4939IDE_Sys_Ctl);
+ 
+ 		tx4939ide_writew(sysctl | 0x4000, base, TX4939IDE_Sys_Ctl);
+-		mmiowb();
+ 		/* wait 12GBUSCLK (typ. 60ns @ GBUS200MHz, max 270ns) */
+ 		ndelay(270);
+ 		tx4939ide_writew(sysctl, base, TX4939IDE_Sys_Ctl);
+@@ -396,7 +395,6 @@ static void tx4939ide_init_hwif(ide_hwif_t *hwif)
+ 
+ 	/* Soft Reset */
+ 	tx4939ide_writew(0x8000, base, TX4939IDE_Sys_Ctl);
+-	mmiowb();
+ 	/* at least 20 GBUSCLK (typ. 100ns @ GBUS200MHz, max 450ns) */
+ 	ndelay(450);
+ 	tx4939ide_writew(0x0000, base, TX4939IDE_Sys_Ctl);
+diff --git a/drivers/infiniband/hw/hfi1/chip.c b/drivers/infiniband/hw/hfi1/chip.c
+index 12e67a9..8f27045 100644
+--- a/drivers/infiniband/hw/hfi1/chip.c
++++ b/drivers/infiniband/hw/hfi1/chip.c
+@@ -8365,7 +8365,6 @@ static inline void clear_recv_intr(struct hfi1_ctxtdata *rcd)
+ 	struct hfi1_devdata *dd = rcd->dd;
+ 	u32 addr = CCE_INT_CLEAR + (8 * rcd->ireg);
+ 
+-	mmiowb();
+ 	write_csr(dd, addr, rcd->imask);
+ 	/* force the above write on the chip and get a value back */
+ 	(void)read_csr(dd, addr);
+@@ -11803,12 +11802,10 @@ void update_usrhead(struct hfi1_ctxtdata *rcd, u32 hd, u32 updegr, u32 egrhd,
+ 			<< RCV_EGR_INDEX_HEAD_HEAD_SHIFT;
+ 		write_uctxt_csr(dd, ctxt, RCV_EGR_INDEX_HEAD, reg);
+ 	}
+-	mmiowb();
+ 	reg = ((u64)rcv_intr_count << RCV_HDR_HEAD_COUNTER_SHIFT) |
+ 		(((u64)hd & RCV_HDR_HEAD_HEAD_MASK)
+ 			<< RCV_HDR_HEAD_HEAD_SHIFT);
+ 	write_uctxt_csr(dd, ctxt, RCV_HDR_HEAD, reg);
+-	mmiowb();
+ }
+ 
+ u32 hdrqempty(struct hfi1_ctxtdata *rcd)
+diff --git a/drivers/infiniband/hw/hfi1/pio.c b/drivers/infiniband/hw/hfi1/pio.c
+index a1de566..16ba9d5 100644
+--- a/drivers/infiniband/hw/hfi1/pio.c
++++ b/drivers/infiniband/hw/hfi1/pio.c
+@@ -1578,7 +1578,6 @@ void hfi1_sc_wantpiobuf_intr(struct send_context *sc, u32 needint)
+ 		sc_del_credit_return_intr(sc);
+ 	trace_hfi1_wantpiointr(sc, needint, sc->credit_ctrl);
+ 	if (needint) {
+-		mmiowb();
+ 		sc_return_credits(sc);
+ 	}
+ }
+diff --git a/drivers/infiniband/hw/hns/hns_roce_hw_v1.c b/drivers/infiniband/hw/hns/hns_roce_hw_v1.c
+index 97515c3..c8555f7 100644
+--- a/drivers/infiniband/hw/hns/hns_roce_hw_v1.c
++++ b/drivers/infiniband/hw/hns/hns_roce_hw_v1.c
+@@ -1750,8 +1750,6 @@ static int hns_roce_v1_post_mbox(struct hns_roce_dev *hr_dev, u64 in_param,
+ 
+ 	writel(val, hcr + 5);
+ 
+-	mmiowb();
+-
+ 	return 0;
+ }
+ 
+diff --git a/drivers/infiniband/hw/mlx4/qp.c b/drivers/infiniband/hw/mlx4/qp.c
+index 429a59c..9426936 100644
+--- a/drivers/infiniband/hw/mlx4/qp.c
++++ b/drivers/infiniband/hw/mlx4/qp.c
+@@ -3744,12 +3744,6 @@ static int _mlx4_ib_post_send(struct ib_qp *ibqp, const struct ib_send_wr *wr,
+ 		writel_relaxed(qp->doorbell_qpn,
+ 			to_mdev(ibqp->device)->uar_map + MLX4_SEND_DOORBELL);
+ 
+-		/*
+-		 * Make sure doorbells don't leak out of SQ spinlock
+-		 * and reach the HCA out of order.
+-		 */
+-		mmiowb();
+-
+ 		stamp_send_wqe(qp, ind + qp->sq_spare_wqes - 1);
+ 
+ 		qp->sq_next_wqe = ind;
+diff --git a/drivers/infiniband/hw/mlx5/qp.c b/drivers/infiniband/hw/mlx5/qp.c
+index 7cd006d..b680be1 100644
+--- a/drivers/infiniband/hw/mlx5/qp.c
++++ b/drivers/infiniband/hw/mlx5/qp.c
+@@ -5123,7 +5123,6 @@ static int _mlx5_ib_post_send(struct ib_qp *ibqp, const struct ib_send_wr *wr,
+ 		/* Make sure doorbells don't leak out of SQ spinlock
+ 		 * and reach the HCA out of order.
+ 		 */
+-		mmiowb();
+ 		bf->offset ^= bf->buf_size;
+ 	}
+ 
+diff --git a/drivers/infiniband/hw/mthca/mthca_cmd.c b/drivers/infiniband/hw/mthca/mthca_cmd.c
+index 83aa47e..bdf5ed3 100644
+--- a/drivers/infiniband/hw/mthca/mthca_cmd.c
++++ b/drivers/infiniband/hw/mthca/mthca_cmd.c
+@@ -292,12 +292,6 @@ static int mthca_cmd_post(struct mthca_dev *dev,
+ 		err = mthca_cmd_post_hcr(dev, in_param, out_param, in_modifier,
+ 					 op_modifier, op, token, event);
+ 
+-	/*
+-	 * Make sure that our HCR writes don't get mixed in with
+-	 * writes from another CPU starting a FW command.
+-	 */
+-	mmiowb();
+-
+ 	mutex_unlock(&dev->cmd.hcr_mutex);
+ 	return err;
+ }
+diff --git a/drivers/infiniband/hw/mthca/mthca_cq.c b/drivers/infiniband/hw/mthca/mthca_cq.c
+index a6531ff..877a6da 100644
+--- a/drivers/infiniband/hw/mthca/mthca_cq.c
++++ b/drivers/infiniband/hw/mthca/mthca_cq.c
+@@ -211,11 +211,6 @@ static inline void update_cons_index(struct mthca_dev *dev, struct mthca_cq *cq,
+ 		mthca_write64(MTHCA_TAVOR_CQ_DB_INC_CI | cq->cqn, incr - 1,
+ 			      dev->kar + MTHCA_CQ_DOORBELL,
+ 			      MTHCA_GET_DOORBELL_LOCK(&dev->doorbell_lock));
+-		/*
+-		 * Make sure doorbells don't leak out of CQ spinlock
+-		 * and reach the HCA out of order:
+-		 */
+-		mmiowb();
+ 	}
+ }
+ 
+diff --git a/drivers/infiniband/hw/mthca/mthca_qp.c b/drivers/infiniband/hw/mthca/mthca_qp.c
+index 7a5b25d..d65b189 100644
+--- a/drivers/infiniband/hw/mthca/mthca_qp.c
++++ b/drivers/infiniband/hw/mthca/mthca_qp.c
+@@ -1809,11 +1809,6 @@ int mthca_tavor_post_send(struct ib_qp *ibqp, const struct ib_send_wr *wr,
+ 			      (qp->qpn << 8) | size0,
+ 			      dev->kar + MTHCA_SEND_DOORBELL,
+ 			      MTHCA_GET_DOORBELL_LOCK(&dev->doorbell_lock));
+-		/*
+-		 * Make sure doorbells don't leak out of SQ spinlock
+-		 * and reach the HCA out of order:
+-		 */
+-		mmiowb();
+ 	}
+ 
+ 	qp->sq.next_ind = ind;
+@@ -1924,12 +1919,6 @@ int mthca_tavor_post_receive(struct ib_qp *ibqp, const struct ib_recv_wr *wr,
+ 	qp->rq.next_ind = ind;
+ 	qp->rq.head    += nreq;
+ 
+-	/*
+-	 * Make sure doorbells don't leak out of RQ spinlock and reach
+-	 * the HCA out of order:
+-	 */
+-	mmiowb();
+-
+ 	spin_unlock_irqrestore(&qp->rq.lock, flags);
+ 	return err;
+ }
+@@ -2164,12 +2153,6 @@ int mthca_arbel_post_send(struct ib_qp *ibqp, const struct ib_send_wr *wr,
+ 			      MTHCA_GET_DOORBELL_LOCK(&dev->doorbell_lock));
+ 	}
+ 
+-	/*
+-	 * Make sure doorbells don't leak out of SQ spinlock and reach
+-	 * the HCA out of order:
+-	 */
+-	mmiowb();
+-
+ 	spin_unlock_irqrestore(&qp->sq.lock, flags);
+ 	return err;
+ }
+diff --git a/drivers/infiniband/hw/mthca/mthca_srq.c b/drivers/infiniband/hw/mthca/mthca_srq.c
+index 06b9203..a85935c 100644
+--- a/drivers/infiniband/hw/mthca/mthca_srq.c
++++ b/drivers/infiniband/hw/mthca/mthca_srq.c
+@@ -570,12 +570,6 @@ int mthca_tavor_post_srq_recv(struct ib_srq *ibsrq, const struct ib_recv_wr *wr,
+ 			      MTHCA_GET_DOORBELL_LOCK(&dev->doorbell_lock));
+ 	}
+ 
+-	/*
+-	 * Make sure doorbells don't leak out of SRQ spinlock and
+-	 * reach the HCA out of order:
+-	 */
+-	mmiowb();
+-
+ 	spin_unlock_irqrestore(&srq->lock, flags);
+ 	return err;
+ }
+diff --git a/drivers/infiniband/hw/qedr/verbs.c b/drivers/infiniband/hw/qedr/verbs.c
+index 4dab2b5..8686a98 100644
+--- a/drivers/infiniband/hw/qedr/verbs.c
++++ b/drivers/infiniband/hw/qedr/verbs.c
+@@ -773,9 +773,6 @@ static void doorbell_cq(struct qedr_cq *cq, u32 cons, u8 flags)
+ 	cq->db.data.agg_flags = flags;
+ 	cq->db.data.value = cpu_to_le32(cons);
+ 	writeq(cq->db.raw, cq->db_addr);
+-
+-	/* Make sure write would stick */
+-	mmiowb();
+ }
+ 
+ int qedr_arm_cq(struct ib_cq *ibcq, enum ib_cq_notify_flags flags)
+@@ -2084,8 +2081,6 @@ static int qedr_update_qp_state(struct qedr_dev *dev,
+ 
+ 			if (rdma_protocol_roce(&dev->ibdev, 1)) {
+ 				writel(qp->rq.db_data.raw, qp->rq.db);
+-				/* Make sure write takes effect */
+-				mmiowb();
+ 			}
+ 			break;
+ 		case QED_ROCE_QP_STATE_ERR:
+@@ -3502,9 +3497,6 @@ int qedr_post_send(struct ib_qp *ibqp, const struct ib_send_wr *wr,
+ 	smp_wmb();
+ 	writel(qp->sq.db_data.raw, qp->sq.db);
+ 
+-	/* Make sure write sticks */
+-	mmiowb();
+-
+ 	spin_unlock_irqrestore(&qp->q_lock, flags);
+ 
+ 	return rc;
+@@ -3695,12 +3687,8 @@ int qedr_post_recv(struct ib_qp *ibqp, const struct ib_recv_wr *wr,
+ 
+ 		writel(qp->rq.db_data.raw, qp->rq.db);
+ 
+-		/* Make sure write sticks */
+-		mmiowb();
+-
+ 		if (rdma_protocol_iwarp(&dev->ibdev, 1)) {
+ 			writel(qp->rq.iwarp_db2_data.raw, qp->rq.iwarp_db2);
+-			mmiowb();
+ 		}
+ 
+ 		wr = wr->next;
+diff --git a/drivers/infiniband/hw/qib/qib_iba6120.c b/drivers/infiniband/hw/qib/qib_iba6120.c
+index cdbf707..531d8a1 100644
+--- a/drivers/infiniband/hw/qib/qib_iba6120.c
++++ b/drivers/infiniband/hw/qib/qib_iba6120.c
+@@ -1884,7 +1884,6 @@ static void qib_6120_put_tid(struct qib_devdata *dd, u64 __iomem *tidptr,
+ 	qib_write_kreg(dd, kr_scratch, 0xfeeddeaf);
+ 	writel(pa, tidp32);
+ 	qib_write_kreg(dd, kr_scratch, 0xdeadbeef);
+-	mmiowb();
+ 	spin_unlock_irqrestore(tidlockp, flags);
+ }
+ 
+@@ -1928,7 +1927,6 @@ static void qib_6120_put_tid_2(struct qib_devdata *dd, u64 __iomem *tidptr,
+ 			pa |= 2 << 29;
+ 	}
+ 	writel(pa, tidp32);
+-	mmiowb();
+ }
+ 
+ 
+@@ -2053,9 +2051,7 @@ static void qib_update_6120_usrhead(struct qib_ctxtdata *rcd, u64 hd,
+ {
+ 	if (updegr)
+ 		qib_write_ureg(rcd->dd, ur_rcvegrindexhead, egrhd, rcd->ctxt);
+-	mmiowb();
+ 	qib_write_ureg(rcd->dd, ur_rcvhdrhead, hd, rcd->ctxt);
+-	mmiowb();
+ }
+ 
+ static u32 qib_6120_hdrqempty(struct qib_ctxtdata *rcd)
+diff --git a/drivers/infiniband/hw/qib/qib_iba7220.c b/drivers/infiniband/hw/qib/qib_iba7220.c
+index 9fde4553..ea3ddb0 100644
+--- a/drivers/infiniband/hw/qib/qib_iba7220.c
++++ b/drivers/infiniband/hw/qib/qib_iba7220.c
+@@ -2175,7 +2175,6 @@ static void qib_7220_put_tid(struct qib_devdata *dd, u64 __iomem *tidptr,
+ 		pa = chippa;
+ 	}
+ 	writeq(pa, tidptr);
+-	mmiowb();
+ }
+ 
+ /**
+@@ -2704,9 +2703,7 @@ static void qib_update_7220_usrhead(struct qib_ctxtdata *rcd, u64 hd,
+ {
+ 	if (updegr)
+ 		qib_write_ureg(rcd->dd, ur_rcvegrindexhead, egrhd, rcd->ctxt);
+-	mmiowb();
+ 	qib_write_ureg(rcd->dd, ur_rcvhdrhead, hd, rcd->ctxt);
+-	mmiowb();
+ }
+ 
+ static u32 qib_7220_hdrqempty(struct qib_ctxtdata *rcd)
+diff --git a/drivers/infiniband/hw/qib/qib_iba7322.c b/drivers/infiniband/hw/qib/qib_iba7322.c
+index 17d6b24..ac6a84f 100644
+--- a/drivers/infiniband/hw/qib/qib_iba7322.c
++++ b/drivers/infiniband/hw/qib/qib_iba7322.c
+@@ -3793,7 +3793,6 @@ static void qib_7322_put_tid(struct qib_devdata *dd, u64 __iomem *tidptr,
+ 		pa = chippa;
+ 	}
+ 	writeq(pa, tidptr);
+-	mmiowb();
+ }
+ 
+ /**
+@@ -4440,10 +4439,8 @@ static void qib_update_7322_usrhead(struct qib_ctxtdata *rcd, u64 hd,
+ 		adjust_rcv_timeout(rcd, npkts);
+ 	if (updegr)
+ 		qib_write_ureg(rcd->dd, ur_rcvegrindexhead, egrhd, rcd->ctxt);
+-	mmiowb();
+ 	qib_write_ureg(rcd->dd, ur_rcvhdrhead, hd, rcd->ctxt);
+ 	qib_write_ureg(rcd->dd, ur_rcvhdrhead, hd, rcd->ctxt);
+-	mmiowb();
+ }
+ 
+ static u32 qib_7322_hdrqempty(struct qib_ctxtdata *rcd)
+diff --git a/drivers/infiniband/hw/qib/qib_sd7220.c b/drivers/infiniband/hw/qib/qib_sd7220.c
+index 12caf3d..4f4a09c 100644
+--- a/drivers/infiniband/hw/qib/qib_sd7220.c
++++ b/drivers/infiniband/hw/qib/qib_sd7220.c
+@@ -1068,7 +1068,6 @@ static int qib_sd_setvals(struct qib_devdata *dd)
+ 	for (idx = 0; idx < NUM_DDS_REGS; ++idx) {
+ 		data = ((dds_reg_map & 0xF) << 4) | TX_FAST_ELT;
+ 		writeq(data, iaddr + idx);
+-		mmiowb();
+ 		qib_read_kreg32(dd, kr_scratch);
+ 		dds_reg_map >>= 4;
+ 		for (midx = 0; midx < DDS_ROWS; ++midx) {
+@@ -1076,7 +1075,6 @@ static int qib_sd_setvals(struct qib_devdata *dd)
+ 
+ 			data = dds_init_vals[midx].reg_vals[idx];
+ 			writeq(data, daddr);
+-			mmiowb();
+ 			qib_read_kreg32(dd, kr_scratch);
+ 		} /* End inner for (vals for this reg, each row) */
+ 	} /* end outer for (regs to be stored) */
+@@ -1098,13 +1096,11 @@ static int qib_sd_setvals(struct qib_devdata *dd)
+ 		didx = idx + min_idx;
+ 		/* Store the next RXEQ register address */
+ 		writeq(rxeq_init_vals[idx].rdesc, iaddr + didx);
+-		mmiowb();
+ 		qib_read_kreg32(dd, kr_scratch);
+ 		/* Iterate through RXEQ values */
+ 		for (vidx = 0; vidx < 4; vidx++) {
+ 			data = rxeq_init_vals[idx].rdata[vidx];
+ 			writeq(data, taddr + (vidx << 6) + idx);
+-			mmiowb();
+ 			qib_read_kreg32(dd, kr_scratch);
+ 		}
+ 	} /* end outer for (Reg-writes for RXEQ) */
+diff --git a/drivers/media/pci/dt3155/dt3155.c b/drivers/media/pci/dt3155/dt3155.c
+index 17d69bd..49677ee 100644
+--- a/drivers/media/pci/dt3155/dt3155.c
++++ b/drivers/media/pci/dt3155/dt3155.c
+@@ -46,7 +46,6 @@ static int read_i2c_reg(void __iomem *addr, u8 index, u8 *data)
+ 	u32 tmp = index;
+ 
+ 	iowrite32((tmp << 17) | IIC_READ, addr + IIC_CSR2);
+-	mmiowb();
+ 	udelay(45); /* wait at least 43 usec for NEW_CYCLE to clear */
+ 	if (ioread32(addr + IIC_CSR2) & NEW_CYCLE)
+ 		return -EIO; /* error: NEW_CYCLE not cleared */
+@@ -77,7 +76,6 @@ static int write_i2c_reg(void __iomem *addr, u8 index, u8 data)
+ 	u32 tmp = index;
+ 
+ 	iowrite32((tmp << 17) | IIC_WRITE | data, addr + IIC_CSR2);
+-	mmiowb();
+ 	udelay(65); /* wait at least 63 usec for NEW_CYCLE to clear */
+ 	if (ioread32(addr + IIC_CSR2) & NEW_CYCLE)
+ 		return -EIO; /* error: NEW_CYCLE not cleared */
+@@ -104,7 +102,6 @@ static void write_i2c_reg_nowait(void __iomem *addr, u8 index, u8 data)
+ 	u32 tmp = index;
+ 
+ 	iowrite32((tmp << 17) | IIC_WRITE | data, addr + IIC_CSR2);
+-	mmiowb();
+ }
+ 
+ /**
+@@ -264,7 +261,6 @@ static irqreturn_t dt3155_irq_handler_even(int irq, void *dev_id)
+ 						FLD_DN_ODD | FLD_DN_EVEN |
+ 						CAP_CONT_EVEN | CAP_CONT_ODD,
+ 							ipd->regs + CSR1);
+-		mmiowb();
+ 	}
+ 
+ 	spin_lock(&ipd->lock);
+@@ -282,7 +278,6 @@ static irqreturn_t dt3155_irq_handler_even(int irq, void *dev_id)
+ 		iowrite32(dma_addr + ipd->width, ipd->regs + ODD_DMA_START);
+ 		iowrite32(ipd->width, ipd->regs + EVEN_DMA_STRIDE);
+ 		iowrite32(ipd->width, ipd->regs + ODD_DMA_STRIDE);
+-		mmiowb();
+ 	}
+ 
+ 	/* enable interrupts, clear all irq flags */
+@@ -437,12 +432,10 @@ static int dt3155_init_board(struct dt3155_priv *pd)
+ 	/*  resetting the adapter  */
+ 	iowrite32(ADDR_ERR_ODD | ADDR_ERR_EVEN | FLD_CRPT_ODD | FLD_CRPT_EVEN |
+ 			FLD_DN_ODD | FLD_DN_EVEN, pd->regs + CSR1);
+-	mmiowb();
+ 	msleep(20);
+ 
+ 	/*  initializing adapter registers  */
+ 	iowrite32(FIFO_EN | SRST, pd->regs + CSR1);
+-	mmiowb();
+ 	iowrite32(0xEEEEEE01, pd->regs + EVEN_PIXEL_FMT);
+ 	iowrite32(0xEEEEEE01, pd->regs + ODD_PIXEL_FMT);
+ 	iowrite32(0x00000020, pd->regs + FIFO_TRIGER);
+@@ -454,7 +447,6 @@ static int dt3155_init_board(struct dt3155_priv *pd)
+ 	iowrite32(0, pd->regs + MASK_LENGTH);
+ 	iowrite32(0x0005007C, pd->regs + FIFO_FLAG_CNT);
+ 	iowrite32(0x01010101, pd->regs + IIC_CLK_DUR);
+-	mmiowb();
+ 
+ 	/* verifying that we have a DT3155 board (not just a SAA7116 chip) */
+ 	read_i2c_reg(pd->regs, DT_ID, &tmp);
+diff --git a/drivers/memstick/host/jmb38x_ms.c b/drivers/memstick/host/jmb38x_ms.c
+index bcdca9f..e3a5af6 100644
+--- a/drivers/memstick/host/jmb38x_ms.c
++++ b/drivers/memstick/host/jmb38x_ms.c
+@@ -644,7 +644,6 @@ static int jmb38x_ms_reset(struct jmb38x_ms_host *host)
+ 	writel(HOST_CONTROL_RESET_REQ | HOST_CONTROL_CLOCK_EN
+ 	       | readl(host->addr + HOST_CONTROL),
+ 	       host->addr + HOST_CONTROL);
+-	mmiowb();
+ 
+ 	for (cnt = 0; cnt < 20; ++cnt) {
+ 		if (!(HOST_CONTROL_RESET_REQ
+@@ -659,7 +658,6 @@ static int jmb38x_ms_reset(struct jmb38x_ms_host *host)
+ 	writel(HOST_CONTROL_RESET | HOST_CONTROL_CLOCK_EN
+ 	       | readl(host->addr + HOST_CONTROL),
+ 	       host->addr + HOST_CONTROL);
+-	mmiowb();
+ 
+ 	for (cnt = 0; cnt < 20; ++cnt) {
+ 		if (!(HOST_CONTROL_RESET
+@@ -672,7 +670,6 @@ static int jmb38x_ms_reset(struct jmb38x_ms_host *host)
+ 	return -EIO;
+ 
+ reset_ok:
+-	mmiowb();
+ 	writel(INT_STATUS_ALL, host->addr + INT_SIGNAL_ENABLE);
+ 	writel(INT_STATUS_ALL, host->addr + INT_STATUS_ENABLE);
+ 	return 0;
+@@ -1009,7 +1006,6 @@ static void jmb38x_ms_remove(struct pci_dev *dev)
+ 		tasklet_kill(&host->notify);
+ 		writel(0, host->addr + INT_SIGNAL_ENABLE);
+ 		writel(0, host->addr + INT_STATUS_ENABLE);
+-		mmiowb();
+ 		dev_dbg(&jm->pdev->dev, "interrupts off\n");
+ 		spin_lock_irqsave(&host->lock, flags);
+ 		if (host->req) {
+diff --git a/drivers/misc/ioc4.c b/drivers/misc/ioc4.c
+index ec083227..9d0445a 100644
+--- a/drivers/misc/ioc4.c
++++ b/drivers/misc/ioc4.c
+@@ -156,7 +156,6 @@ ioc4_clock_calibrate(struct ioc4_driver_data *idd)
+ 
+ 	/* Reset to power-on state */
+ 	writel(0, &idd->idd_misc_regs->int_out.raw);
+-	mmiowb();
+ 
+ 	/* Set up square wave */
+ 	int_out.raw = 0;
+@@ -164,7 +163,6 @@ ioc4_clock_calibrate(struct ioc4_driver_data *idd)
+ 	int_out.fields.mode = IOC4_INT_OUT_MODE_TOGGLE;
+ 	int_out.fields.diag = 0;
+ 	writel(int_out.raw, &idd->idd_misc_regs->int_out.raw);
+-	mmiowb();
+ 
+ 	/* Check square wave period averaged over some number of cycles */
+ 	start = ktime_get_ns();
+diff --git a/drivers/misc/mei/hw-me.c b/drivers/misc/mei/hw-me.c
+index 3fbbadf..8a47a6f 100644
+--- a/drivers/misc/mei/hw-me.c
++++ b/drivers/misc/mei/hw-me.c
+@@ -350,9 +350,6 @@ static void mei_me_hw_reset_release(struct mei_device *dev)
+ 	hcsr |= H_IG;
+ 	hcsr &= ~H_RST;
+ 	mei_hcsr_set(dev, hcsr);
+-
+-	/* complete this write before we set host ready on another CPU */
+-	mmiowb();
+ }
+ 
+ /**
+diff --git a/drivers/misc/tifm_7xx1.c b/drivers/misc/tifm_7xx1.c
+index 9ac95b4..cc729f7 100644
+--- a/drivers/misc/tifm_7xx1.c
++++ b/drivers/misc/tifm_7xx1.c
+@@ -403,7 +403,6 @@ static void tifm_7xx1_remove(struct pci_dev *dev)
+ 	fm->eject = tifm_7xx1_dummy_eject;
+ 	fm->has_ms_pif = tifm_7xx1_dummy_has_ms_pif;
+ 	writel(TIFM_IRQ_SETALL, fm->addr + FM_CLEAR_INTERRUPT_ENABLE);
+-	mmiowb();
+ 	free_irq(dev->irq, fm);
+ 
+ 	tifm_remove_adapter(fm);
+diff --git a/drivers/mmc/host/alcor.c b/drivers/mmc/host/alcor.c
+index 82a9786..546b1fc 100644
+--- a/drivers/mmc/host/alcor.c
++++ b/drivers/mmc/host/alcor.c
+@@ -967,7 +967,6 @@ static void alcor_timeout_timer(struct work_struct *work)
+ 		alcor_request_complete(host, 0);
+ 	}
+ 
+-	mmiowb();
+ 	mutex_unlock(&host->cmd_mutex);
+ }
+ 
+diff --git a/drivers/mmc/host/sdhci.c b/drivers/mmc/host/sdhci.c
+index a8141ff..42e1bad 100644
+--- a/drivers/mmc/host/sdhci.c
++++ b/drivers/mmc/host/sdhci.c
+@@ -1807,7 +1807,6 @@ void sdhci_request(struct mmc_host *mmc, struct mmc_request *mrq)
+ 			sdhci_send_command(host, mrq->cmd);
+ 	}
+ 
+-	mmiowb();
+ 	spin_unlock_irqrestore(&host->lock, flags);
+ }
+ EXPORT_SYMBOL_GPL(sdhci_request);
+@@ -2010,8 +2009,6 @@ void sdhci_set_ios(struct mmc_host *mmc, struct mmc_ios *ios)
+ 	 */
+ 	if (host->quirks & SDHCI_QUIRK_RESET_CMD_DATA_ON_IOS)
+ 		sdhci_do_reset(host, SDHCI_RESET_CMD | SDHCI_RESET_DATA);
+-
+-	mmiowb();
+ }
+ EXPORT_SYMBOL_GPL(sdhci_set_ios);
+ 
+@@ -2105,7 +2102,6 @@ static void sdhci_enable_sdio_irq_nolock(struct sdhci_host *host, int enable)
+ 
+ 		sdhci_writel(host, host->ier, SDHCI_INT_ENABLE);
+ 		sdhci_writel(host, host->ier, SDHCI_SIGNAL_ENABLE);
+-		mmiowb();
+ 	}
+ }
+ 
+@@ -2353,7 +2349,6 @@ void sdhci_send_tuning(struct sdhci_host *host, u32 opcode)
+ 
+ 	host->tuning_done = 0;
+ 
+-	mmiowb();
+ 	spin_unlock_irqrestore(&host->lock, flags);
+ 
+ 	/* Wait for Buffer Read Ready interrupt */
+@@ -2705,7 +2700,6 @@ static bool sdhci_request_done(struct sdhci_host *host)
+ 
+ 	host->mrqs_done[i] = NULL;
+ 
+-	mmiowb();
+ 	spin_unlock_irqrestore(&host->lock, flags);
+ 
+ 	mmc_request_done(host->mmc, mrq);
+@@ -2739,7 +2733,6 @@ static void sdhci_timeout_timer(struct timer_list *t)
+ 		sdhci_finish_mrq(host, host->cmd->mrq);
+ 	}
+ 
+-	mmiowb();
+ 	spin_unlock_irqrestore(&host->lock, flags);
+ }
+ 
+@@ -2770,7 +2763,6 @@ static void sdhci_timeout_data_timer(struct timer_list *t)
+ 		}
+ 	}
+ 
+-	mmiowb();
+ 	spin_unlock_irqrestore(&host->lock, flags);
+ }
+ 
+@@ -3251,7 +3243,6 @@ int sdhci_resume_host(struct sdhci_host *host)
+ 		mmc->ops->set_ios(mmc, &mmc->ios);
+ 	} else {
+ 		sdhci_init(host, (host->mmc->pm_flags & MMC_PM_KEEP_POWER));
+-		mmiowb();
+ 	}
+ 
+ 	if (host->irq_wake_enabled) {
+@@ -3391,7 +3382,6 @@ void sdhci_cqe_enable(struct mmc_host *mmc)
+ 		 mmc_hostname(mmc), host->ier,
+ 		 sdhci_readl(host, SDHCI_INT_STATUS));
+ 
+-	mmiowb();
+ 	spin_unlock_irqrestore(&host->lock, flags);
+ }
+ EXPORT_SYMBOL_GPL(sdhci_cqe_enable);
+@@ -3416,7 +3406,6 @@ void sdhci_cqe_disable(struct mmc_host *mmc, bool recovery)
+ 		 mmc_hostname(mmc), host->ier,
+ 		 sdhci_readl(host, SDHCI_INT_STATUS));
+ 
+-	mmiowb();
+ 	spin_unlock_irqrestore(&host->lock, flags);
+ }
+ EXPORT_SYMBOL_GPL(sdhci_cqe_disable);
+@@ -4255,8 +4244,6 @@ int __sdhci_add_host(struct sdhci_host *host)
+ 		goto unirq;
+ 	}
+ 
+-	mmiowb();
+-
+ 	ret = mmc_add_host(mmc);
+ 	if (ret)
+ 		goto unled;
+diff --git a/drivers/mmc/host/tifm_sd.c b/drivers/mmc/host/tifm_sd.c
+index b6644ce..35dd34b 100644
+--- a/drivers/mmc/host/tifm_sd.c
++++ b/drivers/mmc/host/tifm_sd.c
+@@ -889,7 +889,6 @@ static int tifm_sd_initialize_host(struct tifm_sd *host)
+ 	struct tifm_dev *sock = host->dev;
+ 
+ 	writel(0, sock->addr + SOCK_MMCSD_INT_ENABLE);
+-	mmiowb();
+ 	host->clk_div = 61;
+ 	host->clk_freq = 20000000;
+ 	writel(TIFM_MMCSD_RESET, sock->addr + SOCK_MMCSD_SYSTEM_CONTROL);
+@@ -940,7 +939,6 @@ static int tifm_sd_initialize_host(struct tifm_sd *host)
+ 	writel(TIFM_MMCSD_CERR | TIFM_MMCSD_BRS | TIFM_MMCSD_EOC
+ 	       | TIFM_MMCSD_ERRMASK,
+ 	       sock->addr + SOCK_MMCSD_INT_ENABLE);
+-	mmiowb();
+ 
+ 	return 0;
+ }
+@@ -1005,7 +1003,6 @@ static void tifm_sd_remove(struct tifm_dev *sock)
+ 	spin_lock_irqsave(&sock->lock, flags);
+ 	host->eject = 1;
+ 	writel(0, sock->addr + SOCK_MMCSD_INT_ENABLE);
+-	mmiowb();
+ 	spin_unlock_irqrestore(&sock->lock, flags);
+ 
+ 	tasklet_kill(&host->finish_tasklet);
+diff --git a/drivers/mmc/host/via-sdmmc.c b/drivers/mmc/host/via-sdmmc.c
+index 32c4211..412395a 100644
+--- a/drivers/mmc/host/via-sdmmc.c
++++ b/drivers/mmc/host/via-sdmmc.c
+@@ -686,7 +686,6 @@ static void via_sdc_request(struct mmc_host *mmc, struct mmc_request *mrq)
+ 		via_sdc_send_command(host, mrq->cmd);
+ 	}
+ 
+-	mmiowb();
+ 	spin_unlock_irqrestore(&host->lock, flags);
+ }
+ 
+@@ -711,7 +710,6 @@ static void via_sdc_set_power(struct via_crdr_mmc_host *host,
+ 		gatt &= ~VIA_CRDR_PCICLKGATT_PAD_PWRON;
+ 	writeb(gatt, host->pcictrl_mmiobase + VIA_CRDR_PCICLKGATT);
+ 
+-	mmiowb();
+ 	spin_unlock_irqrestore(&host->lock, flags);
+ 
+ 	via_pwron_sleep(host);
+@@ -770,7 +768,6 @@ static void via_sdc_set_ios(struct mmc_host *mmc, struct mmc_ios *ios)
+ 	if (readb(addrbase + VIA_CRDR_PCISDCCLK) != clock)
+ 		writeb(clock, addrbase + VIA_CRDR_PCISDCCLK);
+ 
+-	mmiowb();
+ 	spin_unlock_irqrestore(&host->lock, flags);
+ 
+ 	if (ios->power_mode != MMC_POWER_OFF)
+@@ -830,7 +827,6 @@ static void via_reset_pcictrl(struct via_crdr_mmc_host *host)
+ 	via_restore_pcictrlreg(host);
+ 	via_restore_sdcreg(host);
+ 
+-	mmiowb();
+ 	spin_unlock_irqrestore(&host->lock, flags);
+ }
+ 
+@@ -925,7 +921,6 @@ static irqreturn_t via_sdc_isr(int irq, void *dev_id)
+ 
+ 	result = IRQ_HANDLED;
+ 
+-	mmiowb();
+ out:
+ 	spin_unlock(&sdhost->lock);
+ 
+@@ -960,7 +955,6 @@ static void via_sdc_timeout(struct timer_list *t)
+ 		}
+ 	}
+ 
+-	mmiowb();
+ 	spin_unlock_irqrestore(&sdhost->lock, flags);
+ }
+ 
+@@ -1012,7 +1006,6 @@ static void via_sdc_card_detect(struct work_struct *work)
+ 			tasklet_schedule(&host->finish_tasklet);
+ 		}
+ 
+-		mmiowb();
+ 		spin_unlock_irqrestore(&host->lock, flags);
+ 
+ 		via_reset_pcictrl(host);
+@@ -1020,7 +1013,6 @@ static void via_sdc_card_detect(struct work_struct *work)
+ 		spin_lock_irqsave(&host->lock, flags);
+ 	}
+ 
+-	mmiowb();
+ 	spin_unlock_irqrestore(&host->lock, flags);
+ 
+ 	via_print_pcictrl(host);
+@@ -1188,7 +1180,6 @@ static void via_sd_remove(struct pci_dev *pcidev)
+ 
+ 	/* Disable generating further interrupts */
+ 	writeb(0x0, sdhost->pcictrl_mmiobase + VIA_CRDR_PCIINTCTRL);
+-	mmiowb();
+ 
+ 	if (sdhost->mrq) {
+ 		pr_err("%s: Controller removed during "
+@@ -1197,7 +1188,6 @@ static void via_sd_remove(struct pci_dev *pcidev)
+ 		/* make sure all DMA is stopped */
+ 		writel(VIA_CRDR_DMACTRL_SFTRST,
+ 			sdhost->ddma_mmiobase + VIA_CRDR_DMACTRL);
+-		mmiowb();
+ 		sdhost->mrq->cmd->error = -ENOMEDIUM;
+ 		if (sdhost->mrq->stop)
+ 			sdhost->mrq->stop->error = -ENOMEDIUM;
+diff --git a/drivers/mtd/nand/raw/r852.c b/drivers/mtd/nand/raw/r852.c
+index 8645621..7b99831 100644
+--- a/drivers/mtd/nand/raw/r852.c
++++ b/drivers/mtd/nand/raw/r852.c
+@@ -45,7 +45,6 @@ static inline void r852_write_reg(struct r852_device *dev,
+ 						int address, uint8_t value)
+ {
+ 	writeb(value, dev->mmio + address);
+-	mmiowb();
+ }
+ 
+ 
+@@ -61,7 +60,6 @@ static inline void r852_write_reg_dword(struct r852_device *dev,
+ 							int address, uint32_t value)
+ {
+ 	writel(cpu_to_le32(value), dev->mmio + address);
+-	mmiowb();
+ }
+ 
+ /* returns pointer to our private structure */
+diff --git a/drivers/mtd/nand/raw/txx9ndfmc.c b/drivers/mtd/nand/raw/txx9ndfmc.c
+index ddf0420..9797822 100644
+--- a/drivers/mtd/nand/raw/txx9ndfmc.c
++++ b/drivers/mtd/nand/raw/txx9ndfmc.c
+@@ -159,7 +159,6 @@ static void txx9ndfmc_cmd_ctrl(struct nand_chip *chip, int cmd,
+ 		if ((ctrl & NAND_CTRL_CHANGE) && cmd == NAND_CMD_NONE)
+ 			txx9ndfmc_write(dev, 0, TXX9_NDFDTR);
+ 	}
+-	mmiowb();
+ }
+ 
+ static int txx9ndfmc_dev_ready(struct nand_chip *chip)
+diff --git a/drivers/net/ethernet/aeroflex/greth.c b/drivers/net/ethernet/aeroflex/greth.c
+index 47e5984..3155f7fa 100644
+--- a/drivers/net/ethernet/aeroflex/greth.c
++++ b/drivers/net/ethernet/aeroflex/greth.c
+@@ -613,7 +613,6 @@ static irqreturn_t greth_interrupt(int irq, void *dev_id)
+ 		napi_schedule(&greth->napi);
+ 	}
+ 
+-	mmiowb();
+ 	spin_unlock(&greth->devlock);
+ 
+ 	return retval;
+diff --git a/drivers/net/ethernet/alacritech/slicoss.c b/drivers/net/ethernet/alacritech/slicoss.c
+index 16477aa..4f7e792 100644
+--- a/drivers/net/ethernet/alacritech/slicoss.c
++++ b/drivers/net/ethernet/alacritech/slicoss.c
+@@ -345,8 +345,6 @@ static void slic_set_rx_mode(struct net_device *dev)
+ 	if (sdev->promisc != set_promisc) {
+ 		sdev->promisc = set_promisc;
+ 		slic_configure_rcv(sdev);
+-		/* make sure writes to receiver cant leak out of the lock */
+-		mmiowb();
+ 	}
+ 	spin_unlock_bh(&sdev->link_lock);
+ }
+@@ -1461,8 +1459,6 @@ static netdev_tx_t slic_xmit(struct sk_buff *skb, struct net_device *dev)
+ 
+ 	if (slic_get_free_tx_descs(txq) < SLIC_MAX_REQ_TX_DESCS)
+ 		netif_stop_queue(dev);
+-	/* make sure writes to io-memory cant leak out of tx queue lock */
+-	mmiowb();
+ 
+ 	return NETDEV_TX_OK;
+ drop_skb:
+diff --git a/drivers/net/ethernet/amazon/ena/ena_com.c b/drivers/net/ethernet/amazon/ena/ena_com.c
+index b17d435..05798aa 100644
+--- a/drivers/net/ethernet/amazon/ena/ena_com.c
++++ b/drivers/net/ethernet/amazon/ena/ena_com.c
+@@ -2016,7 +2016,6 @@ void ena_com_aenq_intr_handler(struct ena_com_dev *dev, void *data)
+ 	mb();
+ 	writel_relaxed((u32)aenq->head,
+ 		       dev->reg_bar + ENA_REGS_AENQ_HEAD_DB_OFF);
+-	mmiowb();
+ }
+ 
+ int ena_com_dev_reset(struct ena_com_dev *ena_dev,
+diff --git a/drivers/net/ethernet/atheros/atlx/atl1.c b/drivers/net/ethernet/atheros/atlx/atl1.c
+index 9e07b469..f7583c5 100644
+--- a/drivers/net/ethernet/atheros/atlx/atl1.c
++++ b/drivers/net/ethernet/atheros/atlx/atl1.c
+@@ -2439,7 +2439,6 @@ static netdev_tx_t atl1_xmit_frame(struct sk_buff *skb,
+ 	atl1_tx_map(adapter, skb, ptpd);
+ 	atl1_tx_queue(adapter, count, ptpd);
+ 	atl1_update_mailbox(adapter);
+-	mmiowb();
+ 	return NETDEV_TX_OK;
+ }
+ 
+diff --git a/drivers/net/ethernet/atheros/atlx/atl2.c b/drivers/net/ethernet/atheros/atlx/atl2.c
+index d99317b..1474cac 100644
+--- a/drivers/net/ethernet/atheros/atlx/atl2.c
++++ b/drivers/net/ethernet/atheros/atlx/atl2.c
+@@ -908,7 +908,6 @@ static netdev_tx_t atl2_xmit_frame(struct sk_buff *skb,
+ 	ATL2_WRITE_REGW(&adapter->hw, REG_MB_TXD_WR_IDX,
+ 		(adapter->txd_write_ptr >> 2));
+ 
+-	mmiowb();
+ 	dev_consume_skb_any(skb);
+ 	return NETDEV_TX_OK;
+ }
+diff --git a/drivers/net/ethernet/broadcom/bnx2.c b/drivers/net/ethernet/broadcom/bnx2.c
+index d63371d..dfdd14e 100644
+--- a/drivers/net/ethernet/broadcom/bnx2.c
++++ b/drivers/net/ethernet/broadcom/bnx2.c
+@@ -3305,8 +3305,6 @@ bnx2_rx_int(struct bnx2 *bp, struct bnx2_napi *bnapi, int budget)
+ 
+ 	BNX2_WR(bp, rxr->rx_bseq_addr, rxr->rx_prod_bseq);
+ 
+-	mmiowb();
+-
+ 	return rx_pkt;
+ 
+ }
+@@ -6723,8 +6721,6 @@ bnx2_start_xmit(struct sk_buff *skb, struct net_device *dev)
+ 	BNX2_WR16(bp, txr->tx_bidx_addr, prod);
+ 	BNX2_WR(bp, txr->tx_bseq_addr, txr->tx_prod_bseq);
+ 
+-	mmiowb();
+-
+ 	txr->tx_prod = prod;
+ 
+ 	if (unlikely(bnx2_tx_avail(bp, txr) <= MAX_SKB_FRAGS)) {
+diff --git a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.c b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.c
+index ecb1bd7..0c8f5b5 100644
+--- a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.c
++++ b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.c
+@@ -4166,8 +4166,6 @@ netdev_tx_t bnx2x_start_xmit(struct sk_buff *skb, struct net_device *dev)
+ 
+ 	DOORBELL_RELAXED(bp, txdata->cid, txdata->tx_db.raw);
+ 
+-	mmiowb();
+-
+ 	txdata->tx_bd_prod += nbd;
+ 
+ 	if (unlikely(bnx2x_tx_avail(bp, txdata) < MAX_DESC_PER_TX_PKT)) {
+diff --git a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.h b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.h
+index 1ed0685..2d57af9 100644
+--- a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.h
++++ b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_cmn.h
+@@ -527,8 +527,6 @@ static inline void bnx2x_update_rx_prod(struct bnx2x *bp,
+ 		REG_WR_RELAXED(bp, fp->ustorm_rx_prods_offset + i * 4,
+ 			       ((u32 *)&rx_prods)[i]);
+ 
+-	mmiowb();
+-
+ 	DP(NETIF_MSG_RX_STATUS,
+ 	   "queue[%d]:  wrote  bd_prod %u  cqe_prod %u  sge_prod %u\n",
+ 	   fp->index, bd_prod, rx_comp_prod, rx_sge_prod);
+@@ -653,7 +651,6 @@ static inline void bnx2x_igu_ack_sb_gen(struct bnx2x *bp, u8 igu_sb_id,
+ 	REG_WR(bp, igu_addr, cmd_data.sb_id_and_flags);
+ 
+ 	/* Make sure that ACK is written */
+-	mmiowb();
+ 	barrier();
+ }
+ 
+@@ -674,7 +671,6 @@ static inline void bnx2x_hc_ack_sb(struct bnx2x *bp, u8 sb_id,
+ 	REG_WR(bp, hc_addr, (*(u32 *)&igu_ack));
+ 
+ 	/* Make sure that ACK is written */
+-	mmiowb();
+ 	barrier();
+ }
+ 
+diff --git a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_ethtool.c b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_ethtool.c
+index 749d0ef..0745ccc 100644
+--- a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_ethtool.c
++++ b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_ethtool.c
+@@ -2623,7 +2623,6 @@ static int bnx2x_run_loopback(struct bnx2x *bp, int loopback_mode)
+ 	wmb();
+ 	DOORBELL_RELAXED(bp, txdata->cid, txdata->tx_db.raw);
+ 
+-	mmiowb();
+ 	barrier();
+ 
+ 	num_pkts++;
+diff --git a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_main.c b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_main.c
+index e46786a..3716c82 100644
+--- a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_main.c
++++ b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_main.c
+@@ -869,9 +869,6 @@ static void bnx2x_hc_int_disable(struct bnx2x *bp)
+ 	   "write %x to HC %d (addr 0x%x)\n",
+ 	   val, port, addr);
+ 
+-	/* flush all outstanding writes */
+-	mmiowb();
+-
+ 	REG_WR(bp, addr, val);
+ 	if (REG_RD(bp, addr) != val)
+ 		BNX2X_ERR("BUG! Proper val not read from IGU!\n");
+@@ -887,9 +884,6 @@ static void bnx2x_igu_int_disable(struct bnx2x *bp)
+ 
+ 	DP(NETIF_MSG_IFDOWN, "write %x to IGU\n", val);
+ 
+-	/* flush all outstanding writes */
+-	mmiowb();
+-
+ 	REG_WR(bp, IGU_REG_PF_CONFIGURATION, val);
+ 	if (REG_RD(bp, IGU_REG_PF_CONFIGURATION) != val)
+ 		BNX2X_ERR("BUG! Proper val not read from IGU!\n");
+@@ -1595,7 +1589,6 @@ static void bnx2x_hc_int_enable(struct bnx2x *bp)
+ 	/*
+ 	 * Ensure that HC_CONFIG is written before leading/trailing edge config
+ 	 */
+-	mmiowb();
+ 	barrier();
+ 
+ 	if (!CHIP_IS_E1(bp)) {
+@@ -1611,9 +1604,6 @@ static void bnx2x_hc_int_enable(struct bnx2x *bp)
+ 		REG_WR(bp, HC_REG_TRAILING_EDGE_0 + port*8, val);
+ 		REG_WR(bp, HC_REG_LEADING_EDGE_0 + port*8, val);
+ 	}
+-
+-	/* Make sure that interrupts are indeed enabled from here on */
+-	mmiowb();
+ }
+ 
+ static void bnx2x_igu_int_enable(struct bnx2x *bp)
+@@ -1674,9 +1664,6 @@ static void bnx2x_igu_int_enable(struct bnx2x *bp)
+ 
+ 	REG_WR(bp, IGU_REG_TRAILING_EDGE_LATCH, val);
+ 	REG_WR(bp, IGU_REG_LEADING_EDGE_LATCH, val);
+-
+-	/* Make sure that interrupts are indeed enabled from here on */
+-	mmiowb();
+ }
+ 
+ void bnx2x_int_enable(struct bnx2x *bp)
+@@ -3833,7 +3820,6 @@ static void bnx2x_sp_prod_update(struct bnx2x *bp)
+ 
+ 	REG_WR16_RELAXED(bp, BAR_XSTRORM_INTMEM + XSTORM_SPQ_PROD_OFFSET(func),
+ 			 bp->spq_prod_idx);
+-	mmiowb();
+ }
+ 
+ /**
+@@ -5244,7 +5230,6 @@ static void bnx2x_update_eq_prod(struct bnx2x *bp, u16 prod)
+ {
+ 	/* No memory barriers */
+ 	storm_memset_eq_prod(bp, prod, BP_FUNC(bp));
+-	mmiowb();
+ }
+ 
+ static int  bnx2x_cnic_handle_cfc_del(struct bnx2x *bp, u32 cid,
+@@ -6513,7 +6498,6 @@ void bnx2x_nic_init_cnic(struct bnx2x *bp)
+ 
+ 	/* flush all */
+ 	mb();
+-	mmiowb();
+ }
+ 
+ void bnx2x_pre_irq_nic_init(struct bnx2x *bp)
+@@ -6553,7 +6537,6 @@ void bnx2x_post_irq_nic_init(struct bnx2x *bp, u32 load_code)
+ 
+ 	/* flush all before enabling interrupts */
+ 	mb();
+-	mmiowb();
+ 
+ 	bnx2x_int_enable(bp);
+ 
+@@ -7775,12 +7758,10 @@ void bnx2x_igu_clear_sb_gen(struct bnx2x *bp, u8 func, u8 idu_sb_id, bool is_pf)
+ 	DP(NETIF_MSG_HW, "write 0x%08x to IGU(via GRC) addr 0x%x\n",
+ 			 data, igu_addr_data);
+ 	REG_WR(bp, igu_addr_data, data);
+-	mmiowb();
+ 	barrier();
+ 	DP(NETIF_MSG_HW, "write 0x%08x to IGU(via GRC) addr 0x%x\n",
+ 			  ctl, igu_addr_ctl);
+ 	REG_WR(bp, igu_addr_ctl, ctl);
+-	mmiowb();
+ 	barrier();
+ 
+ 	/* wait for clean up to finish */
+@@ -9550,7 +9531,6 @@ static void bnx2x_set_234_gates(struct bnx2x *bp, bool close)
+ 
+ 	DP(NETIF_MSG_HW | NETIF_MSG_IFUP, "%s gates #2, #3 and #4\n",
+ 		close ? "closing" : "opening");
+-	mmiowb();
+ }
+ 
+ #define SHARED_MF_CLP_MAGIC  0x80000000 /* `magic' bit */
+@@ -9674,7 +9654,6 @@ static void bnx2x_pxp_prep(struct bnx2x *bp)
+ 	if (!CHIP_IS_E1(bp)) {
+ 		REG_WR(bp, PXP2_REG_RD_START_INIT, 0);
+ 		REG_WR(bp, PXP2_REG_RQ_RBC_DONE, 0);
+-		mmiowb();
+ 	}
+ }
+ 
+@@ -9774,16 +9753,13 @@ static void bnx2x_process_kill_chip_reset(struct bnx2x *bp, bool global)
+ 	       reset_mask1 & (~not_reset_mask1));
+ 
+ 	barrier();
+-	mmiowb();
+ 
+ 	REG_WR(bp, GRCBASE_MISC + MISC_REGISTERS_RESET_REG_2_SET,
+ 	       reset_mask2 & (~stay_reset2));
+ 
+ 	barrier();
+-	mmiowb();
+ 
+ 	REG_WR(bp, GRCBASE_MISC + MISC_REGISTERS_RESET_REG_1_SET, reset_mask1);
+-	mmiowb();
+ }
+ 
+ /**
+@@ -9867,9 +9843,6 @@ static int bnx2x_process_kill(struct bnx2x *bp, bool global)
+ 	REG_WR(bp, MISC_REG_UNPREPARED, 0);
+ 	barrier();
+ 
+-	/* Make sure all is written to the chip before the reset */
+-	mmiowb();
+-
+ 	/* Wait for 1ms to empty GLUE and PCI-E core queues,
+ 	 * PSWHST, GRC and PSWRD Tetris buffer.
+ 	 */
+@@ -14828,7 +14801,6 @@ static int bnx2x_drv_ctl(struct net_device *dev, struct drv_ctl_info *ctl)
+ 		if (rc)
+ 			break;
+ 
+-		mmiowb();
+ 		barrier();
+ 
+ 		/* Start accepting on iSCSI L2 ring */
+@@ -14863,7 +14835,6 @@ static int bnx2x_drv_ctl(struct net_device *dev, struct drv_ctl_info *ctl)
+ 		if (!bnx2x_wait_sp_comp(bp, sp_bits))
+ 			BNX2X_ERR("rx_mode completion timed out!\n");
+ 
+-		mmiowb();
+ 		barrier();
+ 
+ 		/* Unset iSCSI L2 MAC */
+diff --git a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_sp.c b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_sp.c
+index 7b22a6d..80d250a6 100644
+--- a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_sp.c
++++ b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_sp.c
+@@ -5039,7 +5039,6 @@ static inline int bnx2x_q_init(struct bnx2x *bp,
+ 	/* As no ramrod is sent, complete the command immediately  */
+ 	o->complete_cmd(bp, o, BNX2X_Q_CMD_INIT);
+ 
+-	mmiowb();
+ 	smp_mb();
+ 
+ 	return 0;
+diff --git a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_sriov.c b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_sriov.c
+index c97b642..0edbb0a 100644
+--- a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_sriov.c
++++ b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_sriov.c
+@@ -100,13 +100,11 @@ static void bnx2x_vf_igu_ack_sb(struct bnx2x *bp, struct bnx2x_virtf *vf,
+ 	DP(NETIF_MSG_HW, "write 0x%08x to IGU(via GRC) addr 0x%x\n",
+ 	   cmd_data.sb_id_and_flags, igu_addr_data);
+ 	REG_WR(bp, igu_addr_data, cmd_data.sb_id_and_flags);
+-	mmiowb();
+ 	barrier();
+ 
+ 	DP(NETIF_MSG_HW, "write 0x%08x to IGU(via GRC) addr 0x%x\n",
+ 	   ctl, igu_addr_ctl);
+ 	REG_WR(bp, igu_addr_ctl, ctl);
+-	mmiowb();
+ 	barrier();
+ }
+ 
+diff --git a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_vfpf.c b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_vfpf.c
+index a9bdc21..672b57f 100644
+--- a/drivers/net/ethernet/broadcom/bnx2x/bnx2x_vfpf.c
++++ b/drivers/net/ethernet/broadcom/bnx2x/bnx2x_vfpf.c
+@@ -172,8 +172,6 @@ static int bnx2x_send_msg2pf(struct bnx2x *bp, u8 *done, dma_addr_t msg_mapping)
+ 	/* Trigger the PF FW */
+ 	writeb_relaxed(1, &zone_data->trigger.vf_pf_channel.addr_valid);
+ 
+-	mmiowb();
+-
+ 	/* Wait for PF to complete */
+ 	while ((tout >= 0) && (!*done)) {
+ 		msleep(interval);
+@@ -1179,7 +1177,6 @@ static void bnx2x_vf_mbx_resp_send_msg(struct bnx2x *bp,
+ 
+ 	/* ack the FW */
+ 	storm_memset_vf_mbx_ack(bp, vf->abs_vfid);
+-	mmiowb();
+ 
+ 	/* copy the response header including status-done field,
+ 	 * must be last dmae, must be after FW is acked
+@@ -2174,7 +2171,6 @@ static void bnx2x_vf_mbx_request(struct bnx2x *bp, struct bnx2x_virtf *vf,
+ 		 */
+ 		storm_memset_vf_mbx_ack(bp, vf->abs_vfid);
+ 		/* Firmware ack should be written before unlocking channel */
+-		mmiowb();
+ 		bnx2x_unlock_vf_pf_channel(bp, vf, mbx->first_tlv.tl.type);
+ 	}
+ }
+diff --git a/drivers/net/ethernet/broadcom/bnxt/bnxt.c b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
+index 0bb9d7b..b8b68d4 100644
+--- a/drivers/net/ethernet/broadcom/bnxt/bnxt.c
++++ b/drivers/net/ethernet/broadcom/bnxt/bnxt.c
+@@ -556,8 +556,6 @@ static netdev_tx_t bnxt_start_xmit(struct sk_buff *skb, struct net_device *dev)
+ 
+ tx_done:
+ 
+-	mmiowb();
+-
+ 	if (unlikely(bnxt_tx_avail(bp, txr) <= MAX_SKB_FRAGS + 1)) {
+ 		if (skb->xmit_more && !tx_buf->is_push)
+ 			bnxt_db_write(bp, &txr->tx_db, prod);
+@@ -2123,7 +2121,6 @@ static int bnxt_poll(struct napi_struct *napi, int budget)
+ 			       &dim_sample);
+ 		net_dim(&cpr->dim, dim_sample);
+ 	}
+-	mmiowb();
+ 	return work_done;
+ }
+ 
+diff --git a/drivers/net/ethernet/broadcom/tg3.c b/drivers/net/ethernet/broadcom/tg3.c
+index 328373e..821bccc 100644
+--- a/drivers/net/ethernet/broadcom/tg3.c
++++ b/drivers/net/ethernet/broadcom/tg3.c
+@@ -1073,7 +1073,6 @@ static void tg3_int_reenable(struct tg3_napi *tnapi)
+ 	struct tg3 *tp = tnapi->tp;
+ 
+ 	tw32_mailbox(tnapi->int_mbox, tnapi->last_tag << 24);
+-	mmiowb();
+ 
+ 	/* When doing tagged status, this work check is unnecessary.
+ 	 * The last_tag we write above tells the chip which piece of
+@@ -6999,7 +6998,6 @@ static int tg3_rx(struct tg3_napi *tnapi, int budget)
+ 			tw32_rx_mbox(TG3_RX_JMB_PROD_IDX_REG,
+ 				     tpr->rx_jmb_prod_idx);
+ 		}
+-		mmiowb();
+ 	} else if (work_mask) {
+ 		/* rx_std_buffers[] and rx_jmb_buffers[] entries must be
+ 		 * updated before the producer indices can be updated.
+@@ -7210,8 +7208,6 @@ static int tg3_poll_work(struct tg3_napi *tnapi, int work_done, int budget)
+ 			tw32_rx_mbox(TG3_RX_JMB_PROD_IDX_REG,
+ 				     dpr->rx_jmb_prod_idx);
+ 
+-		mmiowb();
+-
+ 		if (err)
+ 			tw32_f(HOSTCC_MODE, tp->coal_now);
+ 	}
+@@ -7278,7 +7274,6 @@ static int tg3_poll_msix(struct napi_struct *napi, int budget)
+ 						  HOSTCC_MODE_ENABLE |
+ 						  tnapi->coal_now);
+ 			}
+-			mmiowb();
+ 			break;
+ 		}
+ 	}
+@@ -8159,7 +8154,6 @@ static netdev_tx_t tg3_start_xmit(struct sk_buff *skb, struct net_device *dev)
+ 	if (!skb->xmit_more || netif_xmit_stopped(txq)) {
+ 		/* Packets are ready, update Tx producer idx on card. */
+ 		tw32_tx_mbox(tnapi->prodmbox, entry);
+-		mmiowb();
+ 	}
+ 
+ 	return NETDEV_TX_OK;
+diff --git a/drivers/net/ethernet/cavium/liquidio/cn66xx_device.c b/drivers/net/ethernet/cavium/liquidio/cn66xx_device.c
+index 2df7440..39643be 100644
+--- a/drivers/net/ethernet/cavium/liquidio/cn66xx_device.c
++++ b/drivers/net/ethernet/cavium/liquidio/cn66xx_device.c
+@@ -38,9 +38,6 @@ int lio_cn6xxx_soft_reset(struct octeon_device *oct)
+ 	lio_pci_readq(oct, CN6XXX_CIU_SOFT_RST);
+ 	lio_pci_writeq(oct, 1, CN6XXX_CIU_SOFT_RST);
+ 
+-	/* make sure that the reset is written before starting timer */
+-	mmiowb();
+-
+ 	/* Wait for 10ms as Octeon resets. */
+ 	mdelay(100);
+ 
+@@ -487,9 +484,6 @@ void lio_cn6xxx_disable_interrupt(struct octeon_device *oct,
+ 
+ 	/* Disable Interrupts */
+ 	writeq(0, cn6xxx->intr_enb_reg64);
+-
+-	/* make sure interrupts are really disabled */
+-	mmiowb();
+ }
+ 
+ static void lio_cn6xxx_get_pcie_qlmport(struct octeon_device *oct)
+@@ -555,10 +549,6 @@ static int lio_cn6xxx_process_droq_intr_regs(struct octeon_device *oct)
+ 				value &= ~(1 << oq_no);
+ 				octeon_write_csr(oct, reg, value);
+ 
+-				/* Ensure that the enable register is written.
+-				 */
+-				mmiowb();
+-
+ 				spin_unlock(&cn6xxx->lock_for_droq_int_enb_reg);
+ 			}
+ 		}
+diff --git a/drivers/net/ethernet/cavium/liquidio/octeon_device.c b/drivers/net/ethernet/cavium/liquidio/octeon_device.c
+index ce8c3f8..934115d 100644
+--- a/drivers/net/ethernet/cavium/liquidio/octeon_device.c
++++ b/drivers/net/ethernet/cavium/liquidio/octeon_device.c
+@@ -1449,7 +1449,6 @@ void lio_enable_irq(struct octeon_droq *droq, struct octeon_instr_queue *iq)
+ 		iq->pkt_in_done -= iq->pkts_processed;
+ 		iq->pkts_processed = 0;
+ 		/* this write needs to be flushed before we release the lock */
+-		mmiowb();
+ 		spin_unlock_bh(&iq->lock);
+ 		oct = iq->oct_dev;
+ 	}
+diff --git a/drivers/net/ethernet/cavium/liquidio/octeon_droq.c b/drivers/net/ethernet/cavium/liquidio/octeon_droq.c
+index a0c099f7..0171690 100644
+--- a/drivers/net/ethernet/cavium/liquidio/octeon_droq.c
++++ b/drivers/net/ethernet/cavium/liquidio/octeon_droq.c
+@@ -513,8 +513,6 @@ int octeon_retry_droq_refill(struct octeon_droq *droq)
+ 		 */
+ 		wmb();
+ 		writel(desc_refilled, droq->pkts_credit_reg);
+-		/* make sure mmio write completes */
+-		mmiowb();
+ 
+ 		if (pkts_credit + desc_refilled >= CN23XX_SLI_DEF_BP)
+ 			reschedule = 0;
+@@ -712,8 +710,6 @@ octeon_droq_fast_process_packets(struct octeon_device *oct,
+ 				 */
+ 				wmb();
+ 				writel(desc_refilled, droq->pkts_credit_reg);
+-				/* make sure mmio write completes */
+-				mmiowb();
+ 			}
+ 		}
+ 	}                       /* for (each packet)... */
+diff --git a/drivers/net/ethernet/cavium/liquidio/request_manager.c b/drivers/net/ethernet/cavium/liquidio/request_manager.c
+index c6f4cbd..fcf20a8 100644
+--- a/drivers/net/ethernet/cavium/liquidio/request_manager.c
++++ b/drivers/net/ethernet/cavium/liquidio/request_manager.c
+@@ -278,7 +278,6 @@ ring_doorbell(struct octeon_device *oct, struct octeon_instr_queue *iq)
+ 	if (atomic_read(&oct->status) == OCT_DEV_RUNNING) {
+ 		writel(iq->fill_cnt, iq->doorbell_reg);
+ 		/* make sure doorbell write goes through */
+-		mmiowb();
+ 		iq->fill_cnt = 0;
+ 		iq->last_db_time = jiffies;
+ 		return;
+diff --git a/drivers/net/ethernet/intel/e1000/e1000_main.c b/drivers/net/ethernet/intel/e1000/e1000_main.c
+index 8fe9af0..466bf1e 100644
+--- a/drivers/net/ethernet/intel/e1000/e1000_main.c
++++ b/drivers/net/ethernet/intel/e1000/e1000_main.c
+@@ -3270,11 +3270,6 @@ static netdev_tx_t e1000_xmit_frame(struct sk_buff *skb,
+ 		if (!skb->xmit_more ||
+ 		    netif_xmit_stopped(netdev_get_tx_queue(netdev, 0))) {
+ 			writel(tx_ring->next_to_use, hw->hw_addr + tx_ring->tdt);
+-			/* we need this if more than one processor can write to
+-			 * our tail at a time, it synchronizes IO on IA64/Altix
+-			 * systems
+-			 */
+-			mmiowb();
+ 		}
+ 	} else {
+ 		dev_kfree_skb_any(skb);
+diff --git a/drivers/net/ethernet/intel/e1000e/netdev.c b/drivers/net/ethernet/intel/e1000e/netdev.c
+index 7acc61e..022c3ac 100644
+--- a/drivers/net/ethernet/intel/e1000e/netdev.c
++++ b/drivers/net/ethernet/intel/e1000e/netdev.c
+@@ -3816,7 +3816,6 @@ static void e1000_flush_tx_ring(struct e1000_adapter *adapter)
+ 	if (tx_ring->next_to_use == tx_ring->count)
+ 		tx_ring->next_to_use = 0;
+ 	ew32(TDT(0), tx_ring->next_to_use);
+-	mmiowb();
+ 	usleep_range(200, 250);
+ }
+ 
+@@ -5904,12 +5903,6 @@ static netdev_tx_t e1000_xmit_frame(struct sk_buff *skb,
+ 						     tx_ring->next_to_use);
+ 			else
+ 				writel(tx_ring->next_to_use, tx_ring->tail);
+-
+-			/* we need this if more than one processor can write
+-			 * to our tail at a time, it synchronizes IO on
+-			 *IA64/Altix systems
+-			 */
+-			mmiowb();
+ 		}
+ 	} else {
+ 		dev_kfree_skb_any(skb);
+diff --git a/drivers/net/ethernet/intel/fm10k/fm10k_iov.c b/drivers/net/ethernet/intel/fm10k/fm10k_iov.c
+index 5d4f176..8de7715 100644
+--- a/drivers/net/ethernet/intel/fm10k/fm10k_iov.c
++++ b/drivers/net/ethernet/intel/fm10k/fm10k_iov.c
+@@ -321,8 +321,6 @@ static void fm10k_mask_aer_comp_abort(struct pci_dev *pdev)
+ 	pci_read_config_dword(pdev, pos + PCI_ERR_UNCOR_MASK, &err_mask);
+ 	err_mask |= PCI_ERR_UNC_COMP_ABORT;
+ 	pci_write_config_dword(pdev, pos + PCI_ERR_UNCOR_MASK, err_mask);
+-
+-	mmiowb();
+ }
+ 
+ int fm10k_iov_resume(struct pci_dev *pdev)
+diff --git a/drivers/net/ethernet/intel/fm10k/fm10k_main.c b/drivers/net/ethernet/intel/fm10k/fm10k_main.c
+index 5a04194..1f48298 100644
+--- a/drivers/net/ethernet/intel/fm10k/fm10k_main.c
++++ b/drivers/net/ethernet/intel/fm10k/fm10k_main.c
+@@ -1037,11 +1037,6 @@ static void fm10k_tx_map(struct fm10k_ring *tx_ring,
+ 	/* notify HW of packet */
+ 	if (netif_xmit_stopped(txring_txq(tx_ring)) || !skb->xmit_more) {
+ 		writel(i, tx_ring->tail);
+-
+-		/* we need this if more than one processor can write to our tail
+-		 * at a time, it synchronizes IO on IA64/Altix systems
+-		 */
+-		mmiowb();
+ 	}
+ 
+ 	return;
+diff --git a/drivers/net/ethernet/intel/i40e/i40e_txrx.c b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+index 6c97667..ffb611b 100644
+--- a/drivers/net/ethernet/intel/i40e/i40e_txrx.c
++++ b/drivers/net/ethernet/intel/i40e/i40e_txrx.c
+@@ -3471,11 +3471,6 @@ static inline int i40e_tx_map(struct i40e_ring *tx_ring, struct sk_buff *skb,
+ 	/* notify HW of packet */
+ 	if (netif_xmit_stopped(txring_txq(tx_ring)) || !skb->xmit_more) {
+ 		writel(i, tx_ring->tail);
+-
+-		/* we need this if more than one processor can write to our tail
+-		 * at a time, it synchronizes IO on IA64/Altix systems
+-		 */
+-		mmiowb();
+ 	}
+ 
+ 	return 0;
+diff --git a/drivers/net/ethernet/intel/iavf/iavf_txrx.c b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
+index 9b4d7ce..6bfef82 100644
+--- a/drivers/net/ethernet/intel/iavf/iavf_txrx.c
++++ b/drivers/net/ethernet/intel/iavf/iavf_txrx.c
+@@ -2360,11 +2360,6 @@ static inline void iavf_tx_map(struct iavf_ring *tx_ring, struct sk_buff *skb,
+ 	/* notify HW of packet */
+ 	if (netif_xmit_stopped(txring_txq(tx_ring)) || !skb->xmit_more) {
+ 		writel(i, tx_ring->tail);
+-
+-		/* we need this if more than one processor can write to our tail
+-		 * at a time, it synchronizes IO on IA64/Altix systems
+-		 */
+-		mmiowb();
+ 	}
+ 
+ 	return;
+diff --git a/drivers/net/ethernet/intel/ice/ice_txrx.c b/drivers/net/ethernet/intel/ice/ice_txrx.c
+index c289d97..1af21bb 100644
+--- a/drivers/net/ethernet/intel/ice/ice_txrx.c
++++ b/drivers/net/ethernet/intel/ice/ice_txrx.c
+@@ -1356,11 +1356,6 @@ ice_tx_map(struct ice_ring *tx_ring, struct ice_tx_buf *first,
+ 	/* notify HW of packet */
+ 	if (netif_xmit_stopped(txring_txq(tx_ring)) || !skb->xmit_more) {
+ 		writel(i, tx_ring->tail);
+-
+-		/* we need this if more than one processor can write to our tail
+-		 * at a time, it synchronizes IO on IA64/Altix systems
+-		 */
+-		mmiowb();
+ 	}
+ 
+ 	return;
+diff --git a/drivers/net/ethernet/intel/igb/igb_main.c b/drivers/net/ethernet/intel/igb/igb_main.c
+index 69b230c..09ba944 100644
+--- a/drivers/net/ethernet/intel/igb/igb_main.c
++++ b/drivers/net/ethernet/intel/igb/igb_main.c
+@@ -6028,11 +6028,6 @@ static int igb_tx_map(struct igb_ring *tx_ring,
+ 
+ 	if (netif_xmit_stopped(txring_txq(tx_ring)) || !skb->xmit_more) {
+ 		writel(i, tx_ring->tail);
+-
+-		/* we need this if more than one processor can write to our tail
+-		 * at a time, it synchronizes IO on IA64/Altix systems
+-		 */
+-		mmiowb();
+ 	}
+ 	return 0;
+ 
+diff --git a/drivers/net/ethernet/intel/igbvf/netdev.c b/drivers/net/ethernet/intel/igbvf/netdev.c
+index 4eab83f..34cd30d 100644
+--- a/drivers/net/ethernet/intel/igbvf/netdev.c
++++ b/drivers/net/ethernet/intel/igbvf/netdev.c
+@@ -2279,10 +2279,6 @@ static inline void igbvf_tx_queue_adv(struct igbvf_adapter *adapter,
+ 	tx_ring->buffer_info[first].next_to_watch = tx_desc;
+ 	tx_ring->next_to_use = i;
+ 	writel(i, adapter->hw.hw_addr + tx_ring->tail);
+-	/* we need this if more than one processor can write to our tail
+-	 * at a time, it synchronizes IO on IA64/Altix systems
+-	 */
+-	mmiowb();
+ }
+ 
+ static netdev_tx_t igbvf_xmit_frame_ring_adv(struct sk_buff *skb,
+diff --git a/drivers/net/ethernet/intel/igc/igc_main.c b/drivers/net/ethernet/intel/igc/igc_main.c
+index 87a1187..f8d692f 100644
+--- a/drivers/net/ethernet/intel/igc/igc_main.c
++++ b/drivers/net/ethernet/intel/igc/igc_main.c
+@@ -892,11 +892,6 @@ static int igc_tx_map(struct igc_ring *tx_ring,
+ 
+ 	if (netif_xmit_stopped(txring_txq(tx_ring)) || !skb->xmit_more) {
+ 		writel(i, tx_ring->tail);
+-
+-		/* we need this if more than one processor can write to our tail
+-		 * at a time, it synchronizes IO on IA64/Altix systems
+-		 */
+-		mmiowb();
+ 	}
+ 
+ 	return 0;
+diff --git a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+index e100054..99e23cf 100644
+--- a/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
++++ b/drivers/net/ethernet/intel/ixgbe/ixgbe_main.c
+@@ -8299,11 +8299,6 @@ static int ixgbe_tx_map(struct ixgbe_ring *tx_ring,
+ 
+ 	if (netif_xmit_stopped(txring_txq(tx_ring)) || !skb->xmit_more) {
+ 		writel(i, tx_ring->tail);
+-
+-		/* we need this if more than one processor can write to our tail
+-		 * at a time, it synchronizes IO on IA64/Altix systems
+-		 */
+-		mmiowb();
+ 	}
+ 
+ 	return 0;
+diff --git a/drivers/net/ethernet/marvell/sky2.c b/drivers/net/ethernet/marvell/sky2.c
+index 8b3495e..49486c1 100644
+--- a/drivers/net/ethernet/marvell/sky2.c
++++ b/drivers/net/ethernet/marvell/sky2.c
+@@ -1139,9 +1139,6 @@ static inline void sky2_put_idx(struct sky2_hw *hw, unsigned q, u16 idx)
+ 	/* Make sure write' to descriptors are complete before we tell hardware */
+ 	wmb();
+ 	sky2_write16(hw, Y2_QADDR(q, PREF_UNIT_PUT_IDX), idx);
+-
+-	/* Synchronize I/O on since next processor may write to tail */
+-	mmiowb();
+ }
+ 
+ 
+@@ -1354,7 +1351,6 @@ static void sky2_rx_stop(struct sky2_port *sky2)
+ 
+ 	/* reset the Rx prefetch unit */
+ 	sky2_write32(hw, Y2_QADDR(rxq, PREF_UNIT_CTRL), PREF_UNIT_RST_SET);
+-	mmiowb();
+ }
+ 
+ /* Clean out receive buffer area, assumes receiver hardware stopped */
+diff --git a/drivers/net/ethernet/mellanox/mlx4/catas.c b/drivers/net/ethernet/mellanox/mlx4/catas.c
+index c81d15b..87e90b5d 100644
+--- a/drivers/net/ethernet/mellanox/mlx4/catas.c
++++ b/drivers/net/ethernet/mellanox/mlx4/catas.c
+@@ -129,10 +129,6 @@ static int mlx4_reset_slave(struct mlx4_dev *dev)
+ 	comm_flags = rst_req << COM_CHAN_RST_REQ_OFFSET;
+ 	__raw_writel((__force u32)cpu_to_be32(comm_flags),
+ 		     (__iomem char *)priv->mfunc.comm + MLX4_COMM_CHAN_FLAGS);
+-	/* Make sure that our comm channel write doesn't
+-	 * get mixed in with writes from another CPU.
+-	 */
+-	mmiowb();
+ 
+ 	end = msecs_to_jiffies(MLX4_COMM_TIME) + jiffies;
+ 	while (time_before(jiffies, end)) {
+diff --git a/drivers/net/ethernet/mellanox/mlx4/cmd.c b/drivers/net/ethernet/mellanox/mlx4/cmd.c
+index a5d5d6f..c678344 100644
+--- a/drivers/net/ethernet/mellanox/mlx4/cmd.c
++++ b/drivers/net/ethernet/mellanox/mlx4/cmd.c
+@@ -281,7 +281,6 @@ static int mlx4_comm_cmd_post(struct mlx4_dev *dev, u8 cmd, u16 param)
+ 	val = param | (cmd << 16) | (priv->cmd.comm_toggle << 31);
+ 	__raw_writel((__force u32) cpu_to_be32(val),
+ 		     &priv->mfunc.comm->slave_write);
+-	mmiowb();
+ 	mutex_unlock(&dev->persist->device_state_mutex);
+ 	return 0;
+ }
+@@ -496,12 +495,6 @@ static int mlx4_cmd_post(struct mlx4_dev *dev, u64 in_param, u64 out_param,
+ 					       (op_modifier << HCR_OPMOD_SHIFT) |
+ 					       op), hcr + 6);
+ 
+-	/*
+-	 * Make sure that our HCR writes don't get mixed in with
+-	 * writes from another CPU starting a FW command.
+-	 */
+-	mmiowb();
+-
+ 	cmd->toggle = cmd->toggle ^ 1;
+ 
+ 	ret = 0;
+@@ -2206,7 +2199,6 @@ static void mlx4_master_do_cmd(struct mlx4_dev *dev, int slave, u8 cmd,
+ 	}
+ 	__raw_writel((__force u32) cpu_to_be32(reply),
+ 		     &priv->mfunc.comm[slave].slave_read);
+-	mmiowb();
+ 
+ 	return;
+ 
+@@ -2410,7 +2402,6 @@ int mlx4_multi_func_init(struct mlx4_dev *dev)
+ 				     &priv->mfunc.comm[i].slave_write);
+ 			__raw_writel((__force u32) 0,
+ 				     &priv->mfunc.comm[i].slave_read);
+-			mmiowb();
+ 			for (port = 1; port <= MLX4_MAX_PORTS; port++) {
+ 				struct mlx4_vport_state *admin_vport;
+ 				struct mlx4_vport_state *oper_vport;
+@@ -2576,10 +2567,6 @@ void mlx4_report_internal_err_comm_event(struct mlx4_dev *dev)
+ 		slave_read |= (u32)COMM_CHAN_EVENT_INTERNAL_ERR;
+ 		__raw_writel((__force u32)cpu_to_be32(slave_read),
+ 			     &priv->mfunc.comm[slave].slave_read);
+-		/* Make sure that our comm channel write doesn't
+-		 * get mixed in with writes from another CPU.
+-		 */
+-		mmiowb();
+ 	}
+ }
+ 
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/cmd.c b/drivers/net/ethernet/mellanox/mlx5/core/cmd.c
+index be48c64..c087d10 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/cmd.c
++++ b/drivers/net/ethernet/mellanox/mlx5/core/cmd.c
+@@ -917,7 +917,6 @@ static void cmd_work_handler(struct work_struct *work)
+ 	mlx5_core_dbg(dev, "writing 0x%x to command doorbell\n", 1 << ent->idx);
+ 	wmb();
+ 	iowrite32be(1 << ent->idx, &dev->iseg->cmd_dbell);
+-	mmiowb();
+ 	/* if not in polling don't use ent after this point */
+ 	if (cmd_mode == CMD_MODE_POLLING || poll_cmd) {
+ 		poll_timeout(ent);
+diff --git a/drivers/net/ethernet/myricom/myri10ge/myri10ge.c b/drivers/net/ethernet/myricom/myri10ge/myri10ge.c
+index e0340f7..d8b7fba 100644
+--- a/drivers/net/ethernet/myricom/myri10ge/myri10ge.c
++++ b/drivers/net/ethernet/myricom/myri10ge/myri10ge.c
+@@ -1439,7 +1439,6 @@ myri10ge_tx_done(struct myri10ge_slice_state *ss, int mcp_index)
+ 			tx->queue_active = 0;
+ 			put_be32(htonl(1), tx->send_stop);
+ 			mb();
+-			mmiowb();
+ 		}
+ 		__netif_tx_unlock(dev_queue);
+ 	}
+@@ -2861,7 +2860,6 @@ static netdev_tx_t myri10ge_xmit(struct sk_buff *skb,
+ 		tx->queue_active = 1;
+ 		put_be32(htonl(1), tx->send_go);
+ 		mb();
+-		mmiowb();
+ 	}
+ 	tx->pkt_start++;
+ 	if ((avail - count) < MXGEFW_MAX_SEND_DESC) {
+diff --git a/drivers/net/ethernet/neterion/s2io.c b/drivers/net/ethernet/neterion/s2io.c
+index feda964..3b2ae1a 100644
+--- a/drivers/net/ethernet/neterion/s2io.c
++++ b/drivers/net/ethernet/neterion/s2io.c
+@@ -4153,8 +4153,6 @@ static netdev_tx_t s2io_xmit(struct sk_buff *skb, struct net_device *dev)
+ 
+ 	writeq(val64, &tx_fifo->List_Control);
+ 
+-	mmiowb();
+-
+ 	put_off++;
+ 	if (put_off == fifo->tx_curr_put_info.fifo_len + 1)
+ 		put_off = 0;
+diff --git a/drivers/net/ethernet/neterion/vxge/vxge-main.c b/drivers/net/ethernet/neterion/vxge/vxge-main.c
+index b877ace..1d334f2 100644
+--- a/drivers/net/ethernet/neterion/vxge/vxge-main.c
++++ b/drivers/net/ethernet/neterion/vxge/vxge-main.c
+@@ -1826,7 +1826,6 @@ static int vxge_poll_msix(struct napi_struct *napi, int budget)
+ 		vxge_hw_channel_msix_unmask(
+ 				(struct __vxge_hw_channel *)ring->handle,
+ 				ring->rx_vector_no);
+-		mmiowb();
+ 	}
+ 
+ 	/* We are copying and returning the local variable, in case if after
+@@ -2234,8 +2233,6 @@ static irqreturn_t vxge_tx_msix_handle(int irq, void *dev_id)
+ 	vxge_hw_channel_msix_unmask((struct __vxge_hw_channel *)fifo->handle,
+ 				    fifo->tx_vector_no);
+ 
+-	mmiowb();
+-
+ 	return IRQ_HANDLED;
+ }
+ 
+@@ -2272,14 +2269,12 @@ vxge_alarm_msix_handle(int irq, void *dev_id)
+ 		 */
+ 		vxge_hw_vpath_msix_mask(vdev->vpaths[i].handle, msix_id);
+ 		vxge_hw_vpath_msix_clear(vdev->vpaths[i].handle, msix_id);
+-		mmiowb();
+ 
+ 		status = vxge_hw_vpath_alarm_process(vdev->vpaths[i].handle,
+ 			vdev->exec_mode);
+ 		if (status == VXGE_HW_OK) {
+ 			vxge_hw_vpath_msix_unmask(vdev->vpaths[i].handle,
+ 						  msix_id);
+-			mmiowb();
+ 			continue;
+ 		}
+ 		vxge_debug_intr(VXGE_ERR,
+diff --git a/drivers/net/ethernet/neterion/vxge/vxge-traffic.c b/drivers/net/ethernet/neterion/vxge/vxge-traffic.c
+index 59e77e30..709d20d 100644
+--- a/drivers/net/ethernet/neterion/vxge/vxge-traffic.c
++++ b/drivers/net/ethernet/neterion/vxge/vxge-traffic.c
+@@ -1399,11 +1399,7 @@ static void __vxge_hw_non_offload_db_post(struct __vxge_hw_fifo *fifo,
+ 		VXGE_HW_NODBW_GET_NO_SNOOP(no_snoop),
+ 		&fifo->nofl_db->control_0);
+ 
+-	mmiowb();
+-
+ 	writeq(txdl_ptr, &fifo->nofl_db->txdl_ptr);
+-
+-	mmiowb();
+ }
+ 
+ /**
+diff --git a/drivers/net/ethernet/qlogic/qed/qed_int.c b/drivers/net/ethernet/qlogic/qed/qed_int.c
+index e23980e..69e6a90 100644
+--- a/drivers/net/ethernet/qlogic/qed/qed_int.c
++++ b/drivers/net/ethernet/qlogic/qed/qed_int.c
+@@ -774,18 +774,12 @@ static inline u16 qed_attn_update_idx(struct qed_hwfn *p_hwfn,
+ {
+ 	u16 rc = 0, index;
+ 
+-	/* Make certain HW write took affect */
+-	mmiowb();
+-
+ 	index = le16_to_cpu(p_sb_desc->sb_attn->sb_index);
+ 	if (p_sb_desc->index != index) {
+ 		p_sb_desc->index	= index;
+ 		rc		      = QED_SB_ATT_IDX;
+ 	}
+ 
+-	/* Make certain we got a consistent view with HW */
+-	mmiowb();
+-
+ 	return rc;
+ }
+ 
+@@ -1170,7 +1164,6 @@ static void qed_sb_ack_attn(struct qed_hwfn *p_hwfn,
+ 	/* Both segments (interrupts & acks) are written to same place address;
+ 	 * Need to guarantee all commands will be received (in-order) by HW.
+ 	 */
+-	mmiowb();
+ 	barrier();
+ }
+ 
+@@ -1805,9 +1798,6 @@ static void qed_int_igu_enable_attn(struct qed_hwfn *p_hwfn,
+ 	qed_wr(p_hwfn, p_ptt, IGU_REG_TRAILING_EDGE_LATCH, 0xfff);
+ 	qed_wr(p_hwfn, p_ptt, IGU_REG_ATTENTION_ENABLE, 0xfff);
+ 
+-	/* Flush the writes to IGU */
+-	mmiowb();
+-
+ 	/* Unmask AEU signals toward IGU */
+ 	qed_wr(p_hwfn, p_ptt, MISC_REG_AEU_MASK_ATTN_IGU, 0xff);
+ }
+@@ -1871,9 +1861,6 @@ static void qed_int_igu_cleanup_sb(struct qed_hwfn *p_hwfn,
+ 
+ 	qed_wr(p_hwfn, p_ptt, IGU_REG_COMMAND_REG_CTRL, cmd_ctrl);
+ 
+-	/* Flush the write to IGU */
+-	mmiowb();
+-
+ 	/* calculate where to read the status bit from */
+ 	sb_bit = 1 << (igu_sb_id % 32);
+ 	sb_bit_addr = igu_sb_id / 32 * sizeof(u32);
+diff --git a/drivers/net/ethernet/qlogic/qed/qed_spq.c b/drivers/net/ethernet/qlogic/qed/qed_spq.c
+index 79b311b..f5f3c03 100644
+--- a/drivers/net/ethernet/qlogic/qed/qed_spq.c
++++ b/drivers/net/ethernet/qlogic/qed/qed_spq.c
+@@ -341,9 +341,6 @@ void qed_eq_prod_update(struct qed_hwfn *p_hwfn, u16 prod)
+ 		   USTORM_EQE_CONS_OFFSET(p_hwfn->rel_pf_id);
+ 
+ 	REG_WR16(p_hwfn, addr, prod);
+-
+-	/* keep prod updates ordered */
+-	mmiowb();
+ }
+ 
+ int qed_eq_completion(struct qed_hwfn *p_hwfn, void *cookie)
+diff --git a/drivers/net/ethernet/qlogic/qede/qede_ethtool.c b/drivers/net/ethernet/qlogic/qede/qede_ethtool.c
+index b4c8949..4555c0b 100644
+--- a/drivers/net/ethernet/qlogic/qede/qede_ethtool.c
++++ b/drivers/net/ethernet/qlogic/qede/qede_ethtool.c
+@@ -1526,14 +1526,6 @@ static int qede_selftest_transmit_traffic(struct qede_dev *edev,
+ 	barrier();
+ 	writel(txq->tx_db.raw, txq->doorbell_addr);
+ 
+-	/* mmiowb is needed to synchronize doorbell writes from more than one
+-	 * processor. It guarantees that the write arrives to the device before
+-	 * the queue lock is released and another start_xmit is called (possibly
+-	 * on another CPU). Without this barrier, the next doorbell can bypass
+-	 * this doorbell. This is applicable to IA64/Altix systems.
+-	 */
+-	mmiowb();
+-
+ 	for (i = 0; i < QEDE_SELFTEST_POLL_COUNT; i++) {
+ 		if (qede_txq_has_work(txq))
+ 			break;
+diff --git a/drivers/net/ethernet/qlogic/qede/qede_fp.c b/drivers/net/ethernet/qlogic/qede/qede_fp.c
+index 31b046e..6f7e362 100644
+--- a/drivers/net/ethernet/qlogic/qede/qede_fp.c
++++ b/drivers/net/ethernet/qlogic/qede/qede_fp.c
+@@ -580,14 +580,6 @@ void qede_update_rx_prod(struct qede_dev *edev, struct qede_rx_queue *rxq)
+ 
+ 	internal_ram_wr(rxq->hw_rxq_prod_addr, sizeof(rx_prods),
+ 			(u32 *)&rx_prods);
+-
+-	/* mmiowb is needed to synchronize doorbell writes from more than one
+-	 * processor. It guarantees that the write arrives to the device before
+-	 * the napi lock is released and another qede_poll is called (possibly
+-	 * on another CPU). Without this barrier, the next doorbell can bypass
+-	 * this doorbell. This is applicable to IA64/Altix systems.
+-	 */
+-	mmiowb();
+ }
+ 
+ static void qede_get_rxhash(struct sk_buff *skb, u8 bitfields, __le32 rss_hash)
+diff --git a/drivers/net/ethernet/qlogic/qla3xxx.c b/drivers/net/ethernet/qlogic/qla3xxx.c
+index b61b88c..4574448 100644
+--- a/drivers/net/ethernet/qlogic/qla3xxx.c
++++ b/drivers/net/ethernet/qlogic/qla3xxx.c
+@@ -1858,7 +1858,6 @@ static void ql_update_small_bufq_prod_index(struct ql3_adapter *qdev)
+ 		wmb();
+ 		writel_relaxed(qdev->small_buf_q_producer_index,
+ 			       &port_regs->CommonRegs.rxSmallQProducerIndex);
+-		mmiowb();
+ 	}
+ }
+ 
+diff --git a/drivers/net/ethernet/qlogic/qlge/qlge.h b/drivers/net/ethernet/qlogic/qlge/qlge.h
+index 3e71b65..ad7c5eb 100644
+--- a/drivers/net/ethernet/qlogic/qlge/qlge.h
++++ b/drivers/net/ethernet/qlogic/qlge/qlge.h
+@@ -2181,7 +2181,6 @@ static inline void ql_write32(const struct ql_adapter *qdev, int reg, u32 val)
+ static inline void ql_write_db_reg(u32 val, void __iomem *addr)
+ {
+ 	writel(val, addr);
+-	mmiowb();
+ }
+ 
+ /*
+diff --git a/drivers/net/ethernet/qlogic/qlge/qlge_main.c b/drivers/net/ethernet/qlogic/qlge/qlge_main.c
+index 07e1c62..6cae330 100644
+--- a/drivers/net/ethernet/qlogic/qlge/qlge_main.c
++++ b/drivers/net/ethernet/qlogic/qlge/qlge_main.c
+@@ -2695,7 +2695,6 @@ static netdev_tx_t qlge_send(struct sk_buff *skb, struct net_device *ndev)
+ 	wmb();
+ 
+ 	ql_write_db_reg_relaxed(tx_ring->prod_idx, tx_ring->prod_idx_db_reg);
+-	mmiowb();
+ 	netif_printk(qdev, tx_queued, KERN_DEBUG, qdev->ndev,
+ 		     "tx queued, slot %d, len %d\n",
+ 		     tx_ring->prod_idx, skb->len);
+diff --git a/drivers/net/ethernet/renesas/ravb_main.c b/drivers/net/ethernet/renesas/ravb_main.c
+index 8154b38..316b477 100644
+--- a/drivers/net/ethernet/renesas/ravb_main.c
++++ b/drivers/net/ethernet/renesas/ravb_main.c
+@@ -728,7 +728,6 @@ static irqreturn_t ravb_emac_interrupt(int irq, void *dev_id)
+ 
+ 	spin_lock(&priv->lock);
+ 	ravb_emac_interrupt_unlocked(ndev);
+-	mmiowb();
+ 	spin_unlock(&priv->lock);
+ 	return IRQ_HANDLED;
+ }
+@@ -848,7 +847,6 @@ static irqreturn_t ravb_interrupt(int irq, void *dev_id)
+ 		result = IRQ_HANDLED;
+ 	}
+ 
+-	mmiowb();
+ 	spin_unlock(&priv->lock);
+ 	return result;
+ }
+@@ -881,7 +879,6 @@ static irqreturn_t ravb_multi_interrupt(int irq, void *dev_id)
+ 		result = IRQ_HANDLED;
+ 	}
+ 
+-	mmiowb();
+ 	spin_unlock(&priv->lock);
+ 	return result;
+ }
+@@ -898,7 +895,6 @@ static irqreturn_t ravb_dma_interrupt(int irq, void *dev_id, int q)
+ 	if (ravb_queue_interrupt(ndev, q))
+ 		result = IRQ_HANDLED;
+ 
+-	mmiowb();
+ 	spin_unlock(&priv->lock);
+ 	return result;
+ }
+@@ -943,7 +939,6 @@ static int ravb_poll(struct napi_struct *napi, int budget)
+ 			ravb_write(ndev, ~(mask | TIS_RESERVED), TIS);
+ 			ravb_tx_free(ndev, q, true);
+ 			netif_wake_subqueue(ndev, q);
+-			mmiowb();
+ 			spin_unlock_irqrestore(&priv->lock, flags);
+ 		}
+ 	}
+@@ -959,7 +954,6 @@ static int ravb_poll(struct napi_struct *napi, int budget)
+ 		ravb_write(ndev, mask, RIE0);
+ 		ravb_write(ndev, mask, TIE);
+ 	}
+-	mmiowb();
+ 	spin_unlock_irqrestore(&priv->lock, flags);
+ 
+ 	/* Receive error message handling */
+@@ -1008,7 +1002,6 @@ static void ravb_adjust_link(struct net_device *ndev)
+ 	if (priv->no_avb_link && phydev->link)
+ 		ravb_rcv_snd_enable(ndev);
+ 
+-	mmiowb();
+ 	spin_unlock_irqrestore(&priv->lock, flags);
+ 
+ 	if (new_state && netif_msg_link(priv))
+@@ -1601,7 +1594,6 @@ static netdev_tx_t ravb_start_xmit(struct sk_buff *skb, struct net_device *ndev)
+ 		netif_stop_subqueue(ndev, q);
+ 
+ exit:
+-	mmiowb();
+ 	spin_unlock_irqrestore(&priv->lock, flags);
+ 	return NETDEV_TX_OK;
+ 
+@@ -1673,7 +1665,6 @@ static void ravb_set_rx_mode(struct net_device *ndev)
+ 	spin_lock_irqsave(&priv->lock, flags);
+ 	ravb_modify(ndev, ECMR, ECMR_PRM,
+ 		    ndev->flags & IFF_PROMISC ? ECMR_PRM : 0);
+-	mmiowb();
+ 	spin_unlock_irqrestore(&priv->lock, flags);
+ }
+ 
+diff --git a/drivers/net/ethernet/renesas/ravb_ptp.c b/drivers/net/ethernet/renesas/ravb_ptp.c
+index dce2a40..9a42580 100644
+--- a/drivers/net/ethernet/renesas/ravb_ptp.c
++++ b/drivers/net/ethernet/renesas/ravb_ptp.c
+@@ -196,7 +196,6 @@ static int ravb_ptp_extts(struct ptp_clock_info *ptp,
+ 		ravb_write(ndev, GIE_PTCS, GIE);
+ 	else
+ 		ravb_write(ndev, GID_PTCD, GID);
+-	mmiowb();
+ 	spin_unlock_irqrestore(&priv->lock, flags);
+ 
+ 	return 0;
+@@ -259,7 +258,6 @@ static int ravb_ptp_perout(struct ptp_clock_info *ptp,
+ 		else
+ 			ravb_write(ndev, GID_PTMD0, GID);
+ 	}
+-	mmiowb();
+ 	spin_unlock_irqrestore(&priv->lock, flags);
+ 
+ 	return error;
+@@ -331,7 +329,6 @@ void ravb_ptp_init(struct net_device *ndev, struct platform_device *pdev)
+ 	spin_lock_irqsave(&priv->lock, flags);
+ 	ravb_wait(ndev, GCCR, GCCR_TCR, GCCR_TCR_NOREQ);
+ 	ravb_modify(ndev, GCCR, GCCR_TCSS, GCCR_TCSS_ADJGPTP);
+-	mmiowb();
+ 	spin_unlock_irqrestore(&priv->lock, flags);
+ 
+ 	priv->ptp.clock = ptp_clock_register(&priv->ptp.info, &pdev->dev);
+diff --git a/drivers/net/ethernet/renesas/sh_eth.c b/drivers/net/ethernet/renesas/sh_eth.c
+index e33af37..ed30aeb 100644
+--- a/drivers/net/ethernet/renesas/sh_eth.c
++++ b/drivers/net/ethernet/renesas/sh_eth.c
+@@ -2010,7 +2010,6 @@ static void sh_eth_adjust_link(struct net_device *ndev)
+ 	if ((mdp->cd->no_psr || mdp->no_ether_link) && phydev->link)
+ 		sh_eth_rcv_snd_enable(ndev);
+ 
+-	mmiowb();
+ 	spin_unlock_irqrestore(&mdp->lock, flags);
+ 
+ 	if (new_state && netif_msg_link(mdp))
+diff --git a/drivers/net/ethernet/sfc/falcon/io.h b/drivers/net/ethernet/sfc/falcon/io.h
+index 7085ee1..c357764 100644
+--- a/drivers/net/ethernet/sfc/falcon/io.h
++++ b/drivers/net/ethernet/sfc/falcon/io.h
+@@ -108,7 +108,6 @@ static inline void ef4_writeo(struct ef4_nic *efx, const ef4_oword_t *value,
+ 	_ef4_writed(efx, value->u32[2], reg + 8);
+ 	_ef4_writed(efx, value->u32[3], reg + 12);
+ #endif
+-	mmiowb();
+ 	spin_unlock_irqrestore(&efx->biu_lock, flags);
+ }
+ 
+@@ -130,7 +129,6 @@ static inline void ef4_sram_writeq(struct ef4_nic *efx, void __iomem *membase,
+ 	__raw_writel((__force u32)value->u32[0], membase + addr);
+ 	__raw_writel((__force u32)value->u32[1], membase + addr + 4);
+ #endif
+-	mmiowb();
+ 	spin_unlock_irqrestore(&efx->biu_lock, flags);
+ }
+ 
+diff --git a/drivers/net/ethernet/sfc/io.h b/drivers/net/ethernet/sfc/io.h
+index 8956317..2774a10 100644
+--- a/drivers/net/ethernet/sfc/io.h
++++ b/drivers/net/ethernet/sfc/io.h
+@@ -120,7 +120,6 @@ static inline void efx_writeo(struct efx_nic *efx, const efx_oword_t *value,
+ 	_efx_writed(efx, value->u32[2], reg + 8);
+ 	_efx_writed(efx, value->u32[3], reg + 12);
+ #endif
+-	mmiowb();
+ 	spin_unlock_irqrestore(&efx->biu_lock, flags);
+ }
+ 
+@@ -142,7 +141,6 @@ static inline void efx_sram_writeq(struct efx_nic *efx, void __iomem *membase,
+ 	__raw_writel((__force u32)value->u32[0], membase + addr);
+ 	__raw_writel((__force u32)value->u32[1], membase + addr + 4);
+ #endif
+-	mmiowb();
+ 	spin_unlock_irqrestore(&efx->biu_lock, flags);
+ }
+ 
+diff --git a/drivers/net/ethernet/silan/sc92031.c b/drivers/net/ethernet/silan/sc92031.c
+index c07fd59..db5dc8c 100644
+--- a/drivers/net/ethernet/silan/sc92031.c
++++ b/drivers/net/ethernet/silan/sc92031.c
+@@ -361,7 +361,6 @@ static void sc92031_disable_interrupts(struct net_device *dev)
+ 	/* stop interrupts */
+ 	iowrite32(0, port_base + IntrMask);
+ 	_sc92031_dummy_read(port_base);
+-	mmiowb();
+ 
+ 	/* wait for any concurrent interrupt/tasklet to finish */
+ 	synchronize_irq(priv->pdev->irq);
+@@ -379,7 +378,6 @@ static void sc92031_enable_interrupts(struct net_device *dev)
+ 	wmb();
+ 
+ 	iowrite32(IntrBits, port_base + IntrMask);
+-	mmiowb();
+ }
+ 
+ static void _sc92031_disable_tx_rx(struct net_device *dev)
+@@ -867,7 +865,6 @@ static void sc92031_tasklet(unsigned long data)
+ 	rmb();
+ 
+ 	iowrite32(intr_mask, port_base + IntrMask);
+-	mmiowb();
+ 
+ 	spin_unlock(&priv->lock);
+ }
+@@ -901,7 +898,6 @@ static irqreturn_t sc92031_interrupt(int irq, void *dev_id)
+ 	rmb();
+ 
+ 	iowrite32(intr_mask, port_base + IntrMask);
+-	mmiowb();
+ 
+ 	return IRQ_NONE;
+ }
+@@ -978,7 +974,6 @@ static netdev_tx_t sc92031_start_xmit(struct sk_buff *skb,
+ 	iowrite32(priv->tx_bufs_dma_addr + entry * TX_BUF_SIZE,
+ 			port_base + TxAddr0 + entry * 4);
+ 	iowrite32(tx_status, port_base + TxStatus0 + entry * 4);
+-	mmiowb();
+ 
+ 	if (priv->tx_head - priv->tx_tail >= NUM_TX_DESC)
+ 		netif_stop_queue(dev);
+@@ -1024,7 +1019,6 @@ static int sc92031_open(struct net_device *dev)
+ 	spin_lock_bh(&priv->lock);
+ 
+ 	_sc92031_reset(dev);
+-	mmiowb();
+ 
+ 	spin_unlock_bh(&priv->lock);
+ 	sc92031_enable_interrupts(dev);
+@@ -1060,7 +1054,6 @@ static int sc92031_stop(struct net_device *dev)
+ 
+ 	_sc92031_disable_tx_rx(dev);
+ 	_sc92031_tx_clear(dev);
+-	mmiowb();
+ 
+ 	spin_unlock_bh(&priv->lock);
+ 
+@@ -1081,7 +1074,6 @@ static void sc92031_set_multicast_list(struct net_device *dev)
+ 
+ 	_sc92031_set_mar(dev);
+ 	_sc92031_set_rx_config(dev);
+-	mmiowb();
+ 
+ 	spin_unlock_bh(&priv->lock);
+ }
+@@ -1098,7 +1090,6 @@ static void sc92031_tx_timeout(struct net_device *dev)
+ 	priv->tx_timeouts++;
+ 
+ 	_sc92031_reset(dev);
+-	mmiowb();
+ 
+ 	spin_unlock(&priv->lock);
+ 
+@@ -1140,7 +1131,6 @@ sc92031_ethtool_get_link_ksettings(struct net_device *dev,
+ 
+ 	output_status = _sc92031_mii_read(port_base, MII_OutputStatus);
+ 	_sc92031_mii_scan(port_base);
+-	mmiowb();
+ 
+ 	spin_unlock_bh(&priv->lock);
+ 
+@@ -1311,7 +1301,6 @@ static int sc92031_ethtool_set_wol(struct net_device *dev,
+ 
+ 	priv->pm_config = pm_config;
+ 	iowrite32(pm_config, port_base + PMConfig);
+-	mmiowb();
+ 
+ 	spin_unlock_bh(&priv->lock);
+ 
+@@ -1337,7 +1326,6 @@ static int sc92031_ethtool_nway_reset(struct net_device *dev)
+ 
+ out:
+ 	_sc92031_mii_scan(port_base);
+-	mmiowb();
+ 
+ 	spin_unlock_bh(&priv->lock);
+ 
+@@ -1530,7 +1518,6 @@ static int sc92031_suspend(struct pci_dev *pdev, pm_message_t state)
+ 
+ 	_sc92031_disable_tx_rx(dev);
+ 	_sc92031_tx_clear(dev);
+-	mmiowb();
+ 
+ 	spin_unlock_bh(&priv->lock);
+ 
+@@ -1555,7 +1542,6 @@ static int sc92031_resume(struct pci_dev *pdev)
+ 	spin_lock_bh(&priv->lock);
+ 
+ 	_sc92031_reset(dev);
+-	mmiowb();
+ 
+ 	spin_unlock_bh(&priv->lock);
+ 	sc92031_enable_interrupts(dev);
+diff --git a/drivers/net/ethernet/via/via-rhine.c b/drivers/net/ethernet/via/via-rhine.c
+index 3394924..ab55416 100644
+--- a/drivers/net/ethernet/via/via-rhine.c
++++ b/drivers/net/ethernet/via/via-rhine.c
+@@ -571,7 +571,6 @@ static void rhine_ack_events(struct rhine_private *rp, u32 mask)
+ 	if (rp->quirks & rqStatusWBRace)
+ 		iowrite8(mask >> 16, ioaddr + IntrStatus2);
+ 	iowrite16(mask, ioaddr + IntrStatus);
+-	mmiowb();
+ }
+ 
+ /*
+@@ -863,7 +862,6 @@ static int rhine_napipoll(struct napi_struct *napi, int budget)
+ 	if (work_done < budget) {
+ 		napi_complete_done(napi, work_done);
+ 		iowrite16(enable_mask, ioaddr + IntrEnable);
+-		mmiowb();
+ 	}
+ 	return work_done;
+ }
+@@ -1893,7 +1891,6 @@ static netdev_tx_t rhine_start_tx(struct sk_buff *skb,
+ static void rhine_irq_disable(struct rhine_private *rp)
+ {
+ 	iowrite16(0x0000, rp->base + IntrEnable);
+-	mmiowb();
+ }
+ 
+ /* The interrupt handler does all of the Rx thread work and cleans up
+diff --git a/drivers/net/ethernet/wiznet/w5100.c b/drivers/net/ethernet/wiznet/w5100.c
+index d8ba512..1713c2d 100644
+--- a/drivers/net/ethernet/wiznet/w5100.c
++++ b/drivers/net/ethernet/wiznet/w5100.c
+@@ -219,7 +219,6 @@ static inline int __w5100_write_direct(struct net_device *ndev, u32 addr,
+ static inline int w5100_write_direct(struct net_device *ndev, u32 addr, u8 data)
+ {
+ 	__w5100_write_direct(ndev, addr, data);
+-	mmiowb();
+ 
+ 	return 0;
+ }
+@@ -236,7 +235,6 @@ static int w5100_write16_direct(struct net_device *ndev, u32 addr, u16 data)
+ {
+ 	__w5100_write_direct(ndev, addr, data >> 8);
+ 	__w5100_write_direct(ndev, addr + 1, data);
+-	mmiowb();
+ 
+ 	return 0;
+ }
+@@ -260,8 +258,6 @@ static int w5100_writebulk_direct(struct net_device *ndev, u32 addr,
+ 	for (i = 0; i < len; i++, addr++)
+ 		__w5100_write_direct(ndev, addr, *buf++);
+ 
+-	mmiowb();
+-
+ 	return 0;
+ }
+ 
+@@ -375,7 +371,6 @@ static int w5100_readbulk_indirect(struct net_device *ndev, u32 addr, u8 *buf,
+ 	for (i = 0; i < len; i++)
+ 		*buf++ = w5100_read_direct(ndev, W5100_IDM_DR);
+ 
+-	mmiowb();
+ 	spin_unlock_irqrestore(&mmio_priv->reg_lock, flags);
+ 
+ 	return 0;
+@@ -394,7 +389,6 @@ static int w5100_writebulk_indirect(struct net_device *ndev, u32 addr,
+ 	for (i = 0; i < len; i++)
+ 		__w5100_write_direct(ndev, W5100_IDM_DR, *buf++);
+ 
+-	mmiowb();
+ 	spin_unlock_irqrestore(&mmio_priv->reg_lock, flags);
+ 
+ 	return 0;
+diff --git a/drivers/net/ethernet/wiznet/w5300.c b/drivers/net/ethernet/wiznet/w5300.c
+index f9da5d6..3f03eec 100644
+--- a/drivers/net/ethernet/wiznet/w5300.c
++++ b/drivers/net/ethernet/wiznet/w5300.c
+@@ -141,7 +141,6 @@ static u16 w5300_read_indirect(struct w5300_priv *priv, u16 addr)
+ 
+ 	spin_lock_irqsave(&priv->reg_lock, flags);
+ 	w5300_write_direct(priv, W5300_IDM_AR, addr);
+-	mmiowb();
+ 	data = w5300_read_direct(priv, W5300_IDM_DR);
+ 	spin_unlock_irqrestore(&priv->reg_lock, flags);
+ 
+@@ -154,9 +153,7 @@ static void w5300_write_indirect(struct w5300_priv *priv, u16 addr, u16 data)
+ 
+ 	spin_lock_irqsave(&priv->reg_lock, flags);
+ 	w5300_write_direct(priv, W5300_IDM_AR, addr);
+-	mmiowb();
+ 	w5300_write_direct(priv, W5300_IDM_DR, data);
+-	mmiowb();
+ 	spin_unlock_irqrestore(&priv->reg_lock, flags);
+ }
+ 
+@@ -192,7 +189,6 @@ static int w5300_command(struct w5300_priv *priv, u16 cmd)
+ 	unsigned long timeout = jiffies + msecs_to_jiffies(100);
+ 
+ 	w5300_write(priv, W5300_S0_CR, cmd);
+-	mmiowb();
+ 
+ 	while (w5300_read(priv, W5300_S0_CR) != 0) {
+ 		if (time_after(jiffies, timeout))
+@@ -241,18 +237,15 @@ static void w5300_write_macaddr(struct w5300_priv *priv)
+ 	w5300_write(priv, W5300_SHARH,
+ 		      ndev->dev_addr[4] << 8 |
+ 		      ndev->dev_addr[5]);
+-	mmiowb();
+ }
+ 
+ static void w5300_hw_reset(struct w5300_priv *priv)
+ {
+ 	w5300_write_direct(priv, W5300_MR, MR_RST);
+-	mmiowb();
+ 	mdelay(5);
+ 	w5300_write_direct(priv, W5300_MR, priv->indirect ?
+ 				 MR_WDF(7) | MR_PB | MR_IND :
+ 				 MR_WDF(7) | MR_PB);
+-	mmiowb();
+ 	w5300_write(priv, W5300_IMR, 0);
+ 	w5300_write_macaddr(priv);
+ 
+@@ -264,24 +257,20 @@ static void w5300_hw_reset(struct w5300_priv *priv)
+ 	w5300_write32(priv, W5300_TMSRL, 64 << 24);
+ 	w5300_write32(priv, W5300_TMSRH, 0);
+ 	w5300_write(priv, W5300_MTYPE, 0x00ff);
+-	mmiowb();
+ }
+ 
+ static void w5300_hw_start(struct w5300_priv *priv)
+ {
+ 	w5300_write(priv, W5300_S0_MR, priv->promisc ?
+ 			  S0_MR_MACRAW : S0_MR_MACRAW_MF);
+-	mmiowb();
+ 	w5300_command(priv, S0_CR_OPEN);
+ 	w5300_write(priv, W5300_S0_IMR, S0_IR_RECV | S0_IR_SENDOK);
+ 	w5300_write(priv, W5300_IMR, IR_S0);
+-	mmiowb();
+ }
+ 
+ static void w5300_hw_close(struct w5300_priv *priv)
+ {
+ 	w5300_write(priv, W5300_IMR, 0);
+-	mmiowb();
+ 	w5300_command(priv, S0_CR_CLOSE);
+ }
+ 
+@@ -372,7 +361,6 @@ static netdev_tx_t w5300_start_tx(struct sk_buff *skb, struct net_device *ndev)
+ 	netif_stop_queue(ndev);
+ 
+ 	w5300_write_frame(priv, skb->data, skb->len);
+-	mmiowb();
+ 	ndev->stats.tx_packets++;
+ 	ndev->stats.tx_bytes += skb->len;
+ 	dev_kfree_skb(skb);
+@@ -419,7 +407,6 @@ static int w5300_napi_poll(struct napi_struct *napi, int budget)
+ 	if (rx_count < budget) {
+ 		napi_complete_done(napi, rx_count);
+ 		w5300_write(priv, W5300_IMR, IR_S0);
+-		mmiowb();
+ 	}
+ 
+ 	return rx_count;
+@@ -434,7 +421,6 @@ static irqreturn_t w5300_interrupt(int irq, void *ndev_instance)
+ 	if (!ir)
+ 		return IRQ_NONE;
+ 	w5300_write(priv, W5300_S0_IR, ir);
+-	mmiowb();
+ 
+ 	if (ir & S0_IR_SENDOK) {
+ 		netif_dbg(priv, tx_done, ndev, "tx done\n");
+@@ -444,7 +430,6 @@ static irqreturn_t w5300_interrupt(int irq, void *ndev_instance)
+ 	if (ir & S0_IR_RECV) {
+ 		if (napi_schedule_prep(&priv->napi)) {
+ 			w5300_write(priv, W5300_IMR, 0);
+-			mmiowb();
+ 			__napi_schedule(&priv->napi);
+ 		}
+ 	}
+diff --git a/drivers/net/wireless/ath/ath5k/base.c b/drivers/net/wireless/ath/ath5k/base.c
+index a2351ef4..65a4c14 100644
+--- a/drivers/net/wireless/ath/ath5k/base.c
++++ b/drivers/net/wireless/ath/ath5k/base.c
+@@ -837,7 +837,6 @@ ath5k_txbuf_setup(struct ath5k_hw *ah, struct ath5k_buf *bf,
+ 
+ 	txq->link = &ds->ds_link;
+ 	ath5k_hw_start_tx_dma(ah, txq->qnum);
+-	mmiowb();
+ 	spin_unlock_bh(&txq->lock);
+ 
+ 	return 0;
+@@ -2174,7 +2173,6 @@ ath5k_beacon_config(struct ath5k_hw *ah)
+ 	}
+ 
+ 	ath5k_hw_set_imr(ah, ah->imask);
+-	mmiowb();
+ 	spin_unlock_bh(&ah->block);
+ }
+ 
+@@ -2779,7 +2777,6 @@ int ath5k_start(struct ieee80211_hw *hw)
+ 
+ 	ret = 0;
+ done:
+-	mmiowb();
+ 	mutex_unlock(&ah->lock);
+ 
+ 	set_bit(ATH_STAT_STARTED, ah->status);
+@@ -2839,7 +2836,6 @@ void ath5k_stop(struct ieee80211_hw *hw)
+ 				"putting device to sleep\n");
+ 	}
+ 
+-	mmiowb();
+ 	mutex_unlock(&ah->lock);
+ 
+ 	ath5k_stop_tasklets(ah);
+diff --git a/drivers/net/wireless/ath/ath5k/mac80211-ops.c b/drivers/net/wireless/ath/ath5k/mac80211-ops.c
+index 16e052d..5e866a1 100644
+--- a/drivers/net/wireless/ath/ath5k/mac80211-ops.c
++++ b/drivers/net/wireless/ath/ath5k/mac80211-ops.c
+@@ -263,7 +263,6 @@ ath5k_bss_info_changed(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 		memcpy(common->curbssid, bss_conf->bssid, ETH_ALEN);
+ 		common->curaid = 0;
+ 		ath5k_hw_set_bssid(ah);
+-		mmiowb();
+ 	}
+ 
+ 	if (changes & BSS_CHANGED_BEACON_INT)
+@@ -528,7 +527,6 @@ ath5k_set_key(struct ieee80211_hw *hw, enum set_key_cmd cmd,
+ 		ret = -EINVAL;
+ 	}
+ 
+-	mmiowb();
+ 	mutex_unlock(&ah->lock);
+ 	return ret;
+ }
+diff --git a/drivers/net/wireless/broadcom/b43/main.c b/drivers/net/wireless/broadcom/b43/main.c
+index 74be3c8..4c7980f 100644
+--- a/drivers/net/wireless/broadcom/b43/main.c
++++ b/drivers/net/wireless/broadcom/b43/main.c
+@@ -485,7 +485,6 @@ static void b43_ram_write(struct b43_wldev *dev, u16 offset, u32 val)
+ 		val = swab32(val);
+ 
+ 	b43_write32(dev, B43_MMIO_RAM_CONTROL, offset);
+-	mmiowb();
+ 	b43_write32(dev, B43_MMIO_RAM_DATA, val);
+ }
+ 
+@@ -656,9 +655,7 @@ static void b43_tsf_write_locked(struct b43_wldev *dev, u64 tsf)
+ 	/* The hardware guarantees us an atomic write, if we
+ 	 * write the low register first. */
+ 	b43_write32(dev, B43_MMIO_REV3PLUS_TSF_LOW, low);
+-	mmiowb();
+ 	b43_write32(dev, B43_MMIO_REV3PLUS_TSF_HIGH, high);
+-	mmiowb();
+ }
+ 
+ void b43_tsf_write(struct b43_wldev *dev, u64 tsf)
+@@ -1822,11 +1819,9 @@ static void b43_beacon_update_trigger_work(struct work_struct *work)
+ 		if (b43_bus_host_is_sdio(dev->dev)) {
+ 			/* wl->mutex is enough. */
+ 			b43_do_beacon_update_trigger_work(dev);
+-			mmiowb();
+ 		} else {
+ 			spin_lock_irq(&wl->hardirq_lock);
+ 			b43_do_beacon_update_trigger_work(dev);
+-			mmiowb();
+ 			spin_unlock_irq(&wl->hardirq_lock);
+ 		}
+ 	}
+@@ -2078,7 +2073,6 @@ static irqreturn_t b43_interrupt_thread_handler(int irq, void *dev_id)
+ 
+ 	mutex_lock(&dev->wl->mutex);
+ 	b43_do_interrupt_thread(dev);
+-	mmiowb();
+ 	mutex_unlock(&dev->wl->mutex);
+ 
+ 	return IRQ_HANDLED;
+@@ -2143,7 +2137,6 @@ static irqreturn_t b43_interrupt_handler(int irq, void *dev_id)
+ 
+ 	spin_lock(&dev->wl->hardirq_lock);
+ 	ret = b43_do_interrupt(dev);
+-	mmiowb();
+ 	spin_unlock(&dev->wl->hardirq_lock);
+ 
+ 	return ret;
+diff --git a/drivers/net/wireless/broadcom/b43/sysfs.c b/drivers/net/wireless/broadcom/b43/sysfs.c
+index 3190493..93d03b6 100644
+--- a/drivers/net/wireless/broadcom/b43/sysfs.c
++++ b/drivers/net/wireless/broadcom/b43/sysfs.c
+@@ -129,7 +129,6 @@ static ssize_t b43_attr_interfmode_store(struct device *dev,
+ 	} else
+ 		err = -ENOSYS;
+ 
+-	mmiowb();
+ 	mutex_unlock(&wldev->wl->mutex);
+ 
+ 	return err ? err : count;
+diff --git a/drivers/net/wireless/broadcom/b43legacy/ilt.c b/drivers/net/wireless/broadcom/b43legacy/ilt.c
+index ee5682e..6d15fb4 100644
+--- a/drivers/net/wireless/broadcom/b43legacy/ilt.c
++++ b/drivers/net/wireless/broadcom/b43legacy/ilt.c
+@@ -315,14 +315,12 @@ const u16 b43legacy_ilt_sigmasqr2[B43legacy_ILT_SIGMASQR_SIZE] = {
+ void b43legacy_ilt_write(struct b43legacy_wldev *dev, u16 offset, u16 val)
+ {
+ 	b43legacy_phy_write(dev, B43legacy_PHY_ILT_G_CTRL, offset);
+-	mmiowb();
+ 	b43legacy_phy_write(dev, B43legacy_PHY_ILT_G_DATA1, val);
+ }
+ 
+ void b43legacy_ilt_write32(struct b43legacy_wldev *dev, u16 offset, u32 val)
+ {
+ 	b43legacy_phy_write(dev, B43legacy_PHY_ILT_G_CTRL, offset);
+-	mmiowb();
+ 	b43legacy_phy_write(dev, B43legacy_PHY_ILT_G_DATA2,
+ 			    (val & 0xFFFF0000) >> 16);
+ 	b43legacy_phy_write(dev, B43legacy_PHY_ILT_G_DATA1,
+diff --git a/drivers/net/wireless/broadcom/b43legacy/main.c b/drivers/net/wireless/broadcom/b43legacy/main.c
+index 55f4119..c777efc 100644
+--- a/drivers/net/wireless/broadcom/b43legacy/main.c
++++ b/drivers/net/wireless/broadcom/b43legacy/main.c
+@@ -264,7 +264,6 @@ static void b43legacy_ram_write(struct b43legacy_wldev *dev, u16 offset,
+ 		val = swab32(val);
+ 
+ 	b43legacy_write32(dev, B43legacy_MMIO_RAM_CONTROL, offset);
+-	mmiowb();
+ 	b43legacy_write32(dev, B43legacy_MMIO_RAM_DATA, val);
+ }
+ 
+@@ -341,14 +340,11 @@ void b43legacy_shm_write32(struct b43legacy_wldev *dev,
+ 		if (offset & 0x0003) {
+ 			/* Unaligned access */
+ 			b43legacy_shm_control_word(dev, routing, offset >> 2);
+-			mmiowb();
+ 			b43legacy_write16(dev,
+ 					  B43legacy_MMIO_SHM_DATA_UNALIGNED,
+ 					  (value >> 16) & 0xffff);
+-			mmiowb();
+ 			b43legacy_shm_control_word(dev, routing,
+ 						   (offset >> 2) + 1);
+-			mmiowb();
+ 			b43legacy_write16(dev, B43legacy_MMIO_SHM_DATA,
+ 					  value & 0xffff);
+ 			return;
+@@ -356,7 +352,6 @@ void b43legacy_shm_write32(struct b43legacy_wldev *dev,
+ 		offset >>= 2;
+ 	}
+ 	b43legacy_shm_control_word(dev, routing, offset);
+-	mmiowb();
+ 	b43legacy_write32(dev, B43legacy_MMIO_SHM_DATA, value);
+ }
+ 
+@@ -368,7 +363,6 @@ void b43legacy_shm_write16(struct b43legacy_wldev *dev, u16 routing, u16 offset,
+ 		if (offset & 0x0003) {
+ 			/* Unaligned access */
+ 			b43legacy_shm_control_word(dev, routing, offset >> 2);
+-			mmiowb();
+ 			b43legacy_write16(dev,
+ 					  B43legacy_MMIO_SHM_DATA_UNALIGNED,
+ 					  value);
+@@ -377,7 +371,6 @@ void b43legacy_shm_write16(struct b43legacy_wldev *dev, u16 routing, u16 offset,
+ 		offset >>= 2;
+ 	}
+ 	b43legacy_shm_control_word(dev, routing, offset);
+-	mmiowb();
+ 	b43legacy_write16(dev, B43legacy_MMIO_SHM_DATA, value);
+ }
+ 
+@@ -471,7 +464,6 @@ static void b43legacy_time_lock(struct b43legacy_wldev *dev)
+ 	status = b43legacy_read32(dev, B43legacy_MMIO_MACCTL);
+ 	status |= B43legacy_MACCTL_TBTTHOLD;
+ 	b43legacy_write32(dev, B43legacy_MMIO_MACCTL, status);
+-	mmiowb();
+ }
+ 
+ static void b43legacy_time_unlock(struct b43legacy_wldev *dev)
+@@ -494,10 +486,8 @@ static void b43legacy_tsf_write_locked(struct b43legacy_wldev *dev, u64 tsf)
+ 		u32 hi = (tsf & 0xFFFFFFFF00000000ULL) >> 32;
+ 
+ 		b43legacy_write32(dev, B43legacy_MMIO_REV3PLUS_TSF_LOW, 0);
+-		mmiowb();
+ 		b43legacy_write32(dev, B43legacy_MMIO_REV3PLUS_TSF_HIGH,
+ 				    hi);
+-		mmiowb();
+ 		b43legacy_write32(dev, B43legacy_MMIO_REV3PLUS_TSF_LOW,
+ 				    lo);
+ 	} else {
+@@ -507,13 +497,9 @@ static void b43legacy_tsf_write_locked(struct b43legacy_wldev *dev, u64 tsf)
+ 		u16 v3 = (tsf & 0xFFFF000000000000ULL) >> 48;
+ 
+ 		b43legacy_write16(dev, B43legacy_MMIO_TSF_0, 0);
+-		mmiowb();
+ 		b43legacy_write16(dev, B43legacy_MMIO_TSF_3, v3);
+-		mmiowb();
+ 		b43legacy_write16(dev, B43legacy_MMIO_TSF_2, v2);
+-		mmiowb();
+ 		b43legacy_write16(dev, B43legacy_MMIO_TSF_1, v1);
+-		mmiowb();
+ 		b43legacy_write16(dev, B43legacy_MMIO_TSF_0, v0);
+ 	}
+ }
+@@ -1250,7 +1236,6 @@ static void b43legacy_beacon_update_trigger_work(struct work_struct *work)
+ 		/* The handler might have updated the IRQ mask. */
+ 		b43legacy_write32(dev, B43legacy_MMIO_GEN_IRQ_MASK,
+ 				  dev->irq_mask);
+-		mmiowb();
+ 		spin_unlock_irq(&wl->irq_lock);
+ 	}
+ 	mutex_unlock(&wl->mutex);
+@@ -1346,7 +1331,6 @@ static void b43legacy_interrupt_tasklet(struct b43legacy_wldev *dev)
+ 			       dma_reason[2], dma_reason[3],
+ 			       dma_reason[4], dma_reason[5]);
+ 			b43legacy_controller_restart(dev, "DMA error");
+-			mmiowb();
+ 			spin_unlock_irqrestore(&dev->wl->irq_lock, flags);
+ 			return;
+ 		}
+@@ -1396,7 +1380,6 @@ static void b43legacy_interrupt_tasklet(struct b43legacy_wldev *dev)
+ 		handle_irq_transmit_status(dev);
+ 
+ 	b43legacy_write32(dev, B43legacy_MMIO_GEN_IRQ_MASK, dev->irq_mask);
+-	mmiowb();
+ 	spin_unlock_irqrestore(&dev->wl->irq_lock, flags);
+ }
+ 
+@@ -1488,7 +1471,6 @@ static irqreturn_t b43legacy_interrupt_handler(int irq, void *dev_id)
+ 	dev->irq_reason = reason;
+ 	tasklet_schedule(&dev->isr_tasklet);
+ out:
+-	mmiowb();
+ 	spin_unlock(&dev->wl->irq_lock);
+ 
+ 	return ret;
+@@ -2781,7 +2763,6 @@ static int b43legacy_op_dev_config(struct ieee80211_hw *hw,
+ 
+ 	spin_lock_irqsave(&wl->irq_lock, flags);
+ 	b43legacy_write32(dev, B43legacy_MMIO_GEN_IRQ_MASK, dev->irq_mask);
+-	mmiowb();
+ 	spin_unlock_irqrestore(&wl->irq_lock, flags);
+ out_unlock_mutex:
+ 	mutex_unlock(&wl->mutex);
+@@ -2900,7 +2881,6 @@ static void b43legacy_op_bss_info_changed(struct ieee80211_hw *hw,
+ 	spin_lock_irqsave(&wl->irq_lock, flags);
+ 	b43legacy_write32(dev, B43legacy_MMIO_GEN_IRQ_MASK, dev->irq_mask);
+ 	/* XXX: why? */
+-	mmiowb();
+ 	spin_unlock_irqrestore(&wl->irq_lock, flags);
+  out_unlock_mutex:
+ 	mutex_unlock(&wl->mutex);
+diff --git a/drivers/net/wireless/broadcom/b43legacy/phy.c b/drivers/net/wireless/broadcom/b43legacy/phy.c
+index 995c7d0..f949766 100644
+--- a/drivers/net/wireless/broadcom/b43legacy/phy.c
++++ b/drivers/net/wireless/broadcom/b43legacy/phy.c
+@@ -134,7 +134,6 @@ u16 b43legacy_phy_read(struct b43legacy_wldev *dev, u16 offset)
+ void b43legacy_phy_write(struct b43legacy_wldev *dev, u16 offset, u16 val)
+ {
+ 	b43legacy_write16(dev, B43legacy_MMIO_PHY_CONTROL, offset);
+-	mmiowb();
+ 	b43legacy_write16(dev, B43legacy_MMIO_PHY_DATA, val);
+ }
+ 
+diff --git a/drivers/net/wireless/broadcom/b43legacy/pio.h b/drivers/net/wireless/broadcom/b43legacy/pio.h
+index 1cd1b9c..08cd022 100644
+--- a/drivers/net/wireless/broadcom/b43legacy/pio.h
++++ b/drivers/net/wireless/broadcom/b43legacy/pio.h
+@@ -92,7 +92,6 @@ void b43legacy_pio_write(struct b43legacy_pioqueue *queue,
+ 		       u16 offset, u16 value)
+ {
+ 	b43legacy_write16(queue->dev, queue->mmio_base + offset, value);
+-	mmiowb();
+ }
+ 
+ 
+diff --git a/drivers/net/wireless/broadcom/b43legacy/radio.c b/drivers/net/wireless/broadcom/b43legacy/radio.c
+index eab1c93..c6db444 100644
+--- a/drivers/net/wireless/broadcom/b43legacy/radio.c
++++ b/drivers/net/wireless/broadcom/b43legacy/radio.c
+@@ -95,7 +95,6 @@ void b43legacy_radio_lock(struct b43legacy_wldev *dev)
+ 	B43legacy_WARN_ON(status & B43legacy_MACCTL_RADIOLOCK);
+ 	status |= B43legacy_MACCTL_RADIOLOCK;
+ 	b43legacy_write32(dev, B43legacy_MMIO_MACCTL, status);
+-	mmiowb();
+ 	udelay(10);
+ }
+ 
+@@ -108,7 +107,6 @@ void b43legacy_radio_unlock(struct b43legacy_wldev *dev)
+ 	B43legacy_WARN_ON(!(status & B43legacy_MACCTL_RADIOLOCK));
+ 	status &= ~B43legacy_MACCTL_RADIOLOCK;
+ 	b43legacy_write32(dev, B43legacy_MMIO_MACCTL, status);
+-	mmiowb();
+ }
+ 
+ u16 b43legacy_radio_read16(struct b43legacy_wldev *dev, u16 offset)
+@@ -141,7 +139,6 @@ u16 b43legacy_radio_read16(struct b43legacy_wldev *dev, u16 offset)
+ void b43legacy_radio_write16(struct b43legacy_wldev *dev, u16 offset, u16 val)
+ {
+ 	b43legacy_write16(dev, B43legacy_MMIO_RADIO_CONTROL, offset);
+-	mmiowb();
+ 	b43legacy_write16(dev, B43legacy_MMIO_RADIO_DATA_LOW, val);
+ }
+ 
+@@ -333,7 +330,6 @@ u8 b43legacy_radio_aci_scan(struct b43legacy_wldev *dev)
+ void b43legacy_nrssi_hw_write(struct b43legacy_wldev *dev, u16 offset, s16 val)
+ {
+ 	b43legacy_phy_write(dev, B43legacy_PHY_NRSSILT_CTRL, offset);
+-	mmiowb();
+ 	b43legacy_phy_write(dev, B43legacy_PHY_NRSSILT_DATA, (u16)val);
+ }
+ 
+diff --git a/drivers/net/wireless/broadcom/b43legacy/sysfs.c b/drivers/net/wireless/broadcom/b43legacy/sysfs.c
+index 2a1da15..2db83ee 100644
+--- a/drivers/net/wireless/broadcom/b43legacy/sysfs.c
++++ b/drivers/net/wireless/broadcom/b43legacy/sysfs.c
+@@ -143,7 +143,6 @@ static ssize_t b43legacy_attr_interfmode_store(struct device *dev,
+ 	if (err)
+ 		b43legacyerr(wldev->wl, "Interference Mitigation not "
+ 		       "supported by device\n");
+-	mmiowb();
+ 	spin_unlock_irqrestore(&wldev->wl->irq_lock, flags);
+ 	mutex_unlock(&wldev->wl->mutex);
+ 
+diff --git a/drivers/net/wireless/intel/iwlegacy/common.h b/drivers/net/wireless/intel/iwlegacy/common.h
+index b079c64..986646a 100644
+--- a/drivers/net/wireless/intel/iwlegacy/common.h
++++ b/drivers/net/wireless/intel/iwlegacy/common.h
+@@ -2030,13 +2030,6 @@ static inline void
+ _il_release_nic_access(struct il_priv *il)
+ {
+ 	_il_clear_bit(il, CSR_GP_CNTRL, CSR_GP_CNTRL_REG_FLAG_MAC_ACCESS_REQ);
+-	/*
+-	 * In above we are reading CSR_GP_CNTRL register, what will flush any
+-	 * previous writes, but still want write, which clear MAC_ACCESS_REQ
+-	 * bit, be performed on PCI bus before any other writes scheduled on
+-	 * different CPUs (after we drop reg_lock).
+-	 */
+-	mmiowb();
+ }
+ 
+ static inline u32
+diff --git a/drivers/net/wireless/intel/iwlwifi/pcie/trans.c b/drivers/net/wireless/intel/iwlwifi/pcie/trans.c
+index fe8269d..abbfc9c 100644
+--- a/drivers/net/wireless/intel/iwlwifi/pcie/trans.c
++++ b/drivers/net/wireless/intel/iwlwifi/pcie/trans.c
+@@ -2067,7 +2067,6 @@ static void iwl_trans_pcie_release_nic_access(struct iwl_trans *trans,
+ 	 * MAC_ACCESS_REQ bit to be performed before any other writes
+ 	 * scheduled on different CPUs (after we drop reg_lock).
+ 	 */
+-	mmiowb();
+ out:
+ 	spin_unlock_irqrestore(&trans_pcie->reg_lock, *flags);
+ }
+diff --git a/drivers/ntb/hw/idt/ntb_hw_idt.c b/drivers/ntb/hw/idt/ntb_hw_idt.c
+index 1dede87..dcf2346 100644
+--- a/drivers/ntb/hw/idt/ntb_hw_idt.c
++++ b/drivers/ntb/hw/idt/ntb_hw_idt.c
+@@ -358,8 +358,6 @@ static void idt_sw_write(struct idt_ntb_dev *ndev,
+ 	iowrite32((u32)reg, ndev->cfgspc + (ptrdiff_t)IDT_NT_GASAADDR);
+ 	/* Put the new value of the register */
+ 	iowrite32(data, ndev->cfgspc + (ptrdiff_t)IDT_NT_GASADATA);
+-	/* Make sure the PCIe transactions are executed */
+-	mmiowb();
+ 	/* Unlock GASA registers operations */
+ 	spin_unlock_irqrestore(&ndev->gasa_lock, irqflags);
+ }
+@@ -750,7 +748,6 @@ static void idt_ntb_local_link_enable(struct idt_ntb_dev *ndev)
+ 	spin_lock_irqsave(&ndev->mtbl_lock, irqflags);
+ 	idt_nt_write(ndev, IDT_NT_NTMTBLADDR, ndev->part);
+ 	idt_nt_write(ndev, IDT_NT_NTMTBLDATA, mtbldata);
+-	mmiowb();
+ 	spin_unlock_irqrestore(&ndev->mtbl_lock, irqflags);
+ 
+ 	/* Notify the peers by setting and clearing the global signal bit */
+@@ -778,7 +775,6 @@ static void idt_ntb_local_link_disable(struct idt_ntb_dev *ndev)
+ 	spin_lock_irqsave(&ndev->mtbl_lock, irqflags);
+ 	idt_nt_write(ndev, IDT_NT_NTMTBLADDR, ndev->part);
+ 	idt_nt_write(ndev, IDT_NT_NTMTBLDATA, 0);
+-	mmiowb();
+ 	spin_unlock_irqrestore(&ndev->mtbl_lock, irqflags);
+ 
+ 	/* Notify the peers by setting and clearing the global signal bit */
+@@ -1339,7 +1335,6 @@ static int idt_ntb_peer_mw_set_trans(struct ntb_dev *ntb, int pidx, int widx,
+ 		idt_nt_write(ndev, IDT_NT_LUTLDATA, (u32)addr);
+ 		idt_nt_write(ndev, IDT_NT_LUTMDATA, (u32)(addr >> 32));
+ 		idt_nt_write(ndev, IDT_NT_LUTUDATA, data);
+-		mmiowb();
+ 		spin_unlock_irqrestore(&ndev->lut_lock, irqflags);
+ 		/* Limit address isn't specified since size is fixed for LUT */
+ 	}
+@@ -1393,7 +1388,6 @@ static int idt_ntb_peer_mw_clear_trans(struct ntb_dev *ntb, int pidx,
+ 		idt_nt_write(ndev, IDT_NT_LUTLDATA, 0);
+ 		idt_nt_write(ndev, IDT_NT_LUTMDATA, 0);
+ 		idt_nt_write(ndev, IDT_NT_LUTUDATA, 0);
+-		mmiowb();
+ 		spin_unlock_irqrestore(&ndev->lut_lock, irqflags);
+ 	}
+ 
+@@ -1812,7 +1806,6 @@ static int idt_ntb_peer_msg_write(struct ntb_dev *ntb, int pidx, int midx,
+ 	/* Set the route and send the data */
+ 	idt_sw_write(ndev, partdata_tbl[ndev->part].msgctl[midx], swpmsgctl);
+ 	idt_nt_write(ndev, ntdata_tbl.msgs[midx].out, msg);
+-	mmiowb();
+ 	/* Unlock the messages routing table */
+ 	spin_unlock_irqrestore(&ndev->msg_locks[midx], irqflags);
+ 
+diff --git a/drivers/ntb/test/ntb_perf.c b/drivers/ntb/test/ntb_perf.c
+index 2a9d6b0..11a6cd3 100644
+--- a/drivers/ntb/test/ntb_perf.c
++++ b/drivers/ntb/test/ntb_perf.c
+@@ -284,11 +284,9 @@ static int perf_spad_cmd_send(struct perf_peer *peer, enum perf_cmd cmd,
+ 		ntb_peer_spad_write(perf->ntb, peer->pidx,
+ 				    PERF_SPAD_HDATA(perf->gidx),
+ 				    upper_32_bits(data));
+-		mmiowb();
+ 		ntb_peer_spad_write(perf->ntb, peer->pidx,
+ 				    PERF_SPAD_CMD(perf->gidx),
+ 				    cmd);
+-		mmiowb();
+ 		ntb_peer_db_set(perf->ntb, PERF_SPAD_NOTIFY(peer->gidx));
+ 
+ 		dev_dbg(&perf->ntb->dev, "DB ring peer %#llx\n",
+@@ -379,7 +377,6 @@ static int perf_msg_cmd_send(struct perf_peer *peer, enum perf_cmd cmd,
+ 
+ 		ntb_peer_msg_write(perf->ntb, peer->pidx, PERF_MSG_HDATA,
+ 				   upper_32_bits(data));
+-		mmiowb();
+ 
+ 		/* This call shall trigger peer message event */
+ 		ntb_peer_msg_write(perf->ntb, peer->pidx, PERF_MSG_CMD, cmd);
+diff --git a/drivers/scsi/bfa/bfa.h b/drivers/scsi/bfa/bfa.h
+index 0e119d8..762cb7725 100644
+--- a/drivers/scsi/bfa/bfa.h
++++ b/drivers/scsi/bfa/bfa.h
+@@ -62,8 +62,7 @@ void bfa_isr_unhandled(struct bfa_s *bfa, struct bfi_msg_s *m);
+ 			((__bfa)->iocfc.cfg.drvcfg.num_reqq_elems - 1); \
+ 		writel((__bfa)->iocfc.req_cq_pi[__reqq],		\
+ 			(__bfa)->iocfc.bfa_regs.cpe_q_pi[__reqq]);	\
+-		mmiowb();      \
+-	} while (0)
++		} while (0)
+ 
+ #define bfa_rspq_pi(__bfa, __rspq)					\
+ 	(*(u32 *)((__bfa)->iocfc.rsp_cq_shadow_pi[__rspq].kva))
+diff --git a/drivers/scsi/bfa/bfa_hw_cb.c b/drivers/scsi/bfa/bfa_hw_cb.c
+index c4a0c0e..4a0d881 100644
+--- a/drivers/scsi/bfa/bfa_hw_cb.c
++++ b/drivers/scsi/bfa/bfa_hw_cb.c
+@@ -61,7 +61,6 @@ bfa_hwcb_rspq_ack_msix(struct bfa_s *bfa, int rspq, u32 ci)
+ 
+ 	bfa_rspq_ci(bfa, rspq) = ci;
+ 	writel(ci, bfa->iocfc.bfa_regs.rme_q_ci[rspq]);
+-	mmiowb();
+ }
+ 
+ void
+@@ -72,7 +71,6 @@ bfa_hwcb_rspq_ack(struct bfa_s *bfa, int rspq, u32 ci)
+ 
+ 	bfa_rspq_ci(bfa, rspq) = ci;
+ 	writel(ci, bfa->iocfc.bfa_regs.rme_q_ci[rspq]);
+-	mmiowb();
+ }
+ 
+ void
+diff --git a/drivers/scsi/bfa/bfa_hw_ct.c b/drivers/scsi/bfa/bfa_hw_ct.c
+index b0ff378d..b7be5f4 100644
+--- a/drivers/scsi/bfa/bfa_hw_ct.c
++++ b/drivers/scsi/bfa/bfa_hw_ct.c
+@@ -81,7 +81,6 @@ bfa_hwct_rspq_ack(struct bfa_s *bfa, int rspq, u32 ci)
+ 
+ 	bfa_rspq_ci(bfa, rspq) = ci;
+ 	writel(ci, bfa->iocfc.bfa_regs.rme_q_ci[rspq]);
+-	mmiowb();
+ }
+ 
+ /*
+@@ -94,7 +93,6 @@ bfa_hwct2_rspq_ack(struct bfa_s *bfa, int rspq, u32 ci)
+ {
+ 	bfa_rspq_ci(bfa, rspq) = ci;
+ 	writel(ci, bfa->iocfc.bfa_regs.rme_q_ci[rspq]);
+-	mmiowb();
+ }
+ 
+ void
+diff --git a/drivers/scsi/bnx2fc/bnx2fc_hwi.c b/drivers/scsi/bnx2fc/bnx2fc_hwi.c
+index 039328d..19734ec 100644
+--- a/drivers/scsi/bnx2fc/bnx2fc_hwi.c
++++ b/drivers/scsi/bnx2fc/bnx2fc_hwi.c
+@@ -991,7 +991,6 @@ void bnx2fc_arm_cq(struct bnx2fc_rport *tgt)
+ 			FCOE_CQE_TOGGLE_BIT_SHIFT);
+ 	msg = *((u32 *)rx_db);
+ 	writel(cpu_to_le32(msg), tgt->ctx_base);
+-	mmiowb();
+ 
+ }
+ 
+@@ -1409,7 +1408,6 @@ void bnx2fc_ring_doorbell(struct bnx2fc_rport *tgt)
+ 				(tgt->sq_curr_toggle_bit << 15);
+ 	msg = *((u32 *)sq_db);
+ 	writel(cpu_to_le32(msg), tgt->ctx_base);
+-	mmiowb();
+ 
+ }
+ 
+diff --git a/drivers/scsi/bnx2i/bnx2i_hwi.c b/drivers/scsi/bnx2i/bnx2i_hwi.c
+index d56a78f..1266631 100644
+--- a/drivers/scsi/bnx2i/bnx2i_hwi.c
++++ b/drivers/scsi/bnx2i/bnx2i_hwi.c
+@@ -253,7 +253,6 @@ void bnx2i_put_rq_buf(struct bnx2i_conn *bnx2i_conn, int count)
+ 		writew(ep->qp.rq_prod_idx,
+ 		       ep->qp.ctx_base + CNIC_RECV_DOORBELL);
+ 	}
+-	mmiowb();
+ }
+ 
+ 
+@@ -279,8 +278,6 @@ static void bnx2i_ring_sq_dbell(struct bnx2i_conn *bnx2i_conn, int count)
+ 		bnx2i_ring_577xx_doorbell(bnx2i_conn);
+ 	} else
+ 		writew(count, ep->qp.ctx_base + CNIC_SEND_DOORBELL);
+-
+-	mmiowb();
+ }
+ 
+ 
+diff --git a/drivers/scsi/megaraid/megaraid_sas_base.c b/drivers/scsi/megaraid/megaraid_sas_base.c
+index 293f5cf..59a6546 100644
+--- a/drivers/scsi/megaraid/megaraid_sas_base.c
++++ b/drivers/scsi/megaraid/megaraid_sas_base.c
+@@ -815,7 +815,6 @@ megasas_fire_cmd_skinny(struct megasas_instance *instance,
+ 	       &(regs)->inbound_high_queue_port);
+ 	writel((lower_32_bits(frame_phys_addr) | (frame_count<<1))|1,
+ 	       &(regs)->inbound_low_queue_port);
+-	mmiowb();
+ 	spin_unlock_irqrestore(&instance->hba_lock, flags);
+ }
+ 
+diff --git a/drivers/scsi/megaraid/megaraid_sas_fusion.c b/drivers/scsi/megaraid/megaraid_sas_fusion.c
+index 1d17128..e35c2b6 100644
+--- a/drivers/scsi/megaraid/megaraid_sas_fusion.c
++++ b/drivers/scsi/megaraid/megaraid_sas_fusion.c
+@@ -242,7 +242,6 @@ megasas_fire_cmd_fusion(struct megasas_instance *instance,
+ 		&instance->reg_set->inbound_low_queue_port);
+ 	writel(le32_to_cpu(req_desc->u.high),
+ 		&instance->reg_set->inbound_high_queue_port);
+-	mmiowb();
+ 	spin_unlock_irqrestore(&instance->hba_lock, flags);
+ #endif
+ }
+diff --git a/drivers/scsi/mpt3sas/mpt3sas_base.c b/drivers/scsi/mpt3sas/mpt3sas_base.c
+index 1d8c584..f60b9e0 100644
+--- a/drivers/scsi/mpt3sas/mpt3sas_base.c
++++ b/drivers/scsi/mpt3sas/mpt3sas_base.c
+@@ -3333,7 +3333,6 @@ _base_mpi_ep_writeq(__u64 b, volatile void __iomem *addr,
+ 	spin_lock_irqsave(writeq_lock, flags);
+ 	__raw_writel((u32)(b), addr);
+ 	__raw_writel((u32)(b >> 32), (addr + 4));
+-	mmiowb();
+ 	spin_unlock_irqrestore(writeq_lock, flags);
+ }
+ 
+diff --git a/drivers/scsi/qedf/qedf_io.c b/drivers/scsi/qedf/qedf_io.c
+index 6ca583b..53e8221 100644
+--- a/drivers/scsi/qedf/qedf_io.c
++++ b/drivers/scsi/qedf/qedf_io.c
+@@ -807,7 +807,6 @@ void qedf_ring_doorbell(struct qedf_rport *fcport)
+ 	writel(*(u32 *)&dbell, fcport->p_doorbell);
+ 	/* Make sure SQ index is updated so f/w prcesses requests in order */
+ 	wmb();
+-	mmiowb();
+ }
+ 
+ static void qedf_trace_io(struct qedf_rport *fcport, struct qedf_ioreq *io_req,
+diff --git a/drivers/scsi/qedi/qedi_fw.c b/drivers/scsi/qedi/qedi_fw.c
+index e2a995a..f8f8677 100644
+--- a/drivers/scsi/qedi/qedi_fw.c
++++ b/drivers/scsi/qedi/qedi_fw.c
+@@ -985,7 +985,6 @@ static void qedi_ring_doorbell(struct qedi_conn *qedi_conn)
+ 	 * others they are two different assembly operations.
+ 	 */
+ 	wmb();
+-	mmiowb();
+ 	QEDI_INFO(&qedi_conn->qedi->dbg_ctx, QEDI_LOG_MP_REQ,
+ 		  "prod_idx=0x%x, fw_prod_idx=0x%x, cid=0x%x\n",
+ 		  qedi_conn->ep->sq_prod_idx, qedi_conn->ep->fw_sq_prod_idx,
+diff --git a/drivers/scsi/qla1280.c b/drivers/scsi/qla1280.c
+index 6856dfd..93acbc5 100644
+--- a/drivers/scsi/qla1280.c
++++ b/drivers/scsi/qla1280.c
+@@ -3004,8 +3004,6 @@ qla1280_64bit_start_scsi(struct scsi_qla_host *ha, struct srb * sp)
+ 	sp->flags |= SRB_SENT;
+ 	ha->actthreads++;
+ 	WRT_REG_WORD(&reg->mailbox4, ha->req_ring_index);
+-	/* Enforce mmio write ordering; see comment in qla1280_isp_cmd(). */
+-	mmiowb();
+ 
+  out:
+ 	if (status)
+@@ -3254,8 +3252,6 @@ qla1280_32bit_start_scsi(struct scsi_qla_host *ha, struct srb * sp)
+ 	sp->flags |= SRB_SENT;
+ 	ha->actthreads++;
+ 	WRT_REG_WORD(&reg->mailbox4, ha->req_ring_index);
+-	/* Enforce mmio write ordering; see comment in qla1280_isp_cmd(). */
+-	mmiowb();
+ 
+ out:
+ 	if (status)
+@@ -3379,7 +3375,6 @@ qla1280_isp_cmd(struct scsi_qla_host *ha)
+ 	 * See Documentation/driver-api/device-io.rst for more information.
+ 	 */
+ 	WRT_REG_WORD(&reg->mailbox4, ha->req_ring_index);
+-	mmiowb();
+ 
+ 	LEAVE("qla1280_isp_cmd");
+ }
+diff --git a/drivers/ssb/pci.c b/drivers/ssb/pci.c
+index 84807a9..da2d2ab 100644
+--- a/drivers/ssb/pci.c
++++ b/drivers/ssb/pci.c
+@@ -305,7 +305,6 @@ static int sprom_do_write(struct ssb_bus *bus, const u16 *sprom)
+ 		else if (i % 2)
+ 			pr_cont(".");
+ 		writew(sprom[i], bus->mmio + bus->sprom_offset + (i * 2));
+-		mmiowb();
+ 		msleep(20);
+ 	}
+ 	err = pci_read_config_dword(pdev, SSB_SPROMCTL, &spromctl);
+diff --git a/drivers/ssb/pcmcia.c b/drivers/ssb/pcmcia.c
+index 567013f..d7d730c 100644
+--- a/drivers/ssb/pcmcia.c
++++ b/drivers/ssb/pcmcia.c
+@@ -338,7 +338,6 @@ static void ssb_pcmcia_write8(struct ssb_device *dev, u16 offset, u8 value)
+ 	err = select_core_and_segment(dev, &offset);
+ 	if (likely(!err))
+ 		writeb(value, bus->mmio + offset);
+-	mmiowb();
+ 	spin_unlock_irqrestore(&bus->bar_lock, flags);
+ }
+ 
+@@ -352,7 +351,6 @@ static void ssb_pcmcia_write16(struct ssb_device *dev, u16 offset, u16 value)
+ 	err = select_core_and_segment(dev, &offset);
+ 	if (likely(!err))
+ 		writew(value, bus->mmio + offset);
+-	mmiowb();
+ 	spin_unlock_irqrestore(&bus->bar_lock, flags);
+ }
+ 
+@@ -368,7 +366,6 @@ static void ssb_pcmcia_write32(struct ssb_device *dev, u16 offset, u32 value)
+ 		writew((value & 0x0000FFFF), bus->mmio + offset);
+ 		writew(((value & 0xFFFF0000) >> 16), bus->mmio + offset + 2);
+ 	}
+-	mmiowb();
+ 	spin_unlock_irqrestore(&bus->bar_lock, flags);
+ }
+ 
+@@ -424,7 +421,6 @@ static void ssb_pcmcia_block_write(struct ssb_device *dev, const void *buffer,
+ 		WARN_ON(1);
+ 	}
+ unlock:
+-	mmiowb();
+ 	spin_unlock_irqrestore(&bus->bar_lock, flags);
+ }
+ #endif /* CONFIG_SSB_BLOCKIO */
+diff --git a/drivers/staging/comedi/drivers/mite.c b/drivers/staging/comedi/drivers/mite.c
+index 61e03ad..639ec15 100644
+--- a/drivers/staging/comedi/drivers/mite.c
++++ b/drivers/staging/comedi/drivers/mite.c
+@@ -371,7 +371,6 @@ static unsigned int mite_get_status(struct mite_channel *mite_chan)
+ 		writel(CHOR_CLRDONE,
+ 		       mite->mmio + MITE_CHOR(mite_chan->channel));
+ 	}
+-	mmiowb();
+ 	spin_unlock_irqrestore(&mite->lock, flags);
+ 	return status;
+ }
+@@ -451,7 +450,6 @@ void mite_dma_arm(struct mite_channel *mite_chan)
+ 	mite_chan->done = 0;
+ 	/* arm */
+ 	writel(CHOR_START, mite->mmio + MITE_CHOR(mite_chan->channel));
+-	mmiowb();
+ 	spin_unlock_irqrestore(&mite->lock, flags);
+ }
+ EXPORT_SYMBOL_GPL(mite_dma_arm);
+@@ -638,7 +636,6 @@ void mite_release_channel(struct mite_channel *mite_chan)
+ 		       CHCR_CLR_LC_IE | CHCR_CLR_CONT_RB_IE,
+ 		       mite->mmio + MITE_CHCR(mite_chan->channel));
+ 		mite_chan->ring = NULL;
+-		mmiowb();
+ 	}
+ 	spin_unlock_irqrestore(&mite->lock, flags);
+ }
+diff --git a/drivers/staging/comedi/drivers/ni_660x.c b/drivers/staging/comedi/drivers/ni_660x.c
+index 405573e..4ee9b26 100644
+--- a/drivers/staging/comedi/drivers/ni_660x.c
++++ b/drivers/staging/comedi/drivers/ni_660x.c
+@@ -320,7 +320,6 @@ static inline void ni_660x_set_dma_channel(struct comedi_device *dev,
+ 	ni_660x_write(dev, chip, devpriv->dma_cfg[chip] |
+ 		      NI660X_DMA_CFG_RESET(mite_channel),
+ 		      NI660X_DMA_CFG);
+-	mmiowb();
+ }
+ 
+ static inline void ni_660x_unset_dma_channel(struct comedi_device *dev,
+@@ -333,7 +332,6 @@ static inline void ni_660x_unset_dma_channel(struct comedi_device *dev,
+ 	devpriv->dma_cfg[chip] &= ~NI660X_DMA_CFG_SEL_MASK(mite_channel);
+ 	devpriv->dma_cfg[chip] |= NI660X_DMA_CFG_SEL_NONE(mite_channel);
+ 	ni_660x_write(dev, chip, devpriv->dma_cfg[chip], NI660X_DMA_CFG);
+-	mmiowb();
+ }
+ 
+ static int ni_660x_request_mite_channel(struct comedi_device *dev,
+diff --git a/drivers/staging/comedi/drivers/ni_mio_common.c b/drivers/staging/comedi/drivers/ni_mio_common.c
+index b04dad8..668f2aa 100644
+--- a/drivers/staging/comedi/drivers/ni_mio_common.c
++++ b/drivers/staging/comedi/drivers/ni_mio_common.c
+@@ -547,7 +547,6 @@ static inline void ni_set_bitfield(struct comedi_device *dev, int reg,
+ 			reg);
+ 		break;
+ 	}
+-	mmiowb();
+ 	spin_unlock_irqrestore(&devpriv->soft_reg_copy_lock, flags);
+ }
+ 
+diff --git a/drivers/staging/comedi/drivers/ni_pcidio.c b/drivers/staging/comedi/drivers/ni_pcidio.c
+index 4bdef87d..8f38647 100644
+--- a/drivers/staging/comedi/drivers/ni_pcidio.c
++++ b/drivers/staging/comedi/drivers/ni_pcidio.c
+@@ -310,7 +310,6 @@ static int ni_pcidio_request_di_mite_channel(struct comedi_device *dev)
+ 	writeb(primary_DMAChannel_bits(devpriv->di_mite_chan->channel) |
+ 	       secondary_DMAChannel_bits(devpriv->di_mite_chan->channel),
+ 	       dev->mmio + DMA_LINE_CONTROL_GROUP1);
+-	mmiowb();
+ 	spin_unlock_irqrestore(&devpriv->mite_channel_lock, flags);
+ 	return 0;
+ }
+@@ -327,7 +326,6 @@ static void ni_pcidio_release_di_mite_channel(struct comedi_device *dev)
+ 		writeb(primary_DMAChannel_bits(0) |
+ 		       secondary_DMAChannel_bits(0),
+ 		       dev->mmio + DMA_LINE_CONTROL_GROUP1);
+-		mmiowb();
+ 	}
+ 	spin_unlock_irqrestore(&devpriv->mite_channel_lock, flags);
+ }
+diff --git a/drivers/staging/comedi/drivers/ni_tio.c b/drivers/staging/comedi/drivers/ni_tio.c
+index 048cb35..c1131a1 100644
+--- a/drivers/staging/comedi/drivers/ni_tio.c
++++ b/drivers/staging/comedi/drivers/ni_tio.c
+@@ -234,7 +234,6 @@ static void ni_tio_set_bits_transient(struct ni_gpct *counter,
+ 		regs[reg] &= ~mask;
+ 		regs[reg] |= (value & mask);
+ 		ni_tio_write(counter, regs[reg] | transient, reg);
+-		mmiowb();
+ 		spin_unlock_irqrestore(&counter_dev->regs_lock, flags);
+ 	}
+ }
+diff --git a/drivers/staging/comedi/drivers/s626.c b/drivers/staging/comedi/drivers/s626.c
+index f5af6f4..39049d3 100644
+--- a/drivers/staging/comedi/drivers/s626.c
++++ b/drivers/staging/comedi/drivers/s626.c
+@@ -108,7 +108,6 @@ static void s626_mc_enable(struct comedi_device *dev,
+ {
+ 	unsigned int val = (cmd << 16) | cmd;
+ 
+-	mmiowb();
+ 	writel(val, dev->mmio + reg);
+ }
+ 
+@@ -116,7 +115,6 @@ static void s626_mc_disable(struct comedi_device *dev,
+ 			    unsigned int cmd, unsigned int reg)
+ {
+ 	writel(cmd << 16, dev->mmio + reg);
+-	mmiowb();
+ }
+ 
+ static bool s626_mc_test(struct comedi_device *dev,
+diff --git a/drivers/tty/serial/men_z135_uart.c b/drivers/tty/serial/men_z135_uart.c
+index ef89534..e5d3ebab 100644
+--- a/drivers/tty/serial/men_z135_uart.c
++++ b/drivers/tty/serial/men_z135_uart.c
+@@ -353,7 +353,6 @@ static void men_z135_handle_tx(struct men_z135_port *uart)
+ 
+ 	memcpy_toio(port->membase + MEN_Z135_TX_RAM, &xmit->buf[xmit->tail], n);
+ 	xmit->tail = (xmit->tail + n) & (UART_XMIT_SIZE - 1);
+-	mmiowb();
+ 
+ 	iowrite32(n & 0x3ff, port->membase + MEN_Z135_TX_CTRL);
+ 
+diff --git a/drivers/tty/serial/serial_txx9.c b/drivers/tty/serial/serial_txx9.c
+index 1b4008d..d22ccb3 100644
+--- a/drivers/tty/serial/serial_txx9.c
++++ b/drivers/tty/serial/serial_txx9.c
+@@ -248,7 +248,6 @@ static void serial_txx9_initialize(struct uart_port *port)
+ 	sio_out(up, TXX9_SIFCR, TXX9_SIFCR_SWRST);
+ 	/* TX4925 BUG WORKAROUND.  Accessing SIOC register
+ 	 * immediately after soft reset causes bus error. */
+-	mmiowb();
+ 	udelay(1);
+ 	while ((sio_in(up, TXX9_SIFCR) & TXX9_SIFCR_SWRST) && --tmout)
+ 		udelay(1);
+diff --git a/drivers/usb/early/xhci-dbc.c b/drivers/usb/early/xhci-dbc.c
+index c9cfb10..cac9911 100644
+--- a/drivers/usb/early/xhci-dbc.c
++++ b/drivers/usb/early/xhci-dbc.c
+@@ -533,8 +533,6 @@ static int xdbc_handle_external_reset(void)
+ 
+ 	xdbc_mem_init();
+ 
+-	mmiowb();
+-
+ 	ret = xdbc_start();
+ 	if (ret < 0)
+ 		goto reset_out;
+@@ -587,8 +585,6 @@ static int __init xdbc_early_setup(void)
+ 
+ 	xdbc_mem_init();
+ 
+-	mmiowb();
+-
+ 	ret = xdbc_start();
+ 	if (ret < 0) {
+ 		writel(0, &xdbc.xdbc_reg->control);
+diff --git a/drivers/usb/host/xhci-dbgcap.c b/drivers/usb/host/xhci-dbgcap.c
+index d932cc3..52e3264 100644
+--- a/drivers/usb/host/xhci-dbgcap.c
++++ b/drivers/usb/host/xhci-dbgcap.c
+@@ -421,8 +421,6 @@ static int xhci_dbc_mem_init(struct xhci_hcd *xhci, gfp_t flags)
+ 	string_length = xhci_dbc_populate_strings(dbc->string);
+ 	xhci_dbc_init_contexts(xhci, string_length);
+ 
+-	mmiowb();
+-
+ 	xhci_dbc_eps_init(xhci);
+ 	dbc->state = DS_INITIALIZED;
+ 
+diff --git a/include/linux/qed/qed_if.h b/include/linux/qed/qed_if.h
+index f6165d3..48841e5 100644
+--- a/include/linux/qed/qed_if.h
++++ b/include/linux/qed/qed_if.h
+@@ -1338,7 +1338,6 @@ static inline u16 qed_sb_update_sb_idx(struct qed_sb_info *sb_info)
+ 	}
+ 
+ 	/* Let SB update */
+-	mmiowb();
+ 	return rc;
+ }
+ 
+@@ -1374,7 +1373,6 @@ static inline void qed_sb_ack(struct qed_sb_info *sb_info,
+ 	/* Both segments (interrupts & acks) are written to same place address;
+ 	 * Need to guarantee all commands will be received (in-order) by HW.
+ 	 */
+-	mmiowb();
+ 	barrier();
+ }
+ 
+diff --git a/sound/soc/txx9/txx9aclc-ac97.c b/sound/soc/txx9/txx9aclc-ac97.c
+index 1cfca69..b0fa285 100644
+--- a/sound/soc/txx9/txx9aclc-ac97.c
++++ b/sound/soc/txx9/txx9aclc-ac97.c
+@@ -102,7 +102,6 @@ static void txx9aclc_ac97_cold_reset(struct snd_ac97 *ac97)
+ 	u32 ready = ACINT_CODECRDY(ac97->num) | ACINT_REGACCRDY;
+ 
+ 	__raw_writel(ACCTL_ENLINK, base + ACCTLDIS);
+-	mmiowb();
+ 	udelay(1);
+ 	__raw_writel(ACCTL_ENLINK, base + ACCTLEN);
+ 	/* wait for primary codec ready status */
+-- 
+2.7.4
+

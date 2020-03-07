@@ -1,0 +1,80 @@
+From 89f3c365f3e113d087f105c3acbbb5a71eee84e3 Mon Sep 17 00:00:00 2001
+From: Adrian Hunter <adrian.hunter@intel.com>
+Date: Mon, 27 May 2019 14:45:55 +0300
+Subject: [PATCH] mmc: sdhci: Fix SDIO IRQ thread deadlock
+
+Since commit c07a48c26519 ("mmc: sdhci: Remove finish_tasklet"), the IRQ
+thread might be used to complete requests, but the IRQ thread is also used
+to process SDIO card interrupts. This can cause a deadlock when the SDIO
+processing tries to access the card since that would also require the IRQ
+thread. Change SDHCI to use sdio_signal_irq() to schedule a work item
+instead. That also requires implementing the ->ack_sdio_irq() mmc host op.
+
+Signed-off-by: Adrian Hunter <adrian.hunter@intel.com>
+Fixes: c07a48c26519 ("mmc: sdhci: Remove finish_tasklet")
+Reported-by: Brian Masney <masneyb@onstation.org>
+Tested-by: Brian Masney <masneyb@onstation.org>
+Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
+---
+ drivers/mmc/host/sdhci.c | 24 +++++++++++++-----------
+ 1 file changed, 13 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/mmc/host/sdhci.c b/drivers/mmc/host/sdhci.c
+index 9715834..0cd5f2c 100644
+--- a/drivers/mmc/host/sdhci.c
++++ b/drivers/mmc/host/sdhci.c
+@@ -2137,6 +2137,17 @@ void sdhci_enable_sdio_irq(struct mmc_host *mmc, int enable)
+ }
+ EXPORT_SYMBOL_GPL(sdhci_enable_sdio_irq);
+ 
++static void sdhci_ack_sdio_irq(struct mmc_host *mmc)
++{
++	struct sdhci_host *host = mmc_priv(mmc);
++	unsigned long flags;
++
++	spin_lock_irqsave(&host->lock, flags);
++	if (host->flags & SDHCI_SDIO_IRQ_ENABLED)
++		sdhci_enable_sdio_irq_nolock(host, true);
++	spin_unlock_irqrestore(&host->lock, flags);
++}
++
+ int sdhci_start_signal_voltage_switch(struct mmc_host *mmc,
+ 				      struct mmc_ios *ios)
+ {
+@@ -2585,6 +2596,7 @@ static const struct mmc_host_ops sdhci_ops = {
+ 	.get_ro		= sdhci_get_ro,
+ 	.hw_reset	= sdhci_hw_reset,
+ 	.enable_sdio_irq = sdhci_enable_sdio_irq,
++	.ack_sdio_irq    = sdhci_ack_sdio_irq,
+ 	.start_signal_voltage_switch	= sdhci_start_signal_voltage_switch,
+ 	.prepare_hs400_tuning		= sdhci_prepare_hs400_tuning,
+ 	.execute_tuning			= sdhci_execute_tuning,
+@@ -3087,8 +3099,7 @@ static irqreturn_t sdhci_irq(int irq, void *dev_id)
+ 		if ((intmask & SDHCI_INT_CARD_INT) &&
+ 		    (host->ier & SDHCI_INT_CARD_INT)) {
+ 			sdhci_enable_sdio_irq_nolock(host, false);
+-			host->thread_isr |= SDHCI_INT_CARD_INT;
+-			result = IRQ_WAKE_THREAD;
++			sdio_signal_irq(host->mmc);
+ 		}
+ 
+ 		intmask &= ~(SDHCI_INT_CARD_INSERT | SDHCI_INT_CARD_REMOVE |
+@@ -3160,15 +3171,6 @@ static irqreturn_t sdhci_thread_irq(int irq, void *dev_id)
+ 		mmc_detect_change(mmc, msecs_to_jiffies(200));
+ 	}
+ 
+-	if (isr & SDHCI_INT_CARD_INT) {
+-		sdio_run_irqs(host->mmc);
+-
+-		spin_lock_irqsave(&host->lock, flags);
+-		if (host->flags & SDHCI_SDIO_IRQ_ENABLED)
+-			sdhci_enable_sdio_irq_nolock(host, true);
+-		spin_unlock_irqrestore(&host->lock, flags);
+-	}
+-
+ 	return IRQ_HANDLED;
+ }
+ 
+-- 
+2.7.4
+

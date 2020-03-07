@@ -1,0 +1,106 @@
+From af849c86109d79222e549826068bbf4e7f9a2472 Mon Sep 17 00:00:00 2001
+From: Adrian Hunter <adrian.hunter@intel.com>
+Date: Thu, 15 Nov 2018 15:53:43 +0200
+Subject: [PATCH] mmc: sdhci: Handle auto-command errors
+
+If the host controller supports auto-commands then enable the auto-command
+error interrupt and handle it. In the case of auto-CMD23, the error is
+treated the same as manual CMD23 error. In the case of auto-CMD12,
+commands-during-transfer are not permitted, so the error handling is
+treated the same as a data error.
+
+Signed-off-by: Adrian Hunter <adrian.hunter@intel.com>
+Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
+---
+ drivers/mmc/host/sdhci.c | 35 +++++++++++++++++++++++++++++++++++
+ drivers/mmc/host/sdhci.h |  7 ++++++-
+ 2 files changed, 41 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/mmc/host/sdhci.c b/drivers/mmc/host/sdhci.c
+index 1b83bf6..281683c 100644
+--- a/drivers/mmc/host/sdhci.c
++++ b/drivers/mmc/host/sdhci.c
+@@ -933,6 +933,11 @@ static void sdhci_set_transfer_irqs(struct sdhci_host *host)
+ 	else
+ 		host->ier = (host->ier & ~dma_irqs) | pio_irqs;
+ 
++	if (host->flags & (SDHCI_AUTO_CMD23 | SDHCI_AUTO_CMD12))
++		host->ier |= SDHCI_INT_AUTO_CMD_ERR;
++	else
++		host->ier &= ~SDHCI_INT_AUTO_CMD_ERR;
++
+ 	sdhci_writel(host, host->ier, SDHCI_INT_ENABLE);
+ 	sdhci_writel(host, host->ier, SDHCI_SIGNAL_ENABLE);
+ }
+@@ -2757,6 +2762,21 @@ static void sdhci_timeout_data_timer(struct timer_list *t)
+ 
+ static void sdhci_cmd_irq(struct sdhci_host *host, u32 intmask, u32 *intmask_p)
+ {
++	/* Handle auto-CMD12 error */
++	if (intmask & SDHCI_INT_AUTO_CMD_ERR && host->data_cmd) {
++		struct mmc_request *mrq = host->data_cmd->mrq;
++		u16 auto_cmd_status = sdhci_readw(host, SDHCI_AUTO_CMD_STATUS);
++		int data_err_bit = (auto_cmd_status & SDHCI_AUTO_CMD_TIMEOUT) ?
++				   SDHCI_INT_DATA_TIMEOUT :
++				   SDHCI_INT_DATA_CRC;
++
++		/* Treat auto-CMD12 error the same as data error */
++		if (!mrq->sbc && (host->flags & SDHCI_AUTO_CMD12)) {
++			*intmask_p |= data_err_bit;
++			return;
++		}
++	}
++
+ 	if (!host->cmd) {
+ 		/*
+ 		 * SDHCI recovers from errors by resetting the cmd and data
+@@ -2791,6 +2811,21 @@ static void sdhci_cmd_irq(struct sdhci_host *host, u32 intmask, u32 *intmask_p)
+ 		return;
+ 	}
+ 
++	/* Handle auto-CMD23 error */
++	if (intmask & SDHCI_INT_AUTO_CMD_ERR) {
++		struct mmc_request *mrq = host->cmd->mrq;
++		u16 auto_cmd_status = sdhci_readw(host, SDHCI_AUTO_CMD_STATUS);
++		int err = (auto_cmd_status & SDHCI_AUTO_CMD_TIMEOUT) ?
++			  -ETIMEDOUT :
++			  -EILSEQ;
++
++		if (mrq->sbc && (host->flags & SDHCI_AUTO_CMD23)) {
++			mrq->sbc->error = err;
++			sdhci_finish_mrq(host, mrq);
++			return;
++		}
++	}
++
+ 	if (intmask & SDHCI_INT_RESPONSE)
+ 		sdhci_finish_command(host);
+ }
+diff --git a/drivers/mmc/host/sdhci.h b/drivers/mmc/host/sdhci.h
+index dee0656..a306d2f 100644
+--- a/drivers/mmc/host/sdhci.h
++++ b/drivers/mmc/host/sdhci.h
+@@ -153,7 +153,8 @@
+ #define  SDHCI_INT_ERROR_MASK	0xFFFF8000
+ 
+ #define  SDHCI_INT_CMD_MASK	(SDHCI_INT_RESPONSE | SDHCI_INT_TIMEOUT | \
+-		SDHCI_INT_CRC | SDHCI_INT_END_BIT | SDHCI_INT_INDEX)
++		SDHCI_INT_CRC | SDHCI_INT_END_BIT | SDHCI_INT_INDEX | \
++		SDHCI_INT_AUTO_CMD_ERR)
+ #define  SDHCI_INT_DATA_MASK	(SDHCI_INT_DATA_END | SDHCI_INT_DMA_END | \
+ 		SDHCI_INT_DATA_AVAIL | SDHCI_INT_SPACE_AVAIL | \
+ 		SDHCI_INT_DATA_TIMEOUT | SDHCI_INT_DATA_CRC | \
+@@ -169,6 +170,10 @@
+ #define SDHCI_CQE_INT_MASK (SDHCI_CQE_INT_ERR_MASK | SDHCI_INT_CQE)
+ 
+ #define SDHCI_AUTO_CMD_STATUS	0x3C
++#define  SDHCI_AUTO_CMD_TIMEOUT	0x00000002
++#define  SDHCI_AUTO_CMD_CRC	0x00000004
++#define  SDHCI_AUTO_CMD_END_BIT	0x00000008
++#define  SDHCI_AUTO_CMD_INDEX	0x00000010
+ 
+ #define SDHCI_HOST_CONTROL2		0x3E
+ #define  SDHCI_CTRL_UHS_MASK		0x0007
+-- 
+2.7.4
+

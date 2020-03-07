@@ -1,0 +1,33 @@
+From 07be55b567a556c7e4d421e5f4bb4248933bfe32 Mon Sep 17 00:00:00 2001
+From: Jisheng Zhang <Jisheng.Zhang@synaptics.com>
+Date: Mon, 17 Sep 2018 13:30:41 +0800
+Subject: [PATCH] mmc: sdhci: fix __sdhci_adma_write_desc
+
+If hosts provides ops->adma_write_desc, we should not fall back to the
+general sdhci_adma_write_desc().
+
+Signed-off-by: Jisheng Zhang <Jisheng.Zhang@synaptics.com>
+Acked-by: Adrian Hunter <adrian.hunter@intel.com>
+Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
+---
+ drivers/mmc/host/sdhci.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/mmc/host/sdhci.c b/drivers/mmc/host/sdhci.c
+index 0dda6f4..99bdae53 100644
+--- a/drivers/mmc/host/sdhci.c
++++ b/drivers/mmc/host/sdhci.c
+@@ -649,8 +649,8 @@ static inline void __sdhci_adma_write_desc(struct sdhci_host *host,
+ {
+ 	if (host->ops->adma_write_desc)
+ 		host->ops->adma_write_desc(host, desc, addr, len, cmd);
+-
+-	sdhci_adma_write_desc(host, desc, addr, len, cmd);
++	else
++		sdhci_adma_write_desc(host, desc, addr, len, cmd);
+ }
+ 
+ static void sdhci_adma_mark_end(void *desc)
+-- 
+2.7.4
+

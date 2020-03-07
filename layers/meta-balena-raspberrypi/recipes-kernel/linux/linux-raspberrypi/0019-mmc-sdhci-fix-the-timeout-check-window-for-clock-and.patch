@@ -1,0 +1,74 @@
+From b704441e38f645dcfba1348ca3cc1ba43d1a9f31 Mon Sep 17 00:00:00 2001
+From: Alek Du <alek.du@intel.com>
+Date: Thu, 6 Dec 2018 17:24:59 +0800
+Subject: [PATCH] mmc: sdhci: fix the timeout check window for clock and reset
+
+We observed some premature timeouts on a virtualization platform, the log
+is like this:
+
+case 1:
+[159525.255629] mmc1: Internal clock never stabilised.
+[159525.255818] mmc1: sdhci: ============ SDHCI REGISTER DUMP ===========
+[159525.256049] mmc1: sdhci: Sys addr:  0x00000000 | Version:  0x00001002
+...
+[159525.257205] mmc1: sdhci: Wake-up:   0x00000000 | Clock:    0x0000fa03
+From the clock control register dump, we are pretty sure the clock was
+stablized.
+
+case 2:
+[  914.550127] mmc1: Reset 0x2 never completed.
+[  914.550321] mmc1: sdhci: ============ SDHCI REGISTER DUMP ===========
+[  914.550608] mmc1: sdhci: Sys addr:  0x00000010 | Version:  0x00001002
+
+After checking the sdhci code, we found the timeout check actually has a
+little window that the CPU can be scheduled out and when it comes back,
+the original time set or check is not valid.
+
+Fixes: 5a436cc0af62 ("mmc: sdhci: Optimize delay loops")
+Cc: stable@vger.kernel.org      # v4.12+
+Signed-off-by: Alek Du <alek.du@intel.com>
+Acked-by: Adrian Hunter <adrian.hunter@intel.com>
+Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
+---
+ drivers/mmc/host/sdhci.c | 18 +++++++++++++-----
+ 1 file changed, 13 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/mmc/host/sdhci.c b/drivers/mmc/host/sdhci.c
+index 99bdae53..451b08a 100644
+--- a/drivers/mmc/host/sdhci.c
++++ b/drivers/mmc/host/sdhci.c
+@@ -216,8 +216,12 @@ void sdhci_reset(struct sdhci_host *host, u8 mask)
+ 	timeout = ktime_add_ms(ktime_get(), 100);
+ 
+ 	/* hw clears the bit when it's done */
+-	while (sdhci_readb(host, SDHCI_SOFTWARE_RESET) & mask) {
+-		if (ktime_after(ktime_get(), timeout)) {
++	while (1) {
++		bool timedout = ktime_after(ktime_get(), timeout);
++
++		if (!(sdhci_readb(host, SDHCI_SOFTWARE_RESET) & mask))
++			break;
++		if (timedout) {
+ 			pr_err("%s: Reset 0x%x never completed.\n",
+ 				mmc_hostname(host->mmc), (int)mask);
+ 			sdhci_dumpregs(host);
+@@ -1608,9 +1612,13 @@ void sdhci_enable_clk(struct sdhci_host *host, u16 clk)
+ 
+ 	/* Wait max 20 ms */
+ 	timeout = ktime_add_ms(ktime_get(), 20);
+-	while (!((clk = sdhci_readw(host, SDHCI_CLOCK_CONTROL))
+-		& SDHCI_CLOCK_INT_STABLE)) {
+-		if (ktime_after(ktime_get(), timeout)) {
++	while (1) {
++		bool timedout = ktime_after(ktime_get(), timeout);
++
++		clk = sdhci_readw(host, SDHCI_CLOCK_CONTROL);
++		if (clk & SDHCI_CLOCK_INT_STABLE)
++			break;
++		if (timedout) {
+ 			pr_err("%s: Internal clock never stabilised.\n",
+ 			       mmc_hostname(host->mmc));
+ 			sdhci_dumpregs(host);
+-- 
+2.7.4
+

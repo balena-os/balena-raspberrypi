@@ -1,0 +1,71 @@
+From 2e72ab9b2f565b6f3e1ff4a64a3736bb256c605c Mon Sep 17 00:00:00 2001
+From: Adrian Hunter <adrian.hunter@intel.com>
+Date: Fri, 5 Apr 2019 15:40:16 +0300
+Subject: [PATCH] mmc: sdhci: Reorganize sdhci_finish_mrq() and
+ __sdhci_finish_mrq()
+
+In preparation for removing finish_tasklet, reorganize sdhci_finish_mrq()
+and __sdhci_finish_mrq() to separate the tasklet scheduling from other
+processing.
+
+Signed-off-by: Adrian Hunter <adrian.hunter@intel.com>
+Reviewed-by: Faiz Abbas <faiz_abbas@ti.com>
+Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
+---
+ drivers/mmc/host/sdhci.c | 28 ++++++++++++++--------------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/drivers/mmc/host/sdhci.c b/drivers/mmc/host/sdhci.c
+index bbc0e0b..76e546a 100644
+--- a/drivers/mmc/host/sdhci.c
++++ b/drivers/mmc/host/sdhci.c
+@@ -1221,6 +1221,18 @@ static void __sdhci_finish_mrq(struct sdhci_host *host, struct mmc_request *mrq)
+ {
+ 	int i;
+ 
++	if (host->cmd && host->cmd->mrq == mrq)
++		host->cmd = NULL;
++
++	if (host->data_cmd && host->data_cmd->mrq == mrq)
++		host->data_cmd = NULL;
++
++	if (host->data && host->data->mrq == mrq)
++		host->data = NULL;
++
++	if (sdhci_needs_reset(host, mrq))
++		host->pending_reset = true;
++
+ 	for (i = 0; i < SDHCI_MAX_MRQS; i++) {
+ 		if (host->mrqs_done[i] == mrq) {
+ 			WARN_ON(1);
+@@ -1236,25 +1248,13 @@ static void __sdhci_finish_mrq(struct sdhci_host *host, struct mmc_request *mrq)
+ 	}
+ 
+ 	WARN_ON(i >= SDHCI_MAX_MRQS);
+-
+-	tasklet_schedule(&host->finish_tasklet);
+ }
+ 
+ static void sdhci_finish_mrq(struct sdhci_host *host, struct mmc_request *mrq)
+ {
+-	if (host->cmd && host->cmd->mrq == mrq)
+-		host->cmd = NULL;
+-
+-	if (host->data_cmd && host->data_cmd->mrq == mrq)
+-		host->data_cmd = NULL;
+-
+-	if (host->data && host->data->mrq == mrq)
+-		host->data = NULL;
+-
+-	if (sdhci_needs_reset(host, mrq))
+-		host->pending_reset = true;
+-
+ 	__sdhci_finish_mrq(host, mrq);
++
++	tasklet_schedule(&host->finish_tasklet);
+ }
+ 
+ static void sdhci_finish_data(struct sdhci_host *host)
+-- 
+2.7.4
+

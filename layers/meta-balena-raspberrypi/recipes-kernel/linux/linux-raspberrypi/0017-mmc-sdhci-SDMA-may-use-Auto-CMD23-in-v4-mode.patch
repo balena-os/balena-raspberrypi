@@ -1,0 +1,41 @@
+From 7ed71a9df4baf60cfcb009b3503e19fc4964e564 Mon Sep 17 00:00:00 2001
+From: Chunyan Zhang <zhang.chunyan@linaro.org>
+Date: Thu, 30 Aug 2018 16:21:43 +0800
+Subject: [PATCH] mmc: sdhci: SDMA may use Auto-CMD23 in v4 mode
+
+When Host Version 4 Enable is set to 1, SDMA uses ADMA System Address
+register (05Fh-058h) instead of using register (000h-004h) to indicate
+its system address of data location. The register (000h-004h) is
+re-assigned to 32-bit Block Count and Auto CMD23 argument, so then SDMA
+may use Auto CMD23.
+
+Signed-off-by: Chunyan Zhang <zhang.chunyan@linaro.org>
+Acked-by: Adrian Hunter <adrian.hunter@intel.com>
+Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
+---
+ drivers/mmc/host/sdhci.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/mmc/host/sdhci.c b/drivers/mmc/host/sdhci.c
+index c8951c0..0dda6f4 100644
+--- a/drivers/mmc/host/sdhci.c
++++ b/drivers/mmc/host/sdhci.c
+@@ -3844,10 +3844,13 @@ int sdhci_setup_host(struct sdhci_host *host)
+ 	if (host->quirks & SDHCI_QUIRK_MULTIBLOCK_READ_ACMD12)
+ 		host->flags |= SDHCI_AUTO_CMD12;
+ 
+-	/* Auto-CMD23 stuff only works in ADMA or PIO. */
++	/*
++	 * For v3 mode, Auto-CMD23 stuff only works in ADMA or PIO.
++	 * For v4 mode, SDMA may use Auto-CMD23 as well.
++	 */
+ 	if ((host->version >= SDHCI_SPEC_300) &&
+ 	    ((host->flags & SDHCI_USE_ADMA) ||
+-	     !(host->flags & SDHCI_USE_SDMA)) &&
++	     !(host->flags & SDHCI_USE_SDMA) || host->v4_mode) &&
+ 	     !(host->quirks2 & SDHCI_QUIRK2_ACMD23_BROKEN)) {
+ 		host->flags |= SDHCI_AUTO_CMD23;
+ 		DBG("Auto-CMD23 available\n");
+-- 
+2.7.4
+

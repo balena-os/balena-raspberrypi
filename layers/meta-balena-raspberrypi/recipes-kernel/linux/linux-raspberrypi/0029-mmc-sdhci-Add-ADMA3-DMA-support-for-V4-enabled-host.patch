@@ -1,0 +1,74 @@
+From 4c4faff62bf59e64c5175b7704727e6b9db361f2 Mon Sep 17 00:00:00 2001
+From: Sowjanya Komatineni <skomatineni@nvidia.com>
+Date: Wed, 23 Jan 2019 11:30:53 -0800
+Subject: [PATCH] mmc: sdhci: Add ADMA3 DMA support for V4 enabled host
+
+Below are the supported DMA types in Host Control1 Register
+with Version 4 enable
+b'00 - SDMA
+b'01 - Not Used
+b'10 - ADMA2
+b'11 - ADMA2 or ADMA3
+
+ADMA3 uses Command Descriptor to issue an SD command.
+A multi-block data transfer is performed by using a pair of CMD
+descriptor and ADMA2 descriptor.
+
+ADMA3 performs multiple of multi-block data transfer by using
+Integrated Descriptor which is more suitable for Command Queuing
+to fetch both Command and Transfer descriptors.
+
+Host Capabilities register indicates the supports of ADMA3 DMA.
+
+Signed-off-by: Sowjanya Komatineni <skomatineni@nvidia.com>
+Acked-by: Adrian Hunter <adrian.hunter@intel.com>
+Reviewed-by: Thierry Reding <treding@nvidia.com>
+Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
+---
+ drivers/mmc/host/sdhci.c | 9 ++++++++-
+ drivers/mmc/host/sdhci.h | 2 ++
+ 2 files changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/mmc/host/sdhci.c b/drivers/mmc/host/sdhci.c
+index c8ca3ce..39bbbd75 100644
+--- a/drivers/mmc/host/sdhci.c
++++ b/drivers/mmc/host/sdhci.c
+@@ -3359,7 +3359,14 @@ void sdhci_cqe_enable(struct mmc_host *mmc)
+ 
+ 	ctrl = sdhci_readb(host, SDHCI_HOST_CONTROL);
+ 	ctrl &= ~SDHCI_CTRL_DMA_MASK;
+-	if (host->flags & SDHCI_USE_64_BIT_DMA)
++	/*
++	 * Host from V4.10 supports ADMA3 DMA type.
++	 * ADMA3 performs integrated descriptor which is more suitable
++	 * for cmd queuing to fetch both command and transfer descriptors.
++	 */
++	if (host->v4_mode && (host->caps1 & SDHCI_CAN_DO_ADMA3))
++		ctrl |= SDHCI_CTRL_ADMA3;
++	else if (host->flags & SDHCI_USE_64_BIT_DMA)
+ 		ctrl |= SDHCI_CTRL_ADMA64;
+ 	else
+ 		ctrl |= SDHCI_CTRL_ADMA32;
+diff --git a/drivers/mmc/host/sdhci.h b/drivers/mmc/host/sdhci.h
+index 924e03332..01002cb 100644
+--- a/drivers/mmc/host/sdhci.h
++++ b/drivers/mmc/host/sdhci.h
+@@ -92,6 +92,7 @@
+ #define   SDHCI_CTRL_ADMA1	0x08
+ #define   SDHCI_CTRL_ADMA32	0x10
+ #define   SDHCI_CTRL_ADMA64	0x18
++#define   SDHCI_CTRL_ADMA3	0x18
+ #define   SDHCI_CTRL_8BITBUS	0x20
+ #define  SDHCI_CTRL_CDTEST_INS	0x40
+ #define  SDHCI_CTRL_CDTEST_EN	0x80
+@@ -234,6 +235,7 @@
+ #define  SDHCI_RETUNING_MODE_SHIFT		14
+ #define  SDHCI_CLOCK_MUL_MASK	0x00FF0000
+ #define  SDHCI_CLOCK_MUL_SHIFT	16
++#define  SDHCI_CAN_DO_ADMA3	0x08000000
+ #define  SDHCI_SUPPORT_HS400	0x80000000 /* Non-standard */
+ 
+ #define SDHCI_CAPABILITIES_1	0x44
+-- 
+2.7.4
+

@@ -1,0 +1,76 @@
+From bd29f58bc0611ea9ebddc4091f71a8229572eb6a Mon Sep 17 00:00:00 2001
+From: Adrian Hunter <adrian.hunter@intel.com>
+Date: Tue, 11 Dec 2018 15:10:42 +0200
+Subject: [PATCH] mmc: sdhci: Add quirk to disable LED control
+
+Host controllers may not have a LED signal line, whereas the register
+updates to control the non-existent LED can be relatively time consuming.
+Add a quirk to disable LED control.
+
+Signed-off-by: Adrian Hunter <adrian.hunter@intel.com>
+Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
+---
+ drivers/mmc/host/sdhci.c | 12 ++++++++++++
+ drivers/mmc/host/sdhci.h |  2 ++
+ 2 files changed, 14 insertions(+)
+
+diff --git a/drivers/mmc/host/sdhci.c b/drivers/mmc/host/sdhci.c
+index 281683c..5de845b 100644
+--- a/drivers/mmc/host/sdhci.c
++++ b/drivers/mmc/host/sdhci.c
+@@ -349,6 +349,9 @@ static void __sdhci_led_activate(struct sdhci_host *host)
+ {
+ 	u8 ctrl;
+ 
++	if (host->quirks & SDHCI_QUIRK_NO_LED)
++		return;
++
+ 	ctrl = sdhci_readb(host, SDHCI_HOST_CONTROL);
+ 	ctrl |= SDHCI_CTRL_LED;
+ 	sdhci_writeb(host, ctrl, SDHCI_HOST_CONTROL);
+@@ -358,6 +361,9 @@ static void __sdhci_led_deactivate(struct sdhci_host *host)
+ {
+ 	u8 ctrl;
+ 
++	if (host->quirks & SDHCI_QUIRK_NO_LED)
++		return;
++
+ 	ctrl = sdhci_readb(host, SDHCI_HOST_CONTROL);
+ 	ctrl &= ~SDHCI_CTRL_LED;
+ 	sdhci_writeb(host, ctrl, SDHCI_HOST_CONTROL);
+@@ -387,6 +393,9 @@ static int sdhci_led_register(struct sdhci_host *host)
+ {
+ 	struct mmc_host *mmc = host->mmc;
+ 
++	if (host->quirks & SDHCI_QUIRK_NO_LED)
++		return 0;
++
+ 	snprintf(host->led_name, sizeof(host->led_name),
+ 		 "%s::", mmc_hostname(mmc));
+ 
+@@ -400,6 +409,9 @@ static int sdhci_led_register(struct sdhci_host *host)
+ 
+ static void sdhci_led_unregister(struct sdhci_host *host)
+ {
++	if (host->quirks & SDHCI_QUIRK_NO_LED)
++		return;
++
+ 	led_classdev_unregister(&host->led);
+ }
+ 
+diff --git a/drivers/mmc/host/sdhci.h b/drivers/mmc/host/sdhci.h
+index a306d2f..6cc9a3c 100644
+--- a/drivers/mmc/host/sdhci.h
++++ b/drivers/mmc/host/sdhci.h
+@@ -408,6 +408,8 @@ struct sdhci_host {
+ #define SDHCI_QUIRK_INVERTED_WRITE_PROTECT		(1<<16)
+ /* Controller does not like fast PIO transfers */
+ #define SDHCI_QUIRK_PIO_NEEDS_DELAY			(1<<18)
++/* Controller does not have a LED */
++#define SDHCI_QUIRK_NO_LED				(1<<19)
+ /* Controller has to be forced to use block size of 2048 bytes */
+ #define SDHCI_QUIRK_FORCE_BLK_SZ_2048			(1<<20)
+ /* Controller cannot do multi-block transfers */
+-- 
+2.7.4
+

@@ -1,0 +1,38 @@
+From 97207c12780d749770825f62c292c3140e57d79c Mon Sep 17 00:00:00 2001
+From: Sowjanya Komatineni <skomatineni@nvidia.com>
+Date: Thu, 13 Dec 2018 12:34:06 -0800
+Subject: [PATCH] mmc: sdhci: Fix sdhci_do_enable_v4_mode
+
+V4_MODE is Bit-15 of SDHCI_HOST_CONTROL2 register.
+Need to perform word access to this register.
+
+Signed-off-by: Sowjanya Komatineni <skomatineni@nvidia.com>
+Fixes: b3f80b434f72 ("mmc: sdhci: Add sd host v4 mode")
+Acked-by: Adrian Hunter <adrian.hunter@intel.com>
+Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
+---
+ drivers/mmc/host/sdhci.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/mmc/host/sdhci.c b/drivers/mmc/host/sdhci.c
+index 451b08a..df05352 100644
+--- a/drivers/mmc/host/sdhci.c
++++ b/drivers/mmc/host/sdhci.c
+@@ -127,12 +127,12 @@ static void sdhci_do_enable_v4_mode(struct sdhci_host *host)
+ {
+ 	u16 ctrl2;
+ 
+-	ctrl2 = sdhci_readb(host, SDHCI_HOST_CONTROL2);
++	ctrl2 = sdhci_readw(host, SDHCI_HOST_CONTROL2);
+ 	if (ctrl2 & SDHCI_CTRL_V4_MODE)
+ 		return;
+ 
+ 	ctrl2 |= SDHCI_CTRL_V4_MODE;
+-	sdhci_writeb(host, ctrl2, SDHCI_HOST_CONTROL);
++	sdhci_writew(host, ctrl2, SDHCI_HOST_CONTROL2);
+ }
+ 
+ /*
+-- 
+2.7.4
+
