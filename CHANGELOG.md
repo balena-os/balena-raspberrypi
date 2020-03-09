@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.47.1+rev2
+## (2020-03-09)
+
+* Add a 3 second delay for loading the mlan kernel driver in order to avoid wifi crash at start-up for the Balena Fin [Florin Sarbu]
+
 # v2.47.1+rev1
 ## (2020-02-29)
 

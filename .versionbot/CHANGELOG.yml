@@ -1,4 +1,46 @@
 - commits:
+    - subject: >-
+        Add a 3 second delay for loading the mlan kernel driver in order to
+        avoid wifi crash at start-up for the Balena Fin
+      hash: a25a81a2b8df942b07bfbb0a725c3320156768c4
+      body: |
+        We have both bt8xxx and sd8xxx modules trying to use the same firmware
+        and do the same initilization for the Marvel bt / wifi chip. Since we
+        have bt8xxx loading first, let's add a 3 seconds delay until mlan loads
+        next in order to let the bt driver finish its init (and thus we avoid
+        wifi being unusable like in the following case:
+
+        [    6.618947] BT FW is active(6)
+        [    6.626161] mlan: module license 'Marvell Proprietary' taints kernel.
+        [    6.626175] Disabling lock debugging due to kernel taint
+        [    6.640429] BT: Driver loaded successfully
+        [    6.709945] wlan: Loading MWLAN driver
+        [   11.751740] Driver version = SD8887-0.0.0.p0-C4X15C651-GPL-(FP68)
+        [   11.751758] main_state = 0
+        [   11.751768] ioctl_pending = 0
+        [   11.751778] tx_pending = 0
+        [   11.751788] rx_pending = 0
+        [   11.751797] lock_count = 28
+        [   11.751807] malloc_count = 35
+        [   11.751816] mbufalloc_count = 0
+        [   11.751826] hs_skip_count = 0
+        [   11.751835] hs_force_count = 0
+        [   11.853932] woal_request_fw failed
+        [   11.853939] Firmware Init Failed
+        [   11.861997] woal_add_card failed
+      footer:
+        Changelog-entry: >-
+          Add a 3 second delay for loading the mlan kernel driver in order to
+          avoid wifi crash at start-up for the Balena Fin
+        changelog-entry: >-
+          Add a 3 second delay for loading the mlan kernel driver in order to
+          avoid wifi crash at start-up for the Balena Fin
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.47.1+rev2
+  date: 2020-03-09T07:11:05.369Z
+- commits:
     - subject: Update balena-yocto-scripts to v1.5.6
       hash: 8a9e703e033c2313b7aecc5c0e070adb1a325169
       body: ''
