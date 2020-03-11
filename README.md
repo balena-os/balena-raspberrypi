@@ -25,7 +25,7 @@ See below for using the build script.
 * Run the build script:
   `./balena-yocto-scripts/build/barys`
 
-* You can also run barys with the -h switch to inspect the available options
+* You can also run barys with the -h flag to inspect the available options
 
 ### Custom build using this repository
 
