@@ -1,0 +1,53 @@
+From cd2d727fff7ea4c69db49d7ee63bd791f91acd26 Mon Sep 17 00:00:00 2001
+From: AKASHI Takahiro <takahiro.akashi@linaro.org>
+Date: Fri, 24 May 2019 14:10:37 +0900
+Subject: [PATCH] fs: fat: allocate a new cluster for root directory of fat32
+
+Contrary to fat12/16, fat32 can have root directory at any location
+and its size can be expanded.
+Without this patch, root directory won't grow properly and so we will
+eventually fail to add files under root directory. Please note that this
+can happen even if you delete many files as deleted directory entries
+are not reclaimed but just marked as "deleted" under the current
+implementation.
+
+Upstream-status: Inappropriate [Backport]
+Signed-off-by: AKASHI Takahiro <takahiro.akashi@linaro.org>
+Tested-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
+Signed-off-by: Alexandru Costche <alexandru@balena.io>
+---
+ fs/fat/fat_write.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/fs/fat/fat_write.c b/fs/fat/fat_write.c
+index 5ea15fab3a..729cf39630 100644
+--- a/fs/fat/fat_write.c
++++ b/fs/fat/fat_write.c
+@@ -247,8 +247,11 @@ fill_dir_slot(fat_itr *itr, const char *l_name)
+ 		if (itr->remaining == 0)
+ 			flush_dir(itr);
+ 
++		/* allocate a cluster for more entries */
+ 		if (!fat_itr_next(itr))
+-			if (!itr->dent && !itr->is_root && new_dir_table(itr))
++			if (!itr->dent &&
++			    (!itr->is_root || itr->fsdata->fatsize == 32) &&
++			    new_dir_table(itr))
+ 				return -1;
+ 	}
+ 
+@@ -980,7 +983,10 @@ static dir_entry *find_directory_entry(fat_itr *itr, char *filename)
+ 			return itr->dent;
+ 	}
+ 
+-	if (!itr->dent && !itr->is_root && new_dir_table(itr))
++	/* allocate a cluster for more entries */
++	if (!itr->dent &&
++	    (!itr->is_root || itr->fsdata->fatsize == 32) &&
++	    new_dir_table(itr))
+ 		/* indicate that allocating dent failed */
+ 		itr->dent = NULL;
+ 
+-- 
+2.17.1
+

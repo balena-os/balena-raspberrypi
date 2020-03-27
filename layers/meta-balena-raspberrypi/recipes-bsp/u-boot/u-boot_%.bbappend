@@ -18,6 +18,15 @@ SRC_URI += " \
     file://0001-avoid-block-uart-write.patch \
 "
 
+# Below patches come from upstream u-boot 2020.04, they seem to fix the
+# "Error: allocating new dir entry" issue and may be removed once updated u-boot
+# from BSP will include them:
+SRC_URI += " \
+   file://0001-fs-fat-write-to-non-cluster-aligned-root-directory.patch \
+   file://0001-fs-fat-flush-a-directory-cluster-properly.patch \
+   file://0001-fs-fat-allocate-a-new-cluster-for-root-directory-of-.patch \
+"
+
 # Disable flasher check since it starts usb unnecessarily
 # and we don't generate flasher images for any of the RPIs.
 SRC_URI_append = " \
