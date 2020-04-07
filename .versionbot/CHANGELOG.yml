@@ -1,4 +1,21 @@
 - commits:
+    - subject: 'u-boot: Fix FAT WRITE issue for bootcount'
+      hash: 25dc0d8956a0ffa29530e9239a0e5d08596bfd28
+      body: |
+        We backport these 3 patches from upstream u-boot
+        2020.04 as they seem to fix a sporadic HUP issue
+        where bootcount can't be saved from the
+        environment to the filesystem:
+            Error: allocating new dir entry
+      footer:
+        Changelog-entry: 'u-boot: Fix FAT WRITE issue for bootcount'
+        changelog-entry: 'u-boot: Fix FAT WRITE issue for bootcount'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+  version: 2.48.0+rev2
+  date: 2020-03-27T14:52:45.670Z
+- commits:
     - subject: 'u-boot: Prevent blocking writes to serial console'
       hash: 272608beffe0786229ec11f2eade6ae9389e7721
       body: |

@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.48.0+rev2
+## (2020-03-27)
+
+* u-boot: Fix FAT WRITE issue for bootcount [Alexandru Costache]
+
 # v2.48.0+rev1
 ## (2020-03-23)
 
