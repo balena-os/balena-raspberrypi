@@ -89,6 +89,12 @@ RESIN_CONFIGS[rpi_watchdog] = " \
     CONFIG_BCM2835_WDT=y \
 "
 
+RESIN_CONFIGS_append = " kvaser_usb_can_driver"
+
+RESIN_CONFIGS[kvaser_usb_can_driver] = " \
+    CONFIG_CAN_KVASER_USB=m \
+"
+
 RESIN_CONFIGS_append = " mcp251x_can_driver"
 
 RESIN_CONFIGS[mcp251x_can_driver] = " \
