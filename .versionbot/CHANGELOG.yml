@@ -1,4 +1,17 @@
 - commits:
+    - subject: Enable Kvaser's USB CAN driver as a module.
+      hash: 8f6b5f7ac44fbf7ff76e02db7c4c907371dd11bf
+      body: |
+        Enable Kvaser's CAN USB driver to support their USB interfaces.
+      footer:
+        Changelog-entry: Enable Kvaser's USB CAN driver as a module.
+        changelog-entry: Enable Kvaser's USB CAN driver as a module.
+        Signed-off-by: Adolfo E. García
+        signed-off-by: Adolfo E. García
+      author: Adolfo E. García Castro
+  version: 2.48.0+rev3
+  date: 2020-04-16T14:08:34.386Z
+- commits:
     - subject: 'u-boot: Fix FAT WRITE issue for bootcount'
       hash: 25dc0d8956a0ffa29530e9239a0e5d08596bfd28
       body: |

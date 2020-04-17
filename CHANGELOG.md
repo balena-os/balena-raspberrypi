@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.48.0+rev3
+## (2020-04-16)
+
+* Enable Kvaser's USB CAN driver as a module. [Adolfo E. García Castro]
+
 # v2.48.0+rev2
 ## (2020-03-27)
 
