@@ -27,10 +27,9 @@ KERNEL_BOOTCMD="bootz"
 
 # When u-boot is enabled we need to use the "Image" format and the "booti"
 # command to load the kernel for rpi3 64 bits
-# ("zImage" not supported on arm64 and ".gz" images not supported by bootloader yet)
 KERNEL_IMAGETYPE_raspberrypi3-64="Image"
 KERNEL_BOOTCMD_raspberrypi3-64 = "booti"
-KERNEL_IMAGETYPE_raspberrypi4-64="Image"
+KERNEL_IMAGETYPE_raspberrypi4-64="Image.gz"
 KERNEL_BOOTCMD_raspberrypi4-64 = "booti"
 
 # RPI Use u-boot. This needs to be 1 as we use u-boot
