@@ -1,4 +1,19 @@
 - commits:
+    - subject: Enable the rpivid-mem kernel module
+      hash: 76fbac682a134770ce77dcaf8c73d9fc4888bad8
+      body: |
+        This was requested by customer.
+      footer:
+        Fixes: '#453'
+        fixes: '#453'
+        Changelog-entry: Enable the rpivid-mem kernel module
+        changelog-entry: Enable the rpivid-mem kernel module
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.48.0+rev4
+  date: 2020-04-24T09:11:00.497Z
+- commits:
     - subject: Enable Kvaser's USB CAN driver as a module.
       hash: 8f6b5f7ac44fbf7ff76e02db7c4c907371dd11bf
       body: |
