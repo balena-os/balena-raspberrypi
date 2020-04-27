@@ -1,4 +1,21 @@
 - commits:
+    - subject: Use compressed kernel images to boot the RaspberryPi4-64
+      hash: eafd5b4759a81b9ff638ea371df30f642242d81b
+      body: |
+        The U-boot boot script will decompress this into an Image file and then
+        boot as before. This should have no functional impact on the running
+        firmware.
+      footer:
+        Changelog-entry: Use compressed kernel images to boot the RaspberryPi4-64
+        changelog-entry: Use compressed kernel images to boot the RaspberryPi4-64
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+  version: 2.48.0+rev4
+  date: 2020-04-24T09:05:42.106Z
+- commits:
     - subject: Enable Kvaser's USB CAN driver as a module.
       hash: 8f6b5f7ac44fbf7ff76e02db7c4c907371dd11bf
       body: |

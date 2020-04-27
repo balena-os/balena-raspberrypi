@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.48.0+rev4
+## (2020-04-24)
+
+* Use compressed kernel images to boot the RaspberryPi4-64 [Alex Gonzalez]
+
 # v2.48.0+rev3
 ## (2020-04-16)
 
