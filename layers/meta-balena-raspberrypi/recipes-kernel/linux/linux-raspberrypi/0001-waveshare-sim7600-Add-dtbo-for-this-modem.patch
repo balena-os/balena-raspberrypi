@@ -1,0 +1,57 @@
+From d83c8ded1a60d34e913a6b30b9ad3c99d9ea4558 Mon Sep 17 00:00:00 2001
+From: User Name <user@email.io>
+Date: Fri, 1 May 2020 13:17:42 +0200
+Subject: [PATCH] overlays: Add waveshare-sim7600 dtbo
+
+This adds dtbo necessary for GPIO setup
+for the waveshare-sim7600 modem.
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Martijn <martijn@neonlink.nl>
+---
+ arch/arm/boot/dts/overlays/Makefile           |  1 +
+ .../boot/dts/overlays/waveshare-sim7600-overlay.dts   | 20 +++++++++++++++++++
+ 2 files changed, 21 insertions(+)
+ create mode 100644 arch/arm/boot/dts/overlays/waveshare-sim7600-overlay.dts
+
+diff --git a/arch/arm/boot/dts/overlays/Makefile b/arch/arm/boot/dts/overlays/Makefile
+index 554756c3265f..a32f31486bc9 100644
+--- a/arch/arm/boot/dts/overlays/Makefile
++++ b/arch/arm/boot/dts/overlays/Makefile
+@@ -186,6 +186,7 @@ dtbo-$(CONFIG_ARCH_BCM2835) += \
+ 	vga666.dtbo \
+ 	w1-gpio.dtbo \
+ 	w1-gpio-pullup.dtbo \
++	waveshare-sim7600.dtbo \
+ 	wittypi.dtbo
+ 
+ targets += dtbs dtbs_install
+diff --git a/arch/arm/boot/dts/overlays/waveshare-sim7600-overlay.dts b/arch/arm/boot/dts/overlays/waveshare-sim7600-overlay.dts
+new file mode 100644
+index 000000000000..7295ecec1220
+--- /dev/null
++++ b/arch/arm/boot/dts/overlays/waveshare-sim7600-overlay.dts
+@@ -0,0 +1,20 @@
++/dts-v1/;
++/plugin/;
++
++/ {
++    compatible = "brcm,bcm2708,bcm2710,bcm2711";
++
++    fragment@0 {
++        target = <&gpio>;
++        __overlay__ {
++            pinctrl-names = "default";
++            pinctrl-0 = <&modem_pins>;
++
++            modem_pins: modem_pins {
++                brcm,pins = <4 6>;     /* GPIO pins */
++                brcm,function = <1 1>; /* Output */
++                brcm,pull = <2 2>; /* pull high */
++            };
++        };
++    };
++};
+-- 
+2.17.1
+
