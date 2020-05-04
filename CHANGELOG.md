@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.48.0+rev5
+## (2020-05-04)
+
+* Added overlays/waveshare-sim7600.dtbo to layer.conf [Martijn Mellema]
+* linux-raspberrypi: Add Waveshare SIM7600 dtbo [Martijn Mellema]
+
 # v2.48.0+rev4
 ## (2020-04-24)
 
