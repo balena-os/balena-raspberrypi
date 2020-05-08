@@ -1,0 +1,42 @@
+From 731ee9b752c3df73fb7ab7143fd99f81d35e1ef8 Mon Sep 17 00:00:00 2001
+From: Florin Sarbu <florin@balena.io>
+Date: Fri, 8 May 2020 16:38:31 +0200
+Subject: [PATCH] Lower the bt uart baudrate to 460800 for rpi3 v1.2
+
+The rpi3 v1.2 lacks hardware flow control for the uart used for
+bluetooth. This fact coupled with an apparent change in scheduling
+introduced between the 4.14 and 4.19 kernels made the SoC drop UART
+data. See for details:
+https://github.com/raspberrypi/firmware/issues/
+1150#issuecomment-518654921
+
+The workaround for this is therefore to lower the baudrate so that we
+decrease the chance of having too much lost data.
+
+This change here should be revisited when meta-raspberrypi switches to
+kernel 5.x as I have tested the UART data drop on kernel 5.4.38 and did
+notice way less data drop with the default 921600 baudrate and playing
+audio over bt was a good experience overall with that kernel.
+
+Upstream-Status: Pending
+Signed-off-by: Florin Sarbu <florin@balena.io>
+---
+ usr/bin/btuart | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/usr/bin/btuart b/usr/bin/btuart
+index eb8cf37..3b4c682 100755
+--- a/usr/bin/btuart
++++ b/usr/bin/btuart
+@@ -15,7 +15,7 @@ if [ "$uart0" = "$serial1" ] ; then
+ 	if [ "$uart0_pins" = "16" ] ; then
+ 		$HCIATTACH /dev/serial1 bcm43xx 3000000 flow - $BDADDR
+ 	else
+-		$HCIATTACH /dev/serial1 bcm43xx 921600 noflow - $BDADDR
++		$HCIATTACH /dev/serial1 bcm43xx 460800 noflow - $BDADDR
+ 	fi
+ else
+ 	$HCIATTACH /dev/serial1 bcm43xx 460800 noflow - $BDADDR
+-- 
+2.7.4
+
