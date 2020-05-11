@@ -1,4 +1,27 @@
 - commits:
+    - subject: Added overlays/waveshare-sim7600.dtbo to layer.conf
+      hash: 7cd8573f9787903e81339a1783cdb49c00233785
+      body: ''
+      footer:
+        Changelog-entry: Added overlays/waveshare-sim7600.dtbo to layer.conf
+        changelog-entry: Added overlays/waveshare-sim7600.dtbo to layer.conf
+        Signed-off-by: Martijn <ask@minusplusminus.com>
+        signed-off-by: Martijn <ask@minusplusminus.com>
+      author: Martijn Mellema
+    - subject: 'linux-raspberrypi: Add Waveshare SIM7600 dtbo'
+      hash: 0924b45fe88c5f40e72151213b83e6c5916e82c3
+      body: |
+        This adds necessary overlay for the Waveshare SIM7600
+        modem
+      footer:
+        Changelog-entry: 'linux-raspberrypi: Add Waveshare SIM7600 dtbo'
+        changelog-entry: 'linux-raspberrypi: Add Waveshare SIM7600 dtbo'
+        Signed-off-by: Martijn <ask@minusplusminus.com>
+        signed-off-by: Martijn <ask@minusplusminus.com>
+      author: Martijn Mellema
+  version: 2.48.0+rev5
+  date: 2020-05-11T09:57:34.196Z
+- commits:
     - subject: Use compressed kernel images to boot the RaspberryPi4-64
       hash: eafd5b4759a81b9ff638ea371df30f642242d81b
       body: |
