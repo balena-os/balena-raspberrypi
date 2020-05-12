@@ -1,4 +1,16 @@
 - commits:
+    - subject: Set private to false in .coffee files for the public device types
+      hash: d9f60e25fbaa60a6ce8a911ce921e07716ebc4e6
+      body: ''
+      footer:
+        Changelog-entry: Set private to false in .coffee files for the public device types
+        changelog-entry: Set private to false in .coffee files for the public device types
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.48.0+rev5
+  date: 2020-05-12T09:25:46.328Z
+- commits:
     - subject: Use compressed kernel images to boot the RaspberryPi4-64
       hash: eafd5b4759a81b9ff638ea371df30f642242d81b
       body: |
