@@ -8,6 +8,7 @@ module.exports =
 	name: 'Raspberry Pi (v1 / Zero / Zero W)'
 	arch: 'rpi'
 	state: 'released'
+	private: false
 
 	imageDownloadAlerts: [
 		{

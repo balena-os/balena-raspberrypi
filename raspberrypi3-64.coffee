@@ -8,6 +8,7 @@ module.exports =
 	name: 'Raspberry Pi 3 (using 64bit OS)'
 	arch: 'aarch64'
 	state: 'released'
+	private: false
 
 	imageDownloadAlerts: [
 		{

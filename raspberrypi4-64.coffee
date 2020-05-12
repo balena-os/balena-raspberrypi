@@ -8,6 +8,7 @@ module.exports =
 	name: 'Raspberry Pi 4'
 	arch: 'aarch64'
 	state: 'released'
+	private: false
 
 	instructions: commonImg.instructions
 	gettingStartedLink:

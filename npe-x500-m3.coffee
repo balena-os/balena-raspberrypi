@@ -9,6 +9,7 @@ module.exports =
 	arch: 'armv7hf'
 	state: 'released'
 	community: true
+	private: false
 
 	imageDownloadAlerts: [
 		{
