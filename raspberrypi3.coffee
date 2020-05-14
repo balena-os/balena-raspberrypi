@@ -3,13 +3,13 @@ deviceTypesCommon = require '@resin.io/device-types/common'
 
 module.exports =
 	version: 1
-	slug: 'raspberrypi3'
-	aliases: [ 'raspberrypi3' ]
-	name: 'Raspberry Pi 3'
+	slug: 'test-private'
+	aliases: [ ],
+	name: 'Raspberry Pi 3',
 	arch: 'armv7hf'
 	state: 'released'
 	isDefault: true
-	private: false
+	private: true
 
 	imageDownloadAlerts: [
 		{
