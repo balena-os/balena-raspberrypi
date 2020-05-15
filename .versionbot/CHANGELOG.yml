@@ -1,4 +1,26 @@
 - commits:
+    - subject: Added overlays/waveshare-sim7600.dtbo to layer.conf
+      hash: fe6ca7003eb4615201b6ea73919782273c1883a1
+      body: ''
+      footer:
+        Changelog-entry: Added overlays/waveshare-sim7600.dtbo to layer.conf
+        changelog-entry: Added overlays/waveshare-sim7600.dtbo to layer.conf
+        Signed-off-by: Martijn <ask@minusplusminus.com>
+        signed-off-by: Martijn <ask@minusplusminus.com>
+      author: Martijn Mellema
+    - subject: Add the device tree overlay for the Waveshare SIM7600 modem
+      hash: 58c08100e8897db31658fb93461b41cf9643e0bd
+      body: |
+        This adds the necessary overlay for the Waveshare SIM7600 modem.
+      footer:
+        Changelog-entry: Add the device tree overlay for the Waveshare SIM7600 modem
+        changelog-entry: Add the device tree overlay for the Waveshare SIM7600 modem
+        Signed-off-by: Martijn <ask@minusplusminus.com>
+        signed-off-by: Martijn <ask@minusplusminus.com>
+      author: Martijn Mellema
+  version: 2.48.0+rev6
+  date: 2020-05-12T11:42:26.590Z
+- commits:
     - subject: Set private to false in .coffee files for the public device types
       hash: d9f60e25fbaa60a6ce8a911ce921e07716ebc4e6
       body: ''

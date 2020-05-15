@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.48.0+rev6
+## (2020-05-12)
+
+* Added overlays/waveshare-sim7600.dtbo to layer.conf [Martijn Mellema]
+* Add the device tree overlay for the Waveshare SIM7600 modem [Martijn Mellema]
+
 # v2.48.0+rev5
 ## (2020-05-12)
 
