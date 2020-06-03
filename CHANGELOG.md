@@ -1,6 +1,31 @@
 Change log
 -----------
 
+# v2.50.4+rev1
+## (2020-06-03)
+
+
+<details>
+<summary> Update meta-balena from v2.50.1 to v2.50.4 [Florin Sarbu] </summary>
+
+> ## meta-balena-2.50.4
+> ### (2020-06-02)
+> 
+> * Use correct SRC_URI for bindmount [Florin Sarbu]
+
+> ## meta-balena-2.50.3
+> ### (2020-06-01)
+> 
+> * os-helpers-fs: Fix shellcheck warnings [Alex Gonzalez]
+> * Fallback to label root device matching to support devices with closed source bootloaders [Alex Gonzalez]
+> * Fallback to labels and partlabels for devices with custom HUPs [Alex Gonzalez]
+
+> ## meta-balena-2.50.2
+> ### (2020-05-27)
+> 
+> * Enable the Analog Devices AD5446 kernel driver [Florin Sarbu]
+</details>
+
 # v2.50.1+rev1
 ## (2020-05-26)
 

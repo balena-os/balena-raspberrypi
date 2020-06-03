@@ -1,4 +1,109 @@
 - commits:
+    - subject: Update meta-balena from v2.50.1 to v2.50.4
+      hash: e270ecb738df1ab46af005647931c1e0f7031f02
+      body: |
+        Update meta-balena from 2.50.1 to 2.50.4
+      footer:
+        Changelog-entry: Update meta-balena from v2.50.1 to v2.50.4
+        changelog-entry: Update meta-balena from v2.50.1 to v2.50.4
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: Use correct SRC_URI for bindmount
+              hash: 38b1761db39bdd566396d0a2bbad1eda9273bf5d
+              body: |
+                The repo has changed and we need to accomodate for that change.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Use correct SRC_URI for bindmount
+                changelog-entry: Use correct SRC_URI for bindmount
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+          version: meta-balena-2.50.4
+          date: 2020-06-02T12:50:09.159Z
+        - commits:
+            - subject: 'os-helpers-fs: Fix shellcheck warnings'
+              hash: 746cabdd234e9b94aeb6bd71289ac87d996301be
+              body: |
+                Fix all warnings from the shellcheck linter.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+            - subject: >-
+                Fallback to label root device matching to support devices with
+                closed source bootloaders
+              hash: f41735550c6e29ecd520e58f84c2281e4daf6c9f
+              body: >
+                Devices with closed source bootloaders that cannot be made to
+                pass the UUID
+
+                of the booting device (like smartphones, Jetson NX and Xabier),
+                need to
+
+                fallback to passing a label in the kernel command line.
+
+
+                Fixes #1905
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: >-
+                  Fallback to label root device matching to support devices with
+                  closed source bootloaders
+                changelog-entry: >-
+                  Fallback to label root device matching to support devices with
+                  closed source bootloaders
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+            - subject: Fallback to labels and partlabels for devices with custom HUPs
+              hash: e267e1dd2fcd4a841b09ba204bee6a58403a316c
+              body: >
+                Devices with custom HUPs, like Jetson devices that run BSP
+                partition update
+
+                scripts, do not have state symlinks when updating from legacy
+                pre state
+
+                symlinks OS versions, so they need to fallback to legacy
+                label/partname
+
+                resolution.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Fallback to labels and partlabels for devices with custom HUPs
+                changelog-entry: Fallback to labels and partlabels for devices with custom HUPs
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+          version: meta-balena-2.50.3
+          date: 2020-06-01T12:36:08.312Z
+        - commits:
+            - subject: Enable the Analog Devices AD5446 kernel driver
+              hash: 0231d9c4b33cd3fed9e4f552e3a9b916184e9b9f
+              body: |
+                At customer request we enable this driver.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Enable the Analog Devices AD5446 kernel driver
+                changelog-entry: Enable the Analog Devices AD5446 kernel driver
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+          version: meta-balena-2.50.2
+          date: 2020-05-27T11:16:26.872Z
+  version: 2.50.4+rev1
+  date: 2020-06-03T04:10:31.018Z
+- commits:
     - subject: Update balena-yocto-scripts to v1.7.2
       hash: 051147c7a899edd13e5f4b4e65b03e134f03e200
       body: ''
