@@ -1,6 +1,24 @@
 Change log
 -----------
 
+# v2.51.1+rev1
+## (2020-06-04)
+
+
+<details>
+<summary> Update meta-balena from v2.50.4 to v2.51.1 [Florin Sarbu] </summary>
+
+> ## meta-balena-2.51.1
+> ### (2020-06-04)
+> 
+> * openvpn: Add runtime dependency on bash [Willem Remie]
+
+> ## meta-balena-2.51.0
+> ### (2020-06-03)
+> 
+> * balena-engine: Update to 19.03.13 [Robert Günzler]
+</details>
+
 # v2.50.4+rev2
 ## (2020-06-04)
 

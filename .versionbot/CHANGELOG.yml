@@ -1,4 +1,51 @@
 - commits:
+    - subject: Update meta-balena from v2.50.4 to v2.51.1
+      hash: 26249fd5ab3d55e5b42d01ae17966a70a151aba3
+      body: |
+        Update meta-balena from 2.50.4 to 2.51.1
+      footer:
+        Changelog-entry: Update meta-balena from v2.50.4 to v2.51.1
+        changelog-entry: Update meta-balena from v2.50.4 to v2.51.1
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: 'openvpn: Add runtime dependency on bash'
+              hash: f84dcfdd4493ee23c84940348dbbffff9ced48a2
+              body: >
+                The dependency is introduced by the upstream.sh and
+                downstream.sh scripts.
+
+                Bash is also a dependency not only for internal packages but for
+                external
+
+                scripts too.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Willem Remie
+          version: meta-balena-2.51.1
+          date: 2020-06-04T10:21:31.775Z
+        - commits:
+            - subject: 'balena-engine: Update to 19.03.13'
+              hash: 6c08852dfad1bd4d62b4e86ce90602d0610e75b0
+              body: |
+                We also strip the binary using go's built-in mechanism instead
+                of relying on yocto for it.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Robert Günzler <robertg@balena.io>
+                signed-off-by: Robert Günzler <robertg@balena.io>
+              author: Robert Günzler
+          version: meta-balena-2.51.0
+          date: 2020-06-03T09:11:52.603Z
+  version: 2.51.1+rev1
+  date: 2020-06-04T12:45:50.085Z
+- commits:
     - subject: Fix bluetooth and mlan loading order for the balenaFin
       hash: 361925836b5dfe7567844f9ca623c28df3c0e674
       body: |
