@@ -45,9 +45,7 @@ FILES_${PN} += " \
     /lib/firmware/mrvl/sd8887_uapsta_a2.bin \
 "
 
-RPROVIDES_${PN} += "sd8887-mrvl"
-
-KERNEL_MODULE_AUTOLOAD += "bt8xxx sd8xxx"
-KERNEL_MODULE_PROBECONF += "sd8xxx"
-module_conf_sd8xxx = "install mlan /sbin/modprobe bt8xxx; sleep 3; /sbin/modprobe --ignore-install mlan $CMDLINE_OPTS"
+KERNEL_MODULE_AUTOLOAD += "sd8xxx"
+KERNEL_MODULE_PROBECONF += "mlan sd8xxx"
+module_conf_mlan = "install mlan /sbin/modprobe bt8xxx; sleep 5; /sbin/modprobe --ignore-install mlan $CMDLINE_OPTS"
 module_conf_sd8xxx = "options sd8xxx ps_mode=2"
