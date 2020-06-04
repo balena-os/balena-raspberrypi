@@ -1,4 +1,20 @@
 - commits:
+    - subject: Fix bluetooth and mlan loading order for the balenaFin
+      hash: 361925836b5dfe7567844f9ca623c28df3c0e674
+      body: |
+        We previously introduced dependency loading between bt8xxx and mlan but
+        yocto did not generate the modprobe.d file as expected so now let's
+        correct that by defining the mlan dependency on bluetooth in a separate
+        file altogether.
+      footer:
+        Changelog-entry: Fix bluetooth and mlan loading order for the balenaFin
+        changelog-entry: Fix bluetooth and mlan loading order for the balenaFin
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.50.4+rev2
+  date: 2020-06-04T12:17:00.467Z
+- commits:
     - subject: Update meta-balena from v2.50.1 to v2.50.4
       hash: e270ecb738df1ab46af005647931c1e0f7031f02
       body: |

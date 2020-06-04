@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.50.4+rev2
+## (2020-06-04)
+
+* Fix bluetooth and mlan loading order for the balenaFin [Florin Sarbu]
+
 # v2.50.4+rev1
 ## (2020-06-03)
 
