@@ -1,4 +1,18 @@
 - commits:
+    - subject: Test CI
+      hash: 259a6cac950174d1ccc4a9fde88a39c494f4007c
+      body: ''
+      footer:
+        Changelog-entry: Test CI
+        changelog-entry: Test CI
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Roman Mazur <roman@balena.io>
+        signed-off-by: Roman Mazur <roman@balena.io>
+      author: Roman Mazur
+  version: 2.51.1+rev2
+  date: 2020-06-16T16:11:20.977Z
+- commits:
     - subject: Update meta-balena from v2.50.4 to v2.51.1
       hash: 26249fd5ab3d55e5b42d01ae17966a70a151aba3
       body: |
