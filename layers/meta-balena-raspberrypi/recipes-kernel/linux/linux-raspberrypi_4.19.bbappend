@@ -19,6 +19,9 @@ SRC_URI_append_raspberrypi4-64 = " \
         file://0001-Fbcon-ignore-events-for-rpi-sense-fb.patch \
 "
 
+LINUX_VERSION = "4.19.118"
+SRCREV = "fe2c7bf4cad4641dfb6f12712755515ab15815ca"
+
 # Set console accordingly to build type
 DEBUG_CMDLINE = "dwc_otg.lpm_enable=0 console=tty1 console=serial0,115200 rootfstype=ext4 rootwait"
 PRODUCTION_CMDLINE = "dwc_otg.lpm_enable=0 console=null rootfstype=ext4 rootwait vt.global_cursor_default=0"
