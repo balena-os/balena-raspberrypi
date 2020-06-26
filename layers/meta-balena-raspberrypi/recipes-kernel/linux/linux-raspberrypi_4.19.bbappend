@@ -9,7 +9,6 @@ SRC_URI_append_fincm3 = " \
 
 SRC_URI_append = " \
 	file://0002-wireless-wext-Bring-back-ndo_do_ioctl-fallback.patch \
-	file://0003-leds-pca963x-Fix-MODE2-initialization.patch \
 	file://0001-Add-npe-x500-m3-overlay.patch \
 	file://0006-overlays-Add-Hyperpixel4-overlays.patch \
 	file://0001-waveshare-sim7600-Add-dtbo-for-this-modem.patch \
