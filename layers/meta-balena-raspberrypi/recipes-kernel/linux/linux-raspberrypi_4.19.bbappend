@@ -9,7 +9,6 @@ SRC_URI_append_fincm3 = " \
 
 SRC_URI_append = " \
 	file://0002-wireless-wext-Bring-back-ndo_do_ioctl-fallback.patch \
-	file://0003-leds-pca963x-Fix-MODE2-initialization.patch \
 	file://0001-Add-npe-x500-m3-overlay.patch \
 	file://0006-overlays-Add-Hyperpixel4-overlays.patch \
 	file://0001-waveshare-sim7600-Add-dtbo-for-this-modem.patch \
@@ -18,6 +17,9 @@ SRC_URI_append = " \
 SRC_URI_append_raspberrypi4-64 = " \
         file://0001-Fbcon-ignore-events-for-rpi-sense-fb.patch \
 "
+
+LINUX_VERSION = "4.19.118"
+SRCREV = "fe2c7bf4cad4641dfb6f12712755515ab15815ca"
 
 # Set console accordingly to build type
 DEBUG_CMDLINE = "dwc_otg.lpm_enable=0 console=tty1 console=serial0,115200 rootfstype=ext4 rootwait"

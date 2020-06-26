@@ -1,6 +1,6 @@
-From d83c8ded1a60d34e913a6b30b9ad3c99d9ea4558 Mon Sep 17 00:00:00 2001
-From: Martijn <ask@minusplusminus.com>
-Date: Fri, 1 May 2020 13:17:42 +0200
+From fb128946fc526b90dd2fc1070aa876f00f80af5e Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Fri, 26 Jun 2020 14:02:29 +0200
 Subject: [PATCH] overlays: Add waveshare-sim7600 dtbo
 
 This adds dtbo necessary for GPIO setup
@@ -10,18 +10,18 @@ Upstream-status: Inappropriate [configuration]
 Signed-off-by: Martijn <ask@minusplusminus.com>
 ---
  arch/arm/boot/dts/overlays/Makefile           |  1 +
- .../boot/dts/overlays/waveshare-sim7600-overlay.dts   | 20 +++++++++++++++++++
+ .../overlays/waveshare-sim7600-overlay.dts    | 20 +++++++++++++++++++
  2 files changed, 21 insertions(+)
  create mode 100644 arch/arm/boot/dts/overlays/waveshare-sim7600-overlay.dts
 
 diff --git a/arch/arm/boot/dts/overlays/Makefile b/arch/arm/boot/dts/overlays/Makefile
-index 554756c3265f..a32f31486bc9 100644
+index 0e4451014e80..8696c291acaa 100644
 --- a/arch/arm/boot/dts/overlays/Makefile
 +++ b/arch/arm/boot/dts/overlays/Makefile
-@@ -186,6 +186,7 @@ dtbo-$(CONFIG_ARCH_BCM2835) += \
- 	vga666.dtbo \
+@@ -199,6 +199,7 @@ dtbo-$(CONFIG_ARCH_BCM2835) += \
  	w1-gpio.dtbo \
  	w1-gpio-pullup.dtbo \
+ 	w5500.dtbo \
 +	waveshare-sim7600.dtbo \
  	wittypi.dtbo
  
