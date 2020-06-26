@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.51.1+rev2
+## (2020-06-26)
+
+* Update the raspberry pi kernel to version 4.19.118 so we are in sync with Raspberry Pi OS based on Debian Buster (released on 2020-05-27) [Florin Sarbu]
+* Update the boot firmware to the 20200512 drop to match Raspberry Pi OS based on Debian Buster (released on 2020-05-27) [Florin Sarbu]
+
 # v2.51.1+rev1
 ## (2020-06-04)
 

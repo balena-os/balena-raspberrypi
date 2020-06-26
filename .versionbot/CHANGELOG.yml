@@ -1,4 +1,40 @@
 - commits:
+    - subject: >-
+        Update the raspberry pi kernel to version 4.19.118 so we are in sync
+        with Raspberry Pi OS based on Debian Buster (released on 2020-05-27)
+      hash: 665d3b7fcf39cf0ae4ca61ca75682eba03cf08fc
+      body: |
+        We want to be in sync with the official Raspberry Pi OS (the artist
+        formerly known as Raspbian) so let's update to kernel 4.19.118 which
+        the latest Raspberry Pi OS released on 2020-05-27 contains.
+      footer:
+        Changelog-entry: >-
+          Update the raspberry pi kernel to version 4.19.118 so we are in sync
+          with Raspberry Pi OS based on Debian Buster (released on 2020-05-27)
+        changelog-entry: >-
+          Update the raspberry pi kernel to version 4.19.118 so we are in sync
+          with Raspberry Pi OS based on Debian Buster (released on 2020-05-27)
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+    - subject: >-
+        Update the boot firmware to the 20200512 drop to match Raspberry Pi OS
+        based on Debian Buster (released on 2020-05-27)
+      hash: e812de4bc118699bd563ff0d914d87cddd838420
+      body: ''
+      footer:
+        Changelog-entry: >-
+          Update the boot firmware to the 20200512 drop to match Raspberry Pi OS
+          based on Debian Buster (released on 2020-05-27)
+        changelog-entry: >-
+          Update the boot firmware to the 20200512 drop to match Raspberry Pi OS
+          based on Debian Buster (released on 2020-05-27)
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.51.1+rev2
+  date: 2020-06-26T15:35:05.757Z
+- commits:
     - subject: Update meta-balena from v2.50.4 to v2.51.1
       hash: 26249fd5ab3d55e5b42d01ae17966a70a151aba3
       body: |
