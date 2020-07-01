@@ -1,4 +1,22 @@
 - commits:
+    - subject: >-
+        Update README.md with the correct link for reporting an issue at the
+        aggregate repository.
+      hash: 374b48de8bb974487fc52c60f2a02842d9b52e09
+      body: ''
+      footer:
+        Changelog-entry: >-
+          Update README.md with the correct link for reporting an issue at the
+          aggregate repository.
+        changelog-entry: >-
+          Update README.md with the correct link for reporting an issue at the
+          aggregate repository.
+        Signed-off-by: Kenneth Lim <kennethlimcp@gmail.com>
+        signed-off-by: Kenneth Lim <kennethlimcp@gmail.com>
+      author: Kenneth Lim
+  version: 2.51.8+rev2
+  date: 2020-07-01T14:12:02.242Z
+- commits:
     - subject: Update balena-yocto-scripts to v1.8.0
       hash: f17d3779f0007bbbf558f1540a3a4591ef5c2fa1
       body: ''

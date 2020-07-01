@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.51.8+rev2
+## (2020-07-01)
+
+* Update README.md with the correct link for reporting an issue at the aggregate repository. [Kenneth Lim]
+
 # v2.51.8+rev1
 ## (2020-07-01)
 
