@@ -1,6 +1,26 @@
 Change log
 -----------
 
+# v2.52.1+rev1
+## (2020-07-02)
+
+
+<details>
+<summary> Update meta-balena from v2.51.8 to v2.52.1 [Florin Sarbu] </summary>
+
+> ## meta-balena-2.52.1
+> ### (2020-07-02)
+> 
+> * Fix up UUID variable when communicating with API [Matthew McGinn]
+
+> ## meta-balena-2.52.0
+> ### (2020-06-30)
+> 
+> * Add compressed memory swap support [Alex Gonzalez]
+> * systemd-zram-swap: Add compressed memory swap support [Alex Gonzalez]
+> * kernel-resin: Built-in zram configuration [Alex Gonzalez]
+</details>
+
 # v2.51.8+rev1
 ## (2020-07-01)
 
