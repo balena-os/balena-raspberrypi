@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.52.1+rev2
+## (2020-07-08)
+
+* Add custom dts for AD5446 DAC support on balenaFin [Florin Sarbu]
+
 # v2.52.1+rev1
 ## (2020-07-02)
 

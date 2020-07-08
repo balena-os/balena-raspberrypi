@@ -1,4 +1,18 @@
 - commits:
+    - subject: Add custom dts for AD5446 DAC support on balenaFin
+      hash: 904e8e00be885a468579227d62f32dea81840cc8
+      body: |
+        Customer designed and built a daughterboard for the balenaFin and needs
+        a custom dt overlay for it. He has supplied it to us and we add it here.
+      footer:
+        Changelog-entry: Add custom dts for AD5446 DAC support on balenaFin
+        changelog-entry: Add custom dts for AD5446 DAC support on balenaFin
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+  version: 2.52.1+rev2
+  date: 2020-07-08T07:33:30.700Z
+- commits:
     - subject: Update meta-balena from v2.51.8 to v2.52.1
       hash: 68645c2d7d6abbdb13a545654868fef232f0da13
       body: |
