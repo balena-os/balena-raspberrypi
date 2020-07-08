@@ -1,0 +1,75 @@
+From 0d6dd29e54246cdf654eb05457d6d3fd28e0713e Mon Sep 17 00:00:00 2001
+From: Florin Sarbu <florin@balena.io>
+Date: Wed, 8 Jul 2020 08:52:55 +0200
+Subject: [PATCH] overlays: Add spyfly.dts
+
+This dts was supplied by the customer for AD5446 DAC support on
+balenaFin.
+
+Signed-off-by: Florin Sarbu <florin@balena.io>
+---
+ arch/arm/boot/dts/overlays/Makefile   |  1 +
+ arch/arm/boot/dts/overlays/spyfly-overlay.dts | 38 +++++++++++++++++++++++++++++++++++
+ 2 files changed, 39 insertions(+)
+ create mode 100644 arch/arm/boot/dts/overlays/spyfly-overlay.dts
+
+diff --git a/arch/arm/boot/dts/overlays/Makefile b/arch/arm/boot/dts/overlays/Makefile
+index 8696c29..cc59d14 100644
+--- a/arch/arm/boot/dts/overlays/Makefile
++++ b/arch/arm/boot/dts/overlays/Makefile
+@@ -175,6 +175,7 @@ dtbo-$(CONFIG_ARCH_BCM2835) += \
+ 	spi5-2cs.dtbo \
+ 	spi6-1cs.dtbo \
+ 	spi6-2cs.dtbo \
++	spyfly.dtbo \
+ 	ssd1306.dtbo \
+ 	ssd1306-spi.dtbo \
+ 	ssd1351-spi.dtbo \
+diff --git a/arch/arm/boot/dts/overlays/spyfly-overlay.dts b/arch/arm/boot/dts/overlays/spyfly-overlay.dts
+new file mode 100644
+index 0000000..37a73af
+--- /dev/null
++++ b/arch/arm/boot/dts/overlays/spyfly-overlay.dts
+@@ -0,0 +1,38 @@
++/dts-v1/;
++/plugin/;
++
++/{
++	compatible = "brcm,bcm2708";
++
++    fragment@0 {
++        target-path="/";
++        __overlay__ {
++            dac_supply: fixedregulator@0 {
++                compatible = "regulator-fixed";
++                regulator-name = "fixed-supply";
++                regulator-min-microvolt = <2000000>;
++                regulator-max-microvolt = <2000000>;
++                gpio = <&gpio 20 0>;
++                enable-active-high;
++            };
++        };
++    };
++
++	fragment@1 {
++		target = <&i2c1>;
++		__overlay__ {
++			#address-cells = <1>;
++			#size-cells = <0>;
++			status = "okay";
++
++            /* Analog Devices AD5602 DAC */
++            dac: ad5446@0f {
++                compatible = "adi,ad5602";
++                reg = <0x0f>;
++                status = "okay";
++                vcc-supply = <&dac_supply>;
++                #io-channel-cells = < 0 >;
++            };
++		};
++	};
++};
+\ No newline at end of file
+-- 
+2.7.4
+
