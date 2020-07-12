@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.52.5+rev1
+## (2020-07-12)
+
+
+<details>
+<summary> Update meta-balena from v2.52.4 to v2.52.5 [Florin Sarbu] </summary>
+
+> ## meta-balena-2.52.5
+> ### (2020-07-10)
+> 
+> * Allow comments in iptables ruleset [Alex Gonzalez]
+> 
+</details>
+
 # v2.52.4+rev1
 ## (2020-07-09)
 

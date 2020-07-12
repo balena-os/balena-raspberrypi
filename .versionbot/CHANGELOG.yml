@@ -1,4 +1,39 @@
 - commits:
+    - subject: Update meta-balena from v2.52.4 to v2.52.5
+      hash: 20ea0f6cfd3f6d23539114dda98763a2e829d8f5
+      body: |
+        Update meta-balena from 2.52.4 to 2.52.5
+      footer:
+        Changelog-entry: Update meta-balena from v2.52.4 to v2.52.5
+        changelog-entry: Update meta-balena from v2.52.4 to v2.52.5
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: Allow comments in iptables ruleset
+              hash: a93ac5695c77cb36e6ec3ee1355b7b9da7b81d39
+              body: >
+                The latest v11.9.3 supervisor includes firewall configuration
+                functionality
+
+                that requires this module to be enabled on all platforms.
+              footer:
+                Connects-to: balena-io/balena-supervisor#1393
+                connects-to: balena-io/balena-supervisor#1393
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Allow comments in iptables ruleset
+                changelog-entry: Allow comments in iptables ruleset
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.52.5
+          date: 2020-07-10T16:11:02.635Z
+  version: 2.52.5+rev1
+  date: 2020-07-12T20:28:10.277Z
+- commits:
     - subject: Update meta-balena from v2.52.1 to v2.52.4
       hash: e7b63a401fdafa6459b40ad7ca10801b4d2c410c
       body: |
