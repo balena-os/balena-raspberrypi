@@ -1,4 +1,29 @@
 - commits:
+    - subject: Update meta-balena from v2.52.5 to v2.52.6
+      hash: 757c4fa6ba2b171370ea12375c3940417ef6ee2f
+      body: |
+        Update meta-balena from 2.52.5 to 2.52.6
+      footer:
+        Changelog-entry: Update meta-balena from v2.52.5 to v2.52.6
+        changelog-entry: Update meta-balena from v2.52.5 to v2.52.6
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: Update to use api v6 and fix a quoting bug
+              hash: 1e5bd5d984945a3e97d6b4bf64c5ae6a0e81b0b3
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Pagan Gazzard
+              nested: []
+          version: meta-balena-2.52.6
+          date: 2020-07-13T13:35:04.787Z
+  version: 2.52.6+rev1
+  date: 2020-07-13T20:02:51.196Z
+- commits:
     - subject: Update meta-balena from v2.52.4 to v2.52.5
       hash: 20ea0f6cfd3f6d23539114dda98763a2e829d8f5
       body: |

@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.52.6+rev1
+## (2020-07-13)
+
+
+<details>
+<summary> Update meta-balena from v2.52.5 to v2.52.6 [Florin Sarbu] </summary>
+
+> ## meta-balena-2.52.6
+> ### (2020-07-13)
+> 
+> * Update to use api v6 and fix a quoting bug [Pagan Gazzard]
+> 
+</details>
+
 # v2.52.5+rev1
 ## (2020-07-12)
 
