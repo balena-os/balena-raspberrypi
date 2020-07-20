@@ -1,0 +1,34 @@
+From 09407203d8129e3abee62c52cd43234bc25cc637 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Mon, 20 Jul 2020 16:30:01 +0200
+Subject: [PATCH] include/configs: Use config defaults
+
+Upstream does not include the config defaults
+as added by meta-balena. Let's include them.
+
+Upstream-status: Inappropriate[configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ include/configs/rpi.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/include/configs/rpi.h b/include/configs/rpi.h
+index d4cb96a170..8fb0201b41 100644
+--- a/include/configs/rpi.h
++++ b/include/configs/rpi.h
+@@ -6,6 +6,12 @@
+ #ifndef __CONFIG_H
+ #define __CONFIG_H
+ 
++/*
++ * Defaults
++ */
++
++#include <config_defaults.h>
++
+ #include <linux/sizes.h>
+ #include <asm/arch/timer.h>
+ 
+-- 
+2.17.1
+
