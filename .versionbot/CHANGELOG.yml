@@ -1,4 +1,463 @@
 - commits:
+    - subject: Update meta-balena from v2.52.7 to v2.53.8
+      hash: 7391430b7622cd7f6827dd6a3f311768aa8ba8a1
+      body: |
+        Update meta-balena from 2.52.7 to 2.53.8
+      footer:
+        Changelog-entry: Update meta-balena from v2.52.7 to v2.53.8
+        changelog-entry: Update meta-balena from v2.52.7 to v2.53.8
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested:
+        - commits:
+            - subject: 'resin-supervisor: Create required directories before launch'
+              hash: 7be7738c655e37e48c1a98f9e1e0ff2795d66bf8
+              body: >
+                On commit a4ce26caadabcb1e87d944d78218cc32c579914e the
+                supervisor moved
+
+                from using --volume to using --mount to avoid the implicit
+                creation of
+
+                directories instead of files.
+
+
+                However, in the case where the mount referred to a directory,
+                these have
+
+                to exist in the rootfs beforehand as --mount will not create
+                them.
+
+
+                This commit checks for the existence of the
+                /var/log/supervisor-log
+
+                directory and creates it if required.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.53.8
+          date: 2020-07-23T04:33:45.808Z
+        - commits:
+            - subject: 'balena-supervisor: Update to v11.9.8'
+              hash: f919017e873062d30efa73d93a99ad0272675d24
+              body: |
+                Update balena-supervisor from 11.9.6 to 11.9.8
+              footer:
+                Change-type: patch
+                change-type: patch
+                Backport-to: next
+                backport-to: next
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested:
+                - commits:
+                    - subject: Bump lodash from 4.17.15 to 4.17.19
+                      hash: 01655b595555ae63ea1b70d623451c9ad3ec03dd
+                      body: >
+                        Bumps [lodash](https://github.com/lodash/lodash) from
+                        4.17.15 to 4.17.19.
+
+                        - [Release
+                        notes](https://github.com/lodash/lodash/releases)
+
+                        -
+                        [Commits](https://github.com/lodash/lodash/compare/4.17.15...4.17.19)
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: 'dependabot[bot] <support@github.com>'
+                        signed-off-by: 'dependabot[bot] <support@github.com>'
+                      author: 'dependabot[bot]'
+                      nested: []
+                  version: balena-supervisor-11.9.8
+                  date: 2020-07-22T14:44:00.974Z
+                - commits:
+                    - subject: 'docker-utils: Test network gateway determination logic'
+                      hash: 6ef3bd2362ebd185053a351490f6561ec10b84d8
+                      body: ''
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Rich Bayliss <rich@balena.io>
+                        signed-off-by: Rich Bayliss <rich@balena.io>
+                      author: Rich Bayliss
+                      nested: []
+                    - subject: Fix docker-util using incorrect reference for function
+                      hash: 3b3babfd62868e986788d6c2f4fcede915fb4711
+                      body: ''
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Miguel Casqueira <miguel@balena.io>
+                        signed-off-by: Miguel Casqueira <miguel@balena.io>
+                      author: Miguel Casqueira
+                      nested: []
+                  version: balena-supervisor-11.9.7
+                  date: 2020-07-22T12:19:06.693Z
+          version: meta-balena-2.53.7
+          date: 2020-07-23T03:02:50.027Z
+        - commits:
+            - subject: >-
+                recipes-containers/balena: Use separate service for loading
+                healthcheck image
+              hash: 94a21624ccc1871d911b12654967b60a76a7e77a
+              body: |
+                In rocko, systemd kills any script started in background,
+                same thing happening to children that get re-parented.
+
+                One solution to this is to use a separate service file for
+                starting the healtcheck image load script, after balena.service
+                was started.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.53.6
+          date: 2020-07-21T13:44:11.006Z
+        - commits:
+            - subject: 'balena-supervisor: Update to v11.9.6'
+              hash: 826a68296c1ed3c7ce44753f6b8f85b9f8f87ef3
+              body: |
+                Update balena-supervisor from 11.9.4 to 11.9.6
+              footer:
+                Change-type: patch
+                change-type: patch
+                Backport-to: next
+                backport-to: next
+                Signed-off-by: Cameron Diver <cameron@balena.io>
+                signed-off-by: Cameron Diver <cameron@balena.io>
+              author: Rich Bayliss
+              nested:
+                - commits:
+                    - subject: >-
+                        Fix purge and restart invocations by providing instanced
+                        apps
+                      hash: d14d8f31ccee62fa8cec88209cc3674a1b280e34
+                      body: ''
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Cameron Diver <cameron@balena.io>
+                        signed-off-by: Cameron Diver <cameron@balena.io>
+                      author: Cameron Diver
+                      nested: []
+                    - subject: Fix purge invocations of new singletons
+                      hash: d2a7d3b9653a2afbd8eca009b75871cf54dbf3ac
+                      body: ''
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Cameron Diver <cameron@balena.io>
+                        signed-off-by: Cameron Diver <cameron@balena.io>
+                      author: Cameron Diver
+                      nested: []
+                  version: balena-supervisor-11.9.6
+                  date: 2020-07-20T17:25:37.311Z
+                - commits:
+                    - subject: Update ESR version information
+                      hash: c2b534a51b3863bf3c787db00c7299517224464f
+                      body: ''
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Cameron Diver <cameron@balena.io>
+                        signed-off-by: Cameron Diver <cameron@balena.io>
+                      author: Cameron Diver
+                      nested: []
+                  version: balena-supervisor-11.9.5
+                  date: 2020-07-14T14:31:17.340Z
+          version: meta-balena-2.53.5
+          date: 2020-07-21T11:58:00.018Z
+        - commits:
+            - subject: Add support for aufs5 on kernel 5.x variants
+              hash: 6bdf4211aefb1f2c842f0797c50ae537fe2baae5
+              body: |
+                We add support for aufs on kernels 5.x variants
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Add support for aufs5 on kernel 5.x variants
+                changelog-entry: Add support for aufs5 on kernel 5.x variants
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+            - subject: Force choosing busybox-hwclock over util-linux-hwclock
+              hash: 86dd4c761038ab0214a1fca8dd2839b4dbddfa39
+              body: >
+                Otherwise, as util-linux has a higher default alternative
+                priority, the
+
+                version in util-linux is chosen. It would seem they are
+                exchangeable, but
+
+                the busybox version reportedly works even if the RTC interrupt
+                line is not
+
+                connected.
+
+
+                Fixes #1936
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Force choosing busybox-hwclock over util-linux-hwclock
+                changelog-entry: Force choosing busybox-hwclock over util-linux-hwclock
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.53.4
+          date: 2020-07-21T08:03:00.660Z
+        - commits:
+            - subject: 'provisioning: provide base supervisor_version during provision'
+              hash: b791055f3f6ffd6cc5796569a7321c5060129eea
+              body: >
+                In order to get closer to formally requiring a target supervisor
+                release
+
+                in the model, we should expand our provisioning process to
+                provide the
+
+                initial supervisor_version metadata. This connects back to
+                tri-app.
+              footer:
+                Depends-on: 'https://github.com/balena-io/open-balena-api/pull/394'
+                depends-on: 'https://github.com/balena-io/open-balena-api/pull/394'
+                HQ: 'https://github.com/balena-io/balena-io/pull/2177'
+                hq: 'https://github.com/balena-io/balena-io/pull/2177'
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Matthew McGinn <matthew@balena.io>
+                signed-off-by: Matthew McGinn <matthew@balena.io>
+              author: Matthew McGinn
+              nested: []
+          version: meta-balena-2.53.3
+          date: 2020-07-16T13:48:11.858Z
+        - commits:
+            - subject: Add LZ4 support config for older kernels
+              hash: 403fc033b75b2672bf9c8ef9a27879096e7b88b7
+              body: |
+                Kernel versions between 4.0 and 4.9 use
+                CONFIG_ZRAM_LZ4_COMPRESS, whereas newer ones
+                use CONFIG_CRYPTO_LZ4.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.53.2
+          date: 2020-07-16T08:17:26.378Z
+        - commits:
+            - subject: Remove unnecessary config.json keys
+              hash: b3222e619bbeebc0a2bd9e7419a9d8ae12b34dce
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Pagan Gazzard
+              nested: []
+          version: meta-balena-2.53.1
+          date: 2020-07-14T14:53:06.752Z
+        - commits:
+            - subject: 'resin-supervisor: Create required directories before launch'
+              hash: a93bd242d37246da83c1fa4368174d89b5c045f4
+              body: >
+                On commit a4ce26caadabcb1e87d944d78218cc32c579914e the
+                supervisor moved
+
+                from using --volume to using --mount to avoid the implicit
+                creation of
+
+                directories instead of files.
+
+
+                However, in the case where the mount referred to a directory,
+                these have
+
+                to exist in the rootfs beforehand as --mount will not create
+                them.
+
+
+                This commit checks for the existence of the
+                /resin-data/resin-supervisor
+
+                directory and creates it if required.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: Rebrand custom resin logos
+              hash: dc215462dd5adcb171496be9aef237351d749d71
+              body: >
+                When performing hostOS updates, the resin-logo.png might have
+
+                been customized by the customer.
+
+                This commits renames it to the newly branded balena-logo.png
+
+
+                If the resin-logo.png was unmodified, it will forcefully replace
+                to
+
+                balena-logo.png to force rebranding of older resin branded
+                release.
+
+
+                Fixes #1801
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Rebrand custom resin logos
+                changelog-entry: Rebrand custom resin logos
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'plymouth: Remove patch that sets plymouth resin theme'
+              hash: 8ccc9fc6862fdcaf9197bd443549411a3965279d
+              body: |
+                This is now configured as part of the plymouth-theme package.
+              footer:
+                Changelog-type: patch
+                changelog-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'docker-disk: Update dind container to v19.03.10'
+              hash: 6b325f57ff50be11e0c5f1f2420b911211f0ef06
+              body: ''
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: 'docker-disk: Update to still supported dind container'
+              hash: e325ab34b9d7f14ad5a0d85b36b02ee1e2b7fdf8
+              body: >
+                The `docker` Docker Hub repository lists what versions of the
+                image
+
+                are supported and 18.6 is not among them at all. Use the current
+                stable
+
+                line of 18.09 instead, to stay on supported versions. See more
+                info at:
+
+                https://hub.docker.com/_/docker
+
+
+                For more reproducability, we are also including the patch level
+                version
+
+                of the container, which will give us more responsibility to
+                update more
+
+                frequently, but fewer surprises.
+
+
+                Also explicitly set `DOCKER_HOST` for the daemon being started,
+                otherwise
+
+                the base image's setting might silently take over, and modify
+                this.
+
+
+                Replace deprecated `-g` (graph driver) with `--data-root` as
+                well.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Gergely Imreh <gergely@balena.io>
+                signed-off-by: Gergely Imreh <gergely@balena.io>
+              author: Gergely Imreh
+              nested: []
+            - subject: Use udev for setting up wlan power management
+              hash: 7826c8ba9a9b6a97021fbcd352f627518afa8d73
+              body: >
+                resin-init has a hardcoded command to disable power management
+
+                on wlan0. This commit moves the logic to udev rule as there is
+
+                no guarantee wlan0 is the only or default wlan adapter in the
+                system.
+
+
+                There seems to be no better way to identify a wlan device in
+                udev
+
+                than KERNEL=="wl*" which should match both net.ifnames=0 (wlanX)
+
+                and net.ifnames=1 (wlpX).
+
+
+                Fixes #1422
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Use udev for setting up wlan power management
+                changelog-entry: Use udev for setting up wlan power management
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: >-
+                Use --mount instead of --volume for bind mounts to the
+                supervisor container.
+              hash: 0fd442943d6b6c802df2f6e35d334ecde0f748e9
+              body: >
+                This makes sure the source path refers to an existing
+                file/directory on
+
+                the host.
+
+
+                https://docs.docker.com/engine/reference/commandline/service_create/#differences-between---mount-and---volume
+
+
+                This avoids situations where --volume implicitely creates a
+                directory (see #1748)
+
+
+                Fixes #1754
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: >-
+                  Use --mount instead of --volume for bind mounts to the
+                  supervisor container.
+                changelog-entry: >-
+                  Use --mount instead of --volume for bind mounts to the
+                  supervisor container.
+                Signed-off-by: Robert Günzler <robertg@balena.io>
+                signed-off-by: Robert Günzler <robertg@balena.io>
+              author: Robert Günzler
+              nested: []
+          version: meta-balena-2.53.0
+          date: 2020-07-14T09:38:34.861Z
+  version: 2.53.8+rev1
+  date: 2020-07-23T09:01:13.063Z
+- commits:
     - subject: Update meta-balena from v2.52.6 to v2.52.7
       hash: 8882d27e270f3d09b37290dbdc3ea40c3a634cd5
       body: |
