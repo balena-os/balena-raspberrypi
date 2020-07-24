@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.53.8+rev2
+## (2020-07-24)
+
+* Use 1GB kernel / 3GB userspace memory split for 32-bit kernels [Michal Toman]
+
 # v2.53.8+rev1
 ## (2020-07-23)
 

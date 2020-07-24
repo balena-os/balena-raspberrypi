@@ -1,4 +1,24 @@
 - commits:
+    - subject: Use 1GB kernel / 3GB userspace memory split for 32-bit kernels
+      hash: 96e567e3c1315f9a595dc16f86cdc2dbeb0bfb9f
+      body: |
+        At this moment we are using the default 2GB kernel / 2GB userspace
+        memory split which causes issues for the application that need to
+        map more than 2GB of memory (e.g. balena engine). The other 32-bit
+        boards default to 1GB kernel / 3GB userspace ratio which seems to
+        be more reasonable in general.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: Use 1GB kernel / 3GB userspace memory split for 32-bit kernels
+        changelog-entry: Use 1GB kernel / 3GB userspace memory split for 32-bit kernels
+        Signed-off-by: Michal Toman <michalt@balena.io>
+        signed-off-by: Michal Toman <michalt@balena.io>
+      author: Michal Toman
+      nested: []
+  version: 2.53.8+rev2
+  date: 2020-07-24T13:37:34.626Z
+- commits:
     - subject: Update meta-balena from v2.52.7 to v2.53.8
       hash: 7391430b7622cd7f6827dd6a3f311768aa8ba8a1
       body: |
