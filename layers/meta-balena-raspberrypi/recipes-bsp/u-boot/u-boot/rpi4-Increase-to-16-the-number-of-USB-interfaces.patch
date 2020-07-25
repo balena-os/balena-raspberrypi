@@ -1,0 +1,32 @@
+From 0b8a1d7f90f06b886f2e3b6ed5539dcb13f093c1 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Mon, 20 Jul 2020 14:32:19 +0200
+Subject: [PATCH] rpi4: Increase to 16 the number of USB interfaces
+
+This fixes the "Too many USB interfaces!" error thrown by u-boot when
+having lots of USB devices connected to the bus
+
+Re-based for u-boot v2020.07 onwards
+
+Upstream-Status: Pending
+Signed-off-by: Sebastian Panceac <sebastian@balena.io>
+---
+ include/usb.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/usb.h b/include/usb.h
+index fa9e09607e..a99fbeeb60 100644
+--- a/include/usb.h
++++ b/include/usb.h
+@@ -33,7 +33,7 @@
+ 
+ #define USB_MAX_DEVICE			32
+ #define USB_MAXCONFIG			8
+-#define USB_MAXINTERFACES		8
++#define USB_MAXINTERFACES		16
+ #define USB_MAXENDPOINTS		16
+ #define USB_MAXCHILDREN			8	/* This is arbitrary */
+ #define USB_MAX_HUB			16
+-- 
+2.17.1
+
