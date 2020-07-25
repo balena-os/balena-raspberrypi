@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.53.9+rev2
+## (2020-07-24)
+
+* Update the boot firmware to the 20200601arm64 [Alexandru Costache]
+
 # v2.53.9+rev1
 ## (2020-07-24)
 

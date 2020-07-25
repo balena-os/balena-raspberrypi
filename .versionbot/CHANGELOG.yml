@@ -1,4 +1,18 @@
 - commits:
+    - subject: Update the boot firmware to the 20200601arm64
+      hash: 419045e9affa5939275837dae6dc145f653032f1
+      body: |
+        This is necessary for USB boot on RPI4
+      footer:
+        Changelog-entry: Update the boot firmware to the 20200601arm64
+        changelog-entry: Update the boot firmware to the 20200601arm64
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.53.9+rev2
+  date: 2020-07-24T18:18:13.756Z
+- commits:
     - subject: Update meta-balena from v2.53.8 to v2.53.9
       hash: d6597f88af9227a094e5b24d6c4eaf631dda8e4d
       body: |
