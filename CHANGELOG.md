@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.53.9+rev3
+## (2020-07-27)
+
+* Remove kernel check config warning for PWRSEQ_SD8787 [Alex Gonzalez]
+
 # v2.53.9+rev2
 ## (2020-07-24)
 

@@ -1,4 +1,22 @@
 - commits:
+    - subject: Remove kernel check config warning for PWRSEQ_SD8787
+      hash: 0871201cdf59b04f40c709d2b28662ef646d611a
+      body: |
+        The PWRSEQ_SD8787 driver depends on either MWIFIEX or
+        BT_MRVL_SDIO and both are configured as modules.
+
+        Change the inclusion of PWRSEQ_SD8787 from built-in to
+        module to match the dependencies.
+      footer:
+        Changelog-entry: Remove kernel check config warning for PWRSEQ_SD8787
+        changelog-entry: Remove kernel check config warning for PWRSEQ_SD8787
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.53.9+rev3
+  date: 2020-07-27T06:34:25.850Z
+- commits:
     - subject: Update the boot firmware to the 20200601arm64
       hash: 419045e9affa5939275837dae6dc145f653032f1
       body: |
