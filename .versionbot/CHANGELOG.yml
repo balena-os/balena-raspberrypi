@@ -1,4 +1,28 @@
 - commits:
+    - subject: Dummy commit for triggering vb
+      hash: fce44058a0e9e8e8863575a7d915faf2b960c968
+      body: ''
+      footer:
+        Changelog-entry: Dummy commit for triggering vb
+        changelog-entry: Dummy commit for triggering vb
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+    - subject: Update meta-balena from v2.50.4 to v2.50.8
+      hash: c64f90ec42c6c4088f18a004e3e03c2148a60044
+      body: |
+        Update meta-balena from 2.50.4 to 2.50.8
+      footer:
+        Changelog-entry: Update meta-balena from v2.50.4 to v2.50.8
+        changelog-entry: Update meta-balena from v2.50.4 to v2.50.8
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2020.07.1
+  date: 2020-07-28T11:42:41.924Z
+- commits:
     - subject: Fix bluetooth and mlan loading order for the balenaFin
       hash: 361925836b5dfe7567844f9ca623c28df3c0e674
       body: |

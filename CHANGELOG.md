@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2020.07.1
+## (2020-07-28)
+
+* Dummy commit for triggering vb [Florin Sarbu]
+* Update meta-balena from v2.50.4 to v2.50.8 [Florin Sarbu]
+
 # 2020.07.0
 ## (2020-07-23)
 
