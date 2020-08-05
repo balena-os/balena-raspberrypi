@@ -1,6 +1,25 @@
 Change log
 -----------
 
+# v2.53.11+rev1
+## (2020-08-05)
+
+
+<details>
+<summary> Update meta-balena from v2.53.9 to v2.53.11 [Florin Sarbu] </summary>
+
+> ## meta-balena-2.53.11
+> ### (2020-07-30)
+> 
+> * Use a named key when querying for device by uuid [Pagan Gazzard]
+> 
+> ## meta-balena-2.53.10
+> ### (2020-07-29)
+> 
+> * supervisor: allow supervisor updates without controlling the supervisor state [Matthew McGinn]
+> 
+</details>
+
 # v2.53.9+rev3
 ## (2020-07-27)
 

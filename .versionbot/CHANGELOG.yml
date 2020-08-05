@@ -1,4 +1,57 @@
 - commits:
+    - subject: Update meta-balena from v2.53.9 to v2.53.11
+      hash: 853afcb89c7fb7061d2d08408d95117115c09195
+      body: |
+        Update meta-balena from 2.53.9 to 2.53.11
+      footer:
+        Changelog-entry: Update meta-balena from v2.53.9 to v2.53.11
+        changelog-entry: Update meta-balena from v2.53.9 to v2.53.11
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: Use a named key when querying for device by uuid
+              hash: e2c6614d28fe498853297891eb0feeb4b1577a7b
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Pagan Gazzard
+              nested: []
+          version: meta-balena-2.53.11
+          date: 2020-07-30T15:32:30.333Z
+        - commits:
+            - subject: >-
+                supervisor: allow supervisor updates without controlling the
+                supervisor state
+              hash: 6208f065e59d9c15e10e872bff788c0b80020983
+              body: >
+                Recently the supervisor added a codepath that assumes no files
+                underneath it will change during runtime.
+
+                OS update hooks can trigger a condition whereby the supervisor
+                reboots the device during a HUP,
+
+                which in turn bricks the device.
+
+
+                Additionally, since unknown args cause this update to
+                fail-closed,
+
+                remove that barrier to future-proof more flag expansion.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Matthew McGinn <matthew@balena.io>
+                signed-off-by: Matthew McGinn <matthew@balena.io>
+              author: Matthew McGinn
+              nested: []
+          version: meta-balena-2.53.10
+          date: 2020-07-29T12:42:50.816Z
+  version: 2.53.11+rev1
+  date: 2020-08-05T07:10:35.285Z
+- commits:
     - subject: Remove kernel check config warning for PWRSEQ_SD8787
       hash: 0871201cdf59b04f40c709d2b28662ef646d611a
       body: |
