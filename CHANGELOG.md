@@ -1,6 +1,22 @@
 Change log
 -----------
 
+# v2.53.12+rev1
+## (2020-08-05)
+
+
+<details>
+<summary> Update meta-balena from v2.53.11 to v2.53.12 [Florin Sarbu] </summary>
+
+> ## meta-balena-2.53.12
+> ### (2020-08-04)
+> 
+> * systemd: Set net.ipv4.conf.all.rp_filter in balena-os-sysctl [Alexandru Costache]
+> 
+</details>
+
+* Add i2c overlays [Florin Sarbu]
+
 # v2.53.11+rev1
 ## (2020-08-05)
 

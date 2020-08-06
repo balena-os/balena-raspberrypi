@@ -1,4 +1,51 @@
 - commits:
+    - subject: Update meta-balena from v2.53.11 to v2.53.12
+      hash: 209b93943fa5f5c08cfd5a4254da487fd3c23b52
+      body: |
+        Update meta-balena from 2.53.11 to 2.53.12
+      footer:
+        Changelog-entry: Update meta-balena from v2.53.11 to v2.53.12
+        changelog-entry: Update meta-balena from v2.53.11 to v2.53.12
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: 'systemd: Set net.ipv4.conf.all.rp_filter in balena-os-sysctl'
+              hash: a0573b7df13292aff6c7670246ed780342593376
+              body: >
+                The warrior branch does not backport this configuration
+
+                like the older branches do. Let's move this setting in the
+
+                balena-os-sysctl file to avoid issues where some device
+                integration
+
+                layers set the rp_filter mode to strict and break connectivity.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.53.12
+          date: 2020-08-04T14:01:14.955Z
+    - subject: Add i2c overlays
+      hash: 59ec30afa589f4ee5d1651709e8129245cd5b898
+      body: |
+        We add the i2c0 and i2c1 overlays to the rootfs for all the boards
+        and in addition the i2c3 to i2c6 overlays for the RaspberryPi 4.
+      footer:
+        Changelog-entry: Add i2c overlays
+        changelog-entry: Add i2c overlays
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.53.12+rev1
+  date: 2020-08-05T23:08:34.614Z
+- commits:
     - subject: Update meta-balena from v2.53.9 to v2.53.11
       hash: 853afcb89c7fb7061d2d08408d95117115c09195
       body: |
