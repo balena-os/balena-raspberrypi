@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.54.3+rev1
+## (2020-08-25)
+
+* Update RPI4 to kernel 5.4.58 [Vicentiu Galanopulo]
+
 # v2.54.2+rev1
 ## (2020-08-14)
 

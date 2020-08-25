@@ -1,4 +1,22 @@
 - commits:
+    - subject: Update RPI4 to kernel 5.4.58
+      hash: 134f7d727be1275de64ced4417c373eff08611e4
+      body: |
+        Copy the 5.4 kernel recipe from the master branch
+        of the meta-raspberrypi and add the patches
+        to fix the u-boot failure and the USB failure
+        https://github.com/balena-os/balena-raspberrypi/issues/524
+        https://github.com/balena-os/balena-raspberrypi/issues/493/
+      footer:
+        Changelog-entry: Update RPI4 to kernel 5.4.58
+        changelog-entry: Update RPI4 to kernel 5.4.58
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+  version: 2.54.3+rev1
+  date: 2020-08-25T15:10:53.495Z
+- commits:
     - subject: Update meta-balena from v2.53.12 to v2.54.2
       hash: ad986be201c3696ef77075c22786ca01ff203537
       body: |
