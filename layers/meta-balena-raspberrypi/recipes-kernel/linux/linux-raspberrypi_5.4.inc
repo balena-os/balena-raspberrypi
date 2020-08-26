@@ -5,7 +5,7 @@ SRC_URI = " \
     "
 SRC_URI_remove = "file://rpi-kernel-misc.cfg"
 
-require linux-raspberrypi.inc
+require recipes-kernel/linux/linux-raspberrypi.inc
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=bbea815ee2795b2f4230826c0c6b8814"
 
