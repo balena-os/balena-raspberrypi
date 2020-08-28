@@ -1,4 +1,23 @@
 - commits:
+    - subject: use the linux-raspberrypi.inc from meta-raspberrypi
+      hash: 99c15c383fbf446c790d11a96b0471b4407adcd8
+      body: |
+        The linux-raspberrypi.inc was copied from master when the kernel
+        recipe was added.
+        It had the BOOTFILES_DIR_NAME var which is not defined
+        elsewhere and which determined cmdline.txt not being installed
+        Fix this by using the inc file from meta-raspberrypi and
+        delete the copied one
+      footer:
+        Changelog-entry: use the linux-raspberrypi.inc from meta-raspberrypi
+        changelog-entry: use the linux-raspberrypi.inc from meta-raspberrypi
+        Signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+        signed-off-by: Vicentiu Galanopulo <vicentiu@balena.io>
+      author: Vicentiu Galanopulo
+      nested: []
+  version: 2.54.3+rev3
+  date: 2020-08-28T15:42:10.262Z
+- commits:
     - subject: Avoid Pi4 freeze while booting production builds
       hash: 63b0045f9570f923c17d37ea9a6646fe5f7bbda7
       body: |

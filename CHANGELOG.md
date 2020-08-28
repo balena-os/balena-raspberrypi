@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.54.3+rev3
+## (2020-08-28)
+
+* use the linux-raspberrypi.inc from meta-raspberrypi [Vicentiu Galanopulo]
+
 # v2.54.3+rev2
 ## (2020-08-28)
 
