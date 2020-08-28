@@ -22,6 +22,7 @@ SRC_URI_append_raspberrypi4-64 = " \
 	file://0004-ARM-dts-bcm2711-Add-reset-controller-to-xHCI-node.patch \
 	file://0007-usb-host-pci-quirks-Bypass-xHCI-quirks-for-Raspberry-Pi-4.patch \
 	file://0008-usb-xhci-pci-Raspberry-Pi-FW-loader-for-VIA-VL805.patch \
+	file://rpi4-fix-usb-boot-8GB.patch \
 "
 
 # Set console accordingly to build type
