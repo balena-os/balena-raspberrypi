@@ -1,0 +1,32 @@
+From 53f5425ec5979df0b2db210505c3dea84e6fb2c8 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Thu, 27 Aug 2020 14:27:46 +0200
+Subject: [PATCH] pl01: Disable driver in production builds
+
+Do so when enable_uart is not set in config.txt,
+otherwise the Pi4 will freeze during boot. We don't
+want to output anything to the serial console while
+u-boot is running anyway.
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ drivers/serial/serial_pl01x.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/serial/serial_pl01x.c b/drivers/serial/serial_pl01x.c
+index 6e5d81ce34..199bef2f4f 100644
+--- a/drivers/serial/serial_pl01x.c
++++ b/drivers/serial/serial_pl01x.c
+@@ -375,7 +375,7 @@ int pl01x_serial_ofdata_to_platdata(struct udevice *dev)
+ U_BOOT_DRIVER(serial_pl01x) = {
+ 	.name	= "serial_pl01x",
+ 	.id	= UCLASS_SERIAL,
+-	.of_match = of_match_ptr(pl01x_serial_id),
++	.of_match = NULL,
+ 	.ofdata_to_platdata = of_match_ptr(pl01x_serial_ofdata_to_platdata),
+ 	.platdata_auto_alloc_size = sizeof(struct pl01x_serial_platdata),
+ 	.probe = pl01x_serial_probe,
+-- 
+2.17.1
+
