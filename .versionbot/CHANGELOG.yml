@@ -1,4 +1,21 @@
 - commits:
+    - subject: Avoid Pi4 freeze while booting production builds
+      hash: 63b0045f9570f923c17d37ea9a6646fe5f7bbda7
+      body: |
+        In production images enable_uart is not set in config.txt
+        and we don't want to output anything to the console either.
+        Let's not load the pl11 serial driver because it freezes boot when
+        enable_uart is not set.
+      footer:
+        Changelog-entry: Avoid Pi4 freeze while booting production builds
+        changelog-entry: Avoid Pi4 freeze while booting production builds
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.54.3+rev2
+  date: 2020-08-28T13:23:13.316Z
+- commits:
     - subject: Update RPI4 to kernel 5.4.58
       hash: 134f7d727be1275de64ced4417c373eff08611e4
       body: |

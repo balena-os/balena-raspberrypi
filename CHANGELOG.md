@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.54.3+rev2
+## (2020-08-28)
+
+* Avoid Pi4 freeze while booting production builds [Alexandru Costache]
+
 # v2.54.3+rev1
 ## (2020-08-25)
 
