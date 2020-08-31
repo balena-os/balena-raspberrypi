@@ -15,7 +15,7 @@
 	url = https://github.com/balena-os/balena-yocto-scripts.git
 [submodule "tests/autohat"]
 	path = tests/autohat
-	url = https://github.com/resin-io/autohat.git
+	url = https://github.com/balena-io/autohat.git
 [submodule "layers/meta-rust"]
 	path = layers/meta-rust
 	url = https://github.com/meta-rust/meta-rust.git
