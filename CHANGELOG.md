@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.54.3+rev4
+## (2020-09-02)
+
+* gitmodules: Rename resin to balena in repo links [Alexandru Costache]
+
 # v2.54.3+rev3
 ## (2020-08-28)
 

@@ -1,4 +1,19 @@
 - commits:
+    - subject: 'gitmodules: Rename resin to balena in repo links'
+      hash: bdab4217de61666f4ea16e0b4a4614cc2ec64d7c
+      body: |
+        One small resin occurrence was still present
+        in the git modules file.
+      footer:
+        Changelog-entry: 'gitmodules: Rename resin to balena in repo links'
+        changelog-entry: 'gitmodules: Rename resin to balena in repo links'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.54.3+rev4
+  date: 2020-09-02T13:30:03.830Z
+- commits:
     - subject: use the linux-raspberrypi.inc from meta-raspberrypi
       hash: 99c15c383fbf446c790d11a96b0471b4407adcd8
       body: |
