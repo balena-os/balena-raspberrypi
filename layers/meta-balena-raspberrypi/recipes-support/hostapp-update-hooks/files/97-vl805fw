@@ -11,6 +11,8 @@ CURR_IMG_PATH=/dev/shm
 NEW_IMG=vl805-latest-stable.bin
 NEW_IMG_PATH=/mnt/boot
 
+sync
+
 /usr/sbin/vl805 -r ${CURR_IMG_PATH}/${CURR_IMG} || true
 
 # Don't fail if firmware cannot be read
