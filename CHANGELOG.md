@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.56.0+rev2
+## (2020-09-14)
+
+* README: Rename resin to Balena in layer readme [Alexandru Costache]
+
 # v2.56.0+rev1
 ## (2020-09-03)
 

@@ -1,4 +1,17 @@
 - commits:
+    - subject: 'README: Rename resin to Balena in layer readme'
+      hash: 61c57cd98b40e178764778e9680504f2a1f44c53
+      body: ''
+      footer:
+        Changelog-entry: 'README: Rename resin to Balena in layer readme'
+        changelog-entry: 'README: Rename resin to Balena in layer readme'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.56.0+rev2
+  date: 2020-09-14T10:26:29.132Z
+- commits:
     - subject: Update meta-balena from v2.54.3 to v2.56.0
       hash: 6c972a0ed01163b40c3f99366a9fd7de99e432e5
       body: |
