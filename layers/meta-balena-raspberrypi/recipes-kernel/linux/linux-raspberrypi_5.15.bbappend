@@ -1,5 +1,7 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:${THISDIR}/${MACHINE}:"
 
+require linux-raspberrypi-balena.inc
+
 LINUX_VERSION = "5.15.92"
 SRCREV_machine = "14b35093ca68bf2c81bbc90aace5007142b40b40"
 

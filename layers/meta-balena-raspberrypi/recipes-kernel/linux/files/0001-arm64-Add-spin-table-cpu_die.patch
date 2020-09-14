@@ -1,0 +1,49 @@
+From 2dd697dbb572bd5e2ba503419225e2124b8dbe23 Mon Sep 17 00:00:00 2001
+From: Alex Gonzalez <alexg@balena.io>
+Date: Sun, 13 Sep 2020 19:02:03 +0200
+Subject: [PATCH] arm64: Add spin-table cpu_die
+
+From https://patchwork.kernel.org/patch/4139761/
+
+This commit was nacked as it should extend the hotplug mechanism to
+support spin-tables cpus instead.
+
+For the use case of using a non-SMP linux kernel (maxcpus=0) as a
+bootloader, this allows the kexec and is safe.
+
+Signed-off-by: Alex Gonzalez <alexg@balena.io>
+---
+ arch/arm64/kernel/smp_spin_table.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+diff --git a/arch/arm64/kernel/smp_spin_table.c b/arch/arm64/kernel/smp_spin_table.c
+index 93034651c87e..456a40764c7e 100644
+--- a/arch/arm64/kernel/smp_spin_table.c
++++ b/arch/arm64/kernel/smp_spin_table.c
+@@ -128,9 +128,26 @@ static int smp_spin_table_cpu_boot(unsigned int cpu)
+ 	return 0;
+ }
+ 
++#ifdef CONFIG_KEXEC
++static int smp_spin_table_cpu_disable(unsigned int cpu)
++{
++	return 0;
++}
++
++static void smp_spin_table_cpu_die(unsigned int cpu)
++{
++	while (1)
++		cpu_relax();
++}
++#endif
++
+ const struct cpu_operations smp_spin_table_ops = {
+ 	.name		= "spin-table",
+ 	.cpu_init	= smp_spin_table_cpu_init,
+ 	.cpu_prepare	= smp_spin_table_cpu_prepare,
+ 	.cpu_boot	= smp_spin_table_cpu_boot,
++#ifdef CONFIG_KEXEC
++	.cpu_disable	= smp_spin_table_cpu_disable,
++	.cpu_die	= smp_spin_table_cpu_die,
++#endif
+ };

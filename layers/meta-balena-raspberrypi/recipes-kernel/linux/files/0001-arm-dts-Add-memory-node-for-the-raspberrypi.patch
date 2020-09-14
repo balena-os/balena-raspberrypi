@@ -1,0 +1,28 @@
+From: Alex Gonzalez <alexg@balena.io>
+Date: Fri, 25 Aug 2023 17:31:24 +0200
+Subject: [PATCH] arm: dts: Add memory node for the raspberrypi
+
+Usually the bootloader adds this information dynamically, but in the case
+where we use kexec to boot BalenaOS we need this encoded in the DT itself.
+
+Signed-off-by: Alex Gonzalez <alexg@balena.io>
+---
+ arch/arm/boot/dts/bcm2711-rpi.dtsi | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/arch/arm/boot/dts/bcm2711-rpi.dtsi b/arch/arm/boot/dts/bcm2711-rpi.dtsi
+index 3c0bc92ab39c..fbe1934db2f1 100644
+--- a/arch/arm/boot/dts/bcm2711-rpi.dtsi
++++ b/arch/arm/boot/dts/bcm2711-rpi.dtsi
+@@ -4,10 +4,9 @@
+ #include <dt-bindings/reset/raspberrypi,firmware-reset.h>
+ 
+ / {
+-	/* Will be filled by the bootloader */
+ 	memory@0 {
+ 		device_type = "memory";
+-		reg = <0 0 0>;
++		reg = <0 0 0x3e600000>;
+ 	};
+ 
+ 	aliases {
