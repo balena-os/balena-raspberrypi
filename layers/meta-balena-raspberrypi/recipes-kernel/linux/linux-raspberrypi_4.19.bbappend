@@ -2,6 +2,8 @@ inherit kernel-resin
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
+require linux-raspberrypi-balena.inc
+
 SRC_URI_append_fincm3 = " \
 	file://0004-mmc-pwrseq-Repurpose-for-Marvell-SD8777.patch \
 	file://0005-balena-fin-wifi-sta-uap-mode.patch \

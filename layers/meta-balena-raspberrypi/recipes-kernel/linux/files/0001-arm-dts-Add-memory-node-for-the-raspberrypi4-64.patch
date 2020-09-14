@@ -1,0 +1,26 @@
+From 020f4bd2a62d5943db91195dd4524e82257c2f9d Mon Sep 17 00:00:00 2001
+From: Alex Gonzalez <alexg@balena.io>
+Date: Thu, 17 Sep 2020 11:06:12 +0200
+Subject: [PATCH] arm: dts: Add memory node for the raspberrypi4-64
+
+Usually the bootloader adds this information dynamically, but in the case
+where we use kexec to boot BalenaOS we need this encoded in the DT itself.
+
+Signed-off-by: Alex Gonzalez <alexg@balena.io>
+---
+ arch/arm/boot/dts/bcm2711-rpi-4-b.dts | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/bcm2711-rpi-4-b.dts b/arch/arm/boot/dts/bcm2711-rpi-4-b.dts
+index 5cd6c7bd344a..9e8e8dab1162 100644
+--- a/arch/arm/boot/dts/bcm2711-rpi-4-b.dts
++++ b/arch/arm/boot/dts/bcm2711-rpi-4-b.dts
+@@ -10,7 +10,7 @@
+ 
+ 	memory@0 {
+ 		device_type = "memory";
+-		reg = <0x0 0x0 0x0>;
++		reg = <0x0 0x0 0x3e600000>;
+ 	};
+ 
+ 	chosen {
