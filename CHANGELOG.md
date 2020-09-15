@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.56.0+rev3
+## (2020-09-15)
+
+* Use bt / wifi prebuilts for kernel 4.19.118 [Florin Sarbu]
+
 # v2.56.0+rev2
 ## (2020-09-14)
 

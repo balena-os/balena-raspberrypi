@@ -1,4 +1,19 @@
 - commits:
+    - subject: Use bt / wifi prebuilts for kernel 4.19.118
+      hash: b4daf172386b8e1aa74bb7a804fc0e1841b4d819
+      body: |
+        We updated the kernel to version 4.19.118 so let's also update the
+        prebuilts.
+      footer:
+        Changelog-entry: Use bt / wifi prebuilts for kernel 4.19.118
+        changelog-entry: Use bt / wifi prebuilts for kernel 4.19.118
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.56.0+rev3
+  date: 2020-09-15T08:20:34.760Z
+- commits:
     - subject: 'README: Rename resin to Balena in layer readme'
       hash: 61c57cd98b40e178764778e9680504f2a1f44c53
       body: ''
