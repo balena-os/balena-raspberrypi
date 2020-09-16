@@ -1,6 +1,30 @@
 Change log
 -----------
 
+# v2.58.0+rev1
+## (2020-09-15)
+
+
+<details>
+<summary> Update meta-balena from v2.56.0 to v2.58.0 [Alexandru Costache] </summary>
+
+> ## meta-balena-2.58.0
+> ### (2020-09-05)
+> 
+> * Respect balenaRootCA system-wide [Michal Toman]
+> 
+> ## meta-balena-2.57.1
+> ### (2020-09-04)
+> 
+> * os-helpers-logging: Log to stderr rather than stdout [Michal Toman]
+> 
+> ## meta-balena-2.57.0
+> ### (2020-09-04)
+> 
+> * Update libmbim to 1.24.2, libqmi to 1.26.0, modemmanager to 1.14.2 [Vicentiu Galanopulo]
+> 
+</details>
+
 # v2.56.0+rev3
 ## (2020-09-15)
 
