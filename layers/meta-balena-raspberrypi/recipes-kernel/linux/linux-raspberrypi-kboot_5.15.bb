@@ -16,6 +16,7 @@ SRC_URI:remove:raspberrypi4-64 = "file://vc4graphics.cfg"
 SRC_URI:remove:raspberrypi4-64 = "file://initramfs-image-bundle.cfg"
 
 require recipes-kernel/linux/linux-raspberrypi.inc
+require linux-raspberrypi-balena.inc
 
 KERNEL_DTC_FLAGS += "-@ -H epapr"
 
