@@ -153,7 +153,7 @@ RESIN_CONFIGS_DEPS[mcp3422_adc_driver] = " \
 RESIN_CONFIGS_append = " sd8787_pwrseq_driver"
 
 RESIN_CONFIGS[sd8787_pwrseq_driver] = " \
-    CONFIG_PWRSEQ_SD8787=m \
+    CONFIG_PWRSEQ_SD8787=y \
 "
 
 RESIN_CONFIGS_DEPS[sd8787_pwrseq_driver] = " \
