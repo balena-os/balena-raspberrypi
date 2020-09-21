@@ -1,4 +1,89 @@
 - commits:
+    - subject: Update meta-balena from v2.58.0 to v2.58.3
+      hash: 69724c036c486ffee8b64466c2b38dfbc94637f2
+      body: |
+        Update meta-balena from 2.58.0 to v2.58.3
+      footer:
+        Changelog-entry: Update meta-balena from v2.58.0 to v2.58.3
+        changelog-entry: Update meta-balena from v2.58.0 to v2.58.3
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: Blacklist supervisor configuration backend files during HUP
+              hash: 43a14fef9875f0d0afc23a833cc8e9dc4ae80536
+              body: >
+                The hostapp update process should not overwrite the supervisor
+                configuration
+
+                backend files to avoid the supervisor being forced to set the
+                target state
+
+                after HUP and reboot the device during the rollback period.
+
+
+                This only applies to the host configuration files which are the
+                only ones
+
+                that force a reboot.
+              footer:
+                Connects-to: 'https://github.com/balena-io/balena-supervisor/issues/1464'
+                connects-to: 'https://github.com/balena-io/balena-supervisor/issues/1464'
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Blacklist supervisor configuration backend files during HUP
+                changelog-entry: Blacklist supervisor configuration backend files during HUP
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.58.3
+          date: 2020-09-18T10:34:55.646Z
+        - commits:
+            - subject: 'hooks: fix up improperly named variable'
+              hash: 2b42bc65dfc32817015d532c0a05d28670956bb7
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Matthew McGinn <matthew@balena.io>
+                signed-off-by: Matthew McGinn <matthew@balena.io>
+              author: Matthew McGinn
+              nested: []
+          version: meta-balena-2.58.2
+          date: 2020-09-17T22:33:04.792Z
+        - commits:
+            - subject: Wait for the root device to come up when necessary
+              hash: 494eeb4a699b4dd5e48547d6e5e45cffb7bf0720
+              body: >
+                If the rootfs is on a slow-to-bring-up device (e.g. RPi4 + USB)
+
+                the fsuuidsinit_enabled() function may return before the balena
+                symlinks
+
+                are created. This gets wrongly interpreted as missing UUIDs
+                leading to
+
+                a chain of failures in the subsequent scripts.
+
+                This patch moves the symlink waiting loop from fsuuidsinit_run()
+
+                to fsuuids_enabled() before the first usage of the symlink.
+              footer:
+                Changelog-Entry: Wait for the root device to come up when necessary
+                changelog-entry: Wait for the root device to come up when necessary
+                Change-Type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.58.1
+          date: 2020-09-15T18:24:58.280Z
+  version: 2.58.3+rev1
+  date: 2020-09-21T14:23:33.989Z
+- commits:
     - subject: 'u-boot: fix possible freeze in uart driver'
       hash: 880df493070ef45b0384c7d13aca728ea7e178b1
       body: |
