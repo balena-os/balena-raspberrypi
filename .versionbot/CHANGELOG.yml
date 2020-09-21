@@ -1,4 +1,21 @@
 - commits:
+    - subject: 'u-boot: fix possible freeze in uart driver'
+      hash: 880df493070ef45b0384c7d13aca728ea7e178b1
+      body: |
+        It was reported that in certain configurations
+        u-boot can possibly freeze with putc_retry located
+        in bss instead of data. This because the serial
+        driver is used before relocating.
+      footer:
+        Changelog-entry: 'u-boot: fix possible freeze in uart driver'
+        changelog-entry: 'u-boot: fix possible freeze in uart driver'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.58.0+rev2
+  date: 2020-09-21T13:57:41.418Z
+- commits:
     - subject: Update meta-balena from v2.56.0 to v2.58.0
       hash: 52ef52eb163ea345b539d5304a830fe6d2271ca3
       body: |
