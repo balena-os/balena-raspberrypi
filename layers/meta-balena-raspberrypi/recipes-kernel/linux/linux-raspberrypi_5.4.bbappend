@@ -65,6 +65,18 @@ RESIN_CONFIGS[fbtft] = " \
     CONFIG_FB_TFT_FBTFT_DEVICE=m \
     "
 
+RESIN_CONFIGS_append = " tinydrm"
+RESIN_CONFIGS[tinydrm] = " \
+    CONFIG_DRM_TINYDRM=m \
+    CONFIG_TINYDRM_HX8357D=m \
+    CONFIG_TINYDRM_ILI9225=m \
+    CONFIG_TINYDRM_ILI9341=m \
+    CONFIG_TINYDRM_MI0283QT=m \
+    CONFIG_TINYDRM_REPAPER=m \
+    CONFIG_TINYDRM_ST7586=m \
+    CONFIG_TINYDRM_ST7735R=m \
+    "
+
 RESIN_CONFIGS_append = " pca955_gpio_expander"
 RESIN_CONFIGS[pca955_gpio_expander] = " \
     CONFIG_GPIO_PCA953X=y \
