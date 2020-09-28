@@ -23,6 +23,11 @@ do_deploy_append_npe-x500-m3() {
   echo "dtoverlay=npe-x500-m3" >> ${DEPLOYDIR}/bcm2835-bootfiles/config.txt
 }
 
+do_deploy_append_revpi-connect() {
+	# Use the RevPi Connect device tree overlay
+	echo "dtoverlay=revpi-connect" >> ${DEPLOYDIR}/bcm2835-bootfiles/config.txt
+}
+
 do_deploy_append_revpi-core-3() {
     cat >> ${DEPLOYDIR}/bcm2835-bootfiles/config.txt << EOF
 
