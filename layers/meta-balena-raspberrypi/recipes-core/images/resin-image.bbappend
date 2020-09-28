@@ -25,6 +25,8 @@ RESIN_BOOT_PARTITION_FILES_append_raspberrypi4-64 = " \
 
 RESIN_BOOT_PARTITION_FILES_append_revpi-core-3 = " revpi-core-dt-blob-overlay.dtb:/dt-blob.bin"
 
+RESIN_BOOT_PARTITION_FILES_append_revpi-connect = " revpi-connect-dt-blob-overlay.dtb:/dt-blob.bin"
+
 python overlay_dtbs_handler () {
     # Add all the dtb files programatically
     if d.getVar('SOC_FAMILY', True) == 'rpi':
