@@ -29,15 +29,7 @@ do_deploy_append_revpi-core-3() {
 # serial port needs to be kept clean for RS485 communication
 avoid_warnings=1
 
-# Enable RevPi specific pins for i2c
-dtoverlay=i2c1-bcm2708,sda1_pin=44,scl1_pin=45,pin_func=6
-
-# Enable RevPi realtime clock
-dtoverlay=i2c-rtc,pcf2127
-
-# Enable RevPi specific pins for spi
-dtparam=spi=on
-dtoverlay=kunbus
+dtoverlay=revpi-core
 
 EOF
     # prevent u-boot logging on uart
