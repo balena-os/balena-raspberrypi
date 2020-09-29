@@ -163,4 +163,5 @@ RESIN_CONFIGS_DEPS[sd8787_pwrseq_driver] = " \
 RESIN_CONFIGS_append = " vmsplit"
 RESIN_CONFIGS_DEPS[vmsplit] = " \
     CONFIG_VMSPLIT_3G=y \
+    CONFIG_HIGHMEM=y \
 "
