@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.58.3+rev2
+## (2020-09-30)
+
+* Add support for RevolutionPi Connect [Florin Sarbu]
+* Use the proper device tree overlay for the RevPi Core [Florin Sarbu]
+
 # v2.58.3+rev1
 ## (2020-09-21)
 

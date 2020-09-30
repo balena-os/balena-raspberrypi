@@ -1,4 +1,30 @@
 - commits:
+    - subject: Add support for RevolutionPi Connect
+      hash: be395bb1d989bd6ea5a310a36c2445f1835d88c9
+      body: ''
+      footer:
+        Changelog-entry: Add support for RevolutionPi Connect
+        changelog-entry: Add support for RevolutionPi Connect
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+    - subject: Use the proper device tree overlay for the RevPi Core
+      hash: 26802e56dcac2d91a65a97b9d0890f1de18bc1ed
+      body: |
+        We switch to using the existing overlay in the kernel source tree
+        Also, we compile the dt-blob for this machine and we'll deploy it in the
+        boot partition also.
+      footer:
+        Changelog-entry: Use the proper device tree overlay for the RevPi Core
+        changelog-entry: Use the proper device tree overlay for the RevPi Core
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.58.3+rev2
+  date: 2020-09-30T08:27:44.206Z
+- commits:
     - subject: Update meta-balena from v2.58.0 to v2.58.3
       hash: 69724c036c486ffee8b64466c2b38dfbc94637f2
       body: |
