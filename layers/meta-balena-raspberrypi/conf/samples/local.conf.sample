@@ -3,11 +3,13 @@
 #MACHINE ?= "raspberrypi2"
 #MACHINE ?= "raspberrypi3"
 #MACHINE ?= "raspberrypi3-64"
+#MACHINE ?= "revpi-connect"
 #MACHINE ?= "revpi-core-3"
 #MACHINE ?= "raspberrypi4-64"
 #MACHINE ?= "npe-x500-m3"
 
 BALENA_STORAGE_raspberrypi4-64 = "overlay2"
+BALENA_STORAGE_revpi-connect = "overlay2"
 
 # More info meta-resin/README.md
 #TARGET_REPOSITORY ?= ""
