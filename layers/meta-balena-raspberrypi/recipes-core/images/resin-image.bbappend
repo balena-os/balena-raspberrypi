@@ -58,4 +58,4 @@ IMAGE_INSTALL_append_revpi-core-3 = " picontrol"
 # userlandtools/dtoverlay.
 IMAGE_INSTALL_append_raspberrypi4-64 = " flashrom userlandtools dtc rpi-eeprom"
 
-RPI_KERNEL_DEVICETREE_remove_revpi-core-3 = "bcm2708-rpi-zero-w.dtb bcm2710-rpi-3-b-plus.dtb bcm2711-rpi-4-b.dtb"
+RPI_KERNEL_DEVICETREE_remove_revpi = "bcm2708-rpi-zero-w.dtb bcm2710-rpi-3-b-plus.dtb bcm2711-rpi-4-b.dtb"
