@@ -3,7 +3,8 @@ setenv devnum 0
 setenv boot_part 1
 setenv root_part 2
 fsuuid ${devtype} ${devnum}:${root_part} root_part_uuid
-setenv bootargs coherent_pool=1M 8250.nr_uarts=1 snd_bcm2835.enable_compat_alsa=0 snd_bcm2835.enable_hdmi=1 snd_bcm2835.enable_headphones=1  smsc95xx.macaddr=DC:A6:32:4B:16:24 vc_mem.mem_base=0x3f000000 vc_mem.mem_size=0x3f600000  dwc_otg.lpm_enable=0 console=tty1 console=ttyS0,115200 rootfstype=ext4 root=UUID=${root_part_uuid} rootwait
+setenv extra_bootargs earlycon=uart8250,mmio32,0xfe215040
+setenv bootargs coherent_pool=1M 8250.nr_uarts=1 smsc95xx.macaddr=DC:A6:32:4B:16:24 vc_mem.mem_base=0x3f000000 vc_mem.mem_size=0x3f600000  dwc_otg.lpm_enable=0 console=tty1 console=ttyS0,115200 rootfstype=ext4 root=UUID=${root_part_uuid} rootwaita ${extra_bootargs}
 load ${devtype} ${devnum}:${boot_part} ${kernel_addr_r} @@KERNEL_IMAGETYPE@@
 load ${devtype} ${devnum}:${boot_part} ${fdt_addr_r} bcm2711-rpi-4-b.dtb
 setenv tmp_loadaddr 0x10000000
