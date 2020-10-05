@@ -1,4 +1,20 @@
 - commits:
+    - subject: Fix device tree overlay deploy to the boot partition
+      hash: 52aa07e78a14012711747e4b6be3c96b9cb76644
+      body: |
+        We now have cases for the Revolution Pi boards which append a new SoC
+        family type to the SOC_FAMILY variable. So we need to properly parse the
+        variable now.
+      footer:
+        Changelog-entry: Fix device tree overlay deploy to the boot partition
+        changelog-entry: Fix device tree overlay deploy to the boot partition
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.58.3+rev3
+  date: 2020-10-05T09:33:46.766Z
+- commits:
     - subject: Add support for RevolutionPi Connect
       hash: be395bb1d989bd6ea5a310a36c2445f1835d88c9
       body: ''

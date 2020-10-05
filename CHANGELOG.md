@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.58.3+rev3
+## (2020-10-05)
+
+* Fix device tree overlay deploy to the boot partition [Florin Sarbu]
+
 # v2.58.3+rev2
 ## (2020-09-30)
 
