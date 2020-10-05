@@ -9,3 +9,5 @@ KERNEL_MODULE_AUTOLOAD += "piControl"
 
 # the following overlay is not present in the kernel we use for the Revolution Pis
 KERNEL_DEVICETREE_remove = "overlays/uart0.dtbo"
+
+IMAGE_INSTALL_append = " picontrol"

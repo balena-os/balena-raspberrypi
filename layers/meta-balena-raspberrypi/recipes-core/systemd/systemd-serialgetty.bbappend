@@ -1,4 +1,4 @@
-do_install_append_revpi-core-3() {
+do_install_append_revpi() {
     if [ ! -z "${SERIAL_CONSOLES}" ] ; then
         tmp="${SERIAL_CONSOLES}"
         for entry in $tmp ; do

@@ -29,29 +29,30 @@ RESIN_BOOT_PARTITION_FILES_append_revpi-connect = " revpi-connect-dt-blob-overla
 
 python overlay_dtbs_handler () {
     # Add all the dtb files programatically
-    if d.getVar('SOC_FAMILY', True) == 'rpi':
-        resin_boot_partition_files = d.getVar('RESIN_BOOT_PARTITION_FILES', True)
+    for soc_fam in d.getVar('SOC_FAMILY', True).split(':'):
+        if soc_fam == 'rpi':
+            resin_boot_partition_files = d.getVar('RESIN_BOOT_PARTITION_FILES', True)
 
-        overlay_dtbs = split_overlays(d, 0)
-        root_dtbs = split_overlays(d, 1)
+            overlay_dtbs = split_overlays(d, 0)
+            root_dtbs = split_overlays(d, 1)
 
-        for dtb in root_dtbs.split():
-            dtb = os.path.basename(dtb)
-            resin_boot_partition_files += "\t%s:/%s" % (dtb, dtb)
+            for dtb in root_dtbs.split():
+                dtb = os.path.basename(dtb)
+                resin_boot_partition_files += "\t%s:/%s" % (dtb, dtb)
 
-        for dtb in overlay_dtbs.split():
-            dtb = os.path.basename(dtb)
-            resin_boot_partition_files += "\t%s:/overlays/%s" % (dtb, dtb)
+            for dtb in overlay_dtbs.split():
+                dtb = os.path.basename(dtb)
+                resin_boot_partition_files += "\t%s:/overlays/%s" % (dtb, dtb)
 
-        d.setVar('RESIN_BOOT_PARTITION_FILES', resin_boot_partition_files)
+            d.setVar('RESIN_BOOT_PARTITION_FILES', resin_boot_partition_files)
+
+            break
 }
 
 addhandler overlay_dtbs_handler
 overlay_dtbs_handler[eventmask] = "bb.event.RecipePreFinalise"
 
 IMAGE_INSTALL_append_rpi = " u-boot"
-
-IMAGE_INSTALL_append_revpi-core-3 = " picontrol"
 
 # Tools necessary for SPI EEPROM bootloader and vl805 firmware
 # update during HUP. dtc is called internally at runtime by
