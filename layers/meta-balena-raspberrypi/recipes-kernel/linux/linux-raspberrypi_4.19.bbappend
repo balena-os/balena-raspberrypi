@@ -15,6 +15,13 @@ SRC_URI_append = " \
 	file://0001-waveshare-sim7600-Add-dtbo-for-this-modem.patch \
 "
 
+# We apply this fix for Pi3 and Pi3-64 (which overrides Pi3)
+# only, because this is currently the only model reported
+# with this issue.
+SRC_URI_append_raspberrypi3 = " \
+	file://0001-overlays-Make-the-i2c-gpio-overlay-safe-again.patch \
+"
+
 SRC_URI_append_raspberrypi4-64 = " \
         file://0001-Fbcon-ignore-events-for-rpi-sense-fb.patch \
 "
