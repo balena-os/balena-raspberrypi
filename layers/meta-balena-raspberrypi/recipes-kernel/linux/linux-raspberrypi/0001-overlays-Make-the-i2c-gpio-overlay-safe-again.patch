@@ -1,0 +1,38 @@
+From b1465b8024fd73c32ae70bae94457e72ebd773b3 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Mon, 12 Oct 2020 13:20:06 +0200
+Subject: [PATCH] overlays: Make the i2c-gpio overlay safe again
+
+Like many overlays, the i2c-gpio overlay goes to efforts to avoid
+generating warnings about #address-cells and #size-cells not
+being defined, which it does by defining them. Unfortunately this
+is fatal if they don't match what the system requires, which is
+the case on BCM2711 with #address-cells = 2.
+
+In the absence of the knowledge of a clean way to fix this, just delete
+the declarations and suffer the warnings.
+
+Upstream-status: Backport
+Signed-off-by: Phil Elwell <phil@raspberrypi.com>
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ arch/arm/boot/dts/overlays/i2c-gpio-overlay.dts | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/arch/arm/boot/dts/overlays/i2c-gpio-overlay.dts b/arch/arm/boot/dts/overlays/i2c-gpio-overlay.dts
+index e94053b55610..39e7bc5fa9d8 100644
+--- a/arch/arm/boot/dts/overlays/i2c-gpio-overlay.dts
++++ b/arch/arm/boot/dts/overlays/i2c-gpio-overlay.dts
+@@ -9,9 +9,6 @@
+ 		target-path = "/";
+ 
+ 		__overlay__ {
+-			#address-cells = <1>;
+-			#size-cells = <0>;
+-
+ 			i2c_gpio: i2c@0 {
+ 				reg = <0xffffffff>;
+ 				compatible = "i2c-gpio";
+-- 
+2.17.1
+
