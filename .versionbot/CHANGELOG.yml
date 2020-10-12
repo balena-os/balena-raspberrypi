@@ -1,4 +1,19 @@
 - commits:
+    - subject: 'linux-raspberrypi: Backport i2c-gpio fix for Pi3'
+      hash: 060b01fdc0d760206b81bea6a4d49ed937f59860
+      body: |
+        Pi3 did not boot if i2c-gpio overlay was loaded.
+        Backport fix from upstream so the Pi3 can boot again.
+      footer:
+        Changelog-entry: 'linux-raspberrypi: Backport i2c-gpio fix for Pi3'
+        changelog-entry: 'linux-raspberrypi: Backport i2c-gpio fix for Pi3'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.58.3+rev4
+  date: 2020-10-12T12:54:04.598Z
+- commits:
     - subject: Fix device tree overlay deploy to the boot partition
       hash: 52aa07e78a14012711747e4b6be3c96b9cb76644
       body: |

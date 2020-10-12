@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.58.3+rev4
+## (2020-10-12)
+
+* linux-raspberrypi: Backport i2c-gpio fix for Pi3 [Alexandru Costache]
+
 # v2.58.3+rev3
 ## (2020-10-05)
 
