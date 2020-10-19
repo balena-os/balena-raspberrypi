@@ -1,4 +1,61 @@
 - commits:
+    - subject: Update meta-balena from v2.58.3 to v2.58.6
+      hash: e3f74494ccedf13e3c2dc765023ec8f2fc5f0e1a
+      body: |
+        Update meta-balena from 2.58.3 to 2.58.6
+      footer:
+        Changelog-entry: Update meta-balena from v2.58.3 to v2.58.6
+        changelog-entry: Update meta-balena from v2.58.3 to v2.58.6
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested:
+        - commits:
+            - subject: 'readme: DCHP -> DHCP'
+              hash: 9694909d8eb0dea7f775eeb5a92546f00b381909
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Matthew McGinn <matthew@balena.io>
+                signed-off-by: Matthew McGinn <matthew@balena.io>
+              author: Matthew McGinn
+              nested: []
+          version: meta-balena-2.58.6
+          date: 2020-10-15T13:43:08.320Z
+        - commits:
+            - subject: 'bootfiles: blacklist proper grub configuration backend'
+              hash: 1362d9916b0b7b414b9d920296021379e34f00be
+              body: ''
+              footer:
+                Connects-to: '#2022'
+                connects-to: '#2022'
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Matthew McGinn <matthew@balena.io>
+                signed-off-by: Matthew McGinn <matthew@balena.io>
+              author: Matthew McGinn
+              nested: []
+          version: meta-balena-2.58.5
+          date: 2020-10-13T14:20:39.972Z
+        - commits:
+            - subject: 'docker-disk: Allow expanding data filesystem on 2TB disks'
+              hash: 62b3763b44dcd9397f964d0812b7292885b04f66
+              body: |
+                Switch to 4k block size for the resin-data filesystem
+                so it can be expanded to sizes greater than 1023GiB.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.58.4
+          date: 2020-10-05T12:38:50.221Z
+  version: 2.58.6+rev1
+  date: 2020-10-19T16:52:51.005Z
+- commits:
     - subject: 'linux-raspberrypi: Backport i2c-gpio fix for Pi3'
       hash: 060b01fdc0d760206b81bea6a4d49ed937f59860
       body: |

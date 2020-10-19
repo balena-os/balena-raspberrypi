@@ -1,6 +1,30 @@
 Change log
 -----------
 
+# v2.58.6+rev1
+## (2020-10-19)
+
+
+<details>
+<summary> Update meta-balena from v2.58.3 to v2.58.6 [Alexandru Costache] </summary>
+
+> ## meta-balena-2.58.6
+> ### (2020-10-15)
+> 
+> * readme: DCHP -> DHCP [Matthew McGinn]
+> 
+> ## meta-balena-2.58.5
+> ### (2020-10-13)
+> 
+> * bootfiles: blacklist proper grub configuration backend [Matthew McGinn]
+> 
+> ## meta-balena-2.58.4
+> ### (2020-10-05)
+> 
+> * docker-disk: Allow expanding data filesystem on 2TB disks [Alexandru Costache]
+> 
+</details>
+
 # v2.58.3+rev4
 ## (2020-10-12)
 
