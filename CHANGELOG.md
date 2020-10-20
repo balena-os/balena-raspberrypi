@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.58.6+rev2
+## (2020-10-20)
+
+* Add rt-rpi-300 machine based on Raspberry Pi4 [Florin Sarbu]
+
 # v2.58.6+rev1
 ## (2020-10-19)
 

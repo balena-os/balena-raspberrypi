@@ -1,4 +1,17 @@
 - commits:
+    - subject: Add rt-rpi-300 machine based on Raspberry Pi4
+      hash: 18a775b379ccaae1d2601e4ceb8fa0eaa973972a
+      body: ''
+      footer:
+        Changelog-entry: Add rt-rpi-300 machine based on Raspberry Pi4
+        changelog-entry: Add rt-rpi-300 machine based on Raspberry Pi4
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.58.6+rev2
+  date: 2020-10-20T15:57:24.730Z
+- commits:
     - subject: Update meta-balena from v2.58.3 to v2.58.6
       hash: e3f74494ccedf13e3c2dc765023ec8f2fc5f0e1a
       body: |
