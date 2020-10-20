@@ -7,6 +7,7 @@
 #MACHINE ?= "revpi-core-3"
 #MACHINE ?= "raspberrypi4-64"
 #MACHINE ?= "npe-x500-m3"
+#MACHINE ?= "rt-rpi-300"
 
 BALENA_STORAGE_raspberrypi4-64 = "overlay2"
 BALENA_STORAGE_revpi-connect = "overlay2"
