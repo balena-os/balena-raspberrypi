@@ -20,7 +20,7 @@ do_deploy_append() {
     rm -f ${DEPLOYDIR}/${PN}/start_db.elf
     rm -f ${DEPLOYDIR}/${PN}/fixup4db.dat
     rm -f ${DEPLOYDIR}/${PN}/start4db.elf
-    if [ "${MACHINE}" != "raspberrypi4-64" ]; then
+    if [ "${MACHINE}" != "raspberrypi4-64" ] && [ "${MACHINE}" != "rt-rpi-300" ] ; then
         # exclude RaspberryPi4 specific firmware from non raspberrypi4-64 balenaOS builds
         rm -f ${DEPLOYDIR}/${PN}/fixup4.dat
         rm -f ${DEPLOYDIR}/${PN}/fixup4cd.dat
