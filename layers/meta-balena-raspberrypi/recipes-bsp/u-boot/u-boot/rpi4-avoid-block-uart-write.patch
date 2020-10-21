@@ -25,7 +25,7 @@ index 0102b10ed2..d9b6f0febf 100644
  	struct bcm283x_mu_regs *regs;
  };
  
-+static uint16_t putc_retry = 0;
++static uint16_t putc_retry;
  static int bcm283x_mu_serial_getc(struct udevice *dev);
  
  static int bcm283x_mu_serial_setbrg(struct udevice *dev, int baudrate)
