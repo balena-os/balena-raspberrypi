@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.58.6+rev3
+## (2020-10-21)
+
+* Use proper bootfiles for rt-rpi-300 [Florin Sarbu]
+
 # v2.58.6+rev2
 ## (2020-10-20)
 

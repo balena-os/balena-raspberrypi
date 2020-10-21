@@ -1,4 +1,17 @@
 - commits:
+    - subject: Use proper bootfiles for rt-rpi-300
+      hash: df3aa7bba205b8fe9c32d1ec2961398d9cfd30fa
+      body: ''
+      footer:
+        Changelog-entry: Use proper bootfiles for rt-rpi-300
+        changelog-entry: Use proper bootfiles for rt-rpi-300
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.58.6+rev3
+  date: 2020-10-21T12:19:26.133Z
+- commits:
     - subject: Add rt-rpi-300 machine based on Raspberry Pi4
       hash: 18a775b379ccaae1d2601e4ceb8fa0eaa973972a
       body: ''
