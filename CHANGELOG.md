@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.58.6+rev4
+## (2020-10-21)
+
+* u-boot: fix possible freeze in uart driver [Alexandru Costache]
+
 # v2.58.6+rev3
 ## (2020-10-21)
 

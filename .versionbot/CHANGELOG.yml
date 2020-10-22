@@ -1,4 +1,22 @@
 - commits:
+    - subject: 'u-boot: fix possible freeze in uart driver'
+      hash: 90349ca44f6e2db78f2a15aba1d8f62864eae85e
+      body: |
+        It was reported that in certain configurations
+        u-boot can possibly freeze with putc_retry located
+        in bss instead of data. This because the serial
+        driver is used before relocating. Add this change
+        to the Pi4 rebased patch too.
+      footer:
+        Changelog-entry: 'u-boot: fix possible freeze in uart driver'
+        changelog-entry: 'u-boot: fix possible freeze in uart driver'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.58.6+rev4
+  date: 2020-10-21T14:19:34.563Z
+- commits:
     - subject: Use proper bootfiles for rt-rpi-300
       hash: df3aa7bba205b8fe9c32d1ec2961398d9cfd30fa
       body: ''
