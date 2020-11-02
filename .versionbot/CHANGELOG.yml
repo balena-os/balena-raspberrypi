@@ -1,4 +1,410 @@
 - commits:
+    - subject: Update meta-balena from v2.58.6 to v2.60.1
+      hash: 854fbfe4d0fc1c0180ff1e58e7faa3aaf6db60eb
+      body: |
+        Update meta-balena from 2.58.6 to 2.60.1
+      footer:
+        Changelog-entry: Update meta-balena from v2.58.6 to v2.60.1
+        changelog-entry: Update meta-balena from v2.58.6 to v2.60.1
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested:
+        - commits:
+            - subject: 'chrony: set the source UDP port for NTP requests to 123'
+              hash: 6b95bd55f12054d996a412e7a6bc202e518b4e29
+              body: >
+                By default chrony uses a random UDP source port for each NTP
+                request.
+
+                This can cause problems with particular routers/firewalls
+                (issues have
+
+                been reported for the Phicomm KE 2P).
+
+
+                The chrony `acquisitionport` configuration setting has been
+                added
+
+                to the chrony.conf file to change the UDP source port for NTP
+                requests
+
+                to 123 (this is the same as the default source port used by both
+
+                ntpdate and ntpd).
+              footer:
+                Change-type: patch
+                change-type: patch
+                Connects-to: '#2000'
+                connects-to: '#2000'
+                Signed-off-by: Mark Corbin <mark@balena.io>
+                signed-off-by: Mark Corbin <mark@balena.io>
+              author: Mark Corbin
+              nested: []
+          version: meta-balena-2.60.1
+          date: 2020-10-30T11:34:35.642Z
+        - commits:
+            - subject: 'chrony: don''t restore time from drift file or RTC'
+              hash: 5a4842786f365c9d167f29fd310427b4f0bb61b6
+              body: >
+                Drop the '-s' command line parameter from chronyd as:
+
+                a) restoring time from the drift file is no longer necessary due
+                to
+
+                the fake-hwclock service, and
+
+                b) restoring time from the RTC is already covered by the
+                timeinit-rtc
+
+                service.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Mark Corbin <mark@balena.io>
+                signed-off-by: Mark Corbin <mark@balena.io>
+              author: Mark Corbin
+              nested: []
+            - subject: >-
+                systemd/timeinit: add fake.hwclock to maintain system time over
+                reboots
+              hash: 96c2c495819ba6175261a5179e1cdb4673552e6c
+              body: >
+                In order to produce sensible timestamps for journald log
+                messages:
+
+                a) the system time needs to be maintained correctly over a
+                reboot, and
+
+                b) the system time needs to be set before journald is started.
+
+
+                Currently the system time is maintained over reboots on systems
+
+                without an RTC using the last modified time of the chrony drift
+                file.
+
+                However there are a couple of issues with this approach:
+
+
+                a) /var/lib/chrony/ is not mounted early enough in the boot
+                process
+
+                to be available for setting the time before journald is started.
+
+                b) there is an issue with the current systemd dependencies that
+                result
+
+                in the last modified time of the drift file not being updated
+                when the
+
+                system is shutdown or rebooted (see #1995).
+
+
+                The Debian fake-hwclock service (as used by Raspberry Pi OS) has
+                been
+
+                added to overcome these issues.
+
+
+                The fake-hwclock service will save and restore the system time
+                from
+
+                the fake-hwclock.data file (in /etc/fake-hwclock/). The system
+                time
+
+                is loaded from this file at boot and saved to it on shutdown. An
+
+                additional timer service has been added to update the file on an
+
+                hourly basis to cater for unexpected shutdown scenarios, e.g.
+                power
+
+                failure.
+
+
+                The timeinit-timestamp service has improved logging and has been
+
+                renamed to timeinit-buildtime for clarity.
+
+
+                A new time-set.target has been added as per upstream systemd and
+
+                the fake-hwclock and timeinit-buildtime services have been added
+
+                to it.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Connects-to: '#1367 #1919'
+                connects-to: '#1367 #1919'
+                Signed-off-by: Mark Corbin <mark@balena.io>
+                signed-off-by: Mark Corbin <mark@balena.io>
+              author: Mark Corbin
+              nested: []
+            - subject: 'resin-mounts: add bind mount service for /etc/fake-hwclock'
+              hash: 394aa52f77ec222e6fda856a92cd499bd464fa07
+              body: >
+                Add a persistent r/w location (root-overlay/etc/fake-hwclock/)
+                to
+
+                the resin-state partition for storage of the fake-hwclock.data
+                file.
+
+                This file is used by the fake-hwclock service to load the system
+
+                time at boot and save the system time on shutdown.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Mark Corbin <mark@balena.io>
+                signed-off-by: Mark Corbin <mark@balena.io>
+              author: Mark Corbin
+              nested: []
+          version: meta-balena-2.60.0
+          date: 2020-10-29T14:25:50.275Z
+        - commits:
+            - subject: Add host extensions support
+              hash: 1d33429f0bc925bc97b4b7820aeb812eac9098d2
+              body: >
+                Add a new section that described the host extensions
+                functionality.
+
+
+                Fixes #1984
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Add host extensions support
+                changelog-entry: Add host extensions support
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'packagegroup-resin: Add hostapp extensions update script'
+              hash: a03e5c9eed5105c5af85c79df29546ec641d873c
+              body: >
+                This commit adds the update-hostapp-extensions utility. It can
+                be run
+
+                with:
+
+                 systemd-run update-hostapp-extensions -r
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'hostapp-extensions-update: Add host extensions update script'
+              hash: 0fe293eb118913e667b52b2f6df032227719efc8
+              body: >
+                This script triggers an installation or update of the hostapp
+                extensions
+
+                in the system.
+
+
+                The list of hostapp extensions to install can either be passed
+                to the
+
+                script or it will use the ones set in config.json or
+                hostapp-extensions.conf
+
+                in that order.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'resin-vars: Parse the HOSTEXT_IMAGES variable from config.json'
+              hash: 761f517f955f829e12b2c7f0a0f88830ded39e13
+              body: >
+                This variable allows the hostapp extensions updater script to
+                update the
+
+                hostapp extensions in the system.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'docker-disk: Add the host extension images to the data partition'
+              hash: cd44a94cf1646828832070417a2deb9236b0f5ee
+              body: >
+                Host extension images contain extra content that is overlayed
+                over the
+
+                root filesystem at boot.
+
+
+                This commits adds the default host extensions to the data
+                partition
+
+                image, stores their repository tags in the /etc directory, and
+                creates
+
+                the containers so that mobynit can mount the container
+                filesystems on
+
+                boot.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'docker-disk: Generalize hostapp platform variable'
+              hash: 416544bd9c7b7e9080857dc0258668f388a55aa7
+              body: >
+                Rename HELLO_PLATFORM to HOSTAPP_PLATFORM so it can be used with
+                any
+
+                app type.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'initrdscripts: Busybox switch_root does not support -c argument'
+              hash: a62a8189825de9dbcf52dbb3116d213fc7ceb84f
+              body: >
+                Calling busybox switch_root in this way has always been
+                complaining but
+
+                the error log did not get to the console.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: >-
+                resin-filesystem-expand: Omit fs check and resize if partition
+                is mounted
+              hash: d70fbd050e5a1f7c695782b99187d583103111e0
+              body: >
+                Now that the data partition will be mounted from the initramfs
+                for host
+
+                extensions support, this script will only run if something went
+                wrong.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'initrdscripts: Expand the resin-data filesystem'
+              hash: 00cad826c157ac2d5c13137fb1023f1eb7570c58
+              body: >
+                As the resin-data partition will be mounted in the initramfs,
+                its
+
+                filesystem needs to be expanded before that.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'initrdscripts: Add resin-data to fs UUID generation'
+              hash: d2794dd2d559ca0c55a4cbab9ae5ef3c01ebdcf3
+              body: >
+                The resin-data partition will be mounted in the initramfs for
+                the host
+
+                extension support so the UUID generation needs to happen before
+                that.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'resin-data.mount: Remove default dependencies'
+              hash: dc6cfa2e90b29b0fdcfc05c1b85e2196de4f950b
+              body: >
+                With the data partition being mounted in the initramfs to
+                support host
+
+                extensions, the runtime systemd-udev no longer sees the
+                resin-data mount
+
+                event and this mount is blocked.
+
+
+                This is resolved by not adding the default dependency on the
+                block device.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'packagegroup-resin: Add independent mobynit package to image'
+              hash: 08e15adb2f21c330b9c92cef527e23770a6fe521
+              body: |
+                The mobynit tool also needs to be in resin-image.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-engine: Do not build mobynit'
+              hash: 29844ed3bd936c581e20b72df133a2b6ed498512
+              body: |
+                The mobynit package has now been moved to an independent recipe.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'mobynit: Fix source directory'
+              hash: e6dc1b20c45ffdbcc33f82b2ef78f46715317b06
+              body: |
+                The Go class in mobynit predates Go modules support.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'mobynit: Separate recipe from balena-engine'
+              hash: 6be3f1153d56c1c0c21e6d84db7be70be96bcd10
+              body: >
+                This commit adds a new recipe to build mobynit independently
+                from balena-engine.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.59.0
+          date: 2020-10-27T12:04:22.881Z
+  version: 2.60.1+rev1
+  date: 2020-11-02T10:08:14.545Z
+- commits:
     - subject: Revert the 1GB kernel / 3GB userspace memory split
       hash: 877626066888649e28f2ab747f6782294949219e
       body: |

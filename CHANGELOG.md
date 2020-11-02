@@ -1,6 +1,46 @@
 Change log
 -----------
 
+# v2.60.1+rev1
+## (2020-11-02)
+
+
+<details>
+<summary> Update meta-balena from v2.58.6 to v2.60.1 [Alexandru Costache] </summary>
+
+> ## meta-balena-2.60.1
+> ### (2020-10-30)
+> 
+> * chrony: set the source UDP port for NTP requests to 123 [Mark Corbin]
+> 
+> ## meta-balena-2.60.0
+> ### (2020-10-29)
+> 
+> * chrony: don't restore time from drift file or RTC [Mark Corbin]
+> * systemd/timeinit: add fake.hwclock to maintain system time over reboots [Mark Corbin]
+> * resin-mounts: add bind mount service for /etc/fake-hwclock [Mark Corbin]
+> 
+> ## meta-balena-2.59.0
+> ### (2020-10-27)
+> 
+> * Add host extensions support [Alex Gonzalez]
+> * packagegroup-resin: Add hostapp extensions update script [Alex Gonzalez]
+> * hostapp-extensions-update: Add host extensions update script [Alex Gonzalez]
+> * resin-vars: Parse the HOSTEXT_IMAGES variable from config.json [Alex Gonzalez]
+> * docker-disk: Add the host extension images to the data partition [Alex Gonzalez]
+> * docker-disk: Generalize hostapp platform variable [Alex Gonzalez]
+> * initrdscripts: Busybox switch_root does not support -c argument [Alex Gonzalez]
+> * resin-filesystem-expand: Omit fs check and resize if partition is mounted [Alex Gonzalez]
+> * initrdscripts: Expand the resin-data filesystem [Alex Gonzalez]
+> * initrdscripts: Add resin-data to fs UUID generation [Alex Gonzalez]
+> * resin-data.mount: Remove default dependencies [Alex Gonzalez]
+> * packagegroup-resin: Add independent mobynit package to image [Alex Gonzalez]
+> * balena-engine: Do not build mobynit [Alex Gonzalez]
+> * mobynit: Fix source directory [Alex Gonzalez]
+> * mobynit: Separate recipe from balena-engine [Alex Gonzalez]
+> 
+</details>
+
 # v2.58.6+rev5
 ## (2020-10-30)
 
