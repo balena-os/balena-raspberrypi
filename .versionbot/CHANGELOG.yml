@@ -1,4 +1,19 @@
 - commits:
+    - subject: Set default GPU mem to 16 for all RPI-based devices
+      hash: e2e022ad9f61addd00fe7a99cef3a621ab89e3be
+      body: ''
+      footer:
+        Changelog-entry: Set default GPU mem to 16 for all RPI-based devices
+        changelog-entry: Set default GPU mem to 16 for all RPI-based devices
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Stevche Radevski <stevche@balena.io>
+        signed-off-by: Stevche Radevski <stevche@balena.io>
+      author: Stevche Radevski
+      nested: []
+  version: 2.58.6+rev6
+  date: 2020-11-02T10:10:25.865Z
+- commits:
     - subject: Revert the 1GB kernel / 3GB userspace memory split
       hash: 877626066888649e28f2ab747f6782294949219e
       body: |

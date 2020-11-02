@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.58.6+rev6
+## (2020-11-02)
+
+* Set default GPU mem to 16 for all RPI-based devices [Stevche Radevski]
+
 # v2.58.6+rev5
 ## (2020-10-30)
 
