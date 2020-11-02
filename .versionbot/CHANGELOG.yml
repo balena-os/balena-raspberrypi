@@ -1,4 +1,25 @@
 - commits:
+    - subject: Revert the 1GB kernel / 3GB userspace memory split
+      hash: 877626066888649e28f2ab747f6782294949219e
+      body: |
+        This reverts commit 96e567e3c1315f9a595dc16f86cdc2dbeb0bfb9f.
+
+        While this makes it possible to run more containers on 32-bit RPi-s
+        it makes the upper 256MB of memory unusable. We have tried to compensate
+        with zram but that is not a suitable solution from a long-term
+        perspective.
+      footer:
+        Changelog-entry: Revert the 1GB kernel / 3GB userspace memory split
+        changelog-entry: Revert the 1GB kernel / 3GB userspace memory split
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Michal Toman <michalt@balena.io>
+        signed-off-by: Michal Toman <michalt@balena.io>
+      author: Michal Toman
+      nested: []
+  version: 2.58.6+rev5
+  date: 2020-10-30T14:27:04.288Z
+- commits:
     - subject: 'u-boot: fix possible freeze in uart driver'
       hash: 90349ca44f6e2db78f2a15aba1d8f62864eae85e
       body: |

@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.58.6+rev5
+## (2020-10-30)
+
+* Revert the 1GB kernel / 3GB userspace memory split [Michal Toman]
+
 # v2.58.6+rev4
 ## (2020-10-21)
 
