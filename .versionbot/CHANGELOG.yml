@@ -1,4 +1,23 @@
 - commits:
+    - subject: 'u-blox-modeswitch: remove recipe'
+      hash: de120f4901d3641727d726c967c2913fc8f5ac79
+      body: |
+        Remove the recipe for u-blox-modeswitch. It is generic and will be
+        added via the meta-balena layer instead.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Connects-to: '#1789'
+        connects-to: '#1789'
+        Changelog-entry: 'u-blox-modeswitch: remove recipe'
+        changelog-entry: 'u-blox-modeswitch: remove recipe'
+        Signed-off-by: Mark Corbin <mark@balena.io>
+        signed-off-by: Mark Corbin <mark@balena.io>
+      author: Mark Corbin
+      nested: []
+  version: 2.60.1+rev2
+  date: 2020-11-06T11:14:22.123Z
+- commits:
     - subject: Update meta-balena from v2.58.6 to v2.60.1
       hash: 854fbfe4d0fc1c0180ff1e58e7faa3aaf6db60eb
       body: |

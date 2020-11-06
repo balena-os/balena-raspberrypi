@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.60.1+rev2
+## (2020-11-06)
+
+* u-blox-modeswitch: remove recipe [Mark Corbin]
+
 # v2.60.1+rev1
 ## (2020-11-02)
 
