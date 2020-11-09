@@ -74,3 +74,8 @@ SRC_URI_append_raspberrypi4-64 = " \
 SRC_URI_append_raspberrypi4-64 = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'development-image', '', 'file://rpi4-disable-pl01-serial-driver.patch', d)} \
 "
+
+SRC_URI_remove_raspberrypi3 = "\
+    file://rpi.h-Remove-usb-start-from-CONFIG_PREBOOT.patch \
+    ${BACKPORTED_FAT_FS_PATCHES} \
+"
