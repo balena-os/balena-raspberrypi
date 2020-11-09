@@ -1,4 +1,18 @@
 - commits:
+    - subject: Remove explicit root cmdline parameter from the kernel recipe
+      hash: d341698a7b6e7e658f9f824afba55202c4f61b48
+      body: |
+        This gets added by u-boot in the form of root=UUID=
+      footer:
+        Changelog-entry: Remove explicit root cmdline parameter from the kernel recipe
+        changelog-entry: Remove explicit root cmdline parameter from the kernel recipe
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.60.1+rev3
+  date: 2020-11-09T12:27:05.444Z
+- commits:
     - subject: 'u-blox-modeswitch: remove recipe'
       hash: de120f4901d3641727d726c967c2913fc8f5ac79
       body: |

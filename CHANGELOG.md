@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.60.1+rev3
+## (2020-11-09)
+
+* Remove explicit root cmdline parameter from the kernel recipe [Florin Sarbu]
+
 # v2.60.1+rev2
 ## (2020-11-06)
 
