@@ -18,7 +18,7 @@ SRCBRANCH = "master"
 SRCFORK = "raspberrypi"
 SRCREV = "3916889699bc1457830ad0ceaa343408e10769b4"
 
-inherit deploy pythonnative
+inherit deploy ${@bb.utils.contains("BBFILE_COLLECTIONS", "meta-python2", "pythonnative", "", d)}
 
 # Use the date of the above commit as the package version. Update this when
 # SRCREV is changed.
