@@ -8,6 +8,7 @@
 #MACHINE ?= "raspberrypi4-64"
 #MACHINE ?= "npe-x500-m3"
 #MACHINE ?= "rt-rpi-300"
+#MACHINE ?= "fincm3"
 
 BALENA_STORAGE_rt-rpi-300 = "overlay2"
 BALENA_STORAGE_raspberrypi4-64 = "overlay2"
