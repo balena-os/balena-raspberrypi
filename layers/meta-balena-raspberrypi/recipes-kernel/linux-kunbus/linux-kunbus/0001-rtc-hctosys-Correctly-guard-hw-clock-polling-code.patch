@@ -1,0 +1,29 @@
+From 5b4f84cf64b5357ee5631a842be8b65dea0d597a Mon Sep 17 00:00:00 2001
+From: Florin Sarbu <florin@balena.io>
+Date: Tue, 10 Nov 2020 11:17:39 +0100
+Subject: [PATCH] rtc: hctosys: Correctly guard hw clock polling code
+
+Upstream-Status: Pending
+Signed-off-by: Florin Sarbu <florin@balena.io>
+---
+ drivers/rtc/class.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/rtc/class.c b/drivers/rtc/class.c
+index 60bd0c5..8a903fd 100644
+--- a/drivers/rtc/class.c
++++ b/drivers/rtc/class.c
+@@ -341,8 +341,10 @@ struct rtc_device *rtc_device_register(const char *name, struct device *dev,
+ 	dev_info(dev, "rtc core: registered %s as %s\n",
+ 			name, dev_name(&rtc->dev));
+ 
++#ifdef CONFIG_RTC_HCTOSYS_DEVICE
+ 	if (!strcmp(dev_name(&rtc->dev), CONFIG_RTC_HCTOSYS_DEVICE))
+ 		rtc_hctosys(rtc);
++#endif
+ 
+ 	return rtc;
+ 
+-- 
+2.7.4
+

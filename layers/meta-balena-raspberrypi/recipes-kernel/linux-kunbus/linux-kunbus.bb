@@ -1,13 +1,14 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-LINUX_VERSION = "4.9.76"
+LINUX_VERSION = "4.19.95"
 
-SRCREV = "4df2f71c072b25e04fbc84152f8bb9e5712bdea0"
+SRCREV = "raspberrypi-kernel_9.20200616-4.19.95+revpi1"
 SRC_URI = " \
-	git://github.com/RevolutionPi/linux;branch=revpi-4.9 \
+	git://github.com/RevolutionPi/linux;branch=revpi-4.19 \
 "
 
-require linux-raspberrypi.inc
+require recipes-kernel/linux/linux-raspberrypi.inc
 
-# the following device tree files are not available in this kernel version
-RPI_KERNEL_DEVICETREE_remove = "bcm2708-rpi-zero-w.dtb bcm2710-rpi-3-b-plus.dtb bcm2711-rpi-4-b.dtb"
+SRC_URI_remove = "file://rpi-kernel-misc.cfg"
+
+LIC_FILES_CHKSUM = "file://COPYING;md5=bbea815ee2795b2f4230826c0c6b8814"
