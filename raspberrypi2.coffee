@@ -8,7 +8,6 @@ module.exports =
 	name: 'Raspberry Pi 2'
 	arch: 'armv7hf'
 	state: 'released'
-	private: false
 
 	imageDownloadAlerts: [
 		{

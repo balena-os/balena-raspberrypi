@@ -13,7 +13,6 @@ module.exports =
 	arch: 'armv7hf'
 	state: 'new'
 	community: true
-	private: false
 
 	instructions: [
 		REVPI_DEBUG

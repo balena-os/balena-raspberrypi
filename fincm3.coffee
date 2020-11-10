@@ -13,7 +13,6 @@ module.exports =
 	name: 'Balena Fin (CM3)'
 	arch: 'armv7hf'
 	state: 'released'
-	private: false
 
 	instructions: [
 	 	FIN_DEBUG
