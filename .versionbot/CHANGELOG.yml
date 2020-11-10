@@ -1,4 +1,37 @@
 - commits:
+    - subject: Update Revolution Pi picontrol module to version 4.19.95
+      hash: 5cded91d66d7816c94f3c8b6fdd2cfa7e5cec574
+      body: |
+        We update picontrol to match the kernel update
+      footer:
+        Changelog-entry: Update Revolution Pi picontrol module to version 4.19.95
+        changelog-entry: Update Revolution Pi picontrol module to version 4.19.95
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+    - subject: Update the Revolution Pi kernel to version 4.19.95
+      hash: 7eb2617b1e4b4f6c83fd476342805e4391c645bf
+      body: |
+        We update to the Kunbus recommended kernel version.
+        We remove the Netflix vulnerability patches which are now merged in
+        kernel 4.19.95. Also, we remove
+        0001-Revert-cgroup-Add-kernel-param-to-enable-memory-grou.patch since
+        it's not needed anymore and we also remove
+        0001-Add-poe-overlay-for-compatiibility.patch since that overlay is now
+        in present in the kunbus kernel source tree.
+        We also removed linux-raspberrypi.inc and we are basing on the
+        equivalent file from the BSP.
+      footer:
+        Changelog-entry: Update the Revolution Pi kernel to version 4.19.95
+        changelog-entry: Update the Revolution Pi kernel to version 4.19.95
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.60.1+rev4
+  date: 2020-11-10T11:56:15.409Z
+- commits:
     - subject: Remove explicit root cmdline parameter from the kernel recipe
       hash: d341698a7b6e7e658f9f824afba55202c4f61b48
       body: |

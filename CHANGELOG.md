@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.60.1+rev4
+## (2020-11-10)
+
+* Update Revolution Pi picontrol module to version 4.19.95 [Florin Sarbu]
+* Update the Revolution Pi kernel to version 4.19.95 [Florin Sarbu]
+
 # v2.60.1+rev3
 ## (2020-11-09)
 
