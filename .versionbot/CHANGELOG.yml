@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update balena-yocto-scripts to v1.9.0
+      hash: 103ccc112131cbfa602d84e265e14517fec6d41b
+      body: ''
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to v1.9.0
+        changelog-entry: Update balena-yocto-scripts to v1.9.0
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.60.1+rev5
+  date: 2020-11-11T10:54:45.193Z
+- commits:
     - subject: Update Revolution Pi picontrol module to version 4.19.95
       hash: 5cded91d66d7816c94f3c8b6fdd2cfa7e5cec574
       body: |
