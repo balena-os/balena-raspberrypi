@@ -25,6 +25,11 @@ SRC_URI_append_raspberrypi4-64 = " \
 	file://rpi4-fix-usb-boot-8GB.patch \
 "
 
+SRC_URI_append_rt-rpi-300 = " \
+	file://rt-rpi-300-Add-changes-for-this-dt.patch \
+	file://rt-rpi-Add-ch-432t-driver-for-this-chip.patch \
+"
+
 # Set console accordingly to build type
 DEBUG_CMDLINE = "dwc_otg.lpm_enable=0 console=tty1 console=serial0,115200 rootfstype=ext4 rootwait"
 PRODUCTION_CMDLINE = "dwc_otg.lpm_enable=0 console=null rootfstype=ext4 rootwait vt.global_cursor_default=0"
@@ -176,4 +181,12 @@ RESIN_CONFIGS[serial_8250] = " \
     CONFIG_SERIAL_8250_EXTENDED=y \
     CONFIG_SERIAL_8250_SHARE_IRQ=y \
     CONFIG_SERIAL_8250_BCM2835AUX=y \
+"
+
+RESIN_CONFIGS_append_rt-rpi-300 = " rtrpi300cfgs"
+RESIN_CONFIGS[rtrpi300cfgs] = " \
+    CONFIG_RTC_DRV_RX8010=m \
+    CONFIG_SPI=y \
+    CONFIG_SPI_BCM2835=m \
+    CONFIG_CH432T_SPI=m \
 "

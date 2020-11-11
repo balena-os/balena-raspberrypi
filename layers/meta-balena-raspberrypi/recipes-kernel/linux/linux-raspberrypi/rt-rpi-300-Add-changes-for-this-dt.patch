@@ -1,0 +1,128 @@
+From f7b650e62f550efebbe9de2bdeedab51d275c3ff Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Tue, 10 Nov 2020 11:20:23 +0100
+Subject: [PATCH] rt-rpi-300: Add changes for this dt
+
+This patch adds the necessary confguration
+for the rt-rpi-300 device type.
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ arch/arm/boot/dts/bcm2711-rpi-4-b.dts | 30 ++++++++++++++++++++++-----
+ drivers/misc/Kconfig                  |  5 +++++
+ drivers/misc/Makefile                 |  1 +
+ 3 files changed, 31 insertions(+), 5 deletions(-)
+
+diff --git a/arch/arm/boot/dts/bcm2711-rpi-4-b.dts b/arch/arm/boot/dts/bcm2711-rpi-4-b.dts
+index 513cae21e64c..648d697706e8 100644
+--- a/arch/arm/boot/dts/bcm2711-rpi-4-b.dts
++++ b/arch/arm/boot/dts/bcm2711-rpi-4-b.dts
+@@ -37,6 +37,12 @@
+ 			default-state = "keep";
+ 			linux,default-trigger = "default-on";
+ 		};
++		usr {
++			label = "USR";
++			gpios = <&gpio 4 GPIO_ACTIVE_LOW>;
++			linux,default-trigger = "heartbeat";
++			retain-state-suspended;
++		};
+ 	};
+ 
+ 	wifi_pwrseq: wifi-pwrseq {
+@@ -295,14 +301,15 @@
+ &spi0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&spi0_pins &spi0_cs_pins>;
+-	cs-gpios = <&gpio 8 1>, <&gpio 7 1>;
++	cs-gpios = <&gpio 8 1>;
++	status="okay";
+ 
+ 	spidev0: spidev@0{
+-		compatible = "spidev";
++		compatible = "wch,ch43x";
+ 		reg = <0>;	/* CE0 */
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+-		spi-max-frequency = <125000000>;
++		spi-max-frequency = <3000000>;
+ 	};
+ 
+ 	spidev1: spidev@1{
+@@ -310,7 +317,7 @@
+ 		reg = <1>;	/* CE1 */
+ 		#address-cells = <1>;
+ 		#size-cells = <0>;
+-		spi-max-frequency = <125000000>;
++		spi-max-frequency = <1000000>;
+ 	};
+ };
+ 
+@@ -321,7 +328,7 @@
+ 	};
+ 
+ 	spi0_cs_pins: spi0_cs_pins {
+-		brcm,pins = <8 7>;
++		brcm,pins = <8>;
+ 		brcm,function = <BCM2835_FSEL_GPIO_OUT>;
+ 	};
+ 
+@@ -464,6 +471,13 @@
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&i2c1_pins>;
+ 	clock-frequency = <100000>;
++	status="okay";
++
++	rtc@32 {
++		compatible = "epson,rx8010";
++		reg = <0x32>;
++		status="okay";
++	};
+ };
+ 
+ &i2s {
+@@ -528,6 +542,12 @@
+ 		linux,default-trigger = "default-on";
+ 		gpios = <&expgpio 2 GPIO_ACTIVE_LOW>;
+ 	};
++	usr_led: usr {
++		label = "led2";
++		gpios = <&gpio 4 GPIO_ACTIVE_LOW>;
++		linux,default-trigger = "heartbeat";
++		retain-state-suspended;
++	};
+ };
+ 
+ &pwm1 {
+diff --git a/drivers/misc/Kconfig b/drivers/misc/Kconfig
+index 62c3ec285393..601b6ddae96a 100644
+--- a/drivers/misc/Kconfig
++++ b/drivers/misc/Kconfig
+@@ -59,6 +59,11 @@ config AD525X_DPOT_SPI
+ 	  To compile this driver as a module, choose M here: the
+ 	  module will be called ad525x_dpot-spi.
+ 
++config CH432T_SPI
++	tristate "support ch432t SPI bus connection"
++	help
++	  Say Y here if you have ch432 SPI bus.
++
+ config ATMEL_TCLIB
+ 	bool "Atmel AT32/AT91 Timer/Counter Library"
+ 	depends on ARCH_AT91
+diff --git a/drivers/misc/Makefile b/drivers/misc/Makefile
+index dbca246199f3..e89847639b8c 100644
+--- a/drivers/misc/Makefile
++++ b/drivers/misc/Makefile
+@@ -8,6 +8,7 @@ obj-$(CONFIG_IBMVMC)		+= ibmvmc.o
+ obj-$(CONFIG_AD525X_DPOT)	+= ad525x_dpot.o
+ obj-$(CONFIG_AD525X_DPOT_I2C)	+= ad525x_dpot-i2c.o
+ obj-$(CONFIG_AD525X_DPOT_SPI)	+= ad525x_dpot-spi.o
++obj-$(CONFIG_CH432T_SPI)	+= ch432.o
+ obj-$(CONFIG_INTEL_MID_PTI)	+= pti.o
+ obj-$(CONFIG_ATMEL_SSC)		+= atmel-ssc.o
+ obj-$(CONFIG_ATMEL_TCLIB)	+= atmel_tclib.o
+-- 
+2.17.1
+
