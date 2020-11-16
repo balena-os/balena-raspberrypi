@@ -1,0 +1,132 @@
+From: npetridis <nick.petridis93@gmail.com>
+Date: Tue, 17 Nov 2020 00:57:42 +0200
+Subject: [PATCH] overlays: Add 2xMCP2517FD dtbo
+
+This adds dtbo necessary for Seeed studio can bus shield v2
+for the 2xMCP2517FD chipset.
+
+---
+diff --git a/arch/arm/boot/dts/overlays/2xMCP2517FD-overlay.dts b/arch/arm/boot/dts/overlays/2xMCP2517FD-overlay.dts
+index e69de29bb2d1..e3137977ea34 100644
+--- a/arch/arm/boot/dts/overlays/2xMCP2517FD-overlay.dts
++++ b/arch/arm/boot/dts/overlays/2xMCP2517FD-overlay.dts
+@@ -0,0 +1,106 @@
++/*
++ * Device tree overlay for mcp251x/mcp2517fd on spi0.0
++ */
++
++/dts-v1/;
++/plugin/;
++
++/ {
++    compatible = "brcm,bcm2835", "brcm,bcm2836", "brcm,bcm2708", "brcm,bcm2709";
++    /* disable spi-dev for spi0.0 */
++
++    fragment@0{
++       target = <&spidev0>;
++       __overlay__ {
++           status = "disabled";
++       };
++    };
++
++    fragment@1{
++       target = <&spidev1>;
++       __overlay__ {
++           status = "disabled";
++       };
++    };
++
++    /* the interrupt pin of the can-controller */
++    fragment@2 {
++        target = <&gpio>;
++        __overlay__ {
++            can_int_pins: can_int_pins {
++                brcm,pins = <25 24>;
++                brcm,function = <0>; /* input */
++            };
++           spi1_pins: spi1_pins {
++                       brcm,pins = <19 20 21>;
++                       brcm,function = <3>; /* alt4 */
++           };
++
++          spi1_cs_pins: spi1_cs_pins {
++                       brcm,pins = <18>;
++                       brcm,function = <1>; /* output */
++           };
++
++        };
++    };
++
++    /* the clock/oscillator of the can-controller */
++    fragment@3 {
++        target-path = "/clocks";
++        __overlay__ {
++            /* external 40M oscillator of mcp2517fd on SPI0.0 */
++            mcp2517fd_osc: mcp2517fd_osc {
++                compatible = "fixed-clock";
++                #clock-cells = <0>;
++              clock-frequency  = <40000000>;
++            };
++        };
++    };
++
++    /* the spi config of the can-controller itself binding everything together */
++    fragment@4 {
++        target = <&spi0>;
++        __overlay__ {
++            /* needed to avoid dtc warning */
++            #address-cells = <1>;
++            #size-cells = <0>;
++
++          status = "okay";
++            can0: can@0 {
++                reg = <0>;
++                pinctrl-names = "default";
++               pinctrl-0 = <&can_int_pins>;
++                compatible = "microchip,mcp2517fd";
++                spi-max-frequency = <20000000>;
++                interrupt-parent = <&gpio>;
++                interrupts = <25 8>; /* IRQ_TYPE_LEVEL_LOW */
++                clocks = <&mcp2517fd_osc>;
++            };
++
++        };
++    };
++    /* the spi config of the can-controller itself binding everything together */
++    fragment@5 {
++        target = <&spi1>;
++        __overlay__ {
++            /* needed to avoid dtc warning */
++            #address-cells = <1>;
++            #size-cells = <0>;
++
++
++           cs-gpios = <&gpio 18 1>;
++           status = "okay";
++            can1: can@1 {
++                reg = <0>;
++                pinctrl-names = "default";
++               pinctrl-0 = <&spi1_pins &spi1_cs_pins>;
++                compatible = "microchip,mcp2517fd";
++                spi-max-frequency = <20000000>;
++                interrupt-parent = <&gpio>;
++                interrupts = <24 8>; /* IRQ_TYPE_LEVEL_LOW */
++                clocks = <&mcp2517fd_osc>;
++            };
++       };
++    };
++
++};
+diff --git a/arch/arm/boot/dts/overlays/Makefile b/arch/arm/boot/dts/overlays/Makefile
+index 04219c05c385..867aba3d893d 100644
+--- a/arch/arm/boot/dts/overlays/Makefile
++++ b/arch/arm/boot/dts/overlays/Makefile
+@@ -3,6 +3,7 @@
+ dtb-$(CONFIG_ARCH_BCM2835) += overlay_map.dtb
+
+ dtbo-$(CONFIG_ARCH_BCM2835) += \
++       2xmcp2517fd.dtbo
+        act-led.dtbo \
+        adafruit18.dtbo \
+        adau1977-adc.dtbo \
+---
