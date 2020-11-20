@@ -1,4 +1,19 @@
 - commits:
+    - subject: Update balena-yocto-scripts
+      hash: dbf71493e678cd3659ee775daa24debefc841eec
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: Update balena-yocto-scripts
+        changelog-entry: Update balena-yocto-scripts
+        Signed-off-by: Michal Toman <michalt@balena.io>
+        signed-off-by: Michal Toman <michalt@balena.io>
+      author: Michal Toman
+      nested: []
+  version: 2.60.1+rev6
+  date: 2020-11-20T16:48:30.391Z
+- commits:
     - subject: Update balena-yocto-scripts to v1.9.0
       hash: 103ccc112131cbfa602d84e265e14517fec6d41b
       body: ''
