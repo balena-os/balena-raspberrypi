@@ -1,0 +1,39 @@
+From 7fdb290eea76a7a50946d3af94b0243b950a0160 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Mon, 23 Nov 2020 16:19:01 +0100
+Subject: [PATCH 1/9] pi: Add identifier for the new CM4
+
+The Raspberry Pi Foundation released the new Compute Module 4 which we
+want to detect, so we can enable Ethernet on it and know the correct
+device tree file name.
+
+Note that this sets the Ethernet option to true since the official CM4
+IO board has an Ethernet port. But that might not be the case when using
+custom ones.
+
+Upstream-status: Inappropriate [backport]
+Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ board/raspberrypi/rpi/rpi.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/board/raspberrypi/rpi/rpi.c b/board/raspberrypi/rpi/rpi.c
+index 5f4f410dc2..39981d1110 100644
+--- a/board/raspberrypi/rpi/rpi.c
++++ b/board/raspberrypi/rpi/rpi.c
+@@ -162,6 +162,11 @@ static const struct rpi_model rpi_models_new_scheme[] = {
+ 		DTB_DIR "bcm2711-rpi-4-b.dtb",
+ 		true,
+ 	},
++	[0x14] = {
++		"Compute Module 4",
++		DTB_DIR "bcm2711-rpi-cm4.dtb",
++		true,
++	},
+ };
+ 
+ static const struct rpi_model rpi_models_old_scheme[] = {
+-- 
+2.17.1
+

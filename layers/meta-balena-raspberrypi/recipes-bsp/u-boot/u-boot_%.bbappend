@@ -43,7 +43,8 @@ RESIN_UBOOT_DEVICE_TYPES_append = " usb"
 
 # Patches for rpi4 usb support are not part of upstream u-boot v2020.07,
 # but are merged in master branch
-SRCREV_raspberrypi4-64 = "49cf75101db58ad3540d8de6749cf0c1d780dc76"
+SRCREV_raspberrypi4-64 = "ba2a0cbb053951ed6d36161989d38da724696b4d"
+LIC_FILES_CHKSUM_raspberrypi4-64 = " file://Licenses/README;md5=5a7450c57ffe5ae63fd732446b988025"
 
 # Patches that apply on poky u-boot and are not present
 # in this list are either merged in upstream master,
@@ -61,11 +62,18 @@ SRC_URI_remove_raspberrypi4-64 = "${BACKPORTED_FAT_FS_PATCHES}"
 # These are added by meta-raspberrypi on top of poky uboot (pi0 - pi3)
 SRC_URI_remove_raspberrypi4-64 = "${UBOOT_RPI4_SUPPORT_PATCHES}"
 
-# config_defaults.h is removed starting usptream v2020.06
+# config_defaults.h is removed starting usptream v2020.10-rc5
 SRC_URI_append_raspberrypi4-64 = " \
     file://Revert-remove-include-config_defaults.h.patch \
     file://rpi4-include-configs-Use-config-defaults.patch \
     file://0001-rpi-Add-rpi-400-model-to-known-types.patch \
+    file://0001-pi-Add-identifier-for-the-new-CM4.patch \
+    file://0001-pci-pcie-brcmstb-Fix-inbound-window-configurations.patch \
+    file://0002-dm-Introduce-xxx_get_dma_range.patch \
+    file://0003-dm-Introduce-DMA-constraints-into-the-core-device-mo.patch \
+    file://0004-dm-Introduce-dev_phys_to_bus-dev_bus_to_phys.patch \
+    file://0005-xhci-translate-virtual-addresses-into-the-bus-s-addr.patch \
+    file://0006-mmc-Introduce-mmc_phys_to_bus-mmc_bus_to_phys.patch \
 "
 
 # In production builds enable_uart is not set, and this makes
