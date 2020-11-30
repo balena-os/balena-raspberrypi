@@ -74,6 +74,7 @@ SRC_URI_append_raspberrypi4-64 = " \
     file://0004-dm-Introduce-dev_phys_to_bus-dev_bus_to_phys.patch \
     file://0005-xhci-translate-virtual-addresses-into-the-bus-s-addr.patch \
     file://0006-mmc-Introduce-mmc_phys_to_bus-mmc_bus_to_phys.patch \
+    file://pi4-fix-crash-when-issuing-usb-reset.patch \
 "
 
 # In production builds enable_uart is not set, and this makes
