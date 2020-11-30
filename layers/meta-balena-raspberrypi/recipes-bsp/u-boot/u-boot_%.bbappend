@@ -65,6 +65,7 @@ SRC_URI_remove_raspberrypi4-64 = "${UBOOT_RPI4_SUPPORT_PATCHES}"
 SRC_URI_append_raspberrypi4-64 = " \
     file://Revert-remove-include-config_defaults.h.patch \
     file://rpi4-include-configs-Use-config-defaults.patch \
+    file://pi4-fix-crash-when-issuing-usb-reset.patch \
 "
 
 # In production builds enable_uart is not set, and this makes
