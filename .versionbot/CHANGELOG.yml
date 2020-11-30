@@ -1,4 +1,20 @@
 - commits:
+    - subject: 'u-boot: Add Pi400 model to known board types'
+      hash: 2672f6247412fece1a9de0fa0f3bf9b02417455d
+      body: |
+        Addresses:
+            RPI: Board rev 0x13 outside known range
+            RPI Unknown model (0xc03130)
+      footer:
+        Changelog-entry: 'u-boot: Add Pi400 model to known board types'
+        changelog-entry: 'u-boot: Add Pi400 model to known board types'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.60.1+rev6
+  date: 2020-11-30T14:05:44.969Z
+- commits:
     - subject: Update balena-yocto-scripts to v1.9.0
       hash: 103ccc112131cbfa602d84e265e14517fec6d41b
       body: ''

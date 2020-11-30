@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.60.1+rev6
+## (2020-11-30)
+
+* u-boot: Add Pi400 model to known board types [Alexandru Costache]
+
 # v2.60.1+rev5
 ## (2020-11-11)
 
