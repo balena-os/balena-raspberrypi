@@ -166,3 +166,7 @@ RESIN_CONFIGS[sd8787_pwrseq_driver] = " \
 RESIN_CONFIGS_DEPS[sd8787_pwrseq_driver] = " \
     CONFIG_OF=y \
 "
+
+
+
+
