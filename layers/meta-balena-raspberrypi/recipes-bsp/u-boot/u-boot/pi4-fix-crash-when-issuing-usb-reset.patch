@@ -1,0 +1,51 @@
+From b083a894037511e56a8af06d00d790b62287f73f Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Mon, 30 Nov 2020 15:12:30 +0100
+Subject: [PATCH] pi4: fix crash when issuing usb reset
+
+If some specific keyboards or an arduino
+are connected to the Pi4 USB port, abort_td()
+will hit one of the BUG() statements and u-boot
+will reset. It will now take a bit longer to boot
+if a problematic device is connected, but at least
+u-boot won't crash or reset.
+
+Rebased from last patch in this series:
+http://u-boot.10912.n7.nabble.com/RFC-PATCH-v2-0-5-Improve-USB-Keyboard-support-for-rpi3-rpi4-td418314.html#a418316
+
+Upstream-status: Pending
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ drivers/usb/host/xhci-ring.c | 15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/usb/host/xhci-ring.c b/drivers/usb/host/xhci-ring.c
+index 86aeaab412..47a0438a53 100644
+--- a/drivers/usb/host/xhci-ring.c
++++ b/drivers/usb/host/xhci-ring.c
+@@ -494,11 +494,18 @@ static void abort_td(struct usb_device *udev, int ep_index)
+ 	xhci_queue_command(ctrl, NULL, udev->slot_id, ep_index, TRB_STOP_RING);
+ 
+ 	event = xhci_wait_for_event(ctrl, TRB_TRANSFER);
+-	field = le32_to_cpu(event->trans_event.flags);
+-	BUG_ON(TRB_TO_SLOT_ID(field) != udev->slot_id);
+-	BUG_ON(TRB_TO_EP_INDEX(field) != ep_index);
+-	BUG_ON(GET_COMP_CODE(le32_to_cpu(event->trans_event.transfer_len
++
++	if (event) {
++		field = le32_to_cpu(event->trans_event.flags);
++		BUG_ON(TRB_TO_SLOT_ID(field) != udev->slot_id);
++		BUG_ON(TRB_TO_EP_INDEX(field) != ep_index);
++		BUG_ON(GET_COMP_CODE(le32_to_cpu(event->trans_event.transfer_len
+ 		!= COMP_STOP)));
++	} else {
++		printf("XHCI abort timeout\n");
++		return;
++	}
++
+ 	xhci_acknowledge_event(ctrl);
+ 
+ 	event = xhci_wait_for_event(ctrl, TRB_COMPLETION);
+-- 
+2.17.1
+

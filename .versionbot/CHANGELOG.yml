@@ -1,4 +1,22 @@
 - commits:
+    - subject: 'u-boot: Don''t crash with specific pi4 usb'
+      hash: 4bfe6d3dba00b072df5d02ddea7ce8a571baad70
+      body: |
+        With some specific USB keyboards or
+        arduinos, u-boot crashes on the pi4
+        when initializing usb. Avoid resetting
+        the board and continue to boot in these
+        cases.
+      footer:
+        Changelog-entry: 'u-boot: Don''t crash with specific pi4 usb'
+        changelog-entry: 'u-boot: Don''t crash with specific pi4 usb'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.60.1+rev6
+  date: 2020-11-30T14:22:34.985Z
+- commits:
     - subject: Update balena-yocto-scripts to v1.9.0
       hash: 103ccc112131cbfa602d84e265e14517fec6d41b
       body: ''
