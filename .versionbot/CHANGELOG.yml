@@ -1,4 +1,21 @@
 - commits:
+    - subject: 'linux-raspberry: Enable cgroups memory by default'
+      hash: e3c7328188e59b1c7186d1e25adeda04225522db
+      body: |
+        The upstream kernel has disabled cgroups memory support by default and
+        made it a kernel argument in order to save memory.
+
+        BalenaOS requires this setting to be enabled. Fixes #574
+      footer:
+        Changelog-entry: 'linux-raspberry: Enable cgroups memory by default'
+        changelog-entry: 'linux-raspberry: Enable cgroups memory by default'
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.60.1+rev7
+  date: 2020-12-11T15:03:01.340Z
+- commits:
     - subject: 'u-boot: Don''t crash with specific pi4 usb'
       hash: 4bfe6d3dba00b072df5d02ddea7ce8a571baad70
       body: |

@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.60.1+rev7
+## (2020-12-11)
+
+* linux-raspberry: Enable cgroups memory by default [Alex Gonzalez]
+
 # v2.60.1+rev6
 ## (2020-11-30)
 
