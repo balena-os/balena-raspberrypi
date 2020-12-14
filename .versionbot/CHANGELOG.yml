@@ -1,4 +1,21 @@
 - commits:
+    - subject: 'recipes-kernel: remove rootfstype=ext4'
+      hash: 392f92043deb182927a4a127151fd7972fbb3d31
+      body: |
+        This boot parameter specifies that the rootfs is ext4, which can be
+        autodetected, and makes booting with other filesystems fail.
+
+        Remove the flag to improve compatiblity with alternative filesystems.
+      footer:
+        Changelog-entry: 'recipes-kernel: remove rootfstype=ext4'
+        changelog-entry: 'recipes-kernel: remove rootfstype=ext4'
+        Signed-off-by: Joseph Kogut <joseph@balena.io>
+        signed-off-by: Joseph Kogut <joseph@balena.io>
+      author: Joseph Kogut
+      nested: []
+  version: 2.60.1+rev8
+  date: 2020-12-14T12:33:16.836Z
+- commits:
     - subject: 'linux-raspberry: Enable cgroups memory by default'
       hash: e3c7328188e59b1c7186d1e25adeda04225522db
       body: |

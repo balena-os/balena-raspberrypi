@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.60.1+rev8
+## (2020-12-14)
+
+* recipes-kernel: remove rootfstype=ext4 [Joseph Kogut]
+
 # v2.60.1+rev7
 ## (2020-12-11)
 
