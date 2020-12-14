@@ -1,0 +1,44 @@
+From 710404e522bf279526bf1e0aaeb38cb6b98755cd Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Tue, 24 Nov 2020 08:50:09 +0100
+Subject: [PATCH 4/6] dm: Introduce dev_phys_to_bus()/dev_bus_to_phys()
+
+These functions, instead of relying on hard-coded platform-specific
+address translations, make use of the DMA constraints provided by the DM
+core. This allows for per-device translations.
+
+Upstream-status: Pending
+Signed-off-by: Nicolas Saenz Julienne <nsaenzjulienne@suse.de>
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ include/phys2bus.h | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/include/phys2bus.h b/include/phys2bus.h
+index dc9b8e5a25..a380063af4 100644
+--- a/include/phys2bus.h
++++ b/include/phys2bus.h
+@@ -21,4 +21,20 @@ static inline unsigned long bus_to_phys(unsigned long bus)
+ }
+ #endif
+ 
++#if CONFIG_IS_ENABLED(DM)
++#include <dm/device.h>
++
++static inline dma_addr_t dev_phys_to_bus(struct udevice *dev,
++					 phys_addr_t phys)
++{
++	return phys - dev->dma_offset;
++}
++
++static inline phys_addr_t dev_bus_to_phys(struct udevice *dev,
++					  dma_addr_t bus)
++{
++	return bus + dev->dma_offset;
++}
++#endif
++
+ #endif
+-- 
+2.17.1
+
