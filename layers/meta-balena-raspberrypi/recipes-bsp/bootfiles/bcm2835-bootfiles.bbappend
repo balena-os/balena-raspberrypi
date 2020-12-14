@@ -1,10 +1,10 @@
 FILESEXTRAPATHS_append := ":${THISDIR}/files"
 
-RPIFW_DATE = "20200601+arm64"
-SRCREV = "f382cc150445b3ef07de941e4877a5890d665aa7"
+RPIFW_DATE = "20201022"
+SRCREV = "2ba11f2a07760588546821aed578010252c9ecb3"
 
-SRC_URI[md5sum] = "e74304a0d79a42d49fdfa624549f0288"
-SRC_URI[sha256sum] = "1c8e99d998b1e89c96bb6a1dd861884f568358db8792f2176dd6106ff7462f6b"
+SRC_URI[md5sum] = "d93ed22d17e176743a0316be0ed5eea2"
+SRC_URI[sha256sum] = "30e91cc1b502bb1a8aeddf49e7d9dd3fb4a8c2f3b9154a2fea9ecc9071f54bc7"
 
 LIC_FILES_CHKSUM = "file://LICENCE.broadcom;md5=c403841ff2837657b2ed8e5bb474ac8d"
 
@@ -20,7 +20,7 @@ do_deploy_append() {
     rm -f ${DEPLOYDIR}/${PN}/start_db.elf
     rm -f ${DEPLOYDIR}/${PN}/fixup4db.dat
     rm -f ${DEPLOYDIR}/${PN}/start4db.elf
-    if [ "${MACHINE}" != "raspberrypi4-64" ] && [ "${MACHINE}" != "rt-rpi-300" ] ; then
+    if [ "${MACHINE}" != "raspberrypi4-64" ] && [ "${MACHINE}" != "rt-rpi-300" ] && [ "${MACHINE}" != "raspberrypi400-64" ] ; then
         # exclude RaspberryPi4 specific firmware from non raspberrypi4-64 balenaOS builds
         rm -f ${DEPLOYDIR}/${PN}/fixup4.dat
         rm -f ${DEPLOYDIR}/${PN}/fixup4cd.dat
