@@ -31,8 +31,8 @@ SRC_URI_append_rt-rpi-300 = " \
 "
 
 # Set console accordingly to build type
-DEBUG_CMDLINE = "dwc_otg.lpm_enable=0 console=tty1 console=serial0,115200 rootfstype=ext4 rootwait"
-PRODUCTION_CMDLINE = "dwc_otg.lpm_enable=0 console=null rootfstype=ext4 rootwait vt.global_cursor_default=0"
+DEBUG_CMDLINE = "dwc_otg.lpm_enable=0 console=tty1 console=serial0,115200 rootwait"
+PRODUCTION_CMDLINE = "dwc_otg.lpm_enable=0 console=null rootwait vt.global_cursor_default=0"
 CMDLINE = "${@bb.utils.contains('DISTRO_FEATURES','development-image',"${DEBUG_CMDLINE}","${PRODUCTION_CMDLINE}",d)}"
 
 # See https://github.com/raspberrypi/linux/commit/9b0efcc1ec497b2985c6aaa60cd97f0d2d96d203
