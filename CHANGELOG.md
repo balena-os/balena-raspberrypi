@@ -1,6 +1,220 @@
 Change log
 -----------
 
+# v2.65.0+rev1
+## (2020-12-16)
+
+
+<details>
+<summary> Update meta-balena from v2.60.1 to v2.65.0 [Alexandru Costache] </summary>
+
+> ## meta-balena-2.65.0
+> ### (2020-12-14)
+> 
+> * Update balena-supervisor from v12.1.1 to v12.2.11 [Miguel Casqueira]
+> 
+> ## meta-balena-2.64.4
+> ### (2020-12-14)
+> 
+> * Add IPV6 multicast routing capability [Alex Gonzalez]
+> 
+> ## meta-balena-2.64.3
+> ### (2020-12-11)
+> 
+> * Revert "resin-data.mount: Remove default dependencies" [Alex Gonzalez]
+> * hostapp-update-hooks: Add supervisor database fix [Alex Gonzalez]
+> * resin-supervisor: Make sure the database directory exists [Alex Gonzalez]
+> * Correct the data partition mountpoint [Alex Gonzalez]
+> 
+> ## meta-balena-2.64.2
+> ### (2020-12-10)
+> 
+> * meta-balena-common: kernel-resin: enable task-accounting by default [Joseph Kogut]
+> * meta-balena-common: kernel-resin: create task-accounting config [Joseph Kogut]
+> 
+> ## meta-balena-2.64.1
+> ### (2020-12-09)
+> 
+> * Update codeowners [Alex Gonzalez]
+> 
+> ## meta-balena-2.64.0
+> ### (2020-12-07)
+> 
+> * rust: remove merged fix for TUNE_FEATURES parsing [Kyle Harding]
+> * systemd: update patches to avoid fuzzy matching [Kyle Harding]
+> * systemd: add missing udev rules [Kyle Harding]
+> * systemd: avoid conflicts with timeinit package [Kyle Harding]
+> * dropbear: prevent conflicts with openssh [Kyle Harding]
+> * networkmanager: add bash requirement [Kyle Harding]
+> * networkmanager: remove deprecated bluetooth inherit [Kyle Harding]
+> * meta-balena-common: replace distro_features_check with features_check [Kyle Harding]
+> * avahi: remove example services [Kyle Harding]
+> * u-boot: disable u-boot-initial-env [Kyle Harding]
+> * dnsmasq: fix build after y2038 changes in glib [Kyle Harding]
+> * bluez5: replace experimental flag patch with service conf [Kyle Harding]
+> * mtools: remove initialize-direntry patch [Kyle Harding]
+> * meta-balena-dunfell: dunfell compatibility layer support [Kyle Harding]
+> 
+> ## meta-balena-2.63.1
+> ### (2020-12-04)
+> 
+> * start-resin-supervisor: fix directory creation for 'balena start' [Mark Corbin]
+> 
+> ## meta-balena-2.63.0
+> ### (2020-11-30)
+> 
+> * zram-swap-init: adjust default to lesser of 50%/4GB [Joseph Kogut]
+> 
+> ## meta-balena-2.62.2
+> ### (2020-11-25)
+> 
+> * chrony: use a non-privileged UDP source port [Mark Corbin]
+> 
+> ## meta-balena-2.62.1
+> ### (2020-11-19)
+> 
+> * supervisor: remove old/unnecessary balenaRootCA references [Matthew McGinn]
+> 
+> ## meta-balena-2.62.0
+> ### (2020-11-13)
+> 
+> * systemd/timeinit: improve RTC handling at boot [Mark Corbin]
+> * os-helpers: add support functions for system date/time [Mark Corbin]
+> 
+> ## meta-balena-2.61.3
+> ### (2020-11-05)
+> 
+> * modemmanager: add u-blox-modeswitch scripts [Mark Corbin]
+> 
+> ## meta-balena-2.61.2
+> ### (2020-11-05)
+> 
+> * Check the API for configuration changes once a day [Michal Toman]
+> 
+> ## meta-balena-2.61.1
+> ### (2020-11-04)
+> 
+> * Enable kernel user space probes support [Alex Gonzalez]
+> 
+> ## meta-balena-2.61.0
+> ### (2020-11-04)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor from v11.14.0 to v12.1.1 [Cameron Diver] </summary>
+> 
+>> ### balena-supervisor-12.1.1
+>> #### (2020-10-28)
+>> 
+>> * Use root mount point to find device-type.json [Cameron Diver]
+>> 
+>> ### balena-supervisor-12.1.0
+>> #### (2020-10-28)
+>> 
+>> * Change log source from docker to journalctl [Thomas Manning]
+>> 
+>> ### balena-supervisor-12.0.9
+>> #### (2020-10-27)
+>> 
+>> * Change source of deviceType to device-type.json [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-12.0.8
+>> #### (2020-10-26)
+>> 
+>> * Fixed evaluating if updates are needed to reach target state [Miguel Casqueira]
+>> 
+>> ### balena-supervisor-12.0.7
+>> #### (2020-10-19)
+>> 
+>> * Improved log message when networks do not match [Miguel Casqueira]
+>> 
+>> ### balena-supervisor-12.0.6
+>> #### (2020-10-16)
+>> 
+>> * Fixes check allowing preloading in local (unmanaged) mode [ab77]
+>> * Handle delete of multiple images with same dockerImageId [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-12.0.5
+>> #### (2020-10-14)
+>> 
+>> * Improve calculation for used system memory [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-12.0.4
+>> #### (2020-10-13)
+>> 
+>> * Don't require an existing supervisor container to sync [Cameron Diver]
+>> 
+>> ### balena-supervisor-12.0.3
+>> #### (2020-10-12)
+>> 
+>> * Refactor system information filtering [Cameron Diver]
+>> * tests: Clean up and consistify naming scheme [Cameron Diver]
+>> 
+>> ### balena-supervisor-12.0.2
+>> #### (2020-10-12)
+>> 
+>> * Attempt a state report once every maxReportFrequency [Cameron Diver]
+>> * Remove superfluous current state reporting code from api-binder [Cameron Diver]
+>> 
+>> ### balena-supervisor-12.0.1
+>> #### (2020-10-12)
+>> 
+>> * Add features label `io.balena.features.journal-logs` [Thomas Manning]
+>> 
+>> ### balena-supervisor-12.0.0
+>> #### (2020-09-29)
+>> 
+>> * version: drop SUPERVISOR_VERSION env var [Matthew McGinn]
+>> 
+>> ### balena-supervisor-11.14.8
+>> #### (2020-09-29)
+>> 
+>> * Fix supervisor deadlock during migration [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-11.14.7
+>> #### (2020-09-25)
+>> 
+>> * Correctly evaluate if scheduledApply.delay is not set [Miguel Casqueira]
+>> 
+>> ### balena-supervisor-11.14.6
+>> #### (2020-09-24)
+>> 
+>> * Fix config checks for ConfigFS backend [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-11.14.5
+>> #### (2020-09-24)
+>> 
+>> * mixpanel: superisor_version -> supervisor_version [Matthew McGinn]
+>> 
+>> ### balena-supervisor-11.14.4
+>> #### (2020-09-18)
+>> 
+>> * api: Implement scoped Supervisor API keys [Rich Bayliss]
+>> 
+>> ### balena-supervisor-11.14.3
+>> #### (2020-09-17)
+>> 
+>> * Clarify docs for toggling update lock override from dashboard [M. Casqueira]
+>> 
+>> ### balena-supervisor-11.14.2
+>> #### (2020-09-15)
+>> 
+>> * Refactor extra_uEnv backend to match with more devices [Miguel Casqueira]
+>> 
+>> ### balena-supervisor-11.14.1
+>> #### (2020-09-14)
+>> 
+>> * application-manager: Convert to a singleton [Rich Bayliss]
+>> * device-state: Convert to a singleton [Rich Bayliss]
+>> * api-binder: Convert to a singleton [Rich Bayliss]
+>> 
+> </details>
+> 
+> 
+</details>
+
+* raspberrypi400-64: Add coffee file [Alexandru Costache]
+
 # v2.60.1+rev8
 ## (2020-12-14)
 
