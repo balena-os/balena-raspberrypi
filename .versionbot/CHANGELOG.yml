@@ -1,4 +1,20 @@
 - commits:
+    - subject: 'conf/layer: add balena-fin overlay for raspberrypi3-64'
+      hash: 3f1bf79e4d5261289b7113e6749dcaf7ae2f8148
+      body: |
+        add balena-fin overlay to the 64 bit raspberry pi 3 image
+      footer:
+        Changelog-entry: 'conf/layer: add balena-fin overlay for raspberrypi3-64'
+        changelog-entry: 'conf/layer: add balena-fin overlay for raspberrypi3-64'
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Aaron Shaw <aaron@balena.io>
+        signed-off-by: Aaron Shaw <aaron@balena.io>
+      author: Aaron Shaw
+      nested: []
+  version: 2.65.0+rev2
+  date: 2020-12-17T13:46:20.125Z
+- commits:
     - subject: Update meta-balena from v2.60.1 to v2.65.0
       hash: 27d1dab4e50fc170c23425ea406de9403cca0a36
       body: |

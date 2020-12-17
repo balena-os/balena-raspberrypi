@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.65.0+rev2
+## (2020-12-17)
+
+* conf/layer: add balena-fin overlay for raspberrypi3-64 [Aaron Shaw]
+
 # v2.65.0+rev1
 ## (2020-12-16)
 
