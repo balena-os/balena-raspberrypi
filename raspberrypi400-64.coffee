@@ -7,7 +7,7 @@ module.exports =
 	aliases: [ 'raspberrypi400-64' ]
 	name: 'Raspberry Pi 400'
 	arch: 'aarch64'
-	state: 'released'
+	state: 'new'
 
 	instructions: commonImg.instructions
 	gettingStartedLink:
