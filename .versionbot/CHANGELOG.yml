@@ -1,4 +1,19 @@
 - commits:
+    - subject: 'raspberrypi400-64: Update Pi400 icon'
+      hash: c55136335516f600afa170c32e814430fc361e3a
+      body: |
+        This icon is provided by the Balena
+        design team.
+      footer:
+        Changelog-entry: 'raspberrypi400-64: Update Pi400 icon'
+        changelog-entry: 'raspberrypi400-64: Update Pi400 icon'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.65.0+rev2
+  date: 2020-12-18T14:14:42.577Z
+- commits:
     - subject: Update meta-balena from v2.60.1 to v2.65.0
       hash: 27d1dab4e50fc170c23425ea406de9403cca0a36
       body: |

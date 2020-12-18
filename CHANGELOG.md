@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.65.0+rev2
+## (2020-12-18)
+
+* raspberrypi400-64: Update Pi400 icon [Alexandru Costache]
+
 # v2.65.0+rev1
 ## (2020-12-16)
 
