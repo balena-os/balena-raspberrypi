@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.65.1+rev1
+## (2020-12-20)
+
+
+<details>
+<summary> Update meta-balena from v2.65.0 to v2.65.1 [Florin Sarbu] </summary>
+
+> ## meta-balena-2.65.1
+> ### (2020-12-17)
+> 
+> * u-boot: Add required configuration for BalenaOS environment [Alex Gonzalez]
+> 
+</details>
+
 # v2.65.0+rev2
 ## (2020-12-18)
 

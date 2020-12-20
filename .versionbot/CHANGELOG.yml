@@ -1,4 +1,35 @@
 - commits:
+    - subject: Update meta-balena from v2.65.0 to v2.65.1
+      hash: e93cc0ea75aea3fbcda9441381a5b0603f0d46be
+      body: |
+        Update meta-balena from 2.65.0 to 2.65.1
+      footer:
+        Changelog-entry: Update meta-balena from v2.65.0 to v2.65.1
+        changelog-entry: Update meta-balena from v2.65.0 to v2.65.1
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: 'u-boot: Add required configuration for BalenaOS environment'
+              hash: 401345c86a3a017dc548a94c7afa3977d547fc21
+              body: >
+                The BalenaOS u-boot environment patch requires u-boot to support
+                importing
+
+                and exporting of the environment as well as the fsuuid command.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.65.1
+          date: 2020-12-17T10:39:35.947Z
+  version: 2.65.1+rev1
+  date: 2020-12-20T10:27:33.732Z
+- commits:
     - subject: 'raspberrypi400-64: Update Pi400 icon'
       hash: c55136335516f600afa170c32e814430fc361e3a
       body: |
