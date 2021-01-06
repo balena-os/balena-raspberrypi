@@ -43,8 +43,6 @@ SRC_URI_append_raspberrypi4-64 = " \
     file://rpi4-avoid-block-uart-write.patch \
 "
 
-# These are present in u-boot v2020.07
-
 # These are added by meta-raspberrypi on top of poky uboot (pi0 - pi3)
 SRC_URI_remove_raspberrypi4-64 = "${UBOOT_RPI4_SUPPORT_PATCHES}"
 
