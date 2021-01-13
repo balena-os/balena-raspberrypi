@@ -1,4 +1,22 @@
 - commits:
+    - subject: Update device tree overlay list
+      hash: 81b25090a4125aa11fd307e7e00da6b05c4a5cd6
+      body: >
+        Add new device tree blobs to the list to bring in support for new
+        hardware such as merus-amp and more. From
+        https://github.com/raspberrypi/linux/tree/rpi-5.4.y/arch/arm/boot/dts/overlays
+      footer:
+        Change-type: minor
+        change-type: minor
+        Changelog-entry: Update device tree overlay list
+        changelog-entry: Update device tree overlay list
+        Signed-off-by: Aaron Shaw <aaron@balena.io>
+        signed-off-by: Aaron Shaw <aaron@balena.io>
+      author: Aaron Shaw
+      nested: []
+  version: 2.65.1+rev2
+  date: 2021-01-13T20:09:35.375Z
+- commits:
     - subject: Update meta-balena from v2.65.0 to v2.65.1
       hash: e93cc0ea75aea3fbcda9441381a5b0603f0d46be
       body: |

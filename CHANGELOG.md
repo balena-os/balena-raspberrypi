@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.65.1+rev2
+## (2021-01-13)
+
+* Update device tree overlay list [Aaron Shaw]
+
 # v2.65.1+rev1
 ## (2020-12-20)
 
