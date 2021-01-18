@@ -43,6 +43,9 @@ SRC_URI_append_raspberrypi4-64 = " \
     file://rpi4-avoid-block-uart-write.patch \
 "
 
+# The following patch is already applied in the 49cf75101db58ad3540d8de6749cf0c1d780dc76 revision we use for rpi4
+SRC_URI_remove_raspberrypi4-64 = "file://remove-redundant-yyloc-global.patch"
+
 # These are added by meta-raspberrypi on top of poky uboot (pi0 - pi3)
 SRC_URI_remove_raspberrypi4-64 = "${UBOOT_RPI4_SUPPORT_PATCHES}"
 
