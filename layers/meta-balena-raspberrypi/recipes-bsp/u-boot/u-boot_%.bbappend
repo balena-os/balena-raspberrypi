@@ -12,7 +12,6 @@ SRC_URI_remove = " file://resin-specific-env-integration-kconfig.patch "
 RPI_PATCHES = " \
     file://rpi-Use-CONFIG_OF_BOARD-instead-of-CONFIG_EMBED.patch \
     file://increase-usb-interface-nr.patch \
-    file://rpi.h-Remove-usb-start-from-CONFIG_PREBOOT.patch \
     file://0002-raspberrypi-Disable-simple-framebuffer-support.patch \
     file://0001-avoid-block-uart-write.patch \
 "
@@ -21,17 +20,6 @@ SRC_URI += " \
     file://0001-Integrate-machine-independent-resin-environment-conf.patch \
     ${RPI_PATCHES} \
 "
-
-# Below patches come from upstream u-boot v2020.04, they fix the
-# "Error: allocating new dir entry" issue and may be removed once
-# updated u-boot provided by BSP will include them:
-BACKPORTED_FAT_FS_PATCHES = " \
-   file://0001-fs-fat-write-to-non-cluster-aligned-root-directory.patch \
-   file://0001-fs-fat-flush-a-directory-cluster-properly.patch \
-   file://0001-fs-fat-allocate-a-new-cluster-for-root-directory-of-.patch \
-"
-
-SRC_URI += "${BACKPORTED_FAT_FS_PATCHES}"
 
 # Disable flasher check since it starts usb unnecessarily
 # and we don't generate flasher images for any of the RPIs.
@@ -56,7 +44,6 @@ SRC_URI_append_raspberrypi4-64 = " \
 "
 
 # These are present in u-boot v2020.07
-SRC_URI_remove_raspberrypi4-64 = "${BACKPORTED_FAT_FS_PATCHES}"
 
 # These are added by meta-raspberrypi on top of poky uboot (pi0 - pi3)
 SRC_URI_remove_raspberrypi4-64 = "${UBOOT_RPI4_SUPPORT_PATCHES}"
