@@ -1,35 +1,35 @@
 do_deploy_append() {
     # Enable i2c by default
-    echo "dtparam=i2c_arm=on" >>${DEPLOYDIR}/bcm2835-bootfiles/config.txt
+    echo "dtparam=i2c_arm=on" >>${DEPLOYDIR}/bootfiles/config.txt
     # Enable SPI by default
-    echo "dtparam=spi=on" >>${DEPLOYDIR}/bcm2835-bootfiles/config.txt
+    echo "dtparam=spi=on" >>${DEPLOYDIR}/bootfiles/config.txt
     # Disable firmware splash by default
-    echo "disable_splash=1" >>${DEPLOYDIR}/bcm2835-bootfiles/config.txt
+    echo "disable_splash=1" >>${DEPLOYDIR}/bootfiles/config.txt
     # Disable firmware warnings showing in non-debug images
     if ! ${@bb.utils.contains('DISTRO_FEATURES','development-image','true','false',d)}; then
-        echo "avoid_warnings=1" >>${DEPLOYDIR}/bcm2835-bootfiles/config.txt
+        echo "avoid_warnings=1" >>${DEPLOYDIR}/bootfiles/config.txt
     fi
     # Enable audio (loads snd_bcm2835)
-    echo "dtparam=audio=on" >> ${DEPLOYDIR}/bcm2835-bootfiles/config.txt
+    echo "dtparam=audio=on" >> ${DEPLOYDIR}/bootfiles/config.txt
 }
 
 do_deploy_append_fincm3() {
 	# Use the Balena Fin device tree overlay
-	echo "dtoverlay=balena-fin" >> ${DEPLOYDIR}/bcm2835-bootfiles/config.txt
+	echo "dtoverlay=balena-fin" >> ${DEPLOYDIR}/bootfiles/config.txt
 }
 
 do_deploy_append_npe-x500-m3() {
   # Use the NPE X500 M3 device tree overlay
-  echo "dtoverlay=npe-x500-m3" >> ${DEPLOYDIR}/bcm2835-bootfiles/config.txt
+  echo "dtoverlay=npe-x500-m3" >> ${DEPLOYDIR}/bootfiles/config.txt
 }
 
 do_deploy_append_revpi-connect() {
 	# Use the RevPi Connect device tree overlay
-	echo "dtoverlay=revpi-connect" >> ${DEPLOYDIR}/bcm2835-bootfiles/config.txt
+	echo "dtoverlay=revpi-connect" >> ${DEPLOYDIR}/bootfiles/config.txt
 }
 
 do_deploy_append_revpi-core-3() {
-    cat >> ${DEPLOYDIR}/bcm2835-bootfiles/config.txt << EOF
+    cat >> ${DEPLOYDIR}/bootfiles/config.txt << EOF
 
 # serial port needs to be kept clean for RS485 communication
 avoid_warnings=1
@@ -38,7 +38,7 @@ dtoverlay=revpi-core
 
 EOF
     # prevent u-boot logging on uart
-    sed -i 's/enable_uart=1//' ${DEPLOYDIR}/bcm2835-bootfiles/config.txt
+    sed -i 's/enable_uart=1//' ${DEPLOYDIR}/bootfiles/config.txt
 }
 
 # On Raspberry Pi 3 and Raspberry Pi Zero WiFi, serial ttyS0 console is only
