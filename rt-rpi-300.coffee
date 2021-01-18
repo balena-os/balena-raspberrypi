@@ -21,7 +21,7 @@ module.exports =
 		machine: 'rt-rpi-300'
 		image: 'resin-image'
 		fstype: 'resinos-img'
-		version: 'yocto-warrior'
+		version: 'yocto-dunfell'
 		deployArtifact: 'resin-image-rt-rpi-300.resinos-img'
 		compressed: true
 
