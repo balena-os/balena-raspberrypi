@@ -16,17 +16,17 @@ COMPATIBLE_MACHINE = "raspberrypi4-64"
 
 SRCBRANCH = "master"
 SRCFORK = "raspberrypi"
-SRCREV = "3916889699bc1457830ad0ceaa343408e10769b4"
+SRCREV = "7cb9d4162f330c5ca578376b1a3d5e748843e81c"
 
-inherit deploy pythonnative
+inherit deploy python3native
 
 # Use the date of the above commit as the package version. Update this when
 # SRCREV is changed.
-PV = "20191029"
+PV = "20190111"
 
 # We use the latest stable version
-# which is available in "critical"
-LATEST_STABLE_PIEEPROM_FW = "2019-09-10"
+# which is available in "stable"
+LATEST_STABLE_PIEEPROM_FW = "2021-01-11"
 
 S = "${WORKDIR}/git"
 
@@ -35,7 +35,7 @@ S = "${WORKDIR}/git"
 # the configuration that exists in the binary
 do_compile() {
     cd ${WORKDIR} && cp ${S}/rpi-eeprom-config .
-    $(which python) ./rpi-eeprom-config ${S}/firmware/critical/pieeprom-${LATEST_STABLE_PIEEPROM_FW}.bin \
+    $(which python) ./rpi-eeprom-config ${S}/firmware/stable/pieeprom-${LATEST_STABLE_PIEEPROM_FW}.bin \
         --config ./default-config.txt \
         --out ./pieeprom-latest-stable.bin
 }
