@@ -1,6 +1,6 @@
-From b9d53cd1eec4b1bdc6ab198c0e703f1c204c4e45 Mon Sep 17 00:00:00 2001
+From 0e749a81e716a08be889e031e22310cf031448e9 Mon Sep 17 00:00:00 2001
 From: Alexandru Costache <alexandru@balena.io>
-Date: Wed, 2 Oct 2019 15:17:01 +0200
+Date: Tue, 19 Jan 2021 12:56:11 +0100
 Subject: [PATCH] dtoverlay_main: Fix configfs mount failure
 
 App tries to mount configfs inside /config/device-tree,
@@ -12,33 +12,23 @@ since we don't need or install lxpanelctl scripts.
 Upstream-status: Inappropriate [configuration]
 Signed-off-by: Alexandru Costache <alexandru@balena.io>
 ---
- .../linux/apps/dtoverlay/dtoverlay_main.c            | 12 +++++++-----
- 1 file changed, 7 insertions(+), 5 deletions(-)
+ .../linux/apps/dtoverlay/dtoverlay_main.c              | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
 diff --git a/host_applications/linux/apps/dtoverlay/dtoverlay_main.c b/host_applications/linux/apps/dtoverlay/dtoverlay_main.c
-index 4d71c35..6411d1b 100755
+index 2f3b083..2bbb5fe 100644
 --- a/host_applications/linux/apps/dtoverlay/dtoverlay_main.c
 +++ b/host_applications/linux/apps/dtoverlay/dtoverlay_main.c
-@@ -243,8 +243,8 @@ int main(int argc, const char **argv)
-     if (!dry_run && !dir_exists(cfg_dir))
-     {
- 	root_check();
--
- 	cfg_dir = CFG_DIR_2;
-+
- 	if (!dir_exists(cfg_dir))
- 	{
- 	    if (mkdir(cfg_dir, DIR_MODE) != 0)
-@@ -253,7 +253,7 @@ int main(int argc, const char **argv)
+@@ -262,7 +262,7 @@ int main(int argc, const char **argv)
  
- 	cfg_dir = CFG_DIR_2 DT_SUBDIR;
- 	if (!dir_exists(cfg_dir) &&
--	    (run_cmd("mount -t configfs none '%s'", cfg_dir) != 0))
-+	    (run_cmd("mount -t configfs none '%s'", CFG_DIR_2) != 0))
- 	    fatal_error("Failed to mount configfs - %d", errno);
+         cfg_dir = CFG_DIR_2 DT_SUBDIR;
+         if (!dir_exists(cfg_dir) &&
+-            (run_cmd("mount -t configfs none '%s'", cfg_dir) != 0))
++            (run_cmd("mount -t configfs none '%s'", CFG_DIR_2) != 0))
+             fatal_error("Failed to mount configfs - %d", errno);
      }
  
-@@ -276,7 +276,8 @@ int main(int argc, const char **argv)
+@@ -313,7 +313,8 @@ int main(int argc, const char **argv)
          if (!dry_run)
          {
              root_check();
@@ -48,18 +38,18 @@ index 4d71c35..6411d1b 100755
          }
          break;
      default:
-@@ -310,8 +311,9 @@ int main(int argc, const char **argv)
+@@ -347,8 +348,9 @@ int main(int argc, const char **argv)
      case OPT_ADD:
      case OPT_REMOVE:
      case OPT_REMOVE_FROM:
--	if (!dry_run)
--	    run_cmd("which dtoverlay-post >/dev/null 2>&1 && dtoverlay-post");
-+	// lxpanel not used, script removed, avoid useless call
-+	// if (!dry_run)
-+	//    run_cmd("which dtoverlay-post >/dev/null 2>&1 && dtoverlay-post");
- 	break;
+-        if (!dry_run)
+-            run_cmd("which dtoverlay-post >/dev/null 2>&1 && dtoverlay-post");
++        // lxpanel not used, script removed, avoid useless call
++        // if (!dry_run)
++        //    run_cmd("which dtoverlay-post >/dev/null 2>&1 && dtoverlay-post");
+         break;
      default:
- 	break;
+         break;
 -- 
 2.17.1
 

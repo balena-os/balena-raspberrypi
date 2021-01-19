@@ -14,11 +14,11 @@ COMPATIBLE_MACHINE = "raspberrypi4-64"
 
 SRCBRANCH = "master"
 SRCFORK = "raspberrypi"
-SRCREV = "17d2fdc1abd370e09ba7074753294c7976dd6b0d"
+SRCREV = "4a0a19b88b43e48c6b51b526b9378289fb712a4c"
 
 # Use the date of the above commit as the package version. Update this when
 # SRCREV is changed.
-PV = "20190724"
+PV = "20210111"
 
 S = "${WORKDIR}/git"
 
