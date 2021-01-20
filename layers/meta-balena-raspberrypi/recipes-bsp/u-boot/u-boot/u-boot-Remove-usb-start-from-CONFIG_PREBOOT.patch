@@ -1,0 +1,99 @@
+From 505153b4af9d39c940a3937f0059921a266334b7 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Wed, 20 Jan 2021 11:00:19 +0100
+Subject: [PATCH] u-boot:  Remove usb start from CONFIG_PREBOOT
+
+Commit https://github.com/balena-os/balena-raspberrypi/commit/8632ab910f096524b03f98de6019c12eec44a398
+removed usb start to speed-up boot by about 2 seconds.
+This config was removed from rpi.h and moved to the defconfigs,
+so we add it back for all PIs except for Pi4 and Pi400 where
+there were requests to boot from USB drives.
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ configs/rpi_0_w_defconfig   | 4 ++--
+ configs/rpi_2_defconfig     | 4 ++--
+ configs/rpi_3_32b_defconfig | 4 ++--
+ configs/rpi_3_defconfig     | 4 ++--
+ configs/rpi_defconfig       | 4 ++--
+ 5 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/configs/rpi_0_w_defconfig b/configs/rpi_0_w_defconfig
+index 6e7fe71bbf..fec8f05a89 100644
+--- a/configs/rpi_0_w_defconfig
++++ b/configs/rpi_0_w_defconfig
+@@ -7,8 +7,8 @@ CONFIG_ENV_SIZE=0x4000
+ CONFIG_NR_DRAM_BANKS=1
+ CONFIG_DISTRO_DEFAULTS=y
+ CONFIG_OF_BOARD_SETUP=y
+-CONFIG_USE_PREBOOT=y
+-CONFIG_PREBOOT="usb start"
++#CONFIG_USE_PREBOOT=y
++#CONFIG_PREBOOT="usb start"
+ CONFIG_MISC_INIT_R=y
+ # CONFIG_DISPLAY_CPUINFO is not set
+ # CONFIG_DISPLAY_BOARDINFO is not set
+diff --git a/configs/rpi_2_defconfig b/configs/rpi_2_defconfig
+index b5b7a08698..b16055ae7b 100644
+--- a/configs/rpi_2_defconfig
++++ b/configs/rpi_2_defconfig
+@@ -7,8 +7,8 @@ CONFIG_ENV_SIZE=0x4000
+ CONFIG_NR_DRAM_BANKS=1
+ CONFIG_DISTRO_DEFAULTS=y
+ CONFIG_OF_BOARD_SETUP=y
+-CONFIG_USE_PREBOOT=y
+-CONFIG_PREBOOT="usb start"
++#CONFIG_USE_PREBOOT=y
++#CONFIG_PREBOOT="usb start"
+ CONFIG_MISC_INIT_R=y
+ # CONFIG_DISPLAY_CPUINFO is not set
+ # CONFIG_DISPLAY_BOARDINFO is not set
+diff --git a/configs/rpi_3_32b_defconfig b/configs/rpi_3_32b_defconfig
+index 4b9f61b2b2..4b6a6b647a 100644
+--- a/configs/rpi_3_32b_defconfig
++++ b/configs/rpi_3_32b_defconfig
+@@ -8,8 +8,8 @@ CONFIG_ENV_SIZE=0x4000
+ CONFIG_NR_DRAM_BANKS=1
+ CONFIG_DISTRO_DEFAULTS=y
+ CONFIG_OF_BOARD_SETUP=y
+-CONFIG_USE_PREBOOT=y
+-CONFIG_PREBOOT="usb start"
++#CONFIG_USE_PREBOOT=y
++#CONFIG_PREBOOT="usb start"
+ CONFIG_MISC_INIT_R=y
+ # CONFIG_DISPLAY_CPUINFO is not set
+ # CONFIG_DISPLAY_BOARDINFO is not set
+diff --git a/configs/rpi_3_defconfig b/configs/rpi_3_defconfig
+index ce7813fb1f..67ccb51cc7 100644
+--- a/configs/rpi_3_defconfig
++++ b/configs/rpi_3_defconfig
+@@ -8,8 +8,8 @@ CONFIG_ENV_SIZE=0x4000
+ CONFIG_NR_DRAM_BANKS=1
+ CONFIG_DISTRO_DEFAULTS=y
+ CONFIG_OF_BOARD_SETUP=y
+-CONFIG_USE_PREBOOT=y
+-CONFIG_PREBOOT="usb start"
++#CONFIG_USE_PREBOOT=y
++#CONFIG_PREBOOT="usb start"
+ CONFIG_MISC_INIT_R=y
+ # CONFIG_DISPLAY_CPUINFO is not set
+ # CONFIG_DISPLAY_BOARDINFO is not set
+diff --git a/configs/rpi_defconfig b/configs/rpi_defconfig
+index 063ec9f196..b6d5ee9463 100644
+--- a/configs/rpi_defconfig
++++ b/configs/rpi_defconfig
+@@ -7,8 +7,8 @@ CONFIG_ENV_SIZE=0x4000
+ CONFIG_NR_DRAM_BANKS=1
+ CONFIG_DISTRO_DEFAULTS=y
+ CONFIG_OF_BOARD_SETUP=y
+-CONFIG_USE_PREBOOT=y
+-CONFIG_PREBOOT="usb start"
++#CONFIG_USE_PREBOOT=y
++#CONFIG_PREBOOT="usb start"
+ CONFIG_MISC_INIT_R=y
+ # CONFIG_DISPLAY_CPUINFO is not set
+ # CONFIG_DISPLAY_BOARDINFO is not set
+-- 
+2.17.1
+
