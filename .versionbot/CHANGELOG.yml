@@ -1,4 +1,19 @@
 - commits:
+    - subject: 'conf/layer: Remove empty line'
+      hash: 115d4efe98ea552cceee7744c1d9707a18e1f8a9
+      body: |
+        This is used solelty to trigger some
+        tests after the build of the PR
+      footer:
+        Changelog-entry: 'conf/layer: Remove empty line'
+        changelog-entry: 'conf/layer: Remove empty line'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.65.1+rev2
+  date: 2021-01-21T10:09:35.624Z
+- commits:
     - subject: Update meta-balena from v2.65.0 to v2.65.1
       hash: e93cc0ea75aea3fbcda9441381a5b0603f0d46be
       body: |
