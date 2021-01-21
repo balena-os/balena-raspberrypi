@@ -11,11 +11,11 @@ SDIMG_KERNELIMAGE_raspberrypi2 ?= "kernel7.img"
 SDIMG_KERNELIMAGE_raspberrypi3-64 ?= "kernel8.img"
 
 # Customize resinos-img
-RESIN_IMAGE_BOOTLOADER_rpi = "bcm2835-bootfiles"
+RESIN_IMAGE_BOOTLOADER_rpi = "bootfiles"
 RESIN_BOOT_PARTITION_FILES_rpi = " \
     u-boot.bin:/${SDIMG_KERNELIMAGE} \
     boot.scr:/boot.scr \
-    bcm2835-bootfiles:/ \
+    bootfiles:/ \
     "
 
 RESIN_BOOT_PARTITION_FILES_append_raspberrypi4-64 = " \

@@ -2,6 +2,13 @@ inherit kernel-resin
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
+LINUX_VERSION = "5.4.83"
+
+SRCREV_machine = "76c49e60e742d0bebd798be972d67dd3fd007691"
+
+# No 5.4.83 available, use 5.4.82
+SRCREV_meta = "e872ef155c596e4cc2f68405d85ab6f2b0303c28"
+
 SRC_URI_append_fincm3 = " \
 	file://0004-mmc-pwrseq-Repurpose-for-Marvell-SD8777.patch \
 	file://0005-balena-fin-wifi-sta-uap-mode.patch \
@@ -164,7 +171,7 @@ RESIN_CONFIGS_DEPS[mcp3422_adc_driver] = " \
 RESIN_CONFIGS_append = " sd8787_pwrseq_driver"
 
 RESIN_CONFIGS[sd8787_pwrseq_driver] = " \
-    CONFIG_PWRSEQ_SD8787=m \
+    CONFIG_PWRSEQ_SD8787=y \
 "
 
 RESIN_CONFIGS_DEPS[sd8787_pwrseq_driver] = " \

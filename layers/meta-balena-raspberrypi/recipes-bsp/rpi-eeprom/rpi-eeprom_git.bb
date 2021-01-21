@@ -16,17 +16,18 @@ COMPATIBLE_MACHINE = "raspberrypi4-64"
 
 SRCBRANCH = "master"
 SRCFORK = "raspberrypi"
-SRCREV = "3916889699bc1457830ad0ceaa343408e10769b4"
+SRCREV = "7cb9d4162f330c5ca578376b1a3d5e748843e81c"
 
-inherit deploy pythonnative
+inherit deploy python3native
 
 # Use the date of the above commit as the package version. Update this when
 # SRCREV is changed.
-PV = "20191029"
+PV = "20210111"
 
 # We use the latest stable version
-# which is available in "critical"
-LATEST_STABLE_PIEEPROM_FW = "2019-09-10"
+# which is available in "stable"
+LATEST_STABLE_PIEEPROM_FW = "2021-01-11"
+VL805_FW_REV = "000138a1"
 
 S = "${WORKDIR}/git"
 
@@ -35,7 +36,7 @@ S = "${WORKDIR}/git"
 # the configuration that exists in the binary
 do_compile() {
     cd ${WORKDIR} && cp ${S}/rpi-eeprom-config .
-    $(which python) ./rpi-eeprom-config ${S}/firmware/critical/pieeprom-${LATEST_STABLE_PIEEPROM_FW}.bin \
+    $(which python3) ./rpi-eeprom-config ${S}/firmware/stable/pieeprom-${LATEST_STABLE_PIEEPROM_FW}.bin \
         --config ./default-config.txt \
         --out ./pieeprom-latest-stable.bin
 }
@@ -48,22 +49,10 @@ do_deploy () {
 
     cp "${WORKDIR}/pieeprom-latest-stable.bin" ${DEPLOY_DIR_IMAGE}/rpi-eeprom/pieeprom-latest-stable.bin
 
-    VL805_FW_REV=$(cat ${S}/firmware/critical/vl805.latest)
-
-    if [ -z ${VL805_FW_REV} ]; then
-        bberror "Unknown version for vl805 firmware!"
-    fi
-
-    cp ${S}/firmware/critical/vl805-${VL805_FW_REV=}.bin ${DEPLOY_DIR_IMAGE}/${PN}/vl805-latest-stable.bin
+    cp ${S}/firmware/critical/vl805-${VL805_FW_REV}.bin ${DEPLOY_DIR_IMAGE}/${PN}/vl805-latest-stable.bin
 }
 
-do_install() {
-    install -d ${D}/${sbindir}
-    install -m 0755 ${S}/vl805 ${D}/${sbindir}/vl805
-}
-
-FILES_${PN} += " ${sbindir}/vl805"
-
+# vl805 utility is deprecated, see https://github.com/raspberrypi/rpi-eeprom/commit/fed1ca62a5752cb5a990608c8c897ce0b077600a
 addtask do_deploy before do_package after do_compile
 
 INHIBIT_PACKAGE_STRIP = "1"
@@ -73,9 +62,6 @@ INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 # on each build
 do_deploy[nostamp] = "1"
 
-# vl805 tool sources are not available (yet),
-# as it comes as a precompiled binary only.
-# It has ARM architecture whereas target machine
-# is Aarch64. We need to disable arch check for it
-# otherwise it cannot packed.
-QAPATHTEST[arch] = ""
+do_deploy[depends] += " \
+    bootfiles:do_deploy \
+"
