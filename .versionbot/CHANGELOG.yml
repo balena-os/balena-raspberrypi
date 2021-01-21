@@ -1,4 +1,271 @@
 - commits:
+    - subject: 'layers: Update device tree overlay list'
+      hash: a0077d4280484aaa890f1563b35495d211a6be66
+      body: >
+        Add new device tree blobs to the list to bring in support for new
+
+        hardware such as merus-amp and more.
+
+
+        From
+        https://github.com/raspberrypi/linux/tree/rpi-5.4.y/arch/arm/boot/dts/overlays
+      footer:
+        Changelog-entry: 'layers: Update device tree overlay list'
+        changelog-entry: 'layers: Update device tree overlay list'
+        Signed-off-by: Aaron Shaw <aaron@balena.io>
+        signed-off-by: Aaron Shaw <aaron@balena.io>
+      author: Aaron Shaw
+      nested: []
+    - subject: Update to dunfell-23.0.4
+      hash: 26a5e70b600161b66e219dc0c7dac6837c250268
+      body: ''
+      footer:
+        Changelog-entry: Update to dunfell-23.0.4
+        changelog-entry: Update to dunfell-23.0.4
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+    - subject: Update meta-balena from v2.65.1 to v2.67.3
+      hash: 577a7451a22e776763b9589fb7876639e19d7555
+      body: |
+        Update meta-balena from 2.65.1 to 2.67.3
+      footer:
+        Changelog-entry: Update meta-balena from v2.65.1 to v2.67.3
+        changelog-entry: Update meta-balena from v2.65.1 to v2.67.3
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: 'kernel-headers-test: Install python dependency'
+              hash: 6b648fa36bb8f7b2f90799a9c331210e34d3c438
+              body: |
+                Some makefiles for the kernel modules build, like for
+                instance the one in the kernel for the lec-px30 machine,
+                want python to be available in the environment. Let's add
+                it to the build dependencies.
+              footer:
+                Change-type: Patch
+                change-type: Patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.67.3
+          date: 2021-01-15T11:10:16.824Z
+        - commits:
+            - subject: Fix pppd timeout when launched by NetworkManager
+              hash: e86c83e9be007bbedf5bad8bb961931c4f4f649c
+              body: >
+                Fixes #1846
+
+
+                UART modems (RaspberryPi HATs) are not working currently under
+
+                balenaOS as NetworkManager times out while attempting to
+                establish
+
+                ppp connection. This is not a balenaOS specific issue.
+
+
+                This commits adds a `connect ""` declaration to
+                `/etc/ppp/options`
+
+                to workaround this as the NULL default value causes the timeout.
+
+
+                The connect option specifies an external script to establish the
+
+                physical link. When using NetworkManager/ModemManager it is
+
+                ModemManager that establishes the physical link before passing
+                it
+
+                to NetworkManager. Thus `connect` should be empty.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Fix pppd timeout when launched by NetworkManager
+                changelog-entry: Fix pppd timeout when launched by NetworkManager
+                Signed-off-by: Zahari Petkov <zahari@balena.io>
+                signed-off-by: Zahari Petkov <zahari@balena.io>
+              author: Zahari Petkov
+              nested: []
+          version: meta-balena-2.67.2
+          date: 2021-01-14T12:39:10.901Z
+        - commits:
+            - subject: 'resin-device-register: Fix post provisioning state not reported'
+              hash: 62016c3931c08cbc4c4bdb1e4069c6f9d9533b04
+              body: >
+                Starting with dee971c0dbeb6e8363f3e321af582e99627626e9, flasher
+
+                images, which don't contain a supervisor version, try to
+                register
+
+                in the API using the parameter supervisor_version='null'.
+
+
+                However, the API expects this parameter to be unset completely
+                if
+
+                there's no version to be reported during registration, otherwise
+
+                the call fails and the device doesn't show up in dashboard
+                during
+
+                flashing or report the post-provisioning state.
+              footer:
+                Change-type: Patch
+                change-type: Patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.67.1
+          date: 2021-01-13T14:55:01.572Z
+        - commits:
+            - subject: Update balena-supervisor from v12.2.11 to v12.3.0
+              hash: fc41d16085b331d032a3666fc25af7c43eee5369
+              body: ''
+              footer:
+                Changelog-entry: Update balena-supervisor from v12.2.11 to v12.3.0
+                changelog-entry: Update balena-supervisor from v12.2.11 to v12.3.0
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Felipe Lalanne <felipe@balena.io>
+                signed-off-by: Felipe Lalanne <felipe@balena.io>
+              author: Felipe Lalanne
+              nested: []
+          version: meta-balena-2.67.0
+          date: 2021-01-12T13:41:49.881Z
+        - commits:
+            - subject: Respect custom CA in supervisor
+              hash: 4cf82392c78d804a18737de80dcfa6f8f34d0494
+              body: >
+                This is necessary because node has its own built-in CA bundle
+                and ignores
+
+                the system-wide bundle. Bind-mount the system-wide bundle to the
+                supervisor
+
+                container as well to keep the previous behavior. Make it
+                read-only though,
+
+                any modifications should be performed by the host OS.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Respect custom CA in supervisor
+                changelog-entry: Respect custom CA in supervisor
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.66.3
+          date: 2021-01-12T09:38:46.408Z
+        - commits:
+            - subject: 'README: Rename resin-logo to balena-logo.'
+              hash: 47a7a0ab9a99ea45b4fcf4e684d973088328eca9
+              body: >
+                The file rename happened in v2.51 but the README has not been
+                updated
+
+                accordingly.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.66.2
+          date: 2021-01-11T17:30:40.806Z
+        - commits:
+            - subject: 'kernel-devsrc: use upstream recipe starting with dunfell'
+              hash: 1300a223f5b58dd4584b62e87df41ec72f783961
+              body: |
+                Remove the kernel-devsrc package from meta-balena and
+                use the one from the upstream Poky project instead.
+
+                Initially I hoped thud and warrior could also use the respective
+                upstreams but I see several differences between the meta-balena
+                version and the upstreams so I updated those compat layers
+                as well.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: 'gen_mod_headers: add missing arch headers to tools'
+              hash: 5485f1fbc901a04eedbcc3b72cc95fdfb2d03665
+              body: >
+                Upstream changes to the kernel have switched to a shared x86
+
+                insn decoder required by tools/objtool so we must add those
+
+                include and lib components to our target dir.
+
+
+                https://lore.kernel.org/lkml/20190830201021.utzjr6cs5hoxygyi@treble/T/
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.66.1
+          date: 2021-01-04T13:06:56.017Z
+        - commits:
+            - subject: 'chrony: bump to version 4.0'
+              hash: 67e8632a8a6c82dcf382b0204af40b79dd1a279a
+              body: |
+                Update chrony from version 3.4 to version 4.0.
+
+                The new version has enhancements and new features that will
+                help to improve time synchronisation, including:
+
+                - the ability to add server pools via scripts using chronyc.
+                - support for dynamic NTP source files that can be reloaded
+                  as necessary (useful for DHCP and config.json sources).
+                - source name options for improved handling of pool addresses.
+                - repeat 'iburst' when a source is changed from offline to
+                  online state.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: 'chrony: bump to version 4.0'
+                changelog-entry: 'chrony: bump to version 4.0'
+                Signed-off-by: Mark Corbin <mark@balena.io>
+                signed-off-by: Mark Corbin <mark@balena.io>
+              author: Mark Corbin
+              nested: []
+          version: meta-balena-2.66.0
+          date: 2020-12-18T11:02:16.858Z
+    - subject: >-
+        Set CONFIG_PWRSEQ_SD8787 as built-in so the balenaFin wifi works
+        correctly
+      hash: 76b38250d0e4bda1c91abcbdaaeed99233080b78
+      body: |
+        Having CONFIG_PWRSEQ_SD8787 as a module makes the balenaFin wifi not
+        be initialized correctly and the wifi fails to function.
+      footer:
+        Changelog-entry: >-
+          Set CONFIG_PWRSEQ_SD8787 as built-in so the balenaFin wifi works
+          correctly
+        changelog-entry: >-
+          Set CONFIG_PWRSEQ_SD8787 as built-in so the balenaFin wifi works
+          correctly
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.67.3+rev1
+  date: 2021-01-21T12:20:52.257Z
+- commits:
     - subject: Update meta-balena from v2.65.0 to v2.65.1
       hash: e93cc0ea75aea3fbcda9441381a5b0603f0d46be
       body: |
