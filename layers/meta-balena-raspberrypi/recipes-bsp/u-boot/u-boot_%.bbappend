@@ -24,8 +24,10 @@ SRC_URI += " \
 
 # Disable flasher check since it starts usb unnecessarily
 # and we don't generate flasher images for any of the RPIs.
+# Also, add a retry count limit for the uart on u-boot 2020.x
 SRC_URI_append = " \
     file://0001-rpi-Disable-image-flasher-check.patch \
+    file://serial_pl01x-Add-retry-limit-when-writing-to-uart-co.patch \
 "
 
 RESIN_UBOOT_DEVICE_TYPES_append = " usb"
