@@ -18,11 +18,6 @@ RESIN_BOOT_PARTITION_FILES_rpi = " \
     bootfiles:/ \
     "
 
-RESIN_BOOT_PARTITION_FILES_append_raspberrypi4-64 = " \
-    rpi-eeprom/pieeprom-latest-stable.bin:/pieeprom-latest-stable.bin \
-    rpi-eeprom/vl805-latest-stable.bin:/vl805-latest-stable.bin \
-"
-
 RESIN_BOOT_PARTITION_FILES_append_revpi-core-3 = " revpi-core-dt-blob-overlay.dtb:/dt-blob.bin"
 
 RESIN_BOOT_PARTITION_FILES_append_revpi-connect = " revpi-connect-dt-blob-overlay.dtb:/dt-blob.bin"
@@ -53,10 +48,5 @@ addhandler overlay_dtbs_handler
 overlay_dtbs_handler[eventmask] = "bb.event.RecipePreFinalise"
 
 IMAGE_INSTALL_append_rpi = " u-boot"
-
-# Tools necessary for SPI EEPROM bootloader and vl805 firmware
-# update during HUP. dtc is called internally at runtime by
-# userlandtools/dtoverlay.
-IMAGE_INSTALL_append_raspberrypi4-64 = " flashrom userlandtools dtc rpi-eeprom"
 
 RPI_KERNEL_DEVICETREE_remove_revpi = "bcm2708-rpi-zero-w.dtb bcm2710-rpi-3-b-plus.dtb bcm2711-rpi-4-b.dtb"
