@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.67.3+rev2
+## (2021-01-26)
+
+* resin-image: Drop bootrom update packages for pi4 [Alexandru Costache]
+
 # v2.67.3+rev1
 ## (2021-01-21)
 

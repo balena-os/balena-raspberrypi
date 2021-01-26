@@ -1,4 +1,23 @@
 - commits:
+    - subject: 'resin-image: Drop bootrom update packages for pi4'
+      hash: 953f37ddd8c61ae126fcd2d8a06afa9676f665bf
+      body: |
+        Updating of boot ROM on the Pi4 is not done
+        currently at hup, because it requires for
+        modules to be reloaded from container.
+
+        Let's drop these packages to make some space
+        for HUP then.
+      footer:
+        Changelog-entry: 'resin-image: Drop bootrom update packages for pi4'
+        changelog-entry: 'resin-image: Drop bootrom update packages for pi4'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.67.3+rev2
+  date: 2021-01-26T09:59:51.113Z
+- commits:
     - subject: 'layers: Update device tree overlay list'
       hash: a0077d4280484aaa890f1563b35495d211a6be66
       body: >
