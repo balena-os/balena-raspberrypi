@@ -1,0 +1,44 @@
+From 7e1061c2c5bfc13bcd14ea80f41793efc2859d66 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Tue, 26 Jan 2021 11:47:49 +0100
+Subject: [PATCH] serial_pl01x: Add retry limit when writing to uart console
+
+The newer 2020.x u-boot waits indefinitely to write
+to the console if uart has been disabled or is incorrectly
+configured. Let's add a retry timeout and give up if impossible
+to put chars on the line, like we did for bcm283x_mu.
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ drivers/serial/serial_pl01x.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/serial/serial_pl01x.c b/drivers/serial/serial_pl01x.c
+index 6e5d81ce34..22d985f96c 100644
+--- a/drivers/serial/serial_pl01x.c
++++ b/drivers/serial/serial_pl01x.c
+@@ -34,11 +34,18 @@ static struct pl01x_regs *base_regs __attribute__ ((section(".data")));
+ 
+ #endif
+ 
++static uint16_t putc_retry;
+ static int pl01x_putc(struct pl01x_regs *regs, char c)
+ {
+ 	/* Wait until there is space in the FIFO */
+-	if (readl(&regs->fr) & UART_PL01x_FR_TXFF)
+-		return -EAGAIN;
++	if (readl(&regs->fr) & UART_PL01x_FR_TXFF) {
++		if (++putc_retry) {
++			return -EAGAIN;
++		} else {
++			/* Couldn't write for too long, drop char */
++			return 0;
++		}
++	}
+ 
+ 	/* Send the character */
+ 	writel(c, &regs->dr);
+-- 
+2.17.1
+
