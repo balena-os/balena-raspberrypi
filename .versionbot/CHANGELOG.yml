@@ -1,4 +1,21 @@
 - commits:
+    - subject: 'u-boot: Avoid lockup on dev image with uart disabled'
+      hash: 0f2295a236f69638d672cfe27dccd200065800b1
+      body: |
+        u-boot 2020.x switched to using the pl_01x driver which
+        locks up too if the uart is incorrecty configured
+        or is disabled from config.txt. We add a retry count
+        to avoid locking forever when serial isn't available.
+      footer:
+        Changelog-entry: 'u-boot: Avoid lockup on dev image with uart disabled'
+        changelog-entry: 'u-boot: Avoid lockup on dev image with uart disabled'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.67.3+rev3
+  date: 2021-01-26T12:49:19.448Z
+- commits:
     - subject: 'resin-image: Drop bootrom update packages for pi4'
       hash: 953f37ddd8c61ae126fcd2d8a06afa9676f665bf
       body: |

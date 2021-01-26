@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.67.3+rev3
+## (2021-01-26)
+
+* u-boot: Avoid lockup on dev image with uart disabled [Alexandru Costache]
+
 # v2.67.3+rev2
 ## (2021-01-26)
 
