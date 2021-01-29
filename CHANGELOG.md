@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.67.3+rev4
+## (2021-01-29)
+
+* Fix overlay-map.dtb deploy location [Florin Sarbu]
+
 # v2.67.3+rev3
 ## (2021-01-26)
 

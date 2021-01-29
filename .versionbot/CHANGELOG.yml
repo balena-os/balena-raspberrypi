@@ -1,4 +1,22 @@
 - commits:
+    - subject: Fix overlay-map.dtb deploy location
+      hash: f955842eb0697f8908ca6cc07f9d208e4f381664
+      body: |
+        Starting with kernel 5.4 a new device tree blob called overlay_map.dtb
+        was rolled out. This file needs to be placed in the overlays directory.
+
+        For details see
+        https://www.raspberrypi.org/documentation/configuration/device-tree.md
+      footer:
+        Changelog-entry: Fix overlay-map.dtb deploy location
+        changelog-entry: Fix overlay-map.dtb deploy location
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.67.3+rev4
+  date: 2021-01-29T14:04:06.672Z
+- commits:
     - subject: 'u-boot: Avoid lockup on dev image with uart disabled'
       hash: 0f2295a236f69638d672cfe27dccd200065800b1
       body: |
