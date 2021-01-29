@@ -33,6 +33,10 @@ python overlay_dtbs_handler () {
 
             for dtb in root_dtbs.split():
                 dtb = os.path.basename(dtb)
+                # newer kernels (5.4 onward) introduce overlay_map.dtb which needs to be deployed in the overlays directory
+                if dtb == 'overlay_map.dtb':
+                    resin_boot_partition_files += "\t%s:/overlays/%s" % (dtb, dtb)
+                    continue
                 resin_boot_partition_files += "\t%s:/%s" % (dtb, dtb)
 
             for dtb in overlay_dtbs.split():
