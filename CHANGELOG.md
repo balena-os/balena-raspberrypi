@@ -1,6 +1,54 @@
 Change log
 -----------
 
+# v2.69.1+rev1
+## (2021-02-04)
+
+
+<details>
+<summary> Update meta-balena from v2.67.3 to v2.69.1 [Alexandru Costache] </summary>
+
+> ## meta-balena-2.69.1
+> ### (2021-02-03)
+> 
+> * Update balena-supervisor from v12.3.0 to v12.3.5 [Miguel Casqueira]
+> 
+> ## meta-balena-2.69.0
+> ### (2021-02-01)
+> 
+> * openvpn: remove resin-ntp-config call from upscript.sh [Mark Corbin]
+> * resin-vars: trigger NTP config script on config.json changes [Mark Corbin]
+> * resin-ntp-config: update script and add systemd service [Mark Corbin]
+> * networkmanager: add improved dispatcher scripts for NTP handling [Mark Corbin]
+> * chrony: add sourcedir support and helper script [Mark Corbin]
+> 
+> ## meta-balena-2.68.1
+> ### (2021-01-29)
+> 
+> * Fix task ordering for the iwlwifi_firmware_clean task [Florin Sarbu]
+> 
+> ## meta-balena-2.68.0
+> ### (2021-01-29)
+> 
+> * Update NetworkManager to 1.28.0 [Zahari Petkov]
+> 
+> ## meta-balena-2.67.6
+> ### (2021-01-28)
+> 
+> * docs: mention balenaRootCA as a config.json parameter [Matthew McGinn]
+> 
+> ## meta-balena-2.67.5
+> ### (2021-01-27)
+> 
+> * replace busybox ps with procps [klutchell] [Kyle Harding]
+> 
+> ## meta-balena-2.67.4
+> ### (2021-01-27)
+> 
+> * Update aufs4 and aufs5 kernel patches [Florin Sarbu]
+> 
+</details>
+
 # v2.67.3+rev5
 ## (2021-02-04)
 
