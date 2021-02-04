@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.67.3+rev5
+## (2021-02-04)
+
+* Use 2GB kernel / 2GB userspace memory split on 5.4 kernels [Michal Toman]
+
 # v2.67.3+rev4
 ## (2021-01-29)
 

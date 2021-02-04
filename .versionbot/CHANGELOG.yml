@@ -1,4 +1,21 @@
 - commits:
+    - subject: Use 2GB kernel / 2GB userspace memory split on 5.4 kernels
+      hash: 19a2506090f866b4bcd85bc8a54f1b1608018e56
+      body: |
+        This has been rolled back from 4.19 but has been copied to 5.4
+        inbetween and overlooked, we do not want to use it.
+      footer:
+        Changelog-entry: Use 2GB kernel / 2GB userspace memory split on 5.4 kernels
+        changelog-entry: Use 2GB kernel / 2GB userspace memory split on 5.4 kernels
+        Change-type: minor
+        change-type: minor
+        Signed-off-by: Michal Toman <michalt@balena.io>
+        signed-off-by: Michal Toman <michalt@balena.io>
+      author: Michal Toman
+      nested: []
+  version: 2.67.3+rev5
+  date: 2021-02-04T09:36:47.695Z
+- commits:
     - subject: Fix overlay-map.dtb deploy location
       hash: f955842eb0697f8908ca6cc07f9d208e4f381664
       body: |
