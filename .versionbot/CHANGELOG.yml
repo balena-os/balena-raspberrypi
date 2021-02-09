@@ -1,4 +1,182 @@
 - commits:
+    - subject: Update meta-balena from v2.67.3 to v2.68.1
+      hash: 64646ab6a77cbbbe80ea7f3474f8a07f827c3189
+      body: |
+        Update meta-balena from 2.67.3 to 2.68.1
+      footer:
+        Changelog-entry: Update meta-balena from v2.67.3 to v2.68.1
+        changelog-entry: Update meta-balena from v2.67.3 to v2.68.1
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested:
+        - commits:
+            - subject: Fix task ordering for the iwlwifi_firmware_clean task
+              hash: 5d039b111a964e21a637a5c7806aea6bb510a43e
+              body: >
+                We need to make sure the firmware cleanup function runs before
+
+                do_populate_sysroot otherwise do_populate_sysroot will race with
+                it and
+
+                will fail complaining about the missing firmware that
+
+                iwlwifi_firmware_clean had just deleted at the same time.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Fix task ordering for the iwlwifi_firmware_clean task
+                changelog-entry: Fix task ordering for the iwlwifi_firmware_clean task
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-2.68.1
+          date: 2021-01-29T13:02:49.703Z
+        - commits:
+            - subject: Update NetworkManager to 1.28.0
+              hash: 20e9c276f8d79b6051066e24b159c8bd9ffe3bc2
+              body: >
+                Fixes #2075
+
+
+                Needed were a number of various changes to make the package
+                compile properly:
+
+
+                Removed is
+                0001-wwan-Set-MTU-based-on-what-ModemManager-exposes.patch that
+                is now
+
+                included upstream.
+
+
+                Our patch for removing HTTPS connectivity checking warning is
+                reworked for ease of
+
+                maintainance. It now keeps the log entry, but changes it to
+                debug level.
+
+
+                Fixed are UPSTREAM_CHECK_* definitions as they referenced a
+                wrong version number.
+
+
+                The following additional configuration options were
+                added/removed:
+
+
+                *. Introspection is disabled through
+                `--enable-introspection=no`. Other services do
+
+                not depend on it, so it is safe to remove it. A related patch is
+                no longer needed
+
+                0002-Do-not-create-settings-settings-property-documentati.patch
+
+
+                *. A new option for using firewalld zone for shared mode is
+                disabled as we do not
+
+                use firewalld.
+
+
+                *. The polkit agent option no longer is available, so
+                `--enable-polkit-agent` and
+
+                `--disable-polkit-agent` are no longer defined.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Update NetworkManager to 1.28.0
+                changelog-entry: Update NetworkManager to 1.28.0
+                Signed-off-by: Zahari Petkov <zahari@balena.io>
+                signed-off-by: Zahari Petkov <zahari@balena.io>
+              author: Zahari Petkov
+              nested: []
+          version: meta-balena-2.68.0
+          date: 2021-01-29T09:45:01.458Z
+        - commits:
+            - subject: 'docs: mention balenaRootCA as a config.json parameter'
+              hash: d0be88530c630d68f8582dce99442c6d94ba5455
+              body: ''
+              footer:
+                Connects-to: 'https://github.com/balena-os/meta-balena/issues/2011'
+                connects-to: 'https://github.com/balena-os/meta-balena/issues/2011'
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Matthew McGinn <matthew@balena.io>
+                signed-off-by: Matthew McGinn <matthew@balena.io>
+              author: Matthew McGinn
+              nested: []
+          version: meta-balena-2.67.6
+          date: 2021-01-28T17:45:30.693Z
+        - commits:
+            - subject: 'replace busybox ps with procps [klutchell]'
+              hash: 00556af37cf241e2b95d9b719f1ab58cc9bbddb6
+              body: >
+                Replace busybox ps link with ps.procps without installing
+
+                any other procps packages. This will avoid regression and bloat
+
+                from swapping existing busybox links with procps variants.
+
+
+                By using procps as docker expects we can properly handle ps args
+
+                such as -e and -o to format output. Busybox is only capable of
+                this
+
+                when compiled in "desktop" mode.
+
+
+                This upstream commit to poky has already split the ps binary
+                into
+
+                a separate procps package:
+
+
+                -
+                https://git.yoctoproject.org/cgit/cgit.cgi/poky/commit/?id=507a47a4e5077d5f8f76d9629be6b871dfd8eb90
+
+
+                So for now we can copy this recipe at the commit above into
+                compat branches
+
+                and use that version until we pick up a branch newer than
+                gatesgarth.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Connects-to: 'https://github.com/balena-os/balena-engine/issues/236'
+                connects-to: 'https://github.com/balena-os/balena-engine/issues/236'
+                Changelog-entry: 'replace busybox ps with procps [klutchell]'
+                changelog-entry: 'replace busybox ps with procps [klutchell]'
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.67.5
+          date: 2021-01-27T18:47:18.617Z
+        - commits:
+            - subject: Update aufs4 and aufs5 kernel patches
+              hash: 62231bee3dd12698522130b224371ff82a3de567
+              body: |
+                We update to the newest patch revisions from upstream
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Update aufs4 and aufs5 kernel patches
+                changelog-entry: Update aufs4 and aufs5 kernel patches
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-2.67.4
+          date: 2021-01-27T11:08:07.030Z
+  version: 2.68.1+rev1
+  date: 2021-02-09T09:49:56.171Z
+- commits:
     - subject: Use 2GB kernel / 2GB userspace memory split on 5.4 kernels
       hash: 19a2506090f866b4bcd85bc8a54f1b1608018e56
       body: |

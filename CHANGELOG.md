@@ -1,6 +1,40 @@
 Change log
 -----------
 
+# v2.68.1+rev1
+## (2021-02-09)
+
+
+<details>
+<summary> Update meta-balena from v2.67.3 to v2.68.1 [Alex Gonzalez] </summary>
+
+> ## meta-balena-2.68.1
+> ### (2021-01-29)
+> 
+> * Fix task ordering for the iwlwifi_firmware_clean task [Florin Sarbu]
+> 
+> ## meta-balena-2.68.0
+> ### (2021-01-29)
+> 
+> * Update NetworkManager to 1.28.0 [Zahari Petkov]
+> 
+> ## meta-balena-2.67.6
+> ### (2021-01-28)
+> 
+> * docs: mention balenaRootCA as a config.json parameter [Matthew McGinn]
+> 
+> ## meta-balena-2.67.5
+> ### (2021-01-27)
+> 
+> * replace busybox ps with procps [klutchell] [Kyle Harding]
+> 
+> ## meta-balena-2.67.4
+> ### (2021-01-27)
+> 
+> * Update aufs4 and aufs5 kernel patches [Florin Sarbu]
+> 
+</details>
+
 # v2.67.3+rev5
 ## (2021-02-04)
 
