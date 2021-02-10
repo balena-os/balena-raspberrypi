@@ -1,0 +1,54 @@
+From d211b4e01d2621ce03854f722f8db5acfe457ae0 Mon Sep 17 00:00:00 2001
+From: Michal Toman <michalt@balena.io>
+Date: Mon, 1 Feb 2021 16:05:38 +0100
+Subject: [PATCH] Add tpm-slb9670-tis-spi DT overlay
+
+Signed-off-by: Michal Toman <michalt@balena.io>
+---
+ arch/arm/boot/dts/overlays/Makefile           |  1 +
+ .../overlays/tpm-slb9670-tis-spi-overlay.dts  | 21 +++++++++++++++++++
+ 2 files changed, 22 insertions(+)
+ create mode 100644 arch/arm/boot/dts/overlays/tpm-slb9670-tis-spi-overlay.dts
+
+diff --git a/arch/arm/boot/dts/overlays/Makefile b/arch/arm/boot/dts/overlays/Makefile
+index d8a3677b583e..696b5789e64c 100644
+--- a/arch/arm/boot/dts/overlays/Makefile
++++ b/arch/arm/boot/dts/overlays/Makefile
+@@ -194,6 +194,7 @@ dtbo-$(CONFIG_ARCH_BCM2835) += \
+ 	tc358743-audio.dtbo \
+ 	tinylcd35.dtbo \
+ 	tpm-slb9670.dtbo \
++	tpm-slb9670-tis-spi.dtbo \
+ 	uart0.dtbo \
+ 	uart1.dtbo \
+ 	uart2.dtbo \
+diff --git a/arch/arm/boot/dts/overlays/tpm-slb9670-tis-spi-overlay.dts b/arch/arm/boot/dts/overlays/tpm-slb9670-tis-spi-overlay.dts
+new file mode 100644
+index 000000000000..e43f8cd248ec
+--- /dev/null
++++ b/arch/arm/boot/dts/overlays/tpm-slb9670-tis-spi-overlay.dts
+@@ -0,0 +1,21 @@
++/*
++ * Device Tree overlay for the Infineon SLB9670 Trusted Platform Module
++ * that uses the tpm_tis-spi driver instead of the original slb9670.
++ * This depends on the tpm-slb9670 overlay being applied prior to this one.
++ */
++
++/dts-v1/;
++/plugin/;
++
++/ {
++	compatible = "brcm,bcm2835";
++
++	fragment@0 {
++		target = <&spi0>;
++		__overlay__ {
++			slb9670: slb9670@1 {
++				compatible = "tcg,tpm_tis-spi";
++			};
++		};
++	};
++};
+-- 
+2.26.2
+
