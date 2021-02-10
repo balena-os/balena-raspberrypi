@@ -37,6 +37,8 @@ DISABLE_VC4GRAPHICS_remove_raspberrypi4-64 = "1"
 KERNEL_IMAGETYPE="zImage"
 KERNEL_BOOTCMD="bootz"
 
+PREFERRED_VERSION_linux-raspberrypi = "5.10.%"
+
 # When u-boot is enabled we need to use the "Image" format and the "booti"
 # command to load the kernel for rpi3 64 bits
 KERNEL_IMAGETYPE_raspberrypi3-64="Image.gz"
