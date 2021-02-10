@@ -9,8 +9,6 @@ KMETA = "kernel-meta"
 SRC_URI = " \
     git://github.com/raspberrypi/linux.git;name=machine;branch=${LINUX_RPI_BRANCH} \
     git://git.yoctoproject.org/yocto-kernel-cache;type=kmeta;name=meta;branch=yocto-5.10;destsuffix=${KMETA} \
-    file://powersave.cfg \
-    file://android-drivers.cfg \
     "
 
 require linux-raspberrypi.inc
