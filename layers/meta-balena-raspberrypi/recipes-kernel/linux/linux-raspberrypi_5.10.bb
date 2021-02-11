@@ -6,6 +6,8 @@ SRCREV_meta = "5833ca701711d487c9094bd1efc671e8ef7d001e"
 
 KMETA = "kernel-meta"
 
+LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
+
 SRC_URI = " \
     git://github.com/raspberrypi/linux.git;name=machine;branch=${LINUX_RPI_BRANCH} \
     git://git.yoctoproject.org/yocto-kernel-cache;type=kmeta;name=meta;branch=yocto-5.10;destsuffix=${KMETA} \
