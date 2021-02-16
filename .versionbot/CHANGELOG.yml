@@ -1,4 +1,21 @@
 - commits:
+    - subject: Update balena-yocto-scripts to v1.9.1
+      hash: 442cb33778dc55926d3078791a6a4ec00d8de209
+      body: >
+        v1.9.1 includes a new step to package ./tests with the jenkins
+        artifacts.
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to v1.9.1
+        changelog-entry: Update balena-yocto-scripts to v1.9.1
+        Connects-to: 'https://github.com/balena-os/balena-yocto-scripts/pull/181'
+        connects-to: 'https://github.com/balena-os/balena-yocto-scripts/pull/181'
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 2.69.1+rev2
+  date: 2021-02-11T18:13:36.333Z
+- commits:
     - subject: Add bcm2710-rpi-cm3.dtb for the raspberrypi3-64 machine
       hash: 02b37d608765187be12285dc101c3b135d36bb30
       body: |
