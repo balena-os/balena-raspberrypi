@@ -21,6 +21,7 @@ SRC_URI_append = " \
 	file://0006-overlays-Add-Hyperpixel4-overlays.patch \
 	file://0001-waveshare-sim7600-Add-dtbo-for-this-modem.patch \
 	file://0001-Add-tpm-slb9670-tis-spi-DT-overlay.patch \
+	file://0009-network-lan78xx-interrupt.patch \
 "
 
 SRC_URI_append_raspberrypi4-64 = " \
