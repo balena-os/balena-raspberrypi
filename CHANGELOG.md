@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.69.1+rev3
+## (2021-02-18)
+
+* meta-balena-raspberrypi/linux: fix ethernet cable detection [Mark Corbin]
+
 # v2.69.1+rev2
 ## (2021-02-11)
 

@@ -1,4 +1,29 @@
 - commits:
+    - subject: 'meta-balena-raspberrypi/linux: fix ethernet cable detection'
+      hash: fa807ec59844b1b3afbaebb3aed7c5300ec101d6
+      body: |
+        Ethernet cable connect/disconnect events are not detected when a
+        device is booted with the ethernet cable already connected.
+
+        This is a known issue:
+        https://github.com/raspberrypi/linux/issues/2937
+
+        This commit applies an upstream patch that is already in the
+        raspberrypi-linux rpi-5.4.y and rpi-5.10.y branches.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Connects-to: '#605'
+        connects-to: '#605'
+        Changelog-entry: 'meta-balena-raspberrypi/linux: fix ethernet cable detection'
+        changelog-entry: 'meta-balena-raspberrypi/linux: fix ethernet cable detection'
+        Signed-off-by: Mark Corbin <mark@balena.io>
+        signed-off-by: Mark Corbin <mark@balena.io>
+      author: Mark Corbin
+      nested: []
+  version: 2.69.1+rev3
+  date: 2021-02-18T17:43:41.373Z
+- commits:
     - subject: Update balena-yocto-scripts to v1.9.1
       hash: 442cb33778dc55926d3078791a6a4ec00d8de209
       body: >
