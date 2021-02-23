@@ -1,4 +1,20 @@
 - commits:
+    - subject: Update balena-yocto-scripts to v1.9.4
+      hash: b6a93c109997c0911a629a3b9569906ec63fc05a
+      body: |
+        compress test suites inside jenkins artifacts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to v1.9.4
+        changelog-entry: Update balena-yocto-scripts to v1.9.4
+        Connects-to: 'https://github.com/balena-os/balena-yocto-scripts/pull/185'
+        connects-to: 'https://github.com/balena-os/balena-yocto-scripts/pull/185'
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 2.69.1+rev4
+  date: 2021-02-23T16:50:51.370Z
+- commits:
     - subject: 'meta-balena-raspberrypi/linux: fix ethernet cable detection'
       hash: fa807ec59844b1b3afbaebb3aed7c5300ec101d6
       body: |

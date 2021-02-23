@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.69.1+rev4
+## (2021-02-23)
+
+* Update balena-yocto-scripts to v1.9.4 [Kyle Harding]
+
 # v2.69.1+rev3
 ## (2021-02-18)
 
