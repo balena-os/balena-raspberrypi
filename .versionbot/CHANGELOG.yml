@@ -1,4 +1,29 @@
 - commits:
+    - subject: Update balena-yocto-scripts to v1.9.4
+      hash: 68bc3839a4ae44619aaeaf5108305c63e684410a
+      body: ''
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to v1.9.4
+        changelog-entry: Update balena-yocto-scripts to v1.9.4
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+    - subject: 'sd8887-mrvl: Use v0.0.6 tag for kernel 5.4.83'
+      hash: 1246c8616e25289eff16110baa37c916a2e2a436
+      body: |
+        Bring in latest version to have wifi working
+        with kernel 5.4.83
+      footer:
+        Changelog-entry: 'sd8887-mrvl: Use v0.0.6 tag for kernel 5.4.83'
+        changelog-entry: 'sd8887-mrvl: Use v0.0.6 tag for kernel 5.4.83'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2021.01.1
+  date: 2021-02-25T13:23:29.614Z
+- commits:
     - subject: Update meta-balena from v2.67.3 to v2.68.1
       hash: 64646ab6a77cbbbe80ea7f3474f8a07f827c3189
       body: |

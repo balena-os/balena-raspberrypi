@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2021.01.1
+## (2021-02-25)
+
+* Update balena-yocto-scripts to v1.9.4 [Alexandru Costache]
+* sd8887-mrvl: Use v0.0.6 tag for kernel 5.4.83 [Alexandru Costache]
+
 # 2021.01.0
 ## (2021-02-10)
 
