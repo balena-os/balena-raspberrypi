@@ -1,4 +1,5 @@
 # Supported machines
+#MACHINE ?= "nebra-hnt"
 #MACHINE ?= "raspberrypi"
 #MACHINE ?= "raspberrypi2"
 #MACHINE ?= "raspberrypi3"
