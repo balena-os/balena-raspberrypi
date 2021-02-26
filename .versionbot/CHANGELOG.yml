@@ -1,4 +1,62 @@
 - commits:
+    - subject: Update meta-balena from v2.71.1 to v2.71.2
+      hash: c10a64af336ad926d05da7257fe0d0df5f1b1ce6
+      body: |
+        Update meta-balena from 2.71.1 to 2.71.2
+      footer:
+        Changelog-entry: Update meta-balena from v2.71.1 to v2.71.2
+        changelog-entry: Update meta-balena from v2.71.1 to v2.71.2
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: 'dnsmasq: enable dbus support'
+              hash: 372980ca6aa6bd2793ac856c303c3b3ac4eeffdb
+              body: >
+                This config option is disabled by default in the upstream
+                package
+
+                so I'm including the change here as a separate commit.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: 'dnsmasq: update to 2.84 with dnspooq fix'
+              hash: 3afbe8dfbbaf9f73a09048e0350622535befa0a8
+              body: >
+                https://github.com/balena-os/meta-balena/issues/2099
+
+
+                Copy dnsmasq 2.84 recipe and files from this upstream patch:
+
+
+                http://cgit.openembedded.org/meta-openembedded/commit/meta-networking/recipes-support/dnsmasq?id=3e28a31bb479f292b9a052a3d2eee84c49319ee3
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.71.2
+          date: 2021-02-23T19:57:37.313Z
+    - subject: Update balena-yocto-scripts to v1.10.1
+      hash: 3a4e1d44881492a5d425defa2522569382354112
+      body: ''
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to v1.10.1
+        changelog-entry: Update balena-yocto-scripts to v1.10.1
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.71.2+rev1
+  date: 2021-02-26T09:18:58.309Z
+- commits:
     - subject: Update meta-balena from v2.69.1 to v2.71.1
       hash: 73b087f7eecfbae28b64c4d41886c77ff2a3b6b6
       body: |

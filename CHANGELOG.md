@@ -1,6 +1,23 @@
 Change log
 -----------
 
+# v2.71.2+rev1
+## (2021-02-26)
+
+
+<details>
+<summary> Update meta-balena from v2.71.1 to v2.71.2 [Florin Sarbu] </summary>
+
+> ## meta-balena-2.71.2
+> ### (2021-02-23)
+> 
+> * dnsmasq: enable dbus support [Kyle Harding]
+> * dnsmasq: update to 2.84 with dnspooq fix [Kyle Harding]
+> 
+</details>
+
+* Update balena-yocto-scripts to v1.10.1 [Florin Sarbu]
+
 # v2.71.1+rev1
 ## (2021-02-25)
 
