@@ -1,6 +1,41 @@
 Change log
 -----------
 
+# v2.71.1+rev1
+## (2021-02-25)
+
+
+<details>
+<summary> Update meta-balena from v2.69.1 to v2.71.1 [Florin Sarbu] </summary>
+
+> ## meta-balena-2.71.1
+> ### (2021-02-23)
+> 
+> * recipes-bsp: grub: install only release modules [Joseph Kogut]
+> 
+> ## meta-balena-2.71.0
+> ### (2021-02-15)
+> 
+> * meta-balena-common: add grub-efi support [Joseph Kogut]
+> 
+> ## meta-balena-2.70.2
+> ### (2021-02-12)
+> 
+> * Update PR template to specify test coverage in more detail [Alex Gonzalez]
+> * Update codeowners [Alex Gonzalez]
+> 
+> ## meta-balena-2.70.1
+> ### (2021-02-11)
+> 
+> * Add leviathan automated OS test suite [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## meta-balena-2.70.0
+> ### (2021-02-11)
+> 
+> * systemd/timeinit: use systemd mount unit for /etc/fake-hwclock [Mark Corbin]
+> 
+</details>
+
 # v2.69.1+rev4
 ## (2021-02-23)
 
