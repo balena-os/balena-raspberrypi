@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://${WORKDIR}/COPYING;md5=12f884d2ae1ff87c09e5b7ccc2c4ca
 inherit module
 
 SRC_URI = " \
-    git://git@github.com/balena-io/sd8887-mrvl.git;protocol=ssh;tag=v0.0.5 \
+    git://git@github.com/balena-io/sd8887-mrvl.git;protocol=ssh;tag=v0.0.6 \
     file://COPYING \
 "
 
