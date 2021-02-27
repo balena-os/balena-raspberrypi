@@ -1,4 +1,39 @@
 - commits:
+    - subject: Update meta-balena from v2.71.2 to v2.71.3
+      hash: 802bd3a1379f463c8bb53f6b59651b1629bb6e67
+      body: |
+        Update meta-balena from 2.71.2 to 2.71.3
+      footer:
+        Changelog-entry: Update meta-balena from v2.71.2 to v2.71.3
+        changelog-entry: Update meta-balena from v2.71.2 to v2.71.3
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: >-
+                balena: Make the healthcheck loading service part of
+                balena.service
+              hash: c26f2d203a87d1578d9d52d5bbd8b0b18869916e
+              body: >
+                This prevents issues with the health check when the image is
+                manually
+
+                removed.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Connects-to: 'https://github.com/balena-os/meta-balena/issues/2010'
+                connects-to: 'https://github.com/balena-os/meta-balena/issues/2010'
+                Signed-off-by: Robert Günzler <robertg@balena.io>
+                signed-off-by: Robert Günzler <robertg@balena.io>
+              author: Robert Günzler
+              nested: []
+          version: meta-balena-2.71.3
+          date: 2021-02-26T12:34:11.073Z
+  version: 2.71.3+rev1
+  date: 2021-02-27T11:37:26.878Z
+- commits:
     - subject: Update meta-balena from v2.71.1 to v2.71.2
       hash: c10a64af336ad926d05da7257fe0d0df5f1b1ce6
       body: |

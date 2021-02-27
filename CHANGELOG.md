@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.71.3+rev1
+## (2021-02-27)
+
+
+<details>
+<summary> Update meta-balena from v2.71.2 to v2.71.3 [Florin Sarbu] </summary>
+
+> ## meta-balena-2.71.3
+> ### (2021-02-26)
+> 
+> * balena: Make the healthcheck loading service part of balena.service [Robert Günzler]
+> 
+</details>
+
 # v2.71.2+rev1
 ## (2021-02-26)
 
