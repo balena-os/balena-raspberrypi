@@ -1,4 +1,19 @@
 - commits:
+    - subject: Update balena-yocto-scripts to v1.10.2
+      hash: 5639128d34204fa313f13931315214e7dd8f04ea
+      body: ''
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: Update balena-yocto-scripts to v1.10.2
+        changelog-entry: Update balena-yocto-scripts to v1.10.2
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 2.71.3+rev2
+  date: 2021-03-01T14:24:17.959Z
+- commits:
     - subject: Update meta-balena from v2.71.2 to v2.71.3
       hash: 802bd3a1379f463c8bb53f6b59651b1629bb6e67
       body: |
