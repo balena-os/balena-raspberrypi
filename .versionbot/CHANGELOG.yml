@@ -1,4 +1,19 @@
 - commits:
+    - subject: 'conf/samples: Switch HNT device to overlay2'
+      hash: 83c2d37d7bc06b07675f048a9b5234b9707357d1
+      body: |
+        All newly added devices should use overlay2
+        by default.
+      footer:
+        Changelog-entry: 'conf/samples: Switch HNT device to overlay2'
+        changelog-entry: 'conf/samples: Switch HNT device to overlay2'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.71.3+rev3
+  date: 2021-03-02T13:17:26.953Z
+- commits:
     - subject: Update balena-yocto-scripts to v1.10.3
       hash: 09dad8a3d8b9cde2251d19afa479b95f99cf5351
       body: ''

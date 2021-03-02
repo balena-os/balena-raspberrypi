@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.71.3+rev3
+## (2021-03-02)
+
+* conf/samples: Switch HNT device to overlay2 [Alexandru Costache]
+
 # v2.71.3+rev2
 ## (2021-03-01)
 
