@@ -1,6 +1,6 @@
-From 53f5425ec5979df0b2db210505c3dea84e6fb2c8 Mon Sep 17 00:00:00 2001
+From 1a83a67acc39bb7343df41f9095c0e79c9c9a148 Mon Sep 17 00:00:00 2001
 From: Alexandru Costache <alexandru@balena.io>
-Date: Thu, 27 Aug 2020 14:27:46 +0200
+Date: Mon, 8 Mar 2021 16:14:40 +0100
 Subject: [PATCH] pl01: Disable driver in production builds
 
 Do so when enable_uart is not set in config.txt,
@@ -15,17 +15,17 @@ Signed-off-by: Alexandru Costache <alexandru@balena.io>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/serial/serial_pl01x.c b/drivers/serial/serial_pl01x.c
-index 6e5d81ce34..199bef2f4f 100644
+index b9b7fbbe23..1df42fc68f 100644
 --- a/drivers/serial/serial_pl01x.c
 +++ b/drivers/serial/serial_pl01x.c
-@@ -375,7 +375,7 @@ int pl01x_serial_ofdata_to_platdata(struct udevice *dev)
+@@ -394,7 +394,7 @@ int pl01x_serial_of_to_plat(struct udevice *dev)
  U_BOOT_DRIVER(serial_pl01x) = {
  	.name	= "serial_pl01x",
  	.id	= UCLASS_SERIAL,
 -	.of_match = of_match_ptr(pl01x_serial_id),
 +	.of_match = NULL,
- 	.ofdata_to_platdata = of_match_ptr(pl01x_serial_ofdata_to_platdata),
- 	.platdata_auto_alloc_size = sizeof(struct pl01x_serial_platdata),
+ 	.of_to_plat = of_match_ptr(pl01x_serial_of_to_plat),
+ 	.plat_auto	= sizeof(struct pl01x_serial_plat),
  	.probe = pl01x_serial_probe,
 -- 
 2.17.1
