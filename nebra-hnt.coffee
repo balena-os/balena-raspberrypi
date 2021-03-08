@@ -27,10 +27,10 @@ module.exports =
 
 	yocto:
 		machine: 'nebra-hnt'
-		image: 'resin-image'
-		fstype: 'resinos-img'
+		image: 'balena-image'
+		fstype: 'balenaos-img'
 		version: 'yocto-dunfell'
-		deployArtifact: 'resin-image-nebra-hnt.resinos-img'
+		deployArtifact: 'balena-image-nebra-hnt.balenaos-img'
 		compressed: true
 
 	configuration:

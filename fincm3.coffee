@@ -32,10 +32,10 @@ module.exports =
 
 	yocto:
 		machine: 'fincm3'
-		image: 'resin-image'
-		fstype: 'resinos-img'
+		image: 'balena-image'
+		fstype: 'balenaos-img'
 		version: 'yocto-dunfell'
-		deployArtifact: 'resin-image-fincm3.resinos-img'
+		deployArtifact: 'balena-image-fincm3.balenaos-img'
 		compressed: true
 
 	configuration:

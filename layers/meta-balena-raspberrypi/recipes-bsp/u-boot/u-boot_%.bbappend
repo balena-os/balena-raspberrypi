@@ -30,7 +30,7 @@ SRC_URI_append = " \
     file://serial_pl01x-Add-retry-limit-when-writing-to-uart-co.patch \
 "
 
-RESIN_UBOOT_DEVICE_TYPES_append = " usb"
+BALENA_UBOOT_DEVICE_TYPES_append = " usb"
 
 SRCREV_raspberrypi4-64 = "52ba373b7825e9feab8357065155cf43dfe2f4ff"
 LIC_FILES_CHKSUM_raspberrypi4-64 = " file://Licenses/README;md5=5a7450c57ffe5ae63fd732446b988025"
