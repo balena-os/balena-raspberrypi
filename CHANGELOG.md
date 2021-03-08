@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.71.3+rev4
+## (2021-03-08)
+
+* raspberrypicm4-ioboard: Add CM4 IO Board coffee file [Alexandru Costache]
+
 # v2.71.3+rev3
 ## (2021-03-02)
 

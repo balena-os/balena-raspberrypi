@@ -1,4 +1,17 @@
 - commits:
+    - subject: 'raspberrypicm4-ioboard: Add CM4 IO Board coffee file'
+      hash: 8e88f4930245f48da4d61f7bcae52caea2b6bfe6
+      body: ''
+      footer:
+        Changelog-entry: 'raspberrypicm4-ioboard: Add CM4 IO Board coffee file'
+        changelog-entry: 'raspberrypicm4-ioboard: Add CM4 IO Board coffee file'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.71.3+rev4
+  date: 2021-03-08T09:39:03.478Z
+- commits:
     - subject: 'conf/samples: Switch HNT device to overlay2'
       hash: 83c2d37d7bc06b07675f048a9b5234b9707357d1
       body: |
