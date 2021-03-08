@@ -1,0 +1,64 @@
+From df2e9780141660ea48a3298c9e53aaa88590daa0 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Mon, 8 Mar 2021 09:59:00 +0200
+Subject: [PATCH] From 00bd886066f005fc6447c280df7fbac07a16bddc Mon Sep 17
+ 00:00:00 2001 From: Luiz Augusto von Dentz <luiz.von.dentz@intel.com> Date:
+ Fri, 5 Mar 2021 14:25:44 -0800 Subject: [PATCH] gatt: Fix registering DIS
+ without a valid source
+
+If source has not been set don't register DIS as it would not contain
+any useful information and by doing this it actually allows systems to
+register their own DIS instance.
+
+Fixes https://github.com/bluez/bluez/issues/101
+
+Author: Luiz Augusto von Dentz <luiz.von.dentz@intel.com>
+
+NOTE: Should be removed when merged in upstream master
+and Bluez is updated to 5.56+ in poky.
+
+Upstream-status: Pending
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ src/gatt-database.c | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/src/gatt-database.c b/src/gatt-database.c
+index bd5864bcd..6c9e19ff3 100644
+--- a/src/gatt-database.c
++++ b/src/gatt-database.c
+@@ -1241,22 +1241,23 @@ static void device_info_read_pnp_id_cb(struct gatt_db_attribute *attrib,
+ static void populate_devinfo_service(struct btd_gatt_database *database)
+ {
+ 	struct gatt_db_attribute *service;
++	struct gatt_db_attribute *attrib;
+ 	bt_uuid_t uuid;
+ 
++	/* Only register DIS if source has been set */
++	if (!btd_opts.did_source)
++		return;
++
+ 	bt_uuid16_create(&uuid, UUID_DIS);
+ 	service = gatt_db_add_service(database->db, &uuid, true, 3);
+ 
+-	if (btd_opts.did_source > 0) {
+-		struct gatt_db_attribute *attrib;
+-
+-		bt_uuid16_create(&uuid, GATT_CHARAC_PNP_ID);
+-		attrib = gatt_db_service_add_characteristic(service, &uuid,
++	bt_uuid16_create(&uuid, GATT_CHARAC_PNP_ID);
++	attrib = gatt_db_service_add_characteristic(service, &uuid,
+ 						BT_ATT_PERM_READ,
+ 						BT_GATT_CHRC_PROP_READ,
+ 						device_info_read_pnp_id_cb,
+ 						NULL, database);
+-		gatt_db_attribute_set_fixed_length(attrib, 7);
+-	}
++	gatt_db_attribute_set_fixed_length(attrib, 7);
+ 
+ 	gatt_db_service_set_active(service, true);
+ 
+ 
+-- 
+2.17.1
+
