@@ -1,4 +1,22 @@
 - commits:
+    - subject: 'bluez5: Add pending patches for testing on Nebra HNT'
+      hash: 01080b76427d7b1297ae25e08659cfcc2132318b
+      body: |
+        The 000x patches, init and run-ptest come from poky
+        bluez 5.55, the other two are backported from github
+        bluez issue 101. We update to Bluez 5.56 to apply these
+        two pending patches and check if they solve an issue
+        that affects this board's use-case.
+      footer:
+        Changelog-entry: 'bluez5: Add pending patches for testing on Nebra HNT'
+        changelog-entry: 'bluez5: Add pending patches for testing on Nebra HNT'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.71.3+rev5
+  date: 2021-03-08T15:22:14.411Z
+- commits:
     - subject: 'raspberrypicm4-ioboard: Add CM4 IO Board coffee file'
       hash: 8e88f4930245f48da4d61f7bcae52caea2b6bfe6
       body: ''

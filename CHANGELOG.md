@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.71.3+rev5
+## (2021-03-08)
+
+* bluez5: Add pending patches for testing on Nebra HNT [Alexandru Costache]
+
 # v2.71.3+rev4
 ## (2021-03-08)
 
