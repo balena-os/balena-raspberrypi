@@ -61,6 +61,6 @@ SRC_URI_append_raspberrypi4-64 = " \
 # the pi4 serial driver freeze. Let's not use this driver in
 # production, because we don't want to output anything to the
 # console anyway.
-SRC_URI_append = " \
+SRC_URI_append_raspberrypi4-64 = " \
     ${@bb.utils.contains('DISTRO_FEATURES', 'development-image', '', 'file://rpi4-disable-pl01-serial-driver.patch', d)} \
 "
