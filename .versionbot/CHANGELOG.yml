@@ -1,4 +1,23 @@
 - commits:
+    - subject: 'u-boot: Include pl01 patch for Pi4'
+      hash: b73924d0b46ceea2330811cf4bd9d58473ac008a
+      body: |
+        The pl01 serial issue has only been reported
+        for the Pi4 based boards, which use the current
+        u-boot github master HEAD revision, to include
+        cm4 and pi400 fixes. Include this patch only
+        for Pi4 for now as it won't apply on the
+        default u-boot from poky.
+      footer:
+        Changelog-entry: 'u-boot: Include pl01 patch for Pi4'
+        changelog-entry: 'u-boot: Include pl01 patch for Pi4'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.71.3+rev6
+  date: 2021-03-09T13:42:44.547Z
+- commits:
     - subject: 'bluez5: Add pending patches for testing on Nebra HNT'
       hash: 01080b76427d7b1297ae25e08659cfcc2132318b
       body: |

@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.71.3+rev6
+## (2021-03-09)
+
+* u-boot: Include pl01 patch for Pi4 [Alexandru Costache]
+
 # v2.71.3+rev5
 ## (2021-03-08)
 
