@@ -13,4 +13,10 @@ RDEPENDS_${PN}_remove_fincm3 = "pi-bluetooth"
 SRC_URI_append_nebra-hnt = " \
     file://fix-registerin-dis-without-valid-source.patch \
     file://main-conf-enable-passing-false-deviceid.patch \
+    file://main.conf \
 "
+
+do_install_append_nebra-hnt() {
+    install -d ${D}${sysconfdir}/bluetooth
+    install -m 644  ${WORKDIR}/main.conf ${D}/etc/bluetooth
+}
