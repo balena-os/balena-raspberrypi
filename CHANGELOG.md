@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.71.3+rev7
+## (2021-03-10)
+
+* bluez: Disable Bluez GATT service for NebraHNT [Ryan Walmsley]
+
 # v2.71.3+rev6
 ## (2021-03-09)
 

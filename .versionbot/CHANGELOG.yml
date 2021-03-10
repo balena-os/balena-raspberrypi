@@ -1,4 +1,18 @@
 - commits:
+    - subject: 'bluez: Disable Bluez GATT service for NebraHNT'
+      hash: dcb07dadffa7fb0e477efe334c635d6a37eb749a
+      body: |
+        Configuration provided by Ryan Walmsley.
+      footer:
+        Changelog-entry: 'bluez: Disable Bluez GATT service for NebraHNT'
+        changelog-entry: 'bluez: Disable Bluez GATT service for NebraHNT'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Ryan Walmsley
+      nested: []
+  version: 2.71.3+rev7
+  date: 2021-03-10T16:25:37.675Z
+- commits:
     - subject: 'u-boot: Include pl01 patch for Pi4'
       hash: b73924d0b46ceea2330811cf4bd9d58473ac008a
       body: |
