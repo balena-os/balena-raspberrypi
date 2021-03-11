@@ -49,8 +49,8 @@ CMDLINE = "${@bb.utils.contains('DISTRO_FEATURES','development-image',"${DEBUG_C
 CMDLINE_append = " cgroup_enable=memory"
 CMDLINE_DEBUG = ""
 
-RESIN_CONFIGS_append = " fbtft"
-RESIN_CONFIGS[fbtft] = " \
+BALENA_CONFIGS_append = " fbtft"
+BALENA_CONFIGS[fbtft] = " \
     CONFIG_STAGING=y \
     CONFIG_FB_TFT=m \
     CONFIG_FB_TFT_AGM1264K_FL=m \
@@ -83,8 +83,8 @@ RESIN_CONFIGS[fbtft] = " \
     CONFIG_FB_TFT_FBTFT_DEVICE=m \
     "
 
-RESIN_CONFIGS_append = " pca955_gpio_expander"
-RESIN_CONFIGS[pca955_gpio_expander] = " \
+BALENA_CONFIGS_append = " pca955_gpio_expander"
+BALENA_CONFIGS[pca955_gpio_expander] = " \
     CONFIG_GPIO_PCA953X=y \
     CONFIG_GPIO_PCA953X_IRQ=y \
     "
@@ -93,96 +93,96 @@ KERNEL_MODULE_PROBECONF += "rtl8192cu"
 module_conf_rtl8192cu = "blacklist rtl8192cu"
 
 # requested by customer (support for Kontron PLD devices)
-RESIN_CONFIGS_append = " gpio_i2c_kempld"
-RESIN_CONFIGS_DEPS[gpio_i2c_kempld] = " \
+BALENA_CONFIGS_append = " gpio_i2c_kempld"
+BALENA_CONFIGS_DEPS[gpio_i2c_kempld] = " \
     CONFIG_GPIOLIB=y \
     CONFIG_I2C=y \
     CONFIG_HAS_IOMEM=y \
     CONFIG_MFD_KEMPLD=m \
 "
-RESIN_CONFIGS[gpio_i2c_kempld] = " \
+BALENA_CONFIGS[gpio_i2c_kempld] = " \
     CONFIG_GPIO_KEMPLD=m \
     CONFIG_I2C_KEMPLD=m \
 "
 
 # make sure watchdog gets enabled no matter of the BSP changes
-RESIN_CONFIGS_append = " rpi_watchdog"
-RESIN_CONFIGS_DEPS[rpi_watchdog] = " \
+BALENA_CONFIGS_append = " rpi_watchdog"
+BALENA_CONFIGS_DEPS[rpi_watchdog] = " \
     CONFIG_WATCHDOG=y \
 "
-RESIN_CONFIGS[rpi_watchdog] = " \
+BALENA_CONFIGS[rpi_watchdog] = " \
     CONFIG_BCM2835_WDT=y \
 "
 
-RESIN_CONFIGS_append = " kvaser_usb_can_driver"
+BALENA_CONFIGS_append = " kvaser_usb_can_driver"
 
-RESIN_CONFIGS[kvaser_usb_can_driver] = " \
+BALENA_CONFIGS[kvaser_usb_can_driver] = " \
     CONFIG_CAN_KVASER_USB=m \
 "
 
-RESIN_CONFIGS_append = " mcp251x_can_driver"
+BALENA_CONFIGS_append = " mcp251x_can_driver"
 
-RESIN_CONFIGS[mcp251x_can_driver] = " \
+BALENA_CONFIGS[mcp251x_can_driver] = " \
     CONFIG_CAN_MCP251X=m \
 "
 
-RESIN_CONFIGS_DEPS[mcp251x_can_driver] = " \
+BALENA_CONFIGS_DEPS[mcp251x_can_driver] = " \
     CONFIG_SPI=y \
     CONFIG_HAS_DMA=y \
 "
 
-RESIN_CONFIGS_append = " can_calc_bittiming"
+BALENA_CONFIGS_append = " can_calc_bittiming"
 
-RESIN_CONFIGS[can_calc_bittiming] = " \
+BALENA_CONFIGS[can_calc_bittiming] = " \
 		CONFIG_CAN_CALC_BITTIMING=y \
 "
 
-RESIN_CONFIGS_DEPS[can_calc_bittiming] = " \
+BALENA_CONFIGS_DEPS[can_calc_bittiming] = " \
 		CONFIG_CAN_DEV=y \
 "
 
-RESIN_CONFIGS_append = " ds1307_rtc_driver"
+BALENA_CONFIGS_append = " ds1307_rtc_driver"
 
-RESIN_CONFIGS[ds1307_rtc_driver] = " \
+BALENA_CONFIGS[ds1307_rtc_driver] = " \
     CONFIG_RTC_DRV_DS1307=m \
 "
 
-RESIN_CONFIGS_DEPS[ds1307_rtc_driver] = " \
+BALENA_CONFIGS_DEPS[ds1307_rtc_driver] = " \
     CONFIG_I2C=y \
 "
 
-RESIN_CONFIGS_append = " sc16is7xx_serial_driver"
+BALENA_CONFIGS_append = " sc16is7xx_serial_driver"
 
-RESIN_CONFIGS[sc16is7xx_serial_driver] = " \
+BALENA_CONFIGS[sc16is7xx_serial_driver] = " \
     CONFIG_SERIAL_SC16IS7XX=m \
 "
 
-RESIN_CONFIGS_DEPS[sc16is7xx_serial_driver] = " \
+BALENA_CONFIGS_DEPS[sc16is7xx_serial_driver] = " \
     CONFIG_I2C=y \
 "
 
-RESIN_CONFIGS_append = " mcp3422_adc_driver"
+BALENA_CONFIGS_append = " mcp3422_adc_driver"
 
-RESIN_CONFIGS[mcp3422_adc_driver] = " \
+BALENA_CONFIGS[mcp3422_adc_driver] = " \
     CONFIG_MCP3422=m \
 "
 
-RESIN_CONFIGS_DEPS[mcp3422_adc_driver] = " \
+BALENA_CONFIGS_DEPS[mcp3422_adc_driver] = " \
     CONFIG_I2C=y \
 "
 
-RESIN_CONFIGS_append = " sd8787_pwrseq_driver"
+BALENA_CONFIGS_append = " sd8787_pwrseq_driver"
 
-RESIN_CONFIGS[sd8787_pwrseq_driver] = " \
+BALENA_CONFIGS[sd8787_pwrseq_driver] = " \
     CONFIG_PWRSEQ_SD8787=y \
 "
 
-RESIN_CONFIGS_DEPS[sd8787_pwrseq_driver] = " \
+BALENA_CONFIGS_DEPS[sd8787_pwrseq_driver] = " \
     CONFIG_OF=y \
 "
 
-RESIN_CONFIGS_append = " serial_8250"
-RESIN_CONFIGS[serial_8250] = " \
+BALENA_CONFIGS_append = " serial_8250"
+BALENA_CONFIGS[serial_8250] = " \
     CONFIG_SERIAL_8250=y \
     CONFIG_SERIAL_8250_CONSOLE=y \
     CONFIG_SERIAL_8250_NR_UARTS=1 \
@@ -191,8 +191,8 @@ RESIN_CONFIGS[serial_8250] = " \
     CONFIG_SERIAL_8250_BCM2835AUX=y \
 "
 
-RESIN_CONFIGS_append_rt-rpi-300 = " rtrpi300cfgs"
-RESIN_CONFIGS[rtrpi300cfgs] = " \
+BALENA_CONFIGS_append_rt-rpi-300 = " rtrpi300cfgs"
+BALENA_CONFIGS[rtrpi300cfgs] = " \
     CONFIG_RTC_DRV_RX8010=m \
     CONFIG_SPI=y \
     CONFIG_SPI_BCM2835=m \

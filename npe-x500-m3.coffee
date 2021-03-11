@@ -28,10 +28,10 @@ module.exports =
 
 	yocto:
 		machine: 'npe-x500-m3'
-		image: 'resin-image'
-		fstype: 'resinos-img'
+		image: 'balena-image'
+		fstype: 'balenaos-img'
 		version: 'yocto-dunfell'
-		deployArtifact: 'resin-image-npe-x500-m3.resinos-img'
+		deployArtifact: 'balena-image-npe-x500-m3.balenaos-img'
 		compressed: true
 
 	configuration:

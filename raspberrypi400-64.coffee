@@ -20,10 +20,10 @@ module.exports =
 
 	yocto:
 		machine: 'raspberrypi400-64'
-		image: 'resin-image'
-		fstype: 'resinos-img'
+		image: 'balena-image'
+		fstype: 'balenaos-img'
 		version: 'yocto-dunfell'
-		deployArtifact: 'resin-image-raspberrypi400-64.resinos-img'
+		deployArtifact: 'balena-image-raspberrypi400-64.balenaos-img'
 		compressed: true
 
 	configuration:
