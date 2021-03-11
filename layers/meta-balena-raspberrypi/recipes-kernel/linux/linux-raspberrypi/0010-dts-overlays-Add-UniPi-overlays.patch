@@ -1,0 +1,281 @@
+From e48fe01f6e38c70582f3a3f66e127332e9313257 Mon Sep 17 00:00:00 2001
+From: Florin Sarbu <florin@balena.io>
+Date: Tue, 9 Mar 2021 16:05:07 +0100
+Subject: [PATCH] dts:overlays: Add UniPi overlays
+
+These are taken from
+https://git.unipi.technology/UniPi/unipi-tools/-/tree/master/overlays at
+revision 9b8ff652e9315d56b46a38f7c910f4314ecead8b
+
+Upstream-status: Pending
+Signed-off-by: Florin Sarbu <florin@balena.io>
+---
+ arch/arm/boot/dts/overlays/ds2482-overlay.dts      |  22 +++++
+ .../boot/dts/overlays/neuron-spi-new-overlay.dts   | 105 +++++++++++++++++++++
+ arch/arm/boot/dts/overlays/neuron-spi-overlay.dts  |  53 +++++++++++
+ arch/arm/boot/dts/overlays/neuronee-overlay.dts    |  22 +++++
+ arch/arm/boot/dts/overlays/unipiee-overlay.dts     |  22 +++++
+ 5 files changed, 224 insertions(+)
+ create mode 100644 arch/arm/boot/dts/overlays/ds2482-overlay.dts
+ create mode 100644 arch/arm/boot/dts/overlays/neuron-spi-new-overlay.dts
+ create mode 100644 arch/arm/boot/dts/overlays/neuron-spi-overlay.dts
+ create mode 100644 arch/arm/boot/dts/overlays/neuronee-overlay.dts
+ create mode 100644 arch/arm/boot/dts/overlays/unipiee-overlay.dts
+
+diff --git a/arch/arm/boot/dts/overlays/ds2482-overlay.dts b/arch/arm/boot/dts/overlays/ds2482-overlay.dts
+new file mode 100644
+index 0000000..cea86e1
+--- /dev/null
++++ b/arch/arm/boot/dts/overlays/ds2482-overlay.dts
+@@ -0,0 +1,22 @@
++/dts-v1/;
++/plugin/;
++
++/ {
++	compatible = "brcm,bcm2835";
++
++	fragment@0 {
++		target = <&i2c1>;
++
++		__overlay__ {
++			#address-cells = <0x01>;
++			#size-cells = <0x00>;
++			status = "okay";
++
++			ds2482: ds2482@18 {
++				compatible = "ds2482";
++				reg = <0x18>;
++				status = "okay";
++			};
++		};
++	};
++};
+diff --git a/arch/arm/boot/dts/overlays/neuron-spi-new-overlay.dts b/arch/arm/boot/dts/overlays/neuron-spi-new-overlay.dts
+new file mode 100644
+index 0000000..36233bf
+--- /dev/null
++++ b/arch/arm/boot/dts/overlays/neuron-spi-new-overlay.dts
+@@ -0,0 +1,105 @@
++/dts-v1/;
++/plugin/;
++
++/ {
++	compatible = "brcm,bcm2835";
++
++    /* the cs and interrupt pin of the neuron-controller */
++    fragment@0 {
++        target = <&gpio>;
++        __overlay__ {
++            spi0_cs_pins: spi0_cs_pins {
++				brcm,pins = <8 7 24 25>;
++				brcm,function = <1>;
++				brcm,pull = <0>;
++            };
++
++			neuron_0_irq_pin: neuron_0_irq_pin {
++				brcm,pins = <27>;
++				brcm,function = <0>;
++				brcm,pull = <1>;
++			};
++
++			neuron_1_irq_pin: neuron_1_irq_pin {
++				brcm,pins = <23>;
++				brcm,function = <0>;
++				brcm,pull = <1>;
++			};
++
++			neuron_2_irq_pin: neuron_2_irq_pin {
++				brcm,pins = <22>;
++				brcm,function = <0>;
++				brcm,pull = <1>;
++			};
++        };
++    };
++
++    fragment@1 {
++        target = <&spi0>;
++        __overlay__ {
++            status = "okay";
++			pinctrl-0 = <&spi0_pins &spi0_cs_pins>;
++			cs-gpios = <&gpio 8 1>, <&gpio 7 1>, <&gpio 24 1>, <&gpio 25 1>;
++        };
++    };
++
++    fragment@2 {
++	    target = <&spidev1>;
++	    __overlay__ {
++	        status = "disabled";
++	    };
++    };
++
++	fragment@3 {
++		target = <&spi0>;
++		__overlay__ {
++		    #address-cells = <1>;
++		    #size-cells = <0>;
++			neuronspi0: neuronspi@0 {
++				compatible = "unipispi";
++				reg = <1>;
++				spi-max-frequency = <12000000>;
++				status = "okay";
++                pinctrl-names = "default";
++                pinctrl-0 = <&neuron_0_irq_pin>;
++                interrupt-parent = <&gpio>;
++                interrupts = <27 1>;
++				neuron-board-index = <0>;
++				neuron-probe-always-succeeds = <0>;
++			};
++			neuronspi1: neuronspi@1 {
++				compatible = "unipispi";
++				reg = <2>;
++				spi-max-frequency = <12000000>;
++				status = "okay";
++                pinctrl-names = "default";
++                pinctrl-0 = <&neuron_1_irq_pin>;
++                interrupt-parent = <&gpio>;
++                interrupts = <23 1>;
++				neuron-board-index = <1>;
++				neuron-probe-always-succeeds = <0>;
++			};
++			neuronspi2: neuronspi@2 {
++				compatible = "unipispi";
++				reg = <3>;
++				spi-max-frequency = <12000000>;
++				status = "okay";
++                pinctrl-names = "default";
++                pinctrl-0 = <&neuron_2_irq_pin>;
++                interrupt-parent = <&gpio>;
++                interrupts = <22 1>;
++				neuron-board-index = <2>;
++				neuron-probe-always-succeeds = <0>;
++			};
++		};
++	};
++
++	__overrides__ {
++        probe0-succeeds = <&neuronspi0>,"neuron-probe-always-succeeds:0";
++        probe1-succeeds = <&neuronspi1>,"neuron-probe-always-succeeds:0";
++        probe2-succeeds = <&neuronspi2>,"neuron-probe-always-succeeds:0";
++        frequency0 = <&neuronspi0>,"spi-max-frequency:0";
++        frequency1 = <&neuronspi1>,"spi-max-frequency:0";
++        frequency2 = <&neuronspi2>,"spi-max-frequency:0";
++	};
++};
+diff --git a/arch/arm/boot/dts/overlays/neuron-spi-overlay.dts b/arch/arm/boot/dts/overlays/neuron-spi-overlay.dts
+new file mode 100644
+index 0000000..6c4307c
+--- /dev/null
++++ b/arch/arm/boot/dts/overlays/neuron-spi-overlay.dts
+@@ -0,0 +1,53 @@
++/dts-v1/;
++/plugin/;
++
++/ {
++	compatible = "brcm,bcm2835";
++
++    fragment@0 {
++        target = <&spi0>;
++        __overlay__ {
++            status = "okay";
++        };
++    };
++
++    /* the cs pin of the neuron-controller */
++    fragment@1 {
++        target = <&gpio>;
++        __overlay__ {
++            spi0_cs_pins: spi0_cs_pins {
++				brcm,pins = <8 7 25 24>;
++				brcm,function = <1>;
++            };
++        };
++    };
++
++	fragment@2 {
++		target = <&spi0>;
++
++        __overlay__ {
++			#address-cells = < 0x01 >;
++			#size-cells = < 0x00 >;
++			pinctrl-names = "default";
++			pinctrl-0 = <&spi0_pins &spi0_cs_pins>;
++			cs-gpios = <&gpio 8 1>, <&gpio 7 1>, <&gpio 25 1>, <&gpio 24 1>;
++			status = "okay";
++
++			spidev@2 {
++				compatible = "spidev";
++				reg = <2>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++				spi-max-frequency = <12000000>;
++			};
++
++			spidev@3 {
++				compatible = "spidev";
++				reg = <3>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++				spi-max-frequency = <12000000>;
++			};
++		};
++	};
++};
+diff --git a/arch/arm/boot/dts/overlays/neuronee-overlay.dts b/arch/arm/boot/dts/overlays/neuronee-overlay.dts
+new file mode 100644
+index 0000000..d7701c3
+--- /dev/null
++++ b/arch/arm/boot/dts/overlays/neuronee-overlay.dts
+@@ -0,0 +1,22 @@
++/dts-v1/;
++/plugin/;
++
++/ {
++	compatible = "brcm,bcm2835";
++
++	fragment@0 {
++		target = <&i2c1>;
++
++		__overlay__ {
++			#address-cells = < 0x01 >;
++			#size-cells = < 0x00 >;
++			status = "okay";
++
++			neuronee: 24c01@57 {
++				compatible = "atmel,24c01";
++				reg = <0x57>;
++				status = "okay";
++			};
++		};
++	};
++};
+diff --git a/arch/arm/boot/dts/overlays/unipiee-overlay.dts b/arch/arm/boot/dts/overlays/unipiee-overlay.dts
+new file mode 100644
+index 0000000..58e1528
+--- /dev/null
++++ b/arch/arm/boot/dts/overlays/unipiee-overlay.dts
+@@ -0,0 +1,22 @@
++/dts-v1/;
++/plugin/;
++
++/ {
++	compatible = "brcm,bcm2835";
++
++	fragment@0 {
++		target = <&i2c1>;
++
++		__overlay__ {
++			#address-cells = < 0x01 >;
++			#size-cells = < 0x00 >;
++			status = "okay";
++
++			unipiee: 24c02@50 {
++				compatible = "atmel,24c02";
++				reg = <0x50>;
++				status = "okay";
++			};
++		};
++	};
++};
+-- 
+2.7.4
+
