@@ -33,10 +33,10 @@ module.exports =
 
 	yocto:
 		machine: 'revpi-core-3'
-		image: 'resin-image'
-		fstype: 'resinos-img'
+		image: 'balena-image'
+		fstype: 'balenaos-img'
 		version: 'yocto-dunfell'
-		deployArtifact: 'resin-image-revpi-core-3.resinos-img'
+		deployArtifact: 'balena-image-revpi-core-3.balenaos-img'
 		compressed: true
 
 	configuration:
