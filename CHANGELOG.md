@@ -1,6 +1,25 @@
 Change log
 -----------
 
+# v2.71.5+rev1
+## (2021-03-11)
+
+
+<details>
+<summary> Update meta-balena from v2.71.3 to v2.71.5 [Florin Sarbu] </summary>
+
+> ## meta-balena-2.71.5
+> ### (2021-03-03)
+> 
+> * initrdscripts: always use by-uuid symlink looking for flasher rootfs [Michal Toman]
+> 
+> ## meta-balena-2.71.4
+> ### (2021-03-01)
+> 
+> * Update OS test suite [Vipul Gupta (@vipulgupta2048)]
+> 
+</details>
+
 # v2.71.3+rev8
 ## (2021-03-10)
 
