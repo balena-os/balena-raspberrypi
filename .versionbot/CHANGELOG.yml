@@ -1,4 +1,25 @@
 - commits:
+    - subject: Add dts overlays for UniPi devices
+      hash: 35dfb13261cad6e423994b45d042db088bef9893
+      body: |
+        These are taken from
+        https://git.unipi.technology/UniPi/unipi-tools/-/tree/master/overlays
+        at
+        revision 9b8ff652e9315d56b46a38f7c910f4314ecead8b
+
+        The intent is that UniPi devices will run the regular Raspberrypi 3
+        OS image and only have the needed overlay(s) added through the
+        dashboard.
+      footer:
+        Changelog-entry: Add dts overlays for UniPi devices
+        changelog-entry: Add dts overlays for UniPi devices
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.71.3+rev8
+  date: 2021-03-10T18:05:01.207Z
+- commits:
     - subject: 'bluez: Disable Bluez GATT service for NebraHNT'
       hash: dcb07dadffa7fb0e477efe334c635d6a37eb749a
       body: |

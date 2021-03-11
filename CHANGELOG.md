@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.71.3+rev8
+## (2021-03-10)
+
+* Add dts overlays for UniPi devices [Florin Sarbu]
+
 # v2.71.3+rev7
 ## (2021-03-10)
 
