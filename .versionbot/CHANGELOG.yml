@@ -1,4 +1,167 @@
 - commits:
+    - subject: Rename resin image types to balena
+      hash: 0b955b938212f36c2b941e9a4a5a27e8eed3b972
+      body: |
+        Rename resin image types to balena and replace RESIN_ env vars
+      footer:
+        Changelog-entry: Rename resin image types to balena
+        changelog-entry: Rename resin image types to balena
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+    - subject: Update meta-balena from v2.71.5 to v2.72.0
+      hash: 1b0151c86c2018e4295f6d349a10858bcca6b2ef
+      body: |
+        Update meta-balena from 2.71.5 to 2.72.0
+      footer:
+        Changelog-entry: Update meta-balena from v2.71.5 to v2.72.0
+        changelog-entry: Update meta-balena from v2.71.5 to v2.72.0
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested:
+        - commits:
+            - subject: 'os-config: Update os-config from v1.1.4 to v1.2.0'
+              hash: 76bae0c1e32d82b0371d99094965538a05fa3387
+              body: |
+                Update os-config from 1.1.4 to 1.2.0
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested:
+                - commits:
+                    - subject: 'os-config: rename flasher flag path'
+                      hash: 3622cc8cdf38f42c1f38fb6d5c67dde16631d6f0
+                      body: >
+                        As part of a full rename away from legacy resin
+                        namespaces the
+
+                        following os-config compatibility changes are required
+                        to align
+
+                        with meta-balena changes.
+
+
+                        - rename resin-image-flasher to balena-image-flasher
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                        Connects-to: 'https://github.com/balena-os/meta-balena/pull/2118'
+                        connects-to: 'https://github.com/balena-os/meta-balena/pull/2118'
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                  version: os-config-1.2.0
+                  date: 2021-02-23T20:19:36.114Z
+            - subject: Rename resin image types to balena
+              hash: 057621ad646f1958328c688994ef7f6fb48b9012
+              body: |
+                As part of a full rename away from legacy resin namespaces the
+                following components have been renamed:
+
+                - resinos-img -> balenaos-img
+                - image_types_resin -> image_types_balena
+                - image-resin -> image-balena
+                - resin-image -> balena-image
+                - resin-image-flasher -> balena-image-flasher
+                - resin-image-initramfs -> balena-image-initramfs
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Rename resin image types to balena
+                changelog-entry: Rename resin image types to balena
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.72.0
+          date: 2021-03-10T20:00:01.558Z
+        - commits:
+            - subject: Apply aufs patches if aufs is present in kernel config
+              hash: 8094dc7a3a36cfc4f1c0da5be66dc666e29b7dbe
+              body: >
+                Allow installing and patching aufs even if BALENA_STORAGE is
+                overlay2
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Apply aufs patches if aufs is present in kernel config
+                changelog-entry: Apply aufs patches if aufs is present in kernel config
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.71.7
+          date: 2021-03-08T13:49:52.854Z
+        - commits:
+            - subject: 'grub-efi: build required modules into grub image'
+              hash: 5e1004d6753025166c40b11af117e008feb875f1
+              body: >
+                grub-efi requires modules to be installed in the boot partition,
+                and
+
+                resin-image installs them from ${DEPLOYDIR}.
+
+
+                A normal grub installation installs those modules to
+                ${PREFIX}/${libdir}
+
+                to allow grub tooling to install them at runtime, but we're
+                building the
+
+                image with GRUB baked in, so we don't need those in the sysroot.
+
+
+                The first iteration of this bbappend attempted to solve these
+
+                constraints by copying the modules from ${D}/${libdir}/grub/ to
+
+                ${DEPLOYDIR} in do_deploy(), then removing ${D}${prefix}. This
+                had the
+
+                unfortunate side effect of breaking the build in certain cases,
+                such as
+
+                clean builds or reexecuting do_deploy() without the other steps
+                of the
+
+                build.
+
+
+                Instead, remove the unwanted files in do_install(), and append
+                the
+
+                required modules to GRUB_BUILDIN to create a standalone grub
+                image
+
+                without any external modules at all.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.71.6
+          date: 2021-03-05T22:03:28.222Z
+    - subject: Update balena-yocto-scripts from v1.10.3 to v1.11.0
+      hash: 473de739d5609539d19ac5136fc66090eba687a2
+      body: |
+        Update balena-yocto-scripts from 1.10.3 to 1.11.0
+      footer:
+        Changelog-entry: Update balena-yocto-scripts from v1.10.3 to v1.11.0
+        changelog-entry: Update balena-yocto-scripts from v1.10.3 to v1.11.0
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 2.72.0+rev1
+  date: 2021-03-11T13:51:37.953Z
+- commits:
     - subject: Update meta-balena from v2.71.3 to v2.71.5
       hash: 5007787ffc103db424adbe0360eac460b71e8f05
       body: |
