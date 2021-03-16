@@ -1,4 +1,155 @@
 - commits:
+    - subject: Update meta-balena from v2.72.0 to v2.73.1
+      hash: 59ec80ced5489ebb084ecc485e549cb6262269a5
+      body: |
+        Update meta-balena from 2.72.0 to 2.73.1
+      footer:
+        Changelog-entry: Update meta-balena from v2.72.0 to v2.73.1
+        changelog-entry: Update meta-balena from v2.72.0 to v2.73.1
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: Update balena-supervisor from v12.3.5 to v12.4.6
+              hash: 8399bdf47ded925e74e48b128b4f7b2452008dd5
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Update balena-supervisor from v12.3.5 to v12.4.6
+                changelog-entry: Update balena-supervisor from v12.3.5 to v12.4.6
+                Signed-off-by: Felipe Lalanne <felipe@balena.io>
+                signed-off-by: Felipe Lalanne <felipe@balena.io>
+              author: Felipe Lalanne
+              nested: []
+          version: meta-balena-2.73.1
+          date: 2021-03-16T13:08:50.984Z
+        - commits:
+            - subject: 'image_types_balena: make rootfs labeling generic'
+              hash: 924bb046c94ea9a6db516733f727c18bc47fc0e7
+              body: ''
+              footer:
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+                Change-type: patch
+                change-type: patch
+              author: Joseph Kogut
+              nested: []
+            - subject: 'image_types_balena: make agnostic to root fstype'
+              hash: 71553d47174d8dc28777b0d0a6723418192ad8e4
+              body: >
+                Build BALENA_HOSTAPP_IMG path using BALENA_ROOT_FSTYPE instead
+                of assuming
+
+                the root is ext4.
+              footer:
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+                Change-type: patch
+                change-type: patch
+              author: Joseph Kogut
+              nested: []
+            - subject: 'mkfs-hostapp-native: make agnostic to fstype'
+              hash: 295976261f44650bd108eafcb53b3d24f6a28671
+              body: >
+                Remove assumptions about root fstype. Rename create to
+                create.ext4,
+
+                mkfs.hostapp-ext4 to mkfs.hostapp, and add an argument to
+                mkfs.hostapp
+
+                for fstype. Remove CMD from Dockerfile in favor of passing it as
+                an
+
+                argument to docker run.
+              footer:
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+                Change-type: minor
+                change-type: minor
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.73.0
+          date: 2021-03-15T20:56:51.275Z
+        - commits:
+            - subject: 'balena: dissolve healthcheck-image-load into healthcheck script'
+              hash: 7983e9bfd716aaedad1ef5f1468b2771e1f5a71c
+              body: >
+                Previously we were loading the healthcheck image from it's own
+                service
+
+                that was previously made `PartOf=` the balena.service.
+
+                This was done in an attempt to help get the system unstuck when
+                the
+
+                image is removed (like through manual pruning), which would
+                cause the
+
+                healthcheck to trigger the engine to reboot until the load
+                service was
+
+                restarted by hand.
+
+
+                Further investigation found a race between the first execution
+                of the
+
+                engine healthcheck script (which needs the image to be loaded)
+                and the
+
+                loader service itself, which would lead to a similar state,
+                requireing
+
+                manual intervention.
+
+
+                This change moves the loading into the healthcheck script
+                itself,
+
+                allowing us to remove the loader script and service entirely,
+                skipping
+
+                the whole service ordering issue.
+              footer:
+                Backport-to: next
+                backport-to: next
+                Connects-to: '#2122'
+                connects-to: '#2122'
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Robert Günzler <robertg@balena.io>
+                signed-off-by: Robert Günzler <robertg@balena.io>
+              author: Robert Günzler
+              nested: []
+          version: meta-balena-2.72.2
+          date: 2021-03-15T13:36:10.137Z
+        - commits:
+            - subject: Fix disablement of userspace firmware loading requests
+              hash: 98fad0bbfd179f16c5985a3281af25b4801af6e9
+              body: >
+                This option depends on FW_LOADER_USER_HELPER which will be
+                enabled if
+
+                _FALLBACK is set to 'y', which is the default in the arm64
+                defconfig
+
+                since Linux 5.4+.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Fix disablement of userspace firmware loading requests
+                changelog-entry: Fix disablement of userspace firmware loading requests
+                Signed-off-by: Pelle van Gils <pelle@vangils.xyz>
+                signed-off-by: Pelle van Gils <pelle@vangils.xyz>
+              author: Pelle van Gils
+              nested: []
+          version: meta-balena-2.72.1
+          date: 2021-03-11T09:52:01.508Z
+  version: 2.73.1+rev1
+  date: 2021-03-16T20:33:54.361Z
+- commits:
     - subject: Rename resin image types to balena
       hash: 0b955b938212f36c2b941e9a4a5a27e8eed3b972
       body: |

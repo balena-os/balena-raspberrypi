@@ -1,6 +1,37 @@
 Change log
 -----------
 
+# v2.73.1+rev1
+## (2021-03-16)
+
+
+<details>
+<summary> Update meta-balena from v2.72.0 to v2.73.1 [Florin Sarbu] </summary>
+
+> ## meta-balena-2.73.1
+> ### (2021-03-16)
+> 
+> * Update balena-supervisor from v12.3.5 to v12.4.6 [Felipe Lalanne]
+> 
+> ## meta-balena-2.73.0
+> ### (2021-03-15)
+> 
+> * image_types_balena: make rootfs labeling generic [Joseph Kogut]
+> * image_types_balena: make agnostic to root fstype [Joseph Kogut]
+> * mkfs-hostapp-native: make agnostic to fstype [Joseph Kogut]
+> 
+> ## meta-balena-2.72.2
+> ### (2021-03-15)
+> 
+> * balena: dissolve healthcheck-image-load into healthcheck script [Robert Günzler]
+> 
+> ## meta-balena-2.72.1
+> ### (2021-03-11)
+> 
+> * Fix disablement of userspace firmware loading requests [Pelle van Gils]
+> 
+</details>
+
 # v2.72.0+rev1
 ## (2021-03-11)
 
