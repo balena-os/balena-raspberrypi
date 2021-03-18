@@ -13,6 +13,7 @@ SRC_URI_append_fincm3 = " \
 	file://0004-mmc-pwrseq-Repurpose-for-Marvell-SD8777.patch \
 	file://0005-balena-fin-wifi-sta-uap-mode.patch \
 	file://0007-overlays-Add-spyfly.dts.patch \
+	file://0001-Revert-BCM2710_DT-fix-gpio-expander-bindings.patch \
 "
 
 SRC_URI_append = " \

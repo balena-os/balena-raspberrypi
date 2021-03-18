@@ -1,0 +1,71 @@
+From 6280590723046b167733e54915bd2299d3226ef2 Mon Sep 17 00:00:00 2001
+From: Florin Sarbu <florin@balena.io>
+Date: Thu, 18 Mar 2021 16:10:47 +0100
+Subject: [PATCH] Revert "BCM2710_DT: fix gpio expander bindings"
+
+This reverts commit abca720e8a2d776fd9ba75920561ac90b466164a.
+---
+ arch/arm/boot/dts/bcm2710-rpi-3-b-plus.dts | 3 ++-
+ arch/arm/boot/dts/bcm2710-rpi-3-b.dts      | 4 +---
+ arch/arm/boot/dts/bcm2710-rpi-cm3.dts      | 4 +---
+ 3 files changed, 4 insertions(+), 7 deletions(-)
+
+diff --git a/arch/arm/boot/dts/bcm2710-rpi-3-b-plus.dts b/arch/arm/boot/dts/bcm2710-rpi-3-b-plus.dts
+index 55420ac..570c0fc 100644
+--- a/arch/arm/boot/dts/bcm2710-rpi-3-b-plus.dts
++++ b/arch/arm/boot/dts/bcm2710-rpi-3-b-plus.dts
+@@ -83,11 +83,12 @@
+ 	status = "okay";
+ };
+ 
+-&firmware {
++&soc {
+ 	expgpio: expgpio {
+ 		compatible = "raspberrypi,firmware-gpio";
+ 		gpio-controller;
+ 		#gpio-cells = <2>;
++		firmware = <&firmware>;
+ 		status = "okay";
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/bcm2710-rpi-3-b.dts b/arch/arm/boot/dts/bcm2710-rpi-3-b.dts
+index 261827c..b75e55f 100644
+--- a/arch/arm/boot/dts/bcm2710-rpi-3-b.dts
++++ b/arch/arm/boot/dts/bcm2710-rpi-3-b.dts
+@@ -92,13 +92,11 @@
+ 		status = "okay";
+ 	};
+ 
+-};
+-
+-&firmware {
+ 	expgpio: expgpio {
+ 		compatible = "raspberrypi,firmware-gpio";
+ 		gpio-controller;
+ 		#gpio-cells = <2>;
++		firmware = <&firmware>;
+ 		status = "okay";
+ 	};
+ };
+diff --git a/arch/arm/boot/dts/bcm2710-rpi-cm3.dts b/arch/arm/boot/dts/bcm2710-rpi-cm3.dts
+index 14a37ffd..a4284d2 100644
+--- a/arch/arm/boot/dts/bcm2710-rpi-cm3.dts
++++ b/arch/arm/boot/dts/bcm2710-rpi-cm3.dts
+@@ -54,13 +54,11 @@
+ 		status = "okay";
+ 	};
+ 
+-};
+-
+-&firmware {
+ 	expgpio: expgpio {
+ 		compatible = "raspberrypi,firmware-gpio";
+ 		gpio-controller;
+ 		#gpio-cells = <2>;
++		firmware = <&firmware>;
+ 		status = "okay";
+ 	};
+ };
+-- 
+2.7.4
+
