@@ -23,6 +23,7 @@ SRC_URI_append = " \
 	file://0001-Add-tpm-slb9670-tis-spi-DT-overlay.patch \
 	file://0009-network-lan78xx-interrupt.patch \
 	file://0010-dts-overlays-Add-UniPi-overlays.patch \
+	file://0001-seeed-studio-can-bus-v2-Add-dtbo-for-this-can-bus.patch \
 "
 
 SRC_URI_append_raspberrypi4-64 = " \
