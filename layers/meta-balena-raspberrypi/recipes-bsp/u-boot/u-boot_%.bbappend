@@ -1,4 +1,4 @@
-inherit resin-u-boot
+inherit balena-u-boot
 UBOOT_KCONFIG_SUPPORT = "1"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
