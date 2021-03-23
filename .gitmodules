@@ -19,3 +19,6 @@
 [submodule "layers/meta-rust"]
 	path = layers/meta-rust
 	url = https://github.com/meta-rust/meta-rust.git
+[submodule "layers/meta-cur-bsp"]
+	path = layers/meta-cur-bsp
+	url = https://github.com/balena-os/meta-balena-bsp.git

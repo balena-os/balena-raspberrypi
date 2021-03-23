@@ -17,4 +17,5 @@ BBLAYERS ?= " \
     ${TOPDIR}/../layers/meta-balena/meta-balena-dunfell \
     ${TOPDIR}/../layers/meta-balena-raspberrypi \
     ${TOPDIR}/../layers/meta-rust \
+    ${TOPDIR}/../layers/meta-cur-bsp \
     "
