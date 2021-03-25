@@ -2,51 +2,11 @@
 # See:
 # https://www.raspberrypi.org/documentation/hardware/computemodule/cm-emmc-flashing.md
 BALENA_BOOT_FAT32 = "1"
+inherit balena-boot-helpers
 
 IMAGE_FSTYPES_append_rpi = " balenaos-img"
 
 # Kernel image name is different on Raspberry Pi 1/2/3-64bit
-SDIMG_KERNELIMAGE_raspberrypi  ?= "kernel.img"
-SDIMG_KERNELIMAGE_raspberrypi2 ?= "kernel7.img"
-SDIMG_KERNELIMAGE_raspberrypi3-64 ?= "kernel8.img"
-
-# Customize balenaos-img
-BALENA_IMAGE_BOOTLOADER_rpi = "bootfiles"
-BALENA_BOOT_PARTITION_FILES_rpi = " \
-    u-boot.bin:/${SDIMG_KERNELIMAGE} \
-    boot.scr:/boot.scr \
-    bootfiles:/ \
-    "
-
-BALENA_BOOT_PARTITION_FILES_append_revpi-core-3 = " revpi-core-dt-blob-overlay.dtb:/dt-blob.bin"
-
-BALENA_BOOT_PARTITION_FILES_append_revpi-connect = " revpi-connect-dt-blob-overlay.dtb:/dt-blob.bin"
-
-python overlay_dtbs_handler () {
-    # Add all the dtb files programatically
-    for soc_fam in d.getVar('SOC_FAMILY', True).split(':'):
-        if soc_fam == 'rpi':
-            resin_boot_partition_files = d.getVar('BALENA_BOOT_PARTITION_FILES', True)
-
-            overlay_dtbs = split_overlays(d, 0)
-            root_dtbs = split_overlays(d, 1)
-
-            for dtb in root_dtbs.split():
-                dtb = os.path.basename(dtb)
-                # newer kernels (5.4 onward) introduce overlay_map.dtb which needs to be deployed in the overlays directory
-                if dtb == 'overlay_map.dtb':
-                    resin_boot_partition_files += "\t%s:/overlays/%s" % (dtb, dtb)
-                    continue
-                resin_boot_partition_files += "\t%s:/%s" % (dtb, dtb)
-
-            for dtb in overlay_dtbs.split():
-                dtb = os.path.basename(dtb)
-                resin_boot_partition_files += "\t%s:/overlays/%s" % (dtb, dtb)
-
-            d.setVar('BALENA_BOOT_PARTITION_FILES', resin_boot_partition_files)
-
-            break
-}
 
 addhandler overlay_dtbs_handler
 overlay_dtbs_handler[eventmask] = "bb.event.RecipePreFinalise"
