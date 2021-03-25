@@ -21,4 +21,4 @@
 	url = https://github.com/meta-rust/meta-rust.git
 [submodule "layers/meta-balena-bsp"]
 	path = layers/meta-balena-bsp
-	url = git@github.com:balena-os/meta-balena-bsp.git
+	url = https://github.com/balena-os/meta-balena-bsp.git
