@@ -1,41 +1,21 @@
-LINUX_VERSION ?= "5.10.13"
+# copied from meta-raspberrypi@ef04a3a523e6cd935968f34f338501fd915c506c
+# and renamed linux-raspberrypi.inc to linux-raspberrypi_5.10.inc
+
+LINUX_VERSION ?= "5.10.17"
 LINUX_RPI_BRANCH ?= "rpi-5.10.y"
 
-SRCREV_machine = "34263dc81a12862c66e2593bb26c09d5fd20f46d"
+SRCREV_machine = "ec967eb45f8d4ed59bebafb5748da38118383be7"
 SRCREV_meta = "5833ca701711d487c9094bd1efc671e8ef7d001e"
 
 KMETA = "kernel-meta"
 
-LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
-
 SRC_URI = " \
     git://github.com/raspberrypi/linux.git;name=machine;branch=${LINUX_RPI_BRANCH} \
     git://git.yoctoproject.org/yocto-kernel-cache;type=kmeta;name=meta;branch=yocto-5.10;destsuffix=${KMETA} \
+    file://powersave.cfg \
+    file://android-drivers.cfg \
     "
 
-SRC_URI_append_fincm3 = " \
-	file://0004-mmc-pwrseq-Repurpose-for-Marvell-SD8777.patch \
-	file://0005-balena-fin-wifi-sta-uap-mode.patch \
-	file://0007-overlays-Add-spyfly.dts.patch \
-"
-
-SRC_URI_append = " \
-	file://0002-wireless-wext-Bring-back-ndo_do_ioctl-fallback.patch \
-	file://0001-Add-npe-x500-m3-overlay.patch \
-	file://0006-overlays-Add-Hyperpixel4-overlays.patch \
-	file://0001-waveshare-sim7600-Add-dtbo-for-this-modem-v5.10.patch \
-	file://0001-Add-tpm-slb9670-tis-spi-DT-overlay-v5.10.patch \
-"
-
-SRC_URI_append_raspberrypi4-64 = " \
-	file://0008-usb-xhci-pci-Raspberry-Pi-FW-loader-for-VIA-VL805.patch \
-"
-
-SRC_URI_append_rt-rpi-300 = " \
-	file://rt-rpi-300-Add-changes-for-this-dt.patch \
-	file://rt-rpi-Add-ch-432t-driver-for-this-chip.patch \
-"
-
-require linux-raspberrypi.inc
+require linux-raspberrypi_5.10.inc
 
 KERNEL_DTC_FLAGS += "-@ -H epapr"
