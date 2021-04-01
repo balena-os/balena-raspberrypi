@@ -1,0 +1,2 @@
+# balenaFin uAP interface needs to be unmanaged by default as NetworkManager does not support well AP mode.
+ACTION=="add|change", SUBSYSTEM=="net", ENV{INTERFACE}=="uap[0-9]*", ENV{NM_UNMANAGED}="1"
