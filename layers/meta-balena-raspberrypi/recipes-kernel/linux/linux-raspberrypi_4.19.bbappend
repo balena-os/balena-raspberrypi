@@ -1,4 +1,4 @@
-inherit kernel-resin
+inherit kernel-balena
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
