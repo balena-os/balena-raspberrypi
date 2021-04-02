@@ -20,11 +20,8 @@ module.exports =
 
 	yocto:
 		machine: 'raspberrypi4-64'
-		image: 'balena-image'
-		fstype: 'balenaos-img'
+		image: 'balena-bsp'
 		version: 'yocto-dunfell'
-		deployArtifact: 'balena-image-raspberrypi4-64.balenaos-img'
-		compressed: true
 
 	configuration:
 		config:
