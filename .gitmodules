@@ -16,3 +16,6 @@
 [submodule "layers/meta-balena-bsp"]
 	path = layers/meta-balena-bsp
 	url = https://github.com/balena-os/meta-balena-bsp.git
+[submodule "layers/meta-balena-os"]
+	path = layers/meta-balena-os
+	url = https://github.com/balena-os/meta-balena-os.git
