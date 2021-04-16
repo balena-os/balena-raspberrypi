@@ -1,4 +1,302 @@
 - commits:
+    - subject: Update meta-balena from v2.73.1 to v2.73.12
+      hash: 192677554fc0d0257baa8a848232463f29e00ec2
+      body: |
+        Update meta-balena from 2.73.1 to 2.73.12
+      footer:
+        Changelog-entry: Update meta-balena from v2.73.1 to v2.73.12
+        changelog-entry: Update meta-balena from v2.73.1 to v2.73.12
+        Signed-off-by: Mark Corbin <mark@balena.io>
+        signed-off-by: Mark Corbin <mark@balena.io>
+      author: Mark Corbin
+      nested:
+        - commits:
+            - subject: 'meta-balena: rename resin-vars to balena-config-vars'
+              hash: 7d019abde039a469212c59bcf6e1b7a94ed365d6
+              body: >
+                Rename the 'resin-vars' script to 'balena-config-vars' and
+                update all
+
+                references.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: 'meta-balena: rename resin-vars to balena-config-vars'
+                changelog-entry: 'meta-balena: rename resin-vars to balena-config-vars'
+                Signed-off-by: Mark Corbin <mark@balena.io>
+                signed-off-by: Mark Corbin <mark@balena.io>
+              author: Mark Corbin
+              nested: []
+          version: meta-balena-2.73.12
+          date: 2021-04-16T12:31:11.982Z
+        - commits:
+            - subject: 'patch: Add strict bootcount count condition'
+              hash: a340d4ddd09515eedb125cbc57d39531ade2566a
+              body: ''
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+              author: Vipul Gupta (@vipulgupta2048)
+              nested: []
+            - subject: 'patch: Reactivate Persistent Logging test'
+              hash: 572e287bb93deae01786b025ad116d4d78a6b918
+              body: ''
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+              author: Vipul Gupta (@vipulgupta2048)
+              nested: []
+          version: meta-balena-2.73.11
+          date: 2021-04-16T07:39:41.833Z
+        - commits:
+            - subject: 'repo.yml: Move balena-supervisor reference to balena-os'
+              hash: 7d9433e3c41c37ba3d9cea51d894b520be81d899
+              body: >
+                The balena-supervisor repository has been moved to balena-os so
+                the
+
+                repo.yml file needs to be corrected for nested changelogs to
+                work again.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.73.10
+          date: 2021-04-14T14:10:09.817Z
+        - commits:
+            - subject: Update balena-supervisor from v12.5.6 to v12.5.10
+              hash: 36a1b1e9808db5d2c70f06209f868b24bd8643b1
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Update balena-supervisor from v12.5.6 to v12.5.10
+                changelog-entry: Update balena-supervisor from v12.5.6 to v12.5.10
+                Signed-off-by: Christina Wang <christina@balena.io>
+                signed-off-by: Christina Wang <christina@balena.io>
+              author: Christina Wang
+              nested: []
+          version: meta-balena-2.73.9
+          date: 2021-04-14T11:26:13.292Z
+        - commits:
+            - subject: >-
+                resin-mounts/etc-fake-hwclock: add dependency on resin-state
+                services
+              hash: 2b07011844a2738aec033d88af29e3f6e0dd28a2
+              body: >
+                Added a dependency on resin-state.service and
+                resin-state-reset.service
+
+                to etc-fake-hwclock.mount.
+
+
+                On initial boot after flashing a device the
+                resin-state-reset.service
+
+                was running after etc-fake-hwclock.mount causing the bind mount
+                point
+
+                /mnt/state/root-overlay/etc/fake-hwclock to be deleted after it
+                had
+
+                been mounted. This resulted in a failure to save the date/time
+                at
+
+                shutdown which caused problems with persistent logging at next
+                boot.
+
+                Subsequent boots are unaffected as resin-state-reset does not
+                run.
+
+                Adding a dependency on the resin-state services ensures that the
+
+                bind mount point is created after the state reset has been
+                performed.
+
+
+                This issue was noticed when running the testbot unmanaged OS
+                image
+
+                persistent logging test. When running a managed OS image the
+                device
+
+                normally reboots fairly immediately after connecting to the
+
+                balena-cloud host and receiving parameter updates, so this issue
+                is
+
+                not usually noticeable.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Connects-to: '#2146 #2143'
+                connects-to: '#2146 #2143'
+                Changelog-entry: >-
+                  resin-mounts/etc-fake-hwclock: add dependency on resin-state
+                  services
+                changelog-entry: >-
+                  resin-mounts/etc-fake-hwclock: add dependency on resin-state
+                  services
+                Signed-off-by: Mark Corbin <mark@balena.io>
+                signed-off-by: Mark Corbin <mark@balena.io>
+              author: Mark Corbin
+              nested: []
+          version: meta-balena-2.73.8
+          date: 2021-04-13T14:21:01.455Z
+        - commits:
+            - subject: fix udev test indentation
+              hash: dedfa47ca1fbae4cd8b96eb05cf093ae3f9432d9
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: Added comments for easier debugging
+              hash: c3085492fe85b314e1644870e614531fa6bde6a8
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: Fix old tests + add new tests based on testlodge
+              hash: 2c8ab0f0962cca1b6fecb25b9a2dbe62acf4cf6a
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.73.7
+          date: 2021-04-13T10:43:37.477Z
+        - commits:
+            - subject: >-
+                Add automated test checking for udev/resin_update_state_probe
+                warnings
+              hash: e6bcff01fcf520756b140ad3b4352583f4bc825e
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: 'udev: Silence warnings from resin_update_state_probe'
+              hash: 5a0bed933fd9730e507305c6098698c4a1970c6e
+              body: >
+                At this moment resin_update_state_probe is scanning pretty much
+                every
+
+                block device for rootfs. This include ramdisks, zram and loop
+                devices
+
+                which, when scanned, even spam warnings in logs. This patch
+                updates
+
+                the udev rule to skip such devices and only trigger on add or
+                change
+
+                events.
+              footer:
+                Relates-to: '#1989'
+                relates-to: '#1989'
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.73.6
+          date: 2021-04-12T12:17:29.995Z
+        - commits:
+            - subject: Update balena-supervisor from v12.4.6 to v12.5.6
+              hash: 6852b3704575ce5535082e2c02a7f2c6f57e1df4
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Update balena-supervisor from v12.4.6 to v12.5.6
+                changelog-entry: Update balena-supervisor from v12.4.6 to v12.5.6
+                Signed-off-by: Christina Wang <christina@balena.io>
+                signed-off-by: Christina Wang <christina@balena.io>
+              author: Christina Wang
+              nested: []
+          version: meta-balena-2.73.5
+          date: 2021-04-06T02:41:31.071Z
+        - commits:
+            - subject: Add to persistent logging defn
+              hash: a763533ee5d589394584e5990bd89ca6d18365c5
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Andrew Nhem <andrew@balena.io>
+                signed-off-by: Andrew Nhem <andrew@balena.io>
+              author: Andrew Nhem
+              nested: []
+          version: meta-balena-2.73.4
+          date: 2021-03-20T00:50:55.294Z
+        - commits:
+            - subject: 'wifi: remove listed example as it''s discontinued'
+              hash: c539b4c6c671fca2cd0fabc7416e2bbd0b20ee44
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Tomás Migone <tomas@balena.io>
+                signed-off-by: Tomás Migone <tomas@balena.io>
+              author: Tomás Migone
+              nested: []
+          version: meta-balena-2.73.3
+          date: 2021-03-19T19:05:13.959Z
+        - commits:
+            - subject: 'hostapp-update: convert absolute symlinks to relative'
+              hash: fa8b5a4d2836510c5257d75c65542d374f628407
+              body: >
+                Symlinks to /boot and /sbin/init are absolute, which breaks them
+                when
+
+                the sysroot is mounted under another system.
+
+
+                Convert them to relative links, so they work in all cases.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.73.2
+          date: 2021-03-17T18:30:51.715Z
+    - subject: 'balena-raspberrypi: replace references to resin-vars'
+      hash: 5c9adc552b45eec7f2436d26ed2cf4e45bdfa4f5
+      body: |
+        Replace all references to the 'resin-vars' script with
+        'balena-config-vars' as it has been renamed.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: 'balena-raspberrypi: replace references to resin-vars'
+        changelog-entry: 'balena-raspberrypi: replace references to resin-vars'
+        Signed-off-by: Mark Corbin <mark@balena.io>
+        signed-off-by: Mark Corbin <mark@balena.io>
+      author: Mark Corbin
+      nested: []
+  version: 2.73.12+rev1
+  date: 2021-04-16T13:41:57.854Z
+- commits:
     - subject: Update meta-balena from v2.72.0 to v2.73.1
       hash: 59ec80ced5489ebb084ecc485e549cb6262269a5
       body: |
