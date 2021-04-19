@@ -6,7 +6,7 @@
 
 set -o errexit
 
-. /usr/sbin/resin-vars
+. /usr/sbin/balena-config-vars
 
 DURING_UPDATE=${DURING_UPDATE:-0}
 
