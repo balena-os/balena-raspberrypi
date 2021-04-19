@@ -19,3 +19,6 @@
 [submodule "layers/meta-rust"]
 	path = layers/meta-rust
 	url = https://github.com/meta-rust/meta-rust.git
+[submodule "contracts"]
+	path = contracts
+	url = git@github.com:balena-os/balenaos-contracts.git
