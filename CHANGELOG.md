@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.73.12+rev2
+## (2021-04-20)
+
+* Add support for UniPi Neuron boards [Florin Sarbu]
+
 # v2.73.12+rev1
 ## (2021-04-16)
 
