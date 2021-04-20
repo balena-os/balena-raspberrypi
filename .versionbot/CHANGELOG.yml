@@ -1,4 +1,19 @@
 - commits:
+    - subject: 'conf/layer: Add 2xmcp2517fd dtbo to overlays'
+      hash: 40d3a3f61613a7822d34f814a3105aeed64a2d90
+      body: |
+        Add Seeed mcp2517fd can controller dtbo to the list
+        of overlays.
+      footer:
+        Changelog-entry: 'conf/layer: Add 2xmcp2517fd dtbo to overlays'
+        changelog-entry: 'conf/layer: Add 2xmcp2517fd dtbo to overlays'
+        Signed-off-by: Awk34 koroluka@gmail.com
+        signed-off-by: Awk34 koroluka@gmail.com
+      author: Andrew Koroluk
+      nested: []
+  version: 2.73.12+rev3
+  date: 2021-04-20T09:15:22.006Z
+- commits:
     - subject: Add support for UniPi Neuron boards
       hash: 1839285dff7124bc460e6429c0bf2b90b9c08785
       body: |
