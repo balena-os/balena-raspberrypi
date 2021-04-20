@@ -1,4 +1,19 @@
 - commits:
+    - subject: Add support for UniPi Neuron boards
+      hash: 1839285dff7124bc460e6429c0bf2b90b9c08785
+      body: |
+        We add the new unipi-neuron machine that should work with UniPi Neuron
+        boards.
+      footer:
+        Changelog-entry: Add support for UniPi Neuron boards
+        changelog-entry: Add support for UniPi Neuron boards
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.73.12+rev2
+  date: 2021-04-20T07:44:53.703Z
+- commits:
     - subject: Update meta-balena from v2.73.1 to v2.73.12
       hash: 192677554fc0d0257baa8a848232463f29e00ec2
       body: |
