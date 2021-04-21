@@ -3,10 +3,10 @@ deviceTypesCommon = require '@resin.io/device-types/common'
 
 module.exports =
 	version: 1
-	slug: 'unipi-neuron'
-	name: 'UniPi Neuron'
+	slug: 'raspberrypi3-unipi-neuron'
+	name: 'UniPi Neuron (Raspberry Pi 3)'
 	arch: 'armv7hf'
-	state: 'released'
+	state: 'new'
 
 	imageDownloadAlerts: [
 		{
@@ -25,11 +25,11 @@ module.exports =
 	options: [ networkOptions.group ]
 
 	yocto:
-		machine: 'unipi-neuron'
+		machine: 'raspberry3-unipi-neuron'
 		image: 'balena-image'
 		fstype: 'balenaos-img'
 		version: 'yocto-dunfell'
-		deployArtifact: 'balena-image-unipi-neuron.balenaos-img'
+		deployArtifact: 'balena-image-raspberry3-unipi-neuron.balenaos-img'
 		compressed: true
 
 	configuration:
