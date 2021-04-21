@@ -2,7 +2,7 @@ LIC_FILES_CHKSUM = "\
     file://LICENCE.cypress-rpidistro;md5=c5d12ae0b24ef7177902a8e288751a4e \
 "
 
-SRCREV = "1e4ee0c05bae10002124b56c0e44bb9ac6581ddc"
+SRCREV = "e7fd166981ab4bb9a36c2d1500205a078a35714d"
 PV = "1.2+git${SRCPV}"
 
 PACKAGES += " \
