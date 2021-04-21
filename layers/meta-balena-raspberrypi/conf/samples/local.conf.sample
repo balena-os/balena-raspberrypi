@@ -53,8 +53,8 @@ RPI_USE_U_BOOT = "1"
 # Set this to make build system generate resinhup bundles
 #RESINHUP ?= "yes"
 
-# Set this to change the supervisor tag used
-#SUPERVISOR_TAG ?= "master"
+# Set this to change the supervisor release used
+#SUPERVISOR_VERSION ?= "master"
 
 # Compress final raw image
 #BALENA_RAW_IMG_COMPRESSION ?= "xz"
