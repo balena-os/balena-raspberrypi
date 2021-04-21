@@ -1,4 +1,23 @@
 - commits:
+    - subject: Rename unipi-neuron to raspberrypi3-unipi-neuron
+      hash: 91f6e525e1307cc8ea2bca98b42ff40deff518e7
+      body: |
+        This serves 2 purposes: helps the supervisor determine that it is a
+        Raspberry Pi based board so it can apply the Raspberry Pi config.txt
+        specific functionality without needing additional code changes and
+        second, it further clears up the fact that this machine is solely
+        intended for the Raspberry Pi 3 based UniPi Neuron boards as they have a
+        wider offering than only Raspberry Pi 3 versions.
+      footer:
+        Changelog-entry: Rename unipi-neuron to raspberrypi3-unipi-neuron
+        changelog-entry: Rename unipi-neuron to raspberrypi3-unipi-neuron
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.73.12+rev4
+  date: 2021-04-21T07:26:30.299Z
+- commits:
     - subject: 'conf/layer: Add 2xmcp2517fd dtbo to overlays'
       hash: 9219bfab9974cc449c748fb41943d56be5089751
       body: |

@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.73.12+rev4
+## (2021-04-21)
+
+* Rename unipi-neuron to raspberrypi3-unipi-neuron [Florin Sarbu]
+
 # v2.73.12+rev3
 ## (2021-04-20)
 
