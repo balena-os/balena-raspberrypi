@@ -1,4 +1,32 @@
 - commits:
+    - subject: 'conf/layer: Add 2xmcp2517fd dtbo to overlays'
+      hash: 9219bfab9974cc449c748fb41943d56be5089751
+      body: |
+        Add Seeed mcp2517fd can controller dtbo to the list
+        of overlays.
+      footer:
+        Changelog-entry: 'conf/layer: Add 2xmcp2517fd dtbo to overlays'
+        changelog-entry: 'conf/layer: Add 2xmcp2517fd dtbo to overlays'
+        Signed-off-by: Awk34 koroluka@gmail.com
+        signed-off-by: Awk34 koroluka@gmail.com
+      author: Andrew Koroluk
+      nested: []
+    - subject: 'bluez-firmware-rpidistro: Update to latest revision'
+      hash: 5c36a05125611ed38b6468d9365d33dbbd1fb686
+      body: |
+        It is reported that the latest version of the
+        BCM4345C0 fw file fixes various bluetooth issues
+        and sporadic disconnections.
+      footer:
+        Changelog-entry: 'bluez-firmware-rpidistro: Update to latest revision'
+        changelog-entry: 'bluez-firmware-rpidistro: Update to latest revision'
+        Siged-off-by: Alexandru Costache <alexandru@balena.io>
+        siged-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.73.12+rev3
+  date: 2021-04-20T12:52:02.403Z
+- commits:
     - subject: Add support for UniPi Neuron boards
       hash: 1839285dff7124bc460e6429c0bf2b90b9c08785
       body: |

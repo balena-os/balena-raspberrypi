@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.73.12+rev3
+## (2021-04-20)
+
+* conf/layer: Add 2xmcp2517fd dtbo to overlays [Andrew Koroluk]
+* bluez-firmware-rpidistro: Update to latest revision [Alexandru Costache]
+
 # v2.73.12+rev2
 ## (2021-04-20)
 
