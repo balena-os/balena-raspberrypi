@@ -1,4 +1,17 @@
 - commits:
+    - subject: Fix typo in raspberrypi3-unipi-neuron.coffee file
+      hash: cad4e5559925bac9d9a5648a153c44209af7f055
+      body: ''
+      footer:
+        Changelog-entry: Fix typo in raspberrypi3-unipi-neuron.coffee file
+        changelog-entry: Fix typo in raspberrypi3-unipi-neuron.coffee file
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.73.12+rev5
+  date: 2021-04-21T20:09:23.841Z
+- commits:
     - subject: Rename unipi-neuron to raspberrypi3-unipi-neuron
       hash: 91f6e525e1307cc8ea2bca98b42ff40deff518e7
       body: |

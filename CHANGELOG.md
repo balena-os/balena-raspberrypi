@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.73.12+rev5
+## (2021-04-21)
+
+* Fix typo in raspberrypi3-unipi-neuron.coffee file [Florin Sarbu]
+
 # v2.73.12+rev4
 ## (2021-04-21)
 
