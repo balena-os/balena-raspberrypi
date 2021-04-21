@@ -25,11 +25,11 @@ module.exports =
 	options: [ networkOptions.group ]
 
 	yocto:
-		machine: 'raspberry3-unipi-neuron'
+		machine: 'raspberrypi3-unipi-neuron'
 		image: 'balena-image'
 		fstype: 'balenaos-img'
 		version: 'yocto-dunfell'
-		deployArtifact: 'balena-image-raspberry3-unipi-neuron.balenaos-img'
+		deployArtifact: 'balena-image-raspberrypi3-unipi-neuron.balenaos-img'
 		compressed: true
 
 	configuration:
