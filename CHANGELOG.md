@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.73.12+rev6
+## (2021-04-22)
+
+* fincm3: Add greybus and gb-netlink modules [Kyle Harding]
+
 # v2.73.12+rev5
 ## (2021-04-21)
 

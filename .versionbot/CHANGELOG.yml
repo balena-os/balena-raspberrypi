@@ -1,4 +1,19 @@
 - commits:
+    - subject: 'fincm3: Add greybus and gb-netlink modules'
+      hash: 51ff6e79cc89abd2db7cd585016ddb9dbe77966c
+      body: ''
+      footer:
+        Changelog-entry: 'fincm3: Add greybus and gb-netlink modules'
+        changelog-entry: 'fincm3: Add greybus and gb-netlink modules'
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 2.73.12+rev6
+  date: 2021-04-22T16:49:37.641Z
+- commits:
     - subject: Fix typo in raspberrypi3-unipi-neuron.coffee file
       hash: cad4e5559925bac9d9a5648a153c44209af7f055
       body: ''
