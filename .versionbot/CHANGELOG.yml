@@ -1,4 +1,21 @@
 - commits:
+    - subject: Update balena-yocto-scripts from v1.10.1 to v1.10.3
+      hash: 9c111ca5c2a097ec13790a7c93e119d37d5687d8
+      body: |
+        This includes the changes to the test scripts. Without this the ESR
+        branch is not able to run Leviathan automated testing.
+      footer:
+        Change-type: path
+        change-type: path
+        Changelog-entry: Update balena-yocto-scripts from v1.10.1 to v1.10.3
+        changelog-entry: Update balena-yocto-scripts from v1.10.1 to v1.10.3
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2021.01.3
+  date: 2021-04-22T09:44:08.014Z
+- commits:
     - subject: Update balena-yocto-scripts to v1.10.1
       hash: 620e6db0ba4a885ca35eee05f0fd795fcc03fc65
       body: ''

@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2021.01.3
+## (2021-04-22)
+
+* Update balena-yocto-scripts from v1.10.1 to v1.10.3 [Alex Gonzalez]
+
 # v2021.01.2
 ## (2021-02-26)
 
