@@ -1,6 +1,30 @@
 Change log
 -----------
 
+# v2.73.15+rev1
+## (2021-04-26)
+
+
+<details>
+<summary> Update meta-balena from v2.73.12 to v2.73.15 [Alex Gonzalez] </summary>
+
+> ## meta-balena-2.73.15
+> ### (2021-04-20)
+> 
+> * modemmanager:u-blox-switch: Rework the u-blox modem switch to ECM mode [Florin Sarbu]
+> 
+> ## meta-balena-2.73.14
+> ### (2021-04-19)
+> 
+> * device-progress: do not force an exit code [Matthew McGinn]
+> 
+> ## meta-balena-2.73.13
+> ### (2021-04-19)
+> 
+> * add retries to status check [rcooke-warwick]
+> 
+</details>
+
 # v2.73.12+rev5
 ## (2021-04-21)
 
