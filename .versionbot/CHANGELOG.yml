@@ -1,4 +1,63 @@
 - commits:
+    - subject: Update meta-balena from v2.73.15 to v2.75.0
+      hash: 665730d8b28041549c562722c0b3e507cd3c700a
+      body: |
+        Update meta-balena from 2.73.15 to 2.75.0
+      footer:
+        Changelog-entry: Update meta-balena from v2.73.15 to v2.75.0
+        changelog-entry: Update meta-balena from v2.73.15 to v2.75.0
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: Update mobynit to the new multi-container hostOS specification
+              hash: 93335381320815dbe7b2d21233106910a200e2f5
+              body: >
+                Update mobynit to use the new multi-container hostOS
+                specification
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Update mobynit to the new multi-container hostOS specification
+                changelog-entry: Update mobynit to the new multi-container hostOS specification
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.75.0
+          date: 2021-04-22T12:36:31.239Z
+        - commits:
+            - subject: 'balena-engine: Update to 19.03.18'
+              hash: 32705abbf93971bdddb980fe0c7a01b40d229560
+              body: >
+                This brings in the aufs-to-overlay migrator. Which won't run
+                until we
+
+                configure the engine service to include an
+                `BALENA_MIGRATE_OVERLAY=1`
+
+                env var.
+
+
+                The other notable change is the fix for
+
+                https://github.com/balena-os/balena-engine/issues/236 which
+                allows
+
+                `balena top` to work as expected on balenaOS
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Robert Günzler <robertg@balena.io>
+                signed-off-by: Robert Günzler <robertg@balena.io>
+              author: Robert Günzler
+              nested: []
+          version: meta-balena-2.74.0
+          date: 2021-04-20T20:48:58.556Z
+  version: 2.75.0+rev1
+  date: 2021-04-28T10:31:04.540Z
+- commits:
     - subject: Update meta-balena from v2.73.12 to v2.73.15
       hash: 789e606cd7da5f01f4b9dfd699b48b420b6d0191
       body: |

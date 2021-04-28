@@ -1,6 +1,25 @@
 Change log
 -----------
 
+# v2.75.0+rev1
+## (2021-04-28)
+
+
+<details>
+<summary> Update meta-balena from v2.73.15 to v2.75.0 [Florin Sarbu] </summary>
+
+> ## meta-balena-2.75.0
+> ### (2021-04-22)
+> 
+> * Update mobynit to the new multi-container hostOS specification [Alex Gonzalez]
+> 
+> ## meta-balena-2.74.0
+> ### (2021-04-20)
+> 
+> * balena-engine: Update to 19.03.18 [Robert Günzler]
+> 
+</details>
+
 # v2.73.15+rev1
 ## (2021-04-26)
 
