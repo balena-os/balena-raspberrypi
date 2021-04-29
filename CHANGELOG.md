@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.75.0+rev3
+## (2021-04-29)
+
+* Fix unipi-tools binaries installation [Florin Sarbu]
+
 # v2.75.0+rev2
 ## (2021-04-29)
 

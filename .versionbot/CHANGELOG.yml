@@ -1,4 +1,19 @@
 - commits:
+    - subject: Fix unipi-tools binaries installation
+      hash: 49214a4aa5d82d43ea3834c0132880b84a2b2ec5
+      body: |
+        The binaries were missing execution bit set and also we were missing the
+        libmodbus dependency in the rootfs.
+      footer:
+        Changelog-entry: Fix unipi-tools binaries installation
+        changelog-entry: Fix unipi-tools binaries installation
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.75.0+rev3
+  date: 2021-04-29T14:04:25.371Z
+- commits:
     - subject: Transition to NXP GPL balenaFin sd8887 driver distribution
       hash: f8bbad5739c3b582ca86058b16739050748228c1
       body: |
