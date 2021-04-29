@@ -5,33 +5,33 @@ LIC_FILES_CHKSUM = "file://${WORKDIR}/COPYING;md5=12f884d2ae1ff87c09e5b7ccc2c4ca
 inherit module
 
 SRC_URI = " \
-    git://git@github.com/balena-io/sd8887-mrvl.git;protocol=ssh;tag=v0.0.6 \
+    git://github.com/balena-io-hardware/balena-fin.git;protocol=git;tag=v0.9.0 \
     file://COPYING \
 "
 
-S = "${WORKDIR}/git"
+S = "${WORKDIR}/git/software/drivers/sd8887/"
 
 DEPENDS = "bc-native"
 
 EXTRA_OEMAKE += "KERNELDIR='${STAGING_KERNEL_DIR}'"
 
 do_compile() {
-    cd ${S}/wlan_src
+    cd ${S}/src/wlan
     oe_runmake
-    cd ${S}/mbt_src
+    cd ${S}/src/bluetooth
     oe_runmake
 }
 
 module_do_install() {
-    cd ${S}/wlan_src
+    cd ${S}/src/wlan
     install -d ${D}/lib/modules/${KERNEL_VERSION}/kernel/net/wireless
     install -m 0644 mlan.ko sd8xxx.ko ${D}/lib/modules/${KERNEL_VERSION}/kernel/net/wireless/
-    cd ${S}/mbt_src
+    cd ${S}/src/bluetooth
     install -d ${D}/lib/modules/${KERNEL_VERSION}/kernel/drivers/bluetooth
     install -m 0644 bt8xxx.ko ${D}/lib/modules/${KERNEL_VERSION}/kernel/drivers/bluetooth/
     cd ${S}/firmware
-    install -d ${D}/lib/firmware/mrvl
-    install -m 0644 15.68.19.p33/sd8887_uapsta_a2.bin ${D}/lib/firmware/mrvl/
+    install -d ${D}/lib/firmware/nxp
+    install -m 0644 sd8887_uapsta_a2.bin ${D}/lib/firmware/nxp/
 
     # blacklist mwifi* and btmrvl* kernel modules which conflict with ours
     install -d ${D}/etc/modprobe.d
@@ -42,7 +42,7 @@ module_do_install() {
 
 FILES_${PN} += " \
     /etc/modprobe.d/blacklist.conf \
-    /lib/firmware/mrvl/sd8887_uapsta_a2.bin \
+    /lib/firmware/nxp/sd8887_uapsta_a2.bin \
 "
 
 KERNEL_MODULE_AUTOLOAD += "sd8xxx"
