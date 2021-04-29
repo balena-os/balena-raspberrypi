@@ -7,6 +7,7 @@ SRC_URI = "git://git@git.unipi.technology/UniPi/unipi-tools.git;protocol=https"
 inherit systemd
 
 DEPENDS += "libmodbus systemd"
+RDEPENDS_${PN} += "libmodbus"
 
 SRCREV = "1.2.44"
 
@@ -34,7 +35,7 @@ do_install() {
 
     # install the tools
     install -d ${D}/opt/unipi/tools
-    install -m 0644 \
+    install -m 0755 \
     ${S}/unipi_tcp_server \
     ${S}/fwspi \
     ${S}/fwserial \
