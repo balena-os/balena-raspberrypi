@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.75.0+rev2
+## (2021-04-29)
+
+* Transition to NXP GPL balenaFin sd8887 driver distribution [Zahari Petkov]
+
 # v2.75.0+rev1
 ## (2021-04-28)
 

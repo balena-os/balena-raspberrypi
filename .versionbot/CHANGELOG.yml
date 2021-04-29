@@ -1,4 +1,23 @@
 - commits:
+    - subject: Transition to NXP GPL balenaFin sd8887 driver distribution
+      hash: f8bbad5739c3b582ca86058b16739050748228c1
+      body: |
+        Use NXP GPL sources/firmware of the sd8887 driver that now lives
+        in the main balenaFin repository. The prebuilt version of the sd8887
+        driver is no longer needed as the sources are distributable.
+        Also rename all references from Marvell/mrvl to NXP.
+      footer:
+        Changelog-entry: Transition to NXP GPL balenaFin sd8887 driver distribution
+        changelog-entry: Transition to NXP GPL balenaFin sd8887 driver distribution
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Zahari Petkov <zahari@balena.io>
+        signed-off-by: Zahari Petkov <zahari@balena.io>
+      author: Zahari Petkov
+      nested: []
+  version: 2.75.0+rev2
+  date: 2021-04-29T12:50:04.988Z
+- commits:
     - subject: Update meta-balena from v2.73.15 to v2.75.0
       hash: 665730d8b28041549c562722c0b3e507cd3c700a
       body: |
