@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.75.0+rev4
+## (2021-04-30)
+
+* Add mcp251xfd overlay to rootfs [Florin Sarbu]
+
 # v2.75.0+rev3
 ## (2021-04-29)
 

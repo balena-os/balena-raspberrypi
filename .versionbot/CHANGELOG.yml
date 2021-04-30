@@ -1,4 +1,18 @@
 - commits:
+    - subject: Add mcp251xfd overlay to rootfs
+      hash: d2fa6f7aad142c5b808410c74d2cc3f1818c9c27
+      body: |
+        Include the mcp251xfd overlay to rootfs as per popular demand
+      footer:
+        Changelog-entry: Add mcp251xfd overlay to rootfs
+        changelog-entry: Add mcp251xfd overlay to rootfs
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.75.0+rev4
+  date: 2021-04-30T08:31:54.481Z
+- commits:
     - subject: Fix unipi-tools binaries installation
       hash: 49214a4aa5d82d43ea3834c0132880b84a2b2ec5
       body: |
