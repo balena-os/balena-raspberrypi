@@ -1,4 +1,34 @@
 - commits:
+    - subject: Rework unipi-tools package for raspberrypi3-unipi-neuron
+      hash: e5838df53af02d3d4a5104eae292d2e2699cee73
+      body: |
+        We remove a few systemd services which the customer said they do not
+        need (unipi-ttymxc2-rs485.service, unipi-ttys0-rs485.service,
+        unipi-ttymxc2-rs485.target, unipi-ttys0-rs485.target) and also we
+        include the missing unipicheck.service and unipi-target.map needed by
+        the unipicheck binary.
+      footer:
+        Changelog-entry: Rework unipi-tools package for raspberrypi3-unipi-neuron
+        changelog-entry: Rework unipi-tools package for raspberrypi3-unipi-neuron
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+    - subject: Add required dtoverlays to config.txt for raspberrypi3-unipi-neuron
+      hash: fef09f76914a1f7966d3bbe4319e70313a05255a
+      body: |
+        Let's add the dtoverlays by default to config.txt rather than have the
+        user add them through the dashboard.
+      footer:
+        Changelog-entry: Add required dtoverlays to config.txt for raspberrypi3-unipi-neuron
+        changelog-entry: Add required dtoverlays to config.txt for raspberrypi3-unipi-neuron
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.75.0+rev5
+  date: 2021-05-05T09:14:23.607Z
+- commits:
     - subject: Add mcp251xfd overlay to rootfs
       hash: d2fa6f7aad142c5b808410c74d2cc3f1818c9c27
       body: |

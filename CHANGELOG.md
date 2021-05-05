@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.75.0+rev5
+## (2021-05-05)
+
+* Rework unipi-tools package for raspberrypi3-unipi-neuron [Florin Sarbu]
+* Add required dtoverlays to config.txt for raspberrypi3-unipi-neuron [Florin Sarbu]
+
 # v2.75.0+rev4
 ## (2021-04-30)
 
