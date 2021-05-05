@@ -20,8 +20,7 @@ do_install() {
     # systemd unit configuration file
     install -d ${D}${systemd_unitdir}/system
     install -m 0644 \
-    ${S}/../unipi-common/systemd/system/unipi-ttymxc2-rs485.* \
-    ${S}/../unipi-common/systemd/system/unipi-ttys0-rs485.* \
+    ${S}/../unipi-common/systemd/system/unipicheck.service \
     ${S}/../unipi-common/systemd/system/unipispi.target \
     ${S}/../unipi-firmware-tools/systemd/system/unipifirmware.service \
     ${S}/../unipi-modbus-tools/systemd/system/unipitcp.service \
@@ -32,6 +31,10 @@ do_install() {
     ${S}/../unipi-firmware-tools/etc/default/unipi-firmware-tools \
     ${S}/../unipi-modbus-tools/etc/default/unipitcp \
     ${D}${sysconfdir}/default
+
+    # install the map file needed to determine which systemd target needs to be started
+    install -d ${D}/opt/unipi/data
+    install -m 0644 ${S}/unipi-target.map ${D}/opt/unipi/data
 
     # install the tools
     install -d ${D}/opt/unipi/tools
@@ -52,12 +55,12 @@ FILES_${PN} += " \
     /lib/systemd/system/unipi-ttymxc2-rs485.target \
     /lib/systemd/system/unipispi.target \
     /lib/systemd/system/unipi-ttys0-rs485.target \
+    /opt/unipi/data \
     /opt/unipi/tools \
 "
 SYSTEMD_PACKAGES = "${PN}"
 SYSTEMD_SERVICE_${PN} = " \
+    unipicheck.service \
     unipifirmware.service \
     unipitcp.service \
-    unipi-ttymxc2-rs485.service \
-    unipi-ttys0-rs485.service \
 "
