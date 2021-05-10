@@ -1,4 +1,83 @@
 - commits:
+    - subject: Switch revpi-connect from community to officialy supported
+      hash: a03e45cd5d5bd35955fcc8702caa08ffd57ad99e
+      body: ''
+      footer:
+        Changelog-entry: Switch revpi-connect from community to officialy supported
+        changelog-entry: Switch revpi-connect from community to officialy supported
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+    - subject: Update meta-balena from v2.75.0 to v2.77.0
+      hash: 90776563f9c8b6123239c4faad694302163046a0
+      body: |
+        Update meta-balena from 2.75.0 to 2.77.0
+      footer:
+        Changelog-entry: Update meta-balena from v2.75.0 to v2.77.0
+        changelog-entry: Update meta-balena from v2.75.0 to v2.77.0
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: 'grub update hook: move variables from grub.cfg to grubenv'
+              hash: 76c82dd987215982dbfcbdf950588dafdc4c129e
+              body: >
+                In order to verify GPG signature of grub.cfg it must be
+                immutable.
+
+                All the variables should be stored in grubenv file. This means
+
+                bootcount, resin_root_part and upgrade_available variables need
+
+                to be moved to grubenv.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.77.0
+          date: 2021-05-05T15:18:01.595Z
+        - commits:
+            - subject: 'kernel: Always include overlayfs support'
+              hash: ddb5dff6b146dfc252aeecede59ad3acc79683f7
+              body: >
+                This is needed in preparation for storage migration from aufs to
+                overlayfs.
+
+                When running hostapp-update, we need to create the target
+                hostapp on
+
+                overlayfs, which implies the OS we update from can support both
+                drivers
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Robert Günzler <robertg@balena.io>
+                signed-off-by: Robert Günzler <robertg@balena.io>
+              author: Robert Günzler
+              nested: []
+          version: meta-balena-2.76.0
+          date: 2021-04-30T16:01:42.415Z
+        - commits:
+            - subject: 'grub: grub-efi: buildin gzio for gz compressed kernels'
+              hash: 6e0dd4407077d66fa9a0ac16b38a83f6cd46e9b2
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph.kogut@gmail.com>
+                signed-off-by: Joseph Kogut <joseph.kogut@gmail.com>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.75.1
+          date: 2021-04-29T19:31:21.361Z
+  version: 2.77.0+rev1
+  date: 2021-05-10T07:41:57.905Z
+- commits:
     - subject: Rework unipi-tools package for raspberrypi3-unipi-neuron
       hash: e5838df53af02d3d4a5104eae292d2e2699cee73
       body: |

@@ -1,6 +1,31 @@
 Change log
 -----------
 
+# v2.77.0+rev1
+## (2021-05-10)
+
+* Switch revpi-connect from community to officialy supported [Florin Sarbu]
+
+<details>
+<summary> Update meta-balena from v2.75.0 to v2.77.0 [Florin Sarbu] </summary>
+
+> ## meta-balena-2.77.0
+> ### (2021-05-05)
+> 
+> * grub update hook: move variables from grub.cfg to grubenv [Michal Toman]
+> 
+> ## meta-balena-2.76.0
+> ### (2021-04-30)
+> 
+> * kernel: Always include overlayfs support [Robert Günzler]
+> 
+> ## meta-balena-2.75.1
+> ### (2021-04-29)
+> 
+> * grub: grub-efi: buildin gzio for gz compressed kernels [Joseph Kogut]
+> 
+</details>
+
 # v2.75.0+rev5
 ## (2021-05-05)
 
