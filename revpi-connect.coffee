@@ -12,7 +12,6 @@ module.exports =
 	name: 'Revolution Pi Connect'
 	arch: 'armv7hf'
 	state: 'new'
-	community: true
 
 	instructions: [
 		REVPI_DEBUG
