@@ -1,4 +1,18 @@
 - commits:
+    - subject: Update balena-yocto-scripts from v1.11.0 to v1.12.13
+      hash: 7f6dd519df2058bfeca9889dccd5ef1b0be91f2d
+      body: |
+        Update balena-yocto-scripts from 1.11.0 to 1.12.13
+      footer:
+        Changelog-entry: Update balena-yocto-scripts from v1.11.0 to v1.12.13
+        changelog-entry: Update balena-yocto-scripts from v1.11.0 to v1.12.13
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 2.78.0+rev2
+  date: 2021-05-14T19:46:07.695Z
+- commits:
     - subject: Rename resin-supervisor to balena-supervisor
       hash: 7d048fbfaac42aef4a9a811d2176acae0b608668
       body: ''
