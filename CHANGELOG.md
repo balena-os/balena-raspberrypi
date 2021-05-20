@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.78.0+rev2
+## (2021-05-20)
+
+* Add bcm2711-rpi-400.dtb and bcm2711-rpi-cm4.dtb for the raspberrypi4-64 machine [Florin Sarbu]
+
 # v2.78.0+rev1
 ## (2021-05-11)
 

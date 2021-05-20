@@ -1,4 +1,25 @@
 - commits:
+    - subject: >-
+        Add bcm2711-rpi-400.dtb and bcm2711-rpi-cm4.dtb for the raspberrypi4-64
+        machine
+      hash: f6e7e36cfc335a437dafcd60f48cbe9eb330d886
+      body: |
+        Because the BSP in the dunfell branch does not currently ship these dtbs
+        in the raspberrypi4-64 machine let's just add it from here instead.
+      footer:
+        Changelog-entry: >-
+          Add bcm2711-rpi-400.dtb and bcm2711-rpi-cm4.dtb for the
+          raspberrypi4-64 machine
+        changelog-entry: >-
+          Add bcm2711-rpi-400.dtb and bcm2711-rpi-cm4.dtb for the
+          raspberrypi4-64 machine
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.78.0+rev2
+  date: 2021-05-20T13:55:58.999Z
+- commits:
     - subject: Rename resin-supervisor to balena-supervisor
       hash: 7d048fbfaac42aef4a9a811d2176acae0b608668
       body: ''
