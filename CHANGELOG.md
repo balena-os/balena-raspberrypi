@@ -1,6 +1,70 @@
 Change log
 -----------
 
+# v2.79.7+rev1
+## (2021-06-02)
+
+
+<details>
+<summary> Update meta-balena from v2.78.0 to v2.79.7 [Mark Corbin] </summary>
+
+> ## meta-balena-2.79.7
+> ### (2021-05-26)
+> 
+> * meta-balena: rename connectivity packagegroup [Mark Corbin]
+> 
+> ## meta-balena-2.79.6
+> ### (2021-05-26)
+> 
+> * bluez5: Use bluez5 recipe from poky master [Zahari Petkov]
+> 
+> ## meta-balena-2.79.5
+> ### (2021-05-21)
+> 
+> * README: Update supported Yocto versions [Alex Gonzalez]
+> 
+> ## meta-balena-2.79.4
+> ### (2021-05-21)
+> 
+> * Skip some services when running under docker [Robert Günzler]
+> 
+> ## meta-balena-2.79.3
+> ### (2021-05-20)
+> 
+> * kernel-resin: disable panic on hung task [Joseph Kogut]
+> 
+> ## meta-balena-2.79.2
+> ### (2021-05-19)
+> 
+> * Add boot-splash test to unmanaged suite [rcooke-warwick]
+> 
+> ## meta-balena-2.79.1
+> ### (2021-05-18)
+> 
+> * balena-os: Add preferred provider for Go native [Alex Gonzalez]
+> 
+> ## meta-balena-2.79.0
+> ### (2021-05-13)
+> 
+> * balena-engine: build in GOPATH mode [Joseph Kogut]
+> * recipes-devtools: go: backport get_linuxloader [Joseph Kogut]
+> * meta-resin-pyro: go-native: include fix-goarch.inc [Joseph Kogut]
+> * meta-balena-common: upgrade from go 1.12.17 to 1.16.2 [Joseph Kogut]
+> 
+> ## meta-balena-2.78.2
+> ### (2021-05-13)
+> 
+> * balena-config-vars: improve handling of NM config parameters [Mark Corbin]
+> 
+> ## meta-balena-2.78.1
+> ### (2021-05-12)
+> 
+> * Add Device Tree tests [Vipul Gupta (@vipulgupta2048)]
+> 
+</details>
+
+* balena-raspberrypi: rename connectivity packagegroup [Mark Corbin]
+
 # v2.78.0+rev2
 ## (2021-05-20)
 

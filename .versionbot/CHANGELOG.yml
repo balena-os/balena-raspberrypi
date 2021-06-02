@@ -1,4 +1,387 @@
 - commits:
+    - subject: Update meta-balena from v2.78.0 to v2.79.7
+      hash: da408be6bd715a7d3b512f00019e673a4b897134
+      body: |
+        Update meta-balena from 2.78.0 to 2.79.7
+      footer:
+        Changelog-entry: Update meta-balena from v2.78.0 to v2.79.7
+        changelog-entry: Update meta-balena from v2.78.0 to v2.79.7
+        Signed-off-by: Mark Corbin <mark@balena.io>
+        signed-off-by: Mark Corbin <mark@balena.io>
+      author: Mark Corbin
+      nested:
+        - commits:
+            - subject: 'meta-balena: rename connectivity packagegroup'
+              hash: 8f54c4137f8bb8a83a05d9963cdb1565778c737b
+              body: |
+                Rename the resin-connectivity packagegroup.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: 'meta-balena: rename connectivity packagegroup'
+                changelog-entry: 'meta-balena: rename connectivity packagegroup'
+                Signed-off-by: Mark Corbin <mark@balena.io>
+                signed-off-by: Mark Corbin <mark@balena.io>
+              author: Mark Corbin
+              nested: []
+          version: meta-balena-2.79.7
+          date: 2021-05-26T15:03:08.108Z
+        - commits:
+            - subject: 'bluez5: Use bluez5 recipe from poky master'
+              hash: fe3c870eef75927eac740bbc1e8e15b8ed9c7341
+              body: |
+                This commit brings the bluez5 recipe from poky master as we need
+                to control which bluez5 version is used in meta-balena.
+
+                The code originates from poky's master branch -
+                c887238347295c87dacf8a08e6d703603436d0bc.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Zahari Petkov <zahari@balena.io>
+                signed-off-by: Zahari Petkov <zahari@balena.io>
+              author: Zahari Petkov
+              nested: []
+          version: meta-balena-2.79.6
+          date: 2021-05-26T08:26:16.310Z
+        - commits:
+            - subject: 'README: Update supported Yocto versions'
+              hash: cdbf76ccbaaf6e265f8432eca10d42e55b6969e8
+              body: >
+                Add the warrior and dunfell versions to the list of tested
+                releases.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.79.5
+          date: 2021-05-21T20:01:11.657Z
+        - commits:
+            - subject: Skip some services when running under docker
+              hash: 8ef8078de0f1e65adab784c6456d66cf82ee4774
+              body: |
+                * skip setting up zram swap
+                * dont' attempt to mount inactive partition
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Robert Günzler <robertg@balena.io>
+                signed-off-by: Robert Günzler <robertg@balena.io>
+              author: Robert Günzler
+              nested: []
+          version: meta-balena-2.79.4
+          date: 2021-05-21T10:15:56.497Z
+        - commits:
+            - subject: 'kernel-resin: disable panic on hung task'
+              hash: ac0ba89f14c0b04b7353192f15a0634be44d910c
+              body: >
+                Some BSPs have enabled CONFIG_BOOTPARAM_HUNG_TASK_PANIC which
+
+                can trigger panics upon high iowait, such as balena-engine
+
+                downloading/writing a large image to disk.
+
+
+                Kconfig says the following:
+
+                    Say Y here to enable the kernel to panic on "hung tasks",
+                    which are bugs that cause the kernel to leave a task stuck
+                    in uninterruptible "D" state.
+
+                    The panic can be used in combination with panic_timeout,
+                    to cause the system to reboot automatically after a
+                    hung task has been detected. This feature is useful for
+                    high-availability systems that have uptime guarantees and
+                    where a hung tasks must be resolved ASAP.
+
+                    Say N if unsure.
+
+                Hung tasks are not normally terminal, nor do they affect system
+
+                stability, but panicking during an image write forces a device
+                into a
+
+                bootloop that requires manual intervention to remedy.
+
+
+                See the below stacktrace:
+
+
+                [  243.565482] INFO: task balenad:4049 blocked for more than 120
+                seconds.
+
+                [  243.565737]       Not tainted 4.9.140-l4t-r32.4 #1
+
+                [  243.565853] "echo 0 >
+                /proc/sys/kernel/hung_task_timeout_secs" disables this message.
+
+                [  243.566032] balenad         D    0  4049      1 0x00000008
+
+                [  243.566236] Call trace:
+
+                [  243.566354] [<ffffff80080863a4>] __switch_to+0x9c/0xc0
+
+                [  243.566479] [<ffffff8008f0d09c>] __schedule+0x22c/0x570
+
+                [  243.566590] [<ffffff8008f0d420>] schedule+0x40/0xa8
+
+                [  243.566744] [<ffffff8008f1057c>]
+                rwsem_down_read_failed+0xd4/0x128
+
+                [  243.566872] [<ffffff8008f0f8a8>] down_read+0x58/0x60
+
+                [  243.566999] [<ffffff8008263568>] iterate_supers+0x78/0x138
+
+                [  243.567131] [<ffffff800829bac0>] sys_sync+0x50/0xc0
+
+                [  243.567237] [<ffffff8008083900>] el0_svc_naked+0x34/0x38
+
+                [  243.567394] Kernel panic - not syncing: hung_task: blocked
+                tasks
+
+                [  243.567533] CPU: 3 PID: 47 Comm: khungtaskd Not tainted
+                4.9.140-l4t-r32.4 #1
+
+                [  243.567819] Hardware name: NVIDIA Jetson Xavier NX Developer
+                Kit (DT)
+
+                [  243.568318] Call trace:
+
+                [  243.568508] [<ffffff800808c678>] dump_backtrace+0x0/0x1a8
+
+                [  243.571026] [<ffffff800808c844>] show_stack+0x24/0x30
+
+                [  243.576195] [<ffffff800841f4e8>] dump_stack+0x94/0xbc
+
+                [  243.581446] [<ffffff80081c3db0>] panic+0x128/0x28c
+
+                [  243.586599] [<ffffff8008178190>] watchdog+0x2f8/0x398
+
+                [  243.591760] [<ffffff80080dcd60>] kthread+0x100/0x108
+
+                [  243.596477] [<ffffff80080838a0>] ret_from_fork+0x10/0x30
+
+                [  243.602257] SMP: stopping secondary CPUs
+
+                [  243.605897] Kernel Offset: disabled
+
+                [  243.609511] Memory Limit: none
+
+                [  243.612484] trusty-log panic notifier - trusty version Built:
+                12:18:19 Oct 16 2020 [  243.636124] Rebooting in 1 seconds..
+
+
+                Disable this config for all platforms.
+              footer:
+                Changelog-entry: 'kernel-resin: disable panic on hung task'
+                changelog-entry: 'kernel-resin: disable panic on hung task'
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.79.3
+          date: 2021-05-20T08:04:17.185Z
+        - commits:
+            - subject: Add boot-splash test to unmanaged suite
+              hash: a6865f22ba5d5bd60f659daac113cac6ae1aa8f3
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.79.2
+          date: 2021-05-19T09:25:55.145Z
+        - commits:
+            - subject: 'balena-os: Add preferred provider for Go native'
+              hash: 20dd5fb4384e78f24d3e3304be38666fdcb859a8
+              body: >
+                With Go 1.16 a precompiled go-binary-native that provides
+                go-native was
+
+                introduced to bootstrap the Go compilation.
+
+                Specify to use the go-native recipe and not go-binary-native
+                when
+
+                requiring go-native.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.79.1
+          date: 2021-05-18T08:37:41.159Z
+        - commits:
+            - subject: 'balena-engine: build in GOPATH mode'
+              hash: 342a9621b5416d2a1f6aec3948dfdcfe15395d13
+              body: >
+                balena-engine hasn't transitioned to building with modules yet,
+                and Go
+
+                1.16 enabled them by default. Revert to the old behavior for now
+                to fix
+                  the build.
+
+                This option will be removed in Go 1.17, so we'll have to update
+                our
+
+                build before upgrading further.
+
+
+                https://blog.golang.org/go116-module-changes
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: 'recipes-devtools: go: backport get_linuxloader'
+              hash: 283e7d279ed26c2855b4916c24bb502e2d87a189
+              body: >
+                Hardknott introduces get_linuxloader() to linuxloader.bbclass
+                that
+
+                allows for dynamically choosing between different c libraries,
+                which go
+
+                recipes depend on.
+
+
+                Add an include that backports this for older Yocto releases.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: 'meta-resin-pyro: go-native: include fix-goarch.inc'
+              hash: 252521185190ac2730fa8a92a5565a6069104e25
+              body: "This fixes the error:\n\n\tInvalid GOMIPS value. Must be hardfloat or softfloat.\n"
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph.kogut@gmail.com>
+                signed-off-by: Joseph Kogut <joseph.kogut@gmail.com>
+              author: Joseph Kogut
+              nested: []
+            - subject: 'meta-balena-common: upgrade from go 1.12.17 to 1.16.2'
+              hash: a395e1bdaaba8050042d011e6e5fe40311216d58
+              body: |
+                Copy the unmodified golang recipes from poky commit 464472d to
+                meta-balena-common/recipes-devtools.
+
+                This shaves off approximately:
+                balena-engine 41M -> 34M (17%)
+                init (mobynit) 9.5M -> 7.9M (16.8%)
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Joseph Kogut <joseph.kogut@gmail.com>
+                signed-off-by: Joseph Kogut <joseph.kogut@gmail.com>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.79.0
+          date: 2021-05-13T18:25:01.396Z
+        - commits:
+            - subject: 'balena-config-vars: improve handling of NM config parameters'
+              hash: 61280e84e045a4b235a21eec194fc8cf894c310d
+              body: >
+                Improve the handling of the os.network.* parameters defined in
+
+                config.json.
+
+
+                The balena-config-vars script has been updated to process the
+
+                os.network.* parameters from config.json. This allows scripts
+
+                to access these parameters by just including balena-config-vars
+
+                rather than having to parse them directly. Some of the default
+
+                settings have now been included as part of the jq parsing
+                string.
+
+                The jq command has also been assigned to an interim variable
+                rather
+
+                than being evaluated directly. This allows other scripts which
+
+                include balena-config-vars to handle parsing errors correctly
+                when
+
+                they are running with 'set -e'.
+
+
+                The os-networkmanager script has been updated to make use of the
+
+                balena-config-vars script and no longer parses config.json
+                itself.
+
+                The logging has been standardised and the simplification of the
+
+                variable processing has reduced the size of the script from 146
+
+                to 101 lines.
+
+
+                The build time tests have been removed as the os-networkmanager
+                script
+
+                is unable to access /usr/sbin/balena-config-vars at buildtime.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: 'balena-config-vars: improve handling of NM config parameters'
+                changelog-entry: 'balena-config-vars: improve handling of NM config parameters'
+                Signed-off-by: Mark Corbin <mark@balena.io>
+                signed-off-by: Mark Corbin <mark@balena.io>
+              author: Mark Corbin
+              nested: []
+          version: meta-balena-2.78.2
+          date: 2021-05-13T15:17:52.402Z
+        - commits:
+            - subject: Add Device Tree tests
+              hash: f59b7e0d54098e000d7fb3ce2b4811fa91351769
+              body: |
+                1. Add DToverlay & DTparam tests
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+              author: Vipul Gupta (@vipulgupta2048)
+              nested: []
+          version: meta-balena-2.78.1
+          date: 2021-05-12T21:38:32.558Z
+    - subject: 'balena-raspberrypi: rename connectivity packagegroup'
+      hash: 29465bf440d78e98536310aebf48a9661048a4c3
+      body: |
+        Rename the resin-connectivity packagegroup.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: 'balena-raspberrypi: rename connectivity packagegroup'
+        changelog-entry: 'balena-raspberrypi: rename connectivity packagegroup'
+        Signed-off-by: Mark Corbin <mark@balena.io>
+        signed-off-by: Mark Corbin <mark@balena.io>
+      author: Mark Corbin
+      nested: []
+  version: 2.79.7+rev1
+  date: 2021-06-02T09:45:38.551Z
+- commits:
     - subject: >-
         Add bcm2711-rpi-400.dtb and bcm2711-rpi-cm4.dtb for the raspberrypi4-64
         machine
