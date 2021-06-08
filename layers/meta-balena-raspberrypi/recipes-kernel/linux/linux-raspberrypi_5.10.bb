@@ -1,11 +1,11 @@
 # copied from meta-raspberrypi@ef04a3a523e6cd935968f34f338501fd915c506c
 # and renamed linux-raspberrypi.inc to linux-raspberrypi_5.10.inc
 
-LINUX_VERSION ?= "5.10.17"
+LINUX_VERSION ?= "5.10.31"
 LINUX_RPI_BRANCH ?= "rpi-5.10.y"
 
-SRCREV_machine = "ec967eb45f8d4ed59bebafb5748da38118383be7"
-SRCREV_meta = "5833ca701711d487c9094bd1efc671e8ef7d001e"
+SRCREV_machine = "89399e6e7e33d6260a954603ca03857df594ffd3"
+SRCREV_meta = "a19886b00ea7d874fdd60d8e3435894bb16e6434"
 
 KMETA = "kernel-meta"
 

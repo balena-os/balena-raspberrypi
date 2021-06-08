@@ -1,10 +1,10 @@
 FILESEXTRAPATHS_append := ":${THISDIR}/files"
 
-RPIFW_DATE = "20210205"
-SRCREV = "7d91570f20378afc9414107dccdad70705a8a342"
+RPIFW_DATE = "20210421"
+SRCREV = "2ac4de4eaac5c1d1b25acec4a5e0a9fdb16f0c91"
 
-SRC_URI[md5sum] = "e5e9859f845918ad6d8e3bfc06fe0c2f"
-SRC_URI[sha256sum] = "2cc9bf2cbcab8283db2eb53ed2a49372b70fe76538994c32f6d261e2da3e9ff4"
+SRC_URI[md5sum] = "43c92418c2634d4c0c8ce3da696dcad5"
+SRC_URI[sha256sum] = "c687aa1b5127a8dc0773e8aefb1f009f24bf71ccb4c9e8b40a1d46cbbb7bee0c"
 
 LIC_FILES_CHKSUM = "file://LICENCE.broadcom;md5=c403841ff2837657b2ed8e5bb474ac8d"
 
