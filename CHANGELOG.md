@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.80.0+rev2
+## (2021-06-09)
+
+* Add support for raspberrypi-linux 5.10 [Joseph Kogut]
+
 # v2.80.0+rev1
 ## (2021-06-08)
 

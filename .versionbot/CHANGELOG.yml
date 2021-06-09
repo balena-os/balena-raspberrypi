@@ -1,4 +1,20 @@
 - commits:
+    - subject: Add support for raspberrypi-linux 5.10
+      hash: 4c946fc474ba18429075f21f61bafddab20ff76c
+      body: |
+        Copied unmodified from meta-raspberrypi, commit hash f5fe02c
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: Add support for raspberrypi-linux 5.10
+        changelog-entry: Add support for raspberrypi-linux 5.10
+        Signed-off-by: Joseph Kogut <joseph@balena.io>
+        signed-off-by: Joseph Kogut <joseph@balena.io>
+      author: Joseph Kogut
+      nested: []
+  version: 2.80.0+rev2
+  date: 2021-06-09T21:05:47.957Z
+- commits:
     - subject: Update meta-balena from v2.79.7 to v2.80.0
       hash: e8e7fa1d4b6d38f6f87a4702c62fdcc9d40bcc74
       body: |
