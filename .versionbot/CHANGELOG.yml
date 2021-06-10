@@ -1,4 +1,56 @@
 - commits:
+    - subject: Update meta-balena from v2.80.0 to v2.80.2
+      hash: 51c9e15e88a17107aec1f83331e3e6f0cde0f683
+      body: |
+        Update meta-balena from 2.80.0 to 2.80.2
+      footer:
+        Changelog-entry: Update meta-balena from v2.80.0 to v2.80.2
+        changelog-entry: Update meta-balena from v2.80.0 to v2.80.2
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested:
+        - commits:
+            - subject: >-
+                update-balena-supervisor: Refactor script to ensure target
+                version is ran
+              hash: 0433c666bf4756df30312f0d59ad8a8b94b062ab
+              body: |
+                This is a rebase of PR 2180 by Miguel,
+                which improves stability for the
+                supervisor update.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.80.2
+          date: 2021-06-09T09:54:10.830Z
+        - commits:
+            - subject: 'bluez5: Disable PnP Device Information service'
+              hash: afb3dc0441e9ed0f2f9a08de5dd2a9cc75f09ac3
+              body: >
+                This reverts to the behavior before v5.56 as it interferes with
+                user defined
+
+                Device Information profiles.
+
+
+                For more information: https://github.com/bluez/bluez/issues/101
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Zahari Petkov <zahari@balena.io>
+                signed-off-by: Zahari Petkov <zahari@balena.io>
+              author: Zahari Petkov
+              nested: []
+          version: meta-balena-2.80.1
+          date: 2021-06-07T12:35:18.823Z
+  version: 2.80.2+rev1
+  date: 2021-06-10T06:09:42.097Z
+- commits:
     - subject: Update meta-balena from v2.79.7 to v2.80.0
       hash: e8e7fa1d4b6d38f6f87a4702c62fdcc9d40bcc74
       body: |
