@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.80.3+rev1
+## (2021-06-11)
+
+
+<details>
+<summary> Update meta-balena from v2.80.2 to v2.80.3 [Alexandru Costache] </summary>
+
+> ## meta-balena-2.80.3
+> ### (2021-06-10)
+> 
+> * Add oneshot service to migrate supervisor state config [Kyle Harding]
+> 
+</details>
+
 # v2.80.2+rev1
 ## (2021-06-10)
 

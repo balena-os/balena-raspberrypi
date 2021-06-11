@@ -1,4 +1,46 @@
 - commits:
+    - subject: Update meta-balena from v2.80.2 to v2.80.3
+      hash: 993d1dd12a12f34042964e93cffe6040d652de05
+      body: |
+        Update meta-balena from 2.80.2 to 2.80.3
+      footer:
+        Changelog-entry: Update meta-balena from v2.80.2 to v2.80.3
+        changelog-entry: Update meta-balena from v2.80.2 to v2.80.3
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested:
+        - commits:
+            - subject: Add oneshot service to migrate supervisor state config
+              hash: d965d23fe60db6254eaabd81a0d48b5718e01a3a
+              body: >
+                The hostapp-update hooks would run before the supervisor update
+                step
+
+                when using balenahup via the dashboard. This resulted in the
+                balena
+
+                supervisor state conf file being out-of-date.
+
+
+                This commit removes the hostapp-update hook and instead uses a
+
+                oneshot service to ensure the conf is migrated if it does not
+                exist
+
+                in the new path before starting the supervisor.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.80.3
+          date: 2021-06-10T13:47:28.925Z
+  version: 2.80.3+rev1
+  date: 2021-06-11T04:46:35.159Z
+- commits:
     - subject: Update meta-balena from v2.80.0 to v2.80.2
       hash: 51c9e15e88a17107aec1f83331e3e6f0cde0f683
       body: |
