@@ -1,4 +1,70 @@
 - commits:
+    - subject: Update meta-balena from v2.80.3 to v2.80.5
+      hash: 67117d78fe16414a726be3f6e24ef4f2cfdb532c
+      body: |
+        Update meta-balena from 2.80.3 to 2.80.5
+      footer:
+        Changelog-entry: Update meta-balena from v2.80.3 to v2.80.5
+        changelog-entry: Update meta-balena from v2.80.3 to v2.80.5
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested:
+        - commits:
+            - subject: >-
+                update-balena-supervisor: Improve obtaining the supervisor
+                directory name
+              hash: 4ed241617668a0d3cc2d505a052bb9cba3178cea
+              body: |
+                There are better ways of getting the supervisor
+                configuration directory name, let's switch to
+                them to improve robustness.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+            - subject: Update balena-supervisor from v12.7.0 to v12.8.7
+              hash: b935b594c12a2cdd54871bfb064d5cc843442e53
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Update balena-supervisor from v12.7.0 to v12.8.7
+                changelog-entry: Update balena-supervisor from v12.7.0 to v12.8.7
+                Signed-off-by: Miguel Casqueira <miguel@balena.io>
+                signed-off-by: Miguel Casqueira <miguel@balena.io>
+              author: Miguel Casqueira
+              nested: []
+          version: meta-balena-2.80.5
+          date: 2021-06-17T14:36:11.613Z
+        - commits:
+            - subject: 'kernel-headers-test: simplify example module Makefile'
+              hash: 88df9d672d45b7d0bf59d4656654091c3bbfd56b
+              body: >
+                The example kernel module has some unnecessary variables and
+                targets.
+
+                Simplify this makefile by passing the kernel source directory to
+                make,
+
+                and using the M variable to build the module.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: 'kernel-headers-test: simplify example module Makefile'
+                changelog-entry: 'kernel-headers-test: simplify example module Makefile'
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.80.4
+          date: 2021-06-14T21:02:06.713Z
+  version: 2.80.5+rev1
+  date: 2021-06-18T06:30:27.773Z
+- commits:
     - subject: Update meta-balena from v2.80.2 to v2.80.3
       hash: 993d1dd12a12f34042964e93cffe6040d652de05
       body: |
