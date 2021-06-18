@@ -5,9 +5,8 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 SRC_URI_append = " file://0001-rtc-hctosys-Correctly-guard-hw-clock-polling-code.patch"
 
 # Set console accordingly to build type
-DEBUG_CMDLINE = "dwc_otg.lpm_enable=0 console=tty1 rootwait"
-PRODUCTION_CMDLINE = "dwc_otg.lpm_enable=0 console=null rootwait vt.global_cursor_default=0"
-CMDLINE = "${@bb.utils.contains('DISTRO_FEATURES','development-image',"${DEBUG_CMDLINE}","${PRODUCTION_CMDLINE}",d)}"
+CMDLINE = "dwc_otg.lpm_enable=0 rootwait"
+CMDLINE += "${@bb.utils.contains('DISTRO_FEATURES','osdev-image',"console=tty1 console=serial0,115200"," vt.global_cursor_default=0 console=null",d)}"
 CMDLINE_DEBUG = ""
 
 BALENA_CONFIGS_append = " fbtft"
