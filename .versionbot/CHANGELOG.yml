@@ -1,4 +1,1227 @@
 - commits:
+    - subject: Update meta-balena from v2.80.5 to v2.80.8
+      hash: 5d4ee614438c23937bd0dcdf75524e7ef3f39031
+      body: |
+        Update meta-balena from 2.80.5 to 2.80.8
+      footer:
+        Changelog-entry: Update meta-balena from v2.80.5 to v2.80.8
+        changelog-entry: Update meta-balena from v2.80.5 to v2.80.8
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: Update balena-supervisor from v12.8.7 to v12.8.8
+              hash: 713342af1f30442613a3f8cdf38552d10294a1d5
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Update balena-supervisor from v12.8.7 to v12.8.8
+                changelog-entry: Update balena-supervisor from v12.8.7 to v12.8.8
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-2.80.8
+          date: 2021-06-21T08:24:21.670Z
+        - commits:
+            - subject: prevent failed teardown from making test hang
+              hash: 47b439dfd12a66171ced7b710502dc143fedb686
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.80.7
+          date: 2021-06-18T10:03:31.173Z
+        - commits:
+            - subject: catch error if image path is corrupted
+              hash: 883fb0e8ac2570763d5857e1a3f2e3cc8b6fc8b2
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.80.6
+          date: 2021-06-17T14:47:58.695Z
+    - subject: Update balena-yocto-scripts from v1.11.0 to v1.14.6
+      hash: 7ed2776fb6535a3badce5b4910c85637e606abaa
+      body: |
+        Update balena-yocto-scripts from 1.11.0 to 1.14.6
+      footer:
+        Changelog-entry: Update balena-yocto-scripts from v1.11.0 to v1.14.6
+        changelog-entry: Update balena-yocto-scripts from v1.11.0 to v1.14.6
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: 'balena-deploy: Flag hostapps as bootable apps'
+              hash: 4093fe7397b52cc58d676f2d7b3db3699c8a8b92
+              body: |
+                This will mark the app as isHost.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-deploy: Provide working directory when deploying hostapp'
+              hash: c20241cdf161ca8f438c38e84f504dadfaeeadc0
+              body: >
+                When creating a public app, the workdir is used to retrieve the
+                URL
+
+                used in the public app creation.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.14.6
+          date: 2021-06-18T10:49:05.763Z
+        - commits:
+            - subject: 'balena-deploy-block: Do not add variant suffix to release tag'
+              hash: 084154ac3c3d0d6d3ec4c7d2a21590815a61bb2f
+              body: >
+                Fix the legacy way of tagging releases with a string variant and
+                the OS
+
+                version as this is still being used by the UI.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.14.5
+          date: 2021-06-18T09:06:25.918Z
+        - commits:
+            - subject: 'Dockerfile_balena-push-env: Add balena-lib to image'
+              hash: 937026182287183bffbdc6836c707d34532bc509
+              body: |
+                The balena-api library requires functions in balena-lib.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-deploy-block: source balena-lib script library'
+              hash: 4b05b3ea6b3d42add1926547809e29213ce84890
+              body: |
+                Some functions in balena-api require this library.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.14.4
+          date: 2021-06-16T10:37:10.537Z
+        - commits:
+            - subject: 'balena-api: Filter out debug output'
+              hash: bbb7ec875bd4b0d56c878187eb1d00e8d450b5d8
+              body: |
+                Change a json dump for a debug function call.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: >-
+                balena-api: Specify API environment and token when setting app
+                roles
+              hash: c2402322ef608cb207494c37ade33a531734d9ca
+              body: |
+                The defaults only work with the production environment.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'jenkins_build-blocks: Separate recipes and packages'
+              hash: 0b7c0a0a14141bbeb6b29171763cac99d68d9830
+              body: >
+                Currently we are reading a package list from the contracts that
+                mixes
+
+                recipe and package names, and we run bitbake with the `-k` flag
+                not to
+
+                stop the build when a package name fails to match a recipe.
+
+
+                The contracts have now been modified to specify either a
+                `sw.recipe.yocto`
+
+                or a `sw.package.yocto` so we can distinguish between them and
+                use
+
+                recipe names to build and package names to install.
+
+
+                We also remove the continue flag from bitbake.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-lib: Generalize contract fetcher'
+              hash: 2d01048848734b580b89bfdd41df13ef10a8d31f
+              body: >
+                Instead of fetching a package list, fetch a composedOf list
+                passing a
+
+                type. This allows to fetch `sw.package` and `sw.recipe` types.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: >-
+                balena-deploy: Shorten installation directory
+                '/yocto/resin-board' to '/work'
+              hash: 20baa1d287d95f95cb84797586afa73ed52f2db1
+              body: >
+                The installation directory is currently "/yocto/resin-board".
+                This is
+
+                too long for the creation of per-task balena-engine sockets
+                which have
+
+                a maximum path length of 104 characters.
+
+
+                This commit replaces the installation directory with "/work".
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: Conditional verbosity mode
+              hash: 6bb1fa2d08c2e3128b5a02588cb009ded98eb0da
+              body: |
+                Also, fix some linter warnings.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.14.3
+          date: 2021-06-01T11:48:30.209Z
+        - commits:
+            - subject: 'balena-lib: Add function to fetch labels from image'
+              hash: a987a933ad52af6c7935b19f13f4f39f0be157f1
+              body: |
+                Image labels are used to handle the installation of images.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-lib: contracts: Add package list fetcher'
+              hash: f2e5ce081f9ef39bcff364ce4a8e9a9d0d806590
+              body: >
+                Add functions to retrieve a package list from a sw.package
+                contract where
+
+                a yocto package based hostos block is defined.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'semver: Add bash utility for semantic version comparison'
+              hash: 831c494a1bc1f286a9b95f22cc86ade46f336a89
+              body: >
+                From https://github.com/Ariel-Rodriguez/sh-semversion-2
+
+
+                MIT licensed:
+                https://github.com/Ariel-Rodriguez/sh-semversion-2/blob/main/LICENSE
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-docker: Add image retrieval function'
+              hash: 79d8a1b201196e2730bcf1d92c8be19dbd693106
+              body: |
+                Common image retrieval code.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.14.2
+          date: 2021-05-26T09:34:20.890Z
+        - commits:
+            - subject: Add a parsable representation of the changelog
+              hash: 9bbc4207170e8db4e79c0d139653570fdc013f95
+              body: >
+                This file allows other components to uniquely parse the
+                information that
+
+                is contained in the changelog. It will be automatically managed
+                by
+
+                versionist by appending the new commits on top. This is needed
+                to
+
+                provide nested-changelogs.
+
+
+                Generated with
+                product-os/versionist/blob/master/scripts/generate-changelog.sh
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Add a parsable representation of the changelog
+                changelog-entry: Add a parsable representation of the changelog
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.14.1
+          date: 2021-05-24T09:59:21.687Z
+        - version: balena-yocto-scripts-1.14.0
+          date: 2021-05-21T19:44:08.000Z
+          commits:
+            - hash: 5999d8421b8cb83f42ecbd98201b2b5b9ff9648c
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                changelog-entry: >-
+                  Add yocto-block-build-env container to build Yocto based
+                  hostOS blocks
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: >-
+                Dockerfile_yocto-block-build-env: Add container to build Yocto
+                based hostOS blocks
+              body: >-
+                This container is based on the `balena-push-env` helper
+                container and includes
+
+                an opkg application built from source. It is used to build Yocto
+                IPK packaged
+
+                based hostOS blocks.
+            - hash: dcb1ee52f56d4785cc4a6b93d33c2b63f2bcda12
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                changelog-entry: Balena build and deploy a hostOS yocto ipk block image
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-build-block: Balena build and deploy a hostOS block image'
+              body: >-
+                Balena builds and deploys a hostOS block from a Yocto ipk
+                package feed.
+            - hash: 285e72e2107b5c7693ebe70ee5041d2001507f98
+              author: Alex Gonzalez
+              footers:
+                change-type: minor
+                changelog-entry: Add script to build hostOS blocks
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'jenkins_build-blocks: Add package blocks builder script'
+              body: >-
+                This script builds hostOS blocks as defined in their contract
+                specification.
+            - hash: 5f6a285d43ce7b161601174b11d7c9b8771b9799
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: >-
+                balena-deploy: Add functions to deploy block, feed and OS
+                release
+              body: Add the logic for block and OS deployment.
+            - hash: 1b551c71da050d84005f80cd076ec9abe8569b0a
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'README: Add brief introduction to the main scripts'
+              body: >-
+                Add a short description of the helper build scripts that this
+                repository
+
+                offers.
+        - version: balena-yocto-scripts-1.13.0
+          date: 2021-05-19T11:16:23.000Z
+          commits:
+            - hash: 2f185e83de39c9e18aedafe9afe55a18758d6696
+              author: Alex Gonzalez
+              footers:
+                change-type: minor
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'barys: Replace supervisor tag with supervisor release version'
+              body: >-
+                The latest meta-balena fetches the supervisor from the internal
+                registry
+
+                using the release version.
+            - hash: 74a5bcaa4761f1f0bdf7ea8fba153540d33e2313
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'jenkins_build: Replace supervisor tag with supervisor release'
+              body: >-
+                The latest meta-balena fetches the supervisor from the internal
+                registry
+
+                using the release version.
+            - hash: 84958c3687ca2424903414ed2304937e11776b16
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'jenkins_build: Rename metaResinBranch to metaBalenaBranch'
+              body: Rename variables to match current brand.
+        - version: balena-yocto-scripts-1.12.16
+          date: 2021-05-18T16:10:59.000Z
+          commits:
+            - hash: 1b138ac2f6f5a1751947a5a28e64f80747244069
+              author: Kyle Harding
+              footers:
+                change-type: patch
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              subject: 'tests: Substitute deviceType with MACHINE when packaging tests'
+              body: null
+        - version: balena-yocto-scripts-1.12.15
+          date: 2021-05-18T16:05:32.000Z
+          commits:
+            - hash: 5dd3cd943d76d06835bcf6a6233cc2060bd230b9
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'Dockerfile_yocto-build-env: Specify docker version'
+              body: >-
+                This matches as closely as possible the version of the dind
+                container
+
+                used in the Yocto build.
+            - hash: 830377a4530fa755334b2060a732a944122c86b4
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-docker: Allow to control iptables and ipmasq flags'
+              body: >-
+                When running multiple daemons, we don't want them to clash
+                managing
+
+                iptables so we start redundant daemons with iptables and ipmasq
+                set to
+
+                false.
+
+                By default we enable both which is the current dockerd default.
+
+                When running a single docker daemon without the iptables and
+                ipmasq flags,
+
+                containers on the default bridge network cannot communite with
+                the
+
+                outside as no iptables rules are set.
+        - version: balena-yocto-scripts-1.12.14
+          date: 2021-05-17T17:08:35.000Z
+          commits:
+            - hash: bc841cf22273bc24f1b6710e8d4c95adaa8e1908
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: >-
+                balena-api: Set default argument value not to exist on nounset
+                setting
+              body: >-
+                Scripts sourcing balena-api might set nounset, so assign empty
+                values
+
+                to optional arguments not to trigger an early exit.
+            - hash: 094faf7defe8f3e5bdccb86cc88afb5eda13a635
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-api: Allow access to OS developers to public apps'
+              body: >-
+                This allows the OS developers to see these applications with
+                their
+
+                Balena account tokens.
+        - version: balena-yocto-scripts-1.12.13
+          date: 2021-05-14T13:25:06.000Z
+          commits:
+            - hash: f7737b535ce6e81994db4225dea2a5f48607373e
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-api: Add functions for apps management'
+              body: Add utility function to manage balenaCloud apps.
+            - hash: 6938b8feec5d5ac5e92ed25c702b1fc4953e931e
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-api: Add block images getter functions'
+              body: >-
+                Add a set of utility functions to retrieve release images and
+                parse them
+
+                according to their labeling.
+            - hash: 513b525a141ccb16796218b8b8b5a67a36faf208
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-api: Add missing argument to function comments'
+              body: This is a non-functional change.
+            - hash: 899122243bf47c20247eaa800cd55a3ff37c4886
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-deploy-block: Create public app if required'
+              body: >-
+                The script will, given the correct token, create a public app if
+                it does
+
+                not exist.
+            - hash: 5a86b9edc5e91c9164a976eb4c4f5ba41141c830
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: >-
+                balena-lib: Fix device installation path when running in helper
+                container
+              body: >-
+                Several functions require to know where the device installation
+                directory
+
+                is, and this differs when the scripts are copied to a container.
+            - hash: 960f754b2b86a9264155bf9763b148674a5e2db5
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: >-
+                balena-deploy: Fix device installation path when running in
+                helper container
+              body: >-
+                Several functions require to know where the device installation
+                directory
+
+                is, and this differs when the scripts are copied to a container.
+        - version: balena-yocto-scripts-1.12.12
+          date: 2021-05-12T09:20:22.000Z
+          commits:
+            - hash: 86d1af439c807258eaa577e50dfb8a172f50f9af
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-docker: Adapt to be used from POSIX shell'
+              body: 'Also, fix indentation to use tabs.'
+            - hash: ba5fbfd03adea5895f88c7dd2e9223d5fbee33f0
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                changelog-entry: Generalize balena-docker to any engine
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-docker: Generalize functions to any engine'
+              body: This is so it can be used both for balena-engine and docker.
+            - hash: adbe6807cbdd603a229bc466a9e954b9bbef9cfc
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-build: Re-enable the container''s output'
+              body: Remove the pseudo tty from the docker run command.
+            - hash: 9fb2417d73e8e5f4a0eeb0d457aac0b0327c8c49
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-build: Add option to keep local containers'
+              body: >-
+                This is helpful when developing locally not to continuously
+                download
+
+                the helper images.
+            - hash: 8d7b725471e27ea8d4eb21d68b1e9855d4f5bbf1
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: >-
+                yocto-build-env: Update Dockerfile to add host tools
+                dependencies
+              body: >-
+                In preparation for replacing docker with balena-engine, add the
+                required
+
+                host dependencies.
+            - hash: 8462659f7d2d738fcf736ce89085224d8ae79d3b
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: Shorten installation directory '/yocto/resin-board' to '/work'
+              body: >-
+                The installation directory is currently "/yocto/resin-board".
+                This is
+
+                too long for the creation of per-task balena-engine sockets
+                which have
+
+                a maximum path length of 104 characters.
+
+                This commit replaces the installation directory with "/work".
+        - version: balena-yocto-scripts-1.12.11
+          date: 2021-05-11T19:09:14.000Z
+          commits:
+            - hash: 35d9b65e8078215c5240132add8d48331a37c2da
+              author: Kyle Harding
+              footers:
+                change-type: patch
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              subject: Substitute device type in config.js if present
+              body: null
+        - version: balena-yocto-scripts-1.12.10
+          date: 2021-04-28T13:19:51.000Z
+          commits:
+            - hash: e702ddec1b9ee297f212ff6f2d74a26cee9448ee
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-build: print submodule status'
+              body: >-
+                Print the details of all submodules so that layers that are not
+                part of
+
+                bblayers, like balena-yocto-scripts, also get their sha1s
+                displayed on
+
+                build.
+            - hash: 562d2120770041a50f7daebbf4660ccace1ee51f
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: >-
+                balena-build: Correctly pass development images flag and amend
+                usage
+              body: >-
+                The development image flag is not being correctly passed to
+                barys.
+
+                Also, attemps to make the usage instructions clearer.
+        - version: balena-yocto-scripts-1.12.9
+          date: 2021-04-22T09:11:29.000Z
+          commits:
+            - hash: c897e1a23ea163180100cf0b4bd90ae207535fbd
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-build: Pass the API environment to the build container'
+              body: This allows to target builds to non-production environments.
+            - hash: 4fb71f2d09e621ef6a070dd8e28f093a8a81adf0
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: >-
+                balena-lib: Add function to resolve between contract slugs and
+                Yocto machines
+              body: >-
+                Some device types have different Yocto machine names than
+                contract
+
+                slugs, so provide a function to translate.
+            - hash: 4e8425ceab16ea6ad516438c8ffd5b968e0feaa0
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-build: Do not exit if no SSH_AUTH_SOCK defined'
+              body: >-
+                Environment that build public device types will probably have no
+                use
+
+                for ssh authentication, so print a warning but  go on.
+            - hash: ee9533ec9c3cdf8236cd92fe37aa382d5cc19214
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-build: Fix indentation'
+              body: No functional changes.
+            - hash: 5131302a1cb8351d5b05b41249a7808af5935a73
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-build: Cleanup build containers and enable build output'
+              body: |-
+                It is useful to know what the build output is. Also, not leaving
+                containers around is important for the builders storage size.
+        - version: balena-yocto-scripts-1.12.8
+          date: 2021-04-15T10:50:06.000Z
+          commits:
+            - hash: 554cb42fad058032a093258bd779989d5f815941
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-build: Fix development image build'
+              body: >-
+                The development image flag is being set to the variant instead
+                of a
+
+                yes/no string.
+            - hash: d83f1779fe8771f3e8fb0ad1e4a5ca3b2d0928fa
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: >-
+                jenkins_build-containers: Use a fixed length for the git short
+                revision
+              body: >-
+                The short version length could be configured differently on
+                different
+
+                git installations so this commit specifies the length.
+            - hash: 22d97d0e9f887c614c3e6a14bec3167e52d85ad8
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-lib: Do not err when sourcing without a repository'
+              body: >-
+                A global variable uses git to retrieve a sha1 revision. If this
+                fails
+
+                with the errexit option the script exists after sourcing this
+                file.
+
+                This commit masks the error as it may not be needed in the
+                sourcing
+
+                script.
+
+                Also, fix the length of the short git release to avoid different
+                git
+
+                clients configuration mismatches.
+        - version: balena-yocto-scripts-1.12.7
+          date: 2021-04-12T15:58:51.000Z
+          commits:
+            - hash: 8e98a1347803e53d2d3a4d77fded345adf1671ad
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-api: Improve logs when setting version'
+              body: >-
+                The set release version function would print a success message
+                even when
+
+                the patch operation failed.
+            - hash: f53f813640d8104c5a9d2028c22e2b9d7725f070
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-docker: Make it less verbose'
+              body: Hide debug messages unless the DEBUG variable is set.
+            - hash: 86a275ad03a07223ce42cb3c704211b71922f73d
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: >-
+                balena-deploy: Set the OS version before setting deploy
+                directory
+              body: The local build directory is expected to include the OS version.
+        - version: balena-yocto-scripts-1.12.6
+          date: 2021-03-30T11:32:20.000Z
+          commits:
+            - hash: 00153cf459855572cf94c632477c38034bb361d2
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: >-
+                include: Move include files and entry scripts into its own
+                folder
+              body: 'Cosmetic reorganization, no functional changes.'
+            - hash: 5c5669a8d6901b4a28ad952d367774e7c8cb3a90
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-build.sh: Move into build script'
+              body: This is a containeirized barys so it should live along barys.
+            - hash: 7dbf390cdf5a88f349dac1323b1c85cf579f4cc7
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-lib: Set default namespace if not defined'
+              body: >-
+                The namespace variable can point to an alternative registry and
+                it is
+
+                useful for developing. This commit sets the default when not
+                defined.
+        - version: balena-yocto-scripts-1.12.5
+          date: 2021-03-30T08:34:48.000Z
+          commits:
+            - hash: a0a6a337a82bb4527d71db3d8457688fe32af02e
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-deploy: Shellcheck warnings'
+              body: Remove shellcheck warnings. No functional changes.
+            - hash: 9237debc97aef84d21f042494bd4d017e29182f9
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-deploy-block: Adjust variables for common use'
+              body: >-
+                This script is called either to deploy a bootable block
+                (hostapp) or to
+
+                deploy a standard block. This commit makes the environmental
+                variables
+
+                match for both use cases.
+            - hash: 8508ea1401107cc5d0a7d3c3026b57bbc5f69bb4
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-deploy-block: Fix shellcheck warnings'
+              body: 'No functional changes, just fixing linter warnings.'
+            - hash: 0f6b0753c8d8deffc62f58717528f4f577d85eb3
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: >-
+                balena-deploy: Adjust balena_deploy_hostapp to new
+                balena_deploy_block entrypoint arguments
+              body: >-
+                The arguments to balena-deploy-block.sh have been modified so it
+                can be
+
+                used from multiple places.
+            - hash: c65bdb09be42904dce36ec4bb9c44804329ccd41
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-deploy.inc: Pass API environment to balena_lib_token'
+              body: 'Also, do not exit on error but return.'
+            - hash: c9d8f8299c5ad6a720d596f8d2b5a6a458fa31c7
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-build: Pass an API environment to balena_lib_token'
+              body: Assure logging to the desired environment.
+            - hash: 1c479d353fcbf5c1289e3ea52fb0f769d43bd99b
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-lib: Pass API environment to balena_lib_token'
+              body: Assure which environment we will log into.
+        - version: balena-yocto-scripts-1.12.4
+          date: 2021-03-29T12:15:27.000Z
+          commits:
+            - hash: 6ecd2184bad07ff9226d96de67bb19af03aa367b
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-api: Add is_dt_private function'
+              body: >-
+                This looks for a device type JSON file and outputs whether the
+                device is
+
+                a private type.
+            - hash: 6ca8f284de6d94e0d9db3e50f31410142080fefa
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: >-
+                balena-lib: Add several function to extract device details from
+                device type JSON file
+              body: These are utility functions used from other scripts.
+            - hash: a275b3ab8f5bc1ae3a6ec7545dfc0f4faca725cf
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: >-
+                balena-lib: By default only login to BaleneCloud if not token is
+                found
+              body: This avoids redundant logging call to the API.
+            - hash: 4a83bb9c440059a2e1c153a70385b5bb6e312ebf
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: >-
+                balena_deploy: Add functions to deploy Jenkins artifacts to S3
+                and dockerhub
+              body: >-
+                These have been extracted from `jenkins_buils.sh` so that they
+                can be
+
+                reused if required.
+            - hash: c02c3d7467d4127cb4611afb5fc3388a7d417600
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-deploy: Fix indentation and shellcheck warnings'
+              body: Non functional cosmetic changes.
+            - hash: cb77f35d4e52f7e44af458746a2e1ba1e1b8c8a6
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'jenkins_build: Call out to script libraries functions'
+              body: This simplies the script and makes it more legible.
+        - version: balena-yocto-scripts-1.12.3
+          date: 2021-03-26T18:28:05.000Z
+          commits:
+            - hash: 47fa0f615a7f884673109b482631f3abcfc2a374
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-lib: Fix indentation to tabs'
+              body: >-
+                Match the file style and use tabs to indent. Only cosmetic
+                changes.
+        - version: balena-yocto-scripts-1.12.2
+          date: 2021-03-26T18:13:45.000Z
+          commits:
+            - hash: 6c842342f475915d622ea8f55fe5c5f9b7c45b8e
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-docker: Remove execution trace flag'
+              body: This is a leftover from development.
+        - version: balena-yocto-scripts-1.12.1
+          date: 2021-03-25T08:55:29.000Z
+          commits:
+            - hash: 29a08c98639c68d146b9e4c9f36121c81f098cf2
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-lib: Add commonly used utility functions'
+              body: >-
+                Add functions to obtain Balena environment, token and login to
+                the cloud,
+
+                as well as to retrieve both OS and meta-balena versions.
+            - hash: bb538a7010b47b17a11e26f800feed162d712d2f
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: >-
+                jenkins_build-containers: Allow docker login for local
+                development
+              body: >-
+                Only fix user and password from environment when in a Jenkins
+                context.
+
+                This allows to rebuild and deploy helper images to user
+                repositories for
+
+                local development
+            - hash: 295800c173833e6857258faaf1ace2a09dc7339a
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                changelog-entry: >-
+                  Add bitbake-args argument to barys and make bitbake-target
+                  accept multiple arguments
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: >-
+                barys: Add bitbake-args argument and make bitbake-target accept
+                multiple arguments
+              body: >-
+                This commit extends barys so it accepts a list of bitbake
+                arguments
+
+                and/or target images. This will allow the flexibilty needed to
+                build
+
+                blocks with barys as frontend.
+            - hash: bc926eecd3d7acb629b3709a3e89e935ae0f18c5
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'jenkins_build: Separate deploy functions'
+              body: |-
+                In future we will stop deploying to dockerhub and deploy only to
+                balenaCloud.
+            - hash: 0c52eeb67ff088b27569b304ee7547a24aef3c29
+              author: Alex Gonzalez
+              footers:
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'jenkins_build: Refactor balena_lib_get_os_version'
+              body: null
+            - hash: ceded8430b5b404ed5157e0decf1f95a8cd09d52
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-api: Add script library with API calls'
+              body: >-
+                This library is to be sourced by scripts that need to use the
+                API to
+
+                obtain app or image specific information.
+            - hash: dd5fa7375182bd03d2e37a53af7982d2d96ce825
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: >-
+                balena-push-os-version: Rename to balena-deploy-block and set
+                the release version on deploy
+              body: >-
+                Until "balena deploy" has this functionality let's perform a
+                direct
+
+                API call.
+
+                Production versions have the OS release name and development
+                versions get
+
+                appended a .dev suffix. Once both image variants are merged only
+                the OS
+
+                release name will be used.
+            - hash: f3c8ea277d799ca3c9ae5c263e08db332d40aac6
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'Dockerfile_balena-push-env: Refactor to use balena-deploy-block'
+              body: Rename to use balena-deploy-block.
+            - hash: 576b5dc53fa04709111866b290f31fda62740867
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-build: Split build related functions'
+              body: >-
+                This script can be used standalone to call barys on a
+                containerized environment.
+            - hash: d924527622c55e584889ebbb91e0500e8cbd21d4
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'jenkins_build: Separate barys build functions'
+              body: >-
+                Separate the call to barys to a scritpt library so it can be
+                reused from
+
+                other scripts.
+            - hash: 9067812829783ad75636917b82c3229746c10c51
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-deploy: Add script library for deploy logic'
+              body: >-
+                Centralize all the deploy login in one script library starting
+                with
+
+                balena_deploy_hostapp.
+            - hash: 0ab60de60dc2e45f222b07acb7283cde02131863
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'jenkins_build: Use balena_deploy_hostapp from balena-deploy'
+              body: >-
+                Use the same function call on all scripts that require to push a
+                hostapp.
+        - version: balena-yocto-scripts-1.12.0
+          date: 2021-03-25T08:47:27.000Z
+          commits:
+            - hash: 5df25c78ca0b0ad68013e4b7e3cd2ef50e55e785
+              author: Kyle Harding
+              footers:
+                change-type: minor
+                changelog-entry: Improve template layer matching
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              subject: 'barys: Improve template layer matching'
+              body: >-
+                The current method does not support multiple layers named with
+                names
+
+                following `meta-balena-*` so this change will search for the
+                required
+
+                `bblayers.conf.sample` file before assigning the template layer.
+        - version: balena-yocto-scripts-1.11.2
+          date: 2021-03-22T19:46:16.000Z
+          commits:
+            - hash: ac91198049a0bae1ced3c05e9b795f1e78b69370
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                changelog-entry: >-
+                  Allow to specify which containers to build and login to
+                  dockerhub so that they can be deployed
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: >-
+                jenkins_build-container: Do not overwrite environment
+                DOCKERFILES variable if provided
+              body: >-
+                Also, do not duplicate the variable that specifies current
+                script directory
+
+                and perform a docker login so that new images can be deployed.
+            - hash: 1fe8f585cef6ca9592d1ee3929d32b838f272833
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-lib: Rename to balena-lib.inc'
+              body: This indicates it is to be sourced and not executed.
+            - hash: e9d3dc9c9816a72cbd62f0b247c36364fe168be5
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-lib: Rename functions with the balena_lib prefix'
+              body: >-
+                This makes them easy to identify and makes it clear where they
+                come from
+
+                making the code more legible.
+
+                Also, remove balena login from
+                `balena_lib_docker_pull_helper_image` function
+
+                as the login is performed by the container deployment script.
+            - hash: 111843536ad9c951f0850256b8a56d9f4c612816
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'jenkins_build: Use balena-lib.inc instead of balena-inc.sh'
+              body: Adapt to the refactoring of balena-lib.
+        - version: balena-yocto-scripts-1.11.1
+          date: 2021-03-22T12:50:36.000Z
+          commits:
+            - hash: 6c349d535232e6c8dc1e7b5f32aba39cd436cadb
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-docker: Rename manage-docker to balena-docker'
+              body: >-
+                Convert manage-docker into a script library so it can be
+                re-used.
+            - hash: 7c79c2109455c54b9d09938416c47463fc8bb652
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'balena-push-os-version: Refactor to use balena-docker'
+              body: Use common scripts to manage the docker instance
+            - hash: 2deb988b1c9da918fd0729f64039140884f6e63d
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'prepare-and-start: Refactor to use balena-lib'
+              body: Use common script to manage docker instances
+            - hash: 943839ff2210c7db9030d3deca00c99c41f1253e
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: >-
+                Dockerfile_yocto_build-env: Refactor to update dockerd and use
+                balena-docker
+              body: >-
+                Use common scripts to manage docker instances, and update the
+                dockerd
+
+                daemon to the distribution supported stabel version.
+            - hash: 5fb8f5c74565096ede89e42985f9b7ad7d59ef4a
+              author: Alex Gonzalez
+              footers:
+                change-type: patch
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              subject: 'Dockerfile_balena-push-env: Refactor to use balena-docker'
+              body: Use common scripts to manage the docker instance.
+  version: 2.80.8+rev1
+  date: 2021-06-21T14:58:39.070Z
+- commits:
     - subject: Add balena-yocto-scripts upstream source
       hash: 577e94f47d8077bde023be6d67fe40cff883abcf
       body: >

@@ -1,6 +1,239 @@
 Change log
 -----------
 
+# v2.80.8+rev1
+## (2021-06-21)
+
+
+<details>
+<summary> Update meta-balena from v2.80.5 to v2.80.8 [Florin Sarbu] </summary>
+
+> ## meta-balena-2.80.8
+> ### (2021-06-21)
+> 
+> * Update balena-supervisor from v12.8.7 to v12.8.8 [Florin Sarbu]
+> 
+> ## meta-balena-2.80.7
+> ### (2021-06-18)
+> 
+> * prevent failed teardown from making test hang [rcooke-warwick]
+> 
+> ## meta-balena-2.80.6
+> ### (2021-06-17)
+> 
+> * catch error if image path is corrupted [rcooke-warwick]
+> 
+</details>
+
+
+<details>
+<summary> Update balena-yocto-scripts from v1.11.0 to v1.14.6 [Florin Sarbu] </summary>
+
+> ## balena-yocto-scripts-1.14.6
+> ### (2021-06-18)
+> 
+> * balena-deploy: Flag hostapps as bootable apps [Alex Gonzalez]
+> * balena-deploy: Provide working directory when deploying hostapp [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.14.5
+> ### (2021-06-18)
+> 
+> * balena-deploy-block: Do not add variant suffix to release tag [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.14.4
+> ### (2021-06-16)
+> 
+> * Dockerfile_balena-push-env: Add balena-lib to image [Alex Gonzalez]
+> * balena-deploy-block: source balena-lib script library [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.14.3
+> ### (2021-06-01)
+> 
+> * balena-api: Filter out debug output [Alex Gonzalez]
+> * balena-api: Specify API environment and token when setting app roles [Alex Gonzalez]
+> * jenkins_build-blocks: Separate recipes and packages [Alex Gonzalez]
+> * balena-lib: Generalize contract fetcher [Alex Gonzalez]
+> * balena-deploy: Shorten installation directory '/yocto/resin-board' to '/work' [Alex Gonzalez]
+> * Conditional verbosity mode [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.14.2
+> ### (2021-05-26)
+> 
+> * balena-lib: Add function to fetch labels from image [Alex Gonzalez]
+> * balena-lib: contracts: Add package list fetcher [Alex Gonzalez]
+> * semver: Add bash utility for semantic version comparison [Alex Gonzalez]
+> * balena-docker: Add image retrieval function [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.14.1
+> ### (2021-05-24)
+> 
+> * Add a parsable representation of the changelog [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.14.0
+> ### (2021-05-21)
+> 
+> * Dockerfile_yocto-block-build-env: Add container to build Yocto based hostOS blocks [Alex Gonzalez]
+> * balena-build-block: Balena build and deploy a hostOS block image [Alex Gonzalez]
+> * jenkins_build-blocks: Add package blocks builder script [Alex Gonzalez]
+> * balena-deploy: Add functions to deploy block, feed and OS release [Alex Gonzalez]
+> * README: Add brief introduction to the main scripts [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.13.0
+> ### (2021-05-19)
+> 
+> * barys: Replace supervisor tag with supervisor release version [Alex Gonzalez]
+> * jenkins_build: Replace supervisor tag with supervisor release [Alex Gonzalez]
+> * jenkins_build: Rename metaResinBranch to metaBalenaBranch [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.16
+> ### (2021-05-18)
+> 
+> * tests: Substitute deviceType with MACHINE when packaging tests [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.12.15
+> ### (2021-05-18)
+> 
+> * Dockerfile_yocto-build-env: Specify docker version [Alex Gonzalez]
+> * balena-docker: Allow to control iptables and ipmasq flags [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.14
+> ### (2021-05-17)
+> 
+> * balena-api: Set default argument value not to exist on nounset setting [Alex Gonzalez]
+> * balena-api: Allow access to OS developers to public apps [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.13
+> ### (2021-05-14)
+> 
+> * balena-api: Add functions for apps management [Alex Gonzalez]
+> * balena-api: Add block images getter functions [Alex Gonzalez]
+> * balena-api: Add missing argument to function comments [Alex Gonzalez]
+> * balena-deploy-block: Create public app if required [Alex Gonzalez]
+> * balena-lib: Fix device installation path when running in helper container [Alex Gonzalez]
+> * balena-deploy: Fix device installation path when running in helper container [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.12
+> ### (2021-05-12)
+> 
+> * balena-docker: Adapt to be used from POSIX shell [Alex Gonzalez]
+> * balena-docker: Generalize functions to any engine [Alex Gonzalez]
+> * balena-build: Re-enable the container's output [Alex Gonzalez]
+> * balena-build: Add option to keep local containers [Alex Gonzalez]
+> * yocto-build-env: Update Dockerfile to add host tools dependencies [Alex Gonzalez]
+> * Shorten installation directory '/yocto/resin-board' to '/work' [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.11
+> ### (2021-05-11)
+> 
+> * Substitute device type in config.js if present [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.12.10
+> ### (2021-04-28)
+> 
+> * balena-build: print submodule status [Alex Gonzalez]
+> * balena-build: Correctly pass development images flag and amend usage [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.9
+> ### (2021-04-22)
+> 
+> * balena-build: Pass the API environment to the build container [Alex Gonzalez]
+> * balena-lib: Add function to resolve between contract slugs and Yocto machines [Alex Gonzalez]
+> * balena-build: Do not exit if no SSH_AUTH_SOCK defined [Alex Gonzalez]
+> * balena-build: Fix indentation [Alex Gonzalez]
+> * balena-build: Cleanup build containers and enable build output [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.8
+> ### (2021-04-15)
+> 
+> * balena-build: Fix development image build [Alex Gonzalez]
+> * jenkins_build-containers: Use a fixed length for the git short revision [Alex Gonzalez]
+> * balena-lib: Do not err when sourcing without a repository [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.7
+> ### (2021-04-12)
+> 
+> * balena-api: Improve logs when setting version [Alex Gonzalez]
+> * balena-docker: Make it less verbose [Alex Gonzalez]
+> * balena-deploy: Set the OS version before setting deploy directory [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.6
+> ### (2021-03-30)
+> 
+> * include: Move include files and entry scripts into its own folder [Alex Gonzalez]
+> * balena-build.sh: Move into build script [Alex Gonzalez]
+> * balena-lib: Set default namespace if not defined [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.5
+> ### (2021-03-30)
+> 
+> * balena-deploy: Shellcheck warnings [Alex Gonzalez]
+> * balena-deploy-block: Adjust variables for common use [Alex Gonzalez]
+> * balena-deploy-block: Fix shellcheck warnings [Alex Gonzalez]
+> * balena-deploy: Adjust balena_deploy_hostapp to new balena_deploy_block entrypoint arguments [Alex Gonzalez]
+> * balena-deploy.inc: Pass API environment to balena_lib_token [Alex Gonzalez]
+> * balena-build: Pass an API environment to balena_lib_token [Alex Gonzalez]
+> * balena-lib: Pass API environment to balena_lib_token [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.4
+> ### (2021-03-29)
+> 
+> * balena-api: Add is_dt_private function [Alex Gonzalez]
+> * balena-lib: Add several function to extract device details from device type JSON file [Alex Gonzalez]
+> * balena-lib: By default only login to BaleneCloud if not token is found [Alex Gonzalez]
+> * balena_deploy: Add functions to deploy Jenkins artifacts to S3 and dockerhub [Alex Gonzalez]
+> * balena-deploy: Fix indentation and shellcheck warnings [Alex Gonzalez]
+> * jenkins_build: Call out to script libraries functions [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.3
+> ### (2021-03-26)
+> 
+> * balena-lib: Fix indentation to tabs [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.2
+> ### (2021-03-26)
+> 
+> * balena-docker: Remove execution trace flag [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.1
+> ### (2021-03-25)
+> 
+> * balena-lib: Add commonly used utility functions [Alex Gonzalez]
+> * jenkins_build-containers: Allow docker login for local development [Alex Gonzalez]
+> * barys: Add bitbake-args argument and make bitbake-target accept multiple arguments [Alex Gonzalez]
+> * jenkins_build: Separate deploy functions [Alex Gonzalez]
+> * jenkins_build: Refactor balena_lib_get_os_version [Alex Gonzalez]
+> * balena-api: Add script library with API calls [Alex Gonzalez]
+> * balena-push-os-version: Rename to balena-deploy-block and set the release version on deploy [Alex Gonzalez]
+> * Dockerfile_balena-push-env: Refactor to use balena-deploy-block [Alex Gonzalez]
+> * balena-build: Split build related functions [Alex Gonzalez]
+> * jenkins_build: Separate barys build functions [Alex Gonzalez]
+> * balena-deploy: Add script library for deploy logic [Alex Gonzalez]
+> * jenkins_build: Use balena_deploy_hostapp from balena-deploy [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.12.0
+> ### (2021-03-25)
+> 
+> * barys: Improve template layer matching [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.11.2
+> ### (2021-03-22)
+> 
+> * jenkins_build-container: Do not overwrite environment DOCKERFILES variable if provided [Alex Gonzalez]
+> * balena-lib: Rename to balena-lib.inc [Alex Gonzalez]
+> * balena-lib: Rename functions with the balena_lib prefix [Alex Gonzalez]
+> * jenkins_build: Use balena-lib.inc instead of balena-inc.sh [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.11.1
+> ### (2021-03-22)
+> 
+> * balena-docker: Rename manage-docker to balena-docker [Alex Gonzalez]
+> * balena-push-os-version: Refactor to use balena-docker [Alex Gonzalez]
+> * prepare-and-start: Refactor to use balena-lib [Alex Gonzalez]
+> * Dockerfile_yocto_build-env: Refactor to update dockerd and use balena-docker [Alex Gonzalez]
+> * Dockerfile_balena-push-env: Refactor to use balena-docker [Alex Gonzalez]
+> 
+</details>
+
 # v2.80.5+rev2
 ## (2021-06-21)
 
