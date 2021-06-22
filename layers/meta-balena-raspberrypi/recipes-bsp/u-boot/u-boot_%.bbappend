@@ -56,11 +56,3 @@ SRC_URI_append_raspberrypi4-64 = " \
     file://rpi4-include-configs-Use-config-defaults.patch \
     file://pi4-fix-crash-when-issuing-usb-reset.patch \
 "
-
-# In production builds enable_uart is not set, and this makes
-# the pi4 serial driver freeze. Let's not use this driver in
-# production, because we don't want to output anything to the
-# console anyway.
-SRC_URI_append_raspberrypi4-64 = " \
-    ${@bb.utils.contains('DISTRO_FEATURES', 'development-image', '', 'file://rpi4-disable-pl01-serial-driver.patch', d)} \
-"
