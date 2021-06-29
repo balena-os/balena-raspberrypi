@@ -1,4 +1,43 @@
 - commits:
+    - subject: Update balena-yocto-scripts from v1.14.6 to v1.14.7
+      hash: 6261e359ef3e2ded3571d0ba27eb7a93ae3ae448
+      body: |
+        Update balena-yocto-scripts from 1.14.6 to 1.14.7
+      footer:
+        Changelog-entry: Update balena-yocto-scripts from v1.14.6 to v1.14.7
+        changelog-entry: Update balena-yocto-scripts from v1.14.6 to v1.14.7
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested:
+        - commits:
+            - subject: 'balena-lib: Fix print statements helper functions'
+              hash: 45ccecc6945a06c3975c4ffc782bef5770f30ae7
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: 'balena-lib: Fix device dir when running in Jenkins containers'
+              hash: 95530d134ea729359e7e1e19fac109dd6d40ca5c
+              body: |
+                Avoid returning an empty path when we are running in containers
+                where /work does not exist.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.14.7
+          date: 2021-06-29T20:20:09.994Z
+  version: 2.80.8+rev2
+  date: 2021-06-29T20:32:58.261Z
+- commits:
     - subject: Update meta-balena from v2.80.5 to v2.80.8
       hash: 5d4ee614438c23937bd0dcdf75524e7ef3f39031
       body: |

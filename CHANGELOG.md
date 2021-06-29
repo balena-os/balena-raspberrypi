@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v2.80.8+rev2
+## (2021-06-29)
+
+
+<details>
+<summary> Update balena-yocto-scripts from v1.14.6 to v1.14.7 [Kyle Harding] </summary>
+
+> ## balena-yocto-scripts-1.14.7
+> ### (2021-06-29)
+> 
+> * balena-lib: Fix print statements helper functions [Kyle Harding]
+> * balena-lib: Fix device dir when running in Jenkins containers [Kyle Harding]
+> 
+</details>
+
 # v2.80.8+rev1
 ## (2021-06-21)
 
