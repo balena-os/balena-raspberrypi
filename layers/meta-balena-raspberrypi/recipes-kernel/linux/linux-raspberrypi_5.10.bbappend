@@ -2,13 +2,6 @@ inherit kernel-resin
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-LINUX_VERSION = "5.4.83"
-
-SRCREV_machine = "76c49e60e742d0bebd798be972d67dd3fd007691"
-
-# No 5.4.83 available, use 5.4.82
-SRCREV_meta = "e872ef155c596e4cc2f68405d85ab6f2b0303c28"
-
 SRC_URI_append_fincm3 = " \
 	file://0004-mmc-pwrseq-Repurpose-for-Marvell-SD8777.patch \
 	file://0005-balena-fin-wifi-sta-uap-mode.patch \
@@ -21,19 +14,12 @@ SRC_URI_append = " \
 	file://0006-overlays-Add-Hyperpixel4-overlays.patch \
 	file://0001-waveshare-sim7600-Add-dtbo-for-this-modem.patch \
 	file://0001-Add-tpm-slb9670-tis-spi-DT-overlay.patch \
-	file://0009-network-lan78xx-interrupt.patch \
 	file://0010-dts-overlays-Add-UniPi-overlays.patch \
 	file://0001-seeed-studio-can-bus-v2-Add-dtbo-for-this-can-bus.patch \
 "
 
 SRC_URI_append_raspberrypi4-64 = " \
-	file://0001-reset-Add-a-header-for-the-RPi-Firmware-reset-controller.patch \
-	file://0002-reset-Add-Raspberry-Pi-4-firmware-reset-controller.patch \
-	file://0003-ARM-dts-bcm2711-Add-firmware-usb-reset-node.patch \
-	file://0004-ARM-dts-bcm2711-Add-reset-controller-to-xHCI-node.patch \
-	file://0007-usb-host-pci-quirks-Bypass-xHCI-quirks-for-Raspberry-Pi-4.patch \
 	file://0008-usb-xhci-pci-Raspberry-Pi-FW-loader-for-VIA-VL805.patch \
-	file://rpi4-fix-usb-boot-8GB.patch \
 "
 
 SRC_URI_append_rt-rpi-300 = " \

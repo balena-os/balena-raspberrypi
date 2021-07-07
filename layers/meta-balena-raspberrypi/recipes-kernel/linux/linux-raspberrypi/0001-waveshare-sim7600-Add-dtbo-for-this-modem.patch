@@ -9,26 +9,26 @@ for the waveshare-sim7600 modem.
 Upstream-status: Inappropriate [configuration]
 Signed-off-by: Martijn <ask@minusplusminus.com>
 ---
- arch/arm/boot/dts/overlays/Makefile           |  1 +
- .../overlays/waveshare-sim7600-overlay.dts    | 20 +++++++++++++++++++
+ arch/arm/boot/dts/overlays/Makefile                  |  1 +
+ .../boot/dts/overlays/waveshare-sim7600-overlay.dts  | 20 ++++++++++++++++++++
  2 files changed, 21 insertions(+)
  create mode 100644 arch/arm/boot/dts/overlays/waveshare-sim7600-overlay.dts
 
 diff --git a/arch/arm/boot/dts/overlays/Makefile b/arch/arm/boot/dts/overlays/Makefile
-index 0e4451014e80..8696c291acaa 100644
+index f6de1f8..fbd01e6 100644
 --- a/arch/arm/boot/dts/overlays/Makefile
 +++ b/arch/arm/boot/dts/overlays/Makefile
-@@ -199,6 +199,7 @@ dtbo-$(CONFIG_ARCH_BCM2835) += \
+@@ -227,6 +227,7 @@ dtbo-$(CONFIG_ARCH_BCM2835) += \
  	w1-gpio.dtbo \
  	w1-gpio-pullup.dtbo \
  	w5500.dtbo \
 +	waveshare-sim7600.dtbo \
- 	wittypi.dtbo
+ 	wittypi.dtbo \
+ 	wm8960-soundcard.dtbo
  
- targets += dtbs dtbs_install
 diff --git a/arch/arm/boot/dts/overlays/waveshare-sim7600-overlay.dts b/arch/arm/boot/dts/overlays/waveshare-sim7600-overlay.dts
 new file mode 100644
-index 000000000000..7295ecec1220
+index 0000000..7295ece
 --- /dev/null
 +++ b/arch/arm/boot/dts/overlays/waveshare-sim7600-overlay.dts
 @@ -0,0 +1,20 @@
@@ -53,5 +53,5 @@ index 000000000000..7295ecec1220
 +    };
 +};
 -- 
-2.17.1
+2.7.4
 
