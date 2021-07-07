@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.80.8+rev3
+## (2021-07-06)
+
+* Remove the 4.19 kernel recipe and delete unused patches [Florin Sarbu]
+
 # v2.80.8+rev2
 ## (2021-06-29)
 

@@ -1,4 +1,20 @@
 - commits:
+    - subject: Remove the 4.19 kernel recipe and delete unused patches
+      hash: 4d8907b4c87c8e46d0008682976981f58b441edb
+      body: |
+        We are using kernel 5.4 now so let's remove the older 4.19 recipe.
+        Also, some patches are not being applied anymore so let's remove them
+        completely.
+      footer:
+        Changelog-entry: Remove the 4.19 kernel recipe and delete unused patches
+        changelog-entry: Remove the 4.19 kernel recipe and delete unused patches
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.80.8+rev3
+  date: 2021-07-06T12:22:58.102Z
+- commits:
     - subject: Update balena-yocto-scripts from v1.14.6 to v1.14.7
       hash: 6261e359ef3e2ded3571d0ba27eb7a93ae3ae448
       body: |
