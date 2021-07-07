@@ -1,4 +1,17 @@
 - commits:
+    - subject: 'rtl8812au: Add recipe for this kernel module'
+      hash: e90e15fd1eac53f05f97a31755a7bcfa0698a942
+      body: ''
+      footer:
+        Changelog-entry: 'rtl8812au: Add recipe for this kernel module'
+        changelog-entry: 'rtl8812au: Add recipe for this kernel module'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.80.8+rev4
+  date: 2021-07-07T12:22:48.247Z
+- commits:
     - subject: Remove the 4.19 kernel recipe and delete unused patches
       hash: 4d8907b4c87c8e46d0008682976981f58b441edb
       body: |
