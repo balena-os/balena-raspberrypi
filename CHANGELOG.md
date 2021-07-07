@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.80.8+rev4
+## (2021-07-07)
+
+* rtl8812au: Add recipe for this kernel module [Alexandru Costache]
+
 # v2.80.8+rev3
 ## (2021-07-06)
 
