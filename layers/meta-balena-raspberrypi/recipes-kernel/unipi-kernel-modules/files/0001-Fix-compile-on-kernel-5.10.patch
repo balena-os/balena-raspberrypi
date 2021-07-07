@@ -1,0 +1,31 @@
+From db3ff975d76078bd30abccc8a72d5a85117bd482 Mon Sep 17 00:00:00 2001
+From: Florin Sarbu <florin@balena.io>
+Date: Wed, 7 Jul 2021 15:43:46 +0200
+Subject: [PATCH] Fix compile on kernel 5.10
+
+We adapt to changes introduced by
+https://lore.kernel.org/lkml/20210121090020.3147058-2-gregkh@linuxfoundation.org/
+
+Upstream-Status: Pending
+Signed-off-by: Florin Sarbu <florin@balena.io>
+---
+ modules/unipi/src/unipi_tty.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/modules/unipi/src/unipi_tty.c b/modules/unipi/src/unipi_tty.c
+index 5571970..dace98c 100644
+--- a/modules/unipi/src/unipi_tty.c
++++ b/modules/unipi/src/unipi_tty.c
+@@ -658,7 +658,8 @@ static int copy_from_read_buf(struct tty_struct *tty,
+  */
+ 
+ static ssize_t unipi_tty_read(struct tty_struct *tty, struct file *file,
+-			 unsigned char __user *buf, size_t nr)
++			 unsigned char *buf, size_t nr,
++			 void **cookie, unsigned long offset)
+ {
+ 	struct unipi_tty_data *ldata = tty->disc_data;
+     struct tty_port *port = tty->port;
+-- 
+2.7.4
+
