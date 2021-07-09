@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update poky to dunfell-23.0.6
+      hash: 4c53fb1f0a1c7b37d39b5da22a606b7e71683976
+      body: ''
+      footer:
+        Changelog-entry: Update poky to dunfell-23.0.6
+        changelog-entry: Update poky to dunfell-23.0.6
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.80.8+rev4
+  date: 2021-07-08T13:44:57.925Z
+- commits:
     - subject: Remove the 4.19 kernel recipe and delete unused patches
       hash: 4d8907b4c87c8e46d0008682976981f58b441edb
       body: |
