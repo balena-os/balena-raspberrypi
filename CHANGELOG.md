@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.80.8+rev5
+## (2021-07-09)
+
+* Update the poky submodule to dunfell-23.0.7 [Florin Sarbu]
+
 # v2.80.8+rev4
 ## (2021-07-08)
 
