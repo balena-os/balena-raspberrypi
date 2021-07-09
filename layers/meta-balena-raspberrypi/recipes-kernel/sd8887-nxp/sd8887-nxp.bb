@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://${WORKDIR}/COPYING;md5=12f884d2ae1ff87c09e5b7ccc2c4ca
 inherit module
 
 SRC_URI = " \
-    git://github.com/balena-io-hardware/balena-fin.git;protocol=git;tag=v0.9.0 \
+    git://github.com/balena-io-hardware/balena-fin.git;protocol=git;tag=v0.9.2 \
     file://COPYING \
 "
 
