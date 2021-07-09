@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update the poky submodule to dunfell-23.0.9
+      hash: 3e4d9f32fe4764c3f1c9121da99a4dd679bc2368
+      body: ''
+      footer:
+        Changelog-entry: Update the poky submodule to dunfell-23.0.9
+        changelog-entry: Update the poky submodule to dunfell-23.0.9
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.80.8+rev5
+  date: 2021-07-09T07:51:22.099Z
+- commits:
     - subject: Update poky to dunfell-23.0.6
       hash: 4c53fb1f0a1c7b37d39b5da22a606b7e71683976
       body: ''
