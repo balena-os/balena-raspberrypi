@@ -1,4 +1,199 @@
 - commits:
+    - subject: Update meta-balena from v2.80.8 to v2.81.1
+      hash: 652931b3ccc8112833917c48c0bb2136d02ba6ff
+      body: |
+        Update meta-balena from 2.80.8 to 2.81.1
+
+        This will be the base for the ESR release.
+      footer:
+        Changelog-entry: Update meta-balena from v2.80.8 to v2.81.1
+        changelog-entry: Update meta-balena from v2.80.8 to v2.81.1
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested:
+        - commits:
+            - subject: 'balena-engine: Restore previous systemd service settings'
+              hash: 0b7dac9461193e6c1afbc046337aeb74ca20e84c
+              body: |
+                - remove exec-root path from balena engine
+                - restore unique fixed-cidr for balena-host engine
+                - remove duplicate fixed-cidr flags from both
+                - remove experimental from balena-host
+                - fix healthdog command substitution
+
+                These were changed by mistake in the previous refactor.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.81.1
+          date: 2021-07-09T23:25:52.084Z
+        - commits:
+            - subject: 'recipes-core: add a ''network connectivity wait'' service'
+              hash: a6781d54c6edced457ad916cac3fec9c70d25a0a
+              body: >
+                Add a new systemd service to check for full network
+                connectivity.
+
+                This service is required because the default NetworkManager (NM)
+
+                connectivity checker doesn't differentiate between the
+
+                CONNECTED_LOCAL, CONNECTED_SITE and CONNECTED_GLOBAL states.
+                This
+
+                service checks for the CONNECTED_GLOBAL state only and can be
+                used
+
+                to delay the start of other services which require full network
+
+                access to be available. This can help to avoid startup problems
+                on
+
+                networks with slow DNS access or that utilise a captive portal.
+
+
+                The script does an initial oneshot check of the NM state to make
+                sure
+
+                that we don't wait for an event that doesn't come. This check is
+
+                redundant at boot time due to the fact that the service is
+                started
+
+                before NM to ensure that no NM DBus events are missed. The
+                initial
+
+                check is useful in circumstances where you want to run the
+                script
+
+                standalone or post-boot.
+
+
+                Other services that wish to make use of this service and wait
+                for
+
+                full network connectivity should add the following entries to
+                their
+
+                systemd unit definition:
+
+
+                Requires=balena-net-connectivity-wait.target
+
+                After=balena-net-connectivity-wait.target
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: 'recipes-core: add a ''network connectivity wait'' service'
+                changelog-entry: 'recipes-core: add a ''network connectivity wait'' service'
+                Signed-off-by: Mark Corbin <mark@balena.io>
+                signed-off-by: Mark Corbin <mark@balena.io>
+              author: Mark Corbin
+              nested: []
+          version: meta-balena-2.81.0
+          date: 2021-07-06T09:28:12.840Z
+        - commits:
+            - subject: Remove CODEOWNERS
+              hash: da8bfafc94a3815ad62658846d46ec0b4a3edb9b
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.80.12
+          date: 2021-07-05T12:26:53.005Z
+        - commits:
+            - subject: get journal logs at the end of the suite
+              hash: 5d6089c3c8210db34ed0e23864b0ec25579d43e4
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.80.11
+          date: 2021-07-01T11:51:12.849Z
+        - commits:
+            - subject: 'hostapp-update-hooks: Migrate supervisor database'
+              hash: cad3e4cc49c4fbc275a5448c38e2da550e596573
+              body: |
+                forward_supervisor-db will ensure the supervisor database
+                is copied to the new location
+
+                fwd_commit_supervisor-db will remove the old supervisor
+                database after confirming the new database has been used
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: >-
+                hostapp-update-hooks: Revert sv database path used by previous
+                hooks
+              hash: ef8aa041e4957ef138608959ae87ca9eea7b0774
+              body: |
+                This probably should not have been changed during the
+                supervisor rename as it applies to a specific OS issue #2070
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.80.10
+          date: 2021-06-24T19:51:43.564Z
+        - commits:
+            - subject: 'balena-engine: refactor systemd service'
+              hash: 8227a61f6bef6d93cc6a5acd0ef93a2012079964
+              body: >
+                This makes it easier to overwrite the arguments passed in the
+                engine
+
+                unit from drop-in overwrites. See the development image drop-in
+                unit for
+
+                reference.
+
+
+                Using `systemctl edit --runtime balena.service`, which puts
+                those
+
+                overwrites into `/run/systemd/system/balena.service.d/`, it
+                would be
+
+                possible to modify the runtime behavior of the engine without
+                remounting
+
+                the rootfs to be writeable.
+
+
+                See
+                https://www.freedesktop.org/software/systemd/man/systemd.unit.html#System%20Unit%20Search%20Path
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Robert Günzler <robertg@balena.io>
+                signed-off-by: Robert Günzler <robertg@balena.io>
+              author: Robert Günzler
+              nested: []
+          version: meta-balena-2.80.9
+          date: 2021-06-21T14:04:07.493Z
+  version: 2.81.1+rev1
+  date: 2021-07-19T13:57:08.066Z
+- commits:
     - subject: Update poky to dunfell-23.0.6
       hash: 4c53fb1f0a1c7b37d39b5da22a606b7e71683976
       body: ''
