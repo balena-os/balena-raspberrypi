@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.81.1+rev2
+## (2021-07-20)
+
+* Remove obsolete bluez5 patches and settings that are now included in bluez v5.58 from meta-balena [Zahari Petkov]
+
 # v2.81.1+rev1
 ## (2021-07-19)
 

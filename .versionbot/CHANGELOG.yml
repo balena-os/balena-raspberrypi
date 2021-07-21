@@ -1,4 +1,28 @@
 - commits:
+    - subject: >-
+        Remove obsolete bluez5 patches and settings that are now included in
+        bluez v5.58 from meta-balena
+      hash: 8ba008dbfc291cf9714cd925d51de356d1b046df
+      body: |
+        Removed are the bluez5 v5.56 definitions together with two patches
+        that were backported here and are already included of v5.58.
+
+        The nebra-hnt specific setting of DeviceID to false is done in
+        meta-balena now for all device types.
+      footer:
+        Changelog-entry: >-
+          Remove obsolete bluez5 patches and settings that are now included in
+          bluez v5.58 from meta-balena
+        changelog-entry: >-
+          Remove obsolete bluez5 patches and settings that are now included in
+          bluez v5.58 from meta-balena
+        Signed-off-by: Zahari Petkov <zahari@balena.io>
+        signed-off-by: Zahari Petkov <zahari@balena.io>
+      author: Zahari Petkov
+      nested: []
+  version: 2.81.1+rev2
+  date: 2021-07-20T12:31:17.936Z
+- commits:
     - subject: Update meta-balena from v2.80.8 to v2.81.1
       hash: 652931b3ccc8112833917c48c0bb2136d02ba6ff
       body: |
