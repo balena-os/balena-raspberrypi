@@ -6,9 +6,10 @@ inherit module
 
 SRC_URI = " \
 	git://git.unipi.technology/UniPi/unipi-kernel.git;protocol=https \
+	file://0001-Fix-compile-on-kernel-5.10.patch \
 "
 
-SRCREV = "1.64"
+SRCREV = "1.68"
 
 S = "${WORKDIR}/git"
 
