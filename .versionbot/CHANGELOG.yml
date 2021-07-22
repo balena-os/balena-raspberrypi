@@ -1,4 +1,31 @@
 - commits:
+    - subject: Update balena-yocto-scripts from v1.14.7 to v1.14.8
+      hash: 28c21dc9e5d9c2afaf13d25777bded0322ddff94
+      body: |
+        Update balena-yocto-scripts from 1.14.7 to 1.14.8
+      footer:
+        Changelog-entry: Update balena-yocto-scripts from v1.14.7 to v1.14.8
+        changelog-entry: Update balena-yocto-scripts from v1.14.7 to v1.14.8
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested:
+        - commits:
+            - subject: Use slug when setting deviceType for leviathan
+              hash: bc628771aa0014e86e649e3312b48e1c7ae4968c
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.14.8
+          date: 2021-07-22T14:51:50.560Z
+  version: 2.82.10+rev2
+  date: 2021-07-22T19:22:58.047Z
+- commits:
     - subject: Update meta-balena from v2.81.1 to v2.82.10
       hash: d04b7dae33e8163d59de83e19d04fc4c850704f7
       body: |
