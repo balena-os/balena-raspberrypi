@@ -1,4 +1,570 @@
 - commits:
+    - subject: Update meta-balena from v2.81.1 to v2.82.10
+      hash: d04b7dae33e8163d59de83e19d04fc4c850704f7
+      body: |
+        Update meta-balena from 2.81.1 to 2.82.10
+      footer:
+        Changelog-entry: Update meta-balena from v2.81.1 to v2.82.10
+        changelog-entry: Update meta-balena from v2.81.1 to v2.82.10
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: 'tests: Remove reboot requirement from dnsmasq tests'
+              hash: 1ea1985f7ebc56908d018c98211fd52f6fd6701c
+              body: >
+                We no longer require reboots when changing dnsServers in
+                config.json
+
+                and the service should restart on it's own.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.82.10
+          date: 2021-07-20T20:09:41.348Z
+        - commits:
+            - subject: 'patch: Make OS test suite compatible with current helpers'
+              hash: 5a7dd196686836bd35a95f3f2c5dadf138b2590f
+              body: ''
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+              author: Vipul Gupta (@vipulgupta2048)
+              nested: []
+          version: meta-balena-2.82.9
+          date: 2021-07-16T22:29:01.729Z
+        - commits:
+            - subject: >-
+                kernel-devsrc: Add upstream recipe from hardknott-3.3.1 for
+                dunfell
+              hash: f1d45613abfb3f0178868a2d09c22368e2f705fb
+              body: >
+                In recent kernels (i.e. 5.10.31 for Raspberry Pi) the
+
+                arch/arm/kernel/module.lds file got moved. See
+
+                https://github.com/torvalds/linux/commit/
+
+                596b0474d3d9b1242eab713f84d8873f9887d980 for details.
+
+
+                Hence we use in meta-balena-dunfell the upstream kernel-devsrc
+                from the
+
+                hardknott-3.3.1 Poky release which handles this module.lds move.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-2.82.8
+          date: 2021-07-16T13:13:11.566Z
+        - commits:
+            - subject: Update balena-engine to v19.03.23
+              hash: 5d882694102ce32706de08df3ab435bb0cec176c
+              body: >
+                Update balena-engine from 19.03.18 to 19.03.23
+
+
+                Which brings more resilient layer download (allows proper
+                resuming after
+
+                network failures).
+              footer:
+                Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                Changelog-entry: Update balena-engine to v19.03.23
+                changelog-entry: Update balena-engine to v19.03.23
+                Change-type: patch
+                change-type: patch
+              author: Leandro Motta Barros
+              nested:
+                - commits:
+                    - subject: Make layer download resuming more resilient
+                      hash: 582487f832c59c2f734a780ab0492833f29002c9
+                      body: >
+                        This commit changes the way we retry layer downloads
+                        after failures with
+
+                        the goal of making it more resilient, especially for
+                        cases involving
+
+                        large layers and unreliable network connections.
+
+
+                        These are the changes:
+
+
+                        * Make sure we also retry after failures in
+                        `v2LayerDescriptor.reset()`.
+                          This method creates a new HTTP request to resume a failed download,
+                          and therefore depends on a working network to succeed.
+                        * Wait exponentially longer times between retries
+                        (instead of retrying
+                          immediately as before). This shall increase of success in case of
+                          network issues that take longer to get resolved.
+                        * Increase the number of retries to 10.
+
+                        * Reset retry count whenever we successfully download
+                        anything at all.
+                          The idea is that we want to give up downloading only after a long
+                          continuous period of failures. Combined with the exponential back-off
+                          strategy and increased number of retries described above, a layer pull
+                          will fail only after about 17 minutes.
+                        * Add a bit more logging to help with troubleshooting.
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                      author: Leandro Motta Barros
+                      nested: []
+                  version: balena-engine-19.03.23
+                  date: 2021-07-12T13:21:18.693Z
+                - commits:
+                    - subject: Drop CODEOWNERS
+                      hash: e70e1a9fe622563719993626e834c85efc17905c
+                      body: ''
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Robert Günzler <robertg@balena.io>
+                        signed-off-by: Robert Günzler <robertg@balena.io>
+                      author: Robert Günzler
+                      nested: []
+                  version: balena-engine-19.03.22
+                  date: 2021-06-30T16:13:18.248Z
+                - commits:
+                    - subject: Lock destination layers while delta is being processed
+                      hash: 0ad4281e11e4d3ef263010787aecd244c0ce333d
+                      body: >
+                        During fingerpinting of the source image the destination
+                        layers are not
+
+                        exepmt from being released (e.g. when `balena image rm
+                        <iid>`) is run
+
+                        simultaneously.
+
+                        Similarly when processing the destination layers to
+                        generate deltas we
+
+                        only hold one reference at a time, leaving the
+                        subsequent layers
+
+                        vulnerable to the same issues.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Robert Günzler <robertg@balena.io>
+                        signed-off-by: Robert Günzler <robertg@balena.io>
+                      author: Robert Günzler
+                      nested: []
+                  version: balena-engine-19.03.21
+                  date: 2021-06-25T12:17:21.340Z
+                - commits:
+                    - subject: >-
+                        pkg/storagemigration: poperly handle errors during state
+                        creation
+                      hash: b8170db554ac1d1abb3adcfe1f6265701e9147c5
+                      body: ''
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Robert Günzler <robertg@balena.io>
+                        signed-off-by: Robert Günzler <robertg@balena.io>
+                      author: Robert Günzler
+                      nested: []
+                  version: balena-engine-19.03.20
+                  date: 2021-06-17T12:37:04.408Z
+                - commits:
+                    - subject: >-
+                        pkg/storagemigration: allow writing logs to separate
+                        file
+                      hash: 77536d3866ac706f049a02d2eed44a7df1cb779c
+                      body: >
+                        This can be used to keep a record of failed migrations.
+
+                        Only runs if BALENA_MIGRATE_OVERLAY_LOGFILE is set to a
+                        path on disk.
+
+                        The log file will be deleted if there are no errors.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Robert Günzler <robertg@balena.io>
+                        signed-off-by: Robert Günzler <robertg@balena.io>
+                      author: Robert Günzler
+                      nested: []
+                    - subject: 'storagemigration: defer commit to next start'
+                      hash: bd1628e67136b78ca7e7c83c5569666207d28a84
+                      body: >
+                        With this change the aufs data is kept around until the
+                        next time we
+
+                        start. If we find both an aufs AND an overlay2 storage
+                        root, we cleanup
+
+                        the aufs data.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Robert Günzler <robertg@balena.io>
+                        signed-off-by: Robert Günzler <robertg@balena.io>
+                      author: Robert Günzler
+                      nested: []
+                  version: balena-engine-19.03.19
+                  date: 2021-06-10T15:42:25.482Z
+          version: meta-balena-2.82.7
+          date: 2021-07-15T19:58:41.996Z
+        - commits:
+            - subject: 'dnsmasq: Restart when config.json changes'
+              hash: 76964657321934e2953c02ee8fdba4d22a9fbcdc
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: 'balena-config-vars: Restart target when config.json changes'
+              hash: 51005c7a3178bdc73dcff5f790a693aa70936d06
+              body: >
+                The config.json watcher service will restart the config.json
+                target
+
+                when the file changes. Any services that are PartOf config.json
+
+                target will be restarted as well.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: 'balena-config-vars: Add config-json.target service'
+              hash: cacb87d1b088ab1ab42b24b698e4c03d3803855e
+              body: |
+                This target service can be used to restart other services
+                that have explicitly set themselves as PartOf this target.
+
+                So a service that should be restarted when config.json changes
+                can use PartOf=config-json.target to be triggered automatically.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: 'balena-config-vars: Restore null as valid for dnsServers'
+              hash: 22602e4c2fafc0f309add8313c14464ba8cd8d4b
+              body: |
+                "null" is a valid setting in config.json that should write
+                an empty string for dns servers rather than the default 8.8.8.8
+
+                If "servers=null" is written to /run/dnsmasq.servers by
+                balena-net-config then dnsmasq will report the following error:
+
+                dnsmasq[4483]: bad address at line 2 of /run/dnsmasq.servers
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.82.6
+          date: 2021-07-15T11:17:28.470Z
+        - commits:
+            - subject: 'kernel-headers-test: Update base image to buster'
+              hash: 57f6aee369e8ec4ab8b20ae82a03f8b8fd7aebe4
+              body: >
+                Since we don't have devices using older 3.x kernels we update to
+                a newer
+
+                base image so that we don't have problems compiling this test
+                kernel
+
+                module on newer kernels.
+
+                This avoids a compile error on kernel 5.10.31 on arm64
+
+                raspberrypicm4-ioboard for example where it would complain
+                _mcount is
+
+                undefined because the older gcc in the
+                intel-nuc-debian:stretch-20190717
+
+                base image would not create the _mcount symbol when compiling
+                against
+
+                the newer 5.10.31 kernel.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-2.82.5
+          date: 2021-07-15T05:18:57.029Z
+        - commits:
+            - subject: 'tests: Add hup test suite'
+              hash: 7223cf082fb40e9c707730c19f640d64187516a7
+              body: >
+                Add smoke test
+
+
+                Resolve `latest` to dev variant
+
+
+                If we want the serial logs of the DUT the image that is flashed
+                needs to
+
+                be the development variant. The `latest` shortcut however always
+
+                resolves to the production image. We manually resolve the
+                version to fix
+
+                this.
+
+
+                Change image name for consistent docker image pulls
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+              author: Robert Günzler
+              nested: []
+          version: meta-balena-2.82.4
+          date: 2021-07-14T15:51:22.288Z
+        - commits:
+            - subject: Check that the hostapp image fits the inactive partion on HUP
+              hash: a0803fcfff0e908f4ed358d0568c4872bbcecade
+              body: >
+                Currently it is possible to build a docker image that will then
+                fail to
+
+                hup due to a lack of space on the inactive partition.
+
+
+                Add a task to check the docker image space against the available
+                space on
+
+                the root filesystem partition and fail the build if it's too
+                big.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Check that the hostapp image fits the inactive partion on HUP
+                changelog-entry: Check that the hostapp image fits the inactive partion on HUP
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'image-balena: Add check for docker image size'
+              hash: 9a75a872dfcf0c3d71d4d5584241b65d07bd7103
+              body: >
+                Currently it is possible to build a docker image that will then
+                fail to
+
+                hup due to a lack of space on the inactive partition.
+
+
+                Add a task to check the docker image space against the available
+                space on
+
+                the root filesystem partition and fail the build if it's too
+                big.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-image: Break down the rootfs image size calculation'
+              hash: 8a2b704bd5103ba6419328d0f9cc3d6b667ab5f5
+              body: >
+                Replace the IMAGE_ROOTFS_SIZE magic number with a calculation
+                based on
+
+                the partition sizes on the balena image classes.
+
+
+                The rootfs size is calculated with the assumption of a total
+                BalenaOS
+
+                size of 700M. This includes boot, state, rootA and rootB
+                partitions. The
+
+                data partition will then grow to occupy the rest of the storage
+                media.
+
+
+                Device integration layers can override this value if needed.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'image_types_balena: Add rootfs size calculation function'
+              hash: a4ede069d1ab7cbd2b6830574eb891f8c76a92a9
+              body: >
+                Instead of hardcoding the requested root filesystem value, let's
+                explain
+
+                how the calculation is made with a python function that will
+                adjust based
+
+                on the sizes of other partitions.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.82.3
+          date: 2021-07-13T11:18:32.393Z
+        - commits:
+            - subject: Update balena-supervisor from v12.8.8 to v12.9.3
+              hash: 7903a929e48af889b8df14754d84a8e6b0655752
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Update balena-supervisor from v12.8.8 to v12.9.3
+                changelog-entry: Update balena-supervisor from v12.8.8 to v12.9.3
+                Signed-off-by: Miguel Casqueira <miguel@balena.io>
+                signed-off-by: Miguel Casqueira <miguel@balena.io>
+              author: Miguel Casqueira
+              nested: []
+          version: meta-balena-2.82.2
+          date: 2021-07-13T01:37:11.482Z
+        - commits:
+            - subject: 'balena-hostname: add comments and improve logging'
+              hash: a7a2bb057e22e2ac4fc4cafaf6ba3b533ca5f464
+              body: |
+                Add some comments and improve the logging.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: 'balena-hostname: add comments and improve logging'
+                changelog-entry: 'balena-hostname: add comments and improve logging'
+                Signed-off-by: Mark Corbin <mark@balena.io>
+                signed-off-by: Mark Corbin <mark@balena.io>
+              author: Mark Corbin
+              nested: []
+            - subject: 'meta-balena: rename resin-hostname to balena-hostname'
+              hash: 55baa1687ca3c576077b26a31591304911be2581
+              body: |
+                Rename 'resin-hostname' to 'balena-hostname' and update all
+                references.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: 'meta-balena: rename resin-hostname to balena-hostname'
+                changelog-entry: 'meta-balena: rename resin-hostname to balena-hostname'
+                Signed-off-by: Mark Corbin <mark@balena.io>
+                signed-off-by: Mark Corbin <mark@balena.io>
+              author: Mark Corbin
+              nested: []
+          version: meta-balena-2.82.1
+          date: 2021-07-12T13:01:41.540Z
+        - commits:
+            - subject: 'networkmanager: Rename references to resin'
+              hash: c857ecc07325e643c39d30f68621c2807664e36e
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: 'resin-proxy-config: Rename to balena-proxy-config'
+              hash: 9e40219affeae1e5f7d888439654f9e40cef5fc0
+              body: ''
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: 'resin-ntp-config: Rename to balena-ntp-config'
+              hash: e534f24dbce8d883c867d52538ab721c423566a2
+              body: ''
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: 'resin-net-config: Rename to balena-net-config'
+              hash: a3726f421840e0facc21dde81b00a5e0d70e49ba
+              body: ''
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.82.0
+          date: 2021-07-10T11:13:11.567Z
+    - subject: Update unipi-kernel-modules to version 1.68
+      hash: 161da8b47dfdc037b96b1c6d505c56002b174fde
+      body: ''
+      footer:
+        Changelog-entry: Update unipi-kernel-modules to version 1.68
+        changelog-entry: Update unipi-kernel-modules to version 1.68
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+    - subject: Update rpi firmware to version 20210421
+      hash: 11400181ef274fd8df566dd0c3423e8c1055b0e6
+      body: ''
+      footer:
+        Changelog-entry: Update rpi firmware to version 20210421
+        changelog-entry: Update rpi firmware to version 20210421
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+    - subject: Update kernel to version 5.10.31
+      hash: 0be1ec28a3edbe4c9a4b9e9c64ba784017226773
+      body: |
+        With this update we also remove the older 5.4.83 kernel version.
+
+        The new kernel recipe is taken from meta-raspberrypi branch hardknott
+        revision 064f5404ea90f02bd15088de6317692098d9f770
+      footer:
+        Changelog-entry: Update kernel to version 5.10.31
+        changelog-entry: Update kernel to version 5.10.31
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.82.10+rev1
+  date: 2021-07-21T13:16:58.909Z
+- commits:
     - subject: >-
         Remove obsolete bluez5 patches and settings that are now included in
         bluez v5.58 from meta-balena

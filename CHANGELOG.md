@@ -1,6 +1,115 @@
 Change log
 -----------
 
+# v2.82.10+rev1
+## (2021-07-21)
+
+
+<details>
+<summary> Update meta-balena from v2.81.1 to v2.82.10 [Florin Sarbu] </summary>
+
+> ## meta-balena-2.82.10
+> ### (2021-07-20)
+> 
+> * tests: Remove reboot requirement from dnsmasq tests [Kyle Harding]
+> 
+> ## meta-balena-2.82.9
+> ### (2021-07-16)
+> 
+> * patch: Make OS test suite compatible with current helpers [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## meta-balena-2.82.8
+> ### (2021-07-16)
+> 
+> * kernel-devsrc: Add upstream recipe from hardknott-3.3.1 for dunfell [Florin Sarbu]
+> 
+> ## meta-balena-2.82.7
+> ### (2021-07-15)
+> 
+> 
+> <details>
+> <summary> Update balena-engine to v19.03.23 [Leandro Motta Barros] </summary>
+> 
+>> ### balena-engine-19.03.23
+>> #### (2021-07-12)
+>> 
+>> * Make layer download resuming more resilient [Leandro Motta Barros]
+>> 
+>> ### balena-engine-19.03.22
+>> #### (2021-06-30)
+>> 
+>> * Drop CODEOWNERS [Robert Günzler]
+>> 
+>> ### balena-engine-19.03.21
+>> #### (2021-06-25)
+>> 
+>> * Lock destination layers while delta is being processed [Robert Günzler]
+>> 
+>> ### balena-engine-19.03.20
+>> #### (2021-06-17)
+>> 
+>> * pkg/storagemigration: poperly handle errors during state creation [Robert Günzler]
+>> 
+>> ### balena-engine-19.03.19
+>> #### (2021-06-10)
+>> 
+>> * pkg/storagemigration: allow writing logs to separate file [Robert Günzler]
+>> * storagemigration: defer commit to next start [Robert Günzler]
+>> 
+> </details>
+> 
+> 
+> ## meta-balena-2.82.6
+> ### (2021-07-15)
+> 
+> * dnsmasq: Restart when config.json changes [Kyle Harding]
+> * balena-config-vars: Restart target when config.json changes [Kyle Harding]
+> * balena-config-vars: Add config-json.target service [Kyle Harding]
+> * balena-config-vars: Restore null as valid for dnsServers [Kyle Harding]
+> 
+> ## meta-balena-2.82.5
+> ### (2021-07-15)
+> 
+> * kernel-headers-test: Update base image to buster [Florin Sarbu]
+> 
+> ## meta-balena-2.82.4
+> ### (2021-07-14)
+> 
+> * tests: Add hup test suite [Robert Günzler]
+> 
+> ## meta-balena-2.82.3
+> ### (2021-07-13)
+> 
+> * Check that the hostapp image fits the inactive partion on HUP [Alex Gonzalez]
+> * image-balena: Add check for docker image size [Alex Gonzalez]
+> * balena-image: Break down the rootfs image size calculation [Alex Gonzalez]
+> * image_types_balena: Add rootfs size calculation function [Alex Gonzalez]
+> 
+> ## meta-balena-2.82.2
+> ### (2021-07-13)
+> 
+> * Update balena-supervisor from v12.8.8 to v12.9.3 [Miguel Casqueira]
+> 
+> ## meta-balena-2.82.1
+> ### (2021-07-12)
+> 
+> * balena-hostname: add comments and improve logging [Mark Corbin]
+> * meta-balena: rename resin-hostname to balena-hostname [Mark Corbin]
+> 
+> ## meta-balena-2.82.0
+> ### (2021-07-10)
+> 
+> * networkmanager: Rename references to resin [Kyle Harding]
+> * resin-proxy-config: Rename to balena-proxy-config [Kyle Harding]
+> * resin-ntp-config: Rename to balena-ntp-config [Kyle Harding]
+> * resin-net-config: Rename to balena-net-config [Kyle Harding]
+> 
+</details>
+
+* Update unipi-kernel-modules to version 1.68 [Florin Sarbu]
+* Update rpi firmware to version 20210421 [Florin Sarbu]
+* Update kernel to version 5.10.31 [Florin Sarbu]
+
 # v2.81.1+rev2
 ## (2021-07-20)
 
