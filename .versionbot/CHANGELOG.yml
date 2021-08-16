@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update rpi firmware to version 20210527
+      hash: 902d7890d8b2114e1756c7e604a54efa14b121e6
+      body: ''
+      footer:
+        Changelog-entry: Update rpi firmware to version 20210527
+        changelog-entry: Update rpi firmware to version 20210527
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.82.10+rev3
+  date: 2021-08-16T07:55:18.123Z
+- commits:
     - subject: Update balena-yocto-scripts from v1.14.7 to v1.14.8
       hash: 28c21dc9e5d9c2afaf13d25777bded0322ddff94
       body: |

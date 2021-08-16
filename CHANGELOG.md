@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.82.10+rev3
+## (2021-08-16)
+
+* Update rpi firmware to version 20210527 [Florin Sarbu]
+
 # v2.82.10+rev2
 ## (2021-07-22)
 
