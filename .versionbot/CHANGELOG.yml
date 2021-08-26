@@ -1,4 +1,65 @@
 - commits:
+    - subject: Update balena-yocto-scripts from v1.14.8 to v1.14.9
+      hash: e11a0f20394dd8c94d6df89f2b220888e8d6882b
+      body: |
+        Update balena-yocto-scripts from 1.14.8 to 1.14.9
+      footer:
+        Changelog-entry: Update balena-yocto-scripts from v1.14.8 to v1.14.9
+        changelog-entry: Update balena-yocto-scripts from v1.14.8 to v1.14.9
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested:
+        - commits:
+            - subject: >-
+                balena-deploy: When deploying hostapp default to using slug as
+                name
+              hash: d9ee5fa5f5a97de9c41c2acc13b6c7335e2b043f
+              body: >
+                Using the device type is incorrect as aliases are not taken into
+                account.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-api: Do not use balena_lib_resolve_aliases'
+              hash: d50cee134436914b4960254abd0a5cf28b40f764
+              body: >
+                That function is now for internal use, replace with
+                balena_lig_get_slug()
+
+                which is clearer.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: >-
+                balena_lib: Make resolve_aliases local so it is not globally
+                used
+              hash: 45a0f62debdbf9e20d56e8bba8a9567359d7e8e4
+              body: >
+                The correct call is balena_lib_get_slug(device_type), which
+                resolves
+
+                aliases too.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.14.9
+          date: 2021-08-20T17:33:15.811Z
+  version: 2.82.10+rev3
+  date: 2021-08-24T10:57:36.277Z
+- commits:
     - subject: Update balena-yocto-scripts from v1.14.7 to v1.14.8
       hash: 28c21dc9e5d9c2afaf13d25777bded0322ddff94
       body: |
