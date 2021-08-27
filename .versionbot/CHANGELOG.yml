@@ -1,4 +1,497 @@
 - commits:
+    - subject: Update meta-balena from v2.82.10 to v2.83.10
+      hash: 15017cf2b42e5d633fc28bdadee099f0f35ace6b
+      body: |
+        Update meta-balena from 2.82.10 to 2.83.10
+      footer:
+        Changelog-entry: Update meta-balena from v2.82.10 to v2.83.10
+        changelog-entry: Update meta-balena from v2.82.10 to v2.83.10
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: >-
+                kernel-balena: Add function to conditionally configure based on
+                version
+              hash: 9787d2879d2f372c19f336c7e08bd0e6fee16ae7
+              body: >
+                Some kernel configuration are only applicable from specific
+                kernel
+
+                versions. This commit adds a function that allows to add a
+                specific
+
+                configuration set only from a given kernel version.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'kernel-balena: Split function to get kernel version from source'
+              hash: c349f647db328558f026f1b914bc0246dc33bda5
+              body: >
+                This allows to re-use this functionality. Note that the
+                `KERNEL_VERSION`
+
+                variable is only available after the kernel has been built as it
+                relies
+
+                on get_kernelversion_headers() poky function and utsrelease.h
+                being
+
+                generated. This function parses the Makefile so only needs the
+                source.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'kernel-resin: Add as symlink to kernel-balena'
+              hash: 129128574dbf38c46c0cc7121cdf6fd0f38ef64b
+              body: |
+                This avoids introducing a breaking change.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'kernel-balena: Replace and deprecate kernel-resin'
+              hash: 8c0d2ce52d42e72a939d248784d67dc2413c0443
+              body: >
+                New device types should use kernel-balena instead of
+                kernel-resin.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.83.10
+          date: 2021-08-18T19:03:21.519Z
+        - commits:
+            - subject: 'recipes-connectivity: improve NTP dispatcher script'
+              hash: d060bfa3581f6920fa2e353abaf82d2913d60e67
+              body: >
+                Change the NetworkManager NTP dispatcher script to update the
+
+                on/offline status of the NTP sources on 'connectivity-change'
+                events
+
+                instead of 'up/down' events.
+
+
+                Currently 'chronyc onoffline' is run for 'up/down' events on any
+
+                network interface. It makes more sense to run it for
+
+                'connectivity-change' events as we are really interested in
+                whether
+
+                the internet is there or not rather than whether an interface is
+
+                up or down.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: 'recipes-connectivity: improve NTP dispatcher script'
+                changelog-entry: 'recipes-connectivity: improve NTP dispatcher script'
+                Signed-off-by: Mark Corbin <mark@balena.io>
+                signed-off-by: Mark Corbin <mark@balena.io>
+              author: Mark Corbin
+              nested: []
+          version: meta-balena-2.83.9
+          date: 2021-08-17T10:37:50.423Z
+        - commits:
+            - subject: Update balena-engine to v19.03.24
+              hash: 1d3d0d0c8ef60710eaa67d68b5f606eb22e6fd28
+              body: |
+                Update balena-engine from 19.03.23 to 19.03.24
+              footer:
+                Changelog-entry: Update balena-engine to v19.03.24
+                changelog-entry: Update balena-engine to v19.03.24
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested:
+                - commits:
+                    - subject: prevent slice oob access in concatReadSeekCloser
+                      hash: 1e7045ac957db17fe9838602c9339c0b5ae5c282
+                      body: ''
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Martin Rauscher
+                      nested: []
+                  version: balena-engine-19.03.24
+                  date: 2021-08-12T08:30:08.031Z
+          version: meta-balena-2.83.8
+          date: 2021-08-17T07:29:06.381Z
+        - commits:
+            - subject: 'grub: don''t package or install bindir utils'
+              hash: f1835282ecd3b0f9dfc52410d8f1628653e2c1b2
+              body: >
+                Remove ${bindir} from FILES_grub-common, ensuring grub utilities
+                aren't
+
+                installed to /usr/bin, in addition to a previous similar commit
+                that
+
+                removed sbin utils. This frees approximately 5.5M.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.83.7
+          date: 2021-08-14T14:48:17.382Z
+        - commits:
+            - subject: 'balena-os-sysctl: disable user namespacing by default'
+              hash: 31c3ae8ad5c7ad45e450349b6972524da120e96c
+              body: >
+                Most major distributions now ship kernels with user namespacing
+                enabled
+
+                in the kernel config. Some distributions, such as Arch and
+                Ubuntu,
+
+                default to the upstream behavior of allowing unprivileged user
+
+                namespacing, regardless of potential attack surfaces exposed in
+                the
+
+                kernel.
+
+
+                Other distributions, such as Debian, are slightly more
+                conservative,
+
+                disabling the feature at runtime behind a sysctl tunable. Debian
+
+                maintains its own patch to add the
+                kernel.unprivileged_userns_clone
+
+                tunable.
+
+
+                The Debian patch was rejected by upstream over fears of
+                application
+
+                developers not using this feature due to it being generally
+                unavailable
+
+                in systems, as well as fears of bugs going undiscovered.
+
+
+                RHEL uses a newer tunable introduced upstream to set the max
+                number of
+
+                user namespaces to zero, which accomplishes the same thing, but
+                without
+
+                an out of tree patch.
+
+
+                Disable user namespacing at runtime using the same method as
+                RHEL, in
+
+                the same manner as the hardened kernels and distributions have
+                chosen.
+
+
+                https://lwn.net/Articles/673597/
+
+                https://lists.debian.org/debian-kernel/2020/03/msg00237.html
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: 'common: kernel-resin: enable user namespacing'
+              hash: 04d9561760b449024a5b411bd366ded2351cd5cd
+              body: >
+                Enable CONFIG_USER_NS, a kernel feature used for user
+                namespacing, and
+
+                required for docker-in-docker.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.83.6
+          date: 2021-08-13T16:30:49.145Z
+        - commits:
+            - subject: >-
+                resin-u-boot.bbclass: Make console silencing change more
+                resilient
+              hash: 6f173d763828d63f70582219aa19333b1e599a57
+              body: >
+                There is at least a case in a board where the puts function in
+                u-boot's
+
+                common/console.c is #ifdef'ed and defined twice. Let's
+                accomodate for
+
+                such cases by correctly looping through more than one function
+
+                definition if present.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-2.83.5
+          date: 2021-08-13T08:16:50.739Z
+        - commits:
+            - subject: 'balena-os: pin linux-firmware to 20210511 from hardknott'
+              hash: e7a72c3e82587ffd2388656de71340afdddc9156
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: 'linux-firmware: upgrade 20190815 -> 20210511'
+              hash: 497fa316fec3ef99a14872208abb85f7e932922d
+              body: |
+                Add recipe from poky hardknott, revision 74dbb08
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.83.4
+          date: 2021-08-11T16:09:10.911Z
+        - commits:
+            - subject: 'supervisor: Consolidate supervisor container removal'
+              hash: f533be0ee1d6f42801f29426929e5f8b18035b9b
+              body: |
+                Avoid removing supervisor containers in 3 different places
+                and consolidate the steps into start-balena-supervisor.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.83.3
+          date: 2021-08-05T18:58:49.620Z
+        - commits:
+            - subject: 'tests: Fix insecure registry error'
+              hash: 647d683dbfd0461706e75291c5396752fdc1b2ce
+              body: >
+                introduced when images including
+                8227a61f6bef6d93cc6a5acd0ef93a2012079964
+
+                made it to production.
+
+                We can now use a runtime drop-in unit placed under /run/systemd/
+                to
+
+                configure the balena-host service, which doesn't require us to
+                remount
+
+                the rootfs.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Robert Günzler <robertg@balena.io>
+                signed-off-by: Robert Günzler <robertg@balena.io>
+              author: Robert Günzler
+              nested: []
+          version: meta-balena-2.83.2
+          date: 2021-08-05T13:55:32.372Z
+        - commits:
+            - subject: 'linux-firmware: package i915 generations separately'
+              hash: e741dcf6f520765c3345c1e64cfc3f31f5b6a604
+              body: >
+                Package Intel graphics firmware generations separately, allowing
+                GPU
+
+                firmware to be installed for specific SoCs.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.83.1
+          date: 2021-07-31T15:24:38.031Z
+        - commits:
+            - subject: Add support for rootfs on MD RAID1
+              hash: bc1cb47f177b0d04a17c26b00b4ca99cf4638c33
+              body: |
+                This commit does two things:
+                - Build in necessary kernel modules
+                - Add the mdadm userspace utility to rootfs and initrd
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.83.0
+          date: 2021-07-29T14:10:41.247Z
+        - commits:
+            - subject: >-
+                tests: Symlink /dev/null instead of copying bash to break
+                services
+              hash: eea7514c705b43482dd3656d0c34bb2414c267ee
+              body: >
+                Triggered by a failue in the VPN test - the bash binary is
+                bigger than
+
+                the openvpn binary and on devices with limitted rootfs space the
+                copying
+
+                is not possible. Symlinking /dev/null will break the services as
+                well.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.82.13
+          date: 2021-07-29T07:32:26.577Z
+        - commits:
+            - subject: 'common: grub: don''t install sbin utils'
+              hash: e3bf23c7977c6c0dce9eb0a49172526a7e447522
+              body: >
+                These utilities aren't used on device. Don't install them to
+                save space.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.82.12
+          date: 2021-07-24T01:06:12.763Z
+        - commits:
+            - subject: 'tests: Remove journalctl line limit from hup suite'
+              hash: 5ce248f0d1b37c6500cdd93c639a89027f1fc7f4
+              body: |
+                Having the lines limited to 500 meant we were missing
+                a lot of logs.
+
+                We also don't need to list boots and can use the 'all'
+                arguement to see all logs.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: 'tests: Enable rollback tests in hup suite'
+              hash: 9d1e892324718f2533cae1cf5e09018526d13b20
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: 'tests: Update smoke test conditions'
+              hash: 64df0c010841b0f00d8025b79ae0f23a6fccdf29
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: 'tests: Add rollback tests to HUP suite'
+              hash: 87e89fcf7b07180f3221602afc7a5b4dd8cd9e48
+              body: >
+                Adding rollback-health check & rollback-altboot check to the HUP
+                suite
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: 'rollback-altboot: Fix minor typo in log message'
+              hash: 1b3405ebf116420de032ccbdac39638a420c4a88
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.82.11
+          date: 2021-07-21T20:25:31.196Z
+    - subject: Fix device tree overlay loading on 64 bits architectures
+      hash: 949b88bb2e870c9e0c18e7000847b719762c45b7
+      body: |
+        This reverts
+        https://github.com/agherzan/meta-raspberrypi/commit/
+        a7cc636d4ef0ed7ddabf5785463dbb5c79633b1e
+        which broke loading overlays. The issue is that, as per the comments in
+        https://github.com/agherzan/meta-raspberrypi/commit/
+        6c4de0b5fe44b8e661f1391ee8540a7f04d75315, the device tree blobs
+        generated on 64 bits lack any symbols and thus no overlays can be loaded
+        (checked with running "vcdbg log msg"):
+
+        005284.623: dtb_file 'bcm2711-rpi-4-b.dtb'
+        005289.625: brfs: File read: /mfs/sd/bcm2711-rpi-4-b.dtb
+        005289.641: Loading 'bcm2711-rpi-4-b.dtb' to 0x100 size 0x8c60
+        005302.330: brfs: File read: 35936 bytes
+        005310.499: brfs: File read: /mfs/sd/overlays/overlay_map.dtb
+        005358.309: brfs: File read: 1559 bytes
+        005360.894: brfs: File read: /mfs/sd/config.txt
+        005361.275: brfs: File read: 143 bytes
+        005372.465: brfs: File read: /mfs/sd/overlays/vc4-fkms-v3d.dtbo
+        005375.749: dterror: no symbols found
+        005375.760: Failed to resolve overlay 'vc4-fkms-v3d'
+        005376.120: brfs: File read: 1446 bytes
+        005385.470: brfs: File read: /mfs/sd/overlays/disable-wifi.dtbo
+        005388.352: dterror: no symbols found
+        005388.361: Failed to resolve overlay 'disable-wifi'
+      footer:
+        Changelog-entry: Fix device tree overlay loading on 64 bits architectures
+        changelog-entry: Fix device tree overlay loading on 64 bits architectures
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.83.10+rev1
+  date: 2021-08-26T09:53:39.037Z
+- commits:
     - subject: Update balena-yocto-scripts from v1.14.8 to v1.14.9
       hash: e11a0f20394dd8c94d6df89f2b220888e8d6882b
       body: |
