@@ -1,4 +1,17 @@
 - commits:
+    - subject: 'linux-raspberrypi: Add gasket driver for all devices'
+      hash: e50d4467c9a6ef17d1b3c428dd9d03761d8c177e
+      body: ''
+      footer:
+        Changelog-entry: 'linux-raspberrypi: Add gasket driver for all devices'
+        changelog-entry: 'linux-raspberrypi: Add gasket driver for all devices'
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 2.83.10+rev2
+  date: 2021-08-30T13:59:09.142Z
+- commits:
     - subject: Update meta-balena from v2.82.10 to v2.83.10
       hash: 15017cf2b42e5d633fc28bdadee099f0f35ace6b
       body: |

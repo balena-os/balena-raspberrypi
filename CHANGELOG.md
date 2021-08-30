@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.83.10+rev2
+## (2021-08-30)
+
+* linux-raspberrypi: Add gasket driver for all devices [Kyle Harding]
+
 # v2.83.10+rev1
 ## (2021-08-26)
 
