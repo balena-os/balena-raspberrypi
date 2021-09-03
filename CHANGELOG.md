@@ -1,6 +1,114 @@
 Change log
 -----------
 
+# v2.83.21+rev1
+## (2021-09-03)
+
+
+<details>
+<summary> Update meta-balena from v2.83.10 to v2.83.21 [Florin Sarbu] </summary>
+
+> ## meta-balena-2.83.21
+> ### (2021-09-01)
+> 
+> * tests: Register teardown only when DUT is reachable [rcooke-warwick]
+> 
+> ## meta-balena-2.83.20
+> ### (2021-09-01)
+> 
+> * tests: Use new Archiver implementation & helpers [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## meta-balena-2.83.19
+> ### (2021-09-01)
+> 
+> * tests: List boots when collecting journal logs in hup suite [Kyle Harding]
+> 
+> ## meta-balena-2.83.18
+> ### (2021-08-31)
+> 
+> 
+> <details>
+> <summary> balena-supervisor: Update balena-supervisor to v12.10.3 [Kyle Harding] </summary>
+> 
+>> ### balena-supervisor-12.10.3
+>> #### (2021-08-24)
+>> 
+>> * Skip restarting services if they are part of conf targets [Kyle Harding]
+>> 
+>> ### balena-supervisor-12.10.2
+>> #### (2021-08-02)
+>> 
+>> * Removed fire emoji prefix for firewall logs. [peakyDicers]
+>> 
+>> ### balena-supervisor-12.10.1
+>> #### (2021-08-02)
+>> 
+>> * Fix regression with local mode push [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-12.10.0
+>> #### (2021-07-28)
+>> 
+>> * Remove comparison based on image, release, and service ids [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-12.9.6
+>> #### (2021-07-26)
+>> 
+>> * Use tags to track supervised images in docker [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-12.9.5
+>> #### (2021-07-22)
+>> 
+>> * Log the delta URL that will be downloaded on update [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-12.9.4
+>> #### (2021-07-08)
+>> 
+>> * Fix db-helper module for tests [Felipe Lalanne]
+>> 
+> </details>
+> 
+> 
+> ## meta-balena-2.83.17
+> ### (2021-08-31)
+> 
+> * Assign a fixed name to the balena-healthcheck container [Kyle Harding]
+> 
+> ## meta-balena-2.83.16
+> ### (2021-08-31)
+> 
+> * kernel-modules-headers: Copy module.lds [Alex Gonzalez]
+> 
+> ## meta-balena-2.83.15
+> ### (2021-08-30)
+> 
+> * kernel-balena: remove global blacklist of btrfs [Joseph Kogut]
+> 
+> ## meta-balena-2.83.14
+> ### (2021-08-26)
+> 
+> * tests: remove reboot requirement from NTP server test [Mark Corbin]
+> * recipes-connectivity: fix auto-update when config.json changes [Mark Corbin]
+> 
+> ## meta-balena-2.83.13
+> ### (2021-08-26)
+> 
+> * networkmanager: fix hostname race condition [Mark Corbin]
+> 
+> ## meta-balena-2.83.12
+> ### (2021-08-25)
+> 
+> * tests: remove reboot requirement from hostname test [Mark Corbin]
+> * hostname: update system hostname when config.json changes [Mark Corbin]
+> 
+> ## meta-balena-2.83.11
+> ### (2021-08-24)
+> 
+> * linux-firmware: Use wildcards when selecting files to package [Alex Gonzalez]
+> * linux-firmware: Add firmware compression support [Alex Gonzalez]
+> * kernel-balena: Support firmware compression from kernel version 5.3 [Alex Gonzalez]
+> 
+</details>
+
 # v2.83.10+rev1
 ## (2021-08-26)
 

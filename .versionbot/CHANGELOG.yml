@@ -1,4 +1,533 @@
 - commits:
+    - subject: Update meta-balena from v2.83.10 to v2.83.21
+      hash: e0d458c59513ad7ef30ea6d769da085809db3af5
+      body: |
+        Update meta-balena from 2.83.10 to 2.83.21
+      footer:
+        Changelog-entry: Update meta-balena from v2.83.10 to v2.83.21
+        changelog-entry: Update meta-balena from v2.83.10 to v2.83.21
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: 'tests: Register teardown only when DUT is reachable'
+              hash: 2f01b040236f6565195550cdfde91464687f5cf2
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.83.21
+          date: 2021-09-01T22:56:06.844Z
+        - commits:
+            - subject: 'tests: Use new Archiver implementation & helpers'
+              hash: 883ec60492a16b443cb6ce04c12cda8bbf4d028d
+              body: |
+                The changes are as follows:
+                1. Delete custom logic in tests for archiving logs
+                2. Make use of the new archiveLogs helper
+                3. Make use of the new implementation of the Archiver module
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+              author: Vipul Gupta (@vipulgupta2048)
+              nested: []
+          version: meta-balena-2.83.20
+          date: 2021-09-01T19:37:21.036Z
+        - commits:
+            - subject: 'tests: List boots when collecting journal logs in hup suite'
+              hash: 8e7b6a157b033db57ff2df75a63b5e054957803f
+              body: |
+                Some OS versions before HUP do not support the '-b all' flag
+                to journalctl. This commit reverts to the original behaviour
+                that lists the boots and requests the logs for each boot.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.83.19
+          date: 2021-09-01T13:25:10.726Z
+        - commits:
+            - subject: 'balena-supervisor: Update balena-supervisor to v12.10.3'
+              hash: 782c9e24b91b5beb1c30c7643015c6fe7f53d2d2
+              body: |
+                Update balena-supervisor from 12.9.3 to 12.10.3
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested:
+                - commits:
+                    - subject: >-
+                        Skip restarting services if they are part of conf
+                        targets
+                      hash: 669866b4c296529bd5392a0c48cd389a6d1f5770
+                      body: >
+                        Some recent changes to the OS allowed some services to
+                        restart
+
+                        automatically when the associated config files are
+                        changed.
+
+
+                        In these cases we want to avoid restarting the same
+                        services
+
+                        manually from the supervisor.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: balena-supervisor-12.10.3
+                  date: 2021-08-24T18:07:03.099Z
+                - commits:
+                    - subject: Removed fire emoji prefix for firewall logs.
+                      hash: 30c728fae23ee66f3c1612736bb0c300f0b0762d
+                      body: ''
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: peakyDicers
+                      nested: []
+                  version: balena-supervisor-12.10.2
+                  date: 2021-08-02T21:27:42.412Z
+                - commits:
+                    - subject: Fix regression with local mode push
+                      hash: 6f5f3bc2f3aea1bf5e5772533be80c3bfbb4e3a9
+                      body: >
+                        PR #1749 introduced a bug when pushing local target
+                        state. An update to
+
+                        the [image name
+                        normalization](https://github.com/balena-os/balena-supervisor/blob/f1bd4b8d9bcef29e326cbf97eaddd837c2704d19/src/lib/docker-utils.ts#L81)
+
+                        failed to consider the local image name format. This
+                        results in mangling
+
+                        of image names in the database, i.e. the image
+                        `ubuntu:latest` is stored
+
+                        as `/ubuntu:latest`. This causes an exception to be
+                        returned by the
+
+                        dockerode `getImage('/ubuntu:latest').inspect()` call.
+
+
+                        This sends the supervisor into a crash loop and is shown
+                        on the supervisor
+
+                        journal logs as
+
+
+                        ```
+
+                        getaddrinfo ENOTFOUND images
+                            at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:64:26)
+                        ```
+
+
+                        Unfortunately if this happens on a user device, since
+                        the mangled image
+
+                        name is already on the database, the easiest way to fix
+                        is to remove the
+
+                        supervisor database and let the supervisor recreate it.
+                        Deleting the
+
+                        database should be side effect free.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-12.10.1
+                  date: 2021-08-02T15:55:28.001Z
+                - commits:
+                    - subject: >-
+                        Remove comparison based on image, release, and service
+                        ids
+                      hash: b67f94802dd8c2e890121f6ca82eda8dff2c051c
+                      body: >
+                        Preparing for the new v3 target state, where the
+                        supervisor will make environment
+
+                        dependent ids optional and rely on using general UUIDs
+                        and user known identifiers
+
+                        for comparison. This PR moves forward in that direction
+                        by removing some of those
+
+                        comparisons for v2 target state.
+
+
+                        - imageId to be replaced with imageName
+
+                        - serviceId to be replace by serviceName
+
+                        - releaseId to be replaced by commit (future
+                        release_uuid)
+
+
+                        This is a backwards compatible change, meaning it
+                        doesn't completely get rid of
+
+                        these identifiers (which are still being used by
+                        supervisor API and for state
+
+                        patch), but will not depend on those identifiers for
+                        calculating steps to target state.
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-12.10.0
+                  date: 2021-07-28T14:00:22.581Z
+                - commits:
+                    - subject: Use tags to track supervised images in docker
+                      hash: f1bd4b8d9bcef29e326cbf97eaddd837c2704d19
+                      body: >
+                        The image manager module now uses tags instead of docker
+                        IDs as the main
+
+                        way to identify docker images on the engine. That is, if
+                        the target
+
+                        state image has a name `imageName:tag@digest`, the
+                        supervisor will always use
+
+                        the given `imageName` and `tag` (which may be empty) to
+                        tag the image on
+
+                        the engine after fetching. This PR also adds checkups to
+                        ensure
+
+                        consistency is maintained between the database and the
+                        engine.
+
+
+                        Using tags allows to simplify query and removal
+                        operations, since now
+
+                        removing the image now means removing tags matching the
+                        image name.
+
+
+                        Before this change the supervisor relied only on
+                        information in the
+
+                        supervisor database, and used that to remove images by
+                        docker ID. However, the docker
+
+                        id is not a reliable identifier, since images retain the
+                        same id between
+
+                        releases or between services in the same release.
+
+
+                        List of squashed commits
+
+                        - Remove custom type NormalizedImageInfo
+
+                        - Remove dependency on docker-toolbelt
+
+                        - Use tags to traack supervised images in docker
+
+                        - Ensure tag removal occurs in sequence
+
+                        - Only save database image after download confirmed
+                      footer:
+                        Relates-to: '#1616 #1579'
+                        relates-to: '#1616 #1579'
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-12.9.6
+                  date: 2021-07-26T13:58:29.275Z
+                - commits:
+                    - subject: Log the delta URL that will be downloaded on update
+                      hash: c05c5803f08ddd31eeddb2000cc5f162fb916003
+                      body: ''
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Closes: '#1755'
+                        closes: '#1755'
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-12.9.5
+                  date: 2021-07-22T15:08:58.505Z
+                - commits:
+                    - subject: Fix db-helper module for tests
+                      hash: 357d1baf6188d89b8552fd9068dbea9ac50aa008
+                      body: >
+                        The previous module was using `rewire` to get the knex
+                        instance from the
+
+                        db module but that was leading to issues when running
+                        tests using `test:fast`.
+
+                        This provides a fix for the test module that just
+                        removes the destroy
+
+                        call entirely (it turns out it is not necessary).
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-12.9.4
+                  date: 2021-07-08T18:48:09.003Z
+          version: meta-balena-2.83.18
+          date: 2021-08-31T20:45:45.918Z
+        - commits:
+            - subject: Assign a fixed name to the balena-healthcheck container
+              hash: c80932d323ae99a3b3a3a9120a29b5c67196fc44
+              body: |
+                This avoids confusion when new containers with random names
+                appear in the runtime history of the engine.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.83.17
+          date: 2021-08-31T16:04:47.503Z
+        - commits:
+            - subject: 'kernel-modules-headers: Copy module.lds'
+              hash: 9fca34e0f4faffc0fa049e9341e7392f365bea31
+              body: >
+                Since kernel v5.10 this file is generated when using
+                modules_prepare. As
+
+                the kernel-modules-headers contains pre-built target binaries,
+                we also
+
+                need to include this file in the package.
+
+
+                This is not a problem when using kernel-source as a
+                modules_prepare is
+
+                always required.
+              footer:
+                Fixes: '#2289'
+                fixes: '#2289'
+                Relates-to: '#1822'
+                relates-to: '#1822'
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.83.16
+          date: 2021-08-31T11:22:51.142Z
+        - commits:
+            - subject: 'kernel-balena: remove global blacklist of btrfs'
+              hash: b9d6df84a1acd45df80da8a90ea4ca4dc2940bcf
+              body: >
+                The kernel-balena class contains a global blacklist of btrfs
+                that
+
+                disables this filesystem for all device types, regardless of
+                them
+
+                explicitly enabling it.
+
+
+                Remove this config to allow devices to enable this filesystem.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.83.15
+          date: 2021-08-30T15:47:20.658Z
+        - commits:
+            - subject: 'tests: remove reboot requirement from NTP server test'
+              hash: 47deb00854eefc2c8ca4103d934713d26077a7c8
+              body: |
+                We no longer require a reboot when changing the NTP server
+                configuration in config.json. Changes to 'config-json' will
+                automatically trigger the 'balena-ntp-config' service which will
+                update the NTP sources.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: 'tests: remove reboot requirement from NTP server test'
+                changelog-entry: 'tests: remove reboot requirement from NTP server test'
+                Signed-off-by: Mark Corbin <mark@balena.io>
+                signed-off-by: Mark Corbin <mark@balena.io>
+              author: Mark Corbin
+              nested: []
+            - subject: 'recipes-connectivity: fix auto-update when config.json changes'
+              hash: 85df30628278eeb0d55e731319391d3cf98df9a8
+              body: >
+                Since adding the 'config-json' systemd target the
+                'balena-ntp-config'
+
+                and 'prepare-openvpn' services have stopped running
+                automatically
+
+                when config.json is updated. This is fixed by adding
+
+                'RemainAfterExit=yes' to both service files.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: 'recipes-connectivity: fix auto-update when config.json changes'
+                changelog-entry: 'recipes-connectivity: fix auto-update when config.json changes'
+                Signed-off-by: Mark Corbin <mark@balena.io>
+                signed-off-by: Mark Corbin <mark@balena.io>
+              author: Mark Corbin
+              nested: []
+          version: meta-balena-2.83.14
+          date: 2021-08-26T17:54:07.640Z
+        - commits:
+            - subject: 'networkmanager: fix hostname race condition'
+              hash: 3f2486bc91994d360086694df9f01bb4b6777284
+              body: >
+                Fix a race condition that can occur when setting the hostname at
+
+                boot by disabling NetworkManager's ability to modify the
+                hostname.
+
+                The static and transient system hostnames are now managed
+                exclusively
+
+                by the 'balena-hostname' service.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Connects-to: '#2244'
+                connects-to: '#2244'
+                Changelog-entry: 'networkmanager: fix hostname race condition'
+                changelog-entry: 'networkmanager: fix hostname race condition'
+                Signed-off-by: Mark Corbin <mark@balena.io>
+                signed-off-by: Mark Corbin <mark@balena.io>
+              author: Mark Corbin
+              nested: []
+          version: meta-balena-2.83.13
+          date: 2021-08-26T12:17:00.556Z
+        - commits:
+            - subject: 'tests: remove reboot requirement from hostname test'
+              hash: 34687ca76515d57a77ba12c0fd44632518181392
+              body: >
+                We no longer require reboots when changing hostname in
+                config.json.
+
+                The contents of '/etc/hostname' and the avahi mDNS broadcast
+                hostname
+
+                are updated automatically without requiring a reboot.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: 'tests: remove reboot requirement from hostname test'
+                changelog-entry: 'tests: remove reboot requirement from hostname test'
+                Signed-off-by: Mark Corbin <mark@balena.io>
+                signed-off-by: Mark Corbin <mark@balena.io>
+              author: Mark Corbin
+              nested: []
+            - subject: 'hostname: update system hostname when config.json changes'
+              hash: f7b3d37502f03ca65d3352a8a8cc3b8a5d612ff4
+              body: >
+                Automatically update the system hostname when config.json
+                changes.
+
+
+                Changes to 'config.json' will trigger the 'balena-hostname'
+                service
+
+                to update the static and transient hostnames and the 'avahi'
+
+                service to ensure that any hostname changes are broadcast via
+                mDNS.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: 'hostname: update system hostname when config.json changes'
+                changelog-entry: 'hostname: update system hostname when config.json changes'
+                Signed-off-by: Mark Corbin <mark@balena.io>
+                signed-off-by: Mark Corbin <mark@balena.io>
+              author: Mark Corbin
+              nested: []
+          version: meta-balena-2.83.12
+          date: 2021-08-25T23:51:01.153Z
+        - commits:
+            - subject: 'linux-firmware: Use wildcards when selecting files to package'
+              hash: 16598bcffda7206d9a2ab9d96860cecf7de62756
+              body: >
+                Firmware files can be compressed with an xz extension or not, so
+                use
+
+                wildcards to cover both cases.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'linux-firmware: Add firmware compression support'
+              hash: 2ee6d2e652772d28c25df94aa400e7ccd9f207de
+              body: >
+                This commit adds a FIRMWARE_COMPRESSION distro configuration
+                that
+
+                performs the compression of linux-firmware files. Only kernel
+                versions
+
+                above 5.3 support loading compressed firmware.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: >-
+                kernel-balena: Support firmware compression from kernel version
+                5.3
+              hash: c8faa130b88f11af86619d69a115be96dfbc894a
+              body: >
+                Kernel version 5.3 supports loading compressed firmware files
+                saving
+
+                storage space.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.83.11
+          date: 2021-08-24T14:52:41.041Z
+  version: 2.83.21+rev1
+  date: 2021-09-03T07:51:54.839Z
+- commits:
     - subject: Update meta-balena from v2.82.10 to v2.83.10
       hash: 15017cf2b42e5d633fc28bdadee099f0f35ace6b
       body: |
