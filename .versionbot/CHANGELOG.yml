@@ -1,4 +1,17 @@
 - commits:
+    - subject: Restore rtl8188eufw firmware for cm4-ioboard and pi400
+      hash: 2b02db1b34447f49c53beca04115cb73fd89ab65
+      body: ''
+      footer:
+        Changelog-entry: Restore rtl8188eufw firmware for cm4-ioboard and pi400
+        changelog-entry: Restore rtl8188eufw firmware for cm4-ioboard and pi400
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 2.83.21+rev2
+  date: 2021-09-09T18:11:49.994Z
+- commits:
     - subject: Update meta-balena from v2.83.10 to v2.83.21
       hash: e0d458c59513ad7ef30ea6d769da085809db3af5
       body: |

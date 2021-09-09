@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.83.21+rev2
+## (2021-09-09)
+
+* Restore rtl8188eufw firmware for cm4-ioboard and pi400 [Kyle Harding]
+
 # v2.83.21+rev1
 ## (2021-09-03)
 
