@@ -181,3 +181,9 @@ BALENA_CONFIGS[rtrpi300cfgs] = " \
     CONFIG_SPI_BCM2835=m \
     CONFIG_CH432T_SPI=m \
 "
+
+BALENA_CONFIGS_append_raspberrypi4-64 = " gasket"
+BALENA_CONFIGS[gasket] = " \
+        CONFIG_STAGING_GASKET_FRAMEWORK=m \
+        CONFIG_STAGING_APEX_DRIVER=m \
+"
