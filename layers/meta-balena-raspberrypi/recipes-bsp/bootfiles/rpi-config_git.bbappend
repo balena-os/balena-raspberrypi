@@ -6,7 +6,7 @@ do_deploy_append() {
     # Disable firmware splash by default
     echo "disable_splash=1" >>${DEPLOYDIR}/bootfiles/config.txt
     # Disable firmware warnings showing in non-debug images
-    if ! ${@bb.utils.contains('DISTRO_FEATURES','development-image','true','false',d)}; then
+    if ! ${@bb.utils.contains('DISTRO_FEATURES','osdev-image','true','false',d)}; then
         echo "avoid_warnings=1" >>${DEPLOYDIR}/bootfiles/config.txt
     fi
     # Enable audio (loads snd_bcm2835)
@@ -49,6 +49,6 @@ EOF
 }
 
 # On Raspberry Pi 3 and Raspberry Pi Zero WiFi, serial ttyS0 console is only
-# usable if ENABLE_UART = 1. On development images, we want serial console
-# available.
-ENABLE_UART = "${@bb.utils.contains('DISTRO_FEATURES','development-image','1','0',d)}"
+# usable if ENABLE_UART = 1. On OS development images, we want serial console
+# available, production devices can enable it with a configuration variable.
+ENABLE_UART ?= "${@bb.utils.contains('DISTRO_FEATURES','osdev-image','1','0',d)}"
