@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.85.2+rev3
+## (2021-09-22)
+
+* Restore connectivity firmware that was previously removed for space [Kyle Harding]
+* Enable firmware compression for cm4-ioboard and pi400 [Kyle Harding]
+
 # v2.85.2+rev2
 ## (2021-09-22)
 

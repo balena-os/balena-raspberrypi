@@ -1,4 +1,27 @@
 - commits:
+    - subject: Restore connectivity firmware that was previously removed for space
+      hash: 89a5f2832e12f8152c9df893566d12d801a9a48e
+      body: ''
+      footer:
+        Changelog-entry: Restore connectivity firmware that was previously removed for space
+        changelog-entry: Restore connectivity firmware that was previously removed for space
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+    - subject: Enable firmware compression for cm4-ioboard and pi400
+      hash: ec73f771a33ee85626e61ff41de1f1e882499a88
+      body: ''
+      footer:
+        Changelog-entry: Enable firmware compression for cm4-ioboard and pi400
+        changelog-entry: Enable firmware compression for cm4-ioboard and pi400
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 2.85.2+rev3
+  date: 2021-09-22T16:57:59.983Z
+- commits:
     - subject: >-
         Fix USB 2.0 on Raspberry Pi 4 v1.4 by removing obsolete xhci pci patch
         for VL805
