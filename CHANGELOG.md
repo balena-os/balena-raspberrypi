@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.85.2+rev3
+## (2021-09-23)
+
+* Restore rtl8188eufw firmware (requested for cm4-ioboard and pi400) [Kyle Harding]
+* Enable linux-firmware compression for all Raspberry Pi 4 based boards [Florin Sarbu]
+
 # v2.85.2+rev2
 ## (2021-09-22)
 

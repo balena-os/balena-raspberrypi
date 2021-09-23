@@ -1,4 +1,32 @@
 - commits:
+    - subject: Restore rtl8188eufw firmware (requested for cm4-ioboard and pi400)
+      hash: 00f6bd77b155ba317c17d558b1d715eb0768d04d
+      body: |
+        This was requested to be added back for an user on cm4-ioboard
+        and pi400.
+      footer:
+        Changelog-entry: Restore rtl8188eufw firmware (requested for cm4-ioboard and pi400)
+        changelog-entry: Restore rtl8188eufw firmware (requested for cm4-ioboard and pi400)
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+    - subject: Enable linux-firmware compression for all Raspberry Pi 4 based boards
+      hash: 80c3acb69195317090f72f78078107aa7bb71437
+      body: |
+        We have ran out of root filesystem space for Raspberry Pi 4 when
+        doing a HUP so let's enable firmware compression on all Pi 4 based
+        devices.
+      footer:
+        Changelog-entry: Enable linux-firmware compression for all Raspberry Pi 4 based boards
+        changelog-entry: Enable linux-firmware compression for all Raspberry Pi 4 based boards
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.85.2+rev3
+  date: 2021-09-23T14:21:29.918Z
+- commits:
     - subject: >-
         Fix USB 2.0 on Raspberry Pi 4 v1.4 by removing obsolete xhci pci patch
         for VL805
