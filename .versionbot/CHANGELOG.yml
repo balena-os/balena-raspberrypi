@@ -1,4 +1,17 @@
 - commits:
+    - subject: 'linux-raspberrypi: Add gasket driver for raspberrypi4-64'
+      hash: a55cd5246f8d28a10a280f12502113ae1c4d697a
+      body: ''
+      footer:
+        Changelog-entry: 'linux-raspberrypi: Add gasket driver for raspberrypi4-64'
+        changelog-entry: 'linux-raspberrypi: Add gasket driver for raspberrypi4-64'
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 2.85.2+rev4
+  date: 2021-10-07T20:33:03.951Z
+- commits:
     - subject: Restore rtl8188eufw firmware (requested for cm4-ioboard and pi400)
       hash: 00f6bd77b155ba317c17d558b1d715eb0768d04d
       body: |

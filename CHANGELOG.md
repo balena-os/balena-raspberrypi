@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.85.2+rev4
+## (2021-10-07)
+
+* linux-raspberrypi: Add gasket driver for raspberrypi4-64 [Kyle Harding]
+
 # v2.85.2+rev3
 ## (2021-09-23)
 
