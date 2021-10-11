@@ -47,8 +47,8 @@ KERNEL_BOOTCMD_raspberrypi4-64 = "booti"
 # RPI Use u-boot. This needs to be 1 as we use u-boot
 RPI_USE_U_BOOT = "1"
 
-# Set this to 1 if development image is desired
-#DEVELOPMENT_IMAGE = "1"
+# Set this to 1 to disable quiet boot and allow bootloader shell access
+#OS_DEVELOPMENT = "1"
 
 # Set this to make build system generate resinhup bundles
 #RESINHUP ?= "yes"
