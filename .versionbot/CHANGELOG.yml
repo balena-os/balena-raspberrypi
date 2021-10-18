@@ -1,4 +1,21 @@
 - commits:
+    - subject: 'meta-balena-raspberrypi: update local.conf.sample'
+      hash: 2db9a29352ba83cb7d65335ddb9b9c31c1e85706
+      body: |
+        Update the sample configuration file to use OS_DEVELOPMENT instead of
+        DEVELOPMENT_IMAGE.
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: 'meta-balena-raspberrypi: update local.conf.sample'
+        changelog-entry: 'meta-balena-raspberrypi: update local.conf.sample'
+        Signed-off-by: Mark Corbin <mark@balena.io>
+        signed-off-by: Mark Corbin <mark@balena.io>
+      author: Mark Corbin
+      nested: []
+  version: 2.85.2+rev4
+  date: 2021-10-18T11:24:16.164Z
+- commits:
     - subject: Restore rtl8188eufw firmware (requested for cm4-ioboard and pi400)
       hash: 00f6bd77b155ba317c17d558b1d715eb0768d04d
       body: |

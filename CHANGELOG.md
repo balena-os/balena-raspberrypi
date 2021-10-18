@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.85.2+rev4
+## (2021-10-18)
+
+* meta-balena-raspberrypi: update local.conf.sample [Mark Corbin]
+
 # v2.85.2+rev3
 ## (2021-09-23)
 
