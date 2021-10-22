@@ -1,10 +1,11 @@
----
-type: 'yocto-based OS image'
+esr:
+  version: '2021.10'
 reviewers: 1
+type: yocto-based OS image
 upstream:
-  - repo: 'meta-resin'
-    url: 'http://github.com/resin-os/meta-resin'
-  - repo: 'meta-balena'
-    url: 'http://github.com/balena-os/meta-balena'
-  - repo: 'balena-yocto-scripts'
-    url: 'http://github.com/balena-os/balena-yocto-scripts'
+- repo: meta-resin
+  url: http://github.com/resin-os/meta-resin
+- repo: meta-balena
+  url: http://github.com/balena-os/meta-balena
+- repo: balena-yocto-scripts
+  url: http://github.com/balena-os/balena-yocto-scripts
