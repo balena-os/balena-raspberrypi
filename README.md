@@ -1,4 +1,4 @@
-#  balena-raspberrypi repository
+# balena-raspberrypi repository
 
 ## Clone/Initialize the repository
 
@@ -43,7 +43,7 @@ See below for using the build script.
 
 ### Issues
 
-For issues we use an aggregated github repository available [here](https://github.com/balena-os/balenaos/issues). When you create issue make sure you select the right labels.
+For issues we use an aggregated github repository available [here](https://github.com/balena-os/balena-os/issues). When you create issue make sure you select the right labels.
 
 ### Pull requests
 
@@ -65,7 +65,7 @@ The header of each commit must not exceed 72 characters in length and must be in
 
 The header and the subject of each commit must be separated by an empty line.
 
-The subject of each commit must not exceed 72 characters in length but can be wrapped to several lines.
+The subject of each commit must not exceed 72 characters per line and can be wrapped to several lines.
 
 The subject and the footer of each commit must be separated by an empty line.
 
@@ -80,7 +80,7 @@ layers/meta-balena: Update to v2.24.0
 
 Update meta-balena from 2.19.0 to 2.24.0
 
-Changelog-entry: Update the meta-balena submodule from v2.19.0 to v2.24.0
+Changelog-entry: Update meta-balena from v2.19.0 to v2.24.0
 ```
 
 Make sure you mention the issue addressed by a PR. See:
