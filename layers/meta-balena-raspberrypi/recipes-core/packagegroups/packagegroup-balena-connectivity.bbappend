@@ -24,9 +24,7 @@ REMOVED_FOR_HUP_SPACE = " \
     linux-firmware-iwlwifi-9260 \
     linux-firmware-iwlwifi-qu-b0-hr-b0 \
     linux-firmware-pcie8897 \
-    linux-firmware-rtl8723 \
     linux-firmware-rtl8821 \
-    linux-firmware-rtl8723b-bt \
     linux-firmware-ralink-nic \
     linux-firmware-ath9k \
     linux-firmware-ralink \
