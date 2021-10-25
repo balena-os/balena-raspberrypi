@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.85.2+rev5
+## (2021-10-25)
+
+* Correct wording in README.md about commit subject length [Florin Sarbu]
+
 # v2.85.2+rev4
 ## (2021-10-18)
 

@@ -1,4 +1,17 @@
 - commits:
+    - subject: Correct wording in README.md about commit subject length
+      hash: 64876bb3febd8f788ddaa7f0b75021a22ad1c448
+      body: ''
+      footer:
+        Changelog-entry: Correct wording in README.md about commit subject length
+        changelog-entry: Correct wording in README.md about commit subject length
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.85.2+rev5
+  date: 2021-10-25T11:56:43.307Z
+- commits:
     - subject: 'meta-balena-raspberrypi: update local.conf.sample'
       hash: 2db9a29352ba83cb7d65335ddb9b9c31c1e85706
       body: |
