@@ -1,6 +1,8 @@
 CONNECTIVITY_FIRMWARES_append = " \
     linux-firmware-rpidistro-bcm43430 \
     linux-firmware-rpidistro-bcm43455 \
+    linux-firmware-rtl8723 \
+    linux-firmware-rtl8723b-bt \
     linux-firmware-sd8887 \
     bluez-firmware-rpidistro-bcm43430a1-hcd \
     bluez-firmware-rpidistro-bcm4345c0-hcd \
