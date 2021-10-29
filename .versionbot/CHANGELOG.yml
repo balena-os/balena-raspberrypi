@@ -1,4 +1,29 @@
 - commits:
+    - subject: >-
+        Fix USB 2.0 on Raspberry Pi 4 v1.4 by removing obsolete xhci pci patch
+        for VL805
+      hash: 530354a34b603f328709ccbad075506091b34094
+      body: |
+        The changes from this patch are now upstreamed in other form
+        so let's remove this obsolete backport from our layer.
+
+        With this patch being applied, the USB 2.0 ports on a Raspberry Pi 4
+        v1.4 (the 8GB RAM version for example) - which lacks SPI flash for the
+        VIA VL805 chip - do not function.
+      footer:
+        Changelog-entry: >-
+          Fix USB 2.0 on Raspberry Pi 4 v1.4 by removing obsolete xhci pci patch
+          for VL805
+        changelog-entry: >-
+          Fix USB 2.0 on Raspberry Pi 4 v1.4 by removing obsolete xhci pci patch
+          for VL805
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2021.10.1
+  date: 2021-10-27T15:53:43.909Z
+- commits:
     - subject: Update meta-balena from v2.83.10 to v2.83.21
       hash: e0d458c59513ad7ef30ea6d769da085809db3af5
       body: |
