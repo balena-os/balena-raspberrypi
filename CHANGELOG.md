@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2021.10.1
+## (2021-10-27)
+
+* Fix USB 2.0 on Raspberry Pi 4 v1.4 by removing obsolete xhci pci patch for VL805 [Florin Sarbu]
+
 # 2021.10.0
 ## (2021-10-22)
 
