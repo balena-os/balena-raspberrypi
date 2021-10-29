@@ -18,10 +18,6 @@ SRC_URI_append = " \
 	file://0001-seeed-studio-can-bus-v2-Add-dtbo-for-this-can-bus.patch \
 "
 
-SRC_URI_append_raspberrypi4-64 = " \
-	file://0008-usb-xhci-pci-Raspberry-Pi-FW-loader-for-VIA-VL805.patch \
-"
-
 SRC_URI_append_rt-rpi-300 = " \
 	file://rt-rpi-300-Add-changes-for-this-dt.patch \
 	file://rt-rpi-Add-ch-432t-driver-for-this-chip.patch \
