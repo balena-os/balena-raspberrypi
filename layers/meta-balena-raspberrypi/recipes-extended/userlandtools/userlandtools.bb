@@ -6,7 +6,7 @@ LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://LICENCE;md5=0448d6488ef8cc380632b1569ee6d196"
 
 SRC_URI = "\
-           git://github.com/${SRCFORK}/userland.git;protocol=git;branch=${SRCBRANCH} \
+           git://github.com/${SRCFORK}/userland.git;protocol=https;branch=${SRCBRANCH} \
            file://0001-dtoverlay_main-Fix-configfs-mount-failure.patch \
 "
 
