@@ -1,4 +1,754 @@
 - commits:
+    - subject: Update meta-balena from v2.85.2 to v2.86.0
+      hash: e4abf20d2947d2f7ec6fb43c67de4e11dd81e7ec
+      body: |
+        Update meta-balena from 2.85.2 to 2.86.0
+      footer:
+        Changelog-entry: Update meta-balena from v2.85.2 to v2.86.0
+        changelog-entry: Update meta-balena from v2.85.2 to v2.86.0
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested:
+        - commits:
+            - subject: Create new data partition reset service
+              hash: 60f7dd78b93c3a079aac346d5f587198e541a1a8
+              body: |
+                Similar to state-reset, the data partition will be mostly
+                purged if the remove_me_to_reset file is removed.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.86.0
+          date: 2021-10-29T12:26:28.613Z
+        - commits:
+            - subject: restrict dtoverlay test to rpi devices
+              hash: 98d8f80b6e2c49fabecad70f539a3e247ac20895
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.85.17
+          date: 2021-10-28T13:26:21.042Z
+        - commits:
+            - subject: Update balena-engine to v19.03.30
+              hash: abf610e022eeac709c054e4fb672b850ef08a940
+              body: >
+                Fixes EINVAL errors caused by sockets during storage migration,
+
+                https://github.com/balena-os/balena-engine/commit/17a198cb53a53da456c848bf303dc3917ca538c5
+
+
+                Update balena-engine from 19.03.29 to 19.03.30
+              footer:
+                Changelog-entry: Update balena-engine to v19.03.30
+                changelog-entry: Update balena-engine to v19.03.30
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Robert Günzler <robertg@balena.io>
+                signed-off-by: Robert Günzler <robertg@balena.io>
+              author: Robert Günzler
+              nested:
+                - commits:
+                    - subject: 'storagemigration: keep going if migration fails'
+                      hash: 2bde63c800b1df72fba7161d62b5b6da84a8d390
+                      body: >
+                        the only hard error is if rollback (failcleanup) fails,
+                        in all other
+
+                        scenarios we want the daemon to continue starting with
+                        the new
+
+                        graphdriver
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Robert Günzler <robertg@balena.io>
+                        signed-off-by: Robert Günzler <robertg@balena.io>
+                      author: Robert Günzler
+                      nested: []
+                    - subject: 'graphdriver/copy: fix handling of sockets'
+                      hash: 17a198cb53a53da456c848bf303dc3917ca538c5
+                      body: >
+                        previously switch would treat S_IFIFO and S_IFSOCK as
+                        the same, passing
+
+                        both of the to mkfifo, which lead to EINVAL errors when
+                        trying to create
+
+                        the socket, we instead handle socket separately.
+
+
+                        Also adds cases for this to the unit and integration
+                        tests of the
+
+                        migrator.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Robert Günzler <robertg@balena.io>
+                        signed-off-by: Robert Günzler <robertg@balena.io>
+                      author: Robert Günzler
+                      nested: []
+                  version: balena-engine-19.03.30
+                  date: 2021-10-26T13:43:43.638Z
+          version: meta-balena-2.85.16
+          date: 2021-10-27T10:26:55.185Z
+        - commits:
+            - subject: 'linux-firmware: Include RTL8723BU firmware files'
+              hash: 2490287e51d96f3ceabd7e3d7a9cd93f49442ba7
+              body: >
+                The driver for RTL8723BU wireless chipset is present, but its
+                firmware
+
+                files are not loaded. This patch includes them.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Zahari Petkov <zahari@balena.io>
+                signed-off-by: Zahari Petkov <zahari@balena.io>
+              author: Zahari Petkov
+              nested: []
+          version: meta-balena-2.85.15
+          date: 2021-10-26T15:34:07.511Z
+        - commits:
+            - subject: 'balena-supervisor: Update balena-supervisor to v12.11.0'
+              hash: 983eba7a9e61ba9fdd494807d516f1006a7a3504
+              body: |
+                Update supervisor to latest version to add API backoff behavior.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Felipe Lalanne <felipe@balena.io>
+                signed-off-by: Felipe Lalanne <felipe@balena.io>
+              author: Felipe Lalanne
+              nested: []
+          version: meta-balena-2.85.14
+          date: 2021-10-25T15:51:29.429Z
+        - commits:
+            - subject: >-
+                balena-engine: Remove deprecated development drop-in service
+                file
+              hash: 8db04c4e70fc4f30ae6b9e5009d04d8c247d7364
+              body: >
+                This file is no longer used since the merge of dev and prod
+                images.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.85.13
+          date: 2021-10-21T13:51:52.714Z
+        - commits:
+            - subject: make led test work with beaglebone
+              hash: e615c008f916fb4542731c3b0c860be0d79a71b2
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.85.12
+          date: 2021-10-21T10:59:58.802Z
+        - commits:
+            - subject: 'patch: Add dtoverlay practical test'
+              hash: 76664fceb33d01cf504df464879569f8c147f2fd
+              body: ''
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+              author: Vipul Gupta (@vipulgupta2048)
+              nested: []
+          version: meta-balena-2.85.11
+          date: 2021-10-06T07:35:19.121Z
+        - commits:
+            - subject: >-
+                image-balena: Decouple boot directory generation from rootfs
+                task
+              hash: 0a2a6bc11a0868c6cd858f28783eccfee5199ca9
+              body: >
+                The boot partition needs to be generated before creating the
+                balenaos-img
+
+                but is not part of the root filesystem generation.
+
+
+                The decoupling allows to build just the docker rootfs image
+                without
+
+                having to build the balenaos-img target.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.85.10
+          date: 2021-10-04T11:39:33.460Z
+        - commits:
+            - subject: 'classes/resin-u-boot: Increase OS_BOOTCOUNT_LIMIT to 3'
+              hash: 2756f4e2621f6f24ed8e0add675049bf3515383f
+              body: |
+                Let's increase the current value for the rollback-altboot
+                bootcount to 3, to account for accidental poweroffs triggered
+                by users or by power supplys when booting into the new OS,
+                during HUP.
+
+                When the limit is reached, u-boot will proceed to try
+                to boot into the old OS.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.85.9
+          date: 2021-10-01T13:01:16.476Z
+        - commits:
+            - subject: 'hostapp-update-hooks: Blacklist Rock Pi configuration file'
+              hash: 5379c4131b23e912dda9eddc0c309301d007414b
+              body: |
+                The Rock Pi 4B uses a file named hw_intf.conf for
+                enabling/disabling interfaces and for loading overlays.
+                Just noting that the syntax is also slightly different
+                from the config.txt file on RaspberryPi.
+
+                Let's blacklist this file to avoid overriding
+                it during an OS update.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.85.8
+          date: 2021-09-29T13:49:00.466Z
+        - commits:
+            - subject: >-
+                balena-healthcheck: Remove redundant steps and rely on
+                hello-world
+              hash: 33925aa5132f23e92d3754b4422c22f40d854d42
+              body: >
+                In situations with limited resources the info and ps commands
+                can take
+
+                an unecessarily long time when we really only need to know that
+                a
+
+                container can be started.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.85.7
+          date: 2021-09-28T14:01:40.209Z
+        - commits:
+            - subject: 'kernel-balena: Fix kernel config warning for UPROBE_EVENTS'
+              hash: 877a846369f8863145546afe4899de8f14148d94
+              body: >
+                Some BSP kernel configurations do not define FTRACE, so add it
+                as a
+
+                dependency.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'kernel-balena: Configure DEBUG_FS'
+              hash: 15694f9e9510cd0e2c5cd3514d611761724ef003
+              body: >
+                The debugging filesystem is usually mounted on user images and
+                it is
+
+                enabled by default on most Linux distributions.
+
+
+                Fixes balena-os/balena-allwinner#128
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.85.6
+          date: 2021-09-27T10:20:36.218Z
+        - commits:
+            - subject: Run iwlwifi firmware cleanup in fakeroot
+              hash: 24b6b9cdc0228c85671a0ba492cfd148a6c547ae
+              body: >
+                This prevents downstream linux-firmware fakeroot tasks, such as
+
+                firmware compression, from encountering Pseudo Abort due to
+                files
+
+                changing outside the fakeroot context.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.85.5
+          date: 2021-09-23T16:39:34.551Z
+        - commits:
+            - subject: 'common: conf: create disable-user-ns distro feature'
+              hash: 7dde2133a5b1df710255b8b0471385cca1449c1d
+              body: >
+                When user namespacing was enabled in the kernel by default, a
+                separate
+
+                commit [0] was introduced to disable the feature at runtime, to
+                allow
+
+                users/administrators to explicitly choose to enable it, avoiding
+
+                potential security implications.
+
+
+                However, some applications such as Chromium's sandbox, require
+                either
+
+                SUID or user namespacing to work. Disabling this feature on
+                boards
+
+                that previously enabled it necessitates container modifications
+                and
+
+                potentially breaks previously working applications.
+
+
+                Create a distro feature to disable user namespacing by default
+                in
+
+                meta-balena, while allowing device types to keep it enabled to
+                maintain
+
+                compatibility with their original behavior.
+
+
+                https://github.com/balena-os/meta-balena/commit/31c3ae8ad5c7ad45e450349b6972524da120e96c
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.85.4
+          date: 2021-09-21T19:37:48.181Z
+        - commits:
+            - subject: 'balena-os-sysctl: Reduce the console default loglevel'
+              hash: 626b0e25cbd13ca65a74bbfe09ff9e0828b380bb
+              body: >
+                This avoids the kernel printing debug messages on the consoles.
+                It is
+
+                also the default in other upstream distros like Ubuntu.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-config-vars: Re-run os-sshkeys if config.json is modified'
+              hash: 67b7aa5b58a26178411b598415e296fea5628a00
+              body: >
+                This change allows to pick-up changes to "os.sshKeys" in
+                config.json
+
+                without having to reboot.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'systemd: Use drop-in to modify unit files instead of sed'
+              hash: b07a78453243d12db59524836c3cc62d355a6f2d
+              body: >
+                Performing unit modifications in drop-in files is better
+                practise.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.85.3
+          date: 2021-09-21T11:28:51.115Z
+    - subject: Update balena-yocto-scripts from v1.14.9 to 1.15.8
+      hash: c68419732f3dcc07e538a7e1f0e3cd30bbd41e4c
+      body: |
+        Update balena-yocto-scripts from 1.14.9 to 1.15.8
+      footer:
+        Changelog-entry: Update balena-yocto-scripts from v1.14.9 to 1.15.8
+        changelog-entry: Update balena-yocto-scripts from v1.14.9 to 1.15.8
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested:
+        - commits:
+            - subject: 'Dockerfile_yocto-build-env: Install Honister host deps'
+              hash: efc069c609431965394912d3ffd34362a1108852
+              body: >
+                See
+                http://docs.yoctoproject.org/next/migration-guides/migration-3.4.html#new-host-dependencies
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: balena-yocto-scripts-1.15.8
+          date: 2021-11-03T10:01:44.980Z
+        - commits:
+            - subject: 'jenkins_build.sh: Fix deployment for discontinued device types'
+              hash: 84e65e937fef38625277fb8330ebd3179c466d04
+              body: >
+                Do not deploy dockerhub or hostapp images for discontinued
+                device types.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'jenkins_build.sh: Remove PRIVATE_DT as it is unused'
+              hash: 35fd54620ff5eb487b1323a1ead5fef9c157e385
+              body: >
+                The private device types status is checked with the API when
+                required.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'jenkins_build.sh: Fix lint warnings'
+              hash: 068a4197101a2db4aba60793e01564b67d14f820
+              body: |
+                Fix some minor lint warnings.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.15.7
+          date: 2021-10-25T16:57:03.955Z
+        - commits:
+            - subject: >-
+                balena-generate-ami.sh: wait for boot partition when preloading
+                AMI
+              hash: d2ea170a86810a782eeb241e178d4ad72c4939b0
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: balena-yocto-scripts-1.15.6
+          date: 2021-10-21T15:04:37.774Z
+        - commits:
+            - subject: >-
+                jenkins_generate_ami.sh: Use a shared directory for preloaded
+                image
+              hash: 9b032f2fddc970db13147b4e637abd1bada1f234
+              body: >
+                The previous commit moved the preloaded image out of yocto
+                cache, which
+
+                made it unreachable from the balena-generate-ami-env container.
+
+
+                This patch makes mktemp create the file back within yocto cache
+                to ensure
+
+                this is shared yet still each concurrent process can safely have
+                its own copy.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: balena-yocto-scripts-1.15.5
+          date: 2021-10-21T04:50:17.146Z
+        - commits:
+            - subject: 'barys: update development image variables'
+              hash: 427510332026ca8636dedb6630632a740b481374
+              body: |
+                Update the DEVELOPMENT_IMAGE references to use OS_DEVELOPMENT
+                following the changes to the handling of OS variants.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: 'barys: update development image variables'
+                changelog-entry: 'barys: update development image variables'
+                Signed-off-by: Mark Corbin mark@balena.io
+                signed-off-by: Mark Corbin mark@balena.io
+              author: Mark Corbin
+              nested: []
+          version: balena-yocto-scripts-1.15.4
+          date: 2021-10-20T09:40:14.890Z
+        - commits:
+            - subject: 'jenkins_generate_ami.sh: Preload outside of yocto cache'
+              hash: fb1763984d76218adc2510da6cb673fbad7197be
+              body: >
+                Since the file name is hardcoded at this moment, this fails when
+                two
+
+                builds are running in parallel (e.g. dev and prod variants
+                during deploy)
+
+                because they try to preload the same file at pretty much the
+                same moment.
+
+                Having a separate copy for each outside of yocto cache should
+                fix the issue.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: balena-yocto-scripts-1.15.3
+          date: 2021-10-20T05:12:57.093Z
+        - commits:
+            - subject: >-
+                balena-generate-ami.sh: correctly mount boot partition when
+                injecting SSH key
+              hash: c0f6da3e4fe3f9c51ba8b279986a6f4baffe6d96
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: balena-yocto-scripts-1.15.2
+          date: 2021-10-01T14:45:58.407Z
+        - commits:
+            - subject: Update balena-cli to 12.50.1
+              hash: 700ebe6d06385440488a42c42179d19434376209
+              body: >
+                This is necessary for AMI preloading to work, additionally
+
+                it has been more than a year since the last update, we should
+                keep up.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Update balena-cli to 12.50.1
+                changelog-entry: Update balena-cli to 12.50.1
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: balena-yocto-scripts-1.15.1
+          date: 2021-10-01T10:11:14.438Z
+        - commits:
+            - subject: >-
+                jenkins_generate_ami.sh: Use lib function to get arch from
+                config.json
+              hash: fffe9ffb363c9eed783a5055e69847c81eb68bcd
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: >-
+                balena-generate-ami.sh: Look for boot partition by label rather
+                than hardcoding p1
+              hash: 45786e701d05811f96d0aeef20481442bb1d0f1c
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: 'balena-generate-ami.sh: Fail if AMI already exists'
+              hash: 9e9a792aed2a659c1ed7327237a61594033b308a
+              body: >
+                This was only ignored for development purposes, we should not
+                replace
+
+                released images.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: 'balena-generate-ami.sh: sync after writing config.json'
+              hash: f0838aaee9751a6fb60558a7646d597b1f99b1c3
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: 'balena-generate-ami.sh: Stick to POSIX-compliant [ instead of [['
+              hash: 2c6a97c263a71c63387290fca29ba5b01eba8db4
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: 'balena-generate-ami.sh: Remove useless statements'
+              hash: 9d4ac02f3ad8eadaed79703dbc859c4950449810
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: >-
+                jenkins_generate_ami.sh: Use architecture as suffix instead of
+                machine name
+              hash: 7d2e3911defedc500b3b1ded3268dbe74bb523b0
+              body: >
+                This removes the necessity for the DT being named generic-*. It
+                also means
+
+                all the DTs of the same architecture will preload the same app.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: 'jenkins_build.sh: pass MACHINE to jenkins_generate_ami.sh'
+              hash: 0e33582e2860474e1c6aff5275539b1333aef6b9
+              body: >
+                This removes the dependency on JOB_NAME from
+                jenkins_generate_ami.sh
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: 'AMI automation: Adjust AMI names to be compatible with AWS API'
+              hash: bc91b7036b32aa57c053c115ac87b7f21fa634c8
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: ab77
+              nested: []
+            - subject: 'AMI automation: Correct S3 bucket name and key'
+              hash: 8864adcb20c1f4cbfd48e422dbae44b885c8ca06
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: ab77
+              nested: []
+            - subject: 'AMI automation: Add a separate container for generaing AMI'
+              hash: d7d91ff4c3ea655dfa9a483a020d2d16aa5e0f49
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: 'AMI automation: shellcheck and resolve violations'
+              hash: 6b11dd26bc1229aafed98c5933f23e892811f49f
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: ab77
+              nested: []
+            - subject: 'AMI automation: Use staging env by default'
+              hash: 21fa55a6f73faf59fe5fc3b1e6e8bc4084e17c01
+              body: ''
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Tomás Tormo <tomast@balena.io>
+                signed-off-by: Tomás Tormo <tomast@balena.io>
+              author: Tomás Tormo
+              nested: []
+            - subject: 'AMI automation: Simplify public ssh addition. Do not use sudo'
+              hash: dd96771607f79620a241e4dee99879542643f55f
+              body: ''
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Tomás Tormo <tomast@balena.io>
+                signed-off-by: Tomás Tormo <tomast@balena.io>
+              author: Tomás Tormo
+              nested: []
+            - subject: 'automation: Generate and publish AMI from the raw balenaOS image'
+              hash: efe2b5beb5ea6b00fff07372a312c7e0c690654b
+              body: ''
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Tomás Tormo <tomast@balena.io>
+                signed-off-by: Tomás Tormo <tomast@balena.io>
+              author: Tomás Tormo
+              nested: []
+          version: balena-yocto-scripts-1.15.0
+          date: 2021-10-01T04:12:24.310Z
+  version: 2.86.0+rev1
+  date: 2021-11-04T11:15:56.831Z
+- commits:
     - subject: Correct wording in README.md about commit subject length
       hash: 64876bb3febd8f788ddaa7f0b75021a22ad1c448
       body: ''
