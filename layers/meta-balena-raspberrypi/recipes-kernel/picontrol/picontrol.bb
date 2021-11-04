@@ -5,7 +5,7 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
 inherit module
 
 SRC_URI = " \
-	git://github.com/RevolutionPi/piControl \
+	git://github.com/RevolutionPi/piControl;protocol=https; \
 	file://0001-Use-modules_install-as-wanted-by-yocto.patch \
 	file://0002-Search-config-file-in-mnt-boot.patch \
 "

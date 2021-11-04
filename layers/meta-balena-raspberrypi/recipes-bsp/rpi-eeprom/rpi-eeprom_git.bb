@@ -8,7 +8,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=7dcd1a1eb18ae569857c21cae81347cb"
 # EEPROM configuration default values for this version, as specified at
 # https://www.raspberrypi.org/documentation/hardware/raspberrypi/booteeprom.md
 SRC_URI = " \
-    git://github.com/${SRCFORK}/rpi-eeprom.git;protocol=git;branch=${SRCBRANCH} \
+    git://github.com/${SRCFORK}/rpi-eeprom.git;protocol=https;branch=${SRCBRANCH} \
     file://default-config.txt \
 "
 
