@@ -30,8 +30,8 @@ GPU_MEM = "16"
 
 # for the moment, we disable vc4 graphics for all but the 64 bits machines
 DISABLE_VC4GRAPHICS = "1"
-DISABLE_VC4GRAPHICS_remove_raspberrypi3-64 = "1"
-DISABLE_VC4GRAPHICS_remove_raspberrypi4-64 = "1"
+DISABLE_VC4GRAPHICS:remove_raspberrypi3-64 = "1"
+DISABLE_VC4GRAPHICS:remove_raspberrypi4-64 = "1"
 
 # RPI BSP uses uncompressed kernel images by default
 KERNEL_IMAGETYPE="zImage"
