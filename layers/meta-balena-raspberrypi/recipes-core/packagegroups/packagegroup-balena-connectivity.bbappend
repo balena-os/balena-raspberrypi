@@ -1,29 +1,29 @@
-CONNECTIVITY_FIRMWARES_append = " \
+CONNECTIVITY_FIRMWARES:append = " \
     linux-firmware-rpidistro-bcm43430 \
     linux-firmware-rpidistro-bcm43455 \
     linux-firmware-sd8887 \
     bluez-firmware-rpidistro-bcm43430a1-hcd \
     bluez-firmware-rpidistro-bcm4345c0-hcd \
 "
-CONNECTIVITY_FIRMWARES_append_raspberrypi = " linux-firmware-mt7601u"
+CONNECTIVITY_FIRMWARES:append:raspberrypi = " linux-firmware-mt7601u"
 
-CONNECTIVITY_FIRMWARES_append_raspberrypi400-64 = " \
+CONNECTIVITY_FIRMWARES:append:raspberrypi400-64 = " \
     linux-firmware-rpidistro-bcm43456 \
     bluez-firmware-rpidistro-bcm4345c5-hcd \
 "
 
-CONNECTIVITY_FIRMWARES_remove_raspberrypi4-64 = " \
+CONNECTIVITY_FIRMWARES:remove:raspberrypi4-64 = " \
     linux-firmware-rpidistro-bcm43436 \
     linux-firmware-rpidistro-bcm43436s \
 "
 
-CONNECTIVITY_FIRMWARES_append_raspberrypi0-2w-64 = " \
+CONNECTIVITY_FIRMWARES:append:raspberrypi0-2w-64 = " \
     linux-firmware-rpidistro-bcm43436 \
     linux-firmware-rpidistro-bcm43436s \
     bluez-firmware-rpidistro-bcm43430b0-hcd \
 "
 
-CONNECTIVITY_FIRMWARES_remove_raspberrypi0-2w-64 = " \
+CONNECTIVITY_FIRMWARES:remove:raspberrypi0-2w-64 = " \
     linux-firmware-rpidistro-bcm43430 \
     linux-firmware-rpidistro-bcm43455 \
     bluez-firmware-rpidistro-bcm43430a1-hcd \
@@ -76,6 +76,6 @@ REMOVED_FOR_HUP_SPACE = " \
 
 # Temporary make space for HUP, untill firmwares
 # are provided by hostapp-extensions
-CONNECTIVITY_FIRMWARES_remove_raspberrypi400-64 = "${REMOVED_FOR_HUP_SPACE}"
-CONNECTIVITY_FIRMWARES_remove_raspberrypicm4-ioboard = "${REMOVED_FOR_HUP_SPACE}"
-CONNECTIVITY_FIRMWARES_remove_raspberrypi0-2w-64 = "${REMOVED_FOR_HUP_SPACE}"
+CONNECTIVITY_FIRMWARES:remove:raspberrypi400-64 = "${REMOVED_FOR_HUP_SPACE}"
+CONNECTIVITY_FIRMWARES:remove:raspberrypicm4-ioboard = "${REMOVED_FOR_HUP_SPACE}"
+CONNECTIVITY_FIRMWARES:remove:raspberrypi0-2w-64 = "${REMOVED_FOR_HUP_SPACE}"
