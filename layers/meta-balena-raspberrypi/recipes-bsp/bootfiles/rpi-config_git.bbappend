@@ -1,4 +1,4 @@
-do_deploy_append() {
+do_deploy:append() {
     # Enable i2c by default
     echo "dtparam=i2c_arm=on" >>${DEPLOYDIR}/bootfiles/config.txt
     # Enable SPI by default
@@ -13,29 +13,29 @@ do_deploy_append() {
     echo "dtparam=audio=on" >> ${DEPLOYDIR}/bootfiles/config.txt
 }
 
-do_deploy_append_fincm3() {
+do_deploy:append:fincm3() {
 	# Use the Balena Fin device tree overlay
 	echo "dtoverlay=balena-fin" >> ${DEPLOYDIR}/bootfiles/config.txt
 }
 
-do_deploy_append_npe-x500-m3() {
+do_deploy:append:npe-x500-m3() {
   # Use the NPE X500 M3 device tree overlay
   echo "dtoverlay=npe-x500-m3" >> ${DEPLOYDIR}/bootfiles/config.txt
 }
 
-do_deploy_append_revpi-connect() {
+do_deploy:append:revpi-connect() {
 	# Use the RevPi Connect device tree overlay
 	echo "dtoverlay=revpi-connect" >> ${DEPLOYDIR}/bootfiles/config.txt
 }
 
-do_deploy_append_raspberrypi3-unipi-neuron() {
+do_deploy:append:raspberrypi3-unipi-neuron() {
 	# Use the dt overlays required by the UniPi Neuron family of boards
 	echo "dtoverlay=neuronee" >> ${DEPLOYDIR}/bootfiles/config.txt
 	echo "dtoverlay=i2c-rtc,mcp7941x" >> ${DEPLOYDIR}/bootfiles/config.txt
 	echo "dtoverlay=neuron-spi-new" >> ${DEPLOYDIR}/bootfiles/config.txt
 }
 
-do_deploy_append_revpi-core-3() {
+do_deploy:append:revpi-core-3() {
     cat >> ${DEPLOYDIR}/bootfiles/config.txt << EOF
 
 # serial port needs to be kept clean for RS485 communication

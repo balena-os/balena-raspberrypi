@@ -1,4 +1,4 @@
-FILESEXTRAPATHS_append := ":${THISDIR}/files"
+FILESEXTRAPATHS:append := ":${THISDIR}/files"
 
 DESCRIPTION = "This repository contains the rpi4 bootloader and scripts \
 for updating it in the spi eeprom"
