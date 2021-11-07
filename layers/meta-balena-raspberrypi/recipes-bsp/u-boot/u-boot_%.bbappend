@@ -33,7 +33,7 @@ SRC_URI:append = " \
 BALENA_UBOOT_DEVICE_TYPES:append = " usb"
 
 SRCREV:raspberrypi4-64 = "52ba373b7825e9feab8357065155cf43dfe2f4ff"
-LIC_FILES_CHKSUM_raspberrypi4-64 = " file://Licenses/README;md5=5a7450c57ffe5ae63fd732446b988025"
+LIC_FILES_CHKSUM:raspberrypi4-64 = " file://Licenses/README;md5=5a7450c57ffe5ae63fd732446b988025"
 # Patches that apply on poky u-boot and are not present
 # in this list are either merged in upstream master,
 # or are re-based below.
