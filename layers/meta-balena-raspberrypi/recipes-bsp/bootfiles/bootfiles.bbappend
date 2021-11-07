@@ -1,4 +1,4 @@
-FILESEXTRAPATHS_append := ":${THISDIR}/files"
+FILESEXTRAPATHS:append := ":${THISDIR}/files"
 
 RPIFW_DATE = "20210421"
 SRCREV = "2ac4de4eaac5c1d1b25acec4a5e0a9fdb16f0c91"
@@ -12,7 +12,7 @@ SRC_URI += " \
     file://fincm3-dt-blob.bin \
 "
 
-do_deploy_append() {
+do_deploy:append() {
     # exclude from balenaOS the binaries with additional debug assertions (they
     # grow the used size in resin-boot and this potentially breaks hostapps
     # update)
@@ -41,7 +41,7 @@ do_deploy_append() {
     fi
 }
 
-do_deploy_append_fincm3() {
+do_deploy:append_fincm3() {
     # Install the dt-blob needed for camera support in Balena Fin CM3
     install -m 644 ${WORKDIR}/fincm3-dt-blob.bin ${DEPLOYDIR}/${PN}/dt-blob.bin
 }
