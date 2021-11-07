@@ -10,22 +10,22 @@ PACKAGES += " \
     ${PN}-bcm43430b0-hcd \
 "
 
-FILES_${PN}-bcm4345c5-hcd = " \
+FILES:${PN}-bcm4345c5-hcd = " \
     ${nonarch_base_libdir}/firmware/brcm/BCM4345C5.hcd \
 "
 
-FILES_${PN}-bcm43430b0-hcd = " \
+FILES:${PN}-bcm43430b0-hcd = " \
     ${nonarch_base_libdir}/firmware/brcm/BCM43430B0.hcd \
 "
 
-LICENSE_${PN}-bcm43430b0-hcd = "Firmware-cypress-rpidistro"
-RDEPENDS_${PN}-bcm4340b0-hcd += "${PN}-cypress-license"
+LICENSE:${PN}-bcm43430b0-hcd = "Firmware-cypress-rpidistro"
+RDEPENDS:${PN}-bcm4340b0-hcd += "${PN}-cypress-license"
 
 CONFLICTS_${PN}-bcm43430b0-hcd = "linux-firmware-bcm43430b0-hcd"
-RREPLACES_${PN}-bcm43430b0-hcd = "linux-firmware-bcm43430b0-hcd"
+RREPLACES:${PN}-bcm43430b0-hcd = "linux-firmware-bcm43430b0-hcd"
 
-LICENSE_${PN}-bcm4345c5-hcd = "Firmware-cypress-rpidistro"
-RDEPENDS_${PN}-bcm4345c5-hcd += "${PN}-cypress-license"
+LICENSE:${PN}-bcm4345c5-hcd = "Firmware-cypress-rpidistro"
+RDEPENDS:${PN}-bcm4345c5-hcd += "${PN}-cypress-license"
 
 CONFLICTS_${PN}-bcm43435c5-hcd = "linux-firmware-bcm4345c5-hcd"
-RREPLACES_${PN}-bcm43435c5-hcd = "linux-firmware-bcm4345c5-hcd"
+RREPLACES:${PN}-bcm43435c5-hcd = "linux-firmware-bcm4345c5-hcd"

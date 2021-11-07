@@ -1,6 +1,6 @@
 # this deploy append should be removed once we update to a meta-raspberrypi version (gatesgarth, hardknott or newer) that moved cmdline.txt into a separate recipe: rpi-cmdline.bb
 
-do_deploy_append() {
+do_deploy:append() {
     # Deploy cmdline.txt only for the main kernel package
     if [ ${KERNEL_PACKAGE_NAME} = "kernel" ]; then
         install -d ${DEPLOYDIR}/${BOOTFILES_DIR_NAME}
