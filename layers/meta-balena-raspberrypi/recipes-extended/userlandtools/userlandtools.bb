@@ -1,4 +1,4 @@
-FILESEXTRAPATHS_append := ":${THISDIR}/files"
+FILESEXTRAPATHS:append := ":${THISDIR}/files"
 
 DESCRIPTION = "This repository contains the source code for ARM side \
 libraries and host binaries used on Raspberry Pi."
@@ -30,7 +30,7 @@ EXTRA_OECMAKE = "-DCMAKE_BUILD_TYPE=Release -DCMAKE_EXE_LINKER_FLAGS='-Wl,--no-a
 
 # Keep only those libs & bins that are actually
 # used during boot EEPROM image update
-do_install_append () {
+do_install:append () {
         rm -rf ${D}${bindir}/tvservice
         rm -rf ${D}${bindir}/vchiq_test
         rm -rf ${D}${bindir}/dtmerge
@@ -48,6 +48,6 @@ do_install_append () {
 # to force the .so files into the runtime package (and keep them
 # out of -dev package).
 FILES_SOLIBSDEV = ""
-INSANE_SKIP_${PN} += "dev-so"
-FILES_${PN} += " ${libdir}/*.so "
-RDEPENDS_${PN} += "bash"
+INSANE_SKIP:${PN} += "dev-so"
+FILES:${PN} += " ${libdir}/*.so "
+RDEPENDS:${PN} += "bash"
