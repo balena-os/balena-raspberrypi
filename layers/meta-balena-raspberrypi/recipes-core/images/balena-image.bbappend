@@ -3,7 +3,7 @@
 # https://www.raspberrypi.org/documentation/hardware/computemodule/cm-emmc-flashing.md
 BALENA_BOOT_FAT32 = "1"
 
-IMAGE_FSTYPES_append_rpi = " balenaos-img"
+IMAGE_FSTYPES:append_rpi = " balenaos-img"
 
 # Kernel image name is different on Raspberry Pi 1/2/3-64bit
 SDIMG_KERNELIMAGE_raspberrypi  ?= "kernel.img"
@@ -18,9 +18,9 @@ BALENA_BOOT_PARTITION_FILES_rpi = " \
     bootfiles:/ \
     "
 
-BALENA_BOOT_PARTITION_FILES_append_revpi-core-3 = " revpi-core-dt-blob-overlay.dtb:/dt-blob.bin"
+BALENA_BOOT_PARTITION_FILES:append_revpi-core-3 = " revpi-core-dt-blob-overlay.dtb:/dt-blob.bin"
 
-BALENA_BOOT_PARTITION_FILES_append_revpi-connect = " revpi-connect-dt-blob-overlay.dtb:/dt-blob.bin"
+BALENA_BOOT_PARTITION_FILES:append_revpi-connect = " revpi-connect-dt-blob-overlay.dtb:/dt-blob.bin"
 
 python overlay_dtbs_handler () {
     # Add all the dtb files programatically
@@ -51,6 +51,6 @@ python overlay_dtbs_handler () {
 addhandler overlay_dtbs_handler
 overlay_dtbs_handler[eventmask] = "bb.event.RecipePreFinalise"
 
-IMAGE_INSTALL_append_rpi = " u-boot"
+IMAGE_INSTALL:append_rpi = " u-boot"
 
-RPI_KERNEL_DEVICETREE_remove_revpi = "bcm2708-rpi-zero-w.dtb bcm2710-rpi-3-b-plus.dtb bcm2711-rpi-4-b.dtb"
+RPI_KERNEL_DEVICETREE:remove_revpi = "bcm2708-rpi-zero-w.dtb bcm2710-rpi-3-b-plus.dtb bcm2711-rpi-4-b.dtb"
