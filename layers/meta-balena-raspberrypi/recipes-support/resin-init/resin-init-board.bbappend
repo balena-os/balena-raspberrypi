@@ -1,3 +1,3 @@
-FILESEXTRAPATHS_prepend_rpi := "${THISDIR}/files:"
+FILESEXTRAPATHS:prepend_rpi := "${THISDIR}/files:"
 
-RDEPENDS_${PN}_append = " kmod"
+RDEPENDS:${PN}:append = " kmod"
