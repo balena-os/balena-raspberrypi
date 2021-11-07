@@ -7,7 +7,7 @@ SRC_URI = "git://git@git.unipi.technology/UniPi/unipi-tools.git;protocol=https"
 inherit systemd
 
 DEPENDS += "libmodbus systemd"
-RDEPENDS_${PN} += "libmodbus"
+RDEPENDS:${PN} += "libmodbus"
 
 SRCREV = "1.2.44"
 
@@ -51,7 +51,7 @@ do_install() {
     install -m 0644 ${S}/../unipi-common/udev/* ${D}${base_libdir}/udev/rules.d/
 }
 
-FILES_${PN} += " \
+FILES:${PN} += " \
     /lib/systemd/system/unipi-ttymxc2-rs485.target \
     /lib/systemd/system/unipispi.target \
     /lib/systemd/system/unipi-ttys0-rs485.target \
@@ -59,7 +59,7 @@ FILES_${PN} += " \
     /opt/unipi/tools \
 "
 SYSTEMD_PACKAGES = "${PN}"
-SYSTEMD_SERVICE_${PN} = " \
+SYSTEMD_SERVICE:${PN} = " \
     unipicheck.service \
     unipifirmware.service \
     unipitcp.service \
