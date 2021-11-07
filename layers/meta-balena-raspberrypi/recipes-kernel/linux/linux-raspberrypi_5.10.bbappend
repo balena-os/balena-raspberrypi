@@ -2,7 +2,7 @@ inherit kernel-resin
 
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-SRC_URI:append_fincm3 = " \
+SRC_URI:append:fincm3 = " \
 	file://0004-mmc-pwrseq-Repurpose-for-Marvell-SD8777.patch \
 	file://0005-balena-fin-wifi-sta-uap-mode.patch \
 	file://0007-overlays-Add-spyfly.dts.patch \
@@ -18,7 +18,7 @@ SRC_URI:append = " \
 	file://0001-seeed-studio-can-bus-v2-Add-dtbo-for-this-can-bus.patch \
 "
 
-SRC_URI:append_rt-rpi-300 = " \
+SRC_URI:append:rt-rpi-300 = " \
 	file://rt-rpi-300-Add-changes-for-this-dt.patch \
 	file://rt-rpi-Add-ch-432t-driver-for-this-chip.patch \
 "
@@ -174,7 +174,7 @@ BALENA_CONFIGS[serial_8250] = " \
     CONFIG_SERIAL_8250_BCM2835AUX=y \
 "
 
-BALENA_CONFIGS:append_rt-rpi-300 = " rtrpi300cfgs"
+BALENA_CONFIGS:append:rt-rpi-300 = " rtrpi300cfgs"
 BALENA_CONFIGS[rtrpi300cfgs] = " \
     CONFIG_RTC_DRV_RX8010=m \
     CONFIG_SPI=y \

@@ -41,7 +41,7 @@ do_deploy:append() {
     fi
 }
 
-do_deploy:append_fincm3() {
+do_deploy:append:fincm3() {
     # Install the dt-blob needed for camera support in Balena Fin CM3
     install -m 644 ${WORKDIR}/fincm3-dt-blob.bin ${DEPLOYDIR}/${PN}/dt-blob.bin
 }
