@@ -9,9 +9,10 @@ IMAGE_FSTYPES:append:rpi = " balenaos-img"
 SDIMG_KERNELIMAGE:raspberrypi  ?= "kernel.img"
 SDIMG_KERNELIMAGE:raspberrypi2 ?= "kernel7.img"
 SDIMG_KERNELIMAGE:raspberrypi3-64 ?= "kernel8.img"
+SDIMG_KERNELIMAGE:raspberrypi0-2w-64 ?= "kernel8.img"
 
 # Customize balenaos-img
-BALENA_IMAGE_BOOTLOADER:rpi = "bootfiles"
+BALENA_IMAGE_BOOTLOADER:rpi = "rpi-bootfiles"
 BALENA_BOOT_PARTITION_FILES:rpi = " \
     u-boot.bin:/${SDIMG_KERNELIMAGE} \
     boot.scr:/boot.scr \
