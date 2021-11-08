@@ -10,11 +10,13 @@ SRC_URI:remove = " file://0002-rpi_0_w-Add-configs-consistent-with-RpI3.patch "
 SRC_URI:remove = " file://resin-specific-env-integration-kconfig.patch "
 
 RPI_PATCHES = " \
+    file://Revert-remove-include-config_defaults.h.patch \
+    file://rpi4-include-configs-Use-config-defaults.patch \
     file://rpi-Use-CONFIG_OF_BOARD-instead-of-CONFIG_EMBED.patch \
     file://increase-usb-interface-nr.patch \
     file://0002-raspberrypi-Disable-simple-framebuffer-support.patch \
     file://0001-avoid-block-uart-write.patch \
-    file://u-boot-Remove-usb-start-from-CONFIG_PREBOOT.patch \
+   file://u-boot-Remove-usb-start-from-CONFIG_PREBOOT.patch \
 "
 
 SRC_URI += " \

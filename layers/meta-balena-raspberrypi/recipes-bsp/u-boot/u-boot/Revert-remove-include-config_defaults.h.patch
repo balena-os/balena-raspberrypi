@@ -1,15 +1,17 @@
-From 730401edc287fbe2deae926f6d02328337c3fc75 Mon Sep 17 00:00:00 2001
+From a163256f2a84ecdfda599c8756cb45780e5ba242 Mon Sep 17 00:00:00 2001
 From: Alexandru Costache <alexandru@balena.io>
-Date: Mon, 20 Jul 2020 13:20:51 +0200
+Date: Sun, 7 Nov 2021 18:11:29 +0100
 Subject: [PATCH] Revert "remove include/config_defaults.h"
 
 This reverts commit 5c6a4d5a2779d7c2611319076d9aa4a23981855f.
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
 ---
  include/config_defaults.h | 12 ++++++++++++
- include/configs/kc1.h     |  6 ++++++
  include/configs/sniper.h  |  6 ++++++
  scripts/Makefile.autoconf |  1 +
- 4 files changed, 25 insertions(+)
+ 3 files changed, 19 insertions(+)
  create mode 100644 include/config_defaults.h
 
 diff --git a/include/config_defaults.h b/include/config_defaults.h
@@ -30,26 +32,11 @@ index 0000000000..d211a41ef2
 +#define _CONFIG_DEFAULTS_H_
 +
 +#endif
-diff --git a/include/configs/kc1.h b/include/configs/kc1.h
-index 3f71739f83..e3a219c46b 100644
---- a/include/configs/kc1.h
-+++ b/include/configs/kc1.h
-@@ -149,4 +149,10 @@
- 	"mmc read ${kernel_addr_r} ${boot_mmc_start} ${boot_mmc_size} && " \
- 	"bootm ${kernel_addr_r};"
- 
-+/*
-+ * Defaults
-+ */
-+
-+#include <config_defaults.h>
-+
- #endif
 diff --git a/include/configs/sniper.h b/include/configs/sniper.h
-index 5ea8efabfc..0e2fcc3e23 100644
+index 4747e74b68..b0e2946699 100644
 --- a/include/configs/sniper.h
 +++ b/include/configs/sniper.h
-@@ -142,4 +142,10 @@
+@@ -139,4 +139,10 @@
  	"mmc read ${kernel_addr_r} ${boot_mmc_start} ${boot_mmc_size} && " \
  	"bootm ${kernel_addr_r};"
  
