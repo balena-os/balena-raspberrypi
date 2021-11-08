@@ -35,6 +35,8 @@ KERNEL_IMAGETYPE:raspberrypi3-64="Image.gz"
 KERNEL_BOOTCMD:raspberrypi3-64 = "booti"
 KERNEL_IMAGETYPE:raspberrypi4-64="Image.gz"
 KERNEL_BOOTCMD:raspberrypi4-64 = "booti"
+KERNEL_IMAGETYPE:raspberrypi0-2w-64 = "Image.gz"
+KERNEL_BOOTCMD:raspberrypi0-2w-64 = "booti"
 
 # RPI Use u-boot. This needs to be 1 as we use u-boot
 RPI_USE_U_BOOT = "1"
@@ -73,7 +75,7 @@ DISTRO ?= "resin-systemd"
 RM_OLD_IMAGE = "1"
 
 # Additional image features
-USER_CLASSES ?= "buildstats image-mklibs image-prelink"
+USER_CLASSES ?= "buildstats image-prelink"
 
 # By default disable interactive patch resolution (tasks will just fail instead):
 PATCHRESOLVE = "noop"
@@ -87,6 +89,6 @@ BB_DISKMON_DIRS = "\
     ABORT,${DL_DIR},100M,1K \
     ABORT,${SSTATE_DIR},100M,1K"
 
-CONF_VERSION = "1"
+CONF_VERSION = "2"
 
 HOSTTOOLS += "docker iptables"
