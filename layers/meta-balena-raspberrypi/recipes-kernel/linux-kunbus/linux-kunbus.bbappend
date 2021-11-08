@@ -50,7 +50,7 @@ BALENA_CONFIGS[pca955_gpio_expander] = " \
     "
 
 KERNEL_MODULE_PROBECONF += "rtl8192cu"
-module_conf_rtl8192cu = "blacklist rtl8192cu"
+module_conf:rtl8192cu = "blacklist rtl8192cu"
 
 BALENA_CONFIGS:append = " preempt_rt"
 BALENA_CONFIGS[preempt_rt] = " \
