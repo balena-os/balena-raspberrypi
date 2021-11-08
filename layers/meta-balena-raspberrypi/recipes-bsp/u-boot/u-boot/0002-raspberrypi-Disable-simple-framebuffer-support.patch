@@ -1,4 +1,4 @@
-From 68e65b1e3859d4baf41d1e5f6525ff7ace778ba1 Mon Sep 17 00:00:00 2001
+From 13d81a3f70c3b35d0b7d61327c14eb1ccf2abfa1 Mon Sep 17 00:00:00 2001
 From: Florin Sarbu <florin@balena.io>
 Date: Thu, 12 Sep 2019 12:31:31 +0200
 Subject: [PATCH] raspberrypi: Disable simple framebuffer support
@@ -17,10 +17,10 @@ Signed-off-by: Florin Sarbu <florin@balena.io>
  3 files changed, 4 insertions(+), 4 deletions(-)
 
 diff --git a/board/raspberrypi/rpi/rpi.c b/board/raspberrypi/rpi/rpi.c
-index 153a1fd..c7bd399 100644
+index df52a4689f..bda53d8b25 100644
 --- a/board/raspberrypi/rpi/rpi.c
 +++ b/board/raspberrypi/rpi/rpi.c
-@@ -482,7 +482,7 @@ int ft_board_setup(void *blob, bd_t *bd)
+@@ -502,7 +502,7 @@ int ft_board_setup(void *blob, struct bd_info *bd)
  	 * should be more intelligent, and e.g. only do this if no enabled DT
  	 * node exists for the "real" graphics driver.
  	 */
@@ -30,7 +30,7 @@ index 153a1fd..c7bd399 100644
  #ifdef CONFIG_EFI_LOADER
  	/* Reserve the spin table */
 diff --git a/common/Makefile b/common/Makefile
-index 0de60b3..2848d98 100644
+index 829ea5fb42..1a93a0b575 100644
 --- a/common/Makefile
 +++ b/common/Makefile
 @@ -50,7 +50,7 @@ ifndef CONFIG_DM_VIDEO
@@ -41,12 +41,12 @@ index 0de60b3..2848d98 100644
 +//obj-$(CONFIG_LCD_DT_SIMPLEFB) += lcd_simplefb.o
  obj-$(CONFIG_LYNXKDI) += lynxkdi.o
  obj-$(CONFIG_MENU) += menu.o
- obj-$(CONFIG_UPDATE_TFTP) += update.o
+ obj-$(CONFIG_UPDATE_COMMON) += update.o
 diff --git a/include/configs/rpi.h b/include/configs/rpi.h
-index a38bf20..e2760b0 100644
+index 75e14a99ca..8fb0201b41 100644
 --- a/include/configs/rpi.h
 +++ b/include/configs/rpi.h
-@@ -60,8 +60,8 @@
+@@ -71,8 +71,8 @@
  /* GPIO */
  #define CONFIG_BCM2835_GPIO
  /* LCD */
@@ -58,5 +58,5 @@ index a38bf20..e2760b0 100644
  #ifdef CONFIG_CMD_USB
  #define CONFIG_TFTP_TSIZE
 -- 
-2.7.4
+2.17.1
 
