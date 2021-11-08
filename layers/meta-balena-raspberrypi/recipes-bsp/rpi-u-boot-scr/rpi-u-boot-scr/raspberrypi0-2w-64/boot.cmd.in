@@ -1,0 +1,10 @@
+setenv resin_kernel_load_addr ${kernel_addr_r}
+setenv resin_tmp_loadaddr 0x10000000
+run resin_set_kernel_root
+fdt addr ${fdt_addr}
+fdt get value bootargs /chosen bootargs
+env set bootargs "${bootargs} ${resin_kernel_root} rootwait"
+fdt rm /chosen bootargs
+load ${resin_dev_type} ${resin_dev_index}:${resin_root_part} ${resin_tmp_loadaddr} /boot/@@KERNEL_IMAGETYPE@@
+unzip ${fileaddr} ${resin_kernel_load_addr}
+@@KERNEL_BOOTCMD@@ ${resin_kernel_load_addr} - ${fdt_addr}
