@@ -12,12 +12,13 @@ CONNECTIVITY_FIRMWARES:append:raspberrypi400-64 = " \
     bluez-firmware-rpidistro-bcm4345c5-hcd \
 "
 
-CONNECTIVITY_FIRMWARES:append:raspberrypi0-2w = " \
+CONNECTIVITY_FIRMWARES:append:raspberrypi0-2w-64 = " \
     linux-firmware-rpidistro-bcm43436 \
+    linux-firmware-rpidistro-bcm43436s \
     bluez-firmware-rpidistro-bcm43430b0-hcd \
 "
 
-CONNECTIVITY_FIRMWARES:remove:raspberrypi0-2w = " \
+CONNECTIVITY_FIRMWARES:remove:raspberrypi0-2w-64 = " \
     linux-firmware-rpidistro-bcm43430 \
     linux-firmware-rpidistro-bcm43455 \
     bluez-firmware-rpidistro-bcm43430a1-hcd \
