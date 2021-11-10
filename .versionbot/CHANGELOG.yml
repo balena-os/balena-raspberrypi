@@ -1,4 +1,20 @@
 - commits:
+    - subject: Enable linux-firmware compression for all Raspberry Pi 4 based boards
+      hash: 999d35b822d56bb2fb5b40c938f844ecb2914b3a
+      body: |
+        We have ran out of root filesystem space for Raspberry Pi 4 when
+        doing a HUP so let's enable firmware compression on all Pi 4 based
+        devices.
+      footer:
+        Changelog-entry: Enable linux-firmware compression for all Raspberry Pi 4 based boards
+        changelog-entry: Enable linux-firmware compression for all Raspberry Pi 4 based boards
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2021.10.2
+  date: 2021-11-10T10:25:40.532Z
+- commits:
     - subject: >-
         Fix USB 2.0 on Raspberry Pi 4 v1.4 by removing obsolete xhci pci patch
         for VL805

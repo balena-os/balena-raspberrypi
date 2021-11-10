@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2021.10.2
+## (2021-11-10)
+
+* Enable linux-firmware compression for all Raspberry Pi 4 based boards [Florin Sarbu]
+
 # v2021.10.1
 ## (2021-10-27)
 
