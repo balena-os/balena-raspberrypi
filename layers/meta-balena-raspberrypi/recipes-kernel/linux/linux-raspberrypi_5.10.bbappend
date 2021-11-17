@@ -173,3 +173,20 @@ BALENA_CONFIGS[rtrpi300cfgs] = " \
     CONFIG_SPI_BCM2835=m \
     CONFIG_CH432T_SPI=m \
 "
+
+# Fix dtbo loading on 64bits,
+# see commit 949b88bb for details
+get_cc_option () {
+		# Check if KERNEL_CC supports the option "file-prefix-map".
+		# This option allows us to build images with __FILE__ values that do not
+		# contain the host build path.
+		if ${KERNEL_CC} -Q --help=joined | grep -q "\-ffile-prefix-map=<old=new>"; then
+			echo "-ffile-prefix-map=${S}=/kernel-source/"
+		fi
+}
+do_compile:append() {
+    if [ "${SITEINFO_BITS}" = "64" ]; then
+        cc_extra=$(get_cc_option)
+        oe_runmake dtbs CC="${KERNEL_CC} $cc_extra " LD="${KERNEL_LD}" ${KERNEL_EXTRA_ARGS}
+    fi
+}
