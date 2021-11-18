@@ -10,5 +10,8 @@ SRC_URI = " \
 require recipes-kernel/linux/linux-raspberrypi.inc
 
 SRC_URI:remove = "file://rpi-kernel-misc.cfg"
+SRC_URI:append = " \
+    file://scripts-Fix-kernel-module-headers-build-in-Honister.patch \
+"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=bbea815ee2795b2f4230826c0c6b8814"
