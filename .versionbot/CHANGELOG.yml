@@ -1,4 +1,249 @@
 - commits:
+    - subject: Update meta-balena from v2.86.0 to v2.87.7
+      hash: 374edce1a0bf2e5d438891497491110d9a731e06
+      body: |
+        Update meta-balena from 2.86.0 to 2.87.7
+      footer:
+        Changelog-entry: Update meta-balena from v2.86.0 to v2.87.7
+        changelog-entry: Update meta-balena from v2.86.0 to v2.87.7
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested:
+        - commits:
+            - subject: 'initrdscripts: add a script for unlocking LUKS volumes'
+              hash: 7b095c49d49a2ed08c827a872813db270830a503
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.87.7
+          date: 2021-11-16T12:31:32.268Z
+        - commits:
+            - subject: 'connectivity: proxy: move nadoo/glider to container'
+              hash: 07dbe414a1dfa556427d4fc94ce7fdec688cf0e2
+              body: >
+                Previously, the core service exposed a /proxy endpoint that
+                would start
+
+                up a proxy remotely, which would be used by a test in the
+                connectivity
+
+                module. However, the endpoint returned the address for the
+                testbot to be
+
+                used as the proxy in the response, and this required manual
+
+                configuration of the interface. Additionally, it requires the
+                worker
+
+                service to install and provide glider for forward proxying.
+
+
+                Move the proxy (glider) to a container on the device being
+                tested,
+
+                which simplifies configuration, and reduces the complexity and
+                size of
+
+                the interface of Leviathan.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.87.6
+          date: 2021-11-15T13:04:05.810Z
+        - commits:
+            - subject: 'tests: os: Add exposed engine socket test'
+              hash: 612b7853a23441d0192de5580d37d0f89f7f3103
+              body: >
+                This tests the engine socket being exposed in development mode
+                but not
+
+                in production mode.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.87.5
+          date: 2021-11-11T17:56:18.921Z
+        - commits:
+            - subject: 'resindataexpander: also resize LUKS volume if necessary'
+              hash: aff55ab61db7842202d7aec2e16b3bab505daf60
+              body: |
+                The behaviour for non-LUKS system should be the same as before,
+                an extra step is performed when LUKS resize is necessary.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.87.4
+          date: 2021-11-11T14:56:27.092Z
+        - commits:
+            - subject: Add out-of-tree peak CAN driver
+              hash: 983c233bbc243f83c53706639867485655cafbfb
+              body: |
+                Only add the recipe, let DTs pull it as necessary
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.87.3
+          date: 2021-11-11T12:59:58.982Z
+        - commits:
+            - subject: Add recipes for TPM2 tools
+              hash: baddbd39fd17d364ebfd69bf139980ca82abc8ba
+              body: >
+                Taken from
+                http://git.yoctoproject.org/cgit/cgit.cgi/meta-security/tree/meta-tpm/recipes-tpm2
+
+                Only add the recipes, let DTs pull it as necessary.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.87.2
+          date: 2021-11-11T08:07:31.669Z
+        - commits:
+            - subject: 'recipes-devtools/dosfstools: Fix build with Poky Honister'
+              hash: 4c47a01aab59afefbb9ad055fbb975c45f5dd262
+              body: |
+                Poky Honister comes with dosfstools v4.2
+                so we cannot use the v4.1 append in the
+                meta-balena-common layer.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.87.1
+          date: 2021-11-10T17:07:04.950Z
+        - commits:
+            - subject: 'meta-balena-common/conf: Switch layer to Honister compatibility'
+              hash: 8cc0c59efc9946b74fea6fb3a7d6b0d51bad015b
+              body: ''
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.87.0
+          date: 2021-11-09T09:42:26.620Z
+        - commits:
+            - subject: 'patch: Fix URL to yocto project dependencies'
+              hash: 916b1d256a0ab3f23818e7307ce219cdaed2002f
+              body: ''
+              footer:
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.86.3
+          date: 2021-11-09T00:07:14.996Z
+        - commits:
+            - subject: 'dosfstools: selectively apply upstreamed patch'
+              hash: 8f04f1142bcb3074d86e2827dfda6c7d8c87fefd
+              body: >
+                This patch was submitted and accepted upstream, and is present
+                since
+
+                v4.2.
+
+
+                https://github.com/dosfstools/dosfstools/commit/87a8f29785bb605350821f1638a42e6cf3e49ce3
+
+
+                This fixes a build error applying a patch that's already been
+                applied
+
+                when building newer versions of dosfstools.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: 'tests: wait for the chronyd service become active'
+              hash: c49648a0f27f1a57376803ba9c85ec9ba729ebe9
+              body: >
+                Add a test to wait for the chronyd service to become active
+                before
+
+                starting the time sync tests.
+
+
+                The current chronyd tests assume that the chronyd service is
+
+                instantly available at boot time. With the addition of the new
+
+                HTTPS time synchronisation service the starting of chronyd can
+                be
+
+                delayed by a few seconds so we need to ensure that the service
+
+                is actually running before proceeding.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: 'tests: wait for the chronyd service become active'
+                changelog-entry: 'tests: wait for the chronyd service become active'
+                Signed-off-by: Mark Corbin <mark@balena.io>
+                signed-off-by: Mark Corbin <mark@balena.io>
+              author: Mark Corbin
+              nested: []
+          version: meta-balena-2.86.2
+          date: 2021-11-08T15:41:30.313Z
+        - commits:
+            - subject: 'tests/issue: Add test to check issues files'
+              hash: 472bf8a99a111e061e416557e9ab0f538041ae01
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'base files: Use HOSTOS_VERSION in issue and issue.net'
+              hash: fb9fd5c0a848c93b020a81521fa6e0cc0f3dd0bb
+              body: |
+                This allows to display ESR releases on the welcome login.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.86.1
+          date: 2021-11-02T12:36:12.690Z
+  version: 2.87.7+rev1
+  date: 2021-11-18T15:01:37.778Z
+- commits:
     - subject: Update meta-balena from v2.85.2 to v2.86.0
       hash: e4abf20d2947d2f7ec6fb43c67de4e11dd81e7ec
       body: |

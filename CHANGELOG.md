@@ -1,6 +1,72 @@
 Change log
 -----------
 
+# v2.87.7+rev1
+## (2021-11-18)
+
+
+<details>
+<summary> Update meta-balena from v2.86.0 to v2.87.7 [Alexandru Costache] </summary>
+
+> ## meta-balena-2.87.7
+> ### (2021-11-16)
+> 
+> * initrdscripts: add a script for unlocking LUKS volumes [Michal Toman]
+> 
+> ## meta-balena-2.87.6
+> ### (2021-11-15)
+> 
+> * connectivity: proxy: move nadoo/glider to container [Joseph Kogut]
+> 
+> ## meta-balena-2.87.5
+> ### (2021-11-11)
+> 
+> * tests: os: Add exposed engine socket test [Alex Gonzalez]
+> 
+> ## meta-balena-2.87.4
+> ### (2021-11-11)
+> 
+> * resindataexpander: also resize LUKS volume if necessary [Michal Toman]
+> 
+> ## meta-balena-2.87.3
+> ### (2021-11-11)
+> 
+> * Add out-of-tree peak CAN driver [Michal Toman]
+> 
+> ## meta-balena-2.87.2
+> ### (2021-11-11)
+> 
+> * Add recipes for TPM2 tools [Michal Toman]
+> 
+> ## meta-balena-2.87.1
+> ### (2021-11-10)
+> 
+> * recipes-devtools/dosfstools: Fix build with Poky Honister [Alexandru Costache]
+> 
+> ## meta-balena-2.87.0
+> ### (2021-11-09)
+> 
+> * meta-balena-common/conf: Switch layer to Honister compatibility [Alexandru Costache]
+> 
+> ## meta-balena-2.86.3
+> ### (2021-11-09)
+> 
+> * patch: Fix URL to yocto project dependencies [Kyle Harding]
+> 
+> ## meta-balena-2.86.2
+> ### (2021-11-08)
+> 
+> * dosfstools: selectively apply upstreamed patch [Joseph Kogut]
+> * tests: wait for the chronyd service become active [Mark Corbin]
+> 
+> ## meta-balena-2.86.1
+> ### (2021-11-02)
+> 
+> * tests/issue: Add test to check issues files [Alex Gonzalez]
+> * base files: Use HOSTOS_VERSION in issue and issue.net [Alex Gonzalez]
+> 
+</details>
+
 # v2.86.0+rev1
 ## (2021-11-04)
 
