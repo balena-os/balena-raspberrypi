@@ -12,6 +12,24 @@ CONNECTIVITY_FIRMWARES_append_raspberrypi400-64 = " \
     bluez-firmware-rpidistro-bcm4345c5-hcd \
 "
 
+CONNECTIVITY_FIRMWARES_remove_raspberrypi4-64 = " \
+    linux-firmware-rpidistro-bcm43436 \
+    linux-firmware-rpidistro-bcm43436s \
+"
+
+CONNECTIVITY_FIRMWARES_append_raspberrypi0-2w-64 = " \
+    linux-firmware-rpidistro-bcm43436 \
+    linux-firmware-rpidistro-bcm43436s \
+    bluez-firmware-rpidistro-bcm43430b0-hcd \
+"
+
+CONNECTIVITY_FIRMWARES_remove_raspberrypi0-2w-64 = " \
+    linux-firmware-rpidistro-bcm43430 \
+    linux-firmware-rpidistro-bcm43455 \
+    bluez-firmware-rpidistro-bcm43430a1-hcd \
+    bluez-firmware-rpidistro-bcm4345c0-hcd \
+"
+
 REMOVED_FOR_HUP_SPACE = " \
     linux-firmware-bcm43455 \
     linux-firmware-ibt-11-5 \
@@ -61,3 +79,4 @@ REMOVED_FOR_HUP_SPACE = " \
 # are provided by hostapp-extensions
 CONNECTIVITY_FIRMWARES_remove_raspberrypi400-64 = "${REMOVED_FOR_HUP_SPACE}"
 CONNECTIVITY_FIRMWARES_remove_raspberrypicm4-ioboard = "${REMOVED_FOR_HUP_SPACE}"
+CONNECTIVITY_FIRMWARES_remove_raspberrypi0-2w-64 = "${REMOVED_FOR_HUP_SPACE}"
