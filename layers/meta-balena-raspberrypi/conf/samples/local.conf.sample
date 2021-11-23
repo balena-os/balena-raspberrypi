@@ -20,7 +20,7 @@ BALENA_STORAGE_revpi-connect = "overlay2"
 BALENA_STORAGE_nebra-hnt = "overlay2"
 BALENA_STORAGE_raspberrypicm4-ioboard = "overlay2"
 BALENA_STORAGE_raspberrypi3-unipi-neuron = "overlay2"
-
+BALENA_STORAGE_raspberrypi0-2w-64 = "overlay2"
 # More info meta-resin/README.md
 #TARGET_REPOSITORY ?= ""
 #TARGET_TAG ?= ""
@@ -32,6 +32,7 @@ GPU_MEM = "16"
 DISABLE_VC4GRAPHICS = "1"
 DISABLE_VC4GRAPHICS_remove_raspberrypi3-64 = "1"
 DISABLE_VC4GRAPHICS_remove_raspberrypi4-64 = "1"
+DISABLE_VC4GRAPHICS_remove_raspberrypi0-2w-64 = "1"
 
 # RPI BSP uses uncompressed kernel images by default
 KERNEL_IMAGETYPE="zImage"
