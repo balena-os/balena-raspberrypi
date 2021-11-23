@@ -1,6 +1,123 @@
 Change log
 -----------
 
+# v2.87.16+rev1
+## (2021-11-22)
+
+
+<details>
+<summary> Update meta-balena from v2.86.0 to v2.87.16 [Alexandru Costache] </summary>
+
+> ## meta-balena-2.87.16
+> ### (2021-11-21)
+> 
+> * peak: Modify kernel driver to use signing class [Alex Gonzalez]
+> 
+> ## meta-balena-2.87.15
+> ### (2021-11-21)
+> 
+> * kernel-balena.class: Add support for FDE and sign for secure boot [Michal Toman]
+> 
+> ## meta-balena-2.87.14
+> ### (2021-11-21)
+> 
+> * sign-efi.bbclass: do not mix old and new bitbake syntax [Michal Toman]
+> * Revert "sign-efi.class, sign-kmod.class: Replace original files with signed ones" [Michal Toman]
+> 
+> ## meta-balena-2.87.13
+> ### (2021-11-20)
+> 
+> * meta-resin-sumo/pyro: Fix initramfs-framework kexec dependencies [Alex Gonzalez]
+> * initrdscripts: Use a 2nd stage bootloader to unlock LUKS partitions [Michal Toman]
+> * grub-efi: add support for signature verification in secure boot mode [Michal Toman]
+> 
+> ## meta-balena-2.87.12
+> ### (2021-11-20)
+> 
+> * initramfs-module-cryptsetup: add TPM dependencies [Michal Toman]
+> 
+> ## meta-balena-2.87.11
+> ### (2021-11-20)
+> 
+> * balena-keys: Add recipe [Alex Gonzalez]
+> 
+> ## meta-balena-2.87.10
+> ### (2021-11-20)
+> 
+> * sign-efi.class, sign-kmod.class: Replace original files with signed ones [Michal Toman]
+> * Add signing classes [Alex Gonzalez]
+> 
+> ## meta-balena-2.87.9
+> ### (2021-11-17)
+> 
+> * hostapp-update-hooks: Add a hook that aborts HUP to unsigned OS under secure boot [Michal Toman]
+> 
+> ## meta-balena-2.87.8
+> ### (2021-11-17)
+> 
+> * resin-mounts: mount EFI partition if it is split from boot [Michal Toman]
+> 
+> ## meta-balena-2.87.7
+> ### (2021-11-16)
+> 
+> * initrdscripts: add a script for unlocking LUKS volumes [Michal Toman]
+> 
+> ## meta-balena-2.87.6
+> ### (2021-11-15)
+> 
+> * connectivity: proxy: move nadoo/glider to container [Joseph Kogut]
+> 
+> ## meta-balena-2.87.5
+> ### (2021-11-11)
+> 
+> * tests: os: Add exposed engine socket test [Alex Gonzalez]
+> 
+> ## meta-balena-2.87.4
+> ### (2021-11-11)
+> 
+> * resindataexpander: also resize LUKS volume if necessary [Michal Toman]
+> 
+> ## meta-balena-2.87.3
+> ### (2021-11-11)
+> 
+> * Add out-of-tree peak CAN driver [Michal Toman]
+> 
+> ## meta-balena-2.87.2
+> ### (2021-11-11)
+> 
+> * Add recipes for TPM2 tools [Michal Toman]
+> 
+> ## meta-balena-2.87.1
+> ### (2021-11-10)
+> 
+> * recipes-devtools/dosfstools: Fix build with Poky Honister [Alexandru Costache]
+> 
+> ## meta-balena-2.87.0
+> ### (2021-11-09)
+> 
+> * meta-balena-common/conf: Switch layer to Honister compatibility [Alexandru Costache]
+> 
+> ## meta-balena-2.86.3
+> ### (2021-11-09)
+> 
+> * patch: Fix URL to yocto project dependencies [Kyle Harding]
+> 
+> ## meta-balena-2.86.2
+> ### (2021-11-08)
+> 
+> * dosfstools: selectively apply upstreamed patch [Joseph Kogut]
+> * tests: wait for the chronyd service become active [Mark Corbin]
+> 
+> ## meta-balena-2.86.1
+> ### (2021-11-02)
+> 
+> * tests/issue: Add test to check issues files [Alex Gonzalez]
+> * base files: Use HOSTOS_VERSION in issue and issue.net [Alex Gonzalez]
+> 
+</details>
+
+* linux-raspberrypi: Update kernel to 5.10.78 [Alexandru Costache]
+
 # v2.86.0+rev1
 ## (2021-11-04)
 
