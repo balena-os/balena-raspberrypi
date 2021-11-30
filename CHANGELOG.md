@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.87.16+rev3
+## (2021-11-30)
+
+* Restore ralink firmware (requested for cm4-ioboard and pi400) [Keenan Johnson]
+
 # v2.87.16+rev2
 ## (2021-11-27)
 

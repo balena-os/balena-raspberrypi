@@ -1,4 +1,20 @@
 - commits:
+    - subject: Restore ralink firmware (requested for cm4-ioboard and pi400)
+      hash: 96ec8b523fc18adab60ccf85ebc57c82da656762
+      body: >
+        This change restores linux-firmware-ralink firmware for cm4-ioboard and
+        pi400. Restoring this allows the use of Ralink USB Wifi dongles based on
+        the rt2870 chipset using rt2870.bin.
+      footer:
+        Changelog-entry: Restore ralink firmware (requested for cm4-ioboard and pi400)
+        changelog-entry: Restore ralink firmware (requested for cm4-ioboard and pi400)
+        Signed-off-by: Keenan Johnson <keenan.johnson@gmail.com>
+        signed-off-by: Keenan Johnson <keenan.johnson@gmail.com>
+      author: Keenan Johnson
+      nested: []
+  version: 2.87.16+rev3
+  date: 2021-11-30T17:15:21.031Z
+- commits:
     - subject: 'layers/meta-raspberrypi: Update to latest dunfell revision'
       hash: 0b962fe2cb29040ec2163000097d4583adf1dd15
       body: |
