@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.87.16+rev2
+## (2021-11-27)
+
+* layers/meta-raspberrypi: Update to latest dunfell revision [Alexandru Costache]
+
 # v2.87.16+rev1
 ## (2021-11-22)
 

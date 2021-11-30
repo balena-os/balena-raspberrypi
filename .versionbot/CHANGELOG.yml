@@ -1,4 +1,18 @@
 - commits:
+    - subject: 'layers/meta-raspberrypi: Update to latest dunfell revision'
+      hash: 0b962fe2cb29040ec2163000097d4583adf1dd15
+      body: |
+        To include git protocol changes to https
+      footer:
+        Changelog-entry: 'layers/meta-raspberrypi: Update to latest dunfell revision'
+        changelog-entry: 'layers/meta-raspberrypi: Update to latest dunfell revision'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.87.16+rev2
+  date: 2021-11-27T11:31:26.230Z
+- commits:
     - subject: Update meta-balena from v2.86.0 to v2.87.16
       hash: 02bac985697d93bab41fcca20a752fb11b7654eb
       body: |
