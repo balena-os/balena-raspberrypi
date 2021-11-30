@@ -1,0 +1,33 @@
+From a2388b18d910748c8cfa49f509521028c5eed4fb Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Sat, 27 Nov 2021 11:50:04 +0100
+Subject: [PATCH] bthelper: Set BDADDR if not initialized
+
+With newer revisions of Pi-bluetooth,
+the CM4 IOBoard has the BT address set
+to AA:AA:AA:AA:AA:AA instead of the right
+value. Let's check for this too and allow
+bthelper to set the correct address in this case.
+
+Upstream-status: Pending
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ usr/bin/bthelper | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/usr/bin/bthelper b/usr/bin/bthelper
+index 1fc9245..30b8e1c 100755
+--- a/usr/bin/bthelper
++++ b/usr/bin/bthelper
+@@ -18,7 +18,7 @@ if ! /usr/bin/hciconfig $dev | grep -q "Bus: UART"; then
+     exit 0
+ fi
+ 
+-if ( /usr/bin/hcitool -i $dev dev | grep -q -E '\s43:4[35]:' ); then
++if ( /usr/bin/hcitool -i $dev dev | grep -q -E '\s43:4[35]:|AA:AA:AA:AA:AA:AA' ); then
+     SERIAL=`cat /proc/device-tree/serial-number | cut -c9-`
+     B1=`echo $SERIAL | cut -c3-4`
+     B2=`echo $SERIAL | cut -c5-6`
+-- 
+2.17.1
+
