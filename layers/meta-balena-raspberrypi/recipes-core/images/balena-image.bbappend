@@ -54,3 +54,8 @@ overlay_dtbs_handler[eventmask] = "bb.event.RecipePreFinalise"
 IMAGE_INSTALL_append_rpi = " u-boot"
 
 RPI_KERNEL_DEVICETREE_remove_revpi = "bcm2708-rpi-zero-w.dtb bcm2710-rpi-3-b-plus.dtb bcm2711-rpi-4-b.dtb"
+
+generate_hostos_version () {
+    echo "2.85.15+rev2" > ${DEPLOY_DIR_IMAGE}/VERSION_HOSTOS
+}
+
