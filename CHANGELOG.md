@@ -1,6 +1,139 @@
 Change log
 -----------
 
+# v2.88.4
+## (2021-12-04)
+
+
+<details>
+<summary> Update meta-balena from v2.87.16 to v2.88.4 [Alexandru Costache] </summary>
+
+> ## meta-balena-2.88.4
+> ### (2021-12-03)
+> 
+> * tests: Add basic checks for data loss during HUP [Kyle Harding]
+> * hostapp-update-hooks: Ensure data breadcrumb is present before HUP [Kyle Harding]
+> 
+> ## meta-balena-2.88.3
+> ### (2021-12-02)
+> 
+> * grub-conf: Delay grub boot in os development mode [Alex Gonzalez]
+> * grub-efi: Allow input/output in OS development mode [Alex Gonzalez]
+> 
+> ## meta-balena-2.88.2
+> ### (2021-12-02)
+> 
+> * sign-efi.bbclass: Do not deploy the unused .signed symlink [Michal Toman]
+> * sign-gpg.bbclass: Only deploy the detached signature [Michal Toman]
+> * kernel-image-initramfs.bb: Ship kernel and matching signature [Michal Toman]
+> * Make kexec work under kernel lockdown [Michal Toman]
+> 
+> ## meta-balena-2.88.1
+> ### (2021-12-02)
+> 
+> * bluez5: Update to bluez 5.61 from poky honister [Kyle Harding]
+> 
+> ## meta-balena-2.88.0
+> ### (2021-12-01)
+> 
+> * systemd/timeinit: add HTTPS time synchronisation service [Mark Corbin]
+> 
+> ## meta-balena-2.87.32
+> ### (2021-12-01)
+> 
+> * tests: Add BeagleBone Black u-boot overlay test [Florin Sarbu]
+> 
+> ## meta-balena-2.87.31
+> ### (2021-11-30)
+> 
+> * resin-update-state.rules: do not run for unnamed partitions [Michal Toman]
+> * resin_update_state_probe: do not skip device mapper devices [Michal Toman]
+> 
+> ## meta-balena-2.87.30
+> ### (2021-11-30)
+> 
+> * tests: Add device specific RevPi Core 3 DIO module test [Alexandru Costache]
+> 
+> ## meta-balena-2.87.29
+> ### (2021-11-29)
+> 
+> * common: image-balena: enable developmentMode when OS_DEVELOPMENT=1 [Joseph Kogut]
+> 
+> ## meta-balena-2.87.28
+> ### (2021-11-26)
+> 
+> * Add secure boot keys to the flasher boot partition [Alex Gonzalez]
+> 
+> ## meta-balena-2.87.27
+> ### (2021-11-25)
+> 
+> * balena-os: make sure PAM support is not configured [Alex Gonzalez]
+> 
+> ## meta-balena-2.87.26
+> ### (2021-11-25)
+> 
+> * tests: add test for filesystem checks [Joseph Kogut]
+> * common: initrdscript: fsck resin-data on boot [Joseph Kogut]
+> 
+> ## meta-balena-2.87.25
+> ### (2021-11-25)
+> 
+> * connectivity: reduce ping interval to minimum [Joseph Kogut]
+> 
+> ## meta-balena-2.87.24
+> ### (2021-11-24)
+> 
+> * tests: Fix dnsmasq tests in cases where 8.8.8.8 is assigned via DHCP [Kyle Harding]
+> 
+> ## meta-balena-2.87.23
+> ### (2021-11-24)
+> 
+> * 0-signed-update HUP hook: mount efivarfs if necessary [Michal Toman]
+> 
+> ## meta-balena-2.87.22
+> ### (2021-11-24)
+> 
+> * grub-efi: Accept no input and output nothing when in secure boot mode [Michal Toman]
+> 
+> ## meta-balena-2.87.21
+> ### (2021-11-24)
+> 
+> * linux-firmware: Include MT7601U firmware [Zahari Petkov]
+> 
+> ## meta-balena-2.87.20
+> ### (2021-11-23)
+> 
+> * balena-image: Add balena keys to boot partition if required [Alex Gonzalez]
+> * grub-conf: Enforce module signing and integrity lockdown on luks config [Alex Gonzalez]
+> * distro: balena-os: Add empty SIGN_API [Alex Gonzalez]
+> * classes: image-balena: Copy signed files if present [Alex Gonzalez]
+> * classes/sign-gpg: Rename class to sign_gpg [Alex Gonzalez]
+> * classes: Rename sign to sign-gpg [Alex Gonzalez]
+> * classes: sign: Drop suffix from deployed files [Alex Gonzalez]
+> * resin-init-flasher: Set fde grub.cfg if secure boot is enabled [Alex Gonzalez]
+> * balena-image-initramfs: Add secure boot dependencies [Alex Gonzalez]
+> * kernel-image-initramfs: Install signed kernel images if available [Alex Gonzalez]
+> * kernel-balena: Configure for secure boot [Alex Gonzalez]
+> 
+> ## meta-balena-2.87.19
+> ### (2021-11-22)
+> 
+> * common: enable multi-label mDNS resolution and IPv6 [Joseph Kogut]
+> 
+> ## meta-balena-2.87.18
+> ### (2021-11-22)
+> 
+> * unwrap flasher images in os suite if needed [rcooke-warwick]
+> * bluetooth and hup test with qemu [rcooke-warwick]
+> 
+> ## meta-balena-2.87.17
+> ### (2021-11-21)
+> 
+> * efitools: Add recipe [Alex Gonzalez]
+> * sbsigntool: Add recipe [Alex Gonzalez]
+> 
+</details>
+
 # v2.87.16+rev3
 ## (2021-11-30)
 
