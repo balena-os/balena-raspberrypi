@@ -1,5 +1,4 @@
 # Supported machines
-#MACHINE ?= "nebra-hnt"
 #MACHINE ?= "raspberrypi"
 #MACHINE ?= "raspberrypi2"
 #MACHINE ?= "raspberrypi3"
@@ -17,7 +16,6 @@ BALENA_STORAGE_rt-rpi-300 = "overlay2"
 BALENA_STORAGE_raspberrypi4-64 = "overlay2"
 BALENA_STORAGE_raspberrypi400-64 = "overlay2"
 BALENA_STORAGE_revpi-connect = "overlay2"
-BALENA_STORAGE_nebra-hnt = "overlay2"
 BALENA_STORAGE_raspberrypicm4-ioboard = "overlay2"
 BALENA_STORAGE_raspberrypi3-unipi-neuron = "overlay2"
 BALENA_STORAGE_raspberrypi0-2w-64 = "overlay2"
