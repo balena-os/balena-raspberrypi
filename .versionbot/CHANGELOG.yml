@@ -1,4 +1,19 @@
 - commits:
+    - subject: Remove the nebra-hnt device type as it's not used anymore
+      hash: 142fc95c9f6fca6df80f52df7acd82ec29df2a2d
+      body: |
+        The customer does not use this device type anymore and
+        instead is using raspberrypi3-64.
+      footer:
+        Changelog-entry: Remove the nebra-hnt device type as it's not used anymore
+        changelog-entry: Remove the nebra-hnt device type as it's not used anymore
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.88.4+rev1
+  date: 2021-12-15T10:32:33.091Z
+- commits:
     - subject: Update meta-balena from v2.87.16 to v2.88.4
       hash: ac56fea4478826bf700445d1624c60ee49e9adef
       body: |

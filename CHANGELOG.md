@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.88.4+rev1
+## (2021-12-15)
+
+* Remove the nebra-hnt device type as it's not used anymore [Florin Sarbu]
+
 # v2.88.4
 ## (2021-12-04)
 
