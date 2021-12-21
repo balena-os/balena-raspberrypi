@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.88.4+rev2
+## (2021-12-21)
+
+* Add Raspberry Pi PoE+ overlay to rootfs [Florin Sarbu]
+
 # v2.88.4+rev1
 ## (2021-12-15)
 

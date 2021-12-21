@@ -1,4 +1,18 @@
 - commits:
+    - subject: Add Raspberry Pi PoE+ overlay to rootfs
+      hash: 8fecb931c3619b8aa30f2905aed80778aae289c3
+      body: |
+        Include the PoE+ overlay to rootfs for supporting this newer hat
+      footer:
+        Changelog-entry: Add Raspberry Pi PoE+ overlay to rootfs
+        changelog-entry: Add Raspberry Pi PoE+ overlay to rootfs
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.88.4+rev2
+  date: 2021-12-21T13:53:58.444Z
+- commits:
     - subject: Remove the nebra-hnt device type as it's not used anymore
       hash: 142fc95c9f6fca6df80f52df7acd82ec29df2a2d
       body: |
