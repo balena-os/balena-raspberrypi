@@ -1,0 +1,118 @@
+From a2ca62507528e49dbb4402fa89a5e0d47ee6c2ab Mon Sep 17 00:00:00 2001
+From: Florin Sarbu <florin@balena.io>
+Date: Wed, 22 Dec 2021 14:27:40 +0100
+Subject: [PATCH] USB: serial: Add support for more Quectel modules
+
+As instructed by Quectel engineer in
+https://github.com/balena-os/balena-raspberrypi/issues/736
+we applied USB changes for adding support for additional
+Quectel modules.
+
+Upstream-status: Pending
+Signed-off-by: Florin Sarbu <florin@balena.io>
+---
+ drivers/usb/serial/option.c   | 49 +++++++++++++++++++++++++++++++++++
+ drivers/usb/serial/usb_wwan.c | 13 ++++++++++
+ 2 files changed, 62 insertions(+)
+
+diff --git a/drivers/usb/serial/option.c b/drivers/usb/serial/option.c
+index c7356718a7c6..caba4c34ab82 100644
+--- a/drivers/usb/serial/option.c
++++ b/drivers/usb/serial/option.c
+@@ -585,6 +585,28 @@ static void option_instat_callback(struct urb *urb);
+ 
+ 
+ static const struct usb_device_id option_ids[] = {
++#if 1 //Added by Quectel
++	{ USB_DEVICE(0x05C6, 0x9090) }, /* Quectel UC15 */
++	{ USB_DEVICE(0x05C6, 0x9003) }, /* Quectel UC20 */
++	{ USB_DEVICE(0x05C6, 0x9215) }, /* Quectel EC20(MDM9215) */
++	{ USB_DEVICE(0x2C7C, 0x0125) }, /* Quectel EC20(MDM9x07)/EC25/EG25 */
++	{ USB_DEVICE(0x2C7C, 0x0121) }, /* Quectel EC21 */
++	{ USB_DEVICE(0x2C7C, 0x0191) }, /* Quectel EG91 */
++	{ USB_DEVICE(0x2C7C, 0x0195) }, /* Quectel EG95 */
++	{ USB_DEVICE(0x2C7C, 0x0306) }, /* Quectel EG06/EP06/EM06 */
++	{ USB_DEVICE(0x2C7C, 0x0512) }, /* Quectel EG12/EP12/EM12/EG16/EG18 */
++	{ USB_DEVICE(0x2C7C, 0x0296) }, /* Quectel BG96 */
++	{ USB_DEVICE(0x2C7C, 0x0700) }, /* Quectel BG95/BG77/BG600L-M3/BC69 */
++	{ USB_DEVICE(0x2C7C, 0x0435) }, /* Quectel AG35 */
++	{ USB_DEVICE(0x2C7C, 0x0415) }, /* Quectel AG15 */
++	{ USB_DEVICE(0x2C7C, 0x0520) }, /* Quectel AG520 */
++	{ USB_DEVICE(0x2C7C, 0x0550) }, /* Quectel AG550 */
++	{ USB_DEVICE(0x2C7C, 0x0620) }, /* Quectel EG20 */
++	{ USB_DEVICE(0x2C7C, 0x0800) }, /* Quectel RG500/RM500/RG510/RM510 */
++	{ USB_DEVICE(0x2C7C, 0x6026) }, /* Quectel EC200 */
++	{ USB_DEVICE(0x2C7C, 0x6120) }, /* Quectel UC200 */
++	{ USB_DEVICE(0x2C7C, 0x6000) }, /* Quectel EC200/UC200 */
++#endif
+ 	{ USB_DEVICE(OPTION_VENDOR_ID, OPTION_PRODUCT_COLT) },
+ 	{ USB_DEVICE(OPTION_VENDOR_ID, OPTION_PRODUCT_RICOLA) },
+ 	{ USB_DEVICE(OPTION_VENDOR_ID, OPTION_PRODUCT_RICOLA_LIGHT) },
+@@ -2133,6 +2155,9 @@ static struct usb_serial_driver option_1port_device = {
+ #ifdef CONFIG_PM
+ 	.suspend           = usb_wwan_suspend,
+ 	.resume            = usb_wwan_resume,
++#if 1 //Added by Quectel
++	.reset_resume = usb_wwan_resume,
++#endif
+ #endif
+ };
+ 
+@@ -2157,6 +2182,30 @@ static int option_probe(struct usb_serial *serial,
+ 				&serial->interface->cur_altsetting->desc;
+ 	unsigned long device_flags = id->driver_info;
+ 
++#if 1 //Added by Quectel
++	//Quectel UC20's interface 4 can be used as USB Network device
++	if (serial->dev->descriptor.idVendor == cpu_to_le16(0x05C6) && serial->dev->descriptor.idProduct == cpu_to_le16(0x9003)
++		&& serial->interface->cur_altsetting->desc.bInterfaceNumber >= 4)
++		return -ENODEV;
++
++	//Quectel EC20(MDM9215)'s interface 4 can be used as USB Network device
++	if (serial->dev->descriptor.idVendor == cpu_to_le16(0x05C6) && serial->dev->descriptor.idProduct == cpu_to_le16(0x9215)
++		&& serial->interface->cur_altsetting->desc.bInterfaceNumber >= 4)
++		return -ENODEV;
++
++	if (serial->dev->descriptor.idVendor == cpu_to_le16(0x2C7C)) {
++		__u16 idProduct = le16_to_cpu(serial->dev->descriptor.idProduct);
++
++		//Quectel module's some interfaces can be used as USB Network device (ecm, rndis, mbim)
++		if (serial->interface->cur_altsetting->desc.bInterfaceClass != 0xFF)
++			return -ENODEV;
++
++		//Quectel EC25&EC20's interface 4 can be used as USB network device (qmi)
++		if ((idProduct != 0x6026 && idProduct != 0x6120) && serial->interface->cur_altsetting->desc.bInterfaceNumber >= 4)
++			return -ENODEV;
++	}
++#endif
++
+ 	/* Never bind to the CD-Rom emulation interface	*/
+ 	if (iface_desc->bInterfaceClass == USB_CLASS_MASS_STORAGE)
+ 		return -ENODEV;
+diff --git a/drivers/usb/serial/usb_wwan.c b/drivers/usb/serial/usb_wwan.c
+index b2285d5a869d..f42a3b62d843 100644
+--- a/drivers/usb/serial/usb_wwan.c
++++ b/drivers/usb/serial/usb_wwan.c
+@@ -480,6 +480,19 @@ static struct urb *usb_wwan_setup_urb(struct usb_serial_port *port,
+ 	if (intfdata->use_zlp && dir == USB_DIR_OUT)
+ 		urb->transfer_flags |= URB_ZERO_PACKET;
+ 
++#if 1 //Added by Quectel for Zero Packet
++	if (dir == USB_DIR_OUT) {
++		if (serial->dev->descriptor.idVendor == cpu_to_le16(0x05C6) && serial->dev->descriptor.idProduct == cpu_to_le16(0x9090))
++			urb->transfer_flags |= URB_ZERO_PACKET;
++		if (serial->dev->descriptor.idVendor == cpu_to_le16(0x05C6) && serial->dev->descriptor.idProduct == cpu_to_le16(0x9003))
++			urb->transfer_flags |= URB_ZERO_PACKET;
++		if (serial->dev->descriptor.idVendor == cpu_to_le16(0x05C6) && serial->dev->descriptor.idProduct == cpu_to_le16(0x9215))
++			urb->transfer_flags |= URB_ZERO_PACKET;
++		if (serial->dev->descriptor.idVendor == cpu_to_le16(0x2C7C))
++			urb->transfer_flags |= URB_ZERO_PACKET;
++	}
++#endif
++
+ 	return urb;
+ }
+ 
+-- 
+2.17.1
+
