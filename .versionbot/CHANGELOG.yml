@@ -1,4 +1,19 @@
 - commits:
+    - subject: Add support for additional Quectel modems
+      hash: 283e5ebd380a71a5000609fb585113d4e45ce02d
+      body: |
+        We added kernel changes as instructed by Quectel:
+        https://github.com/balena-os/balena-raspberrypi/issues/736
+      footer:
+        Changelog-entry: Add support for additional Quectel modems
+        changelog-entry: Add support for additional Quectel modems
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.88.4+rev3
+  date: 2021-12-22T13:35:52.609Z
+- commits:
     - subject: Add Raspberry Pi PoE+ overlay to rootfs
       hash: 8fecb931c3619b8aa30f2905aed80778aae289c3
       body: |

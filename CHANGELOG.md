@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.88.4+rev3
+## (2021-12-22)
+
+* Add support for additional Quectel modems [Florin Sarbu]
+
 # v2.88.4+rev2
 ## (2021-12-21)
 
