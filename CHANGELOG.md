@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.88.5
+## (2021-12-28)
+
+
+<details>
+<summary> Update meta-balena from v2.88.4 to v2.88.5 [Alex Gonzalez] </summary>
+
+> ## meta-balena-2.88.5
+> ### (2021-12-04)
+> 
+> * tests: os: fix unhandled exception when unwrapping non-flasher image [Joseph Kogut]
+> 
+</details>
+
 # v2.88.4+rev3
 ## (2021-12-22)
 

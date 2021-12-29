@@ -1,4 +1,37 @@
 - commits:
+    - subject: Update meta-balena from v2.88.4 to v2.88.5
+      hash: 2ca40c4a9dea9bdf2e4247c7f1c08a34082c69e8
+      body: |
+        Update meta-balena from 2.88.4 to 2.88.5
+      footer:
+        Changelog-entry: Update meta-balena from v2.88.4 to v2.88.5
+        changelog-entry: Update meta-balena from v2.88.4 to v2.88.5
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested:
+        - commits:
+            - subject: >-
+                tests: os: fix unhandled exception when unwrapping non-flasher
+                image
+              hash: ce2d33ad875e83b1ed01a16225a9ca19563836dc
+              body: >
+                Handle ENOENT ErrnoException when attempting to unwrap
+                non-flasher image
+
+                in os/suite.js.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.88.5
+          date: 2021-12-04T12:25:35.702Z
+  version: 2.88.5
+  date: 2021-12-28T17:45:43.212Z
+- commits:
     - subject: Add support for additional Quectel modems
       hash: 283e5ebd380a71a5000609fb585113d4e45ce02d
       body: |
