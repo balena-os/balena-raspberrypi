@@ -1,4 +1,17 @@
 - commits:
+    - subject: Use balena-yocto-scripts alexgg/release-versioning
+      hash: 9c755427216c87cca1abbb319efd3544b0413c7d
+      body: ''
+      footer:
+        Changelog-entry: Use balena-yocto-scripts alexgg/release-versioning
+        changelog-entry: Use balena-yocto-scripts alexgg/release-versioning
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.88.5+rev1
+  date: 2021-12-30T15:25:25.618Z
+- commits:
     - subject: Update meta-balena from v2.88.4 to v2.88.5
       hash: 2ca40c4a9dea9bdf2e4247c7f1c08a34082c69e8
       body: |

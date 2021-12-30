@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.88.5+rev1
+## (2021-12-30)
+
+* Use balena-yocto-scripts alexgg/release-versioning [Alex Gonzalez]
+
 # v2.88.5
 ## (2021-12-28)
 
