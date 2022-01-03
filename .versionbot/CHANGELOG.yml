@@ -1,4 +1,414 @@
 - commits:
+    - subject: Update balena-yocto-scripts to v1.16.0
+      hash: 861d2e93d27fbb60e97f6383ae76004267db3f29
+      body: |
+        Update balena-yocto-scripts from v1.15.8 to v1.16.0
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: Update balena-yocto-scripts to v1.16.0
+        changelog-entry: Update balena-yocto-scripts to v1.16.0
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested:
+        - commits:
+            - subject: 'balena-deploy: Check for file existence before deploying'
+              hash: 36494bf99a08b68a5afac5038d4691a583d01500
+              body: >
+                When discontinuing a device type, there are no artifacts apart
+                from
+
+                device-type.json, so check that the logo is there before
+                deploying.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-deploy-block: Check existence of tag before re-deploying'
+              hash: c1a5b20b0ef0d04a30b6bf0bcfacf0a527e931ae
+              body: >
+                If a release is already tagged with this version, issue a
+                warning and
+
+                bail out.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-api: Add function to check the existence of a release tag'
+              hash: bdc2146c3ad719f5c7335aeb7b4ee43775a20ac7
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-deploy-block: Finalize releases when deployed'
+              hash: 1e3768132d87295998bd9a17d0f01121e161e312
+              body: >
+                For now and until a proper CI/CD workflow is in place, finalize
+                releases
+
+                on deployment.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: Accept deployments without balena.yml
+              hash: 23c1f91993f37a18ade26ceef621e24409be5f74
+              body: >
+                If no balena.yml file exists, the deployment will go through
+                without
+
+                setting a release semver.
+
+
+                For the time being we are still using a version label in the
+                hostapp.
+
+
+                This commit will be reverted once we get rid of the version
+                label.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Accept deployments without balena.yml
+                changelog-entry: Accept deployments without balena.yml
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'jenkins_generate_ami: Remove variant from image name'
+              hash: 0fe3d6c8d0ebff85248f0bed99750186f05ab686
+              body: |
+                The OS is now a unified image so there are no variants.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-build.sh: Stop building OS variants'
+              hash: 4e65c83e7808e91c99e335609142401e0031ed23
+              body: |
+                The OS is now a unified image so there are no variants.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'jenkins_build.sh: Remove buildFlavor'
+              hash: b66f7ce58f0c12f78941ed34eb311bbd3a96af1c
+              body: |
+                The OS is now a unified image so there are no build flavours.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'jenkins_build-blocks: Remove variant build option'
+              hash: e7fb9fc8354445bcbc05687e1f96aa0e8025ecc9
+              body: |
+                The OS is now a unified image without variants.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-deploy: Stop using .dev/.prod variant suffixes'
+              hash: 65c030b986f62b0faaddba501520662a8ac2777d
+              body: >
+                The OS has now a unified image that can be configured to be
+                development
+
+                or production mode.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-deploy-block: Stop tagging hostapp releases with variant'
+              hash: 3fc5efeeef4ae74e499504c1148932539a49c28e
+              body: >
+                The API will stop using the variant tag but will still use the
+                version
+
+                tag.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-lib: Use externalVersion to match contracts'
+              hash: 385c5bacfc1452e4b065de55bfdf71727b303fff
+              body: >
+                The version refers to the actual contract, while the
+                externalVersion is
+
+                the one that refers to the balenaOS revision.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'jenkins_build: Deploy hostapp like any other block'
+              hash: bfe7f51dc75f335d38fa4dbf824fa887be8d82ee
+              body: |
+                Use common functions for block deployments
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'jenkins_build-blocks: Separate block build release deployment'
+              hash: 70fe00969921bbf6894cc86ecb343eb342c6f2ca
+              body: >
+                Separating the build and release of blocks allows to use common
+                code for
+
+                block release.
+
+
+                Also, pass a flag to specify whether the block should be
+                deployed as final
+
+                release.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-deploy-block: Use release versioning'
+              hash: d1c74d0261f17ebcad9825bc7e0df22142da14a3
+              body: >
+                Deploy as draft releases by default. Final releases will be
+                flagged
+
+                once validation passes.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'jenkins_build: Remove discontinued check'
+              hash: 55774ee27f938bbcbb238aa6441680b3d39172c3
+              body: >
+                Individual deploy functions now bail out for discontinued device
+                types,
+
+                there is no need to check for it here.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-deploy: Do not deploy discontinued device types'
+              hash: f54251e61c466018072e04c344595b3eba70bf57
+              body: >
+                Check for discontinued device types before deploying to
+                dockerhub or
+
+                to balenaCloud.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-deploy: Discontinued device types use meta-balena version'
+              hash: bbecd72c64bf8ff1277a10c03cb39fbf99748e05
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: >-
+                balena-deploy: Adapt balena_deploy_block to release versioning
+                and use it
+              hash: cfc0bc43af1fb60ff3ddd56f08ae781edaa90b68
+              body: >
+                * Convert balena_deploy_build_block to balena_build_block, and
+                deploy
+                  with balena_deploy_block
+                * Remove balena_deploy_hostapp and replace with
+                balena_deploy_block
+
+                * Modify balena_deploy_hostos to use balena_deploy_block
+
+                * Modify balena_deploy_block to use release versioning
+
+
+                By deafult image deployments happen as draft versions, and only
+                become
+
+                final when passing validation.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-build-block: Remove image release'
+              hash: 443269afbe867cb5c464ca5dd91bf27aa51427bd
+              body: >
+                Deal with the release separately so we can use common code for
+                it.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-api: Use release revision for fetchers'
+              hash: f501ac55e327af0db2142a146423e83f459e0c1f
+              body: >
+                When fetching images for blocks, use a given release revision.
+
+
+                Also, add token autentication to the API calls that miss it so
+                that they work
+
+                with private device types.
+
+
+                Finally, fix indentation.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'jenkins_build-block: Remove release version API setter'
+              hash: 8e27328a0caec2acc7651dfe64f8dfc5510e48e0
+              body: >
+                When using the now deprecated release_version field, the API
+                would
+
+                reject deployments for an existing release.
+
+
+                On the new versioning model, deployments increment a revision
+                field so
+
+                there is no need to check for uniqueness.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-api: Remove release version API setter'
+              hash: 42486a59654047cf42f19bd999ef0bcd0a279ea5
+              body: >
+                This functionality has now been deprecated in the balena API is
+                favour
+
+                of draft/final release versioning.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-lib: Use release versioning'
+              hash: de2c7af440c1ae4d6f84c5440368f92333500389
+              body: >
+                BalenaCloud has now a release versioning feature that deprecates
+                the
+
+                use of release_version.
+
+
+                Introduce a new balena_lib_release() function that utilises a
+                balena
+
+                contract and the CLI to set the release version.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.16.0
+          date: 2021-12-30T15:08:43.225Z
+        - commits:
+            - subject: >-
+                balena-deploy: Set leviathan networkWireless mode based on
+                device slug
+              hash: 891fadcbabe422e24245beb720cf7326a5ea1136
+              body: >
+                These changes are currently made in the Jenkins job, so it's
+                preferrable
+
+                to have it done by the packaging scripts.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.15.10
+          date: 2021-12-02T21:08:09.863Z
+        - commits:
+            - subject: Substitute the worker types for generic device slugs
+              hash: 7539caf732975a5b114abc371a5f6df211d12812
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.15.9
+          date: 2021-11-26T19:20:31.029Z
+  version: 2.88.5+rev1
+  date: 2022-01-03T10:44:43.710Z
+- commits:
     - subject: Update meta-balena from v2.88.4 to v2.88.5
       hash: 2ca40c4a9dea9bdf2e4247c7f1c08a34082c69e8
       body: |
