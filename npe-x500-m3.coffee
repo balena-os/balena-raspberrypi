@@ -30,7 +30,7 @@ module.exports =
 		machine: 'npe-x500-m3'
 		image: 'balena-image'
 		fstype: 'balenaos-img'
-		version: 'yocto-dunfell'
+		version: 'yocto-honister'
 		deployArtifact: 'balena-image-npe-x500-m3.balenaos-img'
 		compressed: true
 
