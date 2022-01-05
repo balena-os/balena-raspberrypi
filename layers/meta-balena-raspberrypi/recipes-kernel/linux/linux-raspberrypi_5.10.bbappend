@@ -174,6 +174,14 @@ BALENA_CONFIGS[rtrpi300cfgs] = " \
     CONFIG_CH432T_SPI=m \
 "
 
+# The Pi3-64 and Pi4-64 are the only boards very low on rootfs space for now
+# so we add this as per https://github.com/balena-os/meta-balena/pull/2411
+BALENA_CONFIGS:append:raspberrypi4-64 = " optimize-size"
+BALENA_CONFIGS:append:raspberrypi3-64 = " optimize-size"
+BALENA_CONFIGS[optimize-size] = " \
+    CONFIG_CC_OPTIMIZE_FOR_SIZE=y \
+"
+
 # Fix dtbo loading on 64bits,
 # see commit 949b88bb for details
 get_cc_option () {
