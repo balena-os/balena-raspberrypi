@@ -182,3 +182,17 @@ BALENA_CONFIGS[rtrpi300cfgs] = " \
     CONFIG_SPI_BCM2835=m \
     CONFIG_CH432T_SPI=m \
 "
+
+# These device types have been using the aufs storage driver,
+# and during a HUP the storage in the inactive sysroot will
+# still be aufs, so we need to include the aufs driver further
+# for them, as per the internal thread
+# https://www.flowdock.com/app/rulemotion/resin-devices/threads/K2TQiSUfNDqBT5Ih6cciNI2d9QJ
+BALENA_CONFIGS_append_fincm3 = " aufs"
+BALENA_CONFIGS_append_npe-x500-m3 = " aufs"
+BALENA_CONFIGS_append_raspberrypi = " aufs"
+BALENA_CONFIGS_append_raspberrypi2 = " aufs"
+BALENA_CONFIGS_append_raspberrypi3-64 = " aufs"
+BALENA_CONFIGS_append_raspberrypi3 = " aufs"
+BALENA_CONFIGS_append_revpi-core-3 = " aufs"
+
