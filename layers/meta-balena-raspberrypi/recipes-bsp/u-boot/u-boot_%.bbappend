@@ -34,3 +34,5 @@ BALENA_UBOOT_DEVICE_TYPES:append = " usb"
 SRC_URI:append:raspberrypi4-64 = " \
     file://pi4-fix-crash-when-issuing-usb-reset.patch \
 "
+
+SRC_URI:remove = "file://balenaos_uboot_prod.cfg"
