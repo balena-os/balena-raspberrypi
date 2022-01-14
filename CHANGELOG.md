@@ -1,6 +1,81 @@
 Change log
 -----------
 
+# v2.88.17
+## (2022-01-12)
+
+
+<details>
+<summary> Update meta-balena from v2.88.5 to v2.88.17 [Alex Gonzalez] </summary>
+
+> ## meta-balena-2.88.17
+> ### (2022-01-10)
+> 
+> * recipes-core/coreutils: Use 64bit time symbols [Alexandru Costache]
+> * classes/image_types_balena: Preserve file modification times with mcopy [Alexandru Costache]
+> 
+> ## meta-balena-2.88.16
+> ### (2022-01-05)
+> 
+> * balena-os.inc: Switch balena backend storage to overlay2 [Florin Sarbu]
+> 
+> ## meta-balena-2.88.15
+> ### (2022-01-04)
+> 
+> * initrdscripts: fsuuidinit: Generate resin-rootA last [Alex Gonzalez]
+> * lvm2: Add rule to persist dm devices in udev database [Alex Gonzalez]
+> * initrdscript: Cleanup udev database before transitioning to rootfs [Alex Gonzalez]
+> * initrdscripts: Use /run as bootparam_root storage [Alex Gonzalez]
+> * lvm: Add lvm rules when secure boot is configured [Alex Gonzalez]
+> * balena-keys: Fetch DER keys and decode from base64 [Alex Gonzalez]
+> 
+> ## meta-balena-2.88.14
+> ### (2022-01-04)
+> 
+> * Sync cached writes to disk when updating supervisor.conf [Miguel Casqueira]
+> 
+> ## meta-balena-2.88.13
+> ### (2022-01-04)
+> 
+> * hostapp-update-hooks: Handle developmentMode updates [Alex Gonzalez]
+> 
+> ## meta-balena-2.88.12
+> ### (2022-01-03)
+> 
+> * systemd/timeinit: handle missing date field in HTTPS header [Mark Corbin]
+> 
+> ## meta-balena-2.88.11
+> ### (2021-12-22)
+> 
+> * balena-supervisor: Update balena-supervisor to v12.11.16 Update balena-supervisor from 12.11.0 to 12.11.16 [Miguel Casqueira]
+> 
+> ## meta-balena-2.88.10
+> ### (2021-12-16)
+> 
+> * Update NetworkManager to 1.32.12 [Zahari Petkov]
+> 
+> ## meta-balena-2.88.9
+> ### (2021-12-15)
+> 
+> * u-boot: Move u-boot configs inclusion into resin-u-boot.bbclass [Florin Sarbu]
+> 
+> ## meta-balena-2.88.8
+> ### (2021-12-09)
+> 
+> * patch: Add archiveLogs Teardown for HUP suite [Vipul Gupta]
+> 
+> ## meta-balena-2.88.7
+> ### (2021-12-06)
+> 
+> * tests: Ensure BDADDR is initialized [Alexandru Costache]
+> 
+> ## meta-balena-2.88.6
+> ### (2021-12-04)
+> 
+> * docs: Fix links in Rollback documentation [Kyle Harding]
+> 
+</details>
+
 # v2.88.5+rev1
 ## (2022-01-03)
 
