@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.88.17+rev1
+## (2022-01-17)
+
+* linux-raspberrypi: Include aufs module for devices that have been using aufs [Alexandru Costache]
+
 # v2.88.17
 ## (2022-01-12)
 

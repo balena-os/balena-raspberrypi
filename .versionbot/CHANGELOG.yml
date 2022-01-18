@@ -1,4 +1,23 @@
 - commits:
+    - subject: >-
+        linux-raspberrypi: Include aufs module for devices that have been using
+        aufs
+      hash: 32af7c8217f943f2a86a368021bb2902a665c968
+      body: ''
+      footer:
+        Changelog-entry: >-
+          linux-raspberrypi: Include aufs module for devices that have been
+          using aufs
+        changelog-entry: >-
+          linux-raspberrypi: Include aufs module for devices that have been
+          using aufs
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.88.17+rev1
+  date: 2022-01-17T15:45:38.150Z
+- commits:
     - subject: Update meta-balena from v2.88.5 to v2.88.17
       hash: aeabc94169090ae3b77ef42b7c1a5f2236cefd18
       body: |
