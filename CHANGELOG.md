@@ -1,6 +1,32 @@
 Change log
 -----------
 
+# v2.88.17+rev2
+## (2022-01-18)
+
+
+<details>
+<summary> Update balena-yocto-scripts to v1.16.3 [Alex Gonzalez] </summary>
+
+> ## balena-yocto-scripts-1.16.3
+> ### (2022-01-17)
+> 
+> * balena-deploy-block: Check for existing tag only in specific hostapp [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.16.2
+> ### (2022-01-15)
+> 
+> * balena-api: Propagate balena API environment, token and OS organization [Alex Gonzalez]
+> * balena-build.sh: Propagate balena API environment and token [Alex Gonzalez]
+> * prepare-and-start: Propagate balena API environment and token [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.16.1
+> ### (2022-01-11)
+> 
+> * revert_overrides: Add intel-quark to architecture overrides [Alex Gonzalez]
+> 
+</details>
+
 # v2.88.17+rev1
 ## (2022-01-17)
 
