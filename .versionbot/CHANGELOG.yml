@@ -1,4 +1,219 @@
 - commits:
+    - subject: Update meta-balena from v2.88.17 to v2.88.21
+      hash: 1cb142648faccaeaa3c6ae4304fe8c73f1ef5b71
+      body: |
+        Update meta-balena from 2.88.17 to 2.88.21
+      footer:
+        Changelog-entry: Update meta-balena from v2.88.17 to v2.88.21
+        changelog-entry: Update meta-balena from v2.88.17 to v2.88.21
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: 'tests: os: config-json: cleanup persistentLogging test'
+              hash: 1625e14c13da802e0bbd39467b106155861441be
+              body: >
+                Minor cleanup of persistentLogging configuration test.
+                Additionally,
+
+                reduce the reboot count to one to save time.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: 'tests: os: config-json: return promise from sshKeys test'
+              hash: caf3dfe4b43643ac5cfa219cb892f431992e0aaa
+              body: >
+                Return the promise from the sshKeys test instead of awaiting
+                inside the
+
+                async function, a minor style improvement.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: 'tests: os: config-json: cleanup dnsServers config test'
+              hash: 7a4872aa41435a3e386ad9051dc9dbfc64957762
+              body: |
+                Simplify dnsServers config test, including using
+                worker.waitForServiceState().
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: 'tests: os: config-json: cleanup ntpServer config test'
+              hash: 85372adacd450186ba40e7d1e2bd9751e470a7d6
+              body: |
+                Simplify ntpServer config test, including using
+                worker.waitForServiceState().
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: 'tests: os: config-json: cleanup hostname config test'
+              hash: 28983f940d9fe6dd342df9a367e2768501d1d408
+              body: |
+                Simplify hostname configuration test, including using
+                worker.waitForServiceState().
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: 'tests: os: create waitForServiceState helper'
+              hash: 080ead9e17a20d47843ccec0bc2355ee0b9200f3
+              body: |
+                Create helper to wait for a service to be active or inactive.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: >-
+                tests: os: config-json: remove reboot from randomMacAddressScan
+                test
+              hash: b832ef095532e54a8508c41441575ef9f5661557
+              body: >
+                Restructure randomMacAddressScan test to remove unnecessary
+                reboot
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: 'tests: os: config-json: remove reboot from connectivity test'
+              hash: c3988214cfb0fea2f92b3a8ad096cafd2d271417
+              body: |
+                Restructure connectivity test to remove unnecessary reboot
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: 'tests: os: config-json: remove reboot from udevRules test'
+              hash: 6f7ebbc7a0f201248b731acc188033a3ddc9a12f
+              body: |
+                Restructure udevRules test to remove unnecessary reboot
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.88.21
+          date: 2022-01-17T18:42:06.387Z
+        - commits:
+            - subject: 'chrony: fix mount service dependency for driftfile'
+              hash: 4823b0299002192820d36c90e5d2dfd9ff122ff5
+              body: >
+                The chrony driftfile is not being updated at shutdown due to an
+
+                incorrect mount service dependency in the systemd
+                chronyd.service
+
+                file. The current dependency on 'var-volatile-lib' does not
+                cover the
+
+                subsequent bind mounting of the '/var/lib/chrony' sub-directory,
+                so
+
+                the chrony directory gets unmounted at shutdown before the drift
+                file
+
+                has been updated.
+
+
+                This issue is solved by changing the mount service dependency
+                from
+
+                'var-volatile-lib' to 'bind-var-lib-chrony' (which is similar to
+                the
+
+                way bind mount dependencies are already handled for the
+                NetworkManager
+
+                and bluetooth services).
+              footer:
+                Change-type: patch
+                change-type: patch
+                Connects-to: '#1995'
+                connects-to: '#1995'
+                Changelog-entry: 'chrony: fix mount service dependency for driftfile'
+                changelog-entry: 'chrony: fix mount service dependency for driftfile'
+                Signed-off-by: Mark Corbin <mark@balena.io>
+                signed-off-by: Mark Corbin <mark@balena.io>
+              author: Mark Corbin
+              nested: []
+          version: meta-balena-2.88.20
+          date: 2022-01-17T10:54:19.982Z
+        - commits:
+            - subject: 'os: tests: optimize fsck tests'
+              hash: 15100419eb9e1fb8c0e99d0a9e07a09b8c8d415f
+              body: >
+                Chain operations using Promise.then(), and run commands in
+                parallel
+
+                using Promise.map(). This reduces the time taken for fsck tests
+                to about
+
+                half.
+
+
+                - ok 1 - fsck.ext4 tests # time=152304.735ms
+
+                + ok 1 - fsck.ext4 tests # time=75104.016ms
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.88.19
+          date: 2022-01-12T19:19:10.768Z
+        - commits:
+            - subject: 'conf/distro: Prefer rust v1.36 for releases older than Honister'
+              hash: f4025980e13f291b9e9778a4e545cfea490f9fe5
+              body: |
+                Poky releases older than Honister should stick to rust v1.36
+                which has been used in balenaOS builds so far.
+
+                Newer ones should prefer v1.54, which is the latest rust
+                version to use the Honister syntax.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.88.18
+          date: 2022-01-11T14:59:20.607Z
+  version: 2.88.21
+  date: 2022-01-18T16:13:43.328Z
+- commits:
     - subject: Update balena-yocto-scripts to v1.16.3
       hash: cd4320a4525f3b370d65621073431d5b9c8ce90d
       body: |
