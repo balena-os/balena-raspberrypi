@@ -1,6 +1,22 @@
 Change log
 -----------
 
+# v2.88.22
+## (2022-01-19)
+
+
+<details>
+<summary> Update meta-balena from v2.88.21 to v2.88.22 [Alexandru Costache] </summary>
+
+> ## meta-balena-2.88.22
+> ### (2022-01-18)
+> 
+> * intel-quark: Fix to honister syntax [Alex Gonzalez]
+> * recipes-core/bash: Use 64bit time symbols [Alexandru Costache]
+> * recipes-core/busybox: Use 64bit time symbols [Alexandru Costache]
+> 
+</details>
+
 # v2.88.21+rev1
 ## (2022-01-18)
 

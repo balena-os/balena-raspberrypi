@@ -1,4 +1,57 @@
 - commits:
+    - subject: Update meta-balena from v2.88.21 to v2.88.22
+      hash: 8ad944f232e7befb0d7ea6af0f4a70370149a8cf
+      body: |
+        Update meta-balena from 2.88.21 to 2.88.22
+      footer:
+        Changelog-entry: Update meta-balena from v2.88.21 to v2.88.22
+        changelog-entry: Update meta-balena from v2.88.21 to v2.88.22
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested:
+        - commits:
+            - subject: 'intel-quark: Fix to honister syntax'
+              hash: c32e3f0c5421e46fbac991c5e5cb6240994422b2
+              body: >
+                The converter script did not consider the intel-quark an
+                override, so
+
+                fix manually.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'recipes-core/bash: Use 64bit time symbols'
+              hash: d26b1a09a6ac8a0def6ab2ec4d0249884aacb738
+              body: ''
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+            - subject: 'recipes-core/busybox: Use 64bit time symbols'
+              hash: 989c0a3584b99bf637f2a727f8a6bda11fb05441
+              body: |
+                So that commands like find can work with
+                files that have incorrect timestamps on 32bit systems.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.88.22
+          date: 2022-01-18T17:55:03.016Z
+  version: 2.88.22
+  date: 2022-01-19T16:45:10.603Z
+- commits:
     - subject: 'conf/layer: Add vc4-kms-dsi-7inch overlay'
       hash: 031e3f59c804494a6bf5ca75a30308b70b65929f
       body: ''
