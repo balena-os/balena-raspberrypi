@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.88.21+rev1
+## (2022-01-18)
+
+* conf/layer: Add vc4-kms-dsi-7inch overlay [Alexandru Costache]
+
 # v2.88.21
 ## (2022-01-18)
 

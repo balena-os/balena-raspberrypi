@@ -1,4 +1,17 @@
 - commits:
+    - subject: 'conf/layer: Add vc4-kms-dsi-7inch overlay'
+      hash: 031e3f59c804494a6bf5ca75a30308b70b65929f
+      body: ''
+      footer:
+        Changelog-entry: 'conf/layer: Add vc4-kms-dsi-7inch overlay'
+        changelog-entry: 'conf/layer: Add vc4-kms-dsi-7inch overlay'
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.88.21+rev1
+  date: 2022-01-18T21:46:05.103Z
+- commits:
     - subject: Update meta-balena from v2.88.17 to v2.88.21
       hash: 1cb142648faccaeaa3c6ae4304fe8c73f1ef5b71
       body: |
