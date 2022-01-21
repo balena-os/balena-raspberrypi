@@ -1,6 +1,31 @@
 Change log
 -----------
 
+# v2.88.21+rev2
+## (2022-01-20)
+
+
+<details>
+<summary> Update balena-yocto-scripts to v1.17.0 [Alex Gonzalez] </summary>
+
+> ## balena-yocto-scripts-1.17.0
+> ### (2022-01-20)
+> 
+> * balena-lib: Fix fetching meta-balena base version [Alex Gonzalez]
+> * jenkins_build-block: Use true/false for ESR variable [Alex Gonzalez]
+> * balena-deploy-block: Label ESR hostapps [Alex Gonzalez]
+> * balena-api: add balena_api_fetch_fleet_tag [Alex Gonzalez]
+> * balena-api: Set policy on ESR hostapps [Alex Gonzalez]
+> * balena-deploy: Pass ESR variable when creating apps [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.16.4
+> ### (2022-01-18)
+> 
+> * balena-deploy: Deploy passing the latest meta-balena version and not tag [Alex Gonzalez]
+> * balena-lib: Add balena_lib_get_meta_balena_base_version [Alex Gonzalez]
+> 
+</details>
+
 # v2.88.21+rev1
 ## (2022-01-18)
 

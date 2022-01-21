@@ -1,4 +1,150 @@
 - commits:
+    - subject: Update balena-yocto-scripts to v1.17.0
+      hash: 429a8b5f52888f5b04a5b138716696dcc374b88c
+      body: |
+        Update balena-yocto-scripts from v1.16.3 to v1.17.0
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: Update balena-yocto-scripts to v1.17.0
+        changelog-entry: Update balena-yocto-scripts to v1.17.0
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested:
+        - commits:
+            - subject: 'balena-lib: Fix fetching meta-balena base version'
+              hash: d5d838339ed23ecd242092bf4214fe2505ccd181
+              body: >
+                On an ESR branch the VERSION file contains the ESR version, not
+                the
+
+                base meta-balena version.
+
+
+                Replace it with searching down the git tree for the commit
+                before the
+
+                branch.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'jenkins_build-block: Use true/false for ESR variable'
+              hash: 24876740b2299d092ea3cd1b54f61a020d12a5ba
+              body: |
+                Keep the same boolean format as in the rest of the files.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-deploy-block: Label ESR hostapps'
+              hash: 1c6561daf9f16e579d55305471274e7793dc3619
+              body: >
+                ESR hostapps need special labels in order to be recognized. This
+                commit
+
+                adds the esr-current, esr-next and esr-sunset labels.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-api: add balena_api_fetch_fleet_tag'
+              hash: 2ced90fc432298abf14e00d4ac58cc8eaf003b24
+              body: |
+                Add a function to retrieve fleet tags.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-api: Set policy on ESR hostapps'
+              hash: 6e4d7b3d2ccbd1a5c67d94cc73c4552775ce3b94
+              body: >
+                ESR hostapps need an esr release-policy in order to be
+                recognized.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-deploy: Pass ESR variable when creating apps'
+              hash: 2497bfb59ae16810169718e6d383d0bc9d564a04
+              body: >
+                ESR hostapps need special labels in order to be recognized. This
+                allows
+
+                to add those flags when creating the hostapp.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.17.0
+          date: 2022-01-20T12:30:21.992Z
+        - commits:
+            - subject: >-
+                balena-deploy: Deploy passing the latest meta-balena version and
+                not tag
+              hash: 9d5fa316dbda3d4782e782abaceed41efe3e5a99
+              body: >
+                The last meta-balena version and tag might not be the same, like
+                in the
+
+                case of ESR branches.
+
+
+                Fixes #249
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: 'balena-lib: Add balena_lib_get_meta_balena_base_version'
+              hash: 25840dc98e138781e78530be0437f3950970f263
+              body: >
+                Retrieves the last meta-balena version, which may not be the
+                same as the
+
+                last meta-balena tag.
+
+
+                For example, when we branch an ESR release, the meta-balena
+                branch is
+
+                tagged with the ESR name, like 2.83.x, while the last
+                meta-balena version
+
+                will be a proper semver.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.16.4
+          date: 2022-01-18T09:50:54.889Z
+  version: 2.88.21+rev2
+  date: 2022-01-20T14:27:24.568Z
+- commits:
     - subject: 'conf/layer: Add vc4-kms-dsi-7inch overlay'
       hash: 031e3f59c804494a6bf5ca75a30308b70b65929f
       body: ''
