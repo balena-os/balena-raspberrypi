@@ -1,0 +1,45 @@
+#!/bin/sh
+
+#
+# This hook updates raspberrypi4 boot firmware located in the SPI EEPROM
+#
+# Update procedure is based on the rpi-eeprom-update script available at
+# https://github.com/raspberrypi/rpi-eeprom/blob/master/rpi-eeprom-update
+
+set -o errexit
+
+CURR_IMG=pieeprom-current.bin.tmp
+CURR_IMG_PATH=/dev/shm
+NEW_IMG=pieeprom-latest-stable.bin
+NEW_IMG_PATH=/mnt/boot
+SPI_SPEED=16000
+
+if [ ! -f /usr/sbin/flashrom ]; then
+    echo "[WARN] Update tool flashrom not found. Will skip eeprom update!"
+    exit 0
+fi
+
+# According to documentation, custom EEPROM update scripts
+# must also check for FREEZE_VERSION flag
+if [ $(/usr/bin/vcgencmd bootloader_config | grep "FREEZE_VERSION=1" || true) ]; then
+    echo "[WARN] Bootloader config contains FREEZE_VERSION=1. Will NOT update SPI EEPROM firmware!"
+    exit 0
+fi
+
+# HUP should not fail, even if current firmware cannot be read
+/usr/sbin/flashrom -p "linux_spi:dev=/dev/spidev0.0,spispeed=${SPI_SPEED}" --read ${CURR_IMG_PATH}/${CURR_IMG} || true
+
+if [ ! -f ${CURR_IMG_PATH}/${CURR_IMG} ]; then
+    echo "[WARN] EEPROM could not be read. Will not proceed to update bootloader firmware!"
+    exit 0
+fi
+
+curr_eeprom_md5sum=$(md5sum ${CURR_IMG_PATH}/${CURR_IMG} | awk '{print $1}')
+new_eeprom_md5sum=$(md5sum ${NEW_IMG_PATH}/${NEW_IMG} | awk '{print $1}')
+
+if [ $curr_eeprom_md5sum = $new_eeprom_md5sum ]; then
+    echo "[INFO] SPI EEPROM firmware update is not necessary"
+else
+    echo "[INFO] Performing SPI EEPROM firmwarew update..."
+    /usr/sbin/flashrom -p "linux_spi:dev=/dev/spidev0.0,spispeed=${SPI_SPEED}" --write ${NEW_IMG_PATH}/${NEW_IMG}
+fi
