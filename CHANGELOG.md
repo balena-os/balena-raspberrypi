@@ -1,6 +1,46 @@
 Change log
 -----------
 
+# v2.89.3
+## (2022-01-24)
+
+
+<details>
+<summary> Update meta-balena from v2.88.21 to v2.89.3 [Alexandru Costache] </summary>
+
+> ## meta-balena-2.89.3
+> ### (2022-01-20)
+> 
+> * initramfs-framework: Make cleaning udev database the last step [Alex Gonzalez]
+> 
+> ## meta-balena-2.89.2
+> ### (2022-01-20)
+> 
+> * recipes-core/jq: Use 64bit time symbols [Alexandru Costache]
+> 
+> ## meta-balena-2.89.1
+> ### (2022-01-19)
+> 
+> * tests: Enable UART serial console where supported [Kyle Harding]
+> 
+> ## meta-balena-2.89.0
+> ### (2022-01-19)
+> 
+> * docker-disk: Pull images from Balena's registry [Alex Gonzalez]
+> * balena-supervisor: Use image location path instead of repository:tag [Alex Gonzalez]
+> * distro: balena-os: Add default cloud environment distro setting [Alex Gonzalez]
+> 
+> ## meta-balena-2.88.22
+> ### (2022-01-18)
+> 
+> * intel-quark: Fix to honister syntax [Alex Gonzalez]
+> * recipes-core/bash: Use 64bit time symbols [Alexandru Costache]
+> * recipes-core/busybox: Use 64bit time symbols [Alexandru Costache]
+> 
+</details>
+
+* layers/meta-raspberrypi: Switch to Honister branch [Alexandru Costache]
+
 # v2.88.21+rev2
 ## (2022-01-20)
 
