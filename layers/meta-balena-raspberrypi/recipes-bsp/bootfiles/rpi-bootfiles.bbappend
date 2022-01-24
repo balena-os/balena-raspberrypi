@@ -1,16 +1,20 @@
 FILESEXTRAPATHS:append := ":${THISDIR}/files"
 
-RPIFW_DATE = "1.20211029"
-SRCREV = "e2bab29767e51c683a312df20014e3277275b8a6"
-
-SRC_URI[md5sum] = "2f3059f26d5572126051430c8ba8198a"
-SRC_URI[sha256sum] = "248a3e19b8db5d4973bee79d8d89704fedeb0877feee366567858a57af943769"
-
 LIC_FILES_CHKSUM = "file://LICENCE.broadcom;md5=c403841ff2837657b2ed8e5bb474ac8d"
 
 SRC_URI += " \
     file://fincm3-dt-blob.bin \
 "
+
+# Check known to work boot firmware since one of the DUTs
+# fails to boot with newer firmware, like for instance
+# the one currently set by meta-raspberrypi.
+# See internal discussion: https://www.flowdock.com/app/rulemotion/device-testing/threads/oOxI7aUO_0eAR3YpxXaXpUfMSO0
+RPIFW_DATE = "20210421"
+SRCREV = "2ac4de4eaac5c1d1b25acec4a5e0a9fdb16f0c91"
+
+SRC_URI[md5sum] = "43c92418c2634d4c0c8ce3da696dcad5"
+SRC_URI[sha256sum] = "c687aa1b5127a8dc0773e8aefb1f009f24bf71ccb4c9e8b40a1d46cbbb7bee0c"
 
 do_deploy:append() {
     # exclude from balenaOS the binaries with additional debug assertions (they
