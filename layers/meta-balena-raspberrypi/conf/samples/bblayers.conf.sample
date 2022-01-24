@@ -14,7 +14,7 @@ BBLAYERS ?= " \
     ${TOPDIR}/../layers/meta-openembedded/meta-python \
     ${TOPDIR}/../layers/meta-raspberrypi \
     ${TOPDIR}/../layers/meta-balena/meta-balena-common \
-    ${TOPDIR}/../layers/meta-balena/meta-balena-dunfell \
+    ${TOPDIR}/../layers/meta-balena/meta-balena-honister \
     ${TOPDIR}/../layers/meta-balena-raspberrypi \
     ${TOPDIR}/../layers/meta-rust \
     "

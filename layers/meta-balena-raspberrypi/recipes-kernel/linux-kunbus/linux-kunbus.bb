@@ -1,4 +1,4 @@
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 LINUX_VERSION = "4.19.95"
 
@@ -9,6 +9,9 @@ SRC_URI = " \
 
 require recipes-kernel/linux/linux-raspberrypi.inc
 
-SRC_URI_remove = "file://rpi-kernel-misc.cfg"
+SRC_URI:remove = "file://rpi-kernel-misc.cfg"
+SRC_URI:append = " \
+    file://scripts-Fix-kernel-module-headers-build-in-Honister.patch \
+"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=bbea815ee2795b2f4230826c0c6b8814"

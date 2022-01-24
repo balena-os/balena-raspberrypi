@@ -40,7 +40,7 @@ module_do_install() {
     done
 }
 
-FILES_${PN} += " \
+FILES:${PN} += " \
     /etc/modprobe.d/blacklist.conf \
     /lib/firmware/nxp/sd8887_uapsta_a2.bin \
 "

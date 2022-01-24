@@ -14,4 +14,4 @@ SRCREV ="raspberrypi-kernel_9.20200616-4.19.95+revpi1"
 
 S = "${WORKDIR}/git"
 
-EXTRA_OEMAKE_append = " KDIR=${STAGING_KERNEL_DIR}"
+EXTRA_OEMAKE:append = " KDIR=${STAGING_KERNEL_DIR}"

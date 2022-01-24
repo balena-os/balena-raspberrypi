@@ -1,14 +1,14 @@
 inherit kernel-resin
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-SRC_URI_append_fincm3 = " \
+SRC_URI:append:fincm3 = " \
 	file://0004-mmc-pwrseq-Repurpose-for-Marvell-SD8777.patch \
 	file://0005-balena-fin-wifi-sta-uap-mode.patch \
 	file://0007-overlays-Add-spyfly.dts.patch \
 "
 
-SRC_URI_append = " \
+SRC_URI:append = " \
 	file://0002-wireless-wext-Bring-back-ndo_do_ioctl-fallback.patch \
 	file://0001-Add-npe-x500-m3-overlay.patch \
 	file://0006-overlays-Add-Hyperpixel4-overlays.patch \
@@ -19,21 +19,12 @@ SRC_URI_append = " \
 	file://0011-USB-serial-Add-support-for-more-Quectel-modules.patch \
 "
 
-SRC_URI_append_rt-rpi-300 = " \
+SRC_URI:append:rt-rpi-300 = " \
 	file://rt-rpi-300-Add-changes-for-this-dt.patch \
 	file://rt-rpi-Add-ch-432t-driver-for-this-chip.patch \
 "
 
-# Set console accordingly to build type
-CMDLINE = "dwc_otg.lpm_enable=0 rootwait"
-CMDLINE += "${@bb.utils.contains('DISTRO_FEATURES','osdev-image',"console=tty1 console=serial0,115200"," vt.global_cursor_default=0 console=null",d)}"
-CMDLINE_DEBUG = ""
-
-# See https://github.com/raspberrypi/linux/commit/9b0efcc1ec497b2985c6aaa60cd97f0d2d96d203
-CMDLINE_append = " cgroup_enable=memory"
-CMDLINE_DEBUG = ""
-
-BALENA_CONFIGS_append = " fbtft"
+BALENA_CONFIGS:append = " fbtft"
 BALENA_CONFIGS[fbtft] = " \
     CONFIG_STAGING=y \
     CONFIG_FB_TFT=m \
@@ -67,7 +58,7 @@ BALENA_CONFIGS[fbtft] = " \
     CONFIG_FB_TFT_FBTFT_DEVICE=m \
     "
 
-BALENA_CONFIGS_append = " pca955_gpio_expander"
+BALENA_CONFIGS:append = " pca955_gpio_expander"
 BALENA_CONFIGS[pca955_gpio_expander] = " \
     CONFIG_GPIO_PCA953X=y \
     CONFIG_GPIO_PCA953X_IRQ=y \
@@ -77,7 +68,7 @@ KERNEL_MODULE_PROBECONF += "rtl8192cu"
 module_conf_rtl8192cu = "blacklist rtl8192cu"
 
 # requested by customer (support for Kontron PLD devices)
-BALENA_CONFIGS_append = " gpio_i2c_kempld"
+BALENA_CONFIGS:append = " gpio_i2c_kempld"
 BALENA_CONFIGS_DEPS[gpio_i2c_kempld] = " \
     CONFIG_GPIOLIB=y \
     CONFIG_I2C=y \
@@ -90,7 +81,7 @@ BALENA_CONFIGS[gpio_i2c_kempld] = " \
 "
 
 # make sure watchdog gets enabled no matter of the BSP changes
-BALENA_CONFIGS_append = " rpi_watchdog"
+BALENA_CONFIGS:append = " rpi_watchdog"
 BALENA_CONFIGS_DEPS[rpi_watchdog] = " \
     CONFIG_WATCHDOG=y \
 "
@@ -98,13 +89,13 @@ BALENA_CONFIGS[rpi_watchdog] = " \
     CONFIG_BCM2835_WDT=y \
 "
 
-BALENA_CONFIGS_append = " kvaser_usb_can_driver"
+BALENA_CONFIGS:append = " kvaser_usb_can_driver"
 
 BALENA_CONFIGS[kvaser_usb_can_driver] = " \
     CONFIG_CAN_KVASER_USB=m \
 "
 
-BALENA_CONFIGS_append = " mcp251x_can_driver"
+BALENA_CONFIGS:append = " mcp251x_can_driver"
 
 BALENA_CONFIGS[mcp251x_can_driver] = " \
     CONFIG_CAN_MCP251X=m \
@@ -115,7 +106,7 @@ BALENA_CONFIGS_DEPS[mcp251x_can_driver] = " \
     CONFIG_HAS_DMA=y \
 "
 
-BALENA_CONFIGS_append = " can_calc_bittiming"
+BALENA_CONFIGS:append = " can_calc_bittiming"
 
 BALENA_CONFIGS[can_calc_bittiming] = " \
 		CONFIG_CAN_CALC_BITTIMING=y \
@@ -125,7 +116,7 @@ BALENA_CONFIGS_DEPS[can_calc_bittiming] = " \
 		CONFIG_CAN_DEV=y \
 "
 
-BALENA_CONFIGS_append = " ds1307_rtc_driver"
+BALENA_CONFIGS:append = " ds1307_rtc_driver"
 
 BALENA_CONFIGS[ds1307_rtc_driver] = " \
     CONFIG_RTC_DRV_DS1307=m \
@@ -135,7 +126,7 @@ BALENA_CONFIGS_DEPS[ds1307_rtc_driver] = " \
     CONFIG_I2C=y \
 "
 
-BALENA_CONFIGS_append = " sc16is7xx_serial_driver"
+BALENA_CONFIGS:append = " sc16is7xx_serial_driver"
 
 BALENA_CONFIGS[sc16is7xx_serial_driver] = " \
     CONFIG_SERIAL_SC16IS7XX=m \
@@ -145,7 +136,7 @@ BALENA_CONFIGS_DEPS[sc16is7xx_serial_driver] = " \
     CONFIG_I2C=y \
 "
 
-BALENA_CONFIGS_append = " mcp3422_adc_driver"
+BALENA_CONFIGS:append = " mcp3422_adc_driver"
 
 BALENA_CONFIGS[mcp3422_adc_driver] = " \
     CONFIG_MCP3422=m \
@@ -155,7 +146,7 @@ BALENA_CONFIGS_DEPS[mcp3422_adc_driver] = " \
     CONFIG_I2C=y \
 "
 
-BALENA_CONFIGS_append = " sd8787_pwrseq_driver"
+BALENA_CONFIGS:append = " sd8787_pwrseq_driver"
 
 BALENA_CONFIGS[sd8787_pwrseq_driver] = " \
     CONFIG_PWRSEQ_SD8787=y \
@@ -165,7 +156,7 @@ BALENA_CONFIGS_DEPS[sd8787_pwrseq_driver] = " \
     CONFIG_OF=y \
 "
 
-BALENA_CONFIGS_append = " serial_8250"
+BALENA_CONFIGS:append = " serial_8250"
 BALENA_CONFIGS[serial_8250] = " \
     CONFIG_SERIAL_8250=y \
     CONFIG_SERIAL_8250_CONSOLE=y \
@@ -175,10 +166,35 @@ BALENA_CONFIGS[serial_8250] = " \
     CONFIG_SERIAL_8250_BCM2835AUX=y \
 "
 
-BALENA_CONFIGS_append_rt-rpi-300 = " rtrpi300cfgs"
+BALENA_CONFIGS:append:rt-rpi-300 = " rtrpi300cfgs"
 BALENA_CONFIGS[rtrpi300cfgs] = " \
     CONFIG_RTC_DRV_RX8010=m \
     CONFIG_SPI=y \
     CONFIG_SPI_BCM2835=m \
     CONFIG_CH432T_SPI=m \
 "
+
+# The Pi3-64 and Pi4-64 are the only boards very low on rootfs space for now
+# so we add this as per https://github.com/balena-os/meta-balena/pull/2411
+BALENA_CONFIGS:append:raspberrypi4-64 = " optimize-size"
+BALENA_CONFIGS:append:raspberrypi3-64 = " optimize-size"
+BALENA_CONFIGS[optimize-size] = " \
+    CONFIG_CC_OPTIMIZE_FOR_SIZE=y \
+"
+
+# Fix dtbo loading on 64bits,
+# see commit 949b88bb for details
+get_cc_option () {
+		# Check if KERNEL_CC supports the option "file-prefix-map".
+		# This option allows us to build images with __FILE__ values that do not
+		# contain the host build path.
+		if ${KERNEL_CC} -Q --help=joined | grep -q "\-ffile-prefix-map=<old=new>"; then
+			echo "-ffile-prefix-map=${S}=/kernel-source/"
+		fi
+}
+do_compile:append() {
+    if [ "${SITEINFO_BITS}" = "64" ]; then
+        cc_extra=$(get_cc_option)
+        oe_runmake dtbs CC="${KERNEL_CC} $cc_extra " LD="${KERNEL_LD}" ${KERNEL_EXTRA_ARGS}
+    fi
+}

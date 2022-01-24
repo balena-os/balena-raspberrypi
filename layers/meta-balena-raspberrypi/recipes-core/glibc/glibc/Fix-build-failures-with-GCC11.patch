@@ -1,0 +1,62 @@
+From: Alexandru Costache <alexandru@balena.io>
+Date: Tue, 4 Jan 2022 18:20:39 +0100
+Subject: [PATCH] Fix build failures with GCC 11
+
+We silence and fix compiler errors
+that occur with GCC11 and only if using
+the -Os flag.
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ stdlib/canonicalize.c | 7 ++++++-
+ sunrpc/netname.c      | 6 ++++--
+ 2 files changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/stdlib/canonicalize.c b/stdlib/canonicalize.c
+index 698f9ede255..a812e7b21e5 100644
+--- a/stdlib/canonicalize.c
++++ b/stdlib/canonicalize.c
+@@ -41,7 +41,7 @@
+ #include <idx.h>
+ #include <intprops.h>
+ #include <scratch_buffer.h>
+-
++#include <libc-diag.h>
+ #ifdef _LIBC
+ # include <shlib-compat.h>
+ # define GCC_LINT 1
+@@ -412,8 +412,13 @@ error_nomem:
+       scratch_buffer_free (rname_buf);
+       return failed ? NULL : resolved;
+     }
++  /* With GCC 11, only if compiling with -Os, the compiler warns that
++     dest may be uninitialized.  */
++  DIAG_PUSH_NEEDS_COMMENT;
++  DIAG_IGNORE_Os_NEEDS_COMMENT (11, "-Wmaybe-uninitialized");
+ 
+   return scratch_buffer_dupfree (rname_buf, dest - rname);
++  DIAG_POP_NEEDS_COMMENT;
+ }
+ 
+ /* Return the canonical absolute name of file NAME.  A canonical name
+diff --git a/sunrpc/netname.c b/sunrpc/netname.c
+index ceed23b1a72..31f823f9afc 100644
+--- a/sunrpc/netname.c
++++ b/sunrpc/netname.c
+@@ -49,8 +49,10 @@ user2netname (char netname[MAXNETNAMELEN + 1], const uid_t uid,
+   if ((strlen (dfltdom) + OPSYS_LEN + 3 + MAXIPRINT) > (size_t) MAXNETNAMELEN)
+     return 0;
+ 
+-  sprintf (netname, "%s.%d@%s", OPSYS, uid, dfltdom);
+-  i = strlen (netname);
++  /* Backported from http://patches-tcwg.linaro.org/patch/45439/ */
++  i = snprintf (netname, MAXNETNAMELEN + 1, "%s.%d@%s", OPSYS, uid, dfltdom);
++  if (i > (size_t) MAXNETNAMELEN)
++    return 0;
+   if (netname[i - 1] == '.')
+     netname[i - 1] = '\0';
+   return 1;
+-- 
+2.17.1
+

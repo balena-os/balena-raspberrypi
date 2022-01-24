@@ -1,2 +1,2 @@
-RDEPENDS_${PN} += "udev-rules-rpi \
+RDEPENDS:${PN} += "udev-rules-rpi \
 "

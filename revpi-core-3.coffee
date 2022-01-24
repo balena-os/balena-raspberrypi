@@ -35,7 +35,7 @@ module.exports =
 		machine: 'revpi-core-3'
 		image: 'balena-image'
 		fstype: 'balenaos-img'
-		version: 'yocto-dunfell'
+		version: 'yocto-honister'
 		deployArtifact: 'balena-image-revpi-core-3.balenaos-img'
 		compressed: true
 
