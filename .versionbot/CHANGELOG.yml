@@ -1,4 +1,19 @@
 - commits:
+    - subject: 'conf/layer: Add fbtft overlay for SPI-connected displays'
+      hash: fd800d4e2ef68b6b366c322749ba528f53a016c9
+      body: ''
+      footer:
+        Change-type: minor
+        change-type: minor
+        Changelog-entry: 'conf/layer: Add fbtft overlay for SPI-connected displays'
+        changelog-entry: 'conf/layer: Add fbtft overlay for SPI-connected displays'
+        Signed-off-by: Rahul Thakoor <rahul@balena.io>
+        signed-off-by: Rahul Thakoor <rahul@balena.io>
+      author: Rahul Thakoor
+      nested: []
+  version: 2.89.3+rev1
+  date: 2022-01-27T04:44:45.700Z
+- commits:
     - subject: Update meta-balena from v2.88.21 to v2.89.3
       hash: c21e2b3cc290600ae457916e665358dccebd9437
       body: |

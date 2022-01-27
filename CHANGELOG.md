@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.89.3+rev1
+## (2022-01-27)
+
+* conf/layer: Add fbtft overlay for SPI-connected displays [Rahul Thakoor]
+
 # v2.89.3
 ## (2022-01-24)
 
