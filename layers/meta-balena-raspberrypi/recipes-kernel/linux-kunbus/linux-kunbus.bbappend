@@ -2,7 +2,13 @@ inherit kernel-resin
 
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-SRC_URI:append = " file://0001-rtc-hctosys-Correctly-guard-hw-clock-polling-code.patch"
+SRC_URI:append = " \
+    file://0001-rtc-hctosys-Correctly-guard-hw-clock-polling-code.patch \
+"
+
+SRC_URI:append:revpi-connect = " \
+    file://0001-Add-revpi-connect-can-overlay.patch \
+"
 
 # Set console accordingly to build type
 CMDLINE = "dwc_otg.lpm_enable=0 rootwait"
