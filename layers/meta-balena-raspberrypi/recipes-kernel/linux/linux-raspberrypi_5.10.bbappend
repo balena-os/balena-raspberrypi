@@ -17,6 +17,7 @@ SRC_URI:append = " \
 	file://0010-dts-overlays-Add-UniPi-overlays.patch \
 	file://0001-seeed-studio-can-bus-v2-Add-dtbo-for-this-can-bus.patch \
 	file://0011-USB-serial-Add-support-for-more-Quectel-modules.patch \
+	file://0001-staging-bcm2835-isp-Fix-cleanup-after-init-fail.patch \
 "
 
 SRC_URI:append:rt-rpi-300 = " \
