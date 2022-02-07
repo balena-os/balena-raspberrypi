@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2021.10.3
+## (2022-02-05)
+
+* Revert updating bluetooth firmware [Alex Gonzalez]
+* Revert bluetooth firmware update [Alex Gonzalez]
+
 # v2021.10.2
 ## (2021-11-10)
 
