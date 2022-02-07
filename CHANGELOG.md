@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2021.10.4
+## (2022-02-07)
+
+* Skip compressing non-binary firmware files [Alex Gonzalez]
+
 # v2021.10.3
 ## (2022-02-05)
 

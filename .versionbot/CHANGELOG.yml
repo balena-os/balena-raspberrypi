@@ -1,4 +1,20 @@
 - commits:
+    - subject: Skip compressing non-binary firmware files
+      hash: 5c10834aa682b2bc8fd41b7db606bdd97b30c5f7
+      body: |
+        Some device types like the RaspberryPi place non-firmware files under
+        `/lib/firmware`. This commit skips compression for them.
+      footer:
+        Changelog-entry: Skip compressing non-binary firmware files
+        changelog-entry: Skip compressing non-binary firmware files
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2021.10.4
+  title: "'balena-linux-firmware: Do not compress non-binary txt files'"
+  date: 2022-02-07T10:54:26.579Z
+- commits:
     - subject: Revert updating bluetooth firmware
       hash: 245bf5515db13d273616e6d2e3b6d7de37261295
       body: |
