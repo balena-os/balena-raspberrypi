@@ -1,6 +1,4 @@
-# balena-raspberrypi repository
-
-## Clone/Initialize the repository
+## Clone / Initialize this repository
 
 There are two ways of initializing this repository:
 * Clone this repository with "git clone --recursive".
@@ -43,7 +41,7 @@ See below for using the build script.
 
 ### Issues
 
-For issues we use an aggregated github repository available [here](https://github.com/balena-os/balena-os/issues). When you create issue make sure you select the right labels.
+See [Issues](../../issues) section
 
 ### Pull requests
 
