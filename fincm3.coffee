@@ -26,7 +26,6 @@ module.exports =
 		windows: 'https://www.balena.io/docs/learn/getting-started/fincm3/nodejs/'
 		osx: 'https://www.balena.io/docs/learn/getting-started/fincm3/nodejs/'
 		linux: 'https://www.balena.io/docs/learn/getting-started/fincm3/nodejs/'
-	supportsBlink: true
 
 	options: [ networkOptions.group ]
 

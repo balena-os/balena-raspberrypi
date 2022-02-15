@@ -13,7 +13,6 @@ module.exports =
 		windows: 'https://www.balena.io/docs/learn/getting-started/raspberrypi4/nodejs/'
 		osx: 'https://www.balena.io/docs/learn/getting-started/raspberrypi4/nodejs/'
 		linux: 'https://www.balena.io/docs/learn/getting-started/raspberrypi4/nodejs/'
-	supportsBlink: true
 
 	options: [ networkOptions.group ]
 
