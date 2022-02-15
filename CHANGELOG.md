@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.89.19+rev1
+## (2022-02-15)
+
+
+<details>
+<summary> Update balena-yocto-scripts to v1.17.1 [Florin Sarbu] </summary>
+
+> ## balena-yocto-scripts-1.17.1
+> ### (2022-01-27)
+> 
+> * balena-deploy.inc: Do no deploy device logo to deprecated endpoint [Florin Sarbu]
+> 
+</details>
+
 # v2.89.19
 ## (2022-02-14)
 
