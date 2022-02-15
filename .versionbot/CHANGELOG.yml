@@ -1,4 +1,36 @@
 - commits:
+    - subject: Update balena-yocto-scripts to v1.17.1
+      hash: 5dadc588df2c1ebebb73c3e635dc954ca1a34dac
+      body: |
+        Update balena-yocto-scripts from v1.17.0 to v1.17.1
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to v1.17.1
+        changelog-entry: Update balena-yocto-scripts to v1.17.1
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: "balena-deploy.inc: Do no deploy device logo to deprecated endpoint"
+              hash: 54ad619b8b9c00d7c52cfc90593b22c70233d973
+              body: |
+                As per https://jel.ly.fish/a533a6bd-1c98-412c-ae60-8427e3f7b005,
+                the /device-types/v1 endpoint is deprecated and we can remove
+                the logo from the device repos so we can also stop handling it
+                from here. Instead, the logo will be used from the hw contracts.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: balena-yocto-scripts-1.17.1
+          date: 2022-01-27T07:38:18.417Z
+  version: 2.89.19+rev1
+  title: "'Release v2.89.19'"
+  date: 2022-02-15T08:41:01.626Z
+- commits:
     - subject: Update meta-balena from v2.89.3 to v2.89.19
       hash: 517b7f990c3bfd19b242c440e145cf48dce044f1
       body: |
