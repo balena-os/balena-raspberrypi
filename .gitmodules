@@ -6,7 +6,7 @@
 	url = https://github.com/openembedded/meta-openembedded.git
 [submodule "layers/meta-raspberrypi"]
 	path = layers/meta-raspberrypi
-	url = https://git.yoctoproject.org/git/meta-raspberrypi
+	url = https://github.com/agherzan/meta-raspberrypi.git
 [submodule "layers/meta-balena"]
 	path = layers/meta-balena
 	url = https://github.com/balena-os/meta-balena.git
