@@ -6,15 +6,13 @@ SRC_URI += " \
     file://fincm3-dt-blob.bin \
 "
 
-# Check known to work boot firmware since one of the DUTs
-# fails to boot with newer firmware, like for instance
-# the one currently set by meta-raspberrypi.
+# 1 out of 3 Pi4s in the rig cannot boot with firmware newer than 2021.04
 # See internal discussion: https://www.flowdock.com/app/rulemotion/device-testing/threads/oOxI7aUO_0eAR3YpxXaXpUfMSO0
-RPIFW_DATE = "20210421"
-SRCREV = "2ac4de4eaac5c1d1b25acec4a5e0a9fdb16f0c91"
+RPIFW_DATE = "20220120"
+SRCREV = "c6d56567ff6ef17fd85159770f22abcf2c5953ed"
 
-SRC_URI[md5sum] = "43c92418c2634d4c0c8ce3da696dcad5"
-SRC_URI[sha256sum] = "c687aa1b5127a8dc0773e8aefb1f009f24bf71ccb4c9e8b40a1d46cbbb7bee0c"
+SRC_URI[md5sum] = "fb3890d4ae3f4caf432698e944989254"
+SRC_URI[sha256sum] = "9324356498f1b6a21f2af1229604c4de7c3b3ee8cc3e2b08c290366a0534fa75"
 
 do_deploy:append() {
     # exclude from balenaOS the binaries with additional debug assertions (they

@@ -1,0 +1,48 @@
+From e821b4d64eeb53821a68508b52a865e8e4002594 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Wed, 2 Feb 2022 17:47:51 +0100
+Subject: [PATCH] staging/bcm2835-isp: Fix cleanup after init fail
+
+bcm2835_isp_remove is called on an initialisation failure, but at that
+point the drvdata hasn't been set. This causes a crash when e.g. using
+the cutdown firmware (gpu_mem=16).
+
+Move platform_set_drvdata before the instance probing loop to avoid the
+problem.
+
+See: #4774
+
+This fixes reboot not working with kernel 5.10.83
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.com>
+
+Upstream-status: Inappropriate [backport]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ drivers/staging/vc04_services/bcm2835-isp/bcm2835-v4l2-isp.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/staging/vc04_services/bcm2835-isp/bcm2835-v4l2-isp.c b/drivers/staging/vc04_services/bcm2835-isp/bcm2835-v4l2-isp.c
+index 5a0245b70b11..8166f8e62347 100644
+--- a/drivers/staging/vc04_services/bcm2835-isp/bcm2835-v4l2-isp.c
++++ b/drivers/staging/vc04_services/bcm2835-isp/bcm2835-v4l2-isp.c
+@@ -1774,6 +1774,8 @@ static int bcm2835_isp_probe(struct platform_device *pdev)
+ 	if (!bcm2835_isp_instances)
+ 		return -ENOMEM;
+ 
++	platform_set_drvdata(pdev, bcm2835_isp_instances);
++
+ 	for (i = 0; i < BCM2835_ISP_NUM_INSTANCES; i++) {
+ 		ret = bcm2835_isp_probe_instance(pdev,
+ 						 &bcm2835_isp_instances[i], i);
+@@ -1781,7 +1783,6 @@ static int bcm2835_isp_probe(struct platform_device *pdev)
+ 			goto error;
+ 	}
+ 
+-	platform_set_drvdata(pdev, bcm2835_isp_instances);
+ 	dev_info(&pdev->dev, "Loaded V4L2 %s\n", BCM2835_ISP_NAME);
+ 	return 0;
+ 
+-- 
+2.17.1
+
