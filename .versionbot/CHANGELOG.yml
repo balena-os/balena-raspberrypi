@@ -1,4 +1,18 @@
 - commits:
+    - subject: "packagegroups: Include BCM4345C0 firmware for CM4, Pi4, Pi400"
+      hash: ed9b0ef3c23adf13ca8d72bf45a4937b3a404117
+      body: ""
+      footer:
+        Changelog-entry: "packagegroups: Include BCM4345C0 firmware for CM4, Pi4, Pi400"
+        changelog-entry: "packagegroups: Include BCM4345C0 firmware for CM4, Pi4, Pi400"
+        Signed-off-by: William Hicklin <venturehicklin@gmail.com>
+        signed-off-by: William Hicklin <venturehicklin@gmail.com>
+      author: William Hicklin
+      nested: []
+  version: 2.89.19+rev1
+  title: "'removed the removal of the patch for the kernel BT driver.'"
+  date: 2022-02-15T10:03:53.764Z
+- commits:
     - subject: Update meta-balena from v2.89.3 to v2.89.19
       hash: 517b7f990c3bfd19b242c440e145cf48dce044f1
       body: |
