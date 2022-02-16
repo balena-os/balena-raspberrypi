@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.89.19+rev3
+## (2022-02-16)
+
+* raspberrypi0-2w-64: Rename Wifi to W in coffee file [Alexandru Costache]
+
 # v2.89.19+rev2
 ## (2022-02-15)
 
