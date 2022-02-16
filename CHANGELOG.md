@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.89.19+rev2
+## (2022-02-15)
+
+* packagegroups: Include BCM4345C0 firmware for CM4, Pi4, Pi400 [William Hicklin]
+
 # v2.89.19+rev1
 ## (2022-02-15)
 

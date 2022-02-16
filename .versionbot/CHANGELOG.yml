@@ -1,4 +1,18 @@
 - commits:
+    - subject: "packagegroups: Include BCM4345C0 firmware for CM4, Pi4, Pi400"
+      hash: 7dd95a0a2670ac740f47dfa8681a786f8d7e4c9d
+      body: ""
+      footer:
+        Changelog-entry: "packagegroups: Include BCM4345C0 firmware for CM4, Pi4, Pi400"
+        changelog-entry: "packagegroups: Include BCM4345C0 firmware for CM4, Pi4, Pi400"
+        Signed-off-by: William Hicklin <venturehicklin@gmail.com>
+        signed-off-by: William Hicklin <venturehicklin@gmail.com>
+      author: William Hicklin
+      nested: []
+  version: 2.89.19+rev2
+  title: "'packagegroups: Include BCM4345C0 firmware for CM4, Pi4, Pi400'"
+  date: 2022-02-15T14:07:55.567Z
+- commits:
     - subject: Update balena-yocto-scripts to v1.17.1
       hash: 5dadc588df2c1ebebb73c3e635dc954ca1a34dac
       body: |
