@@ -4,7 +4,7 @@ deviceTypesCommon = require '@resin.io/device-types/common'
 module.exports =
 	version: 1
 	slug: 'raspberrypi0-2w-64'
-	name: 'Raspberry Pi Zero 2 Wifi (64bit)'
+	name: 'Raspberry Pi Zero 2 W (64bit)'
 	arch: 'aarch64'
 	state: 'released'
 	isDefault: true
