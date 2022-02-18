@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.89.19+rev4
+## (2022-02-18)
+
+* conf/layer: Include vc4-fkms-v3d-pi4 overlay [Alexandru Costache]
+
 # v2.89.19+rev3
 ## (2022-02-16)
 

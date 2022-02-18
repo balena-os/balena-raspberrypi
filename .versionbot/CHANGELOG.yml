@@ -1,4 +1,26 @@
 - commits:
+    - subject: "conf/layer: Include vc4-fkms-v3d-pi4 overlay"
+      hash: aca8972617fd26f0e89ded0f22923943fb1ce505
+      body: |
+        Until the patch from Michal gets merged in
+        upstream meta-raspberrypi we can include
+        the overlay on our side to solve fkms not
+        loading properly. When this overlay
+        is not included vcdbg displays
+        the following error:
+
+            007119.598: Failed to load overlay 'vc4-fkms-v3d'
+      footer:
+        Changelog-entry: "conf/layer: Include vc4-fkms-v3d-pi4 overlay"
+        changelog-entry: "conf/layer: Include vc4-fkms-v3d-pi4 overlay"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.89.19+rev4
+  title: "'conf/layer: Include vc4-fkms-v3d-pi4 overlay'"
+  date: 2022-02-18T09:45:43.299Z
+- commits:
     - subject: "raspberrypi0-2w-64: Rename Wifi to W in coffee file"
       hash: 8590bf73e95929c700624e7471fad88e6b47d08b
       body: |
