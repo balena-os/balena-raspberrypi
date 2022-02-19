@@ -1,4 +1,205 @@
 - commits:
+    - subject: Update meta-balena from v2.89.19 to v2.91.0
+      hash: 445e57e38c4b64beef8036e8f246e032f29b2ab2
+      body: |
+        Update meta-balena from 2.89.19 to 2.91.0
+      footer:
+        Changelog-entry: Update meta-balena from v2.89.19 to v2.91.0
+        changelog-entry: Update meta-balena from v2.89.19 to v2.91.0
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: "openssh: Add a dependency on os-sshkeys"
+              hash: 0abc9213ba004325b77d96541e856aaf93cfdde2
+              body: >
+                This is required so that changes in the public keys are picked
+                up
+
+                by the SSH server.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-supervisor: Add dependency on root CA"
+              hash: 64cb45211a909b25170227079a400c2dfc9afae9
+              body: >
+                This is required so that the supervisor picks up a change in the
+                root CA
+
+                certificate.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena: Add dependency on balena-hostname"
+              hash: b4d9569261de3a6640394ff416264f9e64c5367b
+              body: >
+                This is needed so that the hostname change is picked up by the
+                container
+
+                applications.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: Make services configurable
+              hash: eb2028e5ed477ac4626bc55180cd872cd93f67b7
+              body: >
+                Changes to the system configuration will now restart several
+                services.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "classes: Add balena-configurable"
+              hash: 5b26f9200e8051859906016e84c03ab3d72a11d1
+              body: >
+                This class adds support to apply configuration changes to a
+                systemd
+
+                unit.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-config-vars: Split config.json configuration on write"
+              hash: cd7dcc30dc58255d5c84c6e64142f4073797d557
+              body: >
+                When config.json is written, use the config.json unit
+                configuration to create
+
+                per-unit configuration files extracts.
+
+
+                These will then be monitored by the respective service units to trigger
+
+                restarts, so that service units will only be restarted when there are
+
+                configuration changes that apply to them.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: Remove config-json.target
+              hash: 5e5de909b648d97ca949e7f6fed08ebbd6471893
+              body: >
+                Unit files that are configured via config.json and want to be
+                restarted
+
+                on config.json changes are part of this target.
+
+
+                This causes a burst of service restarts each time config.json changes,
+
+                independently of whether the configuration changes applies to the unit
+
+                or not.
+
+
+                This commit removes all config-json.target instances in preparation for
+
+                the introduction of a better, more fine grained mechanism.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.91.0
+          title: "'Per-unit configuration files'"
+          date: 2022-02-14T09:30:35.337Z
+        - commits:
+            - subject: "resin-init-flasher: check for UEFI mode and set config variables"
+              hash: 102a710fbbcbbd347d801263a9b96e432ec5e7b9
+              body: |
+                Check to see whether we are running in UEFI mode and set secure
+                boot configuration variables as appropriate.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Mark Corbin <mark@balena.io>
+                signed-off-by: Mark Corbin <mark@balena.io>
+              author: Mark Corbin
+              nested: []
+            - subject: "resin-init-flasher: Fix flashing progress reporting for LUKS"
+              hash: 5c44a257073a993c81692e09eabba842f2aaca1a
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: "resin-init-flasher: Use flasher kernel to emulate stage2 bootloader
+                with LUKS"
+              hash: ebd9c9b775cb82247c1cd9b5ed4fe44864aa2343
+              body: >
+                In order to avoid the need to unlock encrypted partitions in
+                GRUB we want
+
+                to use a custom stage2 bootloader. Since that is not ready yet, emulate that
+
+                by copying flasher kernel to the EFI partition, start it from GRUB, have it
+
+                unlock all the partitions, find the real kernel and kexec into it.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: "resin-init-flasher: Add support for opt-in full disk encryption"
+              hash: 857f44dc37ed28d2bfe285e0243a9894d7315ffe
+              body: >
+                If resin-init-flasher.conf has LUKS=1 flasher will:
+
+                - Add extra 2MB to each partition for the LUKS header
+
+                - Split resin-boot into EFI and linux boot
+
+                - LUKS-format the partitions, copy image contents after unlocking
+
+                - Propagate signatures for secure boot
+
+
+                The default behavior (LUKS undefined) is unchanged
+              footer:
+                Change-Type: minor
+                change-type: minor
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.90.0
+          title: "'Update flasher for LUKS encryption'"
+          date: 2022-02-13T18:21:21.805Z
+  version: 2.91.0
+  title: "'layers/meta-balena: Update to v2.91.0'"
+  date: 2022-02-19T04:33:15.179Z
+- commits:
     - subject: "conf/layer: Include vc4-fkms-v3d-pi4 overlay"
       hash: aca8972617fd26f0e89ded0f22923943fb1ce505
       body: |

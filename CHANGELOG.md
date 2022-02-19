@@ -1,6 +1,34 @@
 Change log
 -----------
 
+# v2.91.0
+## (2022-02-19)
+
+
+<details>
+<summary> Update meta-balena from v2.89.19 to v2.91.0 [Florin Sarbu] </summary>
+
+> ## meta-balena-2.91.0
+> ### (2022-02-14)
+> 
+> * openssh: Add a dependency on os-sshkeys [Alex Gonzalez]
+> * balena-supervisor: Add dependency on root CA [Alex Gonzalez]
+> * balena: Add dependency on balena-hostname [Alex Gonzalez]
+> * Make services configurable [Alex Gonzalez]
+> * classes: Add balena-configurable [Alex Gonzalez]
+> * balena-config-vars: Split config.json configuration on write [Alex Gonzalez]
+> * Remove config-json.target [Alex Gonzalez]
+> 
+> ## meta-balena-2.90.0
+> ### (2022-02-13)
+> 
+> * resin-init-flasher: check for UEFI mode and set config variables [Mark Corbin]
+> * resin-init-flasher: Fix flashing progress reporting for LUKS [Michal Toman]
+> * resin-init-flasher: Use flasher kernel to emulate stage2 bootloader with LUKS [Michal Toman]
+> * resin-init-flasher: Add support for opt-in full disk encryption [Michal Toman]
+> 
+</details>
+
 # v2.89.19+rev4
 ## (2022-02-18)
 
