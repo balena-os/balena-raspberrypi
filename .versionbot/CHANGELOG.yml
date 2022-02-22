@@ -1,4 +1,20 @@
 - commits:
+    - subject: "conf/layer: Include camera module dtoverlays"
+      hash: 40d8622234d4025577fc3f7d66311f5abbf3a9ef
+      body: >
+        Add required dtoverlays for camera modules as per
+        [documentation](https://www.raspberrypi.com/documentation/accessories/camera.html#getting-started)
+      footer:
+        Changelog-entry: "conf/layer: Include camera module dtoverlays"
+        changelog-entry: "conf/layer: Include camera module dtoverlays"
+        Signed-off-by: Rahul Thakoor <rahul@balena.io>
+        signed-off-by: Rahul Thakoor <rahul@balena.io>
+      author: Rahul Thakoor
+      nested: []
+  version: 2.89.19+rev5
+  title: "'conf/layer: Include camera module dtoverlays'"
+  date: 2022-02-22T06:46:16.127Z
+- commits:
     - subject: "conf/layer: Include vc4-fkms-v3d-pi4 overlay"
       hash: aca8972617fd26f0e89ded0f22923943fb1ce505
       body: |

@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.89.19+rev5
+## (2022-02-22)
+
+* conf/layer: Include camera module dtoverlays [Rahul Thakoor]
+
 # v2.89.19+rev4
 ## (2022-02-18)
 
