@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2022.1.1
+## (2022-02-22)
+
+* conf/layer: Include vc4-fkms-v3d-pi4 overlay [Florin Sarbu]
+
 # 2022.01.0
 ## (2022-01-24)
 
