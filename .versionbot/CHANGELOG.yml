@@ -1,4 +1,18 @@
 - commits:
+    - subject: Add dts for supporting CAN module on RevPi Connect
+      hash: cfbf0e7b0450c0bc297cd9abe440d24b382bec4a
+      body: ""
+      footer:
+        Changelog-entry: Add dts for supporting CAN module on RevPi Connect
+        changelog-entry: Add dts for supporting CAN module on RevPi Connect
+        Signed-off-by: Adolfo E. García <adolfo.garcia.cr@gmail.com>
+        signed-off-by: Adolfo E. García <adolfo.garcia.cr@gmail.com>
+      author: Adolfo García
+      nested: []
+  version: 2.91.1+rev1
+  title: "'Add support for RevPi Connect CAN'"
+  date: 2022-02-23T09:07:17.167Z
+- commits:
     - subject: Update meta-balena from v2.89.19 to v2.91.1
       hash: 2c7ed151ab65abd6a765924e5ada867713138daf
       body: |

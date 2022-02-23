@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.91.1+rev1
+## (2022-02-23)
+
+* Add dts for supporting CAN module on RevPi Connect [Adolfo García]
+
 # v2.91.1
 ## (2022-02-22)
 
