@@ -54,11 +54,10 @@ python overlay_dtbs_handler () {
             break
 }
 
-addhandler overlay_dtbs_handler
-#overlay_dtbs_handler[eventmask] = "bb.event.RecipePreFinalise"
+do_resin_boot_dirgen_and_deploy[prefuncs] += "overlay_dtbs_handler"
 
 IMAGE_INSTALL:append:rpi = " u-boot"
 
-do_rootfs:balenaos-img[depends] += " linux-raspberrypi:do_deploy "
+do_resin_boot_dirgen_and_deploy[depends] += "virtual/kernel:do_install"
 
 RPI_KERNEL_DEVICETREE:remove:revpi = "bcm2708-rpi-zero-w.dtb bcm2710-rpi-3-b-plus.dtb bcm2711-rpi-4-b.dtb"
