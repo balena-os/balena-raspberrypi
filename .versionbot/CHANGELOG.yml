@@ -1,4 +1,32 @@
 - commits:
+    - subject: "linux-raspberrypi: build and install all kernel overlays"
+      hash: 726c9474049e7a5f14eb6e7b8dd5b10277145f83
+      body: |
+        And include the aufs config that we moved recently
+        from the linux-rasberrpi recipe.
+      footer:
+        Changelog-entry: "linux-raspberrypi: build and install all kernel overlays"
+        changelog-entry: "linux-raspberrypi: build and install all kernel overlays"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+    - subject: "linux-raspberrypi: build and install all kernel overlays"
+      hash: 39760ff5f7efb6bcc628cff83abb94b14499d233
+      body: |
+        And also remove the aufs config from the revpi-core-3
+        since it uses the linux-kunbus recipe.
+      footer:
+        Changelog-entry: "linux-raspberrypi: build and install all kernel overlays"
+        changelog-entry: "linux-raspberrypi: build and install all kernel overlays"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.91.1+rev2
+  title: "'RPI: Install all overlays'"
+  date: 2022-02-24T10:41:38.719Z
+- commits:
     - subject: Add dts for supporting CAN module on RevPi Connect
       hash: cfbf0e7b0450c0bc297cd9abe440d24b382bec4a
       body: ""

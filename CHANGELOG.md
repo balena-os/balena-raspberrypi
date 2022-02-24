@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.91.1+rev2
+## (2022-02-24)
+
+* linux-raspberrypi: build and install all kernel overlays [Alexandru Costache]
+* linux-raspberrypi: build and install all kernel overlays [Alexandru Costache]
+
 # v2.91.1+rev1
 ## (2022-02-23)
 
