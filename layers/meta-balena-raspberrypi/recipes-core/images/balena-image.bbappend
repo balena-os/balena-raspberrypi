@@ -28,7 +28,12 @@ python overlay_dtbs_handler () {
     for soc_fam in d.getVar('SOC_FAMILY', True).split(':'):
         if soc_fam == 'rpi':
             resin_boot_partition_files = d.getVar('BALENA_BOOT_PARTITION_FILES', True)
-
+            # All changes to KERNEL_DEVICETREE are local and cannot be modified
+            # globally, thus we save the list of existing overlays when they are built
+            f = open(d.getVar('DEPLOY_DIR_IMAGE') + '/overlays.txt', "r")
+            kernel_devicetree = f.read()
+            f.close
+            d.setVar('KERNEL_DEVICETREE', kernel_devicetree)
             overlay_dtbs = split_overlays(d, 0)
             root_dtbs = split_overlays(d, 1)
 
@@ -49,9 +54,10 @@ python overlay_dtbs_handler () {
             break
 }
 
-addhandler overlay_dtbs_handler
-overlay_dtbs_handler[eventmask] = "bb.event.RecipePreFinalise"
+do_resin_boot_dirgen_and_deploy[prefuncs] += "overlay_dtbs_handler"
 
 IMAGE_INSTALL:append:rpi = " u-boot"
+
+do_resin_boot_dirgen_and_deploy[depends] += "virtual/kernel:do_install"
 
 RPI_KERNEL_DEVICETREE:remove:revpi = "bcm2708-rpi-zero-w.dtb bcm2710-rpi-3-b-plus.dtb bcm2711-rpi-4-b.dtb"
