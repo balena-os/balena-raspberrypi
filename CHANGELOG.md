@@ -1,6 +1,35 @@
 Change log
 -----------
 
+# v2.91.5
+## (2022-02-25)
+
+
+<details>
+<summary> Update meta-balena from v2.91.1 to v2.91.5 [Florin Sarbu] </summary>
+
+> ## meta-balena-2.91.5
+> ### (2022-02-24)
+> 
+> * suites/os: Add testcase for RPi device-tree [Alexandru Costache]
+> 
+> ## meta-balena-2.91.4
+> ### (2022-02-24)
+> 
+> * openvpn: Remove dependency on timesync-http target [Alex Gonzalez]
+> 
+> ## meta-balena-2.91.3
+> ### (2022-02-24)
+> 
+> * tests/os: Wait for os-config-json service to be inactive [Kyle Harding]
+> 
+> ## meta-balena-2.91.2
+> ### (2022-02-23)
+> 
+> * contributing-device-support.md: Updates to board support instructions [Florin Sarbu]
+> 
+</details>
+
 # v2.91.1+rev2
 ## (2022-02-24)
 

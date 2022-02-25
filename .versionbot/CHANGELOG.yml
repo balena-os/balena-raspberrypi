@@ -1,4 +1,108 @@
 - commits:
+    - subject: Update meta-balena from v2.91.1 to v2.91.5
+      hash: 6acdff9840d401fd0c43824b15505efb416db582
+      body: |
+        Update meta-balena from 2.91.1 to 2.91.5
+      footer:
+        Changelog-entry: Update meta-balena from v2.91.1 to v2.91.5
+        changelog-entry: Update meta-balena from v2.91.1 to v2.91.5
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: "suites/os: Add testcase for RPi device-tree"
+              hash: 682d64ff8cd0290cd4788c332fbe021045299639
+              body: |
+                Upstream kernel added a new fkms overlay for
+                the Pi4 and CM4 and switched to using it
+                from overlay-map, however, we were not aware
+                of this.
+
+                Let's add a vcdbg testcase to warn in case the RPi
+                firmware fails to load any overlay or dtb, and set
+                gpu_mem to 64 so that vcdbg can run.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.91.5
+          title: "'suites/os: Add testcase for RPi device-tree'"
+          date: 2022-02-24T22:45:17.483Z
+        - commits:
+            - subject: "openvpn: Remove dependency on timesync-http target"
+              hash: 13cf7c9fef0a6e0df6b042ba34ceaa7a0d005254
+              body: >
+                We want the VPN to start unconditionally even if the
+                connectivity URL
+
+                is not reachable.
+
+
+                The rationale for adding the dependency in the first place was that
+
+                without an initial timesync certificate checks may fail. This can still
+
+                happen, but the VPN will retry continuously and eventually succeed once
+
+                the time is synched.
+
+
+                What happens now is that the VPN is delayed until the http sync, so if
+
+                the connectivity URL is blocked or unreachable, but the internet is
+
+                accessible, VPN will not even launch and no remote debugging is possible.
+
+
+                Fixes #2508
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.91.4
+          title: "'openvpn: Remove dependency on timesync-http target'"
+          date: 2022-02-24T20:29:51.915Z
+        - commits:
+            - subject: "tests/os: Wait for os-config-json service to be inactive"
+              hash: 1a7eead77e63c72cc1418a0f87d6b540e7deaa80
+              body: |
+                Wait for os-config-json service to be inactive between tests
+                so the next changes to config.json are not missed by systemd.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.91.3
+          title: "'tests/os: Wait for os-config-json service to be inactive'"
+          date: 2022-02-24T17:56:40.238Z
+        - commits:
+            - subject: "contributing-device-support.md: Updates to board support instructions"
+              hash: 47230867149db0a526a0dfdfa847e0eec9a3020b
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-2.91.2
+          title: "'contributing-device-support.md: Updates to board support instructions'"
+          date: 2022-02-23T14:52:43.399Z
+  version: 2.91.5
+  title: "'layers/meta-balena: Update to v2.91.5'"
+  date: 2022-02-25T07:48:24.032Z
+- commits:
     - subject: "linux-raspberrypi: build and install all kernel overlays"
       hash: 726c9474049e7a5f14eb6e7b8dd5b10277145f83
       body: |
