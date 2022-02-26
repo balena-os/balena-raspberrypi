@@ -1,4 +1,36 @@
 - commits:
+    - subject: Update balena-yocto-scripts to v1.17.2
+      hash: 64a49b0a571b68cf484ec40fd95c1e08c12ccaeb
+      body: |
+        Update balena-yocto-scripts from v1.17.1 to v1.17.2
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: Update balena-yocto-scripts to v1.17.2
+        changelog-entry: Update balena-yocto-scripts to v1.17.2
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested:
+        - commits:
+            - subject: "prepare-and-start: Remove balena login"
+              hash: 67568d3a5eceb45ee65c245baae18fa299366f9e
+              body: |
+                The login will happen as needed.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.17.2
+          title: "'prepare-and-start: Remove balena login'"
+          date: 2022-02-25T09:19:00.323Z
+  version: 2.91.5+rev1
+  title: "'balena-yocto-scripts: Update to v1.17.2'"
+  date: 2022-02-26T15:33:03.839Z
+- commits:
     - subject: Update meta-balena from v2.91.1 to v2.91.5
       hash: 6acdff9840d401fd0c43824b15505efb416db582
       body: |
