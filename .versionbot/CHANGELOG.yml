@@ -1,4 +1,69 @@
 - commits:
+    - subject: Update meta-balena from v2.91.5 to v2.92.0
+      hash: 6a65dc577eb333591d22251bd4391639d9cbe705
+      body: |
+        Update meta-balena from 2.91.5 to 2.92.0
+      footer:
+        Changelog-entry: Update meta-balena from v2.91.5 to v2.92.0
+        changelog-entry: Update meta-balena from v2.91.5 to v2.92.0
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: Update ModemManager to v1.18.4
+              hash: ac680ef2005ae9c0f263e6fab7755bf29dc37977
+              body: ""
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Update ModemManager to v1.18.4
+                changelog-entry: Update ModemManager to v1.18.4
+                Signed-off-by: Zahari Petkov <zahari@balena.io>
+                signed-off-by: Zahari Petkov <zahari@balena.io>
+              author: Zahari Petkov
+              nested: []
+          version: meta-balena-2.92.0
+          title: "'modemmanager: Update to v1.18.4'"
+          date: 2022-02-25T18:11:37.797Z
+        - commits:
+            - subject: "resin-device-register: Regenerate VPN credentials on registration"
+              hash: e6ccbc74b35c900f99998599e61bf36795dd4419
+              body: >
+                Before registration the VPN credentials use the `apiKey`, once
+                the
+
+                device is registered we need to regenerate the credentials to use the
+
+                `deviceApiKey` instead.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "resin-init-flasher: Wait for resin-device-register to start"
+              hash: 314047e72cb133dcd531df2e7b8c632024f78694
+              body: >
+                Unless the device has been registered, provisioning reports are
+                not
+
+                sent to the fleet.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.91.6
+          title: "'Improve provisioning'"
+          date: 2022-02-25T09:14:39.101Z
+  version: 2.92.0
+  title: "'layers/meta-balena: Update to v2.92.0'"
+  date: 2022-02-28T00:22:04.613Z
+- commits:
     - subject: Update balena-yocto-scripts to v1.17.2
       hash: 64a49b0a571b68cf484ec40fd95c1e08c12ccaeb
       body: |

@@ -1,6 +1,26 @@
 Change log
 -----------
 
+# v2.92.0
+## (2022-02-28)
+
+
+<details>
+<summary> Update meta-balena from v2.91.5 to v2.92.0 [Florin Sarbu] </summary>
+
+> ## meta-balena-2.92.0
+> ### (2022-02-25)
+> 
+> * Update ModemManager to v1.18.4 [Zahari Petkov]
+> 
+> ## meta-balena-2.91.6
+> ### (2022-02-25)
+> 
+> * resin-device-register: Regenerate VPN credentials on registration [Alex Gonzalez]
+> * resin-init-flasher: Wait for resin-device-register to start [Alex Gonzalez]
+> 
+</details>
+
 # v2.91.5+rev1
 ## (2022-02-26)
 
