@@ -2,6 +2,9 @@ inherit kernel-resin
 
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
+LINUX_VERSION = "5.10.95"
+SRCREV_machine = "a538fd26f82b101cb6fb963042f3242768e628d4"
+
 SRC_URI:append:fincm3 = " \
 	file://0001-Revert-overlays-i2c-gpio-Avoid-open-drain-warnings.patch \
 	file://0004-mmc-pwrseq-Repurpose-for-Marvell-SD8777.patch \
@@ -18,12 +21,18 @@ SRC_URI:append = " \
 	file://0010-dts-overlays-Add-UniPi-overlays.patch \
 	file://0001-seeed-studio-can-bus-v2-Add-dtbo-for-this-can-bus.patch \
 	file://0011-USB-serial-Add-support-for-more-Quectel-modules.patch \
-	file://0001-staging-bcm2835-isp-Fix-cleanup-after-init-fail.patch \
 "
 
 SRC_URI:append:rt-rpi-300 = " \
 	file://rt-rpi-300-Add-changes-for-this-dt.patch \
 	file://rt-rpi-Add-ch-432t-driver-for-this-chip.patch \
+"
+
+# BalenaOS already disables gcc plugins,
+# however the unipi-neuron adds an extra module
+# which seems to override the default configuration
+SRC_URI:append:raspberrypi3-unipi-neuron = " \
+	file://0001-pi3neuron-disable-gccplugins.patch \
 "
 
 BALENA_CONFIGS:append = " fbtft"
