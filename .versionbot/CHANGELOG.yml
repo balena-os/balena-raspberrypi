@@ -1,4 +1,28 @@
 - commits:
+    - subject: "u-boot: fix Pi3 booting with large gpu_mem"
+      hash: 4835b775d1e897d5627edf4adb960dac2a58f33b
+      body: |
+        The Pi3 32bit currently refuses to boot if
+        gpu_mem is set to 396MB. This seems to be caused
+        by a variable we use in u-boot to avoid locking
+        while writing to the uart, if enable_uart is
+        disabled in config.txt.
+
+        Having the putc_retry variable uninitialized
+        meant that it was part of the data section,
+        however this no longer seems to be the case and
+        we need to allocate it in .data explicitly.
+      footer:
+        Changelog-entry: "u-boot: fix Pi3 booting with large gpu_mem"
+        changelog-entry: "u-boot: fix Pi3 booting with large gpu_mem"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.94.3+rev1
+  title: "'u-boot: Ensure uart retry count is stored in data section'"
+  date: 2022-03-03T11:23:01.326Z
+- commits:
     - subject: Update meta-balena from v2.92.0 to v2.94.3
       hash: 928451dcdf7d4c48ec5fee6008d290c1b16bc8b9
       body: |

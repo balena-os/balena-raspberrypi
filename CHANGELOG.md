@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.94.3+rev1
+## (2022-03-03)
+
+* u-boot: fix Pi3 booting with large gpu_mem [Alexandru Costache]
+
 # v2.94.3
 ## (2022-03-02)
 
