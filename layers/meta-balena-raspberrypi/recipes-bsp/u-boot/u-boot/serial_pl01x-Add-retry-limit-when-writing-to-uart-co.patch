@@ -22,7 +22,7 @@ index 6e5d81ce34..22d985f96c 100644
  
  #endif
  
-+static uint16_t putc_retry;
++static uint16_t putc_retry __section(".data");
  static int pl01x_putc(struct pl01x_regs *regs, char c)
  {
  	/* Wait until there is space in the FIFO */
