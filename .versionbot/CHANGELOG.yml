@@ -1,4 +1,19 @@
 - commits:
+    - subject: "fincm3: workaround i2c expander open drain issue"
+      hash: b630a7d3af11e2704baeacd14628ace5b5fa88f7
+      body: |
+        This fixes https://github.com/balena-os/balena-raspberrypi/issues/640
+      footer:
+        Changelog-entry: "fincm3: workaround i2c expander open drain issue"
+        changelog-entry: "fincm3: workaround i2c expander open drain issue"
+        Signed-off-by: Joseph Kogut <joseph@balena.io>
+        signed-off-by: Joseph Kogut <joseph@balena.io>
+      author: Joseph Kogut
+      nested: []
+  version: 2.94.3+rev2
+  title: "'linux: fincm3: revert 129d946 to work around open drain issue'"
+  date: 2022-03-03T15:04:20.392Z
+- commits:
     - subject: "u-boot: fix Pi3 booting with large gpu_mem"
       hash: 4835b775d1e897d5627edf4adb960dac2a58f33b
       body: |
