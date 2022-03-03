@@ -3,6 +3,7 @@ inherit kernel-resin
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 SRC_URI:append:fincm3 = " \
+	file://0001-Revert-overlays-i2c-gpio-Avoid-open-drain-warnings.patch \
 	file://0004-mmc-pwrseq-Repurpose-for-Marvell-SD8777.patch \
 	file://0005-balena-fin-wifi-sta-uap-mode.patch \
 	file://0007-overlays-Add-spyfly.dts.patch \
