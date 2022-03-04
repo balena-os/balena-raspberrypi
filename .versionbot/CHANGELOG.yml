@@ -1,4 +1,33 @@
 - commits:
+    - subject: Update meta-balena from v2.94.3 to v2.94.4
+      hash: 1f61892a60a3dea135fb151ef0b23afbd861a54e
+      body: |
+        Update meta-balena from 2.94.3 to 2.94.4
+      footer:
+        Changelog-entry: Update meta-balena from v2.94.3 to v2.94.4
+        changelog-entry: Update meta-balena from v2.94.3 to v2.94.4
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: "balena-supervisor: Fix supervisor tagging command"
+              hash: d25d6289b14edd9111d6abbc45448693ca872036
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-2.94.4
+          title: "'balena-supervisor: Fix supervisor tagging command'"
+          date: 2022-03-04T05:54:28.770Z
+  version: 2.94.4
+  title: "'layers/meta-balena: Update to v2.94.4'"
+  date: 2022-03-04T06:47:42.791Z
+- commits:
     - subject: "fincm3: workaround i2c expander open drain issue"
       hash: b630a7d3af11e2704baeacd14628ace5b5fa88f7
       body: |

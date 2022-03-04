@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.94.4
+## (2022-03-04)
+
+
+<details>
+<summary> Update meta-balena from v2.94.3 to v2.94.4 [Florin Sarbu] </summary>
+
+> ## meta-balena-2.94.4
+> ### (2022-03-04)
+> 
+> * balena-supervisor: Fix supervisor tagging command [Florin Sarbu]
+> 
+</details>
+
 # v2.94.3+rev2
 ## (2022-03-03)
 
