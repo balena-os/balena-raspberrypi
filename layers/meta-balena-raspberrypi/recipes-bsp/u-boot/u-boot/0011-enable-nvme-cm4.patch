@@ -1,0 +1,25 @@
+From 109052e0790155c202ba80bd31efb70fd72e5f72 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Mon, 7 Mar 2022 13:52:31 +0100
+Subject: [PATCH] Enable NVME configs on CM4 IO Board
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ configs/rpi_arm64_defconfig | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/configs/rpi_arm64_defconfig b/configs/rpi_arm64_defconfig
+index aeef34c4de..9024b63dcf 100644
+--- a/configs/rpi_arm64_defconfig
++++ b/configs/rpi_arm64_defconfig
+@@ -51,3 +51,6 @@ CONFIG_SYS_WHITE_ON_BLACK=y
+ CONFIG_CONSOLE_SCROLL_LINES=10
+ CONFIG_PHYS_TO_BUS=y
+ CONFIG_OF_LIBFDT_OVERLAY=y
++CONFIG_NVME=y
++CONFIG_CMD_NVME=y
++
+-- 
+2.17.1
+
