@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.94.4+rev1
+## (2022-03-10)
+
+* u-boot: Enable nvme boot on RPI CM4 IOBoard [Alexandru Costache]
+
 # v2.94.4
 ## (2022-03-04)
 
