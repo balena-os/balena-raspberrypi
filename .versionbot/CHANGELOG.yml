@@ -1,4 +1,74 @@
 - commits:
+    - subject: Update balena-yocto-scripts from v1.17.2 to v1.17.5
+      hash: 398d8bd470b6a921b0353ad93934ad25e64bfd4d
+      body: |
+        Update balena-yocto-scripts from 1.17.2 to 1.17.5
+      footer:
+        Changelog-entry: Update balena-yocto-scripts from v1.17.2 to v1.17.5
+        changelog-entry: Update balena-yocto-scripts from v1.17.2 to v1.17.5
+        Change-type: patch
+        change-type: patch
+      author: Kyle Harding
+      nested:
+        - commits:
+            - subject: "balena-deploy: Avoid patching test suites config.js during deploy"
+              hash: 21c27cd41cda7ee7f5041752cca1f79280c51a7e
+              body: >
+                This will allow us to make changes to config.js in meta-balena
+                without
+
+                breaking the deploy steps. If additional changes are needed at runtime
+
+                the substitutions can be made by the leviathan Jenkins job.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.17.5
+          title: "'balena-deploy: Avoid patching test suites config.js during deploy'"
+          date: 2022-03-08T13:38:17.771Z
+        - commits:
+            - subject: Init and update submodules when switching meta-balena branches
+              hash: 5162e7c9fa39498488303caab7d746456fc9abd4
+              body: >
+                If the submodule was recently added to meta-balena, the checkout
+
+                command will not initialize it without a separate submodule update
+
+                command.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.17.4
+          title: "'Init and update submodules when switching meta-balena branches'"
+          date: 2022-03-03T16:46:17.542Z
+        - commits:
+            - subject: "jenkins_build: Use recurse-submodules when checking out meta-balena"
+              hash: 00fb29b9a7a00dc1209be497ef171736e6229954
+              body: >
+                If meta-balena has submodule updates we want to make sure to use
+                them.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.17.3
+          title: "'jenkins_build: Use recurse-submodules when checking out meta-balena'"
+          date: 2022-03-02T17:17:21.631Z
+  version: 2.94.4+rev2
+  title: "'balena-yocto-scripts: Update balena-yocto-scripts to v1.17.5'"
+  date: 2022-03-11T17:31:28.563Z
+- commits:
     - subject: "u-boot: Enable nvme boot on RPI CM4 IOBoard"
       hash: 235bcccf147e6e8fae99dbf70276b1c9e8e9d4e9
       body: ""
