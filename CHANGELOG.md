@@ -1,6 +1,81 @@
 Change log
 -----------
 
+# v2.95.3
+## (2022-03-17)
+
+
+<details>
+<summary> Update meta-balena from v2.94.4 to v2.95.3 [Florin Sarbu] </summary>
+
+> ## meta-balena-2.95.3
+> ### (2022-03-15)
+> 
+> * balena-supervisor: Update balena-supervisor to v12.11.38 Ensure preloaded applications are ran when no internet is available on first run [20k-ultra]
+> 
+> ## meta-balena-2.95.2
+> ### (2022-03-11)
+> 
+> * kernel-balena: Disable building gcc plugins [Alexandru Costache]
+> 
+> ## meta-balena-2.95.1
+> ### (2022-03-08)
+> 
+> * tests: Add leviathan v2.0.0 as a submodule [Kyle Harding]
+> * tests/cloud: Cleanup wait until loops in cloud suite [Kyle Harding]
+> * tests/hup: Remove bluebird and this.context.get references [Kyle Harding]
+> * tests/os: Remove bluebird and this.context.get references [Kyle Harding]
+> * tests/cloud: Remove bluebird and this.context.get references [Kyle Harding]
+> * tests: Cleanup suites config to support both testbot and qemu workers [Kyle Harding]
+> * tests/cloud: Update cloud suite to support core on client [Kyle Harding]
+> * tests/hup: Update hup suite to support core on client [Kyle Harding]
+> * tests/os: Update os suite to support core on client [Kyle Harding]
+> 
+> ## meta-balena-2.95.0
+> ### (2022-03-04)
+> 
+> * Adds modem test suite [Alex]
+> 
+> ## meta-balena-2.94.5
+> ### (2022-03-04)
+> 
+> * Use by-state symlink for mounting the EFI partition when split [Michal Toman]
+> * os-helpers: add TPM2 helpers [Michal Toman]
+> * Add PCR protection policy to TPM operation unlocking LUKS passphrase [Michal Toman]
+> 
+</details>
+
+
+<details>
+<summary> Update balena-yocto-scripts to v1.17.7 [Florin Sarbu] </summary>
+
+> ## balena-yocto-scripts-1.17.7
+> ### (2022-03-15)
+> 
+> * jenkins_generate_ami: surface preload app commit as variable [Joseph Kogut]
+> 
+> ## balena-yocto-scripts-1.17.6
+> ### (2022-03-08)
+> 
+> * barys: Remove RESINHUP setting [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.17.5
+> ### (2022-03-08)
+> 
+> * balena-deploy: Avoid patching test suites config.js during deploy [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.17.4
+> ### (2022-03-03)
+> 
+> * Init and update submodules when switching meta-balena branches [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.17.3
+> ### (2022-03-02)
+> 
+> * jenkins_build: Use recurse-submodules when checking out meta-balena [Kyle Harding]
+> 
+</details>
+
 # v2.94.4+rev2
 ## (2022-03-16)
 
