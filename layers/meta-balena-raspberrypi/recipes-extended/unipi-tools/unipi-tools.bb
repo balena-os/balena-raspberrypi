@@ -2,7 +2,7 @@ DESCRIPTION = "UniPi Neuron Modbus utilities"
 LICENSE = "GPLv3"
 LIC_FILES_CHKSUM = "file://../debian/copyright;md5=2ae0c739310d5de8f2d85519ac1f2a50"
 
-SRC_URI = "git://git@git.unipi.technology/UniPi/unipi-tools.git;protocol=https"
+SRC_URI = "git://github.com/UniPiTechnology/unipi-tools.git;protocol=https"
 
 inherit systemd
 
