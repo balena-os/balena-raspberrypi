@@ -1,4 +1,22 @@
 - commits:
+    - subject: Use updated SRC_URI for unipi kernel modules
+      hash: d196da60c4b5853e76efaaebc718e70aff333250
+      body: |
+        The vendor now redirects
+        https://git.unipi.technology/UniPi
+        to https://github.com/UniPiTechnology/
+        so let's follow suite.
+      footer:
+        Changelog-entry: Use updated SRC_URI for unipi kernel modules
+        changelog-entry: Use updated SRC_URI for unipi kernel modules
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.94.4+rev2
+  title: "'unipi-kernel-modules.bb: Switch SRC_URI'"
+  date: 2022-03-16T16:01:28.877Z
+- commits:
     - subject: "u-boot: Enable nvme boot on RPI CM4 IOBoard"
       hash: 235bcccf147e6e8fae99dbf70276b1c9e8e9d4e9
       body: ""

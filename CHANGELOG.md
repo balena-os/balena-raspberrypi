@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.94.4+rev2
+## (2022-03-16)
+
+* Use updated SRC_URI for unipi kernel modules [Florin Sarbu]
+
 # v2.94.4+rev1
 ## (2022-03-10)
 
