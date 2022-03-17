@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.95.3+rev1
+## (2022-03-17)
+
+* Use updated SRC_URI for UniPi Neuron Modbus utilities [Florin Sarbu]
+
 # v2.95.3
 ## (2022-03-17)
 

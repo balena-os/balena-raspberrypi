@@ -1,4 +1,22 @@
 - commits:
+    - subject: Use updated SRC_URI for UniPi Neuron Modbus utilities
+      hash: 15cf20b798152c6479c2fc10b38dd3efa1d3d15e
+      body: |
+        The vendor now redirects
+        https://git.unipi.technology/UniPi
+        to https://github.com/UniPiTechnology/
+        so let's follow suite.
+      footer:
+        Changelog-entry: Use updated SRC_URI for UniPi Neuron Modbus utilities
+        changelog-entry: Use updated SRC_URI for UniPi Neuron Modbus utilities
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.95.3+rev1
+  title: "'More unipi fixes'"
+  date: 2022-03-17T11:33:41.520Z
+- commits:
     - subject: Update meta-balena from v2.94.4 to v2.95.3
       hash: 9a4481b06162e12409af577f1525adc49f6334e6
       body: |
