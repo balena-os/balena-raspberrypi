@@ -1,4 +1,18 @@
 - commits:
+    - subject: "linux-raspberrypi: Update from 5.10.83 to 5.10.95"
+      hash: 2d14841e6807e4bcd6ac2a6a6abe3929c03cf195
+      body: ""
+      footer:
+        Changelog-entry: "linux-raspberrypi: Update from 5.10.83 to 5.10.95"
+        changelog-entry: "linux-raspberrypi: Update from 5.10.83 to 5.10.95"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.95.8+rev1
+  title: "'linux-raspberrypi: Update from 5.10.83 to 5.10.95'"
+  date: 2022-03-28T08:24:36.897Z
+- commits:
     - subject: Update meta-balena from v2.95.3 to v2.95.8
       hash: fbf18e9b3f3cfc8d71e1af0836cd8cf51df2a191
       body: |

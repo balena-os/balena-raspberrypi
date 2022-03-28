@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.95.8+rev1
+## (2022-03-28)
+
+* linux-raspberrypi: Update from 5.10.83 to 5.10.95 [Alexandru Costache]
+
 # v2.95.8
 ## (2022-03-27)
 
