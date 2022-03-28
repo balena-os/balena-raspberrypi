@@ -1,4 +1,145 @@
 - commits:
+    - subject: Update meta-balena from v2.95.3 to v2.95.8
+      hash: fbf18e9b3f3cfc8d71e1af0836cd8cf51df2a191
+      body: |
+        Update meta-balena from 2.95.3 to 2.95.8
+      footer:
+        Changelog-entry: Update meta-balena from v2.95.3 to v2.95.8
+        changelog-entry: Update meta-balena from v2.95.3 to v2.95.8
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested:
+        - commits:
+            - subject: "resindataexpander: Check and fix end GPT if necessary"
+              hash: 5d2435e17851f44f17cfba491b01f766d7930317
+              body: >
+                Under certain circumstances that we haven't reproduced,
+
+                it is reported that the alternate GPT may become corrupt,
+
+                preventing the device from booting.
+
+
+                Should this happen, we use sgdisk to check and recover the end gpt
+
+                from the main one.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.95.8
+          title: "'Add gpt check'"
+          date: 2022-03-25T08:08:23.471Z
+        - commits:
+            - subject: "hostapp-update-hooks: Always update legacy development variants to
+                development mode"
+              hash: 8c7bd8d87d0db97851528f97c4853097c63273e4
+              body: >
+                A legacy development image will update to development mode
+                enabled
+
+                independently of whether the newOS is configured for development mode or
+
+                not. The only case when a hostapp has developmentMode set is when locally
+
+                building with `OS_DEVELOPMENT`.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.95.7
+          title: "'Always update legacy development variants to development mode'"
+          date: 2022-03-23T12:47:07.162Z
+        - commits:
+            - subject: "balena-supervisor: Use architecture instead of device type to query
+                API"
+              hash: 419e1eefe64b6e5ffc9ff370e50cd256a319ef2c
+              body: >
+                This caters for the use case of custom device types that are not
+
+                registered in balena-cloud but still need to fetch the supervisor from
+
+                balena-cloud's registry by querying the `supervisor_version` endpoint,
+
+                for example when using openBalena.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "update-balena-supervisor: Support passing command line image argument"
+              hash: 227fea72a17c00bcd7e8ee069414ccc006703072
+              body: >
+                For balena-cloud managed devices, the supervisor update data is
+                managed
+
+                by the API.
+
+
+                Providing the image name in the command line provides an update path
+
+                for unmanaged devices, manual updates on ESR devices (which currently
+
+                do not allow dashboard based updates) and openBalena use cases.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.95.6
+          title: "'Supervisor update enhacements'"
+          date: 2022-03-22T15:05:51.376Z
+        - commits:
+            - subject: "tests/kernel-overlap: Prevent test run failure on older kernels"
+              hash: 3d230a9d003988924b6c16720d554c9f48a05c16
+              body: >
+                The issue that this test is aimed at has been introduced in
+
+                kernel versions above 4.13. On older kernels like for instance
+
+                4.9, the test will not pass.
+
+
+                Let's run this test on kernel versions where the issue was present.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.95.5
+          title: "'tests/kernel-overlap: Prevent test run failure on older kernels'"
+          date: 2022-03-21T15:04:59.766Z
+        - commits:
+            - subject: "tests/os: wait for osconfig service to be inactive"
+              hash: da59749c901057a55adaf990643fc235480156aa
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.95.4
+          title: "'Fix dns test'"
+          date: 2022-03-17T17:38:43.827Z
+  version: 2.95.8
+  title: "'layers/meta-balena: Update to v2.95.8'"
+  date: 2022-03-27T09:21:11.373Z
+- commits:
     - subject: Use updated SRC_URI for UniPi Neuron Modbus utilities
       hash: 15cf20b798152c6479c2fc10b38dd3efa1d3d15e
       body: |

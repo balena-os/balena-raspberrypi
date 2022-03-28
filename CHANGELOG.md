@@ -1,6 +1,41 @@
 Change log
 -----------
 
+# v2.95.8
+## (2022-03-27)
+
+
+<details>
+<summary> Update meta-balena from v2.95.3 to v2.95.8 [Alexandru Costache] </summary>
+
+> ## meta-balena-2.95.8
+> ### (2022-03-25)
+> 
+> * resindataexpander: Check and fix end GPT if necessary [Alexandru Costache]
+> 
+> ## meta-balena-2.95.7
+> ### (2022-03-23)
+> 
+> * hostapp-update-hooks: Always update legacy development variants to development mode [Alex Gonzalez]
+> 
+> ## meta-balena-2.95.6
+> ### (2022-03-22)
+> 
+> * balena-supervisor: Use architecture instead of device type to query API [Alex Gonzalez]
+> * update-balena-supervisor: Support passing command line image argument [Alex Gonzalez]
+> 
+> ## meta-balena-2.95.5
+> ### (2022-03-21)
+> 
+> * tests/kernel-overlap: Prevent test run failure on older kernels [Alexandru Costache]
+> 
+> ## meta-balena-2.95.4
+> ### (2022-03-17)
+> 
+> * tests/os: wait for osconfig service to be inactive [rcooke-warwick]
+> 
+</details>
+
 # v2.95.3+rev1
 ## (2022-03-17)
 
