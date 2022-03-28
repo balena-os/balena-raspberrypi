@@ -1,0 +1,61 @@
+From ffc2fba4a2bf3dc033c4fb0adc0dd0bad8a9c018 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Fri, 11 Mar 2022 17:21:10 +0100
+Subject: [PATCH 2/2] Revert "gcc-plugins: simplify GCC plugin-dev capability
+ test"
+
+This reverts commit 1eee36a5520b5a89fb4d0d6af6f9cb0217a3164f.
+
+Revert this commit to fix build for UniPi Neuron.
+BalenaOS already disables gcc plugins build
+from configs, but this DT still built them.
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ scripts/gcc-plugin.sh       | 19 +++++++++++++++++++
+ scripts/gcc-plugins/Kconfig |  2 +-
+ 2 files changed, 20 insertions(+), 1 deletion(-)
+ create mode 100755 scripts/gcc-plugin.sh
+
+diff --git a/scripts/gcc-plugin.sh b/scripts/gcc-plugin.sh
+new file mode 100755
+index 000000000000..b79fd0bea838
+--- /dev/null
++++ b/scripts/gcc-plugin.sh
+@@ -0,0 +1,19 @@
++#!/bin/sh
++# SPDX-License-Identifier: GPL-2.0
++
++set -e
++
++srctree=$(dirname "$0")
++
++gccplugins_dir=$($* -print-file-name=plugin)
++
++# we need a c++ compiler that supports the designated initializer GNU extension
++$HOSTCC -c -x c++ -std=gnu++98 - -fsyntax-only -I $srctree/gcc-plugins -I $gccplugins_dir/include 2>/dev/null <<EOF
++#include "gcc-common.h"
++class test {
++public:
++	int test;
++} test = {
++	.test = 1
++};
++EOF
+diff --git a/scripts/gcc-plugins/Kconfig b/scripts/gcc-plugins/Kconfig
+index ab9eb4cbe33a..ae19fb0243b9 100644
+--- a/scripts/gcc-plugins/Kconfig
++++ b/scripts/gcc-plugins/Kconfig
+@@ -9,7 +9,7 @@ menuconfig GCC_PLUGINS
+ 	bool "GCC plugins"
+ 	depends on HAVE_GCC_PLUGINS
+ 	depends on CC_IS_GCC
+-	depends on $(success,test -e $(shell,$(CC) -print-file-name=plugin)/include/plugin-version.h)
++	depends on $(success,$(srctree)/scripts/gcc-plugin.sh $(CC))
+ 	default y
+ 	help
+ 	  GCC plugins are loadable modules that provide extra features to the
+-- 
+2.17.1
+
