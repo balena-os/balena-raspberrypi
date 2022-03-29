@@ -1,6 +1,42 @@
 Change log
 -----------
 
+# v2.95.9
+## (2022-03-29)
+
+
+<details>
+<summary> Update meta-balena from v2.95.8 to v2.95.9 [Florin Sarbu] </summary>
+
+> ## meta-balena-2.95.9
+> ### (2022-03-28)
+> 
+> * tests: update leviathan to 2.0.4 [rcooke-warwick]
+> * tests: update config for new leviathan version [rcooke-warwick]
+> 
+</details>
+
+
+<details>
+<summary> Update balena-yocto-scripts to v1.17.10 [Florin Sarbu] </summary>
+
+> ## balena-yocto-scripts-1.17.10
+> ### (2022-03-28)
+> 
+> * Pass environment to docker [ab77]
+> 
+> ## balena-yocto-scripts-1.17.9
+> ### (2022-03-25)
+> 
+> * automation: ami: make BALENA_PRELOAD_COMMIT optional [Joseph Kogut]
+> 
+> ## balena-yocto-scripts-1.17.8
+> ### (2022-03-15)
+> 
+> * balena-deploy: s/resin-flasher/balena-flasher [Joseph Kogut]
+> 
+</details>
+
 # v2.95.8+rev1
 ## (2022-03-28)
 

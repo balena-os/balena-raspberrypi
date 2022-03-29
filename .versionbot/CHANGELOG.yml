@@ -1,4 +1,98 @@
 - commits:
+    - subject: Update meta-balena from v2.95.8 to v2.95.9
+      hash: 95d872839367b43d5b87e96c05423eb5d83e1314
+      body: |
+        Update meta-balena from 2.95.8 to 2.95.9
+      footer:
+        Changelog-entry: Update meta-balena from v2.95.8 to v2.95.9
+        changelog-entry: Update meta-balena from v2.95.8 to v2.95.9
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: "tests: update leviathan to 2.0.4"
+              hash: b90c280d8f08497fcf2ca7b5329bdb7e7dc7c22a
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: "tests: update config for new leviathan version"
+              hash: 788cacc8daadf487698e28e2ad308cc54f1d96b4
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.95.9
+          title: "'tests: update config for new leviathan version'"
+          date: 2022-03-28T12:52:25.738Z
+    - subject: Update balena-yocto-scripts to v1.17.10
+      hash: da0e8f2064b23495100c41964e3b01bd56ac46b4
+      body: |
+        Update balena-yocto-scripts from v1.17.7 to v1.17.10
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to v1.17.10
+        changelog-entry: Update balena-yocto-scripts to v1.17.10
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested:
+        - commits:
+            - subject: Pass environment to docker
+              hash: ac8be68fb073aed53b21b2e66df4fb54adb64e22
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: ab77
+              nested: []
+          version: balena-yocto-scripts-1.17.10
+          title: "'Pass environment to docker'"
+          date: 2022-03-28T17:26:04.107Z
+        - commits:
+            - subject: "automation: ami: make BALENA_PRELOAD_COMMIT optional"
+              hash: b365cb9ba359637a3a6a8451b8d83142bb167571
+              body: >
+                Remove BALENA_PRELOAD_COMMIT from required env vars, as we have
+                a
+
+                default if it's not specified.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: balena-yocto-scripts-1.17.9
+          title: "'automation: ami: make BALENA_PRELOAD_COMMIT optional'"
+          date: 2022-03-25T23:25:09.583Z
+        - commits:
+            - subject: "balena-deploy: s/resin-flasher/balena-flasher"
+              hash: abdae4c86ed213a64bb1fa7498f4837f53d95448
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: balena-yocto-scripts-1.17.8
+          title: "'balena-deploy: s/resin-flasher/balena-flasher'"
+          date: 2022-03-15T20:11:21.544Z
+  version: 2.95.9
+  title: "'Release v2.95.9'"
+  date: 2022-03-29T05:18:47.997Z
+- commits:
     - subject: "linux-raspberrypi: Update from 5.10.83 to 5.10.95"
       hash: 2d14841e6807e4bcd6ac2a6a6abe3929c03cf195
       body: ""
