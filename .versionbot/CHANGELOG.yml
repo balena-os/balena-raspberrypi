@@ -1,4 +1,30 @@
 - commits:
+    - subject: Specify full path in repo.yml upstreams
+      hash: 0bcbde028f2ede342d3072d89dbea5496867e97f
+      body: |
+        This is required so that versionist can automatically include nested
+        changelogs from renovate PRs.
+      footer:
+        Changelog-entry: Specify full path in repo.yml upstreams
+        changelog-entry: Specify full path in repo.yml upstreams
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: Add renovate configuration
+      hash: a3a2eb251d5c9d3661a783e53c8be2144067d2a8
+      body: ""
+      footer:
+        Changelog-entry: Add renovate configuration
+        changelog-entry: Add renovate configuration
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.95.8+rev2
+  title: "'alexgg/renovate'"
+  date: 2022-03-29T13:44:12.463Z
+- commits:
     - subject: "linux-raspberrypi: Update from 5.10.83 to 5.10.95"
       hash: 2d14841e6807e4bcd6ac2a6a6abe3929c03cf195
       body: ""
