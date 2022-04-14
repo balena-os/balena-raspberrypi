@@ -1,4 +1,19 @@
 - commits:
+    - subject: Update meta-balena from v2.95.8 to v2.95.15
+      hash: e514a23962ff6f8489cfe9761eb09499b6b41a15
+      body: |
+        Update meta-balena from 2.95.8 to 2.95.15
+      footer:
+        Changelog-entry: Update meta-balena from v2.95.8 to v2.95.15
+        changelog-entry: Update meta-balena from v2.95.8 to v2.95.15
+        Signed-off-by: Joseph Kogut <joseph@balena.io>
+        signed-off-by: Joseph Kogut <joseph@balena.io>
+      author: Joseph Kogut
+      nested: []
+  version: 2.95.15
+  title: "'layers/meta-balena: Update to 2.95.15'"
+  date: 2022-04-14T16:44:51.901Z
+- commits:
     - subject: Specify full path in repo.yml upstreams
       hash: 0bcbde028f2ede342d3072d89dbea5496867e97f
       body: |

@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.95.15
+## (2022-04-14)
+
+* Update meta-balena from v2.95.8 to v2.95.15 [Joseph Kogut]
+
 # v2.95.8+rev2
 ## (2022-03-29)
 
