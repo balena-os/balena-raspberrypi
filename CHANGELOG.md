@@ -1,6 +1,51 @@
 Change log
 -----------
 
+# v2.95.15
+## (2022-04-06)
+
+
+<details>
+<summary> Update layers/meta-balena to 831819bead130a779bfa204b7d1df483486f0eaf [Renovate Bot] </summary>
+
+> ## meta-balena-2.95.15
+> ### (2022-04-06)
+> 
+> * kernel-headers-test: clean tools like fixdep [Alexandru Costache]
+> 
+> ## meta-balena-2.95.14
+> ### (2022-04-06)
+> 
+> * Updates SIM info for soracom and provides docs. [Alex]
+> 
+> ## meta-balena-2.95.13
+> ### (2022-04-06)
+> 
+> * test/hup: fix unmounting error [rcooke-warwick]
+> 
+> ## meta-balena-2.95.12
+> ### (2022-04-01)
+> 
+> * grub-efi: Remove patch passing secure boot status to the kernel [Michal Toman]
+> 
+> ## meta-balena-2.95.11
+> ### (Invalid date)
+> 
+> * hostapp-update: Mount data partition on target balena/tmp [Kyle Harding]
+> 
+> ## meta-balena-2.95.10
+> ### (Invalid date)
+> 
+> * tests/os: check supervisor is pulled  after purge [rcooke-warwick]
+> 
+> ## meta-balena-2.95.9
+> ### (2022-03-28)
+> 
+> * tests: update leviathan to 2.0.4 [rcooke-warwick]
+> * tests: update config for new leviathan version [rcooke-warwick]
+> 
+</details>
+
 # v2.95.8+rev2
 ## (2022-03-29)
 

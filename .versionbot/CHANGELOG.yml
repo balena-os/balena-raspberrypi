@@ -1,4 +1,164 @@
 - commits:
+    - subject: Update layers/meta-balena to 831819bead130a779bfa204b7d1df483486f0eaf
+      hash: 078632020360d3d181973f3a23e47168e2a2ff80
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 831819bead130a779bfa204b7d1df483486f0eaf
+        changelog-entry: Update layers/meta-balena to 831819bead130a779bfa204b7d1df483486f0eaf
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "kernel-headers-test: clean tools like fixdep"
+              hash: bdc217b2da79349989f32b65454a4e5e2509fa1a
+              body: |
+                Let's ensure tools like fixdep are built in container
+                and not reused from the yocto build, otherwise they
+                may not run if they were linked against a different
+                version of libc that may not be available in the kernel
+                modules build container.
+
+                This fixes the following error encountered when doing
+                a Poky Honister build for the balena-intel repository:
+
+                  scripts/basic/fixdep: /lib64/libc.so.6: version `GLIBC_2.34'
+                  not found (required by scripts/basic/fixdep)
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.95.15
+          title: "'kernel-headers-test: clean tools like fixdep'"
+          date: 2022-04-06T12:39:17.305Z
+        - commits:
+            - subject: Updates SIM info for soracom and provides docs.
+              hash: 4706cc1f52e345e3409cd9580cdc9a1372545164
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Bucknall <alex.bucknall@gmail.com>
+                signed-off-by: Alex Bucknall <alex.bucknall@gmail.com>
+              author: Alex
+              nested: []
+          version: meta-balena-2.95.14
+          title: "'Updates SIM info for soracom and provides docs.'"
+          date: 2022-04-06T08:53:44.650Z
+        - commits:
+            - subject: "test/hup: fix unmounting error"
+              hash: 3a318468d90632360109aeea994a51819347742a
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.95.13
+          title: "'test/hup: fix unmounting error'"
+          date: 2022-04-06T07:56:32.752Z
+        - commits:
+            - subject: "grub-efi: Remove patch passing secure boot status to the kernel"
+              hash: fb171dc507348e11ab2c6ed894289f51689fc874
+              body: >
+                This was originally introduced in combination with a kernel
+                patch backported
+
+                from Red Hat kernel that would enable kernel lockdown when secure boot
+
+                is enabled. We have since changed the approach, dropped the kernel patch
+
+                and when in secure boot mode use a different GRUB config file that enables
+
+                lockdown on kernel command line unconditionally.
+
+
+                That said, while the patch works fine, we do not really need it and it adds
+
+                extra overhead porting it to newer yocto versions so there is no point keeping
+
+                it at this moment. If in the future there is need for the kernel to know
+
+                whether it is in secure boot mode or not, we can roll this back and rebase.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.95.12
+          title: "'grub-efi: Remove patch passing secure boot status to the kernel'"
+          date: 2022-03-31T14:45:57.845Z
+        - commits:
+            - subject: "hostapp-update: Mount data partition on target balena/tmp"
+              hash: 548c6c08f041f69786f0092eb2397f2fbf8e7e86
+              body: >
+                In most cases there is not enough space on rootfs to extract
+
+                and load a local hostapp image when the balena-host tmpdir
+
+                is on the same partition.
+
+
+                This uses a data mount to ensure temporary extracted files of the
+
+                compressed image will not fill the target sysroot.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.95.11
+          title: "'hostapp-update: Mount data partition on target balena/tmp'"
+          date: 2022-03-30T17:20:46.022Z
+        - commits:
+            - subject: "tests/os: check supervisor is pulled  after purge"
+              hash: 58a645684921797383602311821522604064fd62
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.95.10
+          title: "'tests/os: check supervisor is pulled  after purge'"
+          date: 2022-03-30T11:28:54.776Z
+        - commits:
+            - subject: "tests: update leviathan to 2.0.4"
+              hash: b90c280d8f08497fcf2ca7b5329bdb7e7dc7c22a
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: "tests: update config for new leviathan version"
+              hash: 788cacc8daadf487698e28e2ad308cc54f1d96b4
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.95.9
+          title: "'tests: update config for new leviathan version'"
+          date: 2022-03-28T12:52:25.738Z
+  version: 2.95.15
+  title: "'Update layers/meta-balena digest to 831819b'"
+  date: 2022-04-06T17:26:10.182Z
+- commits:
     - subject: Specify full path in repo.yml upstreams
       hash: 0bcbde028f2ede342d3072d89dbea5496867e97f
       body: |
