@@ -1,6 +1,55 @@
 Change log
 -----------
 
+# v2.95.15+rev1
+## (2022-04-15)
+
+
+<details>
+<summary> Update balena-yocto-scripts to ff9465a20e32843b3b01ec3efa0d8a5390e6d66c [Renovate Bot] </summary>
+
+> ## balena-yocto-scripts-1.19.1
+> ### (2022-04-14)
+> 
+> * deploy: ensure deployRawArtifact is empty instead of null [Joseph Kogut]
+> 
+> ## balena-yocto-scripts-1.19.0
+> ### (2022-04-13)
+> 
+> * deploy: push image variant artifacts [Joseph Kogut]
+> 
+> ## balena-yocto-scripts-1.18.0
+> ### (2022-04-01)
+> 
+> * Bump balena-cli to v.Latest [ab77]
+> 
+> ## balena-yocto-scripts-1.17.12
+> ### (2022-03-29)
+> 
+> * Remove superfluous preload flag [ab77]
+> 
+> ## balena-yocto-scripts-1.17.11
+> ### (2022-03-29)
+> 
+> * Unattended preload operation [ab77]
+> 
+> ## balena-yocto-scripts-1.17.10
+> ### (2022-03-28)
+> 
+> * Pass environment to docker [ab77]
+> 
+> ## balena-yocto-scripts-1.17.9
+> ### (2022-03-25)
+> 
+> * automation: ami: make BALENA_PRELOAD_COMMIT optional [Joseph Kogut]
+> 
+> ## balena-yocto-scripts-1.17.8
+> ### (2022-03-15)
+> 
+> * balena-deploy: s/resin-flasher/balena-flasher [Joseph Kogut]
+> 
+</details>
+
 # v2.95.15
 ## (2022-04-06)
 

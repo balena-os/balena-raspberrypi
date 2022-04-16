@@ -1,4 +1,145 @@
 - commits:
+    - subject: Update balena-yocto-scripts to ff9465a20e32843b3b01ec3efa0d8a5390e6d66c
+      hash: 64e4352590e1dde794427be9bdd94ac30d5daca9
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to ff9465a20e32843b3b01ec3efa0d8a5390e6d66c
+        changelog-entry: Update balena-yocto-scripts to ff9465a20e32843b3b01ec3efa0d8a5390e6d66c
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "deploy: ensure deployRawArtifact is empty instead of null"
+              hash: 56edfe62d6ecede3e07b0b51653ca605a2e4ba83
+              body: >
+                jq returns null by default when a given key isn't found, ensure
+                that
+
+                when getting the value of deployRawArtifact, we get an empty variable
+
+                instead, which is checked later on to determine if that file should be
+
+                deployed
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: balena-yocto-scripts-1.19.1
+          title: "'deploy: ensure deployRawArtifact is empty instead of null'"
+          date: 2022-04-14T16:02:35.647Z
+        - commits:
+            - subject: "deploy: push image variant artifacts"
+              hash: f5b7ae35f2f2996d93ba572919e26e1487a79f79
+              body: ""
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: balena-yocto-scripts-1.19.0
+          title: "'deploy: push image variant artifacts'"
+          date: 2022-04-13T14:36:11.268Z
+        - commits:
+            - subject: Bump balena-cli to v.Latest
+              hash: 6aec14bf20674e62822ba41f56ef2763c4036b6d
+              body: |
+                * remove SSH key injection
+              footer:
+                Change-type: minor
+                change-type: minor
+              author: ab77
+              nested: []
+          version: balena-yocto-scripts-1.18.0
+          title: "'Bump balena-cli to v.Latest'"
+          date: 2022-03-31T20:52:47.275Z
+        - commits:
+            - subject: Remove superfluous preload flag
+              hash: a124b525ca058ead27eb43c0a799eb692c79fa80
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: ab77
+              nested: []
+          version: balena-yocto-scripts-1.17.12
+          title: "'Remove superfluous preload flag'"
+          date: 2022-03-29T17:38:21.495Z
+        - commits:
+            - subject: Unattended preload operation
+              hash: 1fecbb4d000b1a403f192a63d5e2921ded56647c
+              body: >
+                * the CLI prompts for input during preload
+
+
+                Alternatively, the --pin-device-to-release flag may be used to pin only the
+
+                preloaded device to the selected release.
+
+
+                Would you like to disable automatic updates for this fleet now? No
+
+
+                * we do not want to set the suggested flag and we do not want to touch the fleet release policy for this use case
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: ab77
+              nested: []
+          version: balena-yocto-scripts-1.17.11
+          title: "'Unattended preload operation'"
+          date: 2022-03-29T14:36:18.054Z
+        - commits:
+            - subject: Pass environment to docker
+              hash: ac8be68fb073aed53b21b2e66df4fb54adb64e22
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: ab77
+              nested: []
+          version: balena-yocto-scripts-1.17.10
+          title: "'Pass environment to docker'"
+          date: 2022-03-28T17:26:04.107Z
+        - commits:
+            - subject: "automation: ami: make BALENA_PRELOAD_COMMIT optional"
+              hash: b365cb9ba359637a3a6a8451b8d83142bb167571
+              body: >
+                Remove BALENA_PRELOAD_COMMIT from required env vars, as we have
+                a
+
+                default if it's not specified.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: balena-yocto-scripts-1.17.9
+          title: "'automation: ami: make BALENA_PRELOAD_COMMIT optional'"
+          date: 2022-03-25T23:25:09.583Z
+        - commits:
+            - subject: "balena-deploy: s/resin-flasher/balena-flasher"
+              hash: abdae4c86ed213a64bb1fa7498f4837f53d95448
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: balena-yocto-scripts-1.17.8
+          title: "'balena-deploy: s/resin-flasher/balena-flasher'"
+          date: 2022-03-15T20:11:21.544Z
+  version: 2.95.15+rev1
+  title: "'Update balena-yocto-scripts digest to ff9465a'"
+  date: 2022-04-15T19:12:25.573Z
+- commits:
     - subject: Update layers/meta-balena to 831819bead130a779bfa204b7d1df483486f0eaf
       hash: 078632020360d3d181973f3a23e47168e2a2ff80
       body: Update layers/meta-balena
