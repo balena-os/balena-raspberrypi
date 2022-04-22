@@ -9,7 +9,7 @@ SRC_URI = " \
     file://COPYING \
 "
 
-S = "${WORKDIR}/git/software/drivers/sd8887/"
+S = "${WORKDIR}/git/software/drivers/sd8887"
 
 DEPENDS = "bc-native"
 
