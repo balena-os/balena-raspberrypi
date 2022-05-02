@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.95.15+rev3
+## (2022-05-02)
+
+* Avoid build warning removing trailing slash from source var for sd8887-nxp [Alex Gonzalez]
+
 # v2.95.15+rev2
 ## (2022-04-28)
 

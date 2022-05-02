@@ -1,4 +1,25 @@
 - commits:
+    - subject: Avoid build warning removing trailing slash from source var for
+        sd8887-nxp
+      hash: aeccbdc6bd05e951c6822566985b95dafa3fb648
+      body: >
+        This avoids the following build warning:
+
+
+        WARNING: /build/balena-raspberrypi/build/../layers/meta-balena-raspberrypi/recipes-kernel/sd8887-nxp/sd8887-nxp.bb: Recipe sd8887-nxp sets B variable with trailing slash '/build/balena-raspberrypi/build/tmp/work/raspberrypi4_64-poky-linux/sd8887-nxp/1.0-r0/git/software/drivers/sd8887/', remove it
+      footer:
+        Changelog-entry: Avoid build warning removing trailing slash from source var for
+          sd8887-nxp
+        changelog-entry: Avoid build warning removing trailing slash from source var for
+          sd8887-nxp
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.95.15+rev3
+  title: "'sd8887-nsp: Avoid build warning removing trailing slash from source var'"
+  date: 2022-05-02T09:34:55.255Z
+- commits:
     - subject: Update balena-yocto-scripts to fe688d2bfbb121401830ec804fa423619048a224
       hash: baae5c77f7768917319a4b1c2420834ae3b7c0a9
       body: Update balena-yocto-scripts
