@@ -1,4 +1,482 @@
 - commits:
+    - subject: Update layers/meta-balena to e13f4afb2c6311450db3fc4e9cb74ef31132e8d6
+      hash: 02e58691c190d220506baecca3b027117c8d7f63
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to e13f4afb2c6311450db3fc4e9cb74ef31132e8d6
+        changelog-entry: Update layers/meta-balena to e13f4afb2c6311450db3fc4e9cb74ef31132e8d6
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "tests: os: create swap test"
+              hash: cb19043d77a68e24e48a96acb2391938acd7cd71
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.98.11
+          title: "'tests: os: create swap test'"
+          date: 2022-04-29T19:55:50.927Z
+        - commits:
+            - subject: "tests: bump leviathan to 2.13"
+              hash: 5dcf43cfcae4a8628c9aca0834205fbe4476edf1
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.98.10
+          title: "'tests: bump leviathan to 2.13'"
+          date: 2022-04-28T16:57:41.215Z
+        - commits:
+            - subject: "tests: bump leviathan to 2.2.11"
+              hash: 617ab26578364b95525c225b3f2066e792b3cf2f
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.98.9
+          title: "'tests: bump leviathan to 2.2.11'"
+          date: 2022-04-28T10:27:03.026Z
+        - commits:
+            - subject: "tests/cloud: fix ssh test for testbot workers"
+              hash: 4d44bb297e015bfaef140d8c92d14de0e412be47
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.98.8
+          title: "'tests/cloud: fix ssh test for testbot workers'"
+          date: 2022-04-28T09:09:48.983Z
+        - commits:
+            - subject: "linux-firmware: package QuZ-a0-jf-b0 separately"
+              hash: 20695e32e0e8b3d60267090530b3cd41a3450d56
+              body: |
+                This is used by Intel Wireless-AC 9462
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.98.7
+          title: "'linux-firmware: package QuZ-a0-jf-b0 separately'"
+          date: 2022-04-27T09:22:39.188Z
+        - commits:
+            - subject: "timeinit/timesync-https: Update rtc after setting system time"
+              hash: f16451b49b77bd7d3f5f82d20e0605a9797832eb
+              body: >
+                This solves a problem seen on a device on which, although
+
+                timeinit-rtc finishes running before timesync-https, chronyd
+
+                sets the system time to the incorrect rtc time
+
+                as soon as timesync-https finished running and setting the correct date
+
+                from the servers.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.98.6
+          title: "'timeinit/timesync-https: Update rtc after setting system time'"
+          date: 2022-04-26T19:32:46.066Z
+        - commits:
+            - subject: "networkmanager: Use default DHCP timeout"
+              hash: 6175420731baa349c8d197151189462a23b2f460
+              body: >
+                This reverts 5047757 where we set the global DHCP timeout for
+                ipv4 to
+
+                infinity to mitigate problems with routers that do not respond to DHCP
+
+                requests in time.
+
+
+                This however causes issues on some routers, which after power cycle fail to
+
+                renew leases after they are expired.
+
+
+                The same ipv4.dhcp-timeout can be specified on per connection basis. Since
+
+                the case with lease renewal due to router power cycle is a more common case,
+
+                it is better to keep the global dhcp-timeout default unmodified. If the
+
+                setting needs adjustment then it can be overwritten in the particular
+
+                connection profile.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Zahari Petkov <zahari@balena.io>
+                signed-off-by: Zahari Petkov <zahari@balena.io>
+              author: Zahari Petkov
+              nested: []
+          version: meta-balena-2.98.5
+          title: "'networkmanager: Use default DHCP timeout'"
+          date: 2022-04-26T11:36:14.839Z
+        - commits:
+            - subject: Disable Engine startup timeouts
+              hash: c4ce541526455c8cb891e7c76889e0d4cb2735b1
+              body: >
+                There are known situations in which balenaEngine times out
+                during
+
+                initialization (for example, during aufs to overlayfs migrations, or
+
+                when restarting a device that was running a large number of containers).
+
+                When these time outs occur, Systemd kills the Engine, causing further
+
+                problems.
+
+
+                To avoid these cases, this commit disables timeouts during the Engine
+
+                initialization.
+
+
+                This is also aligned with the default Systemd settings distributed with
+
+                the Moby project.
+              footer:
+                Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                Change-type: patch
+                change-type: patch
+              author: Leandro Motta Barros
+              nested: []
+          version: meta-balena-2.98.4
+          title: "'Disable Engine startup timeouts'"
+          date: 2022-04-25T22:36:18.725Z
+        - commits:
+            - subject: Add renovate configuration
+              hash: 2537c8eed6f50399ce60b9f2ccc22336fb7cb86a
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.98.3
+          title: "'Add renovate configuration'"
+          date: 2022-04-25T18:07:21.534Z
+        - commits:
+            - subject: "balena-config-vars: unit-conf: Correct description"
+              hash: b1ff3f620ea823239442cfeccd52feef6928f405
+              body: |
+                The os-networkmanager entry had an incorrect description.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "tests: os: Remove sshKeys test"
+              hash: 579aef0199ed91f31bca301f7dc8ebd517594583
+              body: >
+                This is replaced by an SSH authentication test in the cloud
+                suite, which
+
+                is more comprenhensive.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "tests: cloud: Add SSH authentication tests"
+              hash: e9f125a67aa61136fe36a5844ca751984ab679aa
+              body: >
+                This new test validates SSH authentication both in production
+                and
+
+                development mode.
+
+
+                A managed device is always accessible via the configured custom keys.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "os-sshkeys: When ssh keys change, regenerate development
+                configuration"
+              hash: 0856b6e7acbe41a1bc60afb26906ee5bf9b253a9
+              body: >
+                The behaviour of the SSH connection depends on whether custom
+                keys are
+
+                present or not. This commit calls out to generate the development mode
+
+                configuration file on ssh key change.
+
+
+                Fixes #2530
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "development-features: use os-helpers-devmode include file"
+              hash: afb63f9bfb794fa7af14c6e03bf29e85705dbf7f
+              body: >
+                The development mode configuration file is now generated on a
+                helper
+
+                script.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "os-helpers: Add os-helpers-devmode"
+              hash: dfaef0b9c7d07b31f254c2f9592772a58562f9e9
+              body: >
+                This extracts the generation of the development mode
+                configuration file
+
+                so it can be shared.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.98.2
+          title: "'Apply sshKeys change on development Mode'"
+          date: 2022-04-25T08:16:24.320Z
+        - commits:
+            - subject: "tests/leviathan: Update leviathan to v2.2.4"
+              hash: 162c36be826eb3028a11fca2266407e8d2570d88
+              body: |
+                Update leviathan from 2.0.4 to 2.2.4
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.98.1
+          title: "'tests/leviathan: Update leviathan to v2.2.4'"
+          date: 2022-04-23T18:56:56.077Z
+        - commits:
+            - subject: Refresh PKI assets from config endpoint
+              hash: 081fca887b36108bc192ee98da6ba088f9e909b9
+              body: >
+                * Fixes #2569
+
+                * ensure OpenVPN client always starts with the latest CA certificate
+                  from API config endpoint as this certificate may have changed and
+                  we don't want VPN to be down for ~24 hours until os-config is triggered
+                  by systemd timer
+              footer:
+                Change-type: minor
+                change-type: minor
+              author: ab77
+              nested: []
+          version: meta-balena-2.98.0
+          title: "'Refresh PKI assets from config endpoint'"
+          date: 2022-04-23T10:43:47.657Z
+        - commits:
+            - subject: Update balena-engine to v20.10.16
+              hash: 7affe9d563250d79906ffc26401d8d7beea74114
+              body: |
+                Update balena-engine from 20.10.12 to 20.10.16
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                Changelog-entry: Update balena-engine to v20.10.16
+                changelog-entry: Update balena-engine to v20.10.16
+              author: Leandro Motta Barros
+              nested:
+                - commits:
+                    - subject: "contrib/init/systemd: update balena-engine.service"
+                      hash: 4d3b831bfbe197a68792a3baf33cbea639811763
+                      body: |
+                        Currently this file is used by Buildroot.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: TIAN Yuanhao <tianyuanhao3@163.com>
+                        signed-off-by: TIAN Yuanhao <tianyuanhao3@163.com>
+                      author: TIAN Yuanhao
+                      nested: []
+                  version: balena-engine-20.10.16
+                  title: "'update balena-engine.service'"
+                  date: 2022-04-07T05:22:26.128Z
+                - commits:
+                    - subject: Log more info upon when raising errRootFSMismatch
+                      hash: ab3db5c03663e0b2ee35213ceebf9038e4af6b62
+                      body: >
+                        We currently do not log any information to help us
+                        understanding the
+
+                        underlying issue -- not even to identify what is the exact point in
+
+                        which the error is raised. This commit improves on this situation.
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                  version: balena-engine-20.10.15
+                  title: "'Configure Renovate'"
+                  date: 2022-04-05T07:56:50.137Z
+                - commits:
+                    - subject: Add more integration tests for deltas
+                      hash: 59f6cd6dc32ee178532dbf7595933ef606cebf39
+                      body: >
+                        This adds two new integration tests:
+
+
+                        * TestDeltaSize: this is meant to catch regressions on delta sizes. It
+                          generates deltas and compare their sizes with the delta sizes we get
+                          as of now. If the size increases, the test fails.
+                        * TestDeltaCorrectness: checks if applying a delta indeed results in the
+                          same image as we had originally.
+
+                        A number of different test cases (different images with distinct
+
+                        features) are tested for each of these integration tests.
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                  version: balena-engine-20.10.14
+                  title: "'Add more integration tests for deltas'"
+                  date: 2022-04-01T13:30:28.649Z
+                - commits:
+                    - subject: Add link to post to test landr
+                      hash: 4688b2395c49dcd350a6107824da61a13a1c4765
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: andrew
+                      nested: []
+                  version: balena-engine-20.10.13
+                  title: "'Add link to post to test landr'"
+                  date: 2022-03-09T23:12:06.832Z
+          version: meta-balena-2.97.0
+          title: "'balena-engine: Update to 20.10.16'"
+          date: 2022-04-23T01:23:49.298Z
+        - commits:
+            - subject: "kernel-balena: Mention https protocol for github repository"
+              hash: e3ee5b0b70827fa5ae1f70b0721d9125885affe5
+              body: |
+                Github now requires for the https protocol to be used
+                when cloning repositories.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.96.1
+          title: "'kernel-balena: Mention https protocol for github repository'"
+          date: 2022-04-22T17:25:18.183Z
+        - commits:
+            - subject: "mobynit: Update to v0.2.0"
+              hash: 1a6dbc795aa2546f38bbd4cef30d77f167e60182
+              body: |
+                Fixes #2589
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.96.0
+          title: "'mobynit: Update to v0.2.0'"
+          date: 2022-04-22T12:42:16.844Z
+        - commits:
+            - subject: "resin-device-register: avoid blocking the flasher when not connected"
+              hash: b5c521404c14df8a5d14e2789c97eebe79eb7d96
+              body: >
+                Starting with v2.91.6 device provisioning will not start if the
+                device
+
+                was unable to register in the cloud due to lack of internet connectivity.
+
+                To avoid this, we switch to retrying 3 times with the usual 2 second delay
+
+                between attempts, after which the flashing process will start.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.95.17
+          title: "'resin-device-register: improve provisioning'"
+          date: 2022-04-22T08:33:14.274Z
+        - commits:
+            - subject: Package iwlwifi-QuZ-a0-hr-b0 firmware separately
+              hash: 261534942e5fe5b60680f51b129f33f00363a88e
+              body: |
+                We add this fw on its own package so that boards can add it to
+                rootfs (for Intel NUC 11th generation more specifically)
+              footer:
+                Changelog-entry: Package iwlwifi-QuZ-a0-hr-b0 firmware separately
+                changelog-entry: Package iwlwifi-QuZ-a0-hr-b0 firmware separately
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-2.95.16
+          title: "'linux-firmware: Package iwlwifi-QuZ-a0-hr-b0 firmware'"
+          date: 2022-04-19T13:00:33.214Z
+  version: 2.98.11
+  title: "'Update layers/meta-balena digest to e13f4af'"
+  date: 2022-05-02T10:57:21.292Z
+- commits:
     - subject: Avoid build warning removing trailing slash from source var for
         sd8887-nxp
       hash: aeccbdc6bd05e951c6822566985b95dafa3fb648

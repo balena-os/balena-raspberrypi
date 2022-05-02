@@ -1,6 +1,130 @@
 Change log
 -----------
 
+# v2.98.11
+## (2022-05-02)
+
+
+<details>
+<summary> Update layers/meta-balena to e13f4afb2c6311450db3fc4e9cb74ef31132e8d6 [Renovate Bot] </summary>
+
+> ## meta-balena-2.98.11
+> ### (2022-04-29)
+> 
+> * tests: os: create swap test [Joseph Kogut]
+> 
+> ## meta-balena-2.98.10
+> ### (2022-04-28)
+> 
+> * tests: bump leviathan to 2.13 [rcooke-warwick]
+> 
+> ## meta-balena-2.98.9
+> ### (2022-04-28)
+> 
+> * tests: bump leviathan to 2.2.11 [rcooke-warwick]
+> 
+> ## meta-balena-2.98.8
+> ### (2022-04-28)
+> 
+> * tests/cloud: fix ssh test for testbot workers [rcooke-warwick]
+> 
+> ## meta-balena-2.98.7
+> ### (2022-04-27)
+> 
+> * linux-firmware: package QuZ-a0-jf-b0 separately [Michal Toman]
+> 
+> ## meta-balena-2.98.6
+> ### (2022-04-26)
+> 
+> * timeinit/timesync-https: Update rtc after setting system time [Alexandru Costache]
+> 
+> ## meta-balena-2.98.5
+> ### (2022-04-26)
+> 
+> * networkmanager: Use default DHCP timeout [Zahari Petkov]
+> 
+> ## meta-balena-2.98.4
+> ### (2022-04-25)
+> 
+> * Disable Engine startup timeouts [Leandro Motta Barros]
+> 
+> ## meta-balena-2.98.3
+> ### (2022-04-25)
+> 
+> * Add renovate configuration [Kyle Harding]
+> 
+> ## meta-balena-2.98.2
+> ### (2022-04-25)
+> 
+> * balena-config-vars: unit-conf: Correct description [Alex Gonzalez]
+> * tests: os: Remove sshKeys test [Alex Gonzalez]
+> * tests: cloud: Add SSH authentication tests [Alex Gonzalez]
+> * os-sshkeys: When ssh keys change, regenerate development configuration [Alex Gonzalez]
+> * development-features: use os-helpers-devmode include file [Alex Gonzalez]
+> * os-helpers: Add os-helpers-devmode [Alex Gonzalez]
+> 
+> ## meta-balena-2.98.1
+> ### (2022-04-23)
+> 
+> * tests/leviathan: Update leviathan to v2.2.4 [Kyle Harding]
+> 
+> ## meta-balena-2.98.0
+> ### (2022-04-23)
+> 
+> * Refresh PKI assets from config endpoint [ab77]
+> 
+> ## meta-balena-2.97.0
+> ### (2022-04-23)
+> 
+> 
+> <details>
+> <summary> Update balena-engine to v20.10.16 [Leandro Motta Barros] </summary>
+> 
+>> ### balena-engine-20.10.16
+>> #### (2022-04-07)
+>> 
+>> * contrib/init/systemd: update balena-engine.service [TIAN Yuanhao]
+>> 
+>> ### balena-engine-20.10.15
+>> #### (2022-04-05)
+>> 
+>> * Log more info upon when raising errRootFSMismatch [Leandro Motta Barros]
+>> 
+>> ### balena-engine-20.10.14
+>> #### (2022-04-01)
+>> 
+>> * Add more integration tests for deltas [Leandro Motta Barros]
+>> 
+>> ### balena-engine-20.10.13
+>> #### (2022-03-09)
+>> 
+>> * Add link to post to test landr [andrew]
+>> 
+> </details>
+> 
+> 
+> ## meta-balena-2.96.1
+> ### (2022-04-22)
+> 
+> * kernel-balena: Mention https protocol for github repository [Alexandru Costache]
+> 
+> ## meta-balena-2.96.0
+> ### (2022-04-22)
+> 
+> * mobynit: Update to v0.2.0 [Alex Gonzalez]
+> 
+> ## meta-balena-2.95.17
+> ### (2022-04-22)
+> 
+> * resin-device-register: avoid blocking the flasher when not connected [Alexandru Costache]
+> 
+> ## meta-balena-2.95.16
+> ### (2022-04-19)
+> 
+> * Package iwlwifi-QuZ-a0-hr-b0 firmware separately [Florin Sarbu]
+> 
+</details>
+
 # v2.95.15+rev3
 ## (2022-05-02)
 
