@@ -1,4 +1,68 @@
 - commits:
+    - subject: Update balena-yocto-scripts to fe688d2bfbb121401830ec804fa423619048a224
+      hash: baae5c77f7768917319a4b1c2420834ae3b7c0a9
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to fe688d2bfbb121401830ec804fa423619048a224
+        changelog-entry: Update balena-yocto-scripts to fe688d2bfbb121401830ec804fa423619048a224
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "balena-api.inc: fix 'fatal: unsafe repository'"
+              hash: b467ef7d676d77e1057b1b9a1180075b9b82012e
+              body: |
+                Git 2.35.2 was released to fix a security issue with multi-user
+                machines. Add `device_dir` to the whitelist to avoid this error.
+
+                Also, let's make sure an error is thrown when the hostapp cannot
+                be made public.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: balena-yocto-scripts-1.19.4
+          title: "'Add dir exceptions for newer git'"
+          date: 2022-04-28T11:28:28.873Z
+        - commits:
+            - subject: "balena-lib: fix 445d6d1fcfce97f85ffcfedc0083eb658a734321"
+              hash: d8a3a47e87dc65b81451e5dd07213577cc9fe82b
+              body: |
+                Commit 445d6d1fcfce97f85ffcfedc0083eb658a734321 does not fix
+                the issue because it is missing the --global arg without which
+                the git config command fails.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: balena-yocto-scripts-1.19.3
+          title: "'balena-lib: fix 445d6d1fcfce97f85ffcfedc0083eb658a734321'"
+          date: 2022-04-26T08:40:52.078Z
+        - commits:
+            - subject: "balena-lib: fix 'fatal: unsafe repository'"
+              hash: 445d6d1fcfce97f85ffcfedc0083eb658a734321
+              body: |
+                Git 2.35.2 was released to fix a security issue with multi-user
+                machines. Add `device_dir` to the whitelist to avoid this error.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: balena-yocto-scripts-1.19.2
+          title: "'balena-lib: fix 'fatal: unsafe repository''"
+          date: 2022-04-21T23:56:18.934Z
+  version: 2.95.15+rev2
+  title: "'Update balena-yocto-scripts digest to fe688d2'"
+  date: 2022-04-28T14:30:42.338Z
+- commits:
     - subject: Update balena-yocto-scripts to ff9465a20e32843b3b01ec3efa0d8a5390e6d66c
       hash: 64e4352590e1dde794427be9bdd94ac30d5daca9
       body: Update balena-yocto-scripts
