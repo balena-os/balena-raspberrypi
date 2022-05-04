@@ -1,4 +1,34 @@
 - commits:
+    - subject: Update layers/meta-balena to 0c96705ba26cda1062eff0b128eccb4f9388f9cc
+      hash: 738a1e65dc55c77ecb1d8a5d803c6f113ca71780
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 0c96705ba26cda1062eff0b128eccb4f9388f9cc
+        changelog-entry: Update layers/meta-balena to 0c96705ba26cda1062eff0b128eccb4f9388f9cc
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "tests/hup: Test hostapp-update from current release"
+              hash: 2f5b7fd58b11a69f10aea7b4391dba264e454f9b
+              body: |
+                After HUP from previous release to current under-test release
+                we should HUP again to ensure hostapp-update is sane in the
+                new release.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.98.12
+          title: "'Add \"HUP from this release\" test to ensure hostapp-update is
+            functional'"
+          date: 2022-05-02T13:38:42.232Z
+  version: 2.98.12
+  title: "'Update layers/meta-balena digest to 0c96705'"
+  date: 2022-05-03T18:34:55.407Z
+- commits:
     - subject: Update layers/meta-balena to e13f4afb2c6311450db3fc4e9cb74ef31132e8d6
       hash: 02e58691c190d220506baecca3b027117c8d7f63
       body: Update layers/meta-balena
