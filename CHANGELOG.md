@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v2.98.20
+## (2022-05-11)
+
+
+<details>
+<summary> Update layers/meta-balena to c98cda89f0be6c168599a2a155ec42a148d0a6cc [Renovate Bot] </summary>
+
+> ## meta-balena-2.98.20
+> ### (2022-05-10)
+> 
+> * renovate: Override commit body for meta-balena to Change-type [Kyle Harding]
+> * renovate: Remove extra leviathan package rules [Kyle Harding]
+> 
+</details>
+
 # v2.98.19
 ## (2022-05-10)
 
