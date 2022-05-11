@@ -1,4 +1,99 @@
 - commits:
+    - subject: Update layers/meta-balena to 3018f1d96726d219723697d0ed3ce266fbff0141
+      hash: b671549b99092ddf5fe38f205640064db5e6df01
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 3018f1d96726d219723697d0ed3ce266fbff0141
+        changelog-entry: Update layers/meta-balena to 3018f1d96726d219723697d0ed3ce266fbff0141
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "tests/connectivity: Force proxy tests to use IPv4"
+              hash: df6db848d3729b2200200ce3fcb493b3381deca0
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "tests/connectivity: Fix compose warnings for expected string"
+              hash: d6882eeb070686642b0fd685257fce109f50297c
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.98.19
+          title: "'tests/connectivity: Force proxy tests to use IPv4'"
+          date: 2022-05-10T19:34:34.822Z
+        - commits:
+            - subject: "supervisor: Update balena-supervisor to v13.1.6"
+              hash: 541eeeb25dcb928f23a920df27d30fa213c5df14
+              body: |
+                Update balena-supervisor from 13.1.4 to 13.1.6
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested:
+                - commits:
+                    - subject: Avoid splash image failures if image is corrupt
+                      hash: a5ede01b18abd5e079361d24f2f8f5368d23da6d
+                      body: >
+                        Splash image backend would throw if the image is not a
+                        valid png during
+
+                        the write step. This could prevent the device from provisioning if some
+
+                        corruption happens at some point.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-13.1.6
+                  title: "'Avoid splash image failures if image is corrupt'"
+                  date: 2022-05-06T18:46:18.641Z
+                - commits:
+                    - subject: Use write + sync when writing configs to /mnt/boot
+                      hash: c04955354a76ab32ab5dc52062fdf72d668f7c3b
+                      body: >
+                        This commit updates all backends that write to /mnt/boot
+                        to do it
+
+                        through a new `lib/host-utils` module. Writes are now done using write +
+
+                        sync as rename is not an atomic operation in vfat.
+
+
+                        The change also applies for writes through the `/v1/host-config`
+
+                        endpoint.
+
+
+                        Finally this change includes some improvements on tests.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-13.1.5
+                  title: "'Use write+sync when writing to '"
+                  date: 2022-05-03T15:28:52.610Z
+          version: meta-balena-2.98.18
+          title: "'supervisor: Update balena-supervisor to v13.1.6'"
+          date: 2022-05-10T12:02:12.200Z
+  version: 2.98.19
+  title: "'Update layers/meta-balena digest to 3018f1d'"
+  date: 2022-05-10T22:57:50.419Z
+- commits:
     - subject: Update layers/meta-balena to 42c71bfea112ba44e59488fe93284a583654622f
       hash: 9f40a06d6a7379489f708009e9f92ab18d57b825
       body: Update layers/meta-balena
