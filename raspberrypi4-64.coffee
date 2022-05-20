@@ -3,9 +3,9 @@ deviceTypesCommon = require '@resin.io/device-types/common'
 
 module.exports =
 	version: 1
-	slug: 'raspberrypi4-64'
-	aliases: [ 'raspberrypi4-64' ]
-	name: 'Raspberry Pi 4'
+	slug: 'test-private'
+	aliases: [ 'TEST PRIVATE' ]
+	name: 'Test private'
 	arch: 'aarch64'
 	state: 'released'
 
