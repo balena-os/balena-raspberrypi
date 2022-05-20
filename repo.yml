@@ -6,3 +6,5 @@ upstream:
     url: 'http://github.com/balena-os/meta-balena'
   - repo: 'balena-yocto-scripts'
     url: 'http://github.com/balena-os/balena-yocto-scripts'
+  - repo: 'contracts'
+    url: 'https://github.com/balena-io/contracts.git'
