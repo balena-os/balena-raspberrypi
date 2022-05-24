@@ -1,4 +1,21 @@
 - commits:
+    - subject: Add IIO pressure kernel drivers
+      hash: 719ab85451d6016ab2906a43e0a0bfdd179a63ef
+      body: |
+        These have been requested by customers to use with their applications.
+
+        Fixes #821
+      footer:
+        Changelog-entry: Add IIO pressure kernel drivers
+        changelog-entry: Add IIO pressure kernel drivers
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.98.23+rev2
+  title: "'linux-raspberrypi: Add IIO pressure kernel drivers'"
+  date: 2022-05-24T11:41:30.777Z
+- commits:
     - subject: Add contracts submodule
       hash: e32f4021c1c82b1130c88acfdff19259ec4666b2
       body: |

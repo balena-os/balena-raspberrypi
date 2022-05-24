@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.98.23+rev2
+## (2022-05-24)
+
+* Add IIO pressure kernel drivers [Alex Gonzalez]
+
 # v2.98.23+rev1
 ## (2022-05-20)
 
