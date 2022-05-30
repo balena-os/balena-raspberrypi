@@ -1,4 +1,170 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 7b2a89987f196ec4261d240a88c1790c55b366b0
+      hash: 47ff2eae726842db387f71cb7a0231011f39ce0a
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 7b2a89987f196ec4261d240a88c1790c55b366b0
+        changelog-entry: Update balena-yocto-scripts to 7b2a89987f196ec4261d240a88c1790c55b366b0
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "balena-lib: Check versions before finalizing"
+              hash: 0ae1389a69b857b466b4eef81396d5f1b6bc4ae6
+              body: >
+                Only allow to finalize draft releases that have matching semver
+                with
+
+                the device repository being deployed.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-deploy-block: Do not always finalise on deploy"
+              hash: 754833d6ef773b68a9eecafb426783ac70eb8767
+              body: >
+                Introduce a new final step after draft deployment to finalise
+                releases.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-deploy-block: Add OS version to contract"
+              hash: 2c692984079215c2c916c5e4df79e200486be1ff
+              body: >
+                If there is an OS contract, add the OS version we are building
+                for.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-deploy: Generate OS contract if not available"
+              hash: 2205c4de1dadafbf26f9f7b303b88c4da6d7710e
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-lib: Build contracts"
+              hash: b8c08faf2a86434793bcad67e063ade9754142ff
+              body: >
+                Add a function to build all OS contracts and return the one for
+                the
+
+                specified slug.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: Add generate-oscontract script
+              hash: 20894636355622ab0ded6b2e6a4f804f78961d99
+              body: |
+                This script generates OS contracts for all device types.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.6
+          title: "'Configure Renovate'"
+          date: 2022-05-24T10:16:21.892Z
+        - commits:
+            - subject: "jenkins_build: Finalize when required"
+              hash: 85728e3fdc27f988af5383f320858eba5056e8d4
+              body: |
+                If the build job is set to finalize then do so.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-lib: Finalise release before tagging"
+              hash: 2243ff38f3589c021c0013477b92e6888f57eba8
+              body: >
+                This is so we can check that we are tagging the correct version
+                before
+
+                doing it, as tagging makes the release visible.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-api: Add function to get final state of release"
+              hash: 3e2e25182d45801e8e4df9908170e73d4696f81a
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-lib: Extract release finalization as function"
+              hash: 969f6b941bd9fb34d82fbc0d48838b7b4898b2e1
+              body: >
+                This allows it to be called from other context, like the OS
+                automation
+
+                test suite.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: Update balena-cli version to latest
+              hash: 13cdae57ddaa8e37f8a9a5d0c2873c2964cd3d31
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-deploy: Fix header on balena_deploy_block()"
+              hash: dbbf059bf9b8df60b7578c7a41e0678fbff60043
+              body: >
+                The arguments to this function have been re-ordered but the
+                header had
+
+                not been modified.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.5
+          title: "'Build and deploy'"
+          date: 2022-05-19T17:25:06.676Z
+  version: 2.98.23+rev3
+  title: "'Update balena-yocto-scripts digest to 7b2a899'"
+  date: 2022-05-30T12:00:19.845Z
+- commits:
     - subject: Update contracts to 35dea15031cf273d469171f81ed24c394332caf5
       hash: 4f709f6b0b4a6b20405aace042992199910a3324
       body: Update contracts
