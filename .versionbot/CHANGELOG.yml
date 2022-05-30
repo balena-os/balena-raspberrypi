@@ -1,4 +1,71 @@
 - commits:
+    - subject: Update contracts to 35dea15031cf273d469171f81ed24c394332caf5
+      hash: 4f709f6b0b4a6b20405aace042992199910a3324
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 35dea15031cf273d469171f81ed24c394332caf5
+        changelog-entry: Update contracts to 35dea15031cf273d469171f81ed24c394332caf5
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: Clean up installation method and add instruction partials
+              hash: 62794cb042ab3dc70628d81fca0b1903b78c1f06
+              body: ""
+              footer:
+                Change-type: major
+                change-type: major
+                Signed-off-by: Micah Halter <micah@balena.io>
+                signed-off-by: Micah Halter <micah@balena.io>
+              author: Micah Halter
+          version: contracts-2.0.0
+          title: "'Add instruction partials to etcher supported device types'"
+          date: 2022-05-27T15:01:39.154Z
+        - commits:
+            - subject: "sw.os-image: Add balena-image software image"
+              hash: 4473a99902a3793a33b63300778ad0118b8366cf
+              body: >
+                This is used by the OS builders to deploy releases. This
+                contract contains
+
+                details related to the balena-image artifact generated in the balenaOS
+
+                build.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+            - subject: "sw.os: Add balenaOS contract"
+              hash: 29b697e2a05e026d9b92ee67cdf6dc47f8cc2488
+              body: |
+                This is uded by the OS builder to deploy balenaOS.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+          version: contracts-1.13.76
+          title: "'Add sw.os and sw.os-image contracts'"
+          date: 2022-05-23T11:09:26.128Z
+        - commits:
+            - subject: "jetson-xavier-agx: Update L4T in base images"
+              hash: 029d39073ebc6136c5797526fbcdfe1525f5d950
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+          version: contracts-1.13.75
+          title: "'jetson-xavier-agx: Update L4T in base images'"
+          date: 2022-05-21T10:51:21.212Z
+  version: 2.98.23+rev2
+  title: "'Update contracts digest to 35dea15'"
+  date: 2022-05-28T10:01:32.288Z
+- commits:
     - subject: Add contracts submodule
       hash: e32f4021c1c82b1130c88acfdff19259ec4666b2
       body: |

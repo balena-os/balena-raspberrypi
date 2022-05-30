@@ -1,6 +1,31 @@
 Change log
 -----------
 
+# v2.98.23+rev2
+## (2022-05-28)
+
+
+<details>
+<summary> Update contracts to 35dea15031cf273d469171f81ed24c394332caf5 [Renovate Bot] </summary>
+
+> ## contracts-2.0.0
+> ### (2022-05-27)
+> 
+> * Clean up installation method and add instruction partials [Micah Halter]
+> 
+> ## contracts-1.13.76
+> ### (2022-05-23)
+> 
+> * sw.os-image: Add balena-image software image [Alex Gonzalez]
+> * sw.os: Add balenaOS contract [Alex Gonzalez]
+> 
+> ## contracts-1.13.75
+> ### (2022-05-21)
+> 
+> * jetson-xavier-agx: Update L4T in base images [Alexandru Costache]
+> 
+</details>
+
 # v2.98.23+rev1
 ## (2022-05-20)
 
