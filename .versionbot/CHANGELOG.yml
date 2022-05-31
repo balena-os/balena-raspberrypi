@@ -1,4 +1,319 @@
 - commits:
+    - subject: Update layers/meta-balena to 95c96e0624507fd9701912c67d3ae5ec5dbdf6f9
+      hash: 3c2aead07dac8f55c835fa4e447053d1ad45d2fb
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 95c96e0624507fd9701912c67d3ae5ec5dbdf6f9
+        changelog-entry: Update layers/meta-balena to 95c96e0624507fd9701912c67d3ae5ec5dbdf6f9
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: Update tests/leviathan digest to 95649fb
+              hash: 4216f127f4935cb6e0adeccaf7c20daec55fcff7
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: "workers: qemu: fix vars path for x86_64"
+                      hash: b34b92dde6b9b55e9e8393f61787de6895a6e339
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Joseph Kogut <joseph@balena.io>
+                        signed-off-by: Joseph Kogut <joseph@balena.io>
+                      author: Joseph Kogut
+                      nested: []
+                  version: leviathan-2.3.5
+                  title: "'workers: qemu: fix vars path for x86_64'"
+                  date: 2022-05-25T21:12:24.421Z
+          version: meta-balena-2.98.33
+          title: "'Update tests/leviathan digest to 95649fb'"
+          date: 2022-05-27T20:39:54.151Z
+        - commits:
+            - subject: "supervisor: Update balena-supervisor to v13.1.11"
+              hash: 1f1266bd0893b963528e88dfd7fd08f232088cb9
+              body: ""
+              footer:
+                Relates-to: https://github.com/balena-os/balena-supervisor/pull/1944
+                relates-to: https://github.com/balena-os/balena-supervisor/pull/1944
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Felipe Lalanne <felipe@balena.io>
+                signed-off-by: Felipe Lalanne <felipe@balena.io>
+              author: Felipe Lalanne
+              nested: []
+          version: meta-balena-2.98.32
+          title: "'supervisor: Update balena-supervisor to v13.1.11'"
+          date: 2022-05-27T15:22:00.185Z
+        - commits:
+            - subject: "tests: os: config-json: fix race by waiting for InvocationID change"
+              hash: a8303039013b6252680eb48a139e46a358506949
+              body: >
+                When tests execute quicker, a race condition can occur where
+                config.json
+
+                is edited to remove the dnsServers property, but /run/dnsmasq.servers is
+
+                not changed yet. This causes the test to fail, as the file is not empty.
+
+                    not ok 1 - We should have an empty /run/dnsmasq.servers file.
+                      ---
+                      found: |-
+                	server=1.1.1.1
+                	server=1.1.1.1
+                      pattern: !re /^\s?$/
+                      diff: |
+                	--- expected
+                	+++ actual
+                	-/^\s?$/
+                	+"server=1.1.1.1\nserver=1.1.1.1"
+
+                Fix this by waiting until the InvocationID of dnsmasq.service changes.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "tests: os: reformat config-json tests"
+              hash: 440b799974eaf237664db1813d1ebc0bff3a46b9
+              body: >
+                Reformat config-json tests w/ await where variables aren't
+                passed to
+
+                chained promises.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.98.31
+          title: "'Fix config json race'"
+          date: 2022-05-26T17:59:23.238Z
+        - commits:
+            - subject: Remove localMode setting from standalone image configuration
+              hash: 26aa3caf4e4d649d323e57c21f818ca83a9b9b13
+              body: >
+                The `localMode` variable in `config.json` is not longer used and
+                it can
+
+                be removed
+
+
+                Fixes #2041
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Remove localMode setting from standalone image configuration
+                changelog-entry: Remove localMode setting from standalone image configuration
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.98.30
+          title: "'image-balena: Remove localMode from standalone image configuration'"
+          date: 2022-05-24T10:09:17.695Z
+        - commits:
+            - subject: Update balena-engine to v20.10.17
+              hash: 8a7b24d38f67749b5d979ce12a0fafe5626190bb
+              body: |
+                Update balena-engine from 20.10.16 to 20.10.17
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                Changelog-entry: Update balena-engine to v20.10.17
+                changelog-entry: Update balena-engine to v20.10.17
+              author: Leandro Motta Barros
+              nested:
+                - commits:
+                    - subject: Fix "slice bounds out of range" while applying deltas
+                      hash: 6f12d0abb3e438f26a18eee9bbaeca9c4702f7e7
+                      body: >
+                        The root cause of this issue was an integer overflow in
+                        32-bit platforms
+
+                        -- specifically, when explicitly converting `io.Reader` offsets
+
+                        (`int64`) to slice indices (`int`, which is only 32-bit long on 32-bit
+
+                        platforms).
+
+
+                        We already had in place the checks supposed to ensure slice bounds where
+
+                        always within the expected bounds. So, in a way, this commit just
+
+                        re-organizes the code so that we perform safely this required `int64` to
+
+                        `int` type conversion.
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                  version: balena-engine-20.10.17
+                  title: "'Lmb/fix oob slice'"
+                  date: 2022-05-17T20:01:47.266Z
+          version: meta-balena-2.98.29
+          title: "'balena-engine: Update to 20.10.17'"
+          date: 2022-05-23T17:18:04.355Z
+        - commits:
+            - subject: Update tests/leviathan digest to 727ba9f
+              hash: b9b9847a3c0bc6082eec319bcac1439ca0752aac
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: "worker: qemu: add new qemu firmware paths"
+                      hash: b19831d5209962eb729ffa55851b593e632a70d8
+                      body: >
+                        Search for firmware shipped as part of QEMU package to
+                        enable
+
+                        cross-platform emulation with UEFI.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Joseph Kogut <joseph@balena.io>
+                        signed-off-by: Joseph Kogut <joseph@balena.io>
+                      author: Joseph Kogut
+                      nested: []
+                    - subject: "worker: install edk2 firmware for aarch64"
+                      hash: 514069e45c814e7f6051ea41ba9da0852f765976
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Joseph Kogut <joseph@balena.io>
+                        signed-off-by: Joseph Kogut <joseph@balena.io>
+                      author: Joseph Kogut
+                      nested: []
+                    - subject: "worker: Change default qemu memory from 2G to 512M"
+                      hash: 0820094150876d67ce9203d641fe5c41d1afcef4
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                    - subject: "make: Do not assume qemu DUT arch will match the host"
+                      hash: 4aac404ff5e221eecef289d07339532335532543
+                      body: >
+                        When KVM is not used we can easily emulate
+                        generic-aarch64
+
+                        on x86_64 hosts so avoid tying the host and target architectures
+
+                        together in the Makefile.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                    - subject: "make: Allow passed env vars to replace any .env values"
+                      hash: 4b71f90615c68c90fa8b0bf4c2068f089784ea00
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: leviathan-2.3.4
+                  title: "'Do not assume qemu DUT arch will match the host'"
+                  date: 2022-05-20T14:09:51.819Z
+          version: meta-balena-2.98.28
+          title: "'Update tests/leviathan digest to 727ba9f'"
+          date: 2022-05-20T15:17:40.870Z
+        - commits:
+            - subject: "patch: Fix heading anchor links in CDS doc index"
+              hash: 0886fe3323fa2431a780fc701d45ac601b5b0980
+              body: ""
+              footer: {}
+              author: Vipul Gupta
+              nested: []
+          version: meta-balena-2.98.27
+          title: "'patch: Fix heading anchor links in CDS doc index'"
+          date: 2022-05-18T12:53:30.139Z
+        - commits:
+            - subject: "balena-supervisor: Randomize the updater timer period"
+              hash: 5c402bc9a449c4f6d6cefe9aa44b7cdacb8ae4c8
+              body: |
+                To avoid fleets updating the supervisor at the same time,
+                distribute the timer adding a random time between 0 and 1 hour.
+
+                Fixes #2631
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.98.26
+          title: "'balena-supervisor: Randomize the updater timer period'"
+          date: 2022-05-17T16:20:39.324Z
+        - commits:
+            - subject: "patch: Get CDS doc ready for docs sync"
+              hash: f15dc2055e78af9966ac5166061e49bc401c6647
+              body: ""
+              footer: {}
+              author: Vipul Gupta
+              nested: []
+            - subject: "test: os-config: Use common code to wait for service state"
+              hash: 1ccf232c9f2676b0631d71870b2556cddfb69dd6
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.98.25
+          title: "'patch: Get CDS doc ready for docs sync'"
+          date: 2022-05-16T20:59:22.889Z
+        - commits:
+            - subject: "os-config: Randomize the timer period"
+              hash: 6a9a456869ac37367058ea56bbf24d33a2cf42f2
+              body: >
+                To avoid all devices fetching configuration settings at the same
+                time,
+
+                distribute the timer adding a random time between 0 and 6 hours.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.98.24
+          title: "'Randomize os-config timer service'"
+          date: 2022-05-15T17:05:46.782Z
+  version: 2.98.33
+  title: "'Update layers/meta-balena digest to 95c96e0'"
+  date: 2022-05-30T14:59:11.425Z
+- commits:
     - subject: Update balena-yocto-scripts to 7b2a89987f196ec4261d240a88c1790c55b366b0
       hash: 47ff2eae726842db387f71cb7a0231011f39ce0a
       body: Update balena-yocto-scripts

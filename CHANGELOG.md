@@ -1,6 +1,101 @@
 Change log
 -----------
 
+# v2.98.33
+## (2022-05-30)
+
+
+<details>
+<summary> Update layers/meta-balena to 95c96e0624507fd9701912c67d3ae5ec5dbdf6f9 [Renovate Bot] </summary>
+
+> ## meta-balena-2.98.33
+> ### (2022-05-27)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 95649fb [Renovate Bot] </summary>
+> 
+>> ### leviathan-2.3.5
+>> #### (2022-05-25)
+>> 
+>> * workers: qemu: fix vars path for x86_64 [Joseph Kogut]
+>> 
+> </details>
+> 
+> 
+> ## meta-balena-2.98.32
+> ### (2022-05-27)
+> 
+> * supervisor: Update balena-supervisor to v13.1.11 [Felipe Lalanne]
+> 
+> ## meta-balena-2.98.31
+> ### (2022-05-26)
+> 
+> * tests: os: config-json: fix race by waiting for InvocationID change [Joseph Kogut]
+> * tests: os: reformat config-json tests [Joseph Kogut]
+> 
+> ## meta-balena-2.98.30
+> ### (2022-05-24)
+> 
+> * Remove localMode setting from standalone image configuration [Alex Gonzalez]
+> 
+> ## meta-balena-2.98.29
+> ### (2022-05-23)
+> 
+> 
+> <details>
+> <summary> Update balena-engine to v20.10.17 [Leandro Motta Barros] </summary>
+> 
+>> ### balena-engine-20.10.17
+>> #### (2022-05-17)
+>> 
+>> * Fix "slice bounds out of range" while applying deltas [Leandro Motta Barros]
+>> 
+> </details>
+> 
+> 
+> ## meta-balena-2.98.28
+> ### (2022-05-20)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 727ba9f [Renovate Bot] </summary>
+> 
+>> ### leviathan-2.3.4
+>> #### (2022-05-20)
+>> 
+>> * worker: qemu: add new qemu firmware paths [Joseph Kogut]
+>> * worker: install edk2 firmware for aarch64 [Joseph Kogut]
+>> * worker: Change default qemu memory from 2G to 512M [Kyle Harding]
+>> * make: Do not assume qemu DUT arch will match the host [Kyle Harding]
+>> * make: Allow passed env vars to replace any .env values [Kyle Harding]
+>> 
+> </details>
+> 
+> 
+> ## meta-balena-2.98.27
+> ### (2022-05-18)
+> 
+> * patch: Fix heading anchor links in CDS doc index [Vipul Gupta]
+> 
+> ## meta-balena-2.98.26
+> ### (2022-05-17)
+> 
+> * balena-supervisor: Randomize the updater timer period [Alex Gonzalez]
+> 
+> ## meta-balena-2.98.25
+> ### (2022-05-16)
+> 
+> * patch: Get CDS doc ready for docs sync [Vipul Gupta]
+> * test: os-config: Use common code to wait for service state [Alex Gonzalez]
+> 
+> ## meta-balena-2.98.24
+> ### (2022-05-15)
+> 
+> * os-config: Randomize the timer period [Alex Gonzalez]
+> 
+</details>
+
 # v2.98.23+rev3
 ## (2022-05-30)
 
