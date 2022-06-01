@@ -1,6 +1,26 @@
 Change log
 -----------
 
+# v2022.4.1
+## (2022-06-01)
+
+
+<details>
+<summary> Update balena-yocto-scripts to v1.19.8 [Alex Gonzalez] </summary>
+
+> ## balena-yocto-scripts-1.19.8
+> ### (2022-06-01)
+> 
+> * balena-lib: release_finalize: Do not retag phase for ESR branch patch [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.19.7
+> ### (2022-06-01)
+> 
+> * balena-lib: balena_lib_release_finalize: Pass the correct arguments [Alex Gonzalez]
+> * balena-lib: Tag ESR fleets with patch independent tags [Alex Gonzalez]
+> 
+</details>
+
 # 2022.4.0
 ## (2022-05-31)
 
