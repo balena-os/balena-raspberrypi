@@ -1,4 +1,18 @@
 - commits:
+    - subject: Test PR
+      hash: 8dce1f759e9163d25dac34bb36ac39b840bc0375
+      body: ""
+      footer:
+        Changelog-entry: Test PR
+        changelog-entry: Test PR
+        Signed-off-by: Alexnadru Costache <alexandru@balena.io>
+        signed-off-by: Alexnadru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.98.34+rev1
+  title: "'Test PR'"
+  date: 2022-06-16T08:06:54.423Z
+- commits:
     - subject: Update layers/meta-balena to 5bd9f32d3ac9eb7eafb6eca9dd7ccc700fdacea3
       hash: 01eab0804dae15fce03f08e8ad3de8442c7e527c
       body: Update layers/meta-balena

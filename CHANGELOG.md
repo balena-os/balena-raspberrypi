@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.98.34+rev1
+## (2022-06-16)
+
+* Test PR [Alexandru Costache]
+
 # v2.98.34
 ## (2022-06-01)
 
