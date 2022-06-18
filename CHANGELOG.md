@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.98.34+rev1
+## (2022-06-18)
+
+* Update to honister [Florin Sarbu]
+
 # v2.98.34
 ## (2022-06-01)
 

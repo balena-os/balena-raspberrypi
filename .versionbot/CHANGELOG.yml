@@ -1,4 +1,20 @@
 - commits:
+    - subject: Update to honister
+      hash: 944399fc77ae5447050db58c30b28c142cfe8bdc
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Changelog-entry: Update to honister
+        changelog-entry: Update to honister
+        Signed-off-by: Francois Loubser <francois.loubser@topic.nl>
+        signed-off-by: Francois Loubser <francois.loubser@topic.nl>
+      author: Florin Sarbu
+      nested: []
+  version: 2.98.34+rev1
+  title: "'test: test commit'"
+  date: 2022-06-18T12:04:39.523Z
+- commits:
     - subject: Update layers/meta-balena to 5bd9f32d3ac9eb7eafb6eca9dd7ccc700fdacea3
       hash: 01eab0804dae15fce03f08e8ad3de8442c7e527c
       body: Update layers/meta-balena
