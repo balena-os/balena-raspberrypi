@@ -5,7 +5,7 @@ module.exports =
 	version: 1
 	slug: 'raspberrypi4-64'
 	aliases: [ 'raspberrypi4-64' ]
-	name: 'Raspberry Pi 4'
+	name: 'Raspberry Pi 44'
 	arch: 'aarch64'
 	state: 'released'
 
