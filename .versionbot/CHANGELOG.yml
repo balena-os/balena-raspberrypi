@@ -1,4 +1,844 @@
 - commits:
+    - subject: Update layers/meta-balena to 85c5bf992befbdd5b4f88978aeb7acd1a206bf9b
+      hash: 21b47ff7766e020e222c13778506b4af39ff2f56
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 85c5bf992befbdd5b4f88978aeb7acd1a206bf9b
+        changelog-entry: Update layers/meta-balena to 85c5bf992befbdd5b4f88978aeb7acd1a206bf9b
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "tests: os: purge-data: reduce intervals in waitUntil"
+              hash: 1d1bc06cfbaf7be838190cf33427aa63f5b61788
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.99.19
+          title: "'tests: os: purge-data: reduce intervals in waitUntil'"
+          date: 2022-06-24T02:35:03.988Z
+        - commits:
+            - subject: "tests: os: config-json: fix race in udevRules test"
+              hash: 8825d721ca64d523dc6faf8c317f4a09796457b6
+              body: >
+                Readlink can fail when the path is non-existent, raising an
+                error and
+
+                making the udevRules test fail. Test that the link exists before
+
+                attempting to use readlink.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.99.18
+          title: "'tests: os: config-json: fix race in udevRules test'"
+          date: 2022-06-23T22:09:44.331Z
+        - commits:
+            - subject: Update balena-io/balena-supervisor to v14.0.7
+              hash: 81c901c7a5c4636a4c19ee411b2c6137ac926ea2
+              body: Update balena-io/balena-supervisor
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested: []
+          version: meta-balena-2.99.17
+          title: "'Update balena-io/balena-supervisor to v14.0.7'"
+          date: 2022-06-22T23:30:36.614Z
+        - commits:
+            - subject: "tests: os: modem: reduce time taken scanning for modems"
+              hash: 7cb747bfadba14447cb682cfd15e0a15df0e3545
+              body: >
+                Reduce the interval between scans as well as the maximum number
+                of scans
+
+                for modems, reducing the time spent waiting when no modem is present
+
+                from ~50s to ~5s.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.99.16
+          title: "'tests: os: modem: reduce time taken scanning for modems'"
+          date: 2022-06-22T15:50:28.606Z
+        - commits:
+            - subject: Update tests/leviathan digest to 9e0ab34
+              hash: 5a828ca31e722a76a8f3fa869354fcf39dae0e8b
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested:
+                - commits:
+                    - subject: "core: worker: simplify rebootDut"
+                      hash: 55981700fb4c90a1f81192a44725f2c2d49e6135
+                      body: >
+                        worker.rebootDut() contains retry logic using
+                        utils.waitUntil() wrapping
+
+                        this.executeCommandInHostOS(). The latter contains its own retry logic,
+
+                        which will try to execute a given command for up to five minutes before
+
+                        timing out. Remove the retry logic from worker.rebootDut(), as it's
+
+                        redundant and adds latency.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Joseph Kogut <joseph@balena.io>
+                        signed-off-by: Joseph Kogut <joseph@balena.io>
+                      author: Joseph Kogut
+                      nested: []
+                    - subject: "core: worker: reduce interval in executeCommandInHostOS"
+                      hash: 7f8b371b3035eed2b32011295768d5bec19ba1ba
+                      body: >
+                        The default interval for retrying this command is 5s,
+                        with a total
+
+                        timeout of 2m30s. Reduce the timeout to 1s to reduce latency for the
+
+                        successful case, while increasing the total timeout to 5m.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Joseph Kogut <joseph@balena.io>
+                        signed-off-by: Joseph Kogut <joseph@balena.io>
+                      author: Joseph Kogut
+                      nested: []
+                  version: leviathan-2.5.4
+                  title: "'Simplify reboot'"
+                  date: 2022-06-17T19:55:24.238Z
+          version: meta-balena-2.99.15
+          title: "'Update tests/leviathan digest to 9e0ab34'"
+          date: 2022-06-21T19:54:36.661Z
+        - commits:
+            - subject: "tests: os: chrony: simplify error handling"
+              hash: b72b370d456ef99b910b9c860bb686cbbe3312d8
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "tests: os: chrony: use waitForServiceState"
+              hash: 596fed9a703f6f8c938f6d4dc23236c5ecb2fbfc
+              body: |
+                Use waitForServiceState() to ensure chronyd is active
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "tests: os: chrony: block NTP by disabling DNS resolution"
+              hash: 78b393841a787f4ead18e9850488a23a4779cfd7
+              body: >
+                Certain chrony tests require the ability to block NTP requests.
+                Switch
+
+                from blocking these requests using iptables rules to simply stopping the
+
+                local DNS server, which is faster and simpler, and doesn't conflict with
+
+                the supervisor firewall.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.99.14
+          title: "'Cleanup chrony tests'"
+          date: 2022-06-21T06:07:38.125Z
+        - commits:
+            - subject: Update balena-io/balena-supervisor to v14
+              hash: 5d78b0536398fa27c60353d0c0d894dfdbfff3b6
+              body: Update balena-io/balena-supervisor
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested: []
+          version: meta-balena-2.99.13
+          title: "'Update balena-io/balena-supervisor to v14'"
+          date: 2022-06-21T01:20:23.966Z
+        - commits:
+            - subject: "renovate: Add regex manager for balena-supervisor"
+              hash: 9820c61551a099b273f014f87cd4bf4a1b00d952
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.99.12
+          title: "'renovate: Add regex manager for balena-supervisor'"
+          date: 2022-06-20T17:07:21.269Z
+        - commits:
+            - subject: "tests: cloud: check preloaded app starts w/o api"
+              hash: 64b52e08dd761a7d796df204561dfb3329b16311
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.99.11
+          title: "'tests: cloud: check preloaded app starts w/o api'"
+          date: 2022-06-20T15:04:24.223Z
+        - commits:
+            - subject: Update backport for current being 2.88.x
+              hash: 80b729bbf2a2f161d2812645ac82fa9cbdcc349f
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.99.10
+          title: "'Update backport for current being 2.88.x'"
+          date: 2022-06-18T19:57:24.112Z
+        - commits:
+            - subject: "hostapp-update-hooks: Rework bootfiles blacklist"
+              hash: 7b523caa0099530c45b4d9981d31ca6c72a76262
+              body: >
+                We may have cases when for some boards we do not want
+
+                to have all these files blacklisted. See for example
+
+                https://github.com/balena-os/balena-rockpi/commit/b5eadcfb3a296eea2554dc0cbdd16002d51c5169
+
+
+                In conclusion, we rework how the blacklist is constructed
+
+                so that users of meta-balena can alter this list as they see fit.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-2.99.9
+          title: "'hostapp-update-hooks: Rework bootfiles blacklist'"
+          date: 2022-06-17T20:21:57.823Z
+        - commits:
+            - subject: "base-files: Fix syntax in mdns.allow addition"
+              hash: 144bfbf7c0426440351802d52183c3eeefcd060f
+              body: >
+                The mdns.allow overwrite was not being properly applied on newer
+                Yocto
+
+                versions.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "efitools: Fix append syntax"
+              hash: 30053e1c43d8adba236e52a33416e601cdcfd9f8
+              body: >
+                The efitools package was already correctly build for x86_64, so
+                this
+
+                flag is most likely a noop.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.99.8
+          title: "'Fix append syntax'"
+          date: 2022-06-17T13:09:54.918Z
+        - commits:
+            - subject: "resindataexpander: Move get_part_table_type to os-helpers-fs"
+              hash: 7fc9af86c8b994ac61fe376ec8e63d6095dda3de
+              body: >
+                This is useful outside of the expander script, specifically in
+                the init-board
+
+                script in device repos.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.99.7
+          title: "'resindataexpander: Move get_part_table_type to os-helpers-fs'"
+          date: 2022-06-17T10:47:48.847Z
+        - commits:
+            - subject: "balena-efi.service: Mount if /mnt/boot/EFI is a symlink"
+              hash: 9a873418d094b8b951535c52154be71f8b295c31
+              body: >
+                This changes the condition in the unit file from checking
+                whether
+
+                /dev/disk/by-state/balena-efi exists to checking whether /mnt/boot/EFI
+
+                is a symlink. The original approach has a race condition populating
+
+                the by-state symlink - it is depending on udev and if the link is
+
+                not present when the service is started (after the boot partition is mounted),
+
+                the service fails and the EFI partition is never mounted.
+
+
+                The new approach does the trick pretty well - /mnt/boot/EFI is a symlink
+
+                if the EFI partition is split and a regular directory in case there is a single
+
+                boot partition. That said the service is only started when necessary
+
+                and the waiting for udev is implemented as a part of the mount script.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.99.6
+          title: "'balena-efi.service: Mount if /mnt/boot/EFI is a symlink'"
+          date: 2022-06-17T08:41:59.334Z
+        - commits:
+            - subject: "grub-efi: disable shim_lock when in secure boot mode"
+              hash: dd0c128664a4b5cb004cd154f4dabc627d1f6e77
+              body: >
+                Recent versions of GRUB default to use shim_lock when in secure
+                boot mode.
+
+                We do not use shim and do not build the shim_lock module into GRUB EFI binary
+
+                therefore this needs to be disabled.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.99.5
+          title: "'grub-efi: disable shim_lock when in secure boot mode'"
+          date: 2022-06-17T04:45:40.248Z
+        - commits:
+            - subject: Update tests/leviathan digest to 6934150
+              hash: 050487f01e96c92e0fed301bb363ff09641f0d04
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: "patch: Fix failFast options"
+                      hash: 878d4351068945398c1c46e52966283563f06450
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.5.3
+                  title: "'Fix failFast debug option'"
+                  date: 2022-06-16T11:19:39.675Z
+                - commits:
+                    - subject: "core: worker: handle all local connections the same"
+                      hash: 7b6eee28e6d0db63ca3ec7f6046aad46a12b7eaa
+                      body: >
+                        Create a directConnect variable that indicates whether
+                        we're connecting
+
+                        to a local instance of the worker server, including if the connection is
+
+                        over a unix domain socket. This allows the suite to skip steps that
+
+                        don't pertain to local runs.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Joseph Kogut <joseph@balena.io>
+                        signed-off-by: Joseph Kogut <joseph@balena.io>
+                      author: Joseph Kogut
+                      nested: []
+                  version: leviathan-2.5.2
+                  title: "'core: worker: handle all local connections the same'"
+                  date: 2022-06-15T19:50:29.158Z
+                - commits:
+                    - subject: "core: catch ssh errors correctly"
+                      hash: b6d651f78d84bfc9c4e89de01717c2f87e5af2ef
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                  version: leviathan-2.5.1
+                  title: "'core: catch ssh errors correctly'"
+                  date: 2022-06-14T15:10:14.924Z
+                - commits:
+                    - subject: "make: Disable buildkit and add --pull to worker flags"
+                      hash: 7ec5f156df5629f65655e019274b94a947056af9
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                    - subject: "patch: Replace worker Dockerfile with bh.cr reference"
+                      hash: 57ca536e66406a96992b1e3e4d041e554ebc28e6
+                      body: ""
+                      footer:
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                    - subject: "patch: Remove testbot worker compose file"
+                      hash: eb32e4b95adcd248c9404234bbdbd78dc12c3e87
+                      body: ""
+                      footer:
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                    - subject: "patch: Remove balena-ci workflow for deploying to rigs"
+                      hash: 5aef72775a771319b4ac6fb212b032aa4e40ea10
+                      body: ""
+                      footer:
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                    - subject: Remove worker references from package.json
+                      hash: 31d8ffded5e18201dd02293b7db6eab75d1bb144
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                    - subject: Remove worker source files
+                      hash: 78f3d3a5dd80bebfb1b79783e3386c7c122a5132
+                      body: ""
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: leviathan-2.5.0
+                  title: "'Remove worker source files'"
+                  date: 2022-06-13T17:19:02.178Z
+          version: meta-balena-2.99.4
+          title: "'Update tests/leviathan digest to 6934150'"
+          date: 2022-06-16T22:34:26.687Z
+        - commits:
+            - subject: "tests: os: Run os suite before hup and cloud"
+              hash: 279dea44014c2e649c2c8de8571276b29f532a31
+              body: |
+                Unmanaged os suites are the most critical and usually
+                the fastest to complete, so run them first.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "tests: os: Refactor config-json tests to wait for passing results"
+              hash: 3ee1951ecfff92d3176f64a484f307b976784d96
+              body: |
+                To avoid race conditions with services restarting automatically
+                this commit wraps the individual test results with waitUntil and
+                moves the common jq logic to a shared function.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "tests: os: chrony: Avoid conflicts with supervisor firewall"
+              hash: ec7dcabd2e47ae9f7641388296c5c3c6e668c8bf
+              body: |
+                Flushing the iptables can leave the engine and supervisor
+                in a bad state. Instead just add and delete the NTP rules.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.99.3
+          title: "'Fix race conditions in os-config and chrony tests'"
+          date: 2022-06-16T21:10:23.417Z
+        - commits:
+            - subject: "tests: os: chrony: reduce retry interval"
+              hash: 99ef89af348902008fd3370c968013afc0990f15
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.99.2
+          title: "'tests: os: chrony: reduce retry interval'"
+          date: 2022-06-13T22:56:55.782Z
+        - commits:
+            - subject: "tests: hup: gzip hostapp before transfer to DUT"
+              hash: cac92a4d5e884110ae5caaf807c2c5685a88237e
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.99.1
+          title: "'tests: hup: gzip hostapp before transfer to DUT'"
+          date: 2022-06-11T12:01:27.278Z
+        - commits:
+            - subject: "chronyd: Add time synchronization healthcheck"
+              hash: e2a0fb8ebd45400789ab466dbbe0e70da7fa6165
+              body: >
+                Add a healthcheck that will check that the NTP sources are
+                reachable
+
+                and the system time does not skew.
+
+
+                The healthcheck will command a burst sync if there is no selected
+
+                reachable source, and will restart chronyd if the system clock skews.
+
+
+                Fixes #2314
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.99.0
+          title: "'chronyd: Add time synchronization healthcheck'"
+          date: 2022-06-10T08:04:29.339Z
+        - commits:
+            - subject: "tests: os: chrony: fix formatting of this.worker"
+              hash: c79e4b2b470f726e8099702cfeaea6da18e7e286
+              body: >
+                Test context is now accessible from self, remove verbose
+
+                this.context.get() syntax when calling worker.executeCommandInHostOS.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "tests: os: chrony: reduce delays and retries"
+              hash: 1064fd20a474af3aac8253f34cf543fb78725f9f
+              body: >
+                When calling waitUntil(), reduce calling intervals and the total
+                number
+
+                of retries. This effectively halves the runtime for these tests, as the
+
+                latency for detecting success is much lower.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.98.45
+          title: "'Reduce chrony timeouts'"
+          date: 2022-06-09T23:03:44.828Z
+        - commits:
+            - subject: Update tests/leviathan digest to ea72650
+              hash: 264147110d2517cb7929cdf709de1cd228f20dae
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: catch error in executeCommandInhostOs
+                      hash: db1677995f1cf2f93284dcd35bb173d1cb3e08ca
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                  version: leviathan-2.4.1
+                  title: "'catch error in executeCommandInhostOs'"
+                  date: 2022-06-09T13:28:01.544Z
+                - commits:
+                    - subject: get ssh to work with ed25519 algorithm
+                      hash: 6bdaedab27c0a919eddd74cb784bddfd8281d90b
+                      body: ""
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                  version: leviathan-2.4.0
+                  title: "'get ssh to work with ed25519 algorithm'"
+                  date: 2022-06-07T11:26:55.354Z
+          version: meta-balena-2.98.44
+          title: "'Update tests/leviathan digest to ea72650'"
+          date: 2022-06-09T21:46:58.389Z
+        - commits:
+            - subject: "tests: cloud: update container names"
+              hash: 8b85216ea886c77788ceaf377ee775e9c48913df
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.98.43
+          title: "'tests: cloud: update container names'"
+          date: 2022-06-09T11:03:45.627Z
+        - commits:
+            - subject: "tests:cloud: Register teardown only when DUT is reachable"
+              hash: fd822dabb42b2a45b1e77f262159bee192022d80
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-2.98.42
+          title: "'tests:cloud: Register teardown only when DUT is reachable'"
+          date: 2022-06-05T21:57:22.077Z
+        - commits:
+            - subject: Update tests/leviathan digest to 4fbc1b8
+              hash: 47aef0c5ec7b76cc50a00e1cca6c7d1397ba3a36
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: "worker: Expose additional QEMU runtime args via docker-compose"
+                      hash: ee574bb798cafa3e4a0504d2dde72079f8db8eeb
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: leviathan-2.3.10
+                  title: "'worker: Expose additional QEMU runtime args via docker-compose'"
+                  date: 2022-06-05T16:58:48.060Z
+          version: meta-balena-2.98.41
+          title: "'Update tests/leviathan digest to 4fbc1b8'"
+          date: 2022-06-05T18:58:18.622Z
+        - commits:
+            - subject: "tests: hup: reduce delay between retries"
+              hash: cb48541fa98093f6ce97419b8304469a4b3bb7ab
+              body: >
+                Reduce delay between retries when using waitUntil, reducing
+                latency and
+
+                test runtime.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.98.40
+          title: "'tests: hup: reduce delay between retries'"
+          date: 2022-06-04T16:25:23.750Z
+        - commits:
+            - subject: "tests: cloud: reduce waitUntil interval"
+              hash: 34f77b125c97d82e182bca1cee94fddc49ad5b07
+              body: >
+                When the promise called in waitUntil fails, the function
+                defaults to a
+
+                30s interval before trying again. Reduce this to a 5s interval w/
+
+                maximum 5m retry window in the cloud suite.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.98.39
+          title: "'tests: cloud: reduce waitUntil interval'"
+          date: 2022-06-04T12:43:32.134Z
+        - commits:
+            - subject: Added all device support options
+              hash: 5d29b6d1e0808d87103897f8210a75342f7f898f
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Hampton (@rhampt) rhampt@balena.io
+                signed-off-by: Ryan Hampton (@rhampt) rhampt@balena.io
+              author: Ryan H
+              nested: []
+          version: meta-balena-2.98.38
+          title: "'Added all device support options'"
+          date: 2022-06-03T22:19:04.182Z
+        - commits:
+            - subject: Update tests/leviathan digest to 8976bdb
+              hash: de94a30c1fb3b82ab45da049870c21abd48067c0
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: "core: bump node 12 -> 14"
+                      hash: e40a9484c760fb0292da80c6fe6da46eb4373eec
+                      body: |
+                        Bump Node 12.19.1 to 14.19.3 in core
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Joseph Kogut <joseph@balena.io>
+                        signed-off-by: Joseph Kogut <joseph@balena.io>
+                      author: Joseph Kogut
+                      nested: []
+                  version: leviathan-2.3.9
+                  title: "'core: bump node 12 -> 14'"
+                  date: 2022-06-02T19:29:24.315Z
+                - commits:
+                    - subject: "core: suiteSubprocess: replace this.state.log w/ console.log"
+                      hash: c5fd5673c41b9ad48c818a4895712d8ee6c22729
+                      body: |
+                        This fixes the error:
+                          TypeError: Cannot read property 'state' of undefined
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Joseph Kogut <joseph@balena.io>
+                        signed-off-by: Joseph Kogut <joseph@balena.io>
+                      author: Joseph Kogut
+                      nested: []
+                  version: leviathan-2.3.8
+                  title: "'core: suiteSubprocess: replace this.state.log w/ console.log'"
+                  date: 2022-06-02T16:35:18.359Z
+          version: meta-balena-2.98.37
+          title: "'Update tests/leviathan digest to 8976bdb'"
+          date: 2022-06-03T18:25:50.520Z
+        - commits:
+            - subject: "os: waitForServiceState: fix missing rejectionFail"
+              hash: 6bd43901e2d460c4e3df2a83734213ab62523689
+              body: >
+                utils.waitUntil expects rejectionFail before _times and _delay,
+                include
+
+                this argument to ensure the later arguments have the intended effect
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.98.36
+          title: "'os: waitForServiceState: fix missing rejectionFail'"
+          date: 2022-06-03T13:24:28.082Z
+        - commits:
+            - subject: "tests: os: udev: improve formatting"
+              hash: bab6ca92bdbd7c7b30bbb96ea1ed4319e489e832
+              body: |
+                Improve formatting of long command
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "tests: os: udev: use systemd.waitForServiceState"
+              hash: 82bfff92ab1dc431032f95cd3c3409210089d167
+              body: >
+                Use systemd.waitForServiceState instead of waitUntil. This
+                improves
+
+                readability, and reduces the time taken in the case that the test fails
+
+                and the default interval of waitUntil causes an excessive wait.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.98.35
+          title: "'Cleanup udev tests'"
+          date: 2022-06-02T18:04:49.177Z
+  version: 2.99.19
+  title: "'Update layers/meta-balena digest to 85c5bf9'"
+  date: 2022-06-24T13:10:35.580Z
+- commits:
     - subject: Update balena-yocto-scripts to 8cce34e9763389eb59e4e375c532c81eb592fc1e
       hash: fdc87b8c9c9333c8750889093fe8dd1ea9fdbdcf
       body: Update balena-yocto-scripts

@@ -1,6 +1,258 @@
 Change log
 -----------
 
+# v2.99.19
+## (2022-06-24)
+
+
+<details>
+<summary> Update layers/meta-balena to 85c5bf992befbdd5b4f88978aeb7acd1a206bf9b [renovate[bot]] </summary>
+
+> ## meta-balena-2.99.19
+> ### (2022-06-24)
+> 
+> * tests: os: purge-data: reduce intervals in waitUntil [Joseph Kogut]
+> 
+> ## meta-balena-2.99.18
+> ### (2022-06-23)
+> 
+> * tests: os: config-json: fix race in udevRules test [Joseph Kogut]
+> 
+> ## meta-balena-2.99.17
+> ### (2022-06-22)
+> 
+> * Update balena-io/balena-supervisor to v14.0.7 [renovate[bot]]
+> 
+> ## meta-balena-2.99.16
+> ### (2022-06-22)
+> 
+> * tests: os: modem: reduce time taken scanning for modems [Joseph Kogut]
+> 
+> ## meta-balena-2.99.15
+> ### (2022-06-21)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 9e0ab34 [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.5.4
+>> #### (2022-06-17)
+>> 
+>> * core: worker: simplify rebootDut [Joseph Kogut]
+>> * core: worker: reduce interval in executeCommandInHostOS [Joseph Kogut]
+>> 
+> </details>
+> 
+> 
+> ## meta-balena-2.99.14
+> ### (2022-06-21)
+> 
+> * tests: os: chrony: simplify error handling [Joseph Kogut]
+> * tests: os: chrony: use waitForServiceState [Joseph Kogut]
+> * tests: os: chrony: block NTP by disabling DNS resolution [Joseph Kogut]
+> 
+> ## meta-balena-2.99.13
+> ### (2022-06-21)
+> 
+> * Update balena-io/balena-supervisor to v14 [renovate[bot]]
+> 
+> ## meta-balena-2.99.12
+> ### (2022-06-20)
+> 
+> * renovate: Add regex manager for balena-supervisor [Kyle Harding]
+> 
+> ## meta-balena-2.99.11
+> ### (2022-06-20)
+> 
+> * tests: cloud: check preloaded app starts w/o api [rcooke-warwick]
+> 
+> ## meta-balena-2.99.10
+> ### (2022-06-18)
+> 
+> * Update backport for current being 2.88.x [Alex Gonzalez]
+> 
+> ## meta-balena-2.99.9
+> ### (2022-06-17)
+> 
+> * hostapp-update-hooks: Rework bootfiles blacklist [Florin Sarbu]
+> 
+> ## meta-balena-2.99.8
+> ### (2022-06-17)
+> 
+> * base-files: Fix syntax in mdns.allow addition [Alex Gonzalez]
+> * efitools: Fix append syntax [Alex Gonzalez]
+> 
+> ## meta-balena-2.99.7
+> ### (2022-06-17)
+> 
+> * resindataexpander: Move get_part_table_type to os-helpers-fs [Michal Toman]
+> 
+> ## meta-balena-2.99.6
+> ### (2022-06-17)
+> 
+> * balena-efi.service: Mount if /mnt/boot/EFI is a symlink [Michal Toman]
+> 
+> ## meta-balena-2.99.5
+> ### (2022-06-17)
+> 
+> * grub-efi: disable shim_lock when in secure boot mode [Michal Toman]
+> 
+> ## meta-balena-2.99.4
+> ### (2022-06-16)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 6934150 [Renovate Bot] </summary>
+> 
+>> ### leviathan-2.5.3
+>> #### (2022-06-16)
+>> 
+>> * patch: Fix failFast options [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.5.2
+>> #### (2022-06-15)
+>> 
+>> * core: worker: handle all local connections the same [Joseph Kogut]
+>> 
+>> ### leviathan-2.5.1
+>> #### (2022-06-14)
+>> 
+>> * core: catch ssh errors correctly [rcooke-warwick]
+>> 
+>> ### leviathan-2.5.0
+>> #### (2022-06-13)
+>> 
+>> * make: Disable buildkit and add --pull to worker flags [Kyle Harding]
+>> * patch: Replace worker Dockerfile with bh.cr reference [Kyle Harding]
+>> * patch: Remove testbot worker compose file [Kyle Harding]
+>> * patch: Remove balena-ci workflow for deploying to rigs [Kyle Harding]
+>> * Remove worker references from package.json [Kyle Harding]
+>> * Remove worker source files [Kyle Harding]
+>> 
+> </details>
+> 
+> 
+> ## meta-balena-2.99.3
+> ### (2022-06-16)
+> 
+> * tests: os: Run os suite before hup and cloud [Kyle Harding]
+> * tests: os: Refactor config-json tests to wait for passing results [Kyle Harding]
+> * tests: os: chrony: Avoid conflicts with supervisor firewall [Kyle Harding]
+> 
+> ## meta-balena-2.99.2
+> ### (2022-06-13)
+> 
+> * tests: os: chrony: reduce retry interval [Joseph Kogut]
+> 
+> ## meta-balena-2.99.1
+> ### (2022-06-11)
+> 
+> * tests: hup: gzip hostapp before transfer to DUT [rcooke-warwick]
+> 
+> ## meta-balena-2.99.0
+> ### (2022-06-10)
+> 
+> * chronyd: Add time synchronization healthcheck [Alex Gonzalez]
+> 
+> ## meta-balena-2.98.45
+> ### (2022-06-09)
+> 
+> * tests: os: chrony: fix formatting of this.worker [Joseph Kogut]
+> * tests: os: chrony: reduce delays and retries [Joseph Kogut]
+> 
+> ## meta-balena-2.98.44
+> ### (2022-06-09)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to ea72650 [Renovate Bot] </summary>
+> 
+>> ### leviathan-2.4.1
+>> #### (2022-06-09)
+>> 
+>> * catch error in executeCommandInhostOs [rcooke-warwick]
+>> 
+>> ### leviathan-2.4.0
+>> #### (2022-06-07)
+>> 
+>> * get ssh to work with ed25519 algorithm [rcooke-warwick]
+>> 
+> </details>
+> 
+> 
+> ## meta-balena-2.98.43
+> ### (2022-06-09)
+> 
+> * tests: cloud: update container names [rcooke-warwick]
+> 
+> ## meta-balena-2.98.42
+> ### (2022-06-05)
+> 
+> * tests:cloud: Register teardown only when DUT is reachable [Florin Sarbu]
+> 
+> ## meta-balena-2.98.41
+> ### (2022-06-05)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 4fbc1b8 [Renovate Bot] </summary>
+> 
+>> ### leviathan-2.3.10
+>> #### (2022-06-05)
+>> 
+>> * worker: Expose additional QEMU runtime args via docker-compose [Kyle Harding]
+>> 
+> </details>
+> 
+> 
+> ## meta-balena-2.98.40
+> ### (2022-06-04)
+> 
+> * tests: hup: reduce delay between retries [Joseph Kogut]
+> 
+> ## meta-balena-2.98.39
+> ### (2022-06-04)
+> 
+> * tests: cloud: reduce waitUntil interval [Joseph Kogut]
+> 
+> ## meta-balena-2.98.38
+> ### (2022-06-03)
+> 
+> * Added all device support options [Ryan H]
+> 
+> ## meta-balena-2.98.37
+> ### (2022-06-03)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 8976bdb [Renovate Bot] </summary>
+> 
+>> ### leviathan-2.3.9
+>> #### (2022-06-02)
+>> 
+>> * core: bump node 12 -> 14 [Joseph Kogut]
+>> 
+>> ### leviathan-2.3.8
+>> #### (2022-06-02)
+>> 
+>> * core: suiteSubprocess: replace this.state.log w/ console.log [Joseph Kogut]
+>> 
+> </details>
+> 
+> 
+> ## meta-balena-2.98.36
+> ### (2022-06-03)
+> 
+> * os: waitForServiceState: fix missing rejectionFail [Joseph Kogut]
+> 
+> ## meta-balena-2.98.35
+> ### (2022-06-02)
+> 
+> * tests: os: udev: improve formatting [Joseph Kogut]
+> * tests: os: udev: use systemd.waitForServiceState [Joseph Kogut]
+> 
+</details>
+
 # v2.98.34+rev1
 ## (2022-06-02)
 
