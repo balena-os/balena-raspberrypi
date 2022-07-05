@@ -1,4 +1,221 @@
 - commits:
+    - subject: Update layers/meta-balena to d748c184c7348683378b4e8f0dbc2cfc014b65de
+      hash: 4608c6f2ac931295d6cb00dbebcb074bb3f0cddc
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to d748c184c7348683378b4e8f0dbc2cfc014b65de
+        changelog-entry: Update layers/meta-balena to d748c184c7348683378b4e8f0dbc2cfc014b65de
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "tests: os: fingerprint: fix errant promise"
+              hash: ff22bce2e729c4fd74963ab7a96377656cad7559
+              body: >
+                When parallelizing fingerprint checks with Promise.any(), the
+
+                unsuccessful command would continue retrying in the background, causing
+
+                spurious error messages.
+
+
+                With mDNS resolution memoization, this optimization no longer saves us
+
+                time, so remove it.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.99.27
+          title: "'tests: os: fingerprint: fix errant promise'"
+          date: 2022-06-30T18:10:06.725Z
+        - commits:
+            - subject: "tests: cloud: Wait for random triggers to be updated"
+              hash: b0223bb3a36ffcbfdf5e306cd9fa88398278a42c
+              body: |
+                This prevents a race condition on slower hardware where
+                the systemd unit does not have a value for Trigger immediately
+                after skewing the clock.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.99.26
+          title: "'tests: cloud: Wait for random triggers to be updated'"
+          date: 2022-06-29T18:46:55.181Z
+        - commits:
+            - subject: Update tests/leviathan digest to 4fe9b19
+              hash: 8d61aa7664fdfb621770fe546d20edd21be9d51c
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested:
+                - commits:
+                    - subject: "github: Run e2e tests via github actions"
+                      hash: 3ef31444872dc701f0efa23cc0a208f0cbcf5155
+                      body: |
+                        This will replace the Jenkins job for e2e tests
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                    - subject: "make: Clean local volumes before running tests"
+                      hash: 1ff4f9e8bddca3f25d5d260d925448d62ca3be22
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                    - subject: "worker: Pin worker image to latest by default"
+                      hash: 3d8a4d5c57db246c4d4b9b82ae2ec4f5bdc0b081
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                    - subject: "e2e: Update e2e suite config to support testbots"
+                      hash: 46ff1fe17f33dffdacf6bdc923a4f986b16465af
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: leviathan-2.5.5
+                  title: "'Run QEMU and testbot e2e tests via github-actions'"
+                  date: 2022-06-24T20:48:38.481Z
+          version: meta-balena-2.99.25
+          title: "'Update tests/leviathan digest to 4fe9b19'"
+          date: 2022-06-28T23:32:06.902Z
+        - commits:
+            - subject: "tests: Increase delay when testing randomized timers"
+              hash: 0163f4b3df5fbe2e49e56b45f5f200b18128417b
+              body: |
+                This should prevent failed tests on slower devices.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.99.24
+          title: "'tests: Increase delay when testing randomized timers'"
+          date: 2022-06-28T14:53:51.098Z
+        - commits:
+            - subject: "Update: update balena-io/balena-supervisor to v14.0.8"
+              hash: 87b9883c5cef60d2e00d566cc3bc83ac18bb737d
+              body: Update balena-io/balena-supervisor
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested: []
+          version: meta-balena-2.99.23
+          title: "'Update: update balena-io/balena-supervisor to v14.0.8'"
+          date: 2022-06-27T23:40:10.965Z
+        - commits:
+            - subject: "balena-supervisor: Replace BOOT_MOUNTPOINT with
+                BALENA_BOOT_MOUNTPOINT"
+              hash: 8e4ed15d512304498540fd30c280a5f000dc4ba9
+              body: >
+                BOOT_MOUNTPOINT is no longer exported in the configuration
+                environment.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-config-vars: Remove BOOT_MOUNTPOINT from configuration
+                environment"
+              hash: 5ae6971c2574f4cc7a26ea420d25f2e36d80a965
+              body: >
+                BALENA_BOOT_MOUNTPOINT is used in 32 places in the OS, while
+
+                BOOT_MOUNTPOINT is used in 5.
+
+
+                This commit replaces BOOT_MOUNTPOINT with BALENA_BOOT_MOUNTPOINT to
+
+                remove the duplication.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.99.22
+          title: "'Replace BOOT_MOUNTPOINT with BALENA_BOOT_MOUNTPOINT'"
+          date: 2022-06-27T18:01:12.674Z
+        - commits:
+            - subject: "balena-config-vars: Do not use systemctl to list unit files"
+              hash: efcc9a0f876dc9b0955189cab535bc4a1926554d
+              body: |
+                On occassions, this fails with a broken pipe error.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.99.21
+          title: "'balena-config-vars: Do not use systemctl to list unit files'"
+          date: 2022-06-27T09:18:07.649Z
+        - commits:
+            - subject: "tests: os: make apiKey an optional parameter"
+              hash: 5b959d374810ab1d5e82d3017b91e678d50e4a2d
+              body: >
+                When accessing a test device as part of a fleet, a cloud API key
+                is
+
+                required in order to generate an SSH key and access the device through
+
+                the VPN. However, when accessing a device locally, such as a QEMU
+
+                instance running on the workstation itself, we have a direct path, and
+
+                no VPN is necessary.
+
+
+                Make the apiKey optional, and don't login when it's not specified. This
+
+                allows direct connections to work without it.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.99.20
+          title: "'tests: os: make apiKey an optional parameter'"
+          date: 2022-06-24T20:23:18.792Z
+  version: 2.99.27
+  title: "'Update layers/meta-balena digest to d748c18'"
+  date: 2022-07-01T20:01:06.572Z
+- commits:
     - subject: Update layers/meta-balena to 85c5bf992befbdd5b4f88978aeb7acd1a206bf9b
       hash: 21b47ff7766e020e222c13778506b4af39ff2f56
       body: Update layers/meta-balena

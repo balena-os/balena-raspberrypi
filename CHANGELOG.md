@@ -1,6 +1,69 @@
 Change log
 -----------
 
+# v2.99.27
+## (2022-07-01)
+
+
+<details>
+<summary> Update layers/meta-balena to d748c184c7348683378b4e8f0dbc2cfc014b65de [renovate[bot]] </summary>
+
+> ## meta-balena-2.99.27
+> ### (Invalid date)
+> 
+> * tests: os: fingerprint: fix errant promise [Joseph Kogut]
+> 
+> ## meta-balena-2.99.26
+> ### (2022-06-29)
+> 
+> * tests: cloud: Wait for random triggers to be updated [Kyle Harding]
+> 
+> ## meta-balena-2.99.25
+> ### (2022-06-28)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 4fe9b19 [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.5.5
+>> #### (2022-06-24)
+>> 
+>> * github: Run e2e tests via github actions [Kyle Harding]
+>> * make: Clean local volumes before running tests [Kyle Harding]
+>> * worker: Pin worker image to latest by default [Kyle Harding]
+>> * e2e: Update e2e suite config to support testbots [Kyle Harding]
+>> 
+> </details>
+> 
+> 
+> ## meta-balena-2.99.24
+> ### (2022-06-28)
+> 
+> * tests: Increase delay when testing randomized timers [Kyle Harding]
+> 
+> ## meta-balena-2.99.23
+> ### (2022-06-27)
+> 
+> * Update: update balena-io/balena-supervisor to v14.0.8 [renovate[bot]]
+> 
+> ## meta-balena-2.99.22
+> ### (2022-06-27)
+> 
+> * balena-supervisor: Replace BOOT_MOUNTPOINT with BALENA_BOOT_MOUNTPOINT [Alex Gonzalez]
+> * balena-config-vars: Remove BOOT_MOUNTPOINT from configuration environment [Alex Gonzalez]
+> 
+> ## meta-balena-2.99.21
+> ### (2022-06-27)
+> 
+> * balena-config-vars: Do not use systemctl to list unit files [Alex Gonzalez]
+> 
+> ## meta-balena-2.99.20
+> ### (2022-06-24)
+> 
+> * tests: os: make apiKey an optional parameter [Joseph Kogut]
+> 
+</details>
+
 # v2.99.19
 ## (2022-06-24)
 
