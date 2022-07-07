@@ -188,9 +188,12 @@ BALENA_CONFIGS[rtrpi300cfgs] = " \
 BALENA_CONFIGS:append = " nfsfs"
 BALENA_CONFIGS[nfsfs] = " \
     CONFIG_NFS_FS=m \
-    CONFIG_NFS_V2=m \
-    CONFIG_NFS_V3=m \
-    CONFIG_NFS_V4=m \
+    CONFIG_NFS_V2=y \
+    CONFIG_NFS_V3=y \
+    CONFIG_NFS_V4=y \
+    CONFIG_NFSD=m \
+    CONFIG_NFSD_V3=y \
+    CONFIG_NFSD_V4=y \
 "
 
 # The Pi3-64 and Pi4-64 are the only boards very low on rootfs space for now
