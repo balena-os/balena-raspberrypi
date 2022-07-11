@@ -1,6 +1,40 @@
 Change log
 -----------
 
+# v2.99.27+rev4
+## (2022-07-09)
+
+
+<details>
+<summary> Update contracts to 98c8c8ef3039bb927ce39f77eed4479f12c77fac [renovate[bot]] </summary>
+
+> ## contracts-2.0.4
+> ### (2022-06-21)
+> 
+> * Add libffi3.4 linked python binaries [Trong Nghia Nguyen]
+> 
+> ## contracts-2.0.3
+> ### (2022-06-13)
+> 
+> * Add Python v3.10.5 and v3.9.13 [Trong Nghia Nguyen]
+> * Add support for Alpine Linux 3.16 [Trong Nghia Nguyen]
+> * Add support for Ubuntu Jammy and Kinetic [Trong Nghia Nguyen]
+> 
+> ## contracts-2.0.2
+> ### (2022-06-05)
+> 
+> * sw.os - hw.device-type: Update Xavier NX SD and Xavier NX eMMC to 32.7.1 [Alexandru Costache]
+> 
+> ## contracts-2.0.1
+> ### (2022-06-03)
+> 
+> * Update QEMU to v7.0.0+balena1 [Trong Nghia Nguyen]
+> * Remove the wrapper shim that base images have around sh on first run [Trong Nghia Nguyen]
+> * Add golang v1.18.3 and v1.17.11 [Trong Nghia Nguyen]
+> * Add node v18.3.0 v17.9.1 and v16.15.1 [Trong Nghia Nguyen]
+> 
+</details>
+
 # v2.99.27+rev3
 ## (2022-07-08)
 

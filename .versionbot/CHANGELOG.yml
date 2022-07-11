@@ -1,4 +1,121 @@
 - commits:
+    - subject: Update contracts to 98c8c8ef3039bb927ce39f77eed4479f12c77fac
+      hash: 648ca47992b1a26366e221cc68162f0251812f1e
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 98c8c8ef3039bb927ce39f77eed4479f12c77fac
+        changelog-entry: Update contracts to 98c8c8ef3039bb927ce39f77eed4479f12c77fac
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: Add libffi3.4 linked python binaries
+              hash: 29fc985046aa9aeca97be260d09e026ad1319da1
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+          version: contracts-2.0.4
+          title: "'Add libffi3.4 linked python binaries'"
+          date: 2022-06-21T18:55:56.538Z
+        - commits:
+            - subject: Add Python v3.10.5 and v3.9.13
+              hash: 971223d30b9bf7391ffe57b36182c4857bf4c3aa
+              body: >
+                Update checksum for v3.8.13 and v3.7.13 since they were rebuilt
+                to add tkinter modules
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+            - subject: Add support for Alpine Linux 3.16
+              hash: 49617527cd147d2013158786ee22f8489340143c
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+            - subject: Add support for Ubuntu Jammy and Kinetic
+              hash: 143ad01883d861aba4f6359a4386634eb9592684
+              body: |
+                Drop support for Ubuntu Hirsute
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+          version: contracts-2.0.3
+          title: "'Few base images updates'"
+          date: 2022-06-13T20:38:36.573Z
+        - commits:
+            - subject: "sw.os - hw.device-type: Update Xavier NX SD and Xavier NX eMMC to
+                32.7.1"
+              hash: 5550fdff88e0f6c4c93af3ceec5936f937791dd7
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+          version: contracts-2.0.2
+          title: "'sw.os - hw.device-type: Update Xavier NX SD and Xavier NX eMMC to L4T
+            32.7.1'"
+          date: 2022-06-05T12:34:53.567Z
+        - commits:
+            - subject: Update QEMU to v7.0.0+balena1
+              hash: 09da1dcdad42b7ea6aba665549e022029bb2860b
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+            - subject: Remove the wrapper shim that base images have around sh on first run
+              hash: cb3c0138081af7b73498e22f201af71277ec532c
+              body: >
+                The wrapper will potentially break other packages that expect sh
+                to be a real shell (In case the real sh shell binary is not
+                restored yet)
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+            - subject: Add golang v1.18.3 and v1.17.11
+              hash: 08afe67fa031ac33c9bb5f5e6031f15347a4efe9
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+            - subject: Add node v18.3.0 v17.9.1 and v16.15.1
+              hash: f04cb9eda01595742b964a4a3e9eab7289cbc2ac
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+          version: contracts-2.0.1
+          title: "'Few base images update'"
+          date: 2022-06-03T09:11:15.593Z
+  version: 2.99.27+rev4
+  title: "'Update contracts digest to 98c8c8e'"
+  date: 2022-07-09T02:59:49.271Z
+- commits:
     - subject: Update balena-yocto-scripts to 5e003d52ac8e118af3cce662362d45f780ade704
       hash: 8c4da55f93a4bf3cb9af24a639ea2b9bd4322e44
       body: Update balena-yocto-scripts
