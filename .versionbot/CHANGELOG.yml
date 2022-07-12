@@ -1,4 +1,18 @@
 - commits:
+    - subject: "linux-raspberrypi: Enable NFSv4 config"
+      hash: 930003064d14f776e0f9c38c97358a113c3cf8db
+      body: ""
+      footer:
+        Changelog-entry: "linux-raspberrypi: Enable NFSv4 config"
+        changelog-entry: "linux-raspberrypi: Enable NFSv4 config"
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 2.99.27+rev5
+  title: "'linux-raspberrypi: Enable NFSv4 config'"
+  date: 2022-07-11T14:03:31.345Z
+- commits:
     - subject: Update contracts to 98c8c8ef3039bb927ce39f77eed4479f12c77fac
       hash: 648ca47992b1a26366e221cc68162f0251812f1e
       body: Update contracts

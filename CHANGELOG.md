@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.99.27+rev5
+## (2022-07-11)
+
+* linux-raspberrypi: Enable NFSv4 config [Kyle Harding]
+
 # v2.99.27+rev4
 ## (2022-07-09)
 
