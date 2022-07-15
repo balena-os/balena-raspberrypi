@@ -1,4 +1,404 @@
 - commits:
+    - subject: Update layers/meta-balena to d824f26f501ed881ae048c709f14792ee8d657ca
+      hash: 1c178b780253c155c1707b634549fae3a93df23a
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to d824f26f501ed881ae048c709f14792ee8d657ca
+        changelog-entry: Update layers/meta-balena to d824f26f501ed881ae048c709f14792ee8d657ca
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "docs: Add configuration overview"
+              hash: c5ffb602ede43b129770024d4e0fb1919741c0dd
+              body: ""
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: Create empty configuration units
+              hash: 7fa2152878de1f40df40dc6db74fc77e02480967
+              body: >
+                By creating empty configuration units when no configuratin is
+                applied to
+
+                a service instead we avoid regenerating them at boot if stored in
+
+                persistent memory helping with boot times in less powerful devices.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: Make configuration units storage path a distro setting
+              hash: a5a9b3cf31b92e31f91eb6d4c99c9a2cc42b1257
+              body: >
+                This allows for specific devices to override the defaults, which
+                is to
+
+                store configuration units on volatile memory re-generating them every
+
+                boot and avoiding storage media writes.
+
+
+                Changing this to permanent storage trades boot times with media life
+
+                expectancy.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-configurable: Generate initial unit configuration file"
+              hash: f59f2f1716f0c59ac4e21cb35ebf1b34ad8a945e
+              body: >
+                Before starting services generate the initial unit configuration
+                file.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-units-conf: Add script to generate configuration units"
+              hash: 0de0d36727f13d8229e6f4936cc8ff14fdb4e204
+              body: >
+                Separate the generation of configuration units before a service
+                has been
+
+                started, from the processing of configuration changes.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-units-conf: Rename configuration directory"
+              hash: ef87329afc96e168acca33b79ed1db04fffc85b2
+              body: |
+                Rename CONF_TMPDIR to CONF_DIR not to imply volatile storage.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-units-conf: Process static configuration unit files at build
+                time"
+              hash: a0bbe0038b2bf99f0845095c42a9dca517293049
+              body: >
+                Currently `os-config-json` is also parsing `units-conf.json` at
+                runtime.
+
+                This is expensive to do for smaller devices, so this commit performs the
+
+                processing at build time.
+
+
+                For this, it also splits the configuration units processing in
+
+                balena-config-vars into its own recipe to allow for task ordering.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "os-helpers-config: Extract functions from os-config-json to helper
+                file"
+              hash: 368d2c981d6229c5896e54afb11fc9488893dc3d
+              body: |
+                This allows to re-use the functions from other places.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "os-helpers: Rename os-helpers-devmode to os-helpers-config"
+              hash: 2afcac4cd3b35c0299b34f43cdaec96c700d3928
+              body: >
+                This makes it more general and allows it to be expanded.
+
+
+                Also, allow its native use so it can be included in recipe tests.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-config-vars: Split static defaults into a different file"
+              hash: bfe134f8dc24bb3bab5cef8e1b82a6844e1e5de3
+              body: >
+                This allows to source the static configuration without having to
+                parse
+
+                config.json which is expensive for smaller devices.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "os-config-json: Log configuration changes"
+              hash: 6b876340ccccdc326b772292f5fcb7ba8304f9e5
+              body: |
+                Identify configuration changes in the log.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "os-config-json: Recreate environment cache file"
+              hash: bddb396bee22111b908f67b332169ce11cda5fcc
+              body: |
+                When config.json changes the environment cache file needs to be
+                recreated.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-config-vars: Cache environment in memory file"
+              hash: fe1581bf347fd354e806eb617ee6c446d22b52cb
+              body: >
+                Executing balena-config-vars is quite taxing for smaller
+                devices. For
+
+                example a RaspberryPi Zero.
+
+
+                This commit introduces a cached memory file with the configuration
+
+                environment that is recreated when `config.json` changes and will be
+
+                used if present.
+
+
+                time source /usr/sbin/balena-config-vars --no-cache
+
+
+                real    0m2.928s
+
+                user    0m1.050s
+
+                sys     0m0.030s
+
+
+                time source /usr/sbin/balena-config-vars
+
+
+                real    0m0.011s
+
+                user    0m0.008s
+
+                sys     0m0.000s
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.100.0
+          title: "'Optimize configuration watchers'"
+          date: 2022-07-14T12:22:34.189Z
+        - commits:
+            - subject: Update backport for current being 2.98.x
+              hash: b9e0614e7fca33fefdfd05267881e2a4405ef127
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.99.30
+          title: "'Update backport for current being 2.98.x'"
+          date: 2022-07-14T07:57:05.557Z
+        - commits:
+            - subject: Update balena-io/balena-supervisor to v14.0.10
+              hash: 8333afa3429b681419d0d834e39c80c6180f31cc
+              body: Update balena-io/balena-supervisor
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested: []
+          version: meta-balena-2.99.29
+          title: "'Update balena-io/balena-supervisor to v14.0.10'"
+          date: 2022-07-14T00:31:19.818Z
+        - commits:
+            - subject: Update tests/leviathan digest to d57299a
+              hash: 72ff6adac8ab2b0bf0e4dd359ae5e5f3da7cb7d6
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested:
+                - commits:
+                    - subject: "core: Reduce the interval for sdk.executeCommandInHostOS"
+                      hash: 72d3ff016213b88f6a552761536a697cbec98b03
+                      body: >
+                        Maintaining the total time of 600s but reducing the
+                        interval
+
+                        from 10s to 1s to catch successful commands faster.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                    - subject: Revert "reduce ssh retries"
+                      hash: 47ca4a05ad2c970fa71dc5819c04fbfa46489a3b
+                      body: >
+                        This reverts commit
+                        ca1a9238fd59fb3b46321f36a157021c705d1605.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: leviathan-2.6.5
+                  title: "'Revert \"reduce ssh retries\"'"
+                  date: 2022-07-12T21:38:11.489Z
+                - commits:
+                    - subject: remove parallel suites across multiple workers
+                      hash: d3d1558f2f732fc0e559f1b0a46f3e057f37a82e
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                  version: leviathan-2.6.4
+                  title: "'remove parallel suites across multiple workers'"
+                  date: 2022-07-07T10:40:01.869Z
+                - commits:
+                    - subject: reduce ssh retries
+                      hash: ca1a9238fd59fb3b46321f36a157021c705d1605
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                  version: leviathan-2.6.3
+                  title: "'reduce ssh retries'"
+                  date: 2022-07-06T11:25:17.154Z
+                - commits:
+                    - subject: "Makefile: Fix unique container names when running on Jenkins"
+                      hash: 59d1f3e41aef5f60b61de27eb05512cec69b7d36
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                    - subject: "Makefile: Ignore failures when cleaning up"
+                      hash: 808dd2218755c34f86e849ce9378f1bc8cc540a2
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: leviathan-2.6.2
+                  title: "'Makefile: Ignore failures when cleaning up'"
+                  date: 2022-07-04T19:32:28.939Z
+                - commits:
+                    - subject: "patch: Remove testing step of purging old volumes"
+                      hash: ff51ed9846c46cef5733d35414b8952acc83187f
+                      body: ""
+                      footer:
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                    - subject: "patch: Increase timeout for worker connections"
+                      hash: 87a741fd22a78c190bec59fa6628de921ac2809f
+                      body: ""
+                      footer:
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: leviathan-2.6.1
+                  title: "'patch: Increase timeout of http requests to worker'"
+                  date: 2022-07-01T14:27:56.188Z
+                - commits:
+                    - subject: "minor: Improve e2e serial test for Leviathan v2"
+                      hash: 3cff5f39767dfa507c52a7827e7317fdc07d0be6
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.6.0
+                  title: "'minor: Improve e2e serial test for Leviathan v2'"
+                  date: 2022-06-30T23:41:09.545Z
+                - commits:
+                    - subject: "patch: Limit e2e execution time to 2 hours"
+                      hash: e8daaaef99db5476d3d78b370a05d4c08bd4a6cc
+                      body: ""
+                      footer:
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: leviathan-2.5.7
+                  title: "'patch: Limit e2e execution time to 2 hours'"
+                  date: 2022-06-30T21:19:32.813Z
+                - commits:
+                    - subject: "patch: Use ubuntu-latest GH runners for e2e"
+                      hash: ee024769aa476e5d5dca66cc8fbc707f1eed37bc
+                      body: ""
+                      footer: {}
+                      author: Kyle Harding
+                      nested: []
+                  version: leviathan-2.5.6
+                  title: "'patch: Use ubuntu-latest GH runners for e2e'"
+                  date: 2022-06-30T17:30:22.471Z
+          version: meta-balena-2.99.28
+          title: "'Update tests/leviathan digest to d57299a'"
+          date: 2022-07-13T17:09:10.663Z
+  version: 2.100.0
+  title: "'Update layers/meta-balena digest to d824f26'"
+  date: 2022-07-14T19:55:31.435Z
+- commits:
     - subject: "linux-raspberrypi: Enable NFSv4 config"
       hash: 930003064d14f776e0f9c38c97358a113c3cf8db
       body: ""

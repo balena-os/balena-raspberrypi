@@ -1,6 +1,95 @@
 Change log
 -----------
 
+# v2.100.0
+## (2022-07-14)
+
+
+<details>
+<summary> Update layers/meta-balena to d824f26f501ed881ae048c709f14792ee8d657ca [renovate[bot]] </summary>
+
+> ## meta-balena-2.100.0
+> ### (2022-07-14)
+> 
+> * docs: Add configuration overview [Alex Gonzalez]
+> * Create empty configuration units [Alex Gonzalez]
+> * Make configuration units storage path a distro setting [Alex Gonzalez]
+> * balena-configurable: Generate initial unit configuration file [Alex Gonzalez]
+> * balena-units-conf: Add script to generate configuration units [Alex Gonzalez]
+> * balena-units-conf: Rename configuration directory [Alex Gonzalez]
+> * balena-units-conf: Process static configuration unit files at build time [Alex Gonzalez]
+> * os-helpers-config: Extract functions from os-config-json to helper file [Alex Gonzalez]
+> * os-helpers: Rename os-helpers-devmode to os-helpers-config [Alex Gonzalez]
+> * balena-config-vars: Split static defaults into a different file [Alex Gonzalez]
+> * os-config-json: Log configuration changes [Alex Gonzalez]
+> * os-config-json: Recreate environment cache file [Alex Gonzalez]
+> * balena-config-vars: Cache environment in memory file [Alex Gonzalez]
+> 
+> ## meta-balena-2.99.30
+> ### (2022-07-14)
+> 
+> * Update backport for current being 2.98.x [Alex Gonzalez]
+> 
+> ## meta-balena-2.99.29
+> ### (2022-07-14)
+> 
+> * Update balena-io/balena-supervisor to v14.0.10 [renovate[bot]]
+> 
+> ## meta-balena-2.99.28
+> ### (2022-07-13)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to d57299a [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.6.5
+>> #### (2022-07-12)
+>> 
+>> * core: Reduce the interval for sdk.executeCommandInHostOS [Kyle Harding]
+>> * Revert "reduce ssh retries" [Kyle Harding]
+>> 
+>> ### leviathan-2.6.4
+>> #### (2022-07-07)
+>> 
+>> * remove parallel suites across multiple workers [rcooke-warwick]
+>> 
+>> ### leviathan-2.6.3
+>> #### (2022-07-06)
+>> 
+>> * reduce ssh retries [rcooke-warwick]
+>> 
+>> ### leviathan-2.6.2
+>> #### (2022-07-04)
+>> 
+>> * Makefile: Fix unique container names when running on Jenkins [Kyle Harding]
+>> * Makefile: Ignore failures when cleaning up [Kyle Harding]
+>> 
+>> ### leviathan-2.6.1
+>> #### (2022-07-01)
+>> 
+>> * patch: Remove testing step of purging old volumes [Kyle Harding]
+>> * patch: Increase timeout for worker connections [Kyle Harding]
+>> 
+>> ### leviathan-2.6.0
+>> #### (Invalid date)
+>> 
+>> * minor: Improve e2e serial test for Leviathan v2 [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.5.7
+>> #### (Invalid date)
+>> 
+>> * patch: Limit e2e execution time to 2 hours [Kyle Harding]
+>> 
+>> ### leviathan-2.5.6
+>> #### (Invalid date)
+>> 
+>> * patch: Use ubuntu-latest GH runners for e2e [Kyle Harding]
+>> 
+> </details>
+> 
+> 
+</details>
+
 # v2.99.27+rev5
 ## (2022-07-11)
 
