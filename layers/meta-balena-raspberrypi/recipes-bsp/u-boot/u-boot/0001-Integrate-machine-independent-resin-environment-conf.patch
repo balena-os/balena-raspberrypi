@@ -1,4 +1,4 @@
-From 264c9cf02c1a834b12a257576112660b64878f67 Mon Sep 17 00:00:00 2001
+From 8c41dcb55ad8fe4ab0a8202b53b8342e5c47fd7b Mon Sep 17 00:00:00 2001
 From: Andrei Gherzan <andrei@resin.io>
 Date: Wed, 1 Mar 2017 23:53:02 +0100
 Subject: [PATCH] Integrate machine independent resin environment configuration
@@ -14,19 +14,19 @@ Upstream-Status: Inappropriate [configuration]
  1 file changed, 3 insertions(+)
 
 diff --git a/include/env_default.h b/include/env_default.h
-index 54d8124..44b7523 100644
+index 1ddd64ba8ffe..2c0a6838c735 100644
 --- a/include/env_default.h
 +++ b/include/env_default.h
-@@ -9,6 +9,8 @@
- 
+@@ -10,6 +10,8 @@
  #include <env_callback.h>
+ #include <linux/stringify.h>
  
 +#include <env_resin.h>
 +
  #ifdef DEFAULT_ENV_INSTANCE_EMBEDDED
- env_t environment __UBOOT_ENV_SECTION__(environment) = {
+ env_t embedded_environment __UBOOT_ENV_SECTION__(environment) = {
  	ENV_CRC,	/* CRC Sum */
-@@ -22,6 +24,7 @@ static char default_environment[] = {
+@@ -25,6 +27,7 @@ uchar default_environment[] = {
  const uchar default_environment[] = {
  #endif
  #ifndef CONFIG_USE_DEFAULT_ENV_FILE
