@@ -1,4 +1,4 @@
-From 851a975a3843cb5eb13395a350dd326f2c638f0b Mon Sep 17 00:00:00 2001
+From 91248f8583b79b4c663273b3d6612bc16abc3e20 Mon Sep 17 00:00:00 2001
 From: Alexandru Costache <alexandru@balena.io>
 Date: Fri, 6 Dec 2019 14:16:21 +0100
 Subject: [PATCH] rpi: Disable image flasher check
@@ -17,12 +17,12 @@ Signed-off-by: Alexandru Costache <alexandru@balena.io>
  1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/include/configs/rpi.h b/include/configs/rpi.h
-index e2760b0f84..92d2433bbe 100644
+index 8c14faa8e7f2..3b7cb91a5a6f 100644
 --- a/include/configs/rpi.h
 +++ b/include/configs/rpi.h
-@@ -157,7 +157,8 @@
- 	"dhcpuboot=usb start; dhcp u-boot.uimg; bootm\0" \
+@@ -206,7 +206,8 @@
  	ENV_DEVICE_SETTINGS \
+ 	ENV_DFU_SETTINGS \
  	ENV_MEM_LAYOUT_SETTINGS \
 -	BOOTENV
 +	BOOTENV \
@@ -30,6 +30,3 @@ index e2760b0f84..92d2433bbe 100644
  
  
  #endif
--- 
-2.17.1
-
