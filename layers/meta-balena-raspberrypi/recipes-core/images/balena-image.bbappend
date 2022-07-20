@@ -27,30 +27,19 @@ python overlay_dtbs_handler () {
     # Add all the dtb files programatically
     for soc_fam in d.getVar('SOC_FAMILY', True).split(':'):
         if soc_fam == 'rpi':
-            resin_boot_partition_files = d.getVar('BALENA_BOOT_PARTITION_FILES', True)
-            # All changes to KERNEL_DEVICETREE are local and cannot be modified
-            # globally, thus we save the list of existing overlays when they are built
             f = open(d.getVar('DEPLOY_DIR_IMAGE') + '/overlays.txt', "r")
             kernel_devicetree = f.read()
             f.close
             d.setVar('KERNEL_DEVICETREE', kernel_devicetree)
-            overlay_dtbs = split_overlays(d, 0)
-            root_dtbs = split_overlays(d, 1)
-
-            for dtb in root_dtbs.split():
-                dtb = os.path.basename(dtb)
-                # newer kernels (5.4 onward) introduce overlay_map.dtb which needs to be deployed in the overlays directory
-                if dtb == 'overlay_map.dtb':
-                    resin_boot_partition_files += "\t%s:/overlays/%s" % (dtb, dtb)
-                    continue
-                resin_boot_partition_files += "\t%s:/%s" % (dtb, dtb)
-
-            for dtb in overlay_dtbs.split():
-                dtb = os.path.basename(dtb)
-                resin_boot_partition_files += "\t%s:/overlays/%s" % (dtb, dtb)
-
-            d.setVar('BALENA_BOOT_PARTITION_FILES', resin_boot_partition_files)
-
+            resin_boot_partition_files=make_dtb_boot_files(d)
+            for entry in resin_boot_partition_files.split(' '):
+                if ';' in entry:
+                    source = entry.split(';')[0]
+                    dest = entry.split(';')[1]
+                else:
+                    source = entry
+                    dest = entry
+                d.appendVar('BALENA_BOOT_PARTITION_FILES', ' ' + source.strip() + ':/' + dest.strip())
             break
 }
 
