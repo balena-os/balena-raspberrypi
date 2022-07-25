@@ -1,3 +1,5 @@
+inherit kernel-balena
+
 # These device types have been using the aufs storage driver,
 # and during a HUP the storage in the inactive sysroot will
 # still be aufs, so we need to include the aufs driver further

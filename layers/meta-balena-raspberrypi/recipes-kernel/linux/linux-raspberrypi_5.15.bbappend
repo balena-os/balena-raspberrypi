@@ -1,9 +1,4 @@
-inherit kernel-resin
-
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
-
-LINUX_VERSION = "5.10.95"
-SRCREV_machine = "a538fd26f82b101cb6fb963042f3242768e628d4"
 
 SRC_URI:append:fincm3 = " \
 	file://0001-overlays-fin-add-internal-pull-ups-to-i2c_soft.patch \
@@ -16,11 +11,11 @@ SRC_URI:append = " \
 	file://0002-wireless-wext-Bring-back-ndo_do_ioctl-fallback.patch \
 	file://0001-Add-npe-x500-m3-overlay.patch \
 	file://0006-overlays-Add-Hyperpixel4-overlays.patch \
-	file://0001-waveshare-sim7600-Add-dtbo-for-this-modem.patch \
 	file://0001-Add-tpm-slb9670-tis-spi-DT-overlay.patch \
 	file://0010-dts-overlays-Add-UniPi-overlays.patch \
 	file://0001-seeed-studio-can-bus-v2-Add-dtbo-for-this-can-bus.patch \
 	file://0011-USB-serial-Add-support-for-more-Quectel-modules.patch \
+	file://0001-waveshare-sim7600-Add-dtbo-for-this-modem.patch \
 "
 
 SRC_URI:append:rt-rpi-300 = " \
