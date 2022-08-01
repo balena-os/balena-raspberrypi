@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.100.0+rev1
+## (2022-07-29)
+
+* Update build and deploy workflow to v0.0.9 [Alex Gonzalez]
+
 # v2.100.0
 ## (2022-07-14)
 

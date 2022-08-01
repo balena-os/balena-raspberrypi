@@ -1,4 +1,20 @@
 - commits:
+    - subject: Update build and deploy workflow to v0.0.9
+      hash: c837328a0c217743486cc1f652acbdd2f8c568b6
+      body: |
+        This update will deploy as final when automation tests have been passed
+        for the previous merge commit.
+      footer:
+        Changelog-entry: Update build and deploy workflow to v0.0.9
+        changelog-entry: Update build and deploy workflow to v0.0.9
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.100.0+rev1
+  title: "'build_and_deploy: update to v0.0.9'"
+  date: 2022-07-29T11:02:33.134Z
+- commits:
     - subject: Update layers/meta-balena to d824f26f501ed881ae048c709f14792ee8d657ca
       hash: 1c178b780253c155c1707b634549fae3a93df23a
       body: Update layers/meta-balena
