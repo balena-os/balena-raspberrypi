@@ -1,6 +1,39 @@
 Change log
 -----------
 
+# v2.100.0+rev2
+## (2022-08-03)
+
+
+<details>
+<summary> Update contracts to b48eaf24e3b0cf67116e4adbe1a12d349825fda5 [renovate[bot]] </summary>
+
+> ## contracts-2.0.8
+> ### (2022-08-03)
+> 
+> * Update dotnet contract to latest v6.x and v3.x [Trong Nghia Nguyen]
+> * Add node v18.7.0 [Trong Nghia Nguyen]
+> 
+> ## contracts-2.0.7
+> ### (2022-07-19)
+> 
+> * hw.device-type: fix tdpzu9 device name [Francois]
+> 
+> ## contracts-2.0.6
+> ### (2022-07-17)
+> 
+> * hw.device-type: Add correct tdpzu9 board [Florin Sarbu]
+> 
+> ## contracts-2.0.5
+> ### (2022-07-14)
+> 
+> * Add node v18.6.0 [Trong Nghia Nguyen]
+> * Add golang v1.8.4 and v1.17.12 [Trong Nghia Nguyen]
+> * Add node v18.5.0 v16.16.0 and v14.20.0 [Trong Nghia Nguyen]
+> * Remove Debian Stretch as it is EOL [Trong Nghia Nguyen]
+> 
+</details>
+
 # v2.100.0+rev1
 ## (2022-07-29)
 

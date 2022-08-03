@@ -1,4 +1,108 @@
 - commits:
+    - subject: Update contracts to b48eaf24e3b0cf67116e4adbe1a12d349825fda5
+      hash: eb54e002b0eaa1bc939c7a1f7178ef37b054c4aa
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to b48eaf24e3b0cf67116e4adbe1a12d349825fda5
+        changelog-entry: Update contracts to b48eaf24e3b0cf67116e4adbe1a12d349825fda5
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: Update dotnet contract to latest v6.x and v3.x
+              hash: 8723082c3e626e277d24a6ed4e8667fc2324377a
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+            - subject: Add node v18.7.0
+              hash: 71c4516bc9af8b65fae9f9f25ceca6e3f61eddc0
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+          version: contracts-2.0.8
+          title: "'Few base images updates'"
+          date: 2022-08-03T00:13:19.196Z
+        - commits:
+            - subject: "hw.device-type: fix tdpzu9 device name"
+              hash: acb15b0bc5d545447881d327977d7901e88a8dea
+              body: |
+                Remove "V1R2" version from Topic Device Name
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Francois Loubser <francois.loubser@topic.nl>
+                signed-off-by: Francois Loubser <francois.loubser@topic.nl>
+              author: Francois
+          version: contracts-2.0.7
+          title: "'hw.device-type: fix tdpzu9 device name'"
+          date: 2022-07-19T11:11:57.633Z
+        - commits:
+            - subject: "hw.device-type: Add correct tdpzu9 board"
+              hash: 854890e2c4516145bd8e92e9d2f8f8066cb364a5
+              body: |
+                There was a mismatch in between the dir name
+                and the actual slug name.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+          version: contracts-2.0.6
+          title: "'hw.device-type: Add correct tdpzu9 board'"
+          date: 2022-07-17T12:40:20.750Z
+        - commits:
+            - subject: Add node v18.6.0
+              hash: 9c2c0aeb2570a4c34e02d118c82d0ab548c01832
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+            - subject: Add golang v1.8.4 and v1.17.12
+              hash: ba582ac955d9f8c50634556860289ee1473770fd
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+            - subject: Add node v18.5.0 v16.16.0 and v14.20.0
+              hash: 036940834afc4231e89caffe4ea94dbfc2f665d2
+              body: |
+                Drop v17.x series
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+            - subject: Remove Debian Stretch as it is EOL
+              hash: 623e9032a3e81cf42d11736e7eed3ed54a24ebbc
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+          version: contracts-2.0.5
+          title: "'Few base images updates'"
+          date: 2022-07-14T10:50:25.683Z
+  version: 2.100.0+rev2
+  title: "'Update contracts digest to b48eaf2'"
+  date: 2022-08-03T00:53:11.624Z
+- commits:
     - subject: Update build and deploy workflow to v0.0.9
       hash: c837328a0c217743486cc1f652acbdd2f8c568b6
       body: |
