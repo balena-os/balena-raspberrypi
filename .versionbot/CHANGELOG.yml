@@ -1,4 +1,19 @@
 - commits:
+    - subject: Remove final argument from build and deploy workflow
+      hash: 2fe69d666584122d8345c04f75a42ff95b1cbdd5
+      body: |
+        The final argument is now filled up dynamically.
+      footer:
+        Changelog-entry: Remove final argument from build and deploy workflow
+        changelog-entry: Remove final argument from build and deploy workflow
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.100.0+rev3
+  title: "'workflows: build and deploy: Remove final argument'"
+  date: 2022-08-03T09:36:00.960Z
+- commits:
     - subject: Update contracts to b48eaf24e3b0cf67116e4adbe1a12d349825fda5
       hash: eb54e002b0eaa1bc939c7a1f7178ef37b054c4aa
       body: Update contracts
