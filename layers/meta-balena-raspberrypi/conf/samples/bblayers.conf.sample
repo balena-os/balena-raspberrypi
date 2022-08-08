@@ -6,6 +6,9 @@ BBPATH = "${TOPDIR}"
 BBFILES ?= ""
 
 BBLAYERS ?= " \
+    ${TOPDIR}/../layers/meta-balena/meta-balena-rust \
+    ${TOPDIR}/../layers/meta-balena/meta-balena-common \
+    ${TOPDIR}/../layers/meta-balena/meta-balena-honister \
     ${TOPDIR}/../layers/poky/meta \
     ${TOPDIR}/../layers/poky/meta-poky \
     ${TOPDIR}/../layers/meta-openembedded/meta-oe \
@@ -13,8 +16,5 @@ BBLAYERS ?= " \
     ${TOPDIR}/../layers/meta-openembedded/meta-networking \
     ${TOPDIR}/../layers/meta-openembedded/meta-python \
     ${TOPDIR}/../layers/meta-raspberrypi \
-    ${TOPDIR}/../layers/meta-balena/meta-balena-common \
-    ${TOPDIR}/../layers/meta-balena/meta-balena-honister \
     ${TOPDIR}/../layers/meta-balena-raspberrypi \
-    ${TOPDIR}/../layers/meta-rust \
     "
