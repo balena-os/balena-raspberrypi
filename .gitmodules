@@ -16,9 +16,6 @@
 [submodule "tests/autohat"]
 	path = tests/autohat
 	url = https://github.com/balena-io/autohat.git
-[submodule "layers/meta-rust"]
-	path = layers/meta-rust
-	url = https://github.com/meta-rust/meta-rust.git
 [submodule "contracts"]
 	path = contracts
 	url = https://github.com/balena-io/contracts.git
