@@ -1,4 +1,668 @@
 - commits:
+    - subject: Update layers/meta-balena to 61b53fbb8b667de54707cc6aa94fd79674958856
+      hash: c63437b0b5746f1b3cd4021b55113d42e757f844
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 61b53fbb8b667de54707cc6aa94fd79674958856
+        changelog-entry: Update layers/meta-balena to 61b53fbb8b667de54707cc6aa94fd79674958856
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: Add automated tests for the Engine healthcheck
+              hash: 16d8dbe0e1dae47b161680a227213247ea699f1a
+              body: ""
+              footer:
+                Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                Change-type: patch
+                change-type: patch
+              author: Leandro Motta Barros
+              nested: []
+            - subject: Use a lightweight Engine healthcheck
+              hash: 7146e4614c2658d6f7d5384602eb8ad213e08759
+              body: >
+                Previously, our healthcheck verified if we were able to start a
+                new
+
+                container. This had two downsides:
+
+
+                1. It was relatively heavyweight. In devices under heavy load, it would
+                   sometimes take so long to run that the Engine was killed by the
+                   watchdog.
+                2. It wrote to the storage media. Creating a container involves writing
+                   some data to persistent storage, therefore the healthcheck was
+                   wearing the storage media.
+
+                This new healthcheck simply pings both `balenad` and `containerd`, which
+
+                is much faster than starting a new container and doesn't write to disk.
+
+                The step of pinging `containerd` is important because we have seen at
+
+                least one case in the past in which `balenad` was working but
+
+                `containerd` wasn't.
+              footer:
+                Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                Change-type: patch
+                change-type: patch
+              author: Leandro Motta Barros
+              nested: []
+            - subject: Make Engine watchdog termination graceful
+              hash: 9e322ee25bf50949880446f4fb85d1d8e864da37
+              body: >
+                With `WatchdogSignal=SIGTERM` systemd will send a SIGTERM and
+                give the
+
+                Engine 90 seconds to gracefully shutdown before sending a SIGKILL. We
+
+                had cases of Engine metadata on disk getting corrupted after the
+
+                watchdog sent it a SIGKILL directly. This change shall minimize this
+
+                issue.
+              footer:
+                Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                Change-type: patch
+                change-type: patch
+              author: Leandro Motta Barros
+              nested: []
+          version: meta-balena-2.101.7
+          title: "'Improve Engine healthchecks'"
+          date: 2022-08-17T13:45:38.348Z
+        - commits:
+            - subject: "tests/cloud: fix ssh prod test for physical duts"
+              hash: abbb8233f803fd4216fe27bb8a9c28f96d30085e
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.101.6
+          title: "'tests/cloud: fix ssh prod test for physical duts'"
+          date: 2022-08-15T12:33:41.204Z
+        - commits:
+            - subject: "meta-balena-rust: Link to meta-rust"
+              hash: 83bd38733af9063c5d29d90fc0695838e4b718d3
+              body: >
+                This is a temporary way that will allow to update the
+                bblayers.conf of
+
+                device type repositories to include meta-balena/meta-balena-rust while
+
+                still building.
+
+
+                This change will be reverted with the meta-balena-rust layer.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.101.5
+          title: "'meta-balena-rust: Link to meta-rust'"
+          date: 2022-08-12T08:01:52.474Z
+        - commits:
+            - subject: Update tests/leviathan digest to c2c68d2
+              hash: 769f708630e8bf5bc58ca97a05d24a62e9c8976b
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested:
+                - commits:
+                    - subject: exit with failure if suite doesn't start
+                      hash: 1221cdfa4aaae98e9fadcc961adc574fc6d3ffba
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                  version: leviathan-2.7.2
+                  title: "'core: exit with failure if suite doesn't start'"
+                  date: 2022-08-05T12:37:55.576Z
+                - commits:
+                    - subject: Regenerate docs
+                      hash: 603564525d93f41d3583f4a9d8f42edd5311827c
+                      body: ""
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                    - subject: Document proper worker config for QEMU workers
+                      hash: 0165578f87d8b1eb4209f5f1c4f490a8e893c794
+                      body: ""
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                    - subject: Fix a couple of typos in the docs
+                      hash: b2fa59745ed8ebc3c8d5346c78b26cfc70a061be
+                      body: ""
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                  version: leviathan-2.7.1
+                  title: "'Document proper worker config for QEMU workers'"
+                  date: 2022-08-02T21:09:19.617Z
+                - commits:
+                    - subject: "minor: Add Unstable tests debug feature"
+                      hash: eb2c583f988056cacc93b761568549988d4f85eb
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.7.0
+                  title: "'Add unstable tests debug feature'"
+                  date: 2022-07-26T17:56:37.204Z
+          version: meta-balena-2.101.4
+          title: "'Update tests/leviathan digest to c2c68d2'"
+          date: 2022-08-08T11:54:12.550Z
+        - commits:
+            - subject: Update balena-io/balena-supervisor to v14.0.13
+              hash: 86f7f397f711093dcf71a86c349f3adc29bd17ac
+              body: Update balena-io/balena-supervisor
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested: []
+          version: meta-balena-2.101.3
+          title: "'Update balena-io/balena-supervisor to v14.0.13'"
+          date: 2022-08-05T17:03:57.877Z
+        - commits:
+            - subject: DRY the HUP smoke tests
+              hash: 46dc350d829c352dae62a87eb1aec21e69789503
+              body: >
+                Our tests perform two HUPs (into and out of the release under
+                test), and
+
+                the code for both of these HUPs were duplicated. This commit factors
+
+                this code out to a common function.
+              footer:
+                Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                Change-type: patch
+                change-type: patch
+              author: Leandro Motta Barros
+              nested: []
+            - subject: Check volume contents over HUPs
+              hash: ef4e861fdd1dd7ea8d3a9b6dd34a0e1e30c8e852
+              body: >
+                This is a small improvement over our previous test: in addition
+                to
+
+                checking that the volumes themselves are preserved over HUPs, we now
+
+                check if the contents of these volumes is preserved.
+
+
+                Resolves #2428
+              footer:
+                Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                Change-type: patch
+                change-type: patch
+              author: Leandro Motta Barros
+              nested: []
+          version: meta-balena-2.101.2
+          title: "'Check volume contents over HUPs'"
+          date: 2022-08-05T13:32:38.536Z
+        - commits:
+            - subject: "os-config: Update os-config from v1.2.1 to v1.2.10"
+              hash: 1663c7d601882813f9219209fefee6bfb3eb2e6d
+              body: |
+                The tool now has optimized binary size in release builds
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Zahari Petkov <zahari@balena.io>
+                signed-off-by: Zahari Petkov <zahari@balena.io>
+              author: Zahari Petkov
+              nested: []
+          version: meta-balena-2.101.1
+          title: "'Optimize binary size in release builds for Rust tools'"
+          date: 2022-08-01T14:48:59.790Z
+        - commits:
+            - subject: "resin-device-register: Use fatrw to access the boot partition"
+              hash: 9730e7a5805f8589ff392ccad0029b67ff0619d4
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "hostapp-update-hooks: Use fatrw to access the boot partition"
+              hash: a4b626edb5d27f35a754cf6e7b718dd379453a01
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-unique-key: Use fatrw to access the boot partition"
+              hash: 4c29d63e09ad1e6966bfe3a6ada7f4875ca5ff58
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-rollback: Use fatrw if available"
+              hash: 2f14cdf9e82bd50d5cbabfc62d9d3ed5b3f2de7b
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "update-hostapp-extensions: Use fatrw if available"
+              hash: 6043f89df336b2aa22253c90a1923f0ea9f9b773
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-config-vars: Provide FAT safe filesystem access alternatives"
+              hash: 09ddd9c7d9e9cce2e9956d15644931d879ce0ad3
+              body: >
+                The boot partition is currently a FAT filesystem that does not
+                support
+
+                atomic writes. To prevent corruption, this commit introduces a fatrw
+
+                application that needs to be used both when reading and writing files
+
+                to the boot partition to provide safe accesses.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "fatrw: Add recipe"
+              hash: c8312e6a8a6b20d5534754ab2930463b302c87d4
+              body: >
+                Builds a CLI application to perform atomic writes to FAT
+                filesystems.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.101.0
+          title: "'Use fatrw for atomic writes to boot partition'"
+          date: 2022-07-29T15:21:30.925Z
+        - commits:
+            - subject: "test: os: chrony: Double the wait for time skew test"
+              hash: 756b5eba8d3b197f56688be030b522f94a628c42
+              body: >
+                Including the 2min systemd watchdog timer, plus 60 attempts to
+                sync
+
+                the time via chronyc waitsync, it may take longer than expected to
+
+                trigger the healthcheck condition.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "os: tests: chrony: Wrap disable/enable NTP in test conditions"
+              hash: 6d51bd39d02898a3a50f8b5ff133a283b0368463
+              body: >
+                This allows us to catch if one of the enable/disable steps has
+                failed
+
+                and includes time to execute.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "tests: os: Add helper to write or remove properties in config.json"
+              hash: ce338f46cf7d79044b7f67850744784db3869465
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.100.11
+          title: "'tests: os: Add helper to write or remove properties in config.json'"
+          date: 2022-07-25T17:36:43.495Z
+        - commits:
+            - subject: "tests: cloud: preload: fix no-return-await"
+              hash: 4011daec80bf0e81915bdaf6aafdcd1cd298e5d6
+              body: |
+                Fix ESLint no-return-await
+                https://eslint.org/docs/latest/rules/no-return-await
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "tests: cloud: preload: reduce waitUntil interval"
+              hash: 5b4669444e99788ceff5615ed66edc13719ab70b
+              body: |
+                Specify an explicit retry interval in waitUntil().
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "tests: cloud: multicontainer: reduce waitUntil interval"
+              hash: 92d72c900e0017203a8de21a7de1930528eb25e6
+              body: |
+                Specify an explicit retry interval in waitUntil().
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.100.10
+          title: "'Jakogut/cloud fixups'"
+          date: 2022-07-24T10:14:15.412Z
+        - commits:
+            - subject: "tests: os: engine-socket - wait for response"
+              hash: 61b32c0d36e2c2af387b77bdc398d3294ffedbda
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.100.9
+          title: "'tests: os: engine-socket - wait for response before continuing test'"
+          date: 2022-07-22T19:35:54.404Z
+        - commits:
+            - subject: "tests/os: Add 243390 unmanged Wifi HATs tests from testLodge"
+              hash: d02baf51d053124059aae911eb1e0e75f92d62d7
+              body: |
+                This covers the unmanaged part of the tests for the CUS
+                and EUS wifi chipsets on this DT: TC50, TC51, TC52, TC53,
+                TC55, TC56.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.100.8
+          title: "'tests: Add 243390 unmanged Wifi HATs tests from testLodge'"
+          date: 2022-07-21T23:48:56.244Z
+        - commits:
+            - subject: "tests: hup: Clear inactive storage partition before HUP"
+              hash: 411639a031cdbdfc8ccdcc911e06f94fbf28ca9c
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "tests: hup: Add root partition tests"
+              hash: 0aa0a53a27867ce9e1a1d511f68736d62a9b3b1c
+              body: |
+                Rather than verify the OS version that doesn't always
+                change between upgrades, we should confirm that we are not
+                running on the same root partition as we were before HUP.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "tests: hup: Replace custom steps with tests and verify exit code"
+              hash: 60923171f34aa9d55edce08b010a7b48f97f615f
+              body: |
+                We want to fail the test if one of setup steps fails to execute.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "tests: hup: Wait for rollback files to be removed or created"
+              hash: e4ba7abc3225f26926cf6cd9acee1431bb839950
+              body: |
+                Rather than waiting for services to become inactive, just
+                wait for the expected files to be created or removed in
+                the state partition.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.100.7
+          title: "'tests: hup: Clear inactive storage partition before HUP'"
+          date: 2022-07-21T16:21:04.482Z
+        - commits:
+            - subject: "balena-config-vars: Do not use cache in flasher images"
+              hash: c99ac402222d3187f5b7c71d6a40400328fd3327
+              body: >
+                Flasher images use an alternative configuration storage so skip
+                caching.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.100.6
+          title: "'balena-config-vars: Do not use cache in flasher images'"
+          date: 2022-07-21T11:41:09.297Z
+        - commits:
+            - subject: Update balena-io/balena-supervisor to v14.0.12
+              hash: a02e1aaa0128bb8d83af498be7c5e9baec4facab
+              body: Update balena-io/balena-supervisor
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested: []
+          version: meta-balena-2.100.5
+          title: "'Update balena-io/balena-supervisor to v14.0.12'"
+          date: 2022-07-21T07:32:23.025Z
+        - commits:
+            - subject: Update tests/leviathan digest to d3c6489
+              hash: 03e3f1863ef6e0d3627b16cbb300bff13ad9f8a0
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested:
+                - commits:
+                    - subject: "core: Reduce logging in failed SSH attempts"
+                      hash: a51082819ea19c25a3e195ef9af420b01e425a55
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: leviathan-2.6.8
+                  title: "'core: Reduce logging in failed SSH attempts'"
+                  date: 2022-07-20T18:16:21.491Z
+                - commits:
+                    - subject: 'Revert "patch: Increase timeout for worker connections"'
+                      hash: 5e98079b8a44b2470c8edc9ac6e4ab65b9a6da96
+                      body: >
+                        This reverts commit
+                        87a741fd22a78c190bec59fa6628de921ac2809f.
+
+
+                        This change didn't actually help to resolve the original ETIMEDOUT
+
+                        issues so it can be reverted.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                    - subject: "core: Update node-tap to 14.10.8"
+                      hash: 9307ec92f4a700e4d3e51aebb812667c3b809fb5
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: leviathan-2.6.7
+                  title: "'core: Update node-tap to 14.10.8'"
+                  date: 2022-07-18T19:00:05.817Z
+          version: meta-balena-2.100.4
+          title: "'Update tests/leviathan digest to d3c6489'"
+          date: 2022-07-20T23:56:49.035Z
+        - commits:
+            - subject: "tests: ssh-auth: Rework to prevent race conditions"
+              hash: a54368b0c2f52e17242117ec59313ce8d0fec88c
+              body: |
+                Use a common function to apply settings in config.json to avoid
+                code duplication. It also provides timed results so we know
+                how long it took to apply a setting.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.100.3
+          title: "'tests: ssh-auth: Rework to prevent race conditions'"
+          date: 2022-07-20T20:33:49.443Z
+        - commits:
+            - subject: Update tests/leviathan digest to c2755a1
+              hash: d585bb1d5c02402a8a33718174b75439f8f4edc1
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested:
+                - commits:
+                    - subject: "core: worker: add retryOptions to executeCommand methods"
+                      hash: 2f2d7a8b99fcaffc22d0032f9102e194160f7e1f
+                      body: >
+                        The executeCommand family of methods default to retrying
+                        on failure. In
+
+                        some cases, such as in the ssh-auth test in the cloud test suite, we
+
+                        expect failures to happen, and want them to be raised immediately. Other
+
+                        situations might demand adjusting the number of retries and interval to
+
+                        fit specific tests. Add a retryOptions object to these methods to allow
+
+                        for this behavior to be configured.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Joseph Kogut <joseph@balena.io>
+                        signed-off-by: Joseph Kogut <joseph@balena.io>
+                      author: Joseph Kogut
+                      nested: []
+                  version: leviathan-2.6.6
+                  title: "'core: worker: add retryOptions to executeCommand methods'"
+                  date: 2022-07-15T00:04:31.325Z
+          version: meta-balena-2.100.2
+          title: "'Update tests/leviathan digest to c2755a1'"
+          date: 2022-07-15T17:58:23.253Z
+        - commits:
+            - subject: "tests: cloud: fix production mode ssh test"
+              hash: 916d400456ef2cb58f13c7b8b6e542c23b57e8c2
+              body: >
+                This test was broken previously, and would fail with "All
+                configured
+
+                authentication methods failed" after a long delay caused by excessive
+
+                retries.
+
+
+                Fixes: #2719
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.100.1
+          title: "'tests: cloud: fix production mode ssh test'"
+          date: 2022-07-15T00:06:09.193Z
+  version: 2.101.7
+  title: "'Update layers/meta-balena digest to 61b53fb'"
+  date: 2022-08-17T17:54:00.970Z
+- commits:
     - subject: Remove final argument from build and deploy workflow
       hash: 2fe69d666584122d8345c04f75a42ff95b1cbdd5
       body: |
