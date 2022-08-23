@@ -1,4 +1,19 @@
 - commits:
+    - subject: Rename resin-extra-udev-rules to extra-udev-rules.
+      hash: 26ec621fdd56854001d08455c781924fee71373b
+      body: |
+        This recipe has been renamed in upstream meta-balena.
+      footer:
+        Changelog-entry: Rename resin-extra-udev-rules to extra-udev-rules.
+        changelog-entry: Rename resin-extra-udev-rules to extra-udev-rules.
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.101.7+rev2
+  title: "'meta-balena-raspberry: Rename resin-extra-udev-rules'"
+  date: 2022-08-23T11:27:59.314Z
+- commits:
     - subject: Modify layer ordering
       hash: 9f04582bc9cea4db518fbadefb5ea5a35fffaa3a
       body: |

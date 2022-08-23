@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.101.7+rev2
+## (2022-08-23)
+
+* Rename resin-extra-udev-rules to extra-udev-rules. [Alex Gonzalez]
+
 # v2.101.7+rev1
 ## (2022-08-18)
 
