@@ -6,7 +6,6 @@ LINUX_VERSION = "5.10.95"
 SRCREV_machine = "a538fd26f82b101cb6fb963042f3242768e628d4"
 
 SRC_URI:append:fincm3 = " \
-	file://0001-Revert-overlays-i2c-gpio-Avoid-open-drain-warnings.patch \
 	file://0004-mmc-pwrseq-Repurpose-for-Marvell-SD8777.patch \
 	file://0005-balena-fin-wifi-sta-uap-mode.patch \
 	file://0007-overlays-Add-spyfly.dts.patch \
