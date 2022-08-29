@@ -1,0 +1,44 @@
+From f987e7dc54e65bee595cf3916ee68b121c979f9c Mon Sep 17 00:00:00 2001
+From: Joseph Kogut <joseph@balena.io.com>
+Date: Mon, 29 Aug 2022 14:53:28 -0700
+Subject: [PATCH 1/1] overlays: fin: add internal pull-ups to i2c_soft
+
+As explained by Heath Raftery:
+
+> Restore the open drain configuration of the software I2C pins in the
+device tree. Add internal pull-up to the pins so I2C still works on the
+balenaFins that have had their pull-up resistors removed while having
+negligible effect on standard Fins.
+
+This change should remain compatible with all known configurations of
+the Fin while making the I2C bus operate within specification even when
+the external pull-up resistors aren't populated. Future revisions of the
+board should keep these resistors, even on depop configurations.
+
+Change-type: patch
+Signed-off-by: Joseph Kogut <joseph@balena.io>
+---
+ arch/arm/boot/dts/overlays/balena-fin-overlay.dts | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/arch/arm/boot/dts/overlays/balena-fin-overlay.dts b/arch/arm/boot/dts/overlays/balena-fin-overlay.dts
+index e7ead7cdf5f5..fd38bf81be06 100644
+--- a/arch/arm/boot/dts/overlays/balena-fin-overlay.dts
++++ b/arch/arm/boot/dts/overlays/balena-fin-overlay.dts
+@@ -50,11 +50,9 @@ power_ctrl: power_ctrl {
+ 
+ 			i2c_soft: i2c@0 {
+ 				compatible = "i2c-gpio";
+-				gpios = <&gpio 43 (GPIO_ACTIVE_HIGH|GPIO_OPEN_DRAIN) /* sda */
+-				         &gpio 42 (GPIO_ACTIVE_HIGH|GPIO_OPEN_DRAIN) /* scl */>;
++				gpios = <&gpio 43 (GPIO_ACTIVE_HIGH|GPIO_OPEN_DRAIN|GPIO_PULL_UP) /* sda */
++				         &gpio 42 (GPIO_ACTIVE_HIGH|GPIO_OPEN_DRAIN|GPIO_PULL_UP) /* scl */>;
+ 				i2c-gpio,delay-us = <5>;
+-				i2c-gpio,scl-open-drain;
+-				i2c-gpio,sda-open-drain;
+ 				#address-cells = <1>;
+ 				#size-cells = <0>;
+ 			};
+-- 
+2.37.2
+
