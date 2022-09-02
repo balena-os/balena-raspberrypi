@@ -35,6 +35,13 @@ do_deploy:append:raspberrypi3-unipi-neuron() {
 	echo "dtoverlay=neuron-spi-new" >> ${DEPLOYDIR}/bootfiles/config.txt
 }
 
+do_deploy:append:raspberrypi4-unipi-neuron() {
+	# Use the dt overlays required by the UniPi Neuron family of boards
+	echo "dtoverlay=neuronee" >> ${DEPLOYDIR}/bootfiles/config.txt
+	echo "dtoverlay=i2c-rtc,mcp7941x" >> ${DEPLOYDIR}/bootfiles/config.txt
+	echo "dtoverlay=neuron-spi-new" >> ${DEPLOYDIR}/bootfiles/config.txt
+}
+
 do_deploy:append:revpi-core-3() {
     cat >> ${DEPLOYDIR}/bootfiles/config.txt << EOF
 
