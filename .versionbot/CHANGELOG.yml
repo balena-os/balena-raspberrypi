@@ -1,4 +1,18 @@
 - commits:
+    - subject: Add support for raspberrypi4-unipi-neuron
+      hash: c59f66c5f68c787bafd326edfc6d99ba73f2261f
+      body: ""
+      footer:
+        Changelog-entry: Add support for raspberrypi4-unipi-neuron
+        changelog-entry: Add support for raspberrypi4-unipi-neuron
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.101.7+rev2
+  title: "'Add raspberrypi4 unipi neuron'"
+  date: 2022-09-02T07:40:21.527Z
+- commits:
     - subject: Modify layer ordering
       hash: 9f04582bc9cea4db518fbadefb5ea5a35fffaa3a
       body: |

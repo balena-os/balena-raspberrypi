@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.101.7+rev2
+## (2022-09-02)
+
+* Add support for raspberrypi4-unipi-neuron [Florin Sarbu]
+
 # v2.101.7+rev1
 ## (2022-08-18)
 
