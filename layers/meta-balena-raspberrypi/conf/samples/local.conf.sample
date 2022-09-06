@@ -11,6 +11,7 @@
 #MACHINE ?= "npe-x500-m3"
 #MACHINE ?= "rt-rpi-300"
 #MACHINE ?= "raspberrypi3-unipi-neuron"
+#MACHINE ?= "raspberrypi4-unipi-neuron"
 
 # More info meta-resin/README.md
 #TARGET_REPOSITORY ?= ""
