@@ -1,4 +1,506 @@
 - commits:
+    - subject: Update layers/meta-balena to 6e63144eb5d665dc51958e0aa791256c48cc0522
+      hash: 259b0003910590aa274135512b8a5d6f04c1267c
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 6e63144eb5d665dc51958e0aa791256c48cc0522
+        changelog-entry: Update layers/meta-balena to 6e63144eb5d665dc51958e0aa791256c48cc0522
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: Update tests/leviathan digest to 7fe3c5f
+              hash: 501e9f0cd4a82b40451cca4eef244ad242565614
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested:
+                - commits:
+                    - subject: "core: Copy all files/directories except those in dockerignore"
+                      hash: d65bfbb94cab3cbfa676f53b42b85969bde41e58
+                      body: >
+                        In some situations the contracts submodule may not exist
+                        so this
+
+                        will prevent the docker build from failing.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                    - subject: "core: Move contracts submodule back to original path"
+                      hash: ed4b658cb327c9133d223c3474bb9d882b8fcb36
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: leviathan-2.8.4
+                  title: "'core: Move contracts submodule back to original path'"
+                  date: 2022-09-07T14:39:45.563Z
+                - commits:
+                    - subject: "patch: Migrate away from config package"
+                      hash: b04974e51ad26b2b6dfce52ea4897c51276989ef
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.8.3
+                  title: "'core: Migrate away from config package'"
+                  date: 2022-09-07T11:55:30.839Z
+                - commits:
+                    - subject: "worker: Pin to stable release 2.5.10 prior to md support"
+                      hash: 3b6ce13734e98e981492e01bc874c0a439cb1536
+                      body: |
+                        Software raid support is not backwards compatible so pin
+                        to a stable version of the worker prior to 2.6.0.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: leviathan-2.8.2
+                  title: "'worker: Pin to stable release 2.5.10 prior to md support'"
+                  date: 2022-09-06T13:48:15.525Z
+                - commits:
+                    - subject: "patch: Fix contracts name"
+                      hash: 5f48a749c71bcc2e540a764f633dd823c3fcc35c
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.8.1
+                  title: "'patch: Fix contracts name'"
+                  date: 2022-09-03T23:38:43.521Z
+                - commits:
+                    - subject: "patch: Accept 429 HTTP codes using config file"
+                      hash: 846773a1aae8677f618660395515be4515a6b6d4
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                    - subject: "minor: Add support for Private Contracts"
+                      hash: 3259bc9e08dec07058a11ce189fc261c44479123
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.8.0
+                  title: "'minor: Add support for Private Contracts'"
+                  date: 2022-08-26T12:39:14.021Z
+                - commits:
+                    - subject: Fix "Declaration emit" error during `npm run docs`
+                      hash: 42c89019bd9d2f423ccf5141ef1b30ecad833868
+                      body: ""
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                  version: leviathan-2.7.4
+                  title: |-
+                    'Fix "Declaration emit" error during 
+                    > leviathan@2.7.3 docs
+                    > npm --prefix core run docs
+
+
+                    > docs
+                    > rimraf ../docs/ && npx typedoc --tsconfig tsconfig.json'
+                  date: 2022-08-24T17:59:42.344Z
+          version: meta-balena-2.102.6
+          title: "'Update tests/leviathan digest to 7fe3c5f'"
+          date: 2022-09-07T17:51:24.028Z
+        - commits:
+            - subject: "patch: Add package-lock.json files for tests"
+              hash: 89ce7a08596ba0fd3402910f224c21de49201f9f
+              body: ""
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+              author: Vipul Gupta (@vipulgupta2048)
+              nested: []
+          version: meta-balena-2.102.5
+          title: "'patch: Add package-lock.json files for tests'"
+          date: 2022-09-06T08:15:14.569Z
+        - commits:
+            - subject: "udev: run resin-update-state after md assemble"
+              hash: 09a985b3847b887ae47047c011057372cfee993e
+              body: >
+                Run the resin-update-state rules that create the by-state links
+                after md
+
+                arrays are assembled. This fixes state link creation when running on a
+
+                RAID array.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "resin_update_state_probe: do not skip md devices"
+              hash: fbfb67820b58fcf7659d616e20657857959e46fe
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.102.4
+          title: "'Fix creating by-state links when rootfs is on a RAID array'"
+          date: 2022-08-30T21:04:53.554Z
+        - commits:
+            - subject: "renovate: Restore default commit body"
+              hash: 05be6314e136d40ae8cdf54988b27e059de07e68
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.102.3
+          title: "'renovate: Restore default commit body'"
+          date: 2022-08-30T19:45:01.208Z
+        - commits:
+            - subject: "Renovate: Fix package rules for balena supervisor"
+              hash: 2a7cb0c5bc3a53980ac8bcd2190500a51fcd85c5
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.102.2
+          title: "'Renovate: Fix package rules for balena supervisor'"
+          date: 2022-08-29T16:15:17.586Z
+        - commits:
+            - subject: "meta-balena-thud: initramfs: Fix building with latest meta-balena"
+              hash: 30bc6e7d27fb2ceaff5ea241fdd0e7b8224b84ea
+              body: >
+                The latest meta-balena includes `util-linux-findmnt` as a kexec
+                module
+
+                dependency and this package has not yet been split from `util-linux` in
+
+                thud.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.102.1
+          title: "'meta-balena-thud: initramfs: Fix building with latest meta-balena'"
+          date: 2022-08-29T08:26:13.610Z
+        - commits:
+            - subject: "meta-balena-common: distro: Add rust preferred versions"
+              hash: 0d3221fe5378ddb09248694ba2eb8571db63511b
+              body: >
+                Also, do not set the preferred version for integration layers so
+                we
+
+                use the same rust version across all Yocto releases.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "meta-balena-common: os-config: Update to v1.2.11"
+              hash: 6b5d60c8295477abe3cd8ac4ed5779843f3ebd3a
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "meta-balena-integration: Replace parallel_make_argument()"
+              hash: 127be828f7c665d7bc6035b0b45d2cf81acfc0fa
+              body: >
+                The oe.utils parallel_make_argument() was introduced in Zeus, so
+                this
+
+                commit replaces by a direct call to fetch PARALLEL_MAKE.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "meta-balena-integration: Update cmake for versions below Zeus"
+              hash: c12764c100cc9bdbcc6fd5c9f5c62f327e695e11
+              body: >
+                In order to use the same rust toolchain across all supported
+                Yocto
+
+                versions this commit updates the cmake version on all integration layers
+
+                below Zeus to 3.13.4, which is the minimum version to compile the rust
+
+                1.62 toolchain.
+
+
+                The cmake recipe and classes come from Poky's 2daa03ecfeaf
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "meta-balena-rust: Add condition check for parallel_make_argument()
+                use"
+              hash: bb853604fed3daa17abab38325a765b546751550
+              body: >
+                This function is not part of all supported Yocto versions so
+                make a
+
+                check for its existence before using it.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "meta-balena-rust: Provide crate fetcher for Yocto versions without it"
+              hash: 8c251ac51f23b750f3716f16fbd5d5b9cd6c74dc
+              body: >
+                The crate fetcher was introduced in bitbake in Kirkstone, before
+                that
+
+                it was living in meta-rust.
+
+
+                We want to use the balena-rust layer across a wide variety of Yocto
+
+                versions so include the fetcher conditionally.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "meta-balena-rust: Modify to use without oe.rust.arch_to_rust_arch()
+                support"
+              hash: 5c48ac4b15bbabce38fb73488deae1b0bb219414
+              body: >
+                The arch_to_rust_arch() function was introduced to cater for
+                ppc64le
+
+                systems and is not present in older Yocto releases.
+
+
+                This commit reverts to the previous way of setting the rust architecture.
+
+                It will not work for ppc64le and if we would need to support such an
+
+                architecture the arch_to_rust_arch() function will still be called if it
+
+                exists in Kirkstone or newer Yocto versions.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "meta-balena-rust: Add rust recipes to keep the rust version a
+                distribution config"
+              hash: ecf0f36e6a316584dcf10397fa00d146a5bd478a
+              body: >
+                With Kirkstone and the support of openSSL 3.0 it's not possible
+                to find
+
+                a set of dependencies that work for all of our rust applications across
+
+                the 1.32 to 1.62 toolchain versions that are supported across all the
+
+                Yocto versions we keep compatibility with.
+
+
+                This layer allows to set a preferred version as a distro setting that can
+
+                be used across all Yocto versions.
+
+
+                These rust recipes come from Poky Kirkstone
+
+                2642bdb8908afb800e6dc5722602a87228dd8694
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "meta-balena-rust: Add compatibility layer"
+              hash: 9242585678e1e9027483fedcbe1d3e795deb0ebf
+              body: >
+                This layer will allow to use the same rust toolchain across all
+                supported
+
+                Yocto compatibility layers.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.102.0
+          title: "'Add meta-balena-rust compatibility layer'"
+          date: 2022-08-25T09:10:02.651Z
+        - commits:
+            - subject: "renovate: Fix nested changelogs and change-type for SV updates"
+              hash: 516432877cf9fda8b65cae1b3cddcd8bd8cc249d
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.101.11
+          title: "'renovate: Fix nested changelogs and change-type for SV updates'"
+          date: 2022-08-24T12:22:37.592Z
+        - commits:
+            - subject: "meta-resin-sumo: linux-firmware: Move to a location included in
+                BBPATH"
+              hash: 148fcadbb792bdbabdbc152b886125415b3e4838
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "meta-resin-sumo: use v1.14.2"
+              hash: 5bb3a29c1c5dfa0f02da47e48f3b64d3d3f9cd08
+              body: |
+                Newer versions are not compatible with the libc version in sumo.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "meta-resin-sumo: libqmi: Use v1.26.0"
+              hash: 1c25bb333c6cb458af955274c82f164a83a2b914
+              body: |
+                Newer versions are incompatible with the libc available in sumo.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "meta-resin-sumo: libmbim: use v 1.24.2"
+              hash: 1fe708b4bf84e60032c4e7f52316632a49ecc490
+              body: >
+                The current meta-balena libmbim is not compatible with sumo's
+                libc
+
+                version.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena: Disable GOCACHE"
+              hash: 2e79582c81a6f0f5ff42ed01bdc69ba06550e63a
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.101.10
+          title: "'Update sumo compatibility layer'"
+          date: 2022-08-23T08:15:40.582Z
+        - commits:
+            - subject: Update tests/leviathan digest to f7533c1
+              hash: d31e056f263085ce4451bd99a01911c359b9e0f6
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested:
+                - commits:
+                    - subject: "compose: qemu: enable loopback and metadata devices"
+                      hash: 962a1705b11457c7d9a87c17cc9e3bf1671d2257
+                      body: >
+                        Copied from
+                        https://github.com/balena-os/leviathan-worker/pull/21
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Joseph Kogut <joseph@balena.io>
+                        signed-off-by: Joseph Kogut <joseph@balena.io>
+                      author: Joseph Kogut
+                      nested: []
+                  version: leviathan-2.7.3
+                  title: "'compose: qemu: enable loopback and metadata devices'"
+                  date: 2022-08-16T17:06:56.295Z
+          version: meta-balena-2.101.9
+          title: "'Update tests/leviathan digest to f7533c1'"
+          date: 2022-08-23T03:16:57.699Z
+        - commits:
+            - subject: Update balena-io/balena-supervisor to v14.0.14
+              hash: b4bc31f23aac390eb8ad99fc361dc39d14b0c92e
+              body: Update balena-io/balena-supervisor
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested: []
+          version: meta-balena-2.101.8
+          title: "'Update balena-io/balena-supervisor to v14.0.14'"
+          date: 2022-08-23T00:10:09.726Z
+  version: 2.102.6
+  title: "'Update layers/meta-balena digest to 6e63144'"
+  date: 2022-09-11T08:13:36.594Z
+- commits:
     - subject: Add support for raspberrypi4-unipi-neuron
       hash: c59f66c5f68c787bafd326edfc6d99ba73f2261f
       body: ""

@@ -1,6 +1,130 @@
 Change log
 -----------
 
+# v2.102.6
+## (2022-09-11)
+
+
+<details>
+<summary> Update layers/meta-balena to 6e63144eb5d665dc51958e0aa791256c48cc0522 [renovate[bot]] </summary>
+
+> ## meta-balena-2.102.6
+> ### (2022-09-07)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 7fe3c5f [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.8.4
+>> #### (2022-09-07)
+>> 
+>> * core: Copy all files/directories except those in dockerignore [Kyle Harding]
+>> * core: Move contracts submodule back to original path [Kyle Harding]
+>> 
+>> ### leviathan-2.8.3
+>> #### (2022-09-07)
+>> 
+>> * patch: Migrate away from config package [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.8.2
+>> #### (2022-09-06)
+>> 
+>> * worker: Pin to stable release 2.5.10 prior to md support [Kyle Harding]
+>> 
+>> ### leviathan-2.8.1
+>> #### (2022-09-03)
+>> 
+>> * patch: Fix contracts name [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.8.0
+>> #### (2022-08-26)
+>> 
+>> * patch: Accept 429 HTTP codes using config file [Vipul Gupta (@vipulgupta2048)]
+>> * minor: Add support for Private Contracts [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.7.4
+>> #### (2022-08-24)
+>> 
+>> * Fix "Declaration emit" error during `npm run docs` [Leandro Motta Barros]
+>> 
+> </details>
+> 
+> 
+> ## meta-balena-2.102.5
+> ### (2022-09-06)
+> 
+> * patch: Add package-lock.json files for tests [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## meta-balena-2.102.4
+> ### (Invalid date)
+> 
+> * udev: run resin-update-state after md assemble [Joseph Kogut]
+> * resin_update_state_probe: do not skip md devices [Joseph Kogut]
+> 
+> ## meta-balena-2.102.3
+> ### (Invalid date)
+> 
+> * renovate: Restore default commit body [Kyle Harding]
+> 
+> ## meta-balena-2.102.2
+> ### (2022-08-29)
+> 
+> * Renovate: Fix package rules for balena supervisor [Kyle Harding]
+> 
+> ## meta-balena-2.102.1
+> ### (2022-08-29)
+> 
+> * meta-balena-thud: initramfs: Fix building with latest meta-balena [Alex Gonzalez]
+> 
+> ## meta-balena-2.102.0
+> ### (2022-08-25)
+> 
+> * meta-balena-common: distro: Add rust preferred versions [Alex Gonzalez]
+> * meta-balena-common: os-config: Update to v1.2.11 [Alex Gonzalez]
+> * meta-balena-integration: Replace parallel_make_argument() [Alex Gonzalez]
+> * meta-balena-integration: Update cmake for versions below Zeus [Alex Gonzalez]
+> * meta-balena-rust: Add condition check for parallel_make_argument() use [Alex Gonzalez]
+> * meta-balena-rust: Provide crate fetcher for Yocto versions without it [Alex Gonzalez]
+> * meta-balena-rust: Modify to use without oe.rust.arch_to_rust_arch() support [Alex Gonzalez]
+> * meta-balena-rust: Add rust recipes to keep the rust version a distribution config [Alex Gonzalez]
+> * meta-balena-rust: Add compatibility layer [Alex Gonzalez]
+> 
+> ## meta-balena-2.101.11
+> ### (2022-08-24)
+> 
+> * renovate: Fix nested changelogs and change-type for SV updates [Kyle Harding]
+> 
+> ## meta-balena-2.101.10
+> ### (2022-08-23)
+> 
+> * meta-resin-sumo: linux-firmware: Move to a location included in BBPATH [Alex Gonzalez]
+> * meta-resin-sumo: use v1.14.2 [Alex Gonzalez]
+> * meta-resin-sumo: libqmi: Use v1.26.0 [Alex Gonzalez]
+> * meta-resin-sumo: libmbim: use v 1.24.2 [Alex Gonzalez]
+> * balena: Disable GOCACHE [Alex Gonzalez]
+> 
+> ## meta-balena-2.101.9
+> ### (2022-08-23)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to f7533c1 [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.7.3
+>> #### (2022-08-16)
+>> 
+>> * compose: qemu: enable loopback and metadata devices [Joseph Kogut]
+>> 
+> </details>
+> 
+> 
+> ## meta-balena-2.101.8
+> ### (2022-08-23)
+> 
+> * Update balena-io/balena-supervisor to v14.0.14 [renovate[bot]]
+> 
+</details>
+
 # v2.101.7+rev2
 ## (2022-09-02)
 
