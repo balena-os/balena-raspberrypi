@@ -1,4 +1,30 @@
 - commits:
+    - subject: Update layers/meta-balena to 2f207a3dbc3f142d4d1e0b9fdbd6136bcfb40dac
+      hash: 27d793f206627a5d887bb89c046509f968fdef57
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 2f207a3dbc3f142d4d1e0b9fdbd6136bcfb40dac
+        changelog-entry: Update layers/meta-balena to 2f207a3dbc3f142d4d1e0b9fdbd6136bcfb40dac
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "tests: os: only do hdmi test if has capture device"
+              hash: 7dbe61633da64fd2c6372a817a954e0d1db24556
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.103.1
+          title: "'tests: os: only do hdmi test if testbot has capture device'"
+          date: 2022-09-13T10:17:51.672Z
+  version: 2.103.1
+  title: "'Update layers/meta-balena digest to 2f207a3'"
+  date: 2022-09-14T14:08:04.436Z
+- commits:
     - subject: Update layers/meta-balena to d9b45ab299777f08e8384a1e4b29c7ee4ef7822c
       hash: c020f687b48668c1df1e9706d48abdde74423a4d
       body: Update layers/meta-balena
