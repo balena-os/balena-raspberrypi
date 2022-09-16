@@ -1,6 +1,25 @@
 Change log
 -----------
 
+# v2.103.1+rev1
+## (2022-09-16)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 99807501efffc8c5034c88361049650a02511a78 [renovate[bot]] </summary>
+
+> ## balena-yocto-scripts-1.19.12
+> ### (2022-08-08)
+> 
+> * barys: Add balena-rust to syntax conversion step [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.19.11
+> ### (2022-07-25)
+> 
+> * balena-api: On hostapp creation, set class to app [Alex Gonzalez]
+> 
+</details>
+
 # v2.103.1
 ## (2022-09-14)
 

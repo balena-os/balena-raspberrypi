@@ -1,4 +1,55 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 99807501efffc8c5034c88361049650a02511a78
+      hash: ccdf15f20b1bafc7b6a24cae3df65cd947b67a0e
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 99807501efffc8c5034c88361049650a02511a78
+        changelog-entry: Update balena-yocto-scripts to 99807501efffc8c5034c88361049650a02511a78
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "barys: Add balena-rust to syntax conversion step"
+              hash: 2fb2b25a2bc6c226f3d4d570a2bfb261585ed283
+              body: >
+                Recent versions of meta-balena include a balena-rust layer used
+                to
+
+                specify a distro-set Rust version across all supported Yocto versions
+
+
+                As such, the syntax of this layer also needs to be converted.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.12
+          title: "'barys: Add balena-rust to syntax conversion step'"
+          date: 2022-08-08T15:25:50.686Z
+        - commits:
+            - subject: "balena-api: On hostapp creation, set class to app"
+              hash: 3bb4995b8bedcfe83b75c3ef6151725828dd1eb8
+              body: >
+                Applications can be fleet, blocks or apps, and hostapps need to
+                be set
+
+                as apps.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.11
+          title: "'balena-api: On hostapp creation, set class to app'"
+          date: 2022-07-25T17:11:36.181Z
+  version: 2.103.1+rev1
+  title: "'Update balena-yocto-scripts digest to 9980750'"
+  date: 2022-09-16T08:49:01.922Z
+- commits:
     - subject: Update layers/meta-balena to 2f207a3dbc3f142d4d1e0b9fdbd6136bcfb40dac
       hash: 27d793f206627a5d887bb89c046509f968fdef57
       body: Update layers/meta-balena
