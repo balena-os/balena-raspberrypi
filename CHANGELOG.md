@@ -1,6 +1,58 @@
 Change log
 -----------
 
+# v2.105.1+rev1
+## (2022-09-22)
+
+
+<details>
+<summary> Update contracts to f2ace726406411ac4202d114ec8264a1a2c7af97 [renovate[bot]] </summary>
+
+> ## contracts-2.0.16
+> ### (2022-09-21)
+> 
+> * hw.device-type: Remove led for RockPro64 [Alexandru Costache]
+> 
+> ## contracts-2.0.15
+> ### (2022-09-14)
+> 
+> * hw.device-type: Set LED to false for rockpi-4b [Alexandru Costache]
+> 
+> ## contracts-2.0.14
+> ### (2022-09-06)
+> 
+> * Add node v18.8.0 [Trong Nghia Nguyen]
+> 
+> ## contracts-2.0.13
+> ### (2022-08-26)
+> 
+> * imx8mm-var-som: Add device type [Alexandru Costache]
+> 
+> ## contracts-2.0.12
+> ### (2022-08-19)
+> 
+> * Add golang v1.19 and v1.18.5 [Trong Nghia Nguyen]
+> * Add node v16.17.0 [Trong Nghia Nguyen]
+> 
+> ## contracts-2.0.11
+> ### (2022-08-10)
+> 
+> * generic-amd64: update logo to be vendor agnostic [Joseph Kogut]
+> 
+> ## contracts-2.0.10
+> ### (2022-08-10)
+> 
+> * generic-amd64: disable private [Joseph Kogut]
+> 
+> ## contracts-2.0.9
+> ### (2022-08-04)
+> 
+> * generic-amd64: match genericx86-64-ext connectivity [Joseph Kogut]
+> * generic-amd64: update name to include GPT qualifier [Joseph Kogut]
+> * genericx86-64-ext: update name to include MBR qualifier [Joseph Kogut]
+> 
+</details>
+
 # v2.105.1
 ## (2022-09-21)
 

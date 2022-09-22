@@ -1,4 +1,170 @@
 - commits:
+    - subject: Update contracts to f2ace726406411ac4202d114ec8264a1a2c7af97
+      hash: 77f9570988bb971716e09c283ce4967dba67ec57
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to f2ace726406411ac4202d114ec8264a1a2c7af97
+        changelog-entry: Update contracts to f2ace726406411ac4202d114ec8264a1a2c7af97
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "hw.device-type: Remove led for RockPro64"
+              hash: 4b807a312743b4896c80fb865b2dbe3c7d303b43
+              body: |
+                This DT does not set a led in the device
+                repository, let's remove this option
+                from here for testbot.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+          version: contracts-2.0.16
+          title: "'hw.device-type: Remove led for RockPro64'"
+          date: 2022-09-21T07:48:51.253Z
+        - commits:
+            - subject: "hw.device-type: Set LED to false for rockpi-4b"
+              hash: a3ba8781439427390d2dbd21d01b66cc6f33c027
+              body: |
+                LED is not supported for this DT in the device
+                repository, let's set it to false here so that
+                the tests are aware of this being unsupported.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+          version: contracts-2.0.15
+          title: "'hw.device-type: Set LED to false for rockpi-4b'"
+          date: 2022-09-14T14:17:49.155Z
+        - commits:
+            - subject: Add node v18.8.0
+              hash: 22cc7c47e7582fa9ecf05d0b607b0e8619b5ac4e
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+          version: contracts-2.0.14
+          title: "'Add node v18.8.0'"
+          date: 2022-09-06T04:10:31.763Z
+        - commits:
+            - subject: "imx8mm-var-som: Add device type"
+              hash: a26ca290387c3c250b59d1b49df45c8a9ea9a89a
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+          version: contracts-2.0.13
+          title: "'imx8mm-var-som: Add imx8mm-var-som devkit device type'"
+          date: 2022-08-26T11:11:21.899Z
+        - commits:
+            - subject: Add golang v1.19 and v1.18.5
+              hash: 8894fddc2adcac1fb33ed221af5e31133b743f4c
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+            - subject: Add node v16.17.0
+              hash: 37bcbeb9968c3f92a12b303523cccb15ee3b315a
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+          version: contracts-2.0.12
+          title: "'Few base images updates'"
+          date: 2022-08-19T06:01:15.871Z
+        - commits:
+            - subject: "generic-amd64: update logo to be vendor agnostic"
+              hash: 77be9ac931237432f35a993cfe30395c04f4c27e
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+          version: contracts-2.0.11
+          title: "'generic-amd64: update logo to be vendor agnostic'"
+          date: 2022-08-10T23:53:37.506Z
+        - commits:
+            - subject: "generic-amd64: disable private"
+              hash: fecb953bc4ea8162f476fb0f498febd9ce332813
+              body: |
+                This device type should be public
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+          version: contracts-2.0.10
+          title: "'generic-amd64: disable private'"
+          date: 2022-08-10T23:34:11.931Z
+        - commits:
+            - subject: "generic-amd64: match genericx86-64-ext connectivity"
+              hash: ed449edbd6504f97e94f11f1f97075582cf27e7b
+              body: >
+                Disable bluetooth/wifi in generic-amd64 to match
+                genericx86-64-ext.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+            - subject: "generic-amd64: update name to include GPT qualifier"
+              hash: ab8af4bff6ccff7d650c794ec8dc3e31be6f1671
+              body: >
+                Update the long name for generic-amd64 to include the MBR
+                qualifier,
+
+                matching the device type coffeescript file.
+
+
+                https://github.com/balena-os/balena-generic/pull/122
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+            - subject: "genericx86-64-ext: update name to include MBR qualifier"
+              hash: d511fa372a606ddbc1814b35d109c4cc0aef57e2
+              body: >
+                Update the long name for genericx86-64-ext to include the MBR
+                qualifier,
+
+                matching the device type coffeescript file.
+
+
+                Related: https://github.com/balena-os/balena-intel/pull/534
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+          version: contracts-2.0.9
+          title: "'x86-64 device types rename'"
+          date: 2022-08-04T15:36:26.752Z
+  version: 2.105.1+rev1
+  title: "'Update contracts digest to f2ace72'"
+  date: 2022-09-22T01:40:42.419Z
+- commits:
     - subject: Update layers/meta-balena to ce91b3f1807f5dc1d1ee861a164957215757d8a0
       hash: 8944763e0d522b933dfd04ae7ab827d9d29e68da
       body: Update layers/meta-balena
