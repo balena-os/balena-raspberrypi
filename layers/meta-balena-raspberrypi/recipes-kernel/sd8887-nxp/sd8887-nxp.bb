@@ -5,9 +5,12 @@ LIC_FILES_CHKSUM = "file://${WORKDIR}/COPYING;md5=12f884d2ae1ff87c09e5b7ccc2c4ca
 inherit module
 
 SRC_URI = " \
-    git://github.com/balena-io-hardware/balena-fin.git;protocol=https;tag=v0.9.2 \
+    git://github.com/balena-io-hardware/balena-fin.git;protocol=https;branch=${SRCBRANCH} \
     file://COPYING \
 "
+
+SRCBRANCH = "sd8887-linux-5.15"
+SRCREV = "4d78e5a791065a2ef5c9f3b92b4f3077af0809ff"
 
 S = "${WORKDIR}/git/software/drivers/sd8887"
 
