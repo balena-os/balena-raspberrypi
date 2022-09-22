@@ -1,4 +1,288 @@
 - commits:
+    - subject: Update layers/meta-balena to ce91b3f1807f5dc1d1ee861a164957215757d8a0
+      hash: 8944763e0d522b933dfd04ae7ab827d9d29e68da
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to ce91b3f1807f5dc1d1ee861a164957215757d8a0
+        changelog-entry: Update layers/meta-balena to ce91b3f1807f5dc1d1ee861a164957215757d8a0
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: Update tests/leviathan digest to 15d608b
+              hash: d4e90da30fccd8e811df4ec68e2b6c34053350be
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested:
+                - commits:
+                    - subject: "core/contracts: bump contracts to v2.0.16"
+                      hash: 2643f0d89eb47a6d27a2c49da172baff26d7fbd0
+                      body: |
+                        To include RockPro LED changes
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                        signed-off-by: Alexandru Costache <alexandru@balena.io>
+                      author: Alexandru Costache
+                      nested: []
+                  version: leviathan-2.9.6
+                  title: "'core/contracts: bump contracts to v2.0.16'"
+                  date: 2022-09-21T09:27:41.644Z
+          version: meta-balena-2.105.1
+          title: "'Update tests/leviathan digest to 15d608b'"
+          date: 2022-09-21T11:00:59.021Z
+        - commits:
+            - subject: Update balena-os/balena-supervisor to v14.2.0
+              hash: 3ff628443f4ac28111cdec3255bfd88c6ab50bc4
+              body: Update balena-supervisor
+              footer:
+                Change-type: minor
+                change-type: minor
+              author: renovate[bot]
+              nested: []
+          version: meta-balena-2.105.0
+          title: "'Update balena-os/balena-supervisor to v14.2.0'"
+          date: 2022-09-20T19:26:25.046Z
+        - commits:
+            - subject: "balena: remove kernel-module-nf-nat-native dependency for host build"
+              hash: bd36b84df9281ddfc61920189968f51cb691ac16
+              body: >
+                This fixes the following error when building mkfs-hostapp-native
+
+                with Honister for a Variscite iMX8MM which only has Hardknott support:
+
+
+                mkfs-hostapp-native-1.0-r0 do_prepare_recipe_sysroot:
+                  Manifest /work/build/tmp/sstate-control/manifest-x86_64_x86_64-nativesdk-linux-libc-headers.populate_sysroot not found
+                  in cortexa53 armv8a-crc armv8a aarch64 allarch x86_64_x86_64-nativesdk (variant '')?
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.104.1
+          title: "'balena: remove kernel-module-nf-nat-native dependency for host build'"
+          date: 2022-09-20T08:10:10.709Z
+        - commits:
+            - subject: Update balena-os/balena-supervisor to v14.1.1
+              hash: c1b6a829856f115de713d941daa293361fca8dc3
+              body: Update balena-supervisor
+              footer:
+                Change-type: minor
+                change-type: minor
+              author: renovate[bot]
+              nested: []
+          version: meta-balena-2.104.0
+          title: "'Update balena-os/balena-supervisor to v14.1.1'"
+          date: 2022-09-19T21:42:44.943Z
+        - commits:
+            - subject: Update balena-os/balena-supervisor to v14.0.25
+              hash: df1ecdb5747440bccdf4628c86c15c3a158b224a
+              body: Update balena-supervisor
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested: []
+          version: meta-balena-2.103.5
+          title: "'Update balena-os/balena-supervisor to v14.0.25'"
+          date: 2022-09-19T09:18:33.056Z
+        - commits:
+            - subject: Update tests/leviathan digest to 881cd72
+              hash: 8134b1cd498dbac2cc90ab165e21afafb9a91b6e
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested:
+                - commits:
+                    - subject: bump contracts to  v2.0.15
+                      hash: 89f6ae542f33f1e9ae533ca40e1902e6dc4f9f25
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                  version: leviathan-2.9.5
+                  title: "'bump contracts to  v2.0.15'"
+                  date: 2022-09-15T07:45:52.354Z
+                - commits:
+                    - subject: increase timeout on local push sv ping
+                      hash: e767bd998022a5f2f0b4eeec9f99ccc7252bea4d
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                  version: leviathan-2.9.4
+                  title: "'increase timeout on local push sv ping'"
+                  date: 2022-09-13T13:50:43.614Z
+                - commits:
+                    - subject: "patch: Remove unused SDK helpers"
+                      hash: 459b90b19682cc1670794188fc0c8f8e04e25e57
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.9.3
+                  title: "'patch: Remove unused SDK helpers'"
+                  date: 2022-09-08T12:30:15.417Z
+                - commits:
+                    - subject: "patch: Remove unused CLI helpers"
+                      hash: 66afc7ec415604bc04fd463c93042dc39bab4ac2
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.9.2
+                  title: "'patch: Remove unused CLI helpers'"
+                  date: 2022-09-08T11:06:43.780Z
+                - commits:
+                    - subject: "patch: Remove npm package as dependency"
+                      hash: 613af06779560bd0ac1c660227a2d2fcd8613dbb
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.9.1
+                  title: "'Core: Cleanup dependencies'"
+                  date: 2022-09-08T08:03:01.727Z
+                - commits:
+                    - subject: "core: Switch to debian base and install standalone balena-cli"
+                      hash: b6993366ce72f0c25f14dfeccdf42076fbf8dd50
+                      body: >
+                        Unfortunately the standalone balena-cli package is
+                        linked to glibc
+
+                        and does not work with musl (alpine) so we need to switch to debian.
+
+
+                        The trade-off seems worth it for build times though.
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                    - subject: "core: Set node engine to match the Dockerfile"
+                      hash: 06fcacf6573385aa2709bb2f0deb8a6bee3dd14a
+                      body: >
+                        This version can likely be increased now that the
+                        balena-cli
+
+                        is no longer part of the ndoe dependencies, but for now just
+
+                        publish the current setting.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                    - subject: "core: Remove balena-cli npm dependency"
+                      hash: 8b785515f4e4b5d2161f2b84a93a6d162b929875
+                      body: >
+                        Pave the way for installing balena-cli standalone
+                        package.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: leviathan-2.9.0
+                  title: "'core: Switch to debian base and install standalone balena-cli'"
+                  date: 2022-09-07T20:13:19.163Z
+          version: meta-balena-2.103.4
+          title: "'Update tests/leviathan digest to 881cd72'"
+          date: 2022-09-17T01:16:08.536Z
+        - commits:
+            - subject: "resin-init-flasher: skip array members not matching a named array"
+              hash: 2c4c437329ff0e74521cf11b74edcf83f58ff8b3
+              body: >
+                If a block device specified in resin-init-flasher.conf is part
+                of an
+
+                array, but that assembled array name wasn't specified, skip it to avoid
+
+                data loss.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "resin-init-flasher: support pattern matching of devices"
+              hash: d552508ce70cf53b5a9fd1e18f5e31d9dbcf2108
+              body: >
+                Instead of querying devices w/ `fdisk -l`, glob match patterns
+                specified
+
+                in resin-init-flasher.conf with devices present in `/dev`. This allows us to
+
+                specify devices like `hd? sd? mmcblk?` instead of individual device
+
+                numbers, which don't consistently map to any particular disk.
+
+
+                This also allows RAID arrays to be matched with the array name and a
+
+                pattern that glob matches even arrays assembled automatically on a
+
+                non-matching host, such as `md/balena?(_?)` matching an array named
+
+                `balena` and assembled on-device at `/dev/md/balena_0`.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.103.3
+          title: "'resin-init-flasher: support pattern matching of devices'"
+          date: 2022-09-15T14:44:38.001Z
+        - commits:
+            - subject: "mobynit: allow compile task to use network"
+              hash: 307a7ecbd1e803a901738d5eecda69e15ea2340c
+              body: |
+                Mobynit requires network access to fetch dependencies.
+              footer:
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+                Change-type: patch
+                change-type: patch
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.103.2
+          title: "'mobynit: allow compile task to use network'"
+          date: 2022-09-14T16:17:30.163Z
+  version: 2.105.1
+  title: "'Update layers/meta-balena digest to ce91b3f'"
+  date: 2022-09-21T17:51:26.492Z
+- commits:
     - subject: Update balena-yocto-scripts to 99807501efffc8c5034c88361049650a02511a78
       hash: ccdf15f20b1bafc7b6a24cae3df65cd947b67a0e
       body: Update balena-yocto-scripts
