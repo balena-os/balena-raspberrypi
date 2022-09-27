@@ -1,3 +1,5 @@
+From: Alex Gonzalez <alexg@balena.io>
+Date: Tue, 27 Sep 2022 18:30:16 +0200
 Subject: [PATCH] mmc: pwrseq: Repurpose for Marvell SD8777
 
 Repurposes the mmc-pwrseq-sd8787 driver to be compatible with SD8777 instead.
@@ -12,9 +14,7 @@ on. The original implementation using `pre_power_on` was incorrect.
 The balenaFin device tree overlay is adjusted to be using the patched driver.
 
 Upstream-Status: Pending
-
 Signed-off-by: Zahari Petkov <zahari@balena.io>
-
 ---
  arch/arm/boot/dts/overlays/balena-fin-overlay.dts | 14 ++++----------
  drivers/mmc/core/Kconfig                          |  2 +-
@@ -22,10 +22,10 @@ Signed-off-by: Zahari Petkov <zahari@balena.io>
  3 files changed, 7 insertions(+), 21 deletions(-)
 
 diff --git a/arch/arm/boot/dts/overlays/balena-fin-overlay.dts b/arch/arm/boot/dts/overlays/balena-fin-overlay.dts
-index 84d3b2007735..2aa3aa4c42fe 100644
+index ef9499f1305f..e2bb06402c21 100644
 --- a/arch/arm/boot/dts/overlays/balena-fin-overlay.dts
 +++ b/arch/arm/boot/dts/overlays/balena-fin-overlay.dts
-@@ -13,6 +13,7 @@
+@@ -11,6 +11,7 @@ __overlay__ {
  			pinctrl-0 = <&sdio_pins>;
  			bus-width = <4>;
  			brcm,overclock-50 = <35>;
@@ -33,7 +33,7 @@ index 84d3b2007735..2aa3aa4c42fe 100644
  			status = "okay";
  		};
  	};
-@@ -36,16 +37,9 @@
+@@ -34,16 +35,9 @@ power_ctrl_pins: power_ctrl_pins {
  	fragment@2 {
  		target-path = "/";
  		__overlay__ {
@@ -54,28 +54,29 @@ index 84d3b2007735..2aa3aa4c42fe 100644
  
  			i2c_soft: i2c@0 {
 diff --git a/drivers/mmc/core/Kconfig b/drivers/mmc/core/Kconfig
-index c12fe13e4b14..ab593cf4475e 100644
+index 6f25c34e4fec..cbbd6accdadd 100644
 --- a/drivers/mmc/core/Kconfig
 +++ b/drivers/mmc/core/Kconfig
 @@ -15,7 +15,7 @@ config PWRSEQ_EMMC
  
  config PWRSEQ_SD8787
  	tristate "HW reset support for SD8787 BT + Wifi module"
--	depends on OF && (MWIFIEX || BT_MRVL_SDIO || LIBERTAS_SDIO)
+-	depends on OF && (MWIFIEX || BT_MRVL_SDIO || LIBERTAS_SDIO || WILC1000_SDIO)
 +	depends on OF
  	help
  	  This selects hardware reset support for the SD8787 BT + Wifi
  	  module. By default this option is set to n.
 diff --git a/drivers/mmc/core/pwrseq_sd8787.c b/drivers/mmc/core/pwrseq_sd8787.c
-index 68a826f1c0a1..ff222abae78a 100644
+index 2e120ad83020..f9af11e12c59 100644
 --- a/drivers/mmc/core/pwrseq_sd8787.c
 +++ b/drivers/mmc/core/pwrseq_sd8787.c
-@@ -25,18 +25,15 @@
+@@ -26,19 +26,16 @@
  
  struct mmc_pwrseq_sd8787 {
  	struct mmc_pwrseq pwrseq;
 -	struct gpio_desc *reset_gpio;
  	struct gpio_desc *pwrdn_gpio;
+ 	u32 reset_pwrdwn_delay_ms;
  };
  
  #define to_pwrseq_sd8787(p) container_of(p, struct mmc_pwrseq_sd8787, pwrseq)
@@ -87,10 +88,10 @@ index 68a826f1c0a1..ff222abae78a 100644
  
 -	gpiod_set_value_cansleep(pwrseq->reset_gpio, 1);
 -
- 	msleep(300);
+ 	msleep(pwrseq->reset_pwrdwn_delay_ms);
  	gpiod_set_value_cansleep(pwrseq->pwrdn_gpio, 1);
  }
-@@ -46,11 +43,10 @@ static void mmc_pwrseq_sd8787_power_off(struct mmc_host *host)
+@@ -48,11 +45,10 @@ static void mmc_pwrseq_sd8787_power_off(struct mmc_host *host)
  	struct mmc_pwrseq_sd8787 *pwrseq = to_pwrseq_sd8787(host->pwrseq);
  
  	gpiod_set_value_cansleep(pwrseq->pwrdn_gpio, 0);
@@ -103,7 +104,7 @@ index 68a826f1c0a1..ff222abae78a 100644
  	.power_off = mmc_pwrseq_sd8787_power_off,
  };
  
-@@ -73,10 +69,6 @@ static int mmc_pwrseq_sd8787_probe(struct platform_device *pdev)
+@@ -83,10 +79,6 @@ static int mmc_pwrseq_sd8787_probe(struct platform_device *pdev)
  	if (IS_ERR(pwrseq->pwrdn_gpio))
  		return PTR_ERR(pwrseq->pwrdn_gpio);
  
@@ -114,6 +115,3 @@ index 68a826f1c0a1..ff222abae78a 100644
  	pwrseq->pwrseq.dev = dev;
  	pwrseq->pwrseq.ops = &mmc_pwrseq_sd8787_ops;
  	pwrseq->pwrseq.owner = THIS_MODULE;
--- 
-2.17.1
-
