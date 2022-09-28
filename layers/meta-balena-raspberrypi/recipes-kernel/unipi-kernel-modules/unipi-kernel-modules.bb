@@ -9,7 +9,8 @@ SRC_URI = " \
 	file://0001-Fix-compile-on-kernel-5.10.patch \
 "
 
-SRCREV = "1.68"
+# Corresponds to tag 1.68
+SRCREV = "a944c4616932076370958bece48809002d6bfe80"
 
 S = "${WORKDIR}/git"
 
