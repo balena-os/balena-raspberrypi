@@ -1,4 +1,4 @@
-From f7b650e62f550efebbe9de2bdeedab51d275c3ff Mon Sep 17 00:00:00 2001
+From 82b7ba4c5ffd8057cce06cba530d2aa2b22dfc21 Mon Sep 17 00:00:00 2001
 From: Alexandru Costache <alexandru@balena.io>
 Date: Tue, 10 Nov 2020 11:20:23 +0100
 Subject: [PATCH] rt-rpi-300: Add changes for this dt
@@ -15,10 +15,10 @@ Signed-off-by: Alexandru Costache <alexandru@balena.io>
  3 files changed, 31 insertions(+), 5 deletions(-)
 
 diff --git a/arch/arm/boot/dts/bcm2711-rpi-4-b.dts b/arch/arm/boot/dts/bcm2711-rpi-4-b.dts
-index 513cae21e64c..648d697706e8 100644
+index 8c0ab39beea1..2e33563553db 100644
 --- a/arch/arm/boot/dts/bcm2711-rpi-4-b.dts
 +++ b/arch/arm/boot/dts/bcm2711-rpi-4-b.dts
-@@ -37,6 +37,12 @@
+@@ -24,6 +24,12 @@ led-pwr {
  			default-state = "keep";
  			linux,default-trigger = "default-on";
  		};
@@ -31,7 +31,7 @@ index 513cae21e64c..648d697706e8 100644
  	};
  
  	wifi_pwrseq: wifi-pwrseq {
-@@ -295,14 +301,15 @@
+@@ -326,14 +332,15 @@ &uart1 {
  &spi0 {
  	pinctrl-names = "default";
  	pinctrl-0 = <&spi0_pins &spi0_cs_pins>;
@@ -50,7 +50,7 @@ index 513cae21e64c..648d697706e8 100644
  	};
  
  	spidev1: spidev@1{
-@@ -310,7 +317,7 @@
+@@ -341,7 +348,7 @@ spidev1: spidev@1{
  		reg = <1>;	/* CE1 */
  		#address-cells = <1>;
  		#size-cells = <0>;
@@ -59,7 +59,7 @@ index 513cae21e64c..648d697706e8 100644
  	};
  };
  
-@@ -321,7 +328,7 @@
+@@ -352,7 +359,7 @@ spi0_pins: spi0_pins {
  	};
  
  	spi0_cs_pins: spi0_cs_pins {
@@ -68,7 +68,7 @@ index 513cae21e64c..648d697706e8 100644
  		brcm,function = <BCM2835_FSEL_GPIO_OUT>;
  	};
  
-@@ -464,6 +471,13 @@
+@@ -495,6 +502,13 @@ &i2c1 {
  	pinctrl-names = "default";
  	pinctrl-0 = <&i2c1_pins>;
  	clock-frequency = <100000>;
@@ -82,7 +82,7 @@ index 513cae21e64c..648d697706e8 100644
  };
  
  &i2s {
-@@ -528,6 +542,12 @@
+@@ -532,6 +546,12 @@ pwr_led: led-pwr {
  		linux,default-trigger = "default-on";
  		gpios = <&expgpio 2 GPIO_ACTIVE_LOW>;
  	};
@@ -96,10 +96,10 @@ index 513cae21e64c..648d697706e8 100644
  
  &pwm1 {
 diff --git a/drivers/misc/Kconfig b/drivers/misc/Kconfig
-index 62c3ec285393..601b6ddae96a 100644
+index 606331451466..4c92d19b240f 100644
 --- a/drivers/misc/Kconfig
 +++ b/drivers/misc/Kconfig
-@@ -59,6 +59,11 @@ config AD525X_DPOT_SPI
+@@ -58,6 +58,11 @@ config AD525X_DPOT_SPI
  	  To compile this driver as a module, choose M here: the
  	  module will be called ad525x_dpot-spi.
  
@@ -108,21 +108,18 @@ index 62c3ec285393..601b6ddae96a 100644
 +	help
 +	  Say Y here if you have ch432 SPI bus.
 +
- config ATMEL_TCLIB
- 	bool "Atmel AT32/AT91 Timer/Counter Library"
- 	depends on ARCH_AT91
+ config DUMMY_IRQ
+ 	tristate "Dummy IRQ handler"
+ 	help
 diff --git a/drivers/misc/Makefile b/drivers/misc/Makefile
-index dbca246199f3..e89847639b8c 100644
+index e0188c30ffa8..5db99197678f 100644
 --- a/drivers/misc/Makefile
 +++ b/drivers/misc/Makefile
 @@ -8,6 +8,7 @@ obj-$(CONFIG_IBMVMC)		+= ibmvmc.o
  obj-$(CONFIG_AD525X_DPOT)	+= ad525x_dpot.o
  obj-$(CONFIG_AD525X_DPOT_I2C)	+= ad525x_dpot-i2c.o
  obj-$(CONFIG_AD525X_DPOT_SPI)	+= ad525x_dpot-spi.o
-+obj-$(CONFIG_CH432T_SPI)	+= ch432.o
- obj-$(CONFIG_INTEL_MID_PTI)	+= pti.o
++obj-$(CONFIG_CH432T_SPI)        += ch432.o
  obj-$(CONFIG_ATMEL_SSC)		+= atmel-ssc.o
- obj-$(CONFIG_ATMEL_TCLIB)	+= atmel_tclib.o
--- 
-2.17.1
-
+ obj-$(CONFIG_BCM2835_SMI)	+= bcm2835_smi.o
+ obj-$(CONFIG_DUMMY_IRQ)		+= dummy-irq.o
