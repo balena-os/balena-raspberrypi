@@ -10,7 +10,7 @@ SRC_URI = " \
 "
 
 SRCBRANCH = "sd8887-linux-5.15"
-SRCREV = "4d78e5a791065a2ef5c9f3b92b4f3077af0809ff"
+SRCREV = "804fc5acaaec28734ce48fc37818449a89329db7"
 
 S = "${WORKDIR}/git/software/drivers/sd8887"
 
