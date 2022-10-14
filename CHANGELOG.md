@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.105.11
+## (2022-10-14)
+
+* Switch from balenaCI to flowzone [Alex Gonzalez]
+* Update layers/meta-balena to 433b72275aa61da736904aa3f55c7b987824d523 [renovate[bot]]
+
 # v2.105.1+rev1
 ## (2022-09-22)
 
