@@ -1,4 +1,20 @@
 - commits:
+    - subject: Update build and deploy workflow to v0.0.12
+      hash: 6efdf361e84c9d79b57e127452e4f99c3284d76e
+      body: |
+        This update identifies test job names with the default prefix `test`
+        instead of a hardcoded `testbot-`.
+      footer:
+        Changelog-entry: Update build and deploy workflow to v0.0.12
+        changelog-entry: Update build and deploy workflow to v0.0.12
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.105.11+rev1
+  title: ""
+  date: 2022-10-15T15:42:21.487Z
+- commits:
     - subject: Switch from balenaCI to flowzone
       hash: a8566dc260da819aca88e6318b8ab6c02a9bebc0
       body: ""
