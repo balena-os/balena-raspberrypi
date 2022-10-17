@@ -1,4 +1,173 @@
 - commits:
+    - subject: convert licenses to SPDX compatible
+      hash: fdfb0ccd6e2dea0f24b7ec042817c065d7e7ddb0
+      body: |
+        Run the automation conversion script in Poky to remove warnings from the
+        build output.
+      footer:
+        Changelog-entry: convert licenses to SPDX compatible
+        changelog-entry: convert licenses to SPDX compatible
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: update sd8887-nxp to v0.11.0
+      hash: 299b7cd1bf88283da1ef6081034a33c01c8bcacc
+      body: |
+        This adds support for Linux kernel v5.15
+      footer:
+        Changelog-entry: update sd8887-nxp to v0.11.0
+        changelog-entry: update sd8887-nxp to v0.11.0
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: replace dynamic tag in picontrol with commit sha1
+      hash: 1271ff192974aa8aadce3a1b3313e4cd68295aa2
+      body: ""
+      footer:
+        Changelog-entry: replace dynamic tag in picontrol with commit sha1
+        changelog-entry: replace dynamic tag in picontrol with commit sha1
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: Replace dynamic tag in unipi-tools with commit sha1
+      hash: ab4bf78299e4a23777606d034f61c043f7a36e6a
+      body: ""
+      footer:
+        Changelog-entry: Replace dynamic tag in unipi-tools with commit sha1
+        changelog-entry: Replace dynamic tag in unipi-tools with commit sha1
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: Refactor sd87777 patches for new kernel version
+      hash: 34d0aaffaaa06a654370bdde1d54a3cfb7322d56
+      body: |
+        Refactor the patch so it applies on the new kernel version.
+      footer:
+        Changelog-entry: Refactor sd87777 patches for new kernel version
+        changelog-entry: Refactor sd87777 patches for new kernel version
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: Fix sd8887 version to a specific commit
+      hash: 74dde4621e9c0542ed7813dc8c9f92bcc1c0198f
+      body: |
+        Newer bitbake versions fail if a tag is specified and it can change
+        what commmit it points to.
+      footer:
+        Changelog-entry: Fix sd8887 version to a specific commit
+        changelog-entry: Fix sd8887 version to a specific commit
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: Update linux-raspberrypi kernel to v5.15
+      hash: d4b50cb7cbb5a90d2b0b7af7f815ec95011364df
+      body: |
+        Update to the upstream 5.15 version
+      footer:
+        Changelog-entry: Update linux-raspberrypi kernel to v5.15
+        changelog-entry: Update linux-raspberrypi kernel to v5.15
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: remove u-boot patches fuzziness warning
+      hash: 8d7b1db9212904c07c3622440b06caae0ab5c176
+      body: ""
+      footer:
+        Changelog-entry: remove u-boot patches fuzziness warning
+        changelog-entry: remove u-boot patches fuzziness warning
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: Fix rpi-bootfiles checksum mismatch
+      hash: 1273c1d8f2502ee8c63eccfab8b63bebee1a30e4
+      body: |
+        The fact that the checksum has changed upstream for the same SHA implies
+        that something dodgy has happened upstream. This file might not be the
+        same we were using before.
+      footer:
+        Changelog-entry: Fix rpi-bootfiles checksum mismatch
+        changelog-entry: Fix rpi-bootfiles checksum mismatch
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: adapt meta-balena-raspberrypi to kirkstone
+      hash: 54d5d05f8aeb800f0d8d393d67a02cba7ef02414
+      body: ""
+      footer:
+        Changelog-entry: adapt meta-balena-raspberrypi to kirkstone
+        changelog-entry: adapt meta-balena-raspberrypi to kirkstone
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: Update samples to use kirkstone
+      hash: e9fef358988b12484df069ce60d721107953c39c
+      body: ""
+      footer:
+        Changelog-entry: Update samples to use kirkstone
+        changelog-entry: Update samples to use kirkstone
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: Use balena-rust support
+      hash: d27ca94e54d574486f7178d862e07ab8b4894d59
+      body: |
+        Rust has been supported in upstream poky since Honister and this layer
+        is no longer maintained.
+
+        balenaOS now maintains its own balena-rust layer that allows to use the
+        same rust toolchain across all the supported Yocto integration layers.
+      footer:
+        Changelog-entry: Use balena-rust support
+        changelog-entry: Use balena-rust support
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: update meta-raspberrypi to kirkstone
+      hash: c6d02997b95cd6b44b4335e166a6e8b798cff5df
+      body: ""
+      footer:
+        Changelog-entry: update meta-raspberrypi to kirkstone
+        changelog-entry: update meta-raspberrypi to kirkstone
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: update layers/meta-openembedded to kirkstone
+      hash: c7179500e25fefa7fdde32f3877b8c0dae76b428
+      body: ""
+      footer:
+        Changelog-entry: update layers/meta-openembedded to kirkstone
+        changelog-entry: update layers/meta-openembedded to kirkstone
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: update poky to kirkstone
+      hash: ec244ae085ed58a3587aa81643d66377c2c466d7
+      body: ""
+      footer:
+        Changelog-entry: update poky to kirkstone
+        changelog-entry: update poky to kirkstone
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.105.1+rev2
+  title: "'Update to kirkstone'"
+  date: 2022-10-17T08:47:52.483Z
+- commits:
     - subject: Update contracts to f2ace726406411ac4202d114ec8264a1a2c7af97
       hash: 77f9570988bb971716e09c283ce4967dba67ec57
       body: Update contracts

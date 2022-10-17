@@ -1,6 +1,25 @@
 Change log
 -----------
 
+# v2.105.1+rev2
+## (2022-10-17)
+
+* convert licenses to SPDX compatible [Alex Gonzalez]
+* update sd8887-nxp to v0.11.0 [Alex Gonzalez]
+* replace dynamic tag in picontrol with commit sha1 [Alex Gonzalez]
+* Replace dynamic tag in unipi-tools with commit sha1 [Alex Gonzalez]
+* Refactor sd87777 patches for new kernel version [Alex Gonzalez]
+* Fix sd8887 version to a specific commit [Alex Gonzalez]
+* Update linux-raspberrypi kernel to v5.15 [Alex Gonzalez]
+* remove u-boot patches fuzziness warning [Alex Gonzalez]
+* Fix rpi-bootfiles checksum mismatch [Alex Gonzalez]
+* adapt meta-balena-raspberrypi to kirkstone [Alex Gonzalez]
+* Update samples to use kirkstone [Alex Gonzalez]
+* Use balena-rust support [Alex Gonzalez]
+* update meta-raspberrypi to kirkstone [Alex Gonzalez]
+* update layers/meta-openembedded to kirkstone [Alex Gonzalez]
+* update poky to kirkstone [Alex Gonzalez]
+
 # v2.105.1+rev1
 ## (2022-09-22)
 
