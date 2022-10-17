@@ -8,7 +8,7 @@ SRC_URI = " \
     git://github.com/balena-io-hardware/balena-fin.git;protocol=https;nobranch=1 \
     file://COPYING \
 "
-SRCREV = "4973746383fbb0f7398dd8ae1678072ed17402fe"
+SRCREV = "4cd9510c1c04d4eba2601388e5c4a7ae0bd0fcff"
 
 S = "${WORKDIR}/git/software/drivers/sd8887"
 
