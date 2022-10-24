@@ -1,0 +1,35 @@
+From: Alex Gonzalez <alexg@balena.io>
+Date: Mon, 24 Oct 2022 17:53:19 +0200
+Subject: [PATCH 6/9] unipi_spi: adapt to removal of spi_set_cs_timing()
+
+The spi_set_cs_timing() interface was removed in commit
+4ccf359849ce (spi: remove spi_set_cs_timing())
+
+Upstream-status: pending
+Signed-off-by: Alex Gonzalez <alexg@balena.io>
+---
+ modules/unipi/src/unipi_spi.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/modules/unipi/src/unipi_spi.c b/modules/unipi/src/unipi_spi.c
+index e4d3783d532d..d6260b189c72 100644
+--- a/modules/unipi/src/unipi_spi.c
++++ b/modules/unipi/src/unipi_spi.c
+@@ -1243,7 +1243,7 @@ s32 neuronspi_spi_probe(struct spi_device *spi)
+ 	u32 always_create_uart = 0;
+     struct kthread_worker   *worker;
+ 
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,9,0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5,9,0) && LINUX_VERSION_CODE < KERNEL_VERSION(5,14,0)
+     struct spi_delay inactive_delay;
+ #endif
+ 
+@@ -1373,7 +1373,7 @@ s32 neuronspi_spi_probe(struct spi_device *spi)
+     if (gpio_is_valid(spi->cs_gpio)) {
+         spi->cs_gpio = -spi->cs_gpio;
+     }
+-#else
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(5,9,0) && LINUX_VERSION_CODE < KERNEL_VERSION(5,14,0)
+     inactive_delay.value = 40;
+     inactive_delay.unit = SPI_DELAY_UNIT_USECS;
+ 	spi_set_cs_timing(spi, NULL, NULL, &inactive_delay);

@@ -1,0 +1,26 @@
+From: Alex Gonzalez <alexg@balena.io>
+Date: Mon, 24 Oct 2022 18:14:07 +0200
+Subject: [PATCH 8/9] rtc-unipi: Add devm to rtc_nvmem_register
+
+This change is introduced in commit
+3a905c2d9544a (rtc: add devm_ prefix to rtc_nvmem_register())
+
+Upstream-status: pending
+Signed-off-by: Alex Gonzalez <alexg@balena.io>
+---
+ modules/rtc-unipi/rtc-unipi.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/modules/rtc-unipi/rtc-unipi.c b/modules/rtc-unipi/rtc-unipi.c
+index 6615b8fa7491..9953c63e91b1 100644
+--- a/modules/rtc-unipi/rtc-unipi.c
++++ b/modules/rtc-unipi/rtc-unipi.c
+@@ -677,7 +677,7 @@ read_rtc:
+ 	    rtc_nvmem_register(rtc_unipi->rtc, &nvmem_cfg);
+ #else
+ 	    nvmem_cfg.priv = rtc_unipi;
+-	    rtc_nvmem_register(rtc_unipi->rtc, &nvmem_cfg);
++	    devm_rtc_nvmem_register(rtc_unipi->rtc, &nvmem_cfg);
+ #endif
+ 	rtc_unipi->rtc->ops = &mcp794xx_rtc_ops; /*chip->rtc_ops ?: &ds13xx_rtc_ops;*/
+ 	err = rtc_register_device(rtc_unipi->rtc);
