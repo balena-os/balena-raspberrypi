@@ -1,0 +1,37 @@
+From: Alex Gonzalez <alexg@balena.io>
+Date: Mon, 24 Oct 2022 16:14:17 +0200
+Subject: [PATCH 3/9] unipi_tty: remove TTY_LDISC_MAGIC
+
+Use of TTY_LDISC_MAGIC  was removed in
+commit 981b22b8777d (tty: remove TTY_LDISC_MAGIC)
+
+Upstream-status: pending
+Signed-off-by: Alex Gonzalez <alexg@balena.io>
+---
+ modules/unipi/src/unipi_tty.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/modules/unipi/src/unipi_tty.c b/modules/unipi/src/unipi_tty.c
+index 3d2ea83eec95..36bcc661af00 100644
+--- a/modules/unipi/src/unipi_tty.c
++++ b/modules/unipi/src/unipi_tty.c
+@@ -990,7 +990,9 @@ static long unipi_tty_compat_ioctl(struct tty_struct *tty, struct file *file,
+ #endif
+ 
+ static struct tty_ldisc_ops unipi_tty_ops = {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 13, 0)
+ 	.magic           = TTY_LDISC_MAGIC,
++#endif
+   	.owner 			 = THIS_MODULE,
+ 	.name            = "unipi_tty",
+ 	.open            = unipi_tty_open,
+@@ -1095,7 +1097,9 @@ int __init unipi_tty_init(void)
+ 
+     memset(&unipi_tty_ldisc, 0, sizeof(unipi_tty_ldisc));
+     n_tty_inherit_ops(&unipi_tty_ldisc);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 13, 0)
+     unipi_tty_ldisc.magic           = TTY_LDISC_MAGIC;
++#endif
+     unipi_tty_ldisc.name            = "unipi_tty";
+     unipi_tty_ldisc.owner           = THIS_MODULE;
+ 

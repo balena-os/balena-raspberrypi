@@ -1,0 +1,56 @@
+From: Alex Gonzalez <alexg@balena.io>
+Date: Mon, 24 Oct 2022 16:56:36 +0200
+Subject: [PATCH 5/9] unipi_tty: adapt to fp of tty_ldisc_ops made const
+
+Adapt to commit
+0f3dcf3b5d7(tty: make fp of tty_ldisc_ops::receive_buf{,2} const)
+
+Upstream-status: pending
+Signed-off-by: Alex Gonzalez <alexg@balena.io>
+---
+ modules/unipi/src/unipi_tty.c | 16 ++++++++++++++++
+ 1 file changed, 16 insertions(+)
+
+diff --git a/modules/unipi/src/unipi_tty.c b/modules/unipi/src/unipi_tty.c
+index 1a1808f4cfa0..4d70c5986f06 100644
+--- a/modules/unipi/src/unipi_tty.c
++++ b/modules/unipi/src/unipi_tty.c
+@@ -1044,14 +1044,26 @@ void __exit unipi_tty_exit(void)
+ 
+ struct tty_ldisc_ops unipi_tty_ldisc;
+ static void (*alias_n_tty_receive_buf)(struct tty_struct *tty, const unsigned char *cp,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 14, 0)
+ 			      char *fp, int count);
++#else
++			      const char *fp, int count);
++#endif
+ static int (*alias_n_tty_receive_buf2)(struct tty_struct *tty, const unsigned char *cp,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 14, 0)
+ 			      char *fp, int count);
++#else
++			      const char *fp, int count);
++#endif
+ static int (*alias_n_tty_ioctl)(struct tty_struct *tty, struct file *file,
+                unsigned int cmd, unsigned long arg);
+ 
+ static void unipi_tty_receive_buf(struct tty_struct *tty, const unsigned char *cp,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 14, 0)
+ 			      char *fp, int count)
++#else
++			      const char *fp, int count)
++#endif
+ {
+     int is_parmrk = I_PARMRK(tty);
+     if (is_parmrk) {
+@@ -1065,7 +1077,11 @@ static void unipi_tty_receive_buf(struct tty_struct *tty, const unsigned char *c
+ }
+ 
+ static int unipi_tty_receive_buf2(struct tty_struct *tty, const unsigned char *cp,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 14, 0)
+ 			      char *fp, int count)
++#else
++			      const char *fp, int count)
++#endif
+ {
+     int ret;
+     int is_parmrk = I_PARMRK(tty);
