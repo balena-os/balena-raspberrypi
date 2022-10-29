@@ -1,4 +1,107 @@
 - commits:
+    - subject: Update layers/meta-balena to 2e9f69012d326b5925304c9d25427c5cc46dfbd4
+      hash: f6c705d0e7cd5a3ed190658cd2b12ab0b2a33993
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 2e9f69012d326b5925304c9d25427c5cc46dfbd4
+        changelog-entry: Update layers/meta-balena to 2e9f69012d326b5925304c9d25427c5cc46dfbd4
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "openssh: allow RSA signatures with SHA1 algorithms"
+              hash: df5e9dcd4a8f61ace849d5bb437798d16a440191
+              body: >
+                Openssh v8.8 removes this support by default but the backend still
+
+                needs to be updated to drop these.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.105.21
+          title: ""
+          date: 2022-10-27T08:02:52.407Z
+        - commits:
+            - subject: "meta-resin-sumo: libical: Fix build QA error"
+              hash: a34583a3f5cbac25502ac9ad62f0d0073eb96511
+              body: >
+                Address the following build error:
+
+                ```
+
+                ERROR: libical-2.0.0-r0 do_package: QA Issue: libical: Files/directories were installed but not shipped in any package:
+
+                /usr/lib/cmake
+
+                /usr/lib/cmake/LibIcal
+
+                /usr/lib/cmake/LibIcal/LibIcalTargets.cmake
+
+                /usr/lib/cmake/LibIcal/LibIcalConfig.cmake
+
+                /usr/lib/cmake/LibIcal/LibIcalConfigVersion.cmake
+
+                /usr/lib/cmake/LibIcal/LibIcalTargets-noconfig.cmake
+
+                ```
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.105.20
+          title: ""
+          date: 2022-10-26T14:42:10.358Z
+        - commits:
+            - subject: "meta-resin-sumo: keep tpm2-tools in 5.0"
+              hash: 6c0596989bd182f26da1255ccfa7a55e45a0194e
+              body: >
+                Newer versions fail on the configuration step with:
+
+                Requested 'libcrypto >= 1.1.0' but version of OpenSSL-libcrypto is 1.0.2o
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.105.19
+          title: ""
+          date: 2022-10-26T01:25:34.955Z
+        - commits:
+            - subject: Update tests/leviathan digest to f83df7d
+              hash: fb3a49ca995fb2553f1b635cdf06559a239f92ed
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested:
+                - commits:
+                    - subject: "minor: Add @balena/leviathan-test-helpers package"
+                      hash: 47f061bef9a6bc73782599ad8ab0add43d10883b
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.10.0
+                  title: ""
+                  date: 2022-10-25T13:23:40.230Z
+          version: meta-balena-2.105.18
+          title: ""
+          date: 2022-10-25T16:35:47.720Z
+  version: 2.105.21
+  title: ""
+  date: 2022-10-29T17:53:36.430Z
+- commits:
     - subject: Update layers/meta-balena to 5c78a62b8409752294e244bd1ecc111b4b969da7
       hash: 3c8a154eabffeecce4baa159808263b94034d0d7
       body: Update layers/meta-balena
