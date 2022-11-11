@@ -1,6 +1,87 @@
 Change log
 -----------
 
+# v2.106.2
+## (2022-11-11)
+
+
+<details>
+<summary> Update layers/meta-balena to 301f76a3232fb25463f89f6382eb0e14189dcc0e [renovate[bot]] </summary>
+
+> ## meta-balena-2.106.2
+> ### (2022-11-10)
+> 
+> * flasher: minor formatting [Joseph Kogut]
+> * flasher: fix detection and exclusion of installation media [Joseph Kogut]
+> * flasher: properly expand device_pattern globs [Joseph Kogut]
+> 
+> ## meta-balena-2.106.1
+> ### (2022-11-10)
+> 
+> * tests: cloud: use cloud ssh to avoid race cond [rcooke-warwick]
+> 
+> ## meta-balena-2.106.0
+> ### (2022-11-10)
+> 
+> * Update balena-os/balena-supervisor to v14.3.0 [renovate[bot]]
+> 
+> ## meta-balena-2.105.32
+> ### (2022-11-09)
+> 
+> * Enable network access for tasks talking to the signing service [Michal Toman]
+> 
+> ## meta-balena-2.105.31
+> ### (2022-11-08)
+> 
+> * Add meta-balena-esr workflow [Alex Gonzalez]
+> 
+> ## meta-balena-2.105.30
+> ### (2022-11-08)
+> 
+> * tests: os: ensure by-state links are created [Joseph Kogut]
+> 
+> ## meta-balena-2.105.29
+> ### (2022-11-07)
+> 
+> * prepare-openvpn: do not use cached configuration [Alex Gonzalez]
+> 
+> ## meta-balena-2.105.28
+> ### (2022-11-06)
+> 
+> * patch: Delete conf.js for test suites [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## meta-balena-2.105.27
+> ### (2022-11-04)
+> 
+> * wpa-supplicant: Sync with v2.10 from upstream [Zahari Petkov]
+> 
+> ## meta-balena-2.105.26
+> ### (2022-11-04)
+> 
+> * patch: Skip HUP suite if no releases found [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## meta-balena-2.105.25
+> ### (2022-11-04)
+> 
+> * Update balena-os/balena-supervisor to v14.2.20 [renovate[bot]]
+> 
+> ## meta-balena-2.105.24
+> ### (2022-11-03)
+> 
+> * Update balena-os/balena-supervisor to v14.2.18 [renovate[bot]]
+> 
+> ## meta-balena-2.105.23
+> ### (2022-11-01)
+> 
+> * tests: hup: handle exception when unwrapping non-flasher image [Joseph Kogut]
+> 
+> ## meta-balena-2.105.22
+> ### (2022-11-01)
+> 
+> * Update Docs Link Updated the link in the docs to the device-type listings (on hub as SOT) [Ryan H]
+> 
+</details>
+
 # v2.105.21
 ## (2022-10-29)
 

@@ -1,4 +1,262 @@
 - commits:
+    - subject: Update layers/meta-balena to 301f76a3232fb25463f89f6382eb0e14189dcc0e
+      hash: 7a27691f8d8aa05079def035ac520042ae6a7198
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 301f76a3232fb25463f89f6382eb0e14189dcc0e
+        changelog-entry: Update layers/meta-balena to 301f76a3232fb25463f89f6382eb0e14189dcc0e
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "flasher: minor formatting"
+              hash: b92ade134716ea122949a0d5adf7238f274acc96
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "flasher: fix detection and exclusion of installation media"
+              hash: 02ba95a7f2b3889443f8fc2857723898140ff05e
+              body: >
+                The old test no longer matches on full disk paths including /dev, which
+
+                can potentially result in the installation disk not being excluded from
+
+                the pool of installation targets.
+
+
+                Fix the comparison so that the installation disk will not be
+
+                overwritten.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "flasher: properly expand device_pattern globs"
+              hash: 1b8059cf553b99de9a854dbbc7d81d7c079fe2a5
+              body: >
+                Previously, globs such as 'md/balena{,_*}' and 'mmcblk?' weren't being
+
+                properly expanded, resulting in the old behavior of explicit lists of
+
+                disks continuing to work, but consolidated globs matching multiple disks
+
+                would not.
+
+
+                Fix glob expansion to enable this feature to work properly.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.106.2
+          title: ""
+          date: 2022-11-10T21:20:24.210Z
+        - commits:
+            - subject: "tests: cloud: use cloud ssh to avoid race cond"
+              hash: 970d504c2fec7f82d8a87b1203702cb4320fbe9b
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.106.1
+          title: ""
+          date: 2022-11-10T17:19:31.839Z
+        - commits:
+            - subject: Update balena-os/balena-supervisor to v14.3.0
+              hash: 099700fd5247b20af5aec205f51e54c0a6c1fef3
+              body: Update balena-supervisor
+              footer:
+                Change-type: minor
+                change-type: minor
+              author: renovate[bot]
+              nested: []
+          version: meta-balena-2.106.0
+          title: ""
+          date: 2022-11-10T05:31:24.750Z
+        - commits:
+            - subject: Enable network access for tasks talking to the signing service
+              hash: ab1d75a0db11cde16d93cb7b3ebe734f61583e28
+              body: >
+                Since kirkstone tasks have network access disabled by default so we need
+
+                to enable it explicitly for tasks that talk to the signing service.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.105.32
+          title: ""
+          date: 2022-11-09T15:15:46.084Z
+        - commits:
+            - subject: Add meta-balena-esr workflow
+              hash: bcaddc164814569a9971c728bfbae316bbae88b3
+              body: >
+                This workflow will create an ESR branch from the latest patch of the
+
+                previous minor version the first day of each quarter.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.105.31
+          title: ""
+          date: 2022-11-08T20:30:19.317Z
+        - commits:
+            - subject: "tests: os: ensure by-state links are created"
+              hash: 724fa0e549fa6752c2f00acf52549255037f1fbd
+              body: |
+                These links are required for HUP, ensure they're created by udev
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.105.30
+          title: ""
+          date: 2022-11-08T05:28:07.419Z
+        - commits:
+            - subject: "prepare-openvpn: do not use cached configuration"
+              hash: 021495a07f736c7a80497e18dea33e23ac63318b
+              body: >
+                This script needs to update the VPN authentication with the currently
+
+                configured keys so do not use cached values.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.105.29
+          title: ""
+          date: 2022-11-07T15:30:37.789Z
+        - commits:
+            - subject: "patch: Delete conf.js for test suites"
+              hash: 5e52f52aec4cd1ccd238dd0e6ee6dd68fdc1dc63
+              body: ""
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+              author: Vipul Gupta (@vipulgupta2048)
+              nested: []
+          version: meta-balena-2.105.28
+          title: ""
+          date: 2022-11-06T11:05:01.690Z
+        - commits:
+            - subject: "wpa-supplicant: Sync with v2.10 from upstream"
+              hash: 5464be07070bbc4a06a4d432250dd70b2b2e1522
+              body: >
+                Synced from:
+
+                http://cgit.openembedded.org/openembedded-core/commit/meta/recipes-connectivity/wpa-supplicant?id=3a43c2a82881688d85238464db371f695e60b572
+
+
+                Closes #2838
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Zahari Petkov <zahari@balena.io>
+                signed-off-by: Zahari Petkov <zahari@balena.io>
+              author: Zahari Petkov
+              nested: []
+          version: meta-balena-2.105.27
+          title: ""
+          date: 2022-11-04T22:15:37.135Z
+        - commits:
+            - subject: "patch: Skip HUP suite if no releases found"
+              hash: 40a12706d64383f5b5f1f41cecc6331d1c2fcc79
+              body: ""
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+              author: Vipul Gupta (@vipulgupta2048)
+              nested: []
+          version: meta-balena-2.105.26
+          title: ""
+          date: 2022-11-04T10:56:57.967Z
+        - commits:
+            - subject: Update balena-os/balena-supervisor to v14.2.20
+              hash: 6b77e059fb1fc0e3eddebaa5702fce26f11b5e76
+              body: Update balena-supervisor
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested: []
+          version: meta-balena-2.105.25
+          title: ""
+          date: 2022-11-04T02:27:30.706Z
+        - commits:
+            - subject: Update balena-os/balena-supervisor to v14.2.18
+              hash: 797d966e06f4ef02962f8afc51a78a5a4b2bcc03
+              body: Update balena-supervisor
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: renovate[bot]
+              nested: []
+          version: meta-balena-2.105.24
+          title: ""
+          date: 2022-11-03T01:52:10.456Z
+        - commits:
+            - subject: "tests: hup: handle exception when unwrapping non-flasher image"
+              hash: 4d020e008232c29a8d9ab316f7c71d7fb161d98e
+              body: >
+                Handle ENOENT ErrnoException when attempting to unwrap a non-flasher
+
+                image in HUP tests. This mirrors a similar change made in ce2d33ad8.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.105.23
+          title: ""
+          date: 2022-11-01T00:42:23.029Z
+        - commits:
+            - subject: Update Docs Link Updated the link in the docs to the device-type
+                listings (on hub as SOT)
+              hash: c79adacfc30e36cf9bc548c9495dae5bfc4eb742
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Hampton (@rhampt) <rhampt@balena.io>
+                signed-off-by: Ryan Hampton (@rhampt) <rhampt@balena.io>
+              author: Ryan H
+              nested: []
+          version: meta-balena-2.105.22
+          title: ""
+          date: 2022-10-31T12:42:22.402Z
+  version: 2.106.2
+  title: ""
+  date: 2022-11-11T08:22:39.716Z
+- commits:
     - subject: Update layers/meta-balena to 2e9f69012d326b5925304c9d25427c5cc46dfbd4
       hash: f6c705d0e7cd5a3ed190658cd2b12ab0b2a33993
       body: Update layers/meta-balena
