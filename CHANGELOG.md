@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.106.7
+## (2022-11-16)
+
+* layers/meta-balena: Update layer from v2.106.2 to v2.106.7 [Alexandru Costache]
+
 # v2.106.2
 ## (2022-11-11)
 
