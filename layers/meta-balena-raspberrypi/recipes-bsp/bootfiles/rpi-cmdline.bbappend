@@ -6,3 +6,8 @@ CMDLINE += " ${@bb.utils.contains('DISTRO_FEATURES','osdev-image',"console=tty1 
 CMDLINE += " cgroup_enable=memory"
 CMDLINE:remove = "root=/dev/mmcblk0p2"
 CMDLINE_DEBUG = ""
+
+do_deploy:append() {
+    install -m 0644 "${WORKDIR}/cmdline.txt" "${DEPLOYDIR}/cmdline.txt.flasher"
+    sed -i 's/$/ flasher/' "${DEPLOYDIR}/cmdline.txt.flasher"
+}

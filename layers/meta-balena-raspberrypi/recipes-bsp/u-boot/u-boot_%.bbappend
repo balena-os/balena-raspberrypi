@@ -44,7 +44,6 @@ SRC_URI:append:raspberrypicm4-ioboard = " \
 # and we don't generate flasher images for any of the RPIs.
 # Also, add a retry count limit for the uart on u-boot 2020.x
 SRC_URI:append = " \
-    file://0001-rpi-Disable-image-flasher-check.patch \
     file://serial_pl01x-Add-retry-limit-when-writing-to-uart-co.patch \
 "
 
