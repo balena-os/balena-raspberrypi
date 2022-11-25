@@ -220,3 +220,9 @@ do_compile:append() {
         oe_runmake dtbs CC="${KERNEL_CC} $cc_extra " LD="${KERNEL_LD}" ${KERNEL_EXTRA_ARGS}
     fi
 }
+
+# enable watchdog nowayout
+BALENA_CONFIGS:append = " enable-wd-nowayout"
+BALENA_CONFIGS[enable-wd-nowayout] = " \
+    CONFIG_WATCHDOG_NOWAYOUT=y \
+"
