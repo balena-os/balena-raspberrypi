@@ -1,6 +1,127 @@
 Change log
 -----------
 
+# v2.107.10
+## (2022-11-25)
+
+
+<details>
+<summary> Update layers/meta-balena to fbf651fead37336e826d709f48255897962bdbd5 [renovate[bot]] </summary>
+
+> ## meta-balena-2.107.10
+> ### (2022-11-25)
+> 
+> * balena-image.bb: Include bits for LUKS when FDE is enabled [Michal Toman]
+> 
+> ## meta-balena-2.107.9
+> ### (2022-11-24)
+> 
+> * resin-init-flasher: Fix double /dev/ prefix when encrypting partitions [Michal Toman]
+> * grub-conf: fix partition indexes in LUKS config [Michal Toman]
+> * os-helpers-fs: add dependency on parted [Michal Toman]
+> * hostapp-update-hooks: use stage2 bootloader GRUB config when using LUKS [Michal Toman]
+> * balena-rollback: Fix partition index detection for luks devices [Michal Toman]
+> * balena-rollback: Find following symbolic links [Alex Gonzalez]
+> * hostapp-update-hooks: Find following symlinks [Alex Gonzalez]
+> * hostapp-update-hooks: Fix partition index detection for luks devices [Alex Gonzalez]
+> 
+> ## meta-balena-2.107.8
+> ### (2022-11-24)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to bdf8eb2 [renovate[bot]] </summary>
+> 
+>> ### leviathan-2.10.2
+>> #### (2022-11-23)
+>> 
+>> * add high level architecture overview [rcooke-warwick]
+>> 
+>> ### leviathan-2.10.1
+>> #### (2022-11-23)
+>> 
+>> * Add conditions for Apple Silicon workstations [Kyle Harding]
+>> 
+> </details>
+> 
+> 
+> ## meta-balena-2.107.7
+> ### (2022-11-23)
+> 
+> * tests: ssh-auth: rework local authentication with cloud keys to work in testbots [Alex Gonzalez]
+> * ssh-auth: do not use a separate custom key [Alex Gonzalez]
+> * Revert "test: ssh-auth: fix test cases using custom keys" [Alex Gonzalez]
+> 
+> ## meta-balena-2.107.6
+> ### (2022-11-22)
+> 
+> * Update balena-os/balena-supervisor to v14.4.4 [renovate[bot]]
+> 
+> ## meta-balena-2.107.5
+> ### (2022-11-22)
+> 
+> * Update balena-os/balena-supervisor to v14.4.2 [renovate[bot]]
+> 
+> ## meta-balena-2.107.4
+> ### (2022-11-19)
+> 
+> * Update balena-os/balena-supervisor to v14.4.1 [renovate[bot]]
+> 
+> ## meta-balena-2.107.3
+> ### (2022-11-19)
+> 
+> * kernel-balena: Kernel version check should include provided version [Alex Gonzalez]
+> 
+> ## meta-balena-2.107.2
+> ### (2022-11-18)
+> 
+> * chronyd: allow service status notification socket access to all [Alex Gonzalez]
+> * chrony: update to version 4.2 [Alex Gonzalez]
+> 
+> ## meta-balena-2.107.1
+> ### (2022-11-17)
+> 
+> * docs: add RAID setup info [Joseph Kogut]
+> 
+> ## meta-balena-2.107.0
+> ### (2022-11-17)
+> 
+> * Update balena-os/balena-supervisor to v14.4.0 [renovate[bot]]
+> 
+> ## meta-balena-2.106.8
+> ### (2022-11-17)
+> 
+> * classes: kernel-balena: add wireguard module [Alex Gonzalez]
+> 
+> ## meta-balena-2.106.7
+> ### (2022-11-15)
+> 
+> * test: ssh-auth: fix test cases using custom keys [Alex Gonzalez]
+> 
+> ## meta-balena-2.106.6
+> ### (2022-11-15)
+> 
+> * Update balena-os/balena-supervisor to v14.3.3 [renovate[bot]]
+> 
+> ## meta-balena-2.106.5
+> ### (2022-11-14)
+> 
+> * openvpn: fix a race condition that leaves system with no running supervisor [Alex Gonzalez]
+> 
+> ## meta-balena-2.106.4
+> ### (2022-11-12)
+> 
+> * ssh-auth: setConfig: run synchronously [Alex Gonzalez]
+> * cloud: ssh-auth: use custom path for custom key [Alex Gonzalez]
+> * balena-config-vars: Set permissions for cache file [Alex Gonzalez]
+> 
+> ## meta-balena-2.106.3
+> ### (2022-11-11)
+> 
+> * common: kernel-devsrc: fix pseudo abort [Joseph Kogut]
+> 
+</details>
+
 # v2.106.2
 ## (2022-11-11)
 
