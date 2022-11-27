@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.107.10+rev1
+## (2022-11-27)
+
+* enable internal I2C pins pull-ups to fix unpopulated variants [Joseph Kogut]
+
 # v2.107.10
 ## (2022-11-25)
 

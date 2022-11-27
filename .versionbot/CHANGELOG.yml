@@ -1,4 +1,18 @@
 - commits:
+    - subject: enable internal I2C pins pull-ups to fix unpopulated variants
+      hash: cd9d0a924e65af6b587f7b169e76ae7df1e26736
+      body: ""
+      footer:
+        Changelog-entry: enable internal I2C pins pull-ups to fix unpopulated variants
+        changelog-entry: enable internal I2C pins pull-ups to fix unpopulated variants
+        Signed-off-by: Joseph Kogut <joseph@balena.io>
+        signed-off-by: Joseph Kogut <joseph@balena.io>
+      author: Joseph Kogut
+      nested: []
+  version: 2.107.10+rev1
+  title: ""
+  date: 2022-11-27T07:23:53.268Z
+- commits:
     - subject: Update layers/meta-balena to fbf651fead37336e826d709f48255897962bdbd5
       hash: beaa621a96fe66aa5b849f92e41f0dc9f9fce507
       body: Update layers/meta-balena
