@@ -1,6 +1,56 @@
 Change log
 -----------
 
+# v2.107.10+rev2
+## (2022-11-28)
+
+
+<details>
+<summary> Update contracts to b20827d63cbe7b1168f2b63b3bde216231e1b4ba [renovate[bot]] </summary>
+
+> ## contracts-2.0.28
+> ### (2022-11-09)
+> 
+> * Add node v18.12.1 [Trong Nghia Nguyen]
+> 
+> ## contracts-2.0.27
+> ### (2022-11-07)
+> 
+> * Add go v1.19.3 and v1.18.8 [Trong Nghia Nguyen]
+> * Add node v19.0.1 v16.18.1 and v14.21.1 [Trong Nghia Nguyen]
+> 
+> ## contracts-2.0.26
+> ### (2022-11-01)
+> 
+> * Add Python v3.11.0 v3.10.8 v3.9.15 v3.8.15 and v3.7.15 [Trong Nghia Nguyen]
+> 
+> ## contracts-2.0.25
+> ### (2022-10-27)
+> 
+> * Fix incorrect partials in device type contracts [Micah Halter]
+> 
+> ## contracts-2.0.24
+> ### (2022-10-27)
+> 
+> * Add node v18.12.0 [Trong Nghia Nguyen]
+> 
+> ## contracts-2.0.23
+> ### (2022-10-25)
+> 
+> * sw.os+hw.device-type: Add distro-config.tpl for jetson-agx-orin-devkit [Alexandru Costache]
+> 
+> ## contracts-2.0.22
+> ### (2022-10-24)
+> 
+> * hw+device-type: Add jetson-agx-orin-devkit device type [Alexandru Costache]
+> 
+> ## contracts-2.0.21
+> ### (2022-10-20)
+> 
+> * Add node v19.0.0 [Trong Nghia Nguyen]
+> 
+</details>
+
 # v2.107.10+rev1
 ## (2022-11-27)
 
