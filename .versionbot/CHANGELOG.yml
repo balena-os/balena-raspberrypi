@@ -1,4 +1,47 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 3fbd0884bd7d599664587d0ab25fea22d77323ba
+      hash: be4b6ad7b72c6498a6d673f78af191748eb0aa6b
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 3fbd0884bd7d599664587d0ab25fea22d77323ba
+        changelog-entry: Update balena-yocto-scripts to 3fbd0884bd7d599664587d0ab25fea22d77323ba
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "jenkins_generate_ami: use a different token"
+              hash: 3fcb9cb302b3f50e5fd8943fdafe2934fb0de182
+              body: >
+                The AMI preload application no longer lives in the balena_os organization
+
+                so allow to provide a different token.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.14
+          title: "'jenkins_generate_ami: use a different token'"
+          date: 2022-11-10T15:10:52.071Z
+        - commits:
+            - subject: "jenkins_build: Only deploy AMI after deploying a final release"
+              hash: cfa6879d11a98c112a2e16fd40b6443a7fa6a838
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.13
+          title: "'jenkins_build: Only deploy AMI after deploying a final release'"
+          date: 2022-10-21T15:03:17.022Z
+  version: 2.107.10+rev3
+  title: ""
+  date: 2022-11-30T04:29:45.095Z
+- commits:
     - subject: Update contracts to b20827d63cbe7b1168f2b63b3bde216231e1b4ba
       hash: 541d58669406e01781e4034e8bb7a014a91177ea
       body: Update contracts
