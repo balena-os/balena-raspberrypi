@@ -33,6 +33,10 @@ python overlay_dtbs_handler () {
             f = open(d.getVar('DEPLOY_DIR_IMAGE') + '/overlays.txt', "r")
             kernel_devicetree = f.read()
             f.close
+            # Sanity check. Should be removed once the issue is confirmed to be fixed
+            debug_missing_dtbo = 'gpio-poweroff.dtbo'
+            if not debug_missing_dtbo in kernel_devicetree:
+                bb.fatal('Sanity check: ' + debug_missing_dtbo + ' not found in overlay list! Overlays list contents:' + kernel_devicetree)
             d.setVar('KERNEL_DEVICETREE', kernel_devicetree)
             overlay_dtbs = split_overlays(d, 0)
             root_dtbs = split_overlays(d, 1)
