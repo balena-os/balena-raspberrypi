@@ -84,15 +84,13 @@ python do_overlays() {
     import glob, re
     overlays = []
     source_path = d.getVar('S', True) + '/arch/' + d.getVar('ARCH',True) + '/boot/dts/overlays/*-overlay.dts'
-    print(source_path)
     for overlay in glob.glob(source_path):
         overlays.append(re.sub(r'-overlay.dts','.dtbo',overlay).split('dts/')[-1])
     for dtbo in overlays:
-        kernel_devicetree = d.getVar('KERNEL_DEVICETREE', True)
-        d.setVar('KERNEL_DEVICETREE', kernel_devicetree + '   ' + dtbo)
+        d.setVar('KERNEL_DEVICETREE', d.getVar('KERNEL_DEVICETREE', True) + ' ' + dtbo)
 
     f = open(d.getVar('DEPLOY_DIR_IMAGE') + '/overlays.txt', "w")
-    f.write(kernel_devicetree)
+    f.write(d.getVar('KERNEL_DEVICETREE', True))
     f.close
 }
 
