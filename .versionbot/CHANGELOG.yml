@@ -1,4 +1,22 @@
 - commits:
+    - subject: "linux-raspberrypi: Fix missing gpio-poweroff overlay"
+      hash: f7a3a5954516af9a8697437d6b13d50f4e3eced2
+      body: |
+        This issue occurred sporadically because gpio-poweroff
+        was not always the last element in the overlays glob,
+        and problem was caused by saving the incorrect list
+        of overlays, which was missing the last element.
+      footer:
+        Changelog-entry: "linux-raspberrypi: Fix missing gpio-poweroff overlay"
+        changelog-entry: "linux-raspberrypi: Fix missing gpio-poweroff overlay"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 2.107.10+rev5
+  title: ""
+  date: 2022-12-06T13:53:27.504Z
+- commits:
     - subject: Update contracts to 5d83fa7ad3a0c95db49ee465c9a77845611f3a3b
       hash: 8499b6aaab0553d9c1f5cebfcac7e50e75c0fc0b
       body: Update contracts

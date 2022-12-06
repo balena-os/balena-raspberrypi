@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.107.10+rev5
+## (2022-12-06)
+
+* linux-raspberrypi: Fix missing gpio-poweroff overlay [Alexandru Costache]
+
 # v2.107.10+rev4
 ## (2022-11-30)
 
