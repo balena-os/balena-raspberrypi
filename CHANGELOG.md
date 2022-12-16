@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.107.10+rev6
+## (2022-12-16)
+
+* sd8887-nxp: Update to tag 0.11.0 to include newer driver version [Zahari Petkov]
+
 # v2.107.10+rev5
 ## (2022-12-06)
 
