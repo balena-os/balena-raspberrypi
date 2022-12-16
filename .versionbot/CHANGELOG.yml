@@ -1,4 +1,21 @@
 - commits:
+    - subject: "sd8887-nxp: Update to tag 0.11.0 to include newer driver version"
+      hash: b3013650f2c6b0b3d9da1604896ba52600d37c5f
+      body: |
+        This is W15.68.19.p59-15.26.19.p59-C4X15698_A2 distribution from NXP.
+
+        The Fin repository that includes the driver has a changed name as well.
+      footer:
+        Changelog-entry: "sd8887-nxp: Update to tag 0.11.0 to include newer driver version"
+        changelog-entry: "sd8887-nxp: Update to tag 0.11.0 to include newer driver version"
+        Signed-off-by: Zahari Petkov <zahari@balena.io>
+        signed-off-by: Zahari Petkov <zahari@balena.io>
+      author: Zahari Petkov
+      nested: []
+  version: 2.107.10+rev6
+  title: ""
+  date: 2022-12-16T09:08:19.501Z
+- commits:
     - subject: "linux-raspberrypi: Fix missing gpio-poweroff overlay"
       hash: f7a3a5954516af9a8697437d6b13d50f4e3eced2
       body: |
