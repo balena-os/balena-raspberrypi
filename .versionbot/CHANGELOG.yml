@@ -1,4 +1,36 @@
 - commits:
+    - subject: Update layers/meta-balena to 707ed18ca071fb7d7d557e0774f9f479323892af
+      hash: 1141746b3fc2c84b7e5d2c37fda654020f90e39a
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 707ed18ca071fb7d7d557e0774f9f479323892af
+        changelog-entry: Update layers/meta-balena to 707ed18ca071fb7d7d557e0774f9f479323892af
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "redsocks: Increase maximum number of open files"
+              hash: e90b9159ed5f0dac3d9fe1b1b486201ee85f1161
+              body: >
+                This increases the number of open connections that redsocks can support
+
+                to a new maximum of 2048.
+
+
+                See https://github.com/darkk/redsocks/blob/19b822e345f6a291f6cff6b168f1cfdfeeb2cd7d/base.c#L419
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.108.19
+          title: ""
+          date: 2023-01-10T18:47:46.842Z
+  version: 2.108.19
+  title: ""
+  date: 2023-01-11T19:21:44.714Z
+- commits:
     - subject: Update layers/meta-balena to 7b8d9a8b591487aefcdcd522d385ec14abaa1be6
       hash: ff03c161c8af98719557ec1508e4a94d8eeb0b49
       body: Update layers/meta-balena
