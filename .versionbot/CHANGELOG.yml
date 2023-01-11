@@ -1,4 +1,124 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 56bb055d91481023a6b6cff92d61ebfffa884139
+      hash: f9b4e4f63b12adae2c47084701e89dd3262f9e12
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 56bb055d91481023a6b6cff92d61ebfffa884139
+        changelog-entry: Update balena-yocto-scripts to 56bb055d91481023a6b6cff92d61ebfffa884139
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "balena-generate-ami: Enable TPM support on x86_64 only"
+              hash: 7ee973096d3d93f0006816c310cf41d0d5097d86
+              body: |
+                On aarch64 this fails with
+                "Invalid machineArchitecture value 'arm64' for tpmSupport."
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: balena-yocto-scripts-1.19.18
+          title: ""
+          date: 2023-01-09T08:14:37.524Z
+        - commits:
+            - subject: "jenkins_generate_ami: support using both live and installer images as
+                AMIs"
+              hash: fa4fcbb106695ba646a383d4efff3cc325626330
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-generate-ami: Enable nitroTPM support"
+              hash: 23cb657399160486341dd05cea555504845f1d22
+              body: |
+                This allows to use secure boot in AMI images.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "jenkins_build: add argument to build OS development images"
+              hash: 07f20dae6f06831181fc2ae306f9c4a52499ca24
+              body: >
+                Building OS development images is useful for example when debugging and
+
+                testing AMI images.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.17
+          title: ""
+          date: 2022-12-23T15:16:00.319Z
+        - commits:
+            - subject: "dockerfile: balena-push-env: update balena CLI version to v14.5.15"
+              hash: 06f4be81c2dd37eb6a6da51024d6857b32200d20
+              body: >
+                Newer supervisor require a CLI >= v13.5.1 to migrate from v2 apps.json
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "jenkins_generate_ami: add balena org for preloaded app"
+              hash: ee48444b36d3597264a7694b2246b3fee4f6b659
+              body: >
+                Specify the organization and block name when preloading so it is not
+
+                ambiguous.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "jenkins_generate_ami: distinguish between staging and production"
+              hash: 3a36e81b8a0043cfbbc472dd70b0049b3cef9247
+              body: |
+                Use different tokens to preload from staging and production.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.16
+          title: ""
+          date: 2022-12-16T11:06:42.331Z
+        - commits:
+            - subject: "workflows: add flowzone"
+              hash: 025f8399061f4a0ca6651d643c8c2016c8b1cfa7
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.15
+          title: ""
+          date: 2022-12-16T10:49:48.888Z
+  version: 2.108.18+rev1
+  title: ""
+  date: 2023-01-11T19:21:20.956Z
+- commits:
     - subject: Update layers/meta-balena to 7b8d9a8b591487aefcdcd522d385ec14abaa1be6
       hash: ff03c161c8af98719557ec1508e4a94d8eeb0b49
       body: Update layers/meta-balena
