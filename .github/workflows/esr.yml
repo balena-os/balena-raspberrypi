@@ -1,0 +1,24 @@
+name: ESR
+
+on:
+  # Run at 00:00 on the second day every 3rd month (quarterly)
+  schedule:
+    - cron: "0 0 2 */3 *"
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+      esr-version:
+        required: false
+        type: string
+        description: ESR version override, for example 2022.10. By default it uses the current year and month.
+      os-version:
+        required: false
+        type: string
+        description: OS ESR version override, for example 2.104. By default it uses the latest ESR branch.
+
+jobs:
+  esr:
+    name: Create ESR branch and tag
+    uses: balena-os/github-workflows/.github/workflows/esr.yml@master
+    secrets: inherit
