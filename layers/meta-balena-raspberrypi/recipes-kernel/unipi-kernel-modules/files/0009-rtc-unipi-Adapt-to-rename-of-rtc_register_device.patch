@@ -1,0 +1,29 @@
+From: Alex Gonzalez <alexg@balena.io>
+Date: Mon, 24 Oct 2022 18:21:20 +0200
+Subject: [PATCH 9/9] rtc-unipi: Adapt to rename of rtc_register_device
+
+The rename happens in commit
+fdcfd854333 (rtc: rework rtc_register_device() resource management)
+
+Upstream-status: pending
+Signed-off-by: Alex Gonzalez <alexg@balena.io>
+---
+ modules/rtc-unipi/rtc-unipi.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/modules/rtc-unipi/rtc-unipi.c b/modules/rtc-unipi/rtc-unipi.c
+index 9953c63e91b1..e40fce763f7b 100644
+--- a/modules/rtc-unipi/rtc-unipi.c
++++ b/modules/rtc-unipi/rtc-unipi.c
+@@ -680,7 +680,11 @@ read_rtc:
+ 	    devm_rtc_nvmem_register(rtc_unipi->rtc, &nvmem_cfg);
+ #endif
+ 	rtc_unipi->rtc->ops = &mcp794xx_rtc_ops; /*chip->rtc_ops ?: &ds13xx_rtc_ops;*/
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5,10,0)
+ 	err = rtc_register_device(rtc_unipi->rtc);
++#else
++	err = devm_rtc_register_device(rtc_unipi->rtc);
++#endif
+ 	if (err)
+ 		return err;
+ 

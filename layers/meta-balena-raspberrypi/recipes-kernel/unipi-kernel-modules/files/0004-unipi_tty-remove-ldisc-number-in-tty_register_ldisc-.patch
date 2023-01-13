@@ -1,0 +1,67 @@
+From: Alex Gonzalez <alexg@balena.io>
+Date: Mon, 24 Oct 2022 16:46:29 +0200
+Subject: [PATCH 4/9] unipi_tty: remove ldisc number in tty_register_ldisc call
+
+The tty_register_ldisc() call dropped accepting the ldisc number in
+commit fbadf70a805 (tty: set tty_ldisc_ops::num statically)
+
+Upstream-status: pending
+Signed-off-by: Alex Gonzalez <alexg@balena.io>
+---
+ modules/unipi/src/unipi_tty.c | 21 +++++++++++++++++++--
+ 1 file changed, 19 insertions(+), 2 deletions(-)
+
+diff --git a/modules/unipi/src/unipi_tty.c b/modules/unipi/src/unipi_tty.c
+index 36bcc661af00..1a1808f4cfa0 100644
+--- a/modules/unipi/src/unipi_tty.c
++++ b/modules/unipi/src/unipi_tty.c
+@@ -1019,7 +1019,11 @@ int __init unipi_tty_init(void)
+ {
+ 	int err;
+ 	unipi_tty_trace(KERN_INFO "UNIPISPI: TTY Init\n");
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 14, 0)
+ 	err = tty_register_ldisc(N_PROFIBUS_FDL, &unipi_tty_ops);
++#else
++	err = tty_register_ldisc(&unipi_tty_ops);
++#endif
+ 	if (err) {
+ 		printk(KERN_INFO "UNIPISPI: UniPi line discipline registration failed. (%d)", err);
+ 		return err;
+@@ -1029,7 +1033,11 @@ int __init unipi_tty_init(void)
+ 
+ void __exit unipi_tty_exit(void)
+ {
+-     tty_unregister_ldisc(N_PROFIBUS_FDL);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 14, 0)
++    tty_unregister_ldisc(N_PROFIBUS_FDL);
++#else
++     tty_unregister_ldisc(&unipi_tty_ops);
++#endif
+ }
+ 
+ #else
+@@ -1111,7 +1119,12 @@ int __init unipi_tty_init(void)
+ 	unipi_tty_ldisc.receive_buf2	= unipi_tty_receive_buf2;
+ 	unipi_tty_ldisc.ioctl	        = unipi_tty_ioctl;
+ 
+-    err = tty_register_ldisc(N_PROFIBUS_FDL, &unipi_tty_ldisc);
++
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 14, 0)
++   err = tty_register_ldisc(N_PROFIBUS_FDL, &unipi_tty_ldisc);
++#else
++    err = tty_register_ldisc(&unipi_tty_ldisc);
++#endif
+     if (err) {
+         printk(KERN_INFO "UniPi line discipline registration failed. (%d)", err);
+         return err;
+@@ -1121,6 +1134,10 @@ int __init unipi_tty_init(void)
+ 
+ void __exit unipi_tty_exit(void)
+ {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 14, 0)
+      tty_unregister_ldisc(N_PROFIBUS_FDL);
++#else
++     tty_unregister_ldisc(&unipi_tty_ldisc);
++#endif
+ }
+ #endif

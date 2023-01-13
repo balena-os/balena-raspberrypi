@@ -11,8 +11,8 @@ SRC_URI += " \
 RPIFW_DATE = "20220120"
 SRCREV = "c6d56567ff6ef17fd85159770f22abcf2c5953ed"
 
-SRC_URI[md5sum] = "fb3890d4ae3f4caf432698e944989254"
-SRC_URI[sha256sum] = "9324356498f1b6a21f2af1229604c4de7c3b3ee8cc3e2b08c290366a0534fa75"
+SRC_URI[md5sum] = "116b5958015f3c391e2ac4d3c67030e7"
+SRC_URI[sha256sum] = "ecf8150a5b8c94531b7ed04c6863e6a2900b7a0c4b6320e251dadc2574cc8494"
 
 do_deploy:append() {
     # exclude from balenaOS the binaries with additional debug assertions (they

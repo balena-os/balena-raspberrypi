@@ -1,13 +1,14 @@
 SUMMARY = "Out of tree linux wifi and bluetooth driver modules for Marvell SD8887"
-LICENSE = "GPLv2"
+LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://${WORKDIR}/COPYING;md5=12f884d2ae1ff87c09e5b7ccc2c4ca7e"
 
 inherit module
 
 SRC_URI = " \
-    git://github.com/balena-io-hardware/balena-fin.git;protocol=https;tag=v0.9.2 \
+    git://github.com/balena-io-hardware/balena-fin.git;protocol=https;nobranch=1 \
     file://COPYING \
 "
+SRCREV = "4cd9510c1c04d4eba2601388e5c4a7ae0bd0fcff"
 
 S = "${WORKDIR}/git/software/drivers/sd8887"
 
