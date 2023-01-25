@@ -1,4 +1,18 @@
 - commits:
+    - subject: Modify bluez patches for v5.66 update
+      hash: 70ffa128cbdcd801fed5f4ba809b910146a95bda
+      body: ""
+      footer:
+        Changelog-entry: Modify bluez patches for v5.66 update
+        changelog-entry: Modify bluez patches for v5.66 update
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.108.18+rev3
+  title: ""
+  date: 2023-01-25T13:46:57.588Z
+- commits:
     - subject: Fix unipi-kernel-modules to build with v5.15
       hash: dfa3d40cc46e81869513d304c4e239f3b923ac92
       body: ""
