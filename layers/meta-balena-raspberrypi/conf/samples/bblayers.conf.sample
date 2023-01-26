@@ -16,5 +16,6 @@ BBLAYERS ?= " \
     ${TOPDIR}/../layers/meta-openembedded/meta-filesystems \
     ${TOPDIR}/../layers/meta-openembedded/meta-networking \
     ${TOPDIR}/../layers/meta-openembedded/meta-python \
+    ${TOPDIR}/../layers/meta-openembedded/meta-perl \
     ${TOPDIR}/../layers/meta-raspberrypi \
     "
