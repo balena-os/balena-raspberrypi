@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.108.18+rev4
+## (2023-01-28)
+
+* add meta-perl to bblayers.conf [Alex Gonzalez]
+
 # v2.108.18+rev3
 ## (2023-01-25)
 
