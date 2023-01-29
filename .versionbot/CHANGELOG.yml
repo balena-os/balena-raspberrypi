@@ -1,4 +1,197 @@
 - commits:
+    - subject: Update layers/meta-balena to 73bc1884cad100723ee16dd08c1abd5796260cc2
+      hash: 5e8411900ccef2599aafb8590a7fdaf850b76c09
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 73bc1884cad100723ee16dd08c1abd5796260cc2
+        changelog-entry: Update layers/meta-balena to 73bc1884cad100723ee16dd08c1abd5796260cc2
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "tests: os: fix tests that use glider on rpi0"
+              hash: 864b4ed84c7af438d61501a77996639f3af3499c
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.108.27
+          title: ""
+          date: 2023-01-20T23:08:16.096Z
+        - commits:
+            - subject: Enable back connectivity check in NetworkManager
+              hash: b4ae8c2df204107054316e8b9f78075155c1f606
+              body: >
+                In v2.108.0 we did a major NetworkManager upgrade as we started using
+
+                meson as a build system. The connectivity check feature was left
+
+                disabled, which is a regression and it produces fake results.
+
+
+                This commit enables it back.
+
+
+                Fixes #2964.
+              footer:
+                Changelog-entry: Enable back connectivity check in NetworkManager
+                changelog-entry: Enable back connectivity check in NetworkManager
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Zahari Petkov <zahari@balena.io>
+                signed-off-by: Zahari Petkov <zahari@balena.io>
+              author: Zahari Petkov
+              nested: []
+          version: meta-balena-2.108.26
+          title: ""
+          date: 2023-01-20T10:35:50.736Z
+        - commits:
+            - subject: "tests: os: add basic SB/FDE tests"
+              hash: f8ada0481cc159fd03ac1291c981e4dc0d03342d
+              body: |
+                Check for secureboot and full-disk encryption when supported by
+                firmware.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.108.25
+          title: ""
+          date: 2023-01-18T21:44:59.128Z
+        - commits:
+            - subject: "networkmanager: Make iptables wait for xtables.lock"
+              hash: afebbcddeebdda9e5988507a5fcf5ad93cf79cab
+              body: >
+                iptables takes a file lock at /run/xtables.lock. By default, if
+
+                the file is locked, iptables will fail with error. When that happens,
+
+                the iptables rules won't be configured, and the shared mode
+
+                (for which we use iptables) will not be setup properly.
+
+
+                Instead, pass "--wait 2", to block.
+
+
+                The included patch has to be removed once we upgrade to next
+
+                NetworkManager version as it is already included upstream.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Zahari Petkov <zahari@balena.io>
+                signed-off-by: Zahari Petkov <zahari@balena.io>
+              author: Zahari Petkov
+              nested: []
+          version: meta-balena-2.108.24
+          title: ""
+          date: 2023-01-18T11:11:18.440Z
+        - commits:
+            - subject: "balena-keys: rebuild if keys change"
+              hash: 64cc69a741568d2c2e95cd4197b18628310f34e2
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "classes: sign-*: resign if keys change"
+              hash: 1decda2966271638196840c04955ffa12a57158a
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.108.23
+          title: ""
+          date: 2023-01-16T23:11:19.102Z
+        - commits:
+            - subject: "workflows: esr: use semver compatible versions"
+              hash: 36b9c035f5d7b55540c2190492f6e02af890bd13
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.108.22
+          title: ""
+          date: 2023-01-16T09:25:15.067Z
+        - commits:
+            - subject: "efitools: Package lock down EFI image into its own package"
+              hash: 461ad62f13732cd325f3f532fda4fac4b9ffb3da
+              body: >
+                This EFI image contains the secure boot certificates and when executed it
+
+                is supposed to load the keys into the respective secure boot slots.
+
+
+                We don't use this binary in our secure boot implementation, but currently
+
+                the build breaks as the binary is installed but not packaged.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.108.21
+          title: ""
+          date: 2023-01-14T11:56:57.966Z
+        - commits:
+            - subject: "workflows: meta-balena-esr: Fix version calculation"
+              hash: b56da33230839f4af74bac954cf834c2116e6209
+              body: >
+                Correct the calculation of the version to include in the yml file.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.108.20
+          title: ""
+          date: 2023-01-12T14:06:53.452Z
+        - commits:
+            - subject: "redsocks: Increase maximum number of open files"
+              hash: e90b9159ed5f0dac3d9fe1b1b486201ee85f1161
+              body: >
+                This increases the number of open connections that redsocks can support
+
+                to a new maximum of 2048.
+
+
+                See https://github.com/darkk/redsocks/blob/19b822e345f6a291f6cff6b168f1cfdfeeb2cd7d/base.c#L419
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.108.19
+          title: ""
+          date: 2023-01-10T18:47:46.842Z
+  version: 2.108.27
+  title: ""
+  date: 2023-01-29T21:38:09.445Z
+- commits:
     - subject: add meta-perl to bblayers.conf
       hash: 28bc6d1e3930744ecca61cffae134208ae36b6d0
       body: |

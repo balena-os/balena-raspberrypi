@@ -1,6 +1,62 @@
 Change log
 -----------
 
+# v2.108.27
+## (2023-01-29)
+
+
+<details>
+<summary> Update layers/meta-balena to 73bc1884cad100723ee16dd08c1abd5796260cc2 [renovate[bot]] </summary>
+
+> ## meta-balena-2.108.27
+> ### (2023-01-20)
+> 
+> * tests: os: fix tests that use glider on rpi0 [rcooke-warwick]
+> 
+> ## meta-balena-2.108.26
+> ### (2023-01-20)
+> 
+> * Enable back connectivity check in NetworkManager [Zahari Petkov]
+> 
+> ## meta-balena-2.108.25
+> ### (2023-01-18)
+> 
+> * tests: os: add basic SB/FDE tests [Joseph Kogut]
+> 
+> ## meta-balena-2.108.24
+> ### (2023-01-18)
+> 
+> * networkmanager: Make iptables wait for xtables.lock [Zahari Petkov]
+> 
+> ## meta-balena-2.108.23
+> ### (2023-01-16)
+> 
+> * balena-keys: rebuild if keys change [Alex Gonzalez]
+> * classes: sign-*: resign if keys change [Alex Gonzalez]
+> 
+> ## meta-balena-2.108.22
+> ### (2023-01-16)
+> 
+> * workflows: esr: use semver compatible versions [Alex Gonzalez]
+> 
+> ## meta-balena-2.108.21
+> ### (2023-01-14)
+> 
+> * efitools: Package lock down EFI image into its own package [Alex Gonzalez]
+> 
+> ## meta-balena-2.108.20
+> ### (2023-01-12)
+> 
+> * workflows: meta-balena-esr: Fix version calculation [Alex Gonzalez]
+> 
+> ## meta-balena-2.108.19
+> ### (2023-01-10)
+> 
+> * redsocks: Increase maximum number of open files [Alex Gonzalez]
+> 
+
+</details>
+
 # v2.108.18+rev4
 ## (2023-01-28)
 
