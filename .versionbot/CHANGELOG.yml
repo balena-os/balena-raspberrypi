@@ -1,4 +1,45 @@
 - commits:
+    - subject: Update layers/meta-balena to bdfe242725e83784931987d85f83a35e861683d8
+      hash: d594f061cfbe41b2714d1256dee24717cbf379ab
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to bdfe242725e83784931987d85f83a35e861683d8
+        changelog-entry: Update layers/meta-balena to bdfe242725e83784931987d85f83a35e861683d8
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "bluez: Update to v5.66"
+              hash: 00342a7702226dc071f6b690bd68fdab5c9996c2
+              body: |
+                Update from v5.64 to v5.66
+
+                Fixes #2981
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.108.29
+          title: ""
+          date: 2023-01-28T09:44:05.026Z
+        - commits:
+            - subject: "patch: Update balenaOS docs title"
+              hash: ec4bb501c04430c0507e7b31d53b5c0eab25063f
+              body: ""
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+              author: Vipul Gupta (@vipulgupta2048)
+              nested: []
+          version: meta-balena-2.108.28
+          title: ""
+          date: 2023-01-26T18:36:44.693Z
+  version: 2.108.29
+  title: ""
+  date: 2023-01-29T23:23:29.793Z
+- commits:
     - subject: Update layers/meta-balena to 73bc1884cad100723ee16dd08c1abd5796260cc2
       hash: 5e8411900ccef2599aafb8590a7fdaf850b76c09
       body: Update layers/meta-balena

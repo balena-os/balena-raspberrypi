@@ -1,6 +1,26 @@
 Change log
 -----------
 
+# v2.108.29
+## (2023-01-29)
+
+
+<details>
+<summary> Update layers/meta-balena to bdfe242725e83784931987d85f83a35e861683d8 [Renovate Bot] </summary>
+
+> ## meta-balena-2.108.29
+> ### (2023-01-28)
+> 
+> * bluez: Update to v5.66 [Alex Gonzalez]
+> 
+> ## meta-balena-2.108.28
+> ### (2023-01-26)
+> 
+> * patch: Update balenaOS docs title [Vipul Gupta (@vipulgupta2048)]
+> 
+
+</details>
+
 # v2.108.27
 ## (2023-01-29)
 
