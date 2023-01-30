@@ -1,6 +1,22 @@
 Change log
 -----------
 
+# v2.108.30
+## (2023-01-30)
+
+
+<details>
+<summary> Update layers/meta-balena to e7ea08bd6459cb8a0c0c59b61ef3a46caaeaaa68 [Renovate Bot] </summary>
+
+> ## meta-balena-2.108.30
+> ### (Invalid date)
+> 
+> * redsocks: Deploy README and sample configration file [Alexandru Costache]
+> * recipes-bsp/u-boot: Import extra uboot environment from scanned devices [Alexandru Costache]
+> 
+
+</details>
+
 # v2.108.29
 ## (2023-01-29)
 

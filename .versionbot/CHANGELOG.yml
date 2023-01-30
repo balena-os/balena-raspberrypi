@@ -1,4 +1,51 @@
 - commits:
+    - subject: Update layers/meta-balena to e7ea08bd6459cb8a0c0c59b61ef3a46caaeaaa68
+      hash: 8fdc9922a9176f59c3335fd4f0da5d18ad31e0cf
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to e7ea08bd6459cb8a0c0c59b61ef3a46caaeaaa68
+        changelog-entry: Update layers/meta-balena to e7ea08bd6459cb8a0c0c59b61ef3a46caaeaaa68
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "redsocks: Deploy README and sample configration file"
+              hash: caed40bf5a5d02a9a06e2a3fb0735dc45995994e
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+            - subject: "recipes-bsp/u-boot: Import extra uboot environment from scanned
+                devices"
+              hash: 14420225697fb7fb4b7bf7135ef7367631a92076
+              body: |
+                This allows for the testbot to set resin_flasher_skip=0
+                in the extra_uEnv.txt file of the flasher image and
+                bypass the boot switch detection mechanisms used for
+                specific private device types.
+
+                The boot pins would otherwise prevent the flasher
+                from running if they were set to the eMMC position.
+
+                The flasher extra_uEnv.txt file overrides any resin_flasher_skip
+                value previously configured by the device integration layer.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.108.30
+          title: ""
+          date: 2023-01-30T13:05:34.970Z
+  version: 2.108.30
+  title: ""
+  date: 2023-01-30T14:23:36.766Z
+- commits:
     - subject: Update layers/meta-balena to bdfe242725e83784931987d85f83a35e861683d8
       hash: d594f061cfbe41b2714d1256dee24717cbf379ab
       body: Update layers/meta-balena
