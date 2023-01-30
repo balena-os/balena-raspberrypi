@@ -199,6 +199,11 @@ BALENA_CONFIGS[optimize-size] = " \
     CONFIG_CC_OPTIMIZE_FOR_SIZE=y \
 "
 
+BALENA_CONFIGS:append = " iio_pressure_drivers"
+BALENA_CONFIGS[iio_pressure_drivers] = " \
+    CONFIG_BMP280=m \
+"
+
 # Fix dtbo loading on 64bits,
 # see commit 949b88bb for details
 get_cc_option () {
