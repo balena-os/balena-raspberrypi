@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v2.108.32
+## (2023-01-31)
+
+
+<details>
+<summary> Update layers/meta-balena to ccab7759d432f7be780c194087c38eca7e02084d [Renovate Bot] </summary>
+
+> ## meta-balena-2.108.32
+> ### (2023-02-01)
+> 
+> * efitools: Allow builds for ARM architecture [Alex Gonzalez]
+> 
+
+</details>
+
 # v2.108.31
 ## (2023-01-31)
 

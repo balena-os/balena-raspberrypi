@@ -1,4 +1,33 @@
 - commits:
+    - subject: Update layers/meta-balena to ccab7759d432f7be780c194087c38eca7e02084d
+      hash: e979ce80a75c60b583108af56162bdd98ff38566
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to ccab7759d432f7be780c194087c38eca7e02084d
+        changelog-entry: Update layers/meta-balena to ccab7759d432f7be780c194087c38eca7e02084d
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "efitools: Allow builds for ARM architecture"
+              hash: 03962bda4860726332715df5fbdec05a475b6026
+              body: >
+                There are ARM systems that use UEFI, and for example the `efivar` package
+
+                can also be built for ARM architectures.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.108.32
+          title: ""
+          date: 2023-01-31T15:09:50.319Z
+  version: 2.108.32
+  title: ""
+  date: 2023-01-31T16:23:06.248Z
+- commits:
     - subject: Update layers/meta-balena to c3560cf861dbd8505adecd0e12b280c85a0eac88
       hash: 3d66111dc5dbd5fe0f2a02fa76659417751e13de
       body: Update layers/meta-balena
