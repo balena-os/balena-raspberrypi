@@ -1,4 +1,39 @@
 - commits:
+    - subject: Update layers/meta-balena to c3560cf861dbd8505adecd0e12b280c85a0eac88
+      hash: 3d66111dc5dbd5fe0f2a02fa76659417751e13de
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to c3560cf861dbd8505adecd0e12b280c85a0eac88
+        changelog-entry: Update layers/meta-balena to c3560cf861dbd8505adecd0e12b280c85a0eac88
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "rollback-health: bind-mount EFI partition when split from boot"
+              hash: 2ebbcd90b5e2b12ff44af0f85183329b3db773e7
+              body: >
+                With secure boot enabled boot and EFI partition are split apart.
+
+                During rollback-health, when bind-mounting inactive root to run
+
+                old hooks from, the EFI partition must be bind-mounted as well
+
+                otherwise the /mnt/boot/EFI symlink is invalid and rollback fails
+
+                to deploy files into that directory.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.108.31
+          title: ""
+          date: 2023-01-31T07:07:29.232Z
+  version: 2.108.31
+  title: ""
+  date: 2023-01-31T08:20:21.847Z
+- commits:
     - subject: Update layers/meta-balena to e7ea08bd6459cb8a0c0c59b61ef3a46caaeaaa68
       hash: 8fdc9922a9176f59c3335fd4f0da5d18ad31e0cf
       body: Update layers/meta-balena
