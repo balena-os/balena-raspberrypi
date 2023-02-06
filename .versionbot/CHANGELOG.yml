@@ -1,4 +1,21 @@
 - commits:
+    - subject: Add IIO pressure kernel drivers
+      hash: d0d04cea76f28e53181d2fc68319b9dfdac39a13
+      body: |
+        These have been requested by customers to use with their applications.
+
+        Fixes #821
+      footer:
+        Changelog-entry: Add IIO pressure kernel drivers
+        changelog-entry: Add IIO pressure kernel drivers
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.108.32+rev1
+  title: ""
+  date: 2023-02-06T17:03:44.603Z
+- commits:
     - subject: Update layers/meta-balena to ccab7759d432f7be780c194087c38eca7e02084d
       hash: e979ce80a75c60b583108af56162bdd98ff38566
       body: Update layers/meta-balena
