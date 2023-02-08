@@ -1,4 +1,219 @@
 - commits:
+    - subject: Update balena-yocto-scripts to a30795acce48c90b23fcac273fe0cbcc7497c779
+      hash: abccf677b87dbc8f6408fe032f5f6bec85118acb
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to a30795acce48c90b23fcac273fe0cbcc7497c779
+        changelog-entry: Update balena-yocto-scripts to a30795acce48c90b23fcac273fe0cbcc7497c779
+      author: renovate[bot]
+      nested:
+        - commits:
+            - subject: "balene-generate-ami: remove key name"
+              hash: cebc5f30447785bdbad8260f0975bd1f9f261a9b
+              body: >
+                No need to provide a key name as the instance only needs to be accessible
+
+                via balenaCloud.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.21
+          title: ""
+          date: 2023-01-19T12:37:05.534Z
+        - commits:
+            - subject: "jenkins_generate_ami: default to pull cloud-config apps from
+                balena_os"
+              hash: 0e3f9ca33265d1fc84244a4e3e86b9e7a7c85715
+              body: >
+                These applications have been moved to the `balena_os` organization.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.20
+          title: ""
+          date: 2023-01-18T08:56:44.815Z
+        - commits:
+            - subject: "balena-generate-ami: do not remove AMI snapshot"
+              hash: 7022aa4933c5134d22b1f9f7e60c9e76fecca36a
+              body: >
+                This snapshot is attached to the AMI and can only be removed after
+
+                de-registering the AMI.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "jenkins_generate_ami: use balena_os tokens instead of org specific
+                token"
+              hash: 526fe49137cd619162d4e1307b977d1aa85401b0
+              body: >
+                No need to complicate the job configuration with two tokens if we can do
+
+                with one.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "jenkins_build: respect the preserve build flag"
+              hash: 30ff6dc19dafe9f7860df65c5552e4a25061a37b
+              body: >
+                Do not remove the build directory if the preserve build flag is set.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-generate-ami: cleanup images after deployment"
+              hash: 9c9d16e927a472aa06ef7e08ae63d3167747b166
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-generate-ami: test image before making it public"
+              hash: 561d67921c0f4251dc4ccdbe41864bc0a565524c
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.19
+          title: ""
+          date: 2023-01-14T17:40:18.215Z
+        - commits:
+            - subject: "balena-generate-ami: Enable TPM support on x86_64 only"
+              hash: 7ee973096d3d93f0006816c310cf41d0d5097d86
+              body: |
+                On aarch64 this fails with
+                "Invalid machineArchitecture value 'arm64' for tpmSupport."
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: balena-yocto-scripts-1.19.18
+          title: ""
+          date: 2023-01-09T08:14:37.524Z
+        - commits:
+            - subject: "jenkins_generate_ami: support using both live and installer images as
+                AMIs"
+              hash: fa4fcbb106695ba646a383d4efff3cc325626330
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-generate-ami: Enable nitroTPM support"
+              hash: 23cb657399160486341dd05cea555504845f1d22
+              body: |
+                This allows to use secure boot in AMI images.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "jenkins_build: add argument to build OS development images"
+              hash: 07f20dae6f06831181fc2ae306f9c4a52499ca24
+              body: >
+                Building OS development images is useful for example when debugging and
+
+                testing AMI images.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.17
+          title: ""
+          date: 2022-12-23T15:16:00.319Z
+        - commits:
+            - subject: "dockerfile: balena-push-env: update balena CLI version to v14.5.15"
+              hash: 06f4be81c2dd37eb6a6da51024d6857b32200d20
+              body: >
+                Newer supervisor require a CLI >= v13.5.1 to migrate from v2 apps.json
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "jenkins_generate_ami: add balena org for preloaded app"
+              hash: ee48444b36d3597264a7694b2246b3fee4f6b659
+              body: >
+                Specify the organization and block name when preloading so it is not
+
+                ambiguous.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "jenkins_generate_ami: distinguish between staging and production"
+              hash: 3a36e81b8a0043cfbbc472dd70b0049b3cef9247
+              body: |
+                Use different tokens to preload from staging and production.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.16
+          title: ""
+          date: 2022-12-16T11:06:42.331Z
+        - commits:
+            - subject: "workflows: add flowzone"
+              hash: 025f8399061f4a0ca6651d643c8c2016c8b1cfa7
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.15
+          title: ""
+          date: 2022-12-16T10:49:48.888Z
+  version: 2.108.32+rev2
+  title: ""
+  date: 2023-02-08T11:58:52.419Z
+- commits:
     - subject: Add IIO pressure kernel drivers
       hash: d0d04cea76f28e53181d2fc68319b9dfdac39a13
       body: |
