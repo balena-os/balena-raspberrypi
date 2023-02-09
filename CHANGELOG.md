@@ -1,6 +1,86 @@
 Change log
 -----------
 
+# v2.108.32+rev4
+## (2023-02-09)
+
+
+<details>
+<summary> Update contracts to 79998a238ca981b890dfb9206f50bde2d367ff7c [Renovate Bot] </summary>
+
+> ## contracts-2.0.42
+> ### (2023-02-06)
+> 
+> * Add golang v1.20 [Trong Nghia Nguyen]
+> * Add node v19.6.0 and v18.14.0 [Trong Nghia Nguyen]
+> 
+> ## contracts-2.0.41
+> ### (2023-02-01)
+> 
+> * Add support for latest dotnet releases v7 (7.0.102) and v6 (6.0.113) [Trong Nghia Nguyen]
+> * Add node v19.5.0 [Trong Nghia Nguyen]
+> 
+> ## contracts-2.0.40
+> ### (2023-01-18)
+> 
+> * Add golang v1.19.5 and v1.18.10 [Trong Nghia Nguyen]
+> 
+> ## contracts-2.0.39
+> ### (2023-01-12)
+> 
+> * hw.device-type: Add Radxa CM3 on Raspberry Pi Compute Module 4 IO Board [Florin Sarbu]
+> 
+> ## contracts-2.0.38
+> ### (2023-01-07)
+> 
+> * Forecr DSBOARD NX2 Xavier NX eMMC: Add community device-type [Alexandru Costache]
+> 
+> ## contracts-2.0.37
+> ### (2023-01-07)
+> 
+> * Add node v18.13.0 and v19.4.0 [Trong Nghia Nguyen]
+> 
+> ## contracts-2.0.36
+> ### (2022-12-22)
+> 
+> * Fix owa5x slug [Trong Nghia Nguyen]
+> 
+> ## contracts-2.0.35
+> ### (2022-12-20)
+> 
+> * hw.device-type: Add Owasys owa5X device [Alvaro Guzman]
+> 
+> ## contracts-2.0.34
+> ### (2022-12-16)
+> 
+> * Flowzone: Allow external contributions [Florin Sarbu]
+> 
+> ## contracts-2.0.33
+> ### (2022-12-16)
+> 
+> * Flowzone: Use inherited secrets [Florin Sarbu]
+> 
+> ## contracts-2.0.32
+> ### (2022-12-15)
+> 
+> * Add node v19.3.0 v16.19.0 and v14.21.2 [Trong Nghia Nguyen]
+> 
+> ## contracts-2.0.31
+> ### (2022-12-10)
+> 
+> * Add partials for dotnet v7 [Trong Nghia Nguyen]
+> 
+> ## contracts-2.0.30
+> ### (2022-12-09)
+> 
+> * Add support for Alpine Linux v3.17 [Trong Nghia Nguyen]
+> * Add dotnet v7, update v6.x and v3.x to latest versions [Trong Nghia Nguyen]
+> * Add Python v3.11.1 v3.10.9 v3.9.16 v3.8.16 and v3.7.16 [Trong Nghia Nguyen]
+> * Add Golang v1.19.4 and v1.18.9 [Trong Nghia Nguyen]
+> 
+
+</details>
+
 # v2.108.32+rev3
 ## (2023-02-08)
 
