@@ -1,6 +1,192 @@
 Change log
 -----------
 
+# v2.110.3
+## (2023-02-09)
+
+
+<details>
+<summary> Update layers/meta-balena to 2c4c90350f1748a5b8d11441d84023c65069f01d [Renovate Bot] </summary>
+
+> ## meta-balena-2.110.3
+> ### (2023-02-09)
+> 
+> * os-helpers: remove shebangs as these are not meant to be executed [Alex Gonzalez]
+> * resindataexpander: Fix formatting [Alex Gonzalez]
+> * resin-init-flasher: Extract code that resolved internal device [Alex Gonzalez]
+> * os-helpers-fs: Add shared code from resin-init-flasher [Alex Gonzalez]
+> * resin-init-flasher: remove unused variable [Alex Gonzalez]
+> * resin-init-flasher: Use the default for the external boot partition mount [Alex Gonzalez]
+> * resin-init-flasher: search for images to copy instead of hardcoding paths [Alex Gonzalez]
+> * resin-init-flasher: Do not  hardcode the path to the internal boot device [Alex Gonzalez]
+> * resin-init-flasher: remove systemd dependency [Alex Gonzalez]
+> * resin-init-flasher: Do not hardcode path to the raw image [Alex Gonzalez]
+> * initrdscript: prepare: expose path to initramfs logs [Alex Gonzalez]
+> * initrdscript: resindataexpander: skip for flasher images [Alex Gonzalez]
+> * docs: add initramfs overview [Alex Gonzalez]
+> 
+> ## meta-balena-2.110.2
+> ### (2023-02-07)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 4f63a2d [Renovate Bot] </summary>
+> 
+>> ### leviathan-2.18.1
+>> #### (2023-02-07)
+>> 
+>> * patch: Automate docs deployment with Flowzone [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.18.0
+>> #### (2023-02-07)
+>> 
+>> * Update core/contracts digest to 7797750 [Renovate Bot]
+>> 
+>> ### leviathan-2.17.6
+>> #### (2023-02-07)
+>> 
+>> * patch: Update client lockfile [Vipul Gupta (@vipulgupta2048)]
+>> * patch: Update core lockfile [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.17.5
+>> #### (2023-02-06)
+>> 
+>> * patch: Update core dependencies [Vipul Gupta (@vipulgupta2048)]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.110.1
+> ### (2023-02-07)
+> 
+> * renovate: Include to and from versions for supervisor and engine [Kyle Harding]
+> 
+> ## meta-balena-2.110.0
+> ### (2023-02-07)
+> 
+> * Update balena-supervisor to v14.7.1 [Renovate Bot]
+> 
+> ## meta-balena-2.109.2
+> ### (2023-02-07)
+> 
+> * efitools: backport patch to fix build failure [Joseph Kogut]
+> * efitools: fix cross-compilation on arm [Joseph Kogut]
+> * Only include EFI tools if the machine feature is defined [Alex Gonzalez]
+> 
+> ## meta-balena-2.109.1
+> ### (2023-02-06)
+> 
+> * resin-extra-udev-rules: Remove after all device types have been updated [Alex Gonzalez]
+> 
+> ## meta-balena-2.109.0
+> ### (2023-02-05)
+> 
+> * kernel-balena: Remove apparmor support [Alex Gonzalez]
+> 
+> ## meta-balena-2.108.39
+> ### (2023-02-03)
+> 
+> * flasher: handle user mode system w/out secure boot [Joseph Kogut]
+> * flasher: fix keys not enrolling with secure boot enabled [Joseph Kogut]
+> * flasher: fix secure boot setup with enrolled keys [Joseph Kogut]
+> 
+> ## meta-balena-2.108.38
+> ### (2023-02-03)
+> 
+> 
+> <details>
+> <summary> Update leviathan to v2.17.4 [Kyle Harding] </summary>
+> 
+>> ### leviathan-2.17.4
+>> #### (2023-01-28)
+>> 
+>> * patch: Upgrade client to v18 [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.17.3
+>> #### (2023-01-26)
+>> 
+>> * patch: Update client dependencies [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.17.2
+>> #### (2023-01-19)
+>> 
+>> * chore(deps): update alpine docker tag to v3.17.1 [renovate[bot]]
+>> 
+>> ### leviathan-2.17.1
+>> #### (2023-01-19)
+>> 
+>> * patch: Convert balenaCloudInteractor to JS [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.17.0
+>> #### (2023-01-19)
+>> 
+>> * chore(deps): update dependency json5 [security] [renovate[bot]]
+>> 
+>> ### leviathan-2.16.1
+>> #### (2023-01-19)
+>> 
+>> * split swtpm service into separate compose file [Joseph Kogut]
+>> 
+>> ### leviathan-2.16.0
+>> #### (2023-01-18)
+>> 
+>> * chore(deps): update core/contracts digest to 8392bb2 [renovate[bot]]
+>> 
+>> ### leviathan-2.15.1
+>> #### (2023-01-17)
+>> 
+>> * patch: Drop config NPM package [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.15.0
+>> #### (2023-01-14)
+>> 
+>> * chore(deps): update dependency ansi-regex [security] [renovate[bot]]
+>> 
+>> ### leviathan-2.14.9
+>> #### (2023-01-05)
+>> 
+>> * compose: qemu: add swtpm service [Joseph Kogut]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.108.37
+> ### (2023-02-02)
+> 
+> * Update balena-engine to v20.10.26 [Renovate Bot]
+> 
+> ## meta-balena-2.108.36
+> ### (2023-02-02)
+> 
+> * flasher: remove duplicate EFI boot entries [Joseph Kogut]
+> * flasher: create EFI boot entry [Joseph Kogut]
+> * common: os-helpers-fs: fix get_dev_path_from_label w/ luks [Joseph Kogut]
+> * flasher: make secure boot opt-in [Joseph Kogut]
+> * flasher: ensure image is signed before enrollment [Joseph Kogut]
+> * flasher: refactor secure boot block [Joseph Kogut]
+> 
+> ## meta-balena-2.108.35
+> ### (2023-02-01)
+> 
+> * renovate: Add regex manager for balena-engine [Kyle Harding]
+> 
+> ## meta-balena-2.108.34
+> ### (2023-02-01)
+> 
+> * docs: Add secure boot and disk encryption overview [Alex Gonzalez]
+> * hostapp-update-hooks: Fail if new keys are used [Alex Gonzalez]
+> * resin-init-flasher: In setupmode program new keys [Alex Gonzalez]
+> 
+> ## meta-balena-2.108.33
+> ### (2023-02-01)
+> 
+> * tests: os: skip persistent logging test for pi0 [rcooke-warwick]
+> 
+
+</details>
+
 # v2.108.32+rev4
 ## (2023-02-09)
 
