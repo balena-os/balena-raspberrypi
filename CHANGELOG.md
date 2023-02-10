@@ -1,6 +1,32 @@
 Change log
 -----------
 
+# v2.110.4
+## (2023-02-10)
+
+
+<details>
+<summary> Update layers/meta-balena to 152fe5b0fde438279bf0bc05e8f51d2cafb28fc0 [Renovate Bot] </summary>
+
+> ## meta-balena-2.110.4
+> ### (2023-02-10)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 589449d [Renovate Bot] </summary>
+> 
+>> ### leviathan-2.19.0
+>> #### (2023-02-10)
+>> 
+>> * Update core/contracts digest to 35f4223 [Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v2.110.3+rev1
 ## (2023-02-10)
 

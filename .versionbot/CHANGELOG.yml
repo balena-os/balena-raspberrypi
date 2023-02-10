@@ -1,4 +1,43 @@
 - commits:
+    - subject: Update layers/meta-balena to 152fe5b0fde438279bf0bc05e8f51d2cafb28fc0
+      hash: 47a86aa8f03574143714b1e6ff5054f1e9705dc9
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 152fe5b0fde438279bf0bc05e8f51d2cafb28fc0
+        changelog-entry: Update layers/meta-balena to 152fe5b0fde438279bf0bc05e8f51d2cafb28fc0
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: Update tests/leviathan digest to 589449d
+              hash: 52969e49099d62c2138d0beb77e8d2e594cfac44
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update core/contracts digest to 35f4223
+                      hash: e961e26202498739b02e204ac20783b304274835
+                      body: |
+                        Update core/contracts to
+
+                        Update core/contracts from  to
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                      author: Renovate Bot
+                      nested: []
+                  version: leviathan-2.19.0
+                  title: ""
+                  date: 2023-02-10T06:55:02.463Z
+          version: meta-balena-2.110.4
+          title: ""
+          date: 2023-02-10T16:27:06.148Z
+  version: 2.110.4
+  title: ""
+  date: 2023-02-10T18:26:16.877Z
+- commits:
     - subject: Update contracts to 35f42232b2c24e9a43c4b0e171f9644b1b12a686
       hash: 62b991845ee700615145d7b1d3e53f8959f2a28a
       body: Update contracts
