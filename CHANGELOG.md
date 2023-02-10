@@ -1,6 +1,22 @@
 Change log
 -----------
 
+# v2.110.3+rev1
+## (2023-02-10)
+
+
+<details>
+<summary> Update contracts to 35f42232b2c24e9a43c4b0e171f9644b1b12a686 [Renovate Bot] </summary>
+
+> ## contracts-2.0.43
+> ### (2023-02-10)
+> 
+> * Add Fedora 37 (latest) and 38 [Trong Nghia Nguyen]
+> * Add Python v3.11.2 and v3.10.10 [Trong Nghia Nguyen]
+> 
+
+</details>
+
 # v2.110.3
 ## (2023-02-09)
 

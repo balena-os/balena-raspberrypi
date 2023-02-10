@@ -1,4 +1,42 @@
 - commits:
+    - subject: Update contracts to 35f42232b2c24e9a43c4b0e171f9644b1b12a686
+      hash: 62b991845ee700615145d7b1d3e53f8959f2a28a
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 35f42232b2c24e9a43c4b0e171f9644b1b12a686
+        changelog-entry: Update contracts to 35f42232b2c24e9a43c4b0e171f9644b1b12a686
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: Add Fedora 37 (latest) and 38
+              hash: e9e528ee9d20bba224e31f4cacd5c3e3f6be543c
+              body: >
+                Drop support for Fedora 34 35.
+
+                Fedora 36 will be the last version for armv7 as it is no longer supported.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+            - subject: Add Python v3.11.2 and v3.10.10
+              hash: 10b7b888d3d469576a6d097ff5d5257428e91b21
+              body: |
+                Update pip to v23.0 and setuptools to v67.2.0
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+                signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+              author: Trong Nghia Nguyen
+          version: contracts-2.0.43
+          title: ""
+          date: 2023-02-10T05:40:19.804Z
+  version: 2.110.3+rev1
+  title: ""
+  date: 2023-02-10T07:23:52.932Z
+- commits:
     - subject: Update layers/meta-balena to 2c4c90350f1748a5b8d11441d84023c65069f01d
       hash: f077eef417c8f67312444a452084d38228dabed3
       body: Update layers/meta-balena
