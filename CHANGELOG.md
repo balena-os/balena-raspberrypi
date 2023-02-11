@@ -1,6 +1,32 @@
 Change log
 -----------
 
+# v2.111.0
+## (2023-02-11)
+
+
+<details>
+<summary> Update layers/meta-balena to 18d3baaee23803f2b15e45c1ce3b1446e7a87eb1 [Renovate Bot] </summary>
+
+> ## meta-balena-2.111.0
+> ### (2023-02-11)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v14.8.0 [Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-14.8.0
+>> #### (2023-02-10)
+>> 
+>> * Remove dependent devices content in codebase [Christina Ying Wang]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v2.110.4
 ## (2023-02-10)
 
