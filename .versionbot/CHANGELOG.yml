@@ -1,4 +1,31 @@
 - commits:
+    - subject: Update layers/meta-balena to 3e652503831c517ed60bc838c250d2910f2de8fe
+      hash: a8fc23873f2df535c1c088d0b223e0add3a2855a
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 3e652503831c517ed60bc838c250d2910f2de8fe
+        changelog-entry: Update layers/meta-balena to 3e652503831c517ed60bc838c250d2910f2de8fe
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "docs: add section for sb/fde opt-in"
+              hash: 0b6b034cbb0ca5a9cd7a13690d1f8b0b7485e674
+              body: >
+                Document the opt-in boolean for secure boot and full-disk encryption.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.111.2
+          title: ""
+          date: 2023-02-13T14:35:32.625Z
+  version: 2.111.2
+  title: ""
+  date: 2023-02-13T16:26:48.562Z
+- commits:
     - subject: Update layers/meta-balena to ad77fa3dacfa32044deb80c2266e3c2d8e1e13dd
       hash: 82e737818da4bb2d6dcd09a6578bed1477908864
       body: Update layers/meta-balena
