@@ -1,4 +1,42 @@
 - commits:
+    - subject: Update layers/meta-balena to a1621d4de1730a4f943f758b7fd7896d870ef9f7
+      hash: 625a145cc4df7fcb627b382efcf3eb87e472a8aa
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to a1621d4de1730a4f943f758b7fd7896d870ef9f7
+        changelog-entry: Update layers/meta-balena to a1621d4de1730a4f943f758b7fd7896d870ef9f7
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: Update tests/leviathan digest to 975e8ca
+              hash: c20e74bf9f52eb6de9800938c1872fc7c12fbb32
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: "docker-compose: qemu: remove dep on swtpm"
+                      hash: 6d47df092a224b74251d6159f1e57796cc229c3d
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Joseph Kogut <joseph@balena.io>
+                        signed-off-by: Joseph Kogut <joseph@balena.io>
+                      author: Joseph Kogut
+                      nested: []
+                  version: leviathan-2.19.1
+                  title: ""
+                  date: 2023-02-14T01:24:14.769Z
+          version: meta-balena-2.111.3
+          title: ""
+          date: 2023-02-14T03:29:04.625Z
+  version: 2.111.3
+  title: ""
+  date: 2023-02-14T05:24:21.245Z
+- commits:
     - subject: Update layers/meta-balena to 3e652503831c517ed60bc838c250d2910f2de8fe
       hash: a8fc23873f2df535c1c088d0b223e0add3a2855a
       body: Update layers/meta-balena

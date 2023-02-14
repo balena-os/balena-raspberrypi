@@ -1,6 +1,32 @@
 Change log
 -----------
 
+# v2.111.3
+## (2023-02-14)
+
+
+<details>
+<summary> Update layers/meta-balena to a1621d4de1730a4f943f758b7fd7896d870ef9f7 [Renovate Bot] </summary>
+
+> ## meta-balena-2.111.3
+> ### (2023-02-14)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 975e8ca [Renovate Bot] </summary>
+> 
+>> ### leviathan-2.19.1
+>> #### (2023-02-14)
+>> 
+>> * docker-compose: qemu: remove dep on swtpm [Joseph Kogut]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v2.111.2
 ## (2023-02-13)
 
