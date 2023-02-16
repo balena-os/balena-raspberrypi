@@ -1,4 +1,55 @@
 - commits:
+    - subject: Update layers/meta-balena to fd42070393600c11ae162b35f126b2632c3bb694
+      hash: 6d3e73ac784b23cec1b3cea0b4a78df1e64e4be1
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to fd42070393600c11ae162b35f126b2632c3bb694
+        changelog-entry: Update layers/meta-balena to fd42070393600c11ae162b35f126b2632c3bb694
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: Update tests/leviathan digest to 92cb71a
+              hash: 029d02e0f656ed42fda0398a440741b7bf649f56
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update core/contracts digest to 9b8811f
+                      hash: 377606d77cee69fff7f272b58e597f111e99de78
+                      body: |
+                        Update core/contracts to
+
+                        Update core/contracts from  to
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                      author: Renovate Bot
+                      nested: []
+                  version: leviathan-2.20.0
+                  title: ""
+                  date: 2023-02-16T07:39:32.419Z
+                - commits:
+                    - subject: "patch: Improve Getting Started instructions"
+                      hash: 50dfd8d30591dfd7a513e8b135d8866413cf5982
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.19.2
+                  title: ""
+                  date: 2023-02-15T20:15:38.071Z
+          version: meta-balena-2.112.6
+          title: ""
+          date: 2023-02-16T12:52:59.268Z
+  version: 2.112.6
+  title: ""
+  date: 2023-02-16T14:27:54.490Z
+- commits:
     - subject: Update layers/meta-balena to beb261875db907bcfa9ad8604100860c362d9ebe
       hash: f139133aa9872e4c023bd16d88bf1286342b571f
       body: Update layers/meta-balena
