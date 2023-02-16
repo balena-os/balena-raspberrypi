@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v2.112.4+rev1
+## (2023-02-16)
+
+
+<details>
+<summary> Update contracts to 9b8811faee63c0884f367537d3411a8d70f0fcd0 [Renovate Bot] </summary>
+
+> ## contracts-2.0.44
+> ### (2023-02-16)
+> 
+> * Add Golang v1.20.1 and v1.19.6 [Trong Nghia Nguyen]
+> 
+
+</details>
+
 # v2.112.4
 ## (2023-02-15)
 
