@@ -1,4 +1,33 @@
 - commits:
+    - subject: Update layers/meta-balena to beb261875db907bcfa9ad8604100860c362d9ebe
+      hash: f139133aa9872e4c023bd16d88bf1286342b571f
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to beb261875db907bcfa9ad8604100860c362d9ebe
+        changelog-entry: Update layers/meta-balena to beb261875db907bcfa9ad8604100860c362d9ebe
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "grub: Add chain module to support multiboot"
+              hash: 4bf5883849e869cfe3e166cd69e2db8e7861b492
+              body: >
+                This is used to support falling back into the original OS when
+
+                performing a brownfield migration into balenaOS from a flasher image.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.112.5
+          title: ""
+          date: 2023-02-16T10:19:12.824Z
+  version: 2.112.5
+  title: ""
+  date: 2023-02-16T12:33:22.665Z
+- commits:
     - subject: Update contracts to 9b8811faee63c0884f367537d3411a8d70f0fcd0
       hash: d4b3371a42eeb22ecebdab5f1e1a514628357afd
       body: Update contracts
