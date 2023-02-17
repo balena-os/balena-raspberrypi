@@ -1,6 +1,32 @@
 Change log
 -----------
 
+# v2.112.8
+## (2023-02-17)
+
+
+<details>
+<summary> Update layers/meta-balena to 70d37200e8af95b6a784ead0682708c7e7f3acfb [Renovate Bot] </summary>
+
+> ## meta-balena-2.112.8
+> ### (2023-02-17)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v14.9.1 [Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-14.9.1
+>> #### (2023-02-15)
+>> 
+>> * Always lower case the cpu id to avoid bouncing between casing when reporting [Pagan Gazzard]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v2.112.7
 ## (2023-02-16)
 
