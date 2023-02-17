@@ -1,4 +1,22 @@
 - commits:
+    - subject: Update meta-balena from v2.107.40 to v2.107.43
+      hash: 8e0c67bb8067629d5fb69b74bd67f60857dca82e
+      body: |
+        Update meta-balena from 2.107.40 to 2.107.43
+
+        This brings in patches to the tests that will allow the RPI0 to be
+        released.
+      footer:
+        Changelog-entry: Update meta-balena from v2.107.40 to v2.107.43
+        changelog-entry: Update meta-balena from v2.107.40 to v2.107.43
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2023.1.1
+  title: ""
+  date: 2023-02-17T20:30:51.372Z
+- commits:
     - subject: "linux-raspberrypi: Fix missing gpio-poweroff overlay"
       hash: f7a3a5954516af9a8697437d6b13d50f4e3eced2
       body: |
