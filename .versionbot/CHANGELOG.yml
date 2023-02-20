@@ -1,4 +1,31 @@
 - commits:
+    - subject: Update contracts to 93ba80ca1ffeced474d0567cc58703cdbeb629d5
+      hash: 7bf8adb812116a9cc5d19724b6f8d04a5fee47b1
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 93ba80ca1ffeced474d0567cc58703cdbeb629d5
+        changelog-entry: Update contracts to 93ba80ca1ffeced474d0567cc58703cdbeb629d5
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: <owa5X logo> Updated owa5X logo.
+              hash: 65dc08be089c25740fdc53ea86b4e8037fff600b
+              body: >
+                The previous logo had some problems when show in Balena's dashboard and
+                other places.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alvaro Guzman <alvaro.guzman@owasys.com>
+                signed-off-by: Alvaro Guzman <alvaro.guzman@owasys.com>
+              author: Alvaro Guzman
+          version: contracts-2.0.46
+          title: ""
+          date: 2023-02-20T10:57:19.224Z
+  version: 2.112.8+rev2
+  title: ""
+  date: 2023-02-20T12:31:09.684Z
+- commits:
     - subject: Update contracts to 103037ca9624070c01ed388e8fd425bef609e924
       hash: f9b3765de83b90d318db139e5086fc20d9fe4eb1
       body: Update contracts
