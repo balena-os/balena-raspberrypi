@@ -7,6 +7,12 @@ on:
       - "main"
       - "master"
       - '20[0-9][0-9].[0-1]?[1470].x'
+  pull_request_target:
+    types: [opened, synchronize, closed]
+    branches:
+      - "main"
+      - "master"
+      - '20[0-9][0-9].[0-1]?[1470].x'
 
 jobs:
   flowzone:
