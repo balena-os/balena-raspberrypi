@@ -1,4 +1,37 @@
 - commits:
+    - subject: Update layers/meta-balena to 2e4f0c9530e0c8ea71b52a6e6a4f12fd01f1643b
+      hash: ad6accee80861ef8d087e2f8c73d2fc23ad7b8f9
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 2e4f0c9530e0c8ea71b52a6e6a4f12fd01f1643b
+        changelog-entry: Update layers/meta-balena to 2e4f0c9530e0c8ea71b52a6e6a4f12fd01f1643b
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "os-helpers-fs: get_internal_device() skip disks w/out media"
+              hash: 1da9ea7a3ea1fb87ce31c9281376c2ad5110c1dd
+              body: >
+                Block device nodes are sometimes created without attached media. These
+
+                devices can neither be read from, nor written to. In this case, the
+
+                flasher will attempt to install to the invalid disk and fail.  Detect
+
+                this case and skip the disk to allow flashing to continue.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.112.12
+          title: ""
+          date: 2023-02-20T23:28:32.426Z
+  version: 2.112.12
+  title: ""
+  date: 2023-02-21T01:54:37.027Z
+- commits:
     - subject: Update layers/meta-balena to d21da1fc034f4e0b09a457d0ed5eda47d0a18e13
       hash: 347f0b75ef1b74b3ea5f1c9617520285ea8d3ee8
       body: Update layers/meta-balena
