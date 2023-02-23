@@ -33,7 +33,7 @@ module.exports =
 		machine: 'fincm3'
 		image: 'balena-image'
 		fstype: 'balenaos-img'
-		version: 'yocto-honister'
+		version: 'yocto-kirkstone'
 		deployArtifact: 'balena-image-fincm3.balenaos-img'
 		compressed: true
 
