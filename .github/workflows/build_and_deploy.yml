@@ -3,7 +3,7 @@ name: 'Deploy on release tag'
 on:
   push:
     tags:
-      - v[0-9]+.[0-9]+.[0-9]+\+?r?e?v?[0-9]?
+      - v[0-9]+.[0-9]+.[0-9]+\+?r?e?v?*
       - v20[0-9][0-9].[0-1]?[1470].[0-9]+
 
   # Allows you to run this workflow manually from the Actions tab
