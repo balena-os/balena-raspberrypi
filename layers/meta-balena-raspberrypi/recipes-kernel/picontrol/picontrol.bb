@@ -10,8 +10,9 @@ SRC_URI = " \
 	file://0002-Search-config-file-in-mnt-boot.patch \
 "
 
-# Corresponds to tag raspberrypi-kernel_9.20200616-4.19.95+revpi1
-SRCREV ="72a58797b2eed6edab99795476108cfeec95c8d9"
+# Commit for raspberrypi-kernel_1%9.20221118-5.10.152+revpi1
+SRCREV ="f6a3014af983caeae09318e6379e543b43d1c356"
+
 
 S = "${WORKDIR}/git"
 
