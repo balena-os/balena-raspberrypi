@@ -12,4 +12,6 @@ KERNEL_MODULE_AUTOLOAD += "piControl"
 # the following overlay is not present in the kernel we use for the Revolution Pis
 KERNEL_DEVICETREE:remove = "overlays/uart0.dtbo"
 
+# pin existing revpi machines to older picontrol for kernel 4.19.95
+PREFERRED_VERSION_picontrol = "2020.06.16"
 IMAGE_INSTALL:append = " picontrol"
