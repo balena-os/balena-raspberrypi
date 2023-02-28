@@ -4,6 +4,8 @@ include conf/machine/raspberrypi3.conf
 SOC_FAMILY = "rpi:revpi"
 
 PREFERRED_PROVIDER_virtual/kernel = "linux-kunbus"
+# pin existing revpi machines to the 4.19.95 kernel (until we fix the HUP altboot rollback issue from 4.19.95 to 5.10.152 kernel)
+PREFERRED_VERSION_linux-kunbus = "4.19.95%"
 
 KERNEL_MODULE_AUTOLOAD += "piControl"
 
