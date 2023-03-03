@@ -28,7 +28,7 @@ module.exports =
 		machine: 'raspberrypi3-64'
 		image: 'balena-image'
 		fstype: 'balenaos-img'
-		version: 'yocto-honister'
+		version: 'yocto-kirkstone'
 		deployArtifact: 'balena-image-raspberrypi3-64.balenaos-img'
 		compressed: true
 
