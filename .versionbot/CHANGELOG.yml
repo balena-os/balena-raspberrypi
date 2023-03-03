@@ -1,4 +1,41 @@
 - commits:
+    - subject: Update meta-raspberrypi to latest kirkstone
+      hash: c6285e39ce07421779cd9e2f5e1d17d7d9381fa7
+      body: ""
+      footer:
+        Changelog-entry: Update meta-raspberrypi to latest kirkstone
+        changelog-entry: Update meta-raspberrypi to latest kirkstone
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+    - subject: trigger deploy builds on multi-digit revisions too
+      hash: 08c57baea5f188f8204c4944ae0bc42360b88547
+      body: >
+        According to github action syntax [1], there is no special character
+
+        to denote a match on zero or more of the preceding character, so
+
+        replace `[0-9]?` which only matches zero or one of the preceding
+
+        characters with a `*`.
+
+
+        [1] https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
+
+
+        [skip ci]
+      footer:
+        Changelog-entry: trigger deploy builds on multi-digit revisions too
+        changelog-entry: trigger deploy builds on multi-digit revisions too
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.112.12+rev3
+  title: ""
+  date: 2023-03-03T06:20:07.071Z
+- commits:
     - subject: Update CI workflow to allow external contributions
       hash: 0d5ece2ad25fd1b7d7fa8601e8d04c95feb4869a
       body: ""

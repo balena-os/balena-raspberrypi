@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.112.12+rev3
+## (2023-03-03)
+
+* Update meta-raspberrypi to latest kirkstone [Florin Sarbu]
+* trigger deploy builds on multi-digit revisions too [Alex Gonzalez]
+
 # v2.112.12+rev2
 ## (2023-02-21)
 
