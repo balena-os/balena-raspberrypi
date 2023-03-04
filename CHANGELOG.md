@@ -1,6 +1,74 @@
 Change log
 -----------
 
+# v2.113.4
+## (2023-03-04)
+
+
+<details>
+<summary> Update layers/meta-balena to f5bcab2926c9cf709954ec6acf87b839abe7a489 [Renovate Bot] </summary>
+
+> ## meta-balena-2.113.4
+> ### (2023-03-03)
+> 
+> * balena-keys: do not ship certificates in DER format [Michal Toman]
+> 
+> ## meta-balena-2.113.3
+> ### (2023-03-02)
+> 
+> * balena-units-conf: launch os-config on config changes [Alex Gonzalez]
+> 
+> ## meta-balena-2.113.2
+> ### (2023-03-02)
+> 
+> * Refer to balenaEngine by its full name [Leandro Motta Barros]
+> 
+> ## meta-balena-2.113.1
+> ### (2023-02-28)
+> 
+> * os-helpers-fs: formatting and fixing lint warning [Alex Gonzalez]
+> * os-helpers-fs: fix check for media attached [Alex Gonzalez]
+> * initrdscripts: migrate: use du instead of wc to calculate byte sizes [Alex Gonzalez]
+> 
+> ## meta-balena-2.113.0
+> ### (2023-02-25)
+> 
+> * resin-init-flasher: use logging helper [Alex Gonzalez]
+> * resin-init-flasher: replace shutdown for reboot in case of migration [Alex Gonzalez]
+> * README: add installer section [Alex Gonzalez]
+> * initrdscripts: Add migration module [Alex Gonzalez]
+> * integration layers: use `android-tools` from Yocto Dunfell and before [Alex Gonzalez]
+> * resin-init-flasher: comply with recovery mode [Alex Gonzalez]
+> * initrdscritps: Move moving /run mountpoint from rootfs to migrate module [Alex Gonzalez]
+> * initrdscripts: add recovery module [Alex Gonzalez]
+> 
+> ## meta-balena-2.112.15
+> ### (2023-02-24)
+> 
+> * os-helpers-fs: add dependency on util-linux fdisk [Alex Gonzalez]
+> 
+> ## meta-balena-2.112.14
+> ### (2023-02-22)
+> 
+> * balena-config-vars: Remove dependency on fatrw [Alex Gonzalez]
+> * balena-config-vars: split in two packages [Alex Gonzalez]
+> * Add raid support based on machine features [Alex Gonzalez]
+> * packagegroup-resin: add resin-device-progress dependency [Alex Gonzalez]
+> * resin-init-flasher: remove device-register and device-progress dependencies [Alex Gonzalez]
+> * resin-init-flasher: reduce dependencies [Alex Gonzalez]
+> * os-helpers-fs: replace inform with info helper [Alex Gonzalez]
+> * resin-init-flasher: Build time check on INTERNAL_DEVICE_KERNEL only for flasher device types [Alex Gonzalez]
+> * resin-init-flasher: wait for the by-label links to be created [Alex Gonzalez]
+> 
+> ## meta-balena-2.112.13
+> ### (2023-02-22)
+> 
+> * recipes-bsp/u-boot: Disable saveenv shell command [Alexandru Costache]
+> * Update tests/leviathan digest to 771bac8 [Renovate Bot]
+> 
+
+</details>
+
 # v2.112.12+rev3
 ## (2023-03-03)
 

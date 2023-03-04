@@ -1,4 +1,474 @@
 - commits:
+    - subject: Update layers/meta-balena to f5bcab2926c9cf709954ec6acf87b839abe7a489
+      hash: eda0de9aff21f9311381fef97b2ff9a3a4813449
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to f5bcab2926c9cf709954ec6acf87b839abe7a489
+        changelog-entry: Update layers/meta-balena to f5bcab2926c9cf709954ec6acf87b839abe7a489
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "balena-keys: do not ship certificates in DER format"
+              hash: bef02fa7e4800e8c2370b6323ddfc56fb9adec62
+              body: >
+                We have added DER certificates because it is the only format
+
+                that QEMU/TianoCore accepts in UEFI setup. Since we made setup mode
+
+                work properly, there is no need to program the QEMU keys manually
+
+                and therefore there is no reason to pollute the boot partition with
+
+                the DER files. If indeed necessary, they can always be extracted
+
+                from the ESL, which is still shipped. Shipping the DER files is also
+
+                not possible when db uses hashes instead of certificates, which we
+
+                want to move towards.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.113.4
+          title: ""
+          date: 2023-03-03T14:57:31.134Z
+        - commits:
+            - subject: "balena-units-conf: launch os-config on config changes"
+              hash: b3324272950bffa587963b8ce53d7111ebc04471
+              body: >
+                This allows to transition from unmanaged to managed by just writing
+
+                a config.json file, like it's the case with AWS cloud configuration.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.113.3
+          title: ""
+          date: 2023-03-02T21:55:35.239Z
+        - commits:
+            - subject: Refer to balenaEngine by its full name
+              hash: 74b747bd20bf906704b75058f43248f8a5f0c20c
+              body: >
+                Previously, it was being referred to only as "balena". Being explicit
+
+                that this is about balenaEngine makes it simpler to grep for
+
+                Engine-related portions of balenaOS. Might also help a tad bit when
+
+                looking at logs.
+              footer:
+                Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                Change-type: patch
+                change-type: patch
+              author: Leandro Motta Barros
+              nested: []
+          version: meta-balena-2.113.2
+          title: ""
+          date: 2023-03-02T13:07:15.621Z
+        - commits:
+            - subject: "os-helpers-fs: formatting and fixing lint warning"
+              hash: 69878f0fa6c83dfc7d38921c364577f00c2a4461
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "os-helpers-fs: fix check for media attached"
+              hash: 7f84a4220469f7324997488945ea2fd8eda45bb5
+              body: |
+                Fix the check for media attached to device that fails with:
+
+                sh: [: -l: binary operator expected
+
+                Also, redirect all output to use only the exit code.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "initrdscripts: migrate: use du instead of wc to calculate byte sizes"
+              hash: 28eb87859810e0a9e43936b4fc893fc5893510b0
+              body: >
+                The `du` utility has the same output format for single or several files,
+
+                while the `wc` utility doesn't and does not display a total for single
+
+                files.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.113.1
+          title: ""
+          date: 2023-02-28T13:33:39.382Z
+        - commits:
+            - subject: "resin-init-flasher: use logging helper"
+              hash: a34d154e494addc1f32a088909d56b7b237a731a
+              body: |
+                Replace custom logging with helper functions.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "resin-init-flasher: replace shutdown for reboot in case of migration"
+              hash: f5671f9514216c93b4770a20adc9ff71730f8f63
+              body: >
+                When migrating, we can't assume a device can be remotely powered on, so
+
+                finish the flashing with a reboot instead of a shutdown.
+
+
+                This is possible as the initramfs does not currently have a shutdown
+
+                command and avoids the complexity of having to detect whether we are
+
+                running from initramfs or not.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "README: add installer section"
+              hash: 736f12029c93427fb6fe75cbb18fe9a0a73768a9
+              body: |
+                Document the installer section of `config.json`
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "initrdscripts: Add migration module"
+              hash: c59a7090f281a0b0e1602efded31816101c094b1
+              body: >
+                This module allows to program the internal storage from initramfs hence
+
+                making it possible to migrate an existing OS by booting from the same
+
+                disk.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "integration layers: use `android-tools` from Yocto Dunfell and before"
+              hash: 0d9e43d1133eb246aa6b220198264ff10e72e512
+              body: |
+                The `android-tools-adbd` package was only split after Dunfell.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "resin-init-flasher: comply with recovery mode"
+              hash: b0e671fe8d1782bfdc38c277899be43ae0cab977
+              body: >
+                If booting in recovery mode, wait on adbd to exit before continuing.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "initrdscritps: Move moving /run mountpoint from rootfs to migrate
+                module"
+              hash: 7b3227c08f693131933fb9fea0d3796571837253
+              body: >
+                The migrate module needs to umount the rootfs, so by moving the mountpoint
+
+                moving into the migrate module it's only done when not migrating.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "initrdscripts: add recovery module"
+              hash: 2431bc39dde12cab35f407423e4b57db3ec78aff
+              body: >
+                When `recovery` is passed in the kernel command line, the initramfs will
+
+                not boot into the OS but launch adbd.
+
+
+                A connection can then be established via the network (if a DHCP address
+
+                is provided) or using a USB gadget connection.
+
+
+                For a network connection, the client needs to install `adb` and run:
+
+                ```
+
+                adb connect $IPADDR:5555
+
+                adb shell
+
+                ```
+
+
+                Other adb commands, like pull/push of files are also available.
+
+
+                Resolves #2864
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.113.0
+          title: ""
+          date: 2023-02-25T14:46:47.829Z
+        - commits:
+            - subject: "os-helpers-fs: add dependency on util-linux fdisk"
+              hash: f27132636f4dda10d51cf0e1a3eb13d3db67b1a2
+              body: >
+                The os-helpers-fs script uses functionality not available on busybox's
+
+                fdisk.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.112.15
+          title: ""
+          date: 2023-02-24T09:45:05.390Z
+        - commits:
+            - subject: "balena-config-vars: Remove dependency on fatrw"
+              hash: 57facfad07b7dd1de5687ab20258f6387575bd79
+              body: >
+                There is nothing in `balena-config-vars` itself that needs `fatrw`, so
+
+                change it so scripts don't exit if it is not available. For example,
+
+                `balena-config-vars` gets used in the initramfs but `fatrw` is not
+
+                required (and it is quite heavy).
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-config-vars: split in two packages"
+              hash: f120d3fea123fc45be78fec0759cd3779c597959
+              body: >
+                Introduce a `${PN}-config` package that only contains the
+
+                balena-config scripts and not unit configuration dependencies.
+
+
+                This allows to include only the balena-config scripts in the initramfs.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: Add raid support based on machine features
+              hash: 4f43052ba8fbd74fb5af92fd8d818ef2512d08ab
+              body: >
+                Not all device types need to support RAID, and its components increase
+
+                the images size significantly.
+
+
+                This commit introduces a `raid` machine feature that device types need
+
+                to define if RAID support is required.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "packagegroup-resin: add resin-device-progress dependency"
+              hash: deb0fd28613ef26a0bbe1f588b8ed152b01b90cd
+              body: >
+                As we removed the dependency from `resin-init-flasher` given that it
+
+                will also be used from the initramfs, move the dependency to
+
+                packagegroup-resin so that resin-device-progress is still included in
+
+                the flasher image.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "resin-init-flasher: remove device-register and device-progress
+                dependencies"
+              hash: da696aff03e0080d67c87f1b4d3e7e12904b8e48
+              body: >
+                These are not always required for the flasher to work, only when the
+
+                flasher is not running from initramfs.
+
+
+                These dependencies are already part of the corresponding packagegroups,
+
+                so listing them here is redundant and wrong as it increases the size of
+
+                the initramfs with no reason.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "resin-init-flasher: reduce dependencies"
+              hash: b4b6dded00d2710f29f1bbef97dd6937a4766821
+              body: >
+                As we are pulling resin-init-flasher into the initramfs optimise the
+
+                dependencies by removing the whole util-linux package and adding
+
+                dependencies for the specific tools it uses.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "os-helpers-fs: replace inform with info helper"
+              hash: c9863f14cf000586d9167ab9b3d1406630c60a85
+              body: >
+                `inform` will print to stdout which is used by calling functions.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "resin-init-flasher: Build time check on INTERNAL_DEVICE_KERNEL only
+                for flasher device types"
+              hash: 33e33381ce8353bc539a1c61eec75ade2447eddc
+              body: >
+                Now that the installer script is added to the initramfs and is included
+
+                both for flasher and non-flasher device types, limit the
+
+                `INTERNAL_DEVICE_KERNEL` existence check to flasher images as
+
+                it is only used in the installer script.
+
+
+                Also, make the resin-init-flasher script check for it's existance before using
+
+                it.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "resin-init-flasher: wait for the by-label links to be created"
+              hash: 21e7b74a4f8af7baf751859e5a5477c2ae99c8fa
+              body: >
+                The by-label links can be used both for physical and mapper devices (used
+
+                in disk encryption).
+
+
+                Adding a loop that waits for the links to be available adds robustness
+
+                in case there are device specific delays.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.112.14
+          title: ""
+          date: 2023-02-22T15:35:14.876Z
+        - commits:
+            - subject: "recipes-bsp/u-boot: Disable saveenv shell command"
+              hash: 376e597c49c8b011559294501d9158184d4742f4
+              body: >
+                balenaOS uboot exports specific environment variables
+
+                in resinOS_uEnv.txt and does not have any use-cases of
+
+                saving the entire uboot environment in any device specific
+
+                partitions. This because it relies on the default environment being
+
+                stored in the u-boot binary.
+
+
+                Let's disable the saveenv command and avoid potential incorrect
+
+                usage which may overwrite the partition table, resin-boot filesystem
+
+                or other areas of the eMMC that may be pre-configured by the BSP.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+            - subject: Update tests/leviathan digest to 771bac8
+              hash: 3c5ea2af806515b479f605d0df64fd347393b5f6
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested: []
+          version: meta-balena-2.112.13
+          title: ""
+          date: 2023-02-22T10:34:14.804Z
+  version: 2.113.4
+  title: ""
+  date: 2023-03-04T18:26:38.774Z
+- commits:
     - subject: Update meta-raspberrypi to latest kirkstone
       hash: c6285e39ce07421779cd9e2f5e1d17d7d9381fa7
       body: ""
