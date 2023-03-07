@@ -1,6 +1,36 @@
 Change log
 -----------
 
+# v2.113.4+rev1
+## (2023-03-07)
+
+
+<details>
+<summary> Update contracts to 40d6eaa3f0455babd1abcc1d11a6e6db60387797 [Renovate Bot] </summary>
+
+> ## contracts-2.0.51
+> ### (2023-02-24)
+> 
+> * node: do not set unsafe-perm with npm 9 and newer [Michal Toman]
+> 
+> ## contracts-2.0.50
+> ### (2023-02-22)
+> 
+> * hw.device-type: Rename radxaFlash protocol to usbMassStorage [Alexandru Costache]
+> 
+> ## contracts-2.0.49
+> ### (2023-02-22)
+> 
+> * patch: Fix spelling for eMMC in Radxa-zero contract [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## contracts-2.0.48
+> ### (2023-02-22)
+> 
+> * hw.device-type: Various fixes [Alexandru Costache]
+> 
+
+</details>
+
 # v2.113.4
 ## (2023-03-04)
 
