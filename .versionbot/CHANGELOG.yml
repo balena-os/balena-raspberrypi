@@ -1,4 +1,357 @@
 - commits:
+    - subject: Update layers/meta-balena to 0da22de8cd1276bc4231de0d6ef416f11fc0ca66
+      hash: a7894f8fa2bc2ad1d8b2d90cba8f7fbfefb90334
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 0da22de8cd1276bc4231de0d6ef416f11fc0ca66
+        changelog-entry: Update layers/meta-balena to 0da22de8cd1276bc4231de0d6ef416f11fc0ca66
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: Update balena-supervisor to v14.9.4
+              hash: 1220917cd334560a48faf580479e216b536dac42
+              body: |
+                Update balena-supervisor from 14.9.1 to 14.9.4
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: Skip pin device step if release was deleted
+                      hash: f6435814cd86380dd3b02416f6f2199b483bb33c
+                      body: >
+                        Preloaded devices can require that the device is pinned to the preloaded
+
+                        release on provisioning. However if the provisioned release gets
+
+                        released in the future, that would lead to the device remaining in "VPN
+
+                        only" state forever as the provisioning process could not finish due to
+
+                        pinning failure.
+
+
+                        This commit changes the behavior so if the release does not exist, the
+
+                        pinning step is skipped and the device follows the fleet pinning state.
+                      footer:
+                        Closes: "#2133"
+                        closes: "#2133"
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-14.9.4
+                  title: ""
+                  date: 2023-03-13T20:49:30.509Z
+                - commits:
+                    - subject: Use single-arch in dockerfile
+                      hash: 17aa625d3b115103efa30bb98b83ee1fc54230c4
+                      body: >
+                        This is necessary since the builder no longer passes the platform flag
+
+                        to the build. This would lead to dockerfiles that are mixing multi and single
+
+                        arch stages to pull the wrong architecture images, particularly when
+
+                        trying to build images in emulated builds (e.g. armv7hf built on aarch64).
+
+
+                        Moving the full build to single-arch solves this as the docker engine is
+
+                        capable of chosing the right architecture from the manifest. Once some
+
+                        of the builder issues are fixed, we should move to #2141
+                      footer:
+                        Relates-to: balena-io/balena-builder#1010
+                        relates-to: balena-io/balena-builder#1010
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-14.9.3
+                  title: ""
+                  date: 2023-03-10T22:26:07.185Z
+                - commits:
+                    - subject: Replace BALENA-FIREWALL rule in INPUT chain instead of flushing
+                      hash: 84a9e7e9acd803b6b49d58ae3040694a5e2f823d
+                      body: >
+                        The issue with the original Supervisor implementation of the firewall is
+                        that
+
+                        on Supervisor start, the Supervisor flushes the INPUT chain of the filter table.
+
+                        This doesn't play well with services that add to the INPUT chain on startup that
+
+                        may start up before the Supervisor, such as certain NetworkManager connection
+
+                        profiles. This change only replaces the BALENA-FIREWALL rule in the INPUT chain,
+
+                        preserving the other rules as well as their order.
+                      footer:
+                        Closes: "#1482"
+                        closes: "#1482"
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-14.9.2
+                  title: ""
+                  date: 2023-03-02T21:48:06.727Z
+          version: meta-balena-2.113.14
+          title: ""
+          date: 2023-03-15T17:11:34.345Z
+        - commits:
+            - subject: "update-balena-supervisor: use API request helper"
+              hash: 91f8f7b6d77085614dace780997ff792c88b6ab2
+              body: >
+                Use an API request helper that checks the status code response before
+
+                trying to use the response itself.
+
+
+                Fixes #3052
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "os-helpers: add test for os-helpers-api"
+              hash: 9c8612027020ba14fd0f9c0435d2e0b754594b81
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "os-helpers: add os-helpers-api"
+              hash: 338edf9527652c467ad52046d75adfaf7a95ecf4
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.113.13
+          title: ""
+          date: 2023-03-15T13:00:48.209Z
+        - commits:
+            - subject: Remove a bad check in Internet connection sharing test
+              hash: 80d2c45d7318464935516acdc2dd884efaacf31a
+              body: >
+                In the Internet connection sharing test one of the checks may run
+
+                into a racing problem. The following command is holding the iptables
+
+                lock for 3 seconds while NetworkManager activates a connection with
+
+                sharing enabled:
+
+
+                `flock /run/xtables.lock sleep 3 & nmcli c up dummy & wait`
+
+
+                NetworkManager waits for 2 seconds for the lock to be released and
+
+                those three seconds should be enough for one of the iptables rules
+
+                to fail. However there is no guarantee that NetworkManager will start
+
+                adding the iptables rules that quickly - it may start adding those
+
+                after one out of those three seconds already passed, which will
+
+                lead to all iptables rules to be set at the end.
+
+
+                This check is non-essential for the test itself, so it is removed with
+
+                this commit.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Zahari Petkov <zahari@balena.io>
+                signed-off-by: Zahari Petkov <zahari@balena.io>
+              author: Zahari Petkov
+              nested: []
+          version: meta-balena-2.113.12
+          title: ""
+          date: 2023-03-14T10:35:04.209Z
+        - commits:
+            - subject: "peak: Ship signed module when signing is enabled"
+              hash: 97d64167c1bcbb76d1638486aa3eb158f37785c9
+              body: >
+                At this moment, when module signing is enabled, the peak module is signed
+
+                but do_install ignores the signed variant and installs the original
+
+                unsigned file. With this patch do_install installs the signed file
+
+                if available.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.113.11
+          title: ""
+          date: 2023-03-14T01:03:28.843Z
+        - commits:
+            - subject: "patch: Add balenaOS debugging docs"
+              hash: a091584f0ab6af190fd7ad18ab7f5db091ae90f0
+              body: ""
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+              author: Vipul Gupta (@vipulgupta2048)
+              nested: []
+          version: meta-balena-2.113.10
+          title: ""
+          date: 2023-03-09T16:37:31.248Z
+        - commits:
+            - subject: "flasher: fix installation when in user mode w/ sb disabled"
+              hash: 1592a4cfa4035892fcdc1484717bfcb5966221f3
+              body: >
+                Previously, we bailed out of the installer when the system was in user
+
+                mode (keys enrolled) but the user had not opted in to secure boot, as it
+
+                was ambiguous whether the user actually wanted SB/FDE.
+
+
+                However, some systems come with vendor keys pre-enrolled, and a user may
+
+                simply turn off secure boot in the firmware setup menu without erasing
+
+                the keys. This would result in the installer bailing out even though
+
+                secure boot is disabled in the firmware menu.
+
+
+                Check that secure boot is enabled in addition to having keys enrolled
+
+                before bailing out.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.113.9
+          title: ""
+          date: 2023-03-09T05:34:10.446Z
+        - commits:
+            - subject: fix ip for dummy interface to avoid ip conflicts
+              hash: e3fd7de4f5a61773a77cf33bd05a58c77186ecf2
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: "tests: os: NetworkManager iptables rules test for Internet sharing"
+              hash: 90dbb8f414435c88e95a53535d003039ca7d42a4
+              body: >
+                Test for the NetworkManager patch done in
+
+                https://github.com/balena-os/meta-balena/pull/2963
+
+
+                A racing condition between balenaEngine and NetworkManager led to some Internet
+
+                connection sharing iptables rules not being applied when NM connection profile
+
+                with Internet sharing was activated at boot.
+
+
+                This test checks whether all necessary iptables rules are added by artificially
+
+                blocking iptables for 1 second and then for 3 seconds while a connection
+
+                profile with Internet sharing is activated.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Zahari Petkov <zahari@balena.io>
+                signed-off-by: Zahari Petkov <zahari@balena.io>
+              author: Zahari Petkov
+              nested: []
+          version: meta-balena-2.113.8
+          title: ""
+          date: 2023-03-08T11:28:57.215Z
+        - commits:
+            - subject: "conf: distro: balena-os: use lower case for signing key names"
+              hash: 177a88c334a43fb8959f842170d6cbd976a9e53d
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.113.7
+          title: ""
+          date: 2023-03-07T18:26:31.574Z
+        - commits:
+            - subject: "recipes-core/images: Ensure redsocks sample files are deployed"
+              hash: fe8b2b248d6a65b26def40c9d374f04c813fd40c
+              body: >
+                ... before trying to include them in the boot partition, otherwise
+
+                the yocto build may fail sporadically.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.113.6
+          title: ""
+          date: 2023-03-07T14:25:45.437Z
+        - commits:
+            - subject: "image-balena.bbclass: deploy grub-conf before building the boot
+                partition"
+              hash: 22942a52bdf3f1cde6201c0bcc71cb72e3c899b9
+              body: >
+                do_resin_boot_dirgen_and_deploy needs all the partial files deployed
+
+                when it runs as it will be copying them to the actual boot partition.
+
+                There is a race condition between it and grub_conf:do_deploy,
+
+                we have seen builds fail when grub_conf:do_deploy does not execute
+
+                in time. This patch adds an explicit dependency to avoid such situation.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.113.5
+          title: ""
+          date: 2023-03-07T11:02:11.648Z
+  version: 2.113.14
+  title: ""
+  date: 2023-03-16T01:46:46.419Z
+- commits:
     - subject: Update contracts to 40d6eaa3f0455babd1abcc1d11a6e6db60387797
       hash: bf8f1ad05b9b907c8be34829f5a52878c2c78b6f
       body: Update contracts
