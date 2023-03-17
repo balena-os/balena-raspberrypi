@@ -1,6 +1,33 @@
 Change log
 -----------
 
+# v2.113.14+rev3
+## (2023-03-17)
+
+
+<details>
+<summary> Update contracts to 0ff4f419b4467349d7cb1d1202b580004067664c [Renovate Bot] </summary>
+
+> ## contracts-2.0.54
+> ### (2023-03-16)
+> 
+> * patch: Remove CircleCI in favor of Flowzone [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## contracts-2.0.53
+> ### (2023-03-16)
+> 
+> * patch: Fix fluid tags for revpi-core-3 [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## contracts-2.0.52
+> ### (2023-03-16)
+> 
+> * patch: Fix punctuation in partials [Vipul Gupta (@vipulgupta2048)]
+> * patch: Fix spelling of eMMC [Vipul Gupta (@vipulgupta2048)]
+> * patch: Fix spelling of while [Vipul Gupta (@vipulgupta2048)]
+> 
+
+</details>
+
 # v2.113.14+rev2
 ## (2023-03-16)
 

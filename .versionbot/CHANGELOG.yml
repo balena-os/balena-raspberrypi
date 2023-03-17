@@ -1,4 +1,63 @@
 - commits:
+    - subject: Update contracts to 0ff4f419b4467349d7cb1d1202b580004067664c
+      hash: 2eb73840343b43c5346942edbe1f805803ede778
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 0ff4f419b4467349d7cb1d1202b580004067664c
+        changelog-entry: Update contracts to 0ff4f419b4467349d7cb1d1202b580004067664c
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "patch: Remove CircleCI in favor of Flowzone"
+              hash: 9bed27db936f4ad6acffa4a74cd0fcad72cc313d
+              body: ""
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+              author: Vipul Gupta (@vipulgupta2048)
+          version: contracts-2.0.54
+          title: ""
+          date: 2023-03-16T15:05:25.391Z
+        - commits:
+            - subject: "patch: Fix fluid tags for revpi-core-3"
+              hash: 9ec5bf22c8e0d5033a8b08a432b7651da8616360
+              body: ""
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+              author: Vipul Gupta (@vipulgupta2048)
+          version: contracts-2.0.53
+          title: ""
+          date: 2023-03-16T13:25:57.856Z
+        - commits:
+            - subject: "patch: Fix punctuation in partials"
+              hash: 5062b5bb7b22233ea8851996151834fa0554ea2a
+              body: ""
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+              author: Vipul Gupta (@vipulgupta2048)
+            - subject: "patch: Fix spelling of eMMC"
+              hash: 044cc4865a8997e40f3ee4724a3592ce2ae42cbf
+              body: ""
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+              author: Vipul Gupta (@vipulgupta2048)
+            - subject: "patch: Fix spelling of while"
+              hash: 95fbb009bb43ef40b77c61961571c64308685aff
+              body: ""
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+              author: Vipul Gupta (@vipulgupta2048)
+          version: contracts-2.0.52
+          title: ""
+          date: 2023-03-16T12:46:31.310Z
+  version: 2.113.14+rev3
+  title: ""
+  date: 2023-03-17T13:04:33.730Z
+- commits:
     - subject: Update balena-yocto-scripts to 93f94ff88593966c1f417861b235e729d5192ba6
       hash: 6c43d2109818020e70b9cb409c641795ad035f5b
       body: Update balena-yocto-scripts
