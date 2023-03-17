@@ -1,6 +1,36 @@
 Change log
 -----------
 
+# v2.113.18
+## (2023-03-17)
+
+
+<details>
+<summary> Update layers/meta-balena to 47781bdd7184f17c83523e961c7039d50e5e8775 [Renovate Bot] </summary>
+
+> ## meta-balena-2.113.18
+> ### (2023-03-16)
+> 
+> * Enable CI for external contributions from forks [Kyle Harding]
+> 
+> ## meta-balena-2.113.17
+> ### (2023-03-16)
+> 
+> * Removed links to hub [Ryan H]
+> 
+> ## meta-balena-2.113.16
+> ### (2023-03-16)
+> 
+> * balena-image-flasher: Default image type to balenaos-img [Florin Sarbu]
+> 
+> ## meta-balena-2.113.15
+> ### (2023-03-16)
+> 
+> * resin-u-boot.bbclass: Replace static patch resin-specific-env-integration-kconfig.patch [Florin Sarbu]
+> 
+
+</details>
+
 # v2.113.14+rev3
 ## (2023-03-17)
 
