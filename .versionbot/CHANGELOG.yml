@@ -1,4 +1,662 @@
 - commits:
+    - subject: Update layers/meta-balena to 5841b817cd3a0f2ffc063e586b7ed215655afb1c
+      hash: a5625b88566da3187eea5661fb5c9e916763b793
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 5841b817cd3a0f2ffc063e586b7ed215655afb1c
+        changelog-entry: Update layers/meta-balena to 5841b817cd3a0f2ffc063e586b7ed215655afb1c
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: Update balena-supervisor to v14.9.8
+              hash: 52b8dee720722c0e917810676321a713075e09e1
+              body: |
+                Update balena-supervisor from 14.9.7 to 14.9.8
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: Revert "Use multi-arch in dockerfile"
+                      hash: 75eeac5ed4b7ec076482c0cace2d2cfca8b6b2d4
+                      body: >
+                        This reverts commit 00e389e5f559dd10e49cfa411784b89498c3c0eb.
+
+
+                        Images generated using this dockerfile still don't have the right
+
+                        architecture. More testing is needed
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-14.9.8
+                  title: ""
+                  date: 2023-03-27T08:05:44.148Z
+          version: meta-balena-2.113.29
+          title: ""
+          date: 2023-03-27T14:11:59.453Z
+        - commits:
+            - subject: "README: modify migration documentation to match module"
+              hash: f237b34bd6510d106202461b78da7fa0f2637ca0
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.113.28
+          title: ""
+          date: 2023-03-27T09:42:22.974Z
+        - commits:
+            - subject: Update balena-supervisor to v14.9.7
+              hash: ff8a0471336b1c9f3dd0abe6f5c0af4a63121089
+              body: |
+                Update balena-supervisor from 14.9.4 to 14.9.7
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: Add missing log backend field assignment in logger init
+                      hash: 37371d89dcea3e1d713b9bb806fc6866cdd5ae9f
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-14.9.7
+                  title: ""
+                  date: 2023-03-23T21:40:32.099Z
+                - commits:
+                    - subject: Update deploy-to-balena action to 0.26.2
+                      hash: 7cde98d7f7fb6a476dd14bbec5df7d45a1bfd3e8
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Use multi-arch in dockerfile
+                      hash: 00e389e5f559dd10e49cfa411784b89498c3c0eb
+                      body: >
+                        This is necessary since the builder no longer passes the platform flag
+
+                        to the build. This would lead to dockerfiles that are mixing multi and single
+
+                        arch stages to pull the wrong architecture images, particularly when
+
+                        trying to build images in emulated builds (e.g. armv7hf built on aarch64).
+
+
+                        Moving the full build to multi-arch solves this as the docker engine is
+
+                        capable of chosing the right architecture from the manifest.
+                      footer:
+                        Relatest-to: balena-io/balena-builder#1010
+                        relatest-to: balena-io/balena-builder#1010
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-14.9.6
+                  title: ""
+                  date: 2023-03-23T20:18:31.098Z
+                - commits:
+                    - subject: Use log endpoint subdomain if it exists in config.json
+                      hash: 36e46d80a6f147b95664ac052fd01cd438388555
+                      body: ""
+                      footer:
+                        See: https://github.com/balena-io/open-balena-api/pull/1288
+                        see: https://github.com/balena-io/open-balena-api/pull/1288
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-14.9.5
+                  title: ""
+                  date: 2023-03-20T19:21:47.709Z
+          version: meta-balena-2.113.27
+          title: ""
+          date: 2023-03-24T03:30:52.600Z
+        - commits:
+            - subject: Update balena-engine to v20.10.32
+              hash: 47dd9486a7d306301119c5099bc8e3e0854ec21c
+              body: |
+                Update balena-engine from 20.10.26 to 20.10.32
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: "Installer: Make the script POSIX-compliant"
+                      hash: cc0683f0aa5cdd5cae54cf278e060328e2c2595f
+                      body: >
+                        There were various usages of Bash-specific features. As a result, the
+
+                        script would work correctly only on OSes that have `sh` as an alias to
+
+                        `bash`. It would fail on Ubuntu, for example.
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                    - subject: "Installer: Improve handling of su/sudo"
+                      hash: 0a46c1fbce94daff87799074a8243dbdd75b39c2
+                      body: >
+                        A couple of changes here:
+
+
+                        * Check for sudo necessity and availability before doing any real work.
+                          Better to warn and exit quick and early!
+                        * Remove the support for using `su`. It was broken for two reasons.
+                          First, unlike `sudo`, `su -c` expects the command as a single
+                          argument. Second, `su`, unlike `sudo`, reads the password from stdin
+                          which in this case "contains" the tarball being downloaded. The second
+                          point is particularly tricky to solve without saving the tarball to
+                          storage (and we want to avoid extra storage space and wear). And,
+                          anyway, users that can `su -c` can also `su` manually before
+                          installing.
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                    - subject: "Installer: Improve checking for dependencies"
+                      hash: a0a285599586bd6167c7eb4b73c7a2a2c0b3be1c
+                      body: >
+                        A couple of changes here:
+
+
+                        * Check for missing dependencies before doing any real work. Better to
+                          warn and exit quick and early!
+                        * Fix the actual check. We previously used `[ $abort ] && exit 1` which
+                          caused the script to always exit (`abort` is never empty).
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                    - subject: "Installer: remove support for the 386 architecture"
+                      hash: 7403e49d04e41907d89d81054ee4d6a14bb32b9b
+                      body: |
+                        We disabled builds for linux/386 in v20.10.28 (commit
+                        ae2500b7e254b91f4a8f86e44d1ac6f2679c953a).
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                    - subject: Remove the installation script from docs/
+                      hash: 5305ab263ffebd08d0346de2bdbed34585805f4f
+                      body: >
+                        This is removing a duplicate, since the same script is also present
+
+                        under contrib/
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                  version: balena-engine-20.10.32
+                  title: ""
+                  date: 2023-03-21T20:13:28.900Z
+                - commits:
+                    - subject: Remove references to deprecated build targets
+                      hash: 9e72257bf1ced842076f4df8d488c10580561711
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Kyle Harding
+                      nested: []
+                    - subject: Revert "Cross-build the dynbinary target"
+                      hash: 9562704af9213870b7f861dcd394a06be6782678
+                      body: >
+                        This reverts commit 0240d94e35a43be595cd5e79b0653440c228229f.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: balena-engine-20.10.31
+                  title: ""
+                  date: 2023-03-20T20:13:05.215Z
+                - commits:
+                    - subject: Fix typos in the masterclass docs
+                      hash: 0633e148120feffef1d2d13aece801a4d43d4a49
+                      body: ""
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                    - subject: "patch: Migrate balenaEngine Debugging docs from masterclass"
+                      hash: 8a5f98ef25b951ed3108ff6e12cf23841508d9ec
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: balena-engine-20.10.30
+                  title: ""
+                  date: 2023-03-13T17:03:36.999Z
+                - commits:
+                    - subject: Rename test functions for better clarity
+                      hash: f5b966a63503577b1b826dc23b95773fd073aacf
+                      body: >
+                        Added an `Asserting` suffix to all functions that internally call
+
+                        `assert.*()`. This makes clearer what is really going on at the point of
+
+                        call, without needing to look under the hood.
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                    - subject: Add test case for the delta image store
+                      hash: aecb27a8dc6af5a39bb882f2c2f30894ed0b2abd
+                      body: ""
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                    - subject: Add dev-focused docs on some balenaEngine features
+                      hash: 75b62a76df57767fcc1ab86f0adb3a9f210480a7
+                      body: >
+                        Most notably, on the "delta root" feature, which is important for HUPs,
+
+                        not very well-known and not documented anywhere else I know.
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                    - subject: Simplify test code by using new std lib function
+                      hash: 2d192ea16be1df569c86028128397515d6d3322d
+                      body: >
+                        io.ReadAll() is available since Go 1.16 (to which we upgraded some time
+
+                        ago).
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                    - subject: Set the delta image store, fix delta-based HUPs
+                      hash: 9fe31eb8dad8dbcc35e48cb0f90a12b67256e490
+                      body: >
+                        We apparently have broken this during the 20.10 merge. Not setting the
+
+                        delta image store breaks delta-based balenaOS updates (HUPs).
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                  version: balena-engine-20.10.29
+                  title: ""
+                  date: 2023-02-20T13:34:08.745Z
+                - commits:
+                    - subject: Disable builds for linux/386
+                      hash: ae2500b7e254b91f4a8f86e44d1ac6f2679c953a
+                      body: |
+                        This is currently broken (apparently also upstream).
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                  version: balena-engine-20.10.28
+                  title: ""
+                  date: 2023-02-20T12:32:22.989Z
+                - commits:
+                    - subject: Merge upstream v20.10.17
+                      hash: 013d0279ce25791b87a0a0d77686e2cd74f6462a
+                      body: "For full changelog see:
+                        https://github.com/balena-os/balena-engine/blob/20.10.1\
+                        7-balena/CHANGELOG.md#2023-02-07-upstream-release"
+                      footers:
+                        change-type: patch
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                      author: Leandro Motta Barros
+                      nested: []
+                  version: balena-engine-20.10.27
+                  date: 2023-02-07T12:00:00.000Z
+          version: meta-balena-2.113.26
+          title: ""
+          date: 2023-03-23T23:31:29.250Z
+        - commits:
+            - subject: "kernel-balena: Include NFS V2, V3 and V4 client and server modules"
+              hash: 54c4090b518bccfdba0b635ead129502572685be
+              body: >
+                As per internal discussion thread
+
+                https://balena.zulipchat.com/#narrow/stream/345882-_help/topic/.E2.9C.94.20nfs.20.283.20or.204.29.20on.20jetson.20nano/near/342072698
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.113.25
+          title: ""
+          date: 2023-03-23T19:39:38.006Z
+        - commits:
+            - subject: "dunfell+: remove obsolete systemd patch"
+              hash: f649288c2b284cb06081d296e52b4562f512107b
+              body: >
+                The patch applied to systemd addressed this upstream moby issue:
+
+                https://github.com/moby/moby/issues/27202
+
+
+                This was fixed in containerd 1.0.2:
+
+                https://github.com/containerd/console/pull/10/commits/c358734ec94e72903243bd1c9034874a1de09424
+
+
+                This fix is present in balena engine since v17.13.5, which has been in
+
+                use since commit 53ce147. Drop this patch from meta-balena-dunfell and
+
+                later.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "plymouth: replace duplicated patches w/ shared drop-ins"
+              hash: 72706964b8dd308b6c1772fa22c4e89d1680d205
+              body: >
+                Plymouth services are modified in the installation directory with balena
+
+                specific customizations using patches. This increases the manual intervention necessary
+
+                when adding support for a new version of this package or Yocto. Replace
+
+                the patches with equivalent drop-in configs.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "systemd: mask systemd-getty-generator instead of patching"
+              hash: e54f4c5d49d1aa18a3544ab8c7e46aef8e366a0a
+              body: >
+                We disable systemd-getty-generator to allow explicit control over when
+
+                we setup getty to create consoles. Previously, this was done using a
+
+                patch to systemd, removing this generator. Mask this instead so we can
+
+                consolidate this configuration in meta-balena-common.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "systemd: replace duplicated patch w/ shared drop-ins"
+              hash: 1481e83e225a341da13c7b7a60d8c96865a458de
+              body: >
+                Certain services, such as getty@.service, and systemd-logind.service are
+
+                disabled when running in a container using a patch to the source files.
+
+                This increases the manual intervention necessary when adding support for
+
+                a new version of systemd. Replace the patch with drop-in configs.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.113.24
+          title: ""
+          date: 2023-03-22T14:23:33.694Z
+        - commits:
+            - subject: "pyro/sumo: initrdscripts: fix migrate module for older Yocto versions"
+              hash: 4eca2991ce9433ad5291af6e17887815db068ca9
+              body: >
+                In old Yocto versions the util-linux recipe has not yet been split into
+
+                individual packages.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "networkmanager: do not update to latest version in sumo"
+              hash: 75311179f65172d2ca38f74b4487fe812b691a46
+              body: >
+                Hold the networkmanager update for older Yocto version as the new meson
+
+                based build system in newer versions is broken.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.113.23
+          title: ""
+          date: 2023-03-22T09:22:48.249Z
+        - commits:
+            - subject: Update tests/leviathan digest to ad4f908
+              hash: 92086f551ef3714f76432e66c09ce305a1de0e07
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: "compose: qemu: add FLASHER_SECUREBOOT var"
+                      hash: 51977e109069f08f0364eed208fab2e01c104284
+                      body: >
+                        This environment variable is passed through to the suite to preconfigure
+
+                        a flasher image to enable secure boot for testing.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Joseph Kogut <joseph@balena.io>
+                        signed-off-by: Joseph Kogut <joseph@balena.io>
+                      author: Joseph Kogut
+                      nested: []
+                    - subject: "swtpm: fix abort on exit"
+                      hash: fc65360ae7896545bdcaad0d37f1345a447251f4
+                      body: >
+                        Some incoming tests require QEMU to exit, simulating a device powering
+
+                        off, before starting QEMU again. This is used to "reflash" a virtualized
+
+                        device before continuing with testing, for instance after tampering with
+
+                        boot files on a secure boot enabled device to verify secure boot checks.
+
+
+                        However, swtpm will exit when QEMU disconnects. The `--exit-code-from`
+
+                        compose argument implies `--abort-on-container-exit`, so this results
+
+                        in the test run aborting prematurely.
+
+
+                        Adapt the entrypoint and command of the swtpm container to always
+
+                        restart the program without exiting the container.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Joseph Kogut <joseph@balena.io>
+                        signed-off-by: Joseph Kogut <joseph@balena.io>
+                      author: Joseph Kogut
+                      nested: []
+                  version: leviathan-2.23.1
+                  title: ""
+                  date: 2023-03-14T01:58:44.771Z
+          version: meta-balena-2.113.22
+          title: ""
+          date: 2023-03-21T15:17:11.571Z
+        - commits:
+            - subject: "tests: os: secureboot: add integrity checks"
+              hash: c65d0cac90a47dfb8260a2bbdd4ca27e38c225d7
+              body: |
+                Verify secure boot integrity checks of bootloader binary and
+                configuration.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "tests: configure flasher secure boot opt-in"
+              hash: 4abccf4929df3354a5b7b0c1912092aeef56aec2
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.113.21
+          title: ""
+          date: 2023-03-20T20:17:03.365Z
+        - commits:
+            - subject: "tests: os: disable unwrapping"
+              hash: d27b7a53763e0682f1a47865be24345fa52e58ff
+              body: >
+                The QEMU leviathan-worker now simulates flashing from an external
+
+                device, which tests both flasher images, as well as
+
+                secure-boot/full-disk encryption setup.
+
+
+                Disable the ad-hoc unwrapping in the OS suite setup.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "tests: hup: disable unwrapping"
+              hash: 7e99b96cdfc69b0251566e71f4f9a44ac8e50ac4
+              body: >
+                Disable ad-hoc unwrapping in the HUP test suite in favor of utilizing
+
+                the QEMU worker's new ability to bind a disk image to an emulated
+
+                external USB mass storage device. This runs the flasher in QEMU, and
+
+                installs to emulated internal storage.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "tests: cloud: disable unwrapping"
+              hash: 609706e3e631e305dde86c8462fd9a474e5593ce
+              body: >
+                Utilize QEMU worker's new internal/external storage emulation to run
+
+                flasher in VM, rather than unwrapping image.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.113.20
+          title: ""
+          date: 2023-03-20T16:43:02.693Z
+        - commits:
+            - subject: "resin-u-boot.bbclass: Default to u-boot Kconfig support"
+              hash: ef248aa51635b08421ddd1a9ddf805ebeda47b43
+              body: >
+                It should be safe to assume that boards now use newer u-boot versions
+
+                that all have Kconfig support so we default to that. This allows for
+
+                device repos not to specify it and use Kconfig support or if for some
+
+                reason there are boards with old u-boot versions they can overwrite the
+
+                UBOOT_KCONFIG_SUPPORT variable to 0.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-2.113.19
+          title: ""
+          date: 2023-03-20T15:16:33.267Z
+  version: 2.113.29
+  title: ""
+  date: 2023-03-27T16:28:30.273Z
+- commits:
     - subject: Update layers/meta-balena to 47781bdd7184f17c83523e961c7039d50e5e8775
       hash: 60aebb64d3926c53c41e9f3734250ad192f46f03
       body: Update layers/meta-balena
