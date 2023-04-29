@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.113.29+rev1
+## (2023-04-29)
+
+* Add picontrol recipe for newer kunbus kernel version 5.10.152 [Waqar Rashid]
+* Add new kunbus linux kernel recipe for version 5.10.152 [Waqar Rashid]
+
 # v2.113.29
 ## (2023-03-27)
 
