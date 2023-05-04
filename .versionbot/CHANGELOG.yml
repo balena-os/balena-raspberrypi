@@ -1,4 +1,1493 @@
 - commits:
+    - subject: Update layers/meta-balena to 0d43fec5037b2b4be928647e9b626c62c794c6f0
+      hash: dbee5c1577efe2464cf1d9753ea12b627e142998
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 0d43fec5037b2b4be928647e9b626c62c794c6f0
+        changelog-entry: Update layers/meta-balena to 0d43fec5037b2b4be928647e9b626c62c794c6f0
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: Update balena-supervisor to v14.10.10
+              hash: 2db66def0ea9273503ce9169142d7b6e66449cd1
+              body: |
+                Update balena-supervisor from 14.10.8 to 14.10.10
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: "mount-partitions.sh: Add support for encrypted partitions"
+                      hash: 004592894474676e3d024e5636b9fccce9f173f9
+                      body: >
+                        After a recent change enforcing all the partitions to be
+                        on the same
+
+                        block device, encrypted partitions are no longer being detected
+
+                        correctly. This is because the assumption that the parent block device
+
+                        is a substring of the actually mounted block device does not work
+
+                        for LUKS devices - the mount will either be /dev/mapper/luks-XXX
+
+                        or /dev/dm-X while the parent device is still e.g. /dev/sda.
+
+
+                        The usual balenaOS boot partition is also split in two - boot and efi.
+
+                        The boot partition (mounted under /mnt/boot) is encrypted and the efi
+
+                        partition (mounted under /mnt/efi) is not.
+
+
+                        This patch generalizes the detection of the parent device so that
+
+                        it works with both encrypted and unencrypted partitions.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Michal Toman <michalt@balena.io>
+                        signed-off-by: Michal Toman <michalt@balena.io>
+                      author: Michal Toman
+                      nested: []
+                  version: balena-supervisor-14.10.10
+                  title: ""
+                  date: 2023-05-03T16:01:37.089Z
+                - commits:
+                    - subject: Run test supervisor under a different service name
+                      hash: 33b29cfa225959dd0a58564128017e04d019ea5f
+                      body: >
+                        The docker compose V2 spec no longer accepts
+                        `network_mode: bridge`,
+
+                        which means we can no longer override the network configuration of
+
+                        the `balena-supervisor` service for tests.
+
+
+                        For this reason we now create a separate service to run the built
+
+                        supervisor `balena-supervisor-sut` and run API tests against this
+
+                        service instead of the default `balena-supervisor`.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Kyle Harding
+                      nested: []
+                  version: balena-supervisor-14.10.9
+                  title: ""
+                  date: 2023-05-03T14:26:36.360Z
+          version: meta-balena-2.114.18
+          title: ""
+          date: 2023-05-03T18:08:17.355Z
+        - commits:
+            - subject: "test: append installer configuration instead of replacing it"
+              hash: 2844d312784f2bf452fb547f2a4418814217ded1
+              body: >
+                Both the migrator and secureboot tests assumed they were
+                creating an
+
+                installer config.json section. Modify the code so both settings are
+
+                included.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "test: os: use boolean for installer migration flag"
+              hash: e2a4555c035ddd90c22afbf2150769175c6fb2f1
+              body: >
+                The installerForceMigration is a boolean, so let's use the
+                proper type.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.114.17
+          title: ""
+          date: 2023-05-03T13:25:15.091Z
+        - commits:
+            - subject: "initrdscripts: give the root device a chance to come up before
+                cryptsetup"
+              hash: 23b87079d424fa52753949d46a89d872360ee4ff
+              body: >
+                At this moment if the cryptsetup initrd script executes before
+                the root
+
+                device comes up (e.g. when booting off a USB disk), it assumes
+
+                that encryption is not in place because it was not able to find
+
+                the EFI partition.
+
+
+                This patch adds a wait4file loop to the script that waits
+
+                for the /dev/disk/by-state directory. This is not tied to any particular
+
+                partition or device but since the directory does not exist by default
+
+                and is only created by a custom balenaOS udev rule, its existence
+
+                implies that the rule fired and a device with balenaOS partitions
+
+                is present in the system.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.114.16
+          title: ""
+          date: 2023-05-02T23:16:09.725Z
+        - commits:
+            - subject: "patch: Add additional logs when logging in using balenaSDK"
+              hash: 2c607e878de285f30baab3c94605ca8d151ac597
+              body: ""
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipul@balena.io>
+              author: Vipul Gupta (@vipulgupta2048)
+              nested: []
+          version: meta-balena-2.114.15
+          title: ""
+          date: 2023-04-28T13:49:31.011Z
+        - commits:
+            - subject: Update balena-supervisor to v14.10.8
+              hash: d454cdb1145c80128cc280f40e6633d862ae0086
+              body: |
+                Update balena-supervisor from 14.10.7 to 14.10.8
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: Fix service comparison when creating component steps
+                      hash: 5fdd689590d048685cc11e32a14ccf7faf3887ee
+                      body: >
+                        A bug in service comparison would make it that a device
+                        already running
+
+                        a service from a new release with network changes would never stop the
+
+                        running service so remaining services would forever get stuck in
+
+                        `Downloaded` state.
+
+
+                        This fixes the comparison so the service will get killed in this case,
+
+                        particularly allowing devices to recover from #1576
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: "Create tests with recovery from #1576"
+                      hash: 7b8b187c749c3390243b2246ba20d60ccc40db1f
+                      body: >
+                        Devices affected by the bug described in 1576, are also
+                        stuck with some
+
+                        services in the `Downloaded` state, because the state engine does not
+
+                        detect that the running services should be killed on a network change
+
+                        even if they belong to a new release. This is a bug, which can be
+
+                        replicated by the tests in this commit
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Skip updateMetadata step if there are network changes
+                      hash: 7aecaae8b02832afca3d52d233ecf5eaa8fa9ab8
+                      body: >
+                        Previous behavior would make it that an `updateMetadata`
+                        step would take
+
+                        precedence over a `kill` step when network changes are present. This
+
+                        would lead to an inconsistent state if an update included a
+
+                        network and a container change.
+                      footer:
+                        Closes: "#1576"
+                        closes: "#1576"
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Add replication of issue using unit tests
+                      hash: 0a358a4463717b53c3619432781a0ab568fb74c1
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Add integration tests for state-engine
+                      hash: 138aec5de418c7673285303d66d35b8cea43e4a8
+                      body: >
+                        These tests use the supervisor API to check that
+                        applying a target state
+
+                        allows the device to eventually get to the desired target configuration.
+
+
+                        This are high-level tests that work with real images and containers
+
+                        using dind.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Do not pass auth to images with no registry
+                      hash: c1207cbbff836f99fadb33dd5cf65baa2da0ecf8
+                      body: >
+                        The supervisor allows the target image to be an image
+                        without a
+
+                        registry (e.g. `alpine:latest`), while this really only happens while in
+
+                        local mode, we don't want to pass credentials to the default registry as
+
+                        those credentials are meant for balena registry and will otherwise fail.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-14.10.8
+                  title: ""
+                  date: 2023-04-26T18:49:41.754Z
+          version: meta-balena-2.114.14
+          title: ""
+          date: 2023-04-27T17:45:02.161Z
+        - commits:
+            - subject: "hostapp-update-hooks: use unsafe fatrw copy for bootfiles"
+              hash: 71d1fa57f88e73a39cc95cca41ee148c0a2bd8c7
+              body: >
+                A safe copy would only work for files that are read by fatrw
+                also and that is
+
+                not the case for boot files. Still, some file like `config.json` would
+
+                benefit from a safe copy so we still try that first.
+
+
+                Fixes #2998
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-config-vars: introduce unsafe fatrw copy"
+              hash: df43a753c7d191b715101fd107da93fcdb7085cb
+              body: >
+                If a safe copy is preferred but non-critical, the unsafe fatrw
+                command
+
+                can be used and if fatrw does not have enough resources to make a safe
+
+                copy it will fallback to a standard cp.
+
+
+                This is useful when performing hostOS updates for example where a safe
+
+                copy would only work for files that are read by fatrw also and that is
+
+                not the case for boot files for example.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.114.13
+          title: ""
+          date: 2023-04-27T12:25:49.566Z
+        - commits:
+            - subject: "classes: kernel-balena: force recompilation if signing variables
+                change"
+              hash: ed976cd342d7f70236a683bdf179a8490862f747
+              body: >
+                If they signing variables change, we need to rebuild and resign
+                kernel
+
+                and modules.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-keys: make tasks depends on signing variables"
+              hash: 421d737c200915787e5bc6c6829254cf5b4976f1
+              body: >
+                To avoid unneeded rebuilds, just make the actual key fetching
+                tags
+
+                depend on the signing variables.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "classes: sign: make signing task depends on signing variables"
+              hash: a17f312bea7302577b7c739d57474e9014d4b8d1
+              body: >
+                The signing process order depends on the package to be signed,
+                so let's
+
+                make sure the re-signing happens.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.114.12
+          title: ""
+          date: 2023-04-26T10:01:38.568Z
+        - commits:
+            - subject: Update balena-engine to v20.10.35
+              hash: eb6d64cc9f8cf9b429ae9047ffc6b5e5afa81e10
+              body: |
+                Update balena-engine from 20.10.34 to 20.10.35
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update libnetwork to fix port binding issue
+                      hash: 56aa6337c29329e6100c24f6775840c47081cd06
+                      body: >
+                        This new version has a patch cherry-picked from here:
+
+                        https://github.com/moby/libnetwork/pull/1805
+
+
+                        This patch is meant to avoid cases in which libnetwork internal state
+
+                        gets inconsistent in case of crashes.
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                  version: balena-engine-20.10.35
+                  title: ""
+                  date: 2023-04-24T13:11:04.337Z
+          version: meta-balena-2.114.11
+          title: ""
+          date: 2023-04-24T19:52:26.600Z
+        - commits:
+            - subject: "mkfs-hostapp-native: Update base image in Dockerfile"
+              hash: 5d0e8d90050ab0bf94911ab4e676cb529c70c56b
+              body: |
+                Update Dockerfile base image from debian strech to the latest
+                stable debian bullseye to fix mkfs-hostapp-native build.
+
+                The old image has been moved in Dockerhub to debian/eol.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.114.10
+          title: ""
+          date: 2023-04-24T14:32:34.955Z
+        - commits:
+            - subject: "tests: os: configure to use installer's migrator"
+              hash: 0715805137a721f6d551e3087f7eb5231036c004
+              body: >
+                Configuring the flasher image to force the migration. We use
+                this to
+
+                skip migration tests when not configured.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "test: os: add installer migration test"
+              hash: fa327dce24a147846662ad110cc5b9d43f9a0604
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.114.9
+          title: ""
+          date: 2023-04-22T20:25:50.077Z
+        - commits:
+            - subject: Update balena-supervisor to v14.10.7
+              hash: 05df5cf13d140f03365acd732bdca73bf48f09ff
+              body: |
+                Update balena-supervisor from 14.10.6 to 14.10.7
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: Remove safeStateClone function
+                      hash: 6c031299d686cca9bb89f950b105ab5bf62fae97
+                      body: >
+                        This function is no longer needed with the latest
+                        changes to
+
+                        getCurrentState
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Get rid of targetVolatile in app manager
+                      hash: 36311ef7a1b9192879c4951fb7e4521ef3c4840b
+                      body: >
+                        Target volatile doesn't make sense now that we can use
+                        the
+
+                        current state as a target. It wasn't actually being used for anything
+
+                        anymore apparently
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Make pausingApply a private member of device-state
+                      hash: 1e0dd381f54efd31119454db592d5c047d829681
+                      body: >
+                        This simplifies this module interface and hides
+                        implementation details
+
+                        from the rest of the code.
+
+
+                        The function `applyIntermediateTarget` will now call `pausingApply`
+
+                        before applying the target
+
+
+                        API actions no longer need to call pausing apply
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Simplify doRestart and doPurge actions
+                      hash: 3d43f7e3b367636f01ac9b6388c933bab5c896e5
+                      body: >
+                        The actions now work by passing an intermediate state to
+                        the state
+
+                        engine.
+
+
+                        - doPurge first removes the user app from the target state and passes
+                          that to the state engine for purging. Since intermediate state doesn't
+                          remove images, this will have the effect of basically re-installing
+                          the app.
+
+                        - doRestart modifies the target state by first removing only the
+                          services from the current state but keeping volumes and networks. This
+                          has the same effect as before where services were stopped one by one
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Fix network appUuid inference in local mode
+                      hash: 43630e52674e82bf32792e2d15db35a9af332865
+                      body: >
+                        Local mode uses a numeric `appUuid` which was messing up
+                        parsing the
+
+                        network name. This fixes this issue so the current state can be used
+
+                        as a target state
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Get image name from DB when getting the app current state
+                      hash: b1fc4e1761e02edc84c1be344a91ef29e771aa28
+                      body: >
+                        The Service class in `compose/service.ts` cannot get the
+                        image name
+
+                        from the image id when building the object from the container metadata.
+
+
+                        We query the metadata in the application manager getCurrentApps method
+
+                        so the current state can be used as target by API methods
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Improve net alias comparison to prevent unwanted restarts
+                      hash: 27f0d2e655a5c11c89103847c485fa06babc1954
+                      body: >
+                        Network aliases are now compared checking that the
+                        target state is a
+
+                        subset of the current state. This will prevent service restarts due to
+
+                        additional aliases created by docker in the container.
+                      footer:
+                        Closes: "#2134"
+                        closes: "#2134"
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Exclude containerId from service network aliases
+                      hash: cb98133717b1c4c8f9e46c95ec7df996deae60e6
+                      body: >
+                        When getting the service from the docker container,
+                        remove the
+
+                        containerId from the list of aliases (which gets added by docker). This
+
+                        will make it easier to use the current service state as a target.
+
+
+                        This will help us remove the `safeStateClone` function in the API in a
+
+                        future commit
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Skip image delete when applying intermediate state
+                      hash: f2ca7dbb6ae465f361fc05fb42dc5ff7cfc8de4c
+                      body: >
+                        This replaces the previous flag `isApplyingIntermediate`
+                        on application
+
+                        manager and simplifies the interface of the state engine to make temporary changes to the
+
+                        general app state.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Make local mode image management work as in cloud mode
+                      hash: 967cb7747f187f70500f6393360df10b40fddebf
+                      body: >
+                        There were multiple places in the state engine that
+                        skipped some
+
+                        operations while in local mode. In reality, all it's needed while in
+
+                        local mode is to skip image and volume deletion.
+
+
+                        This commit simplifies application-manager and compose app to be more
+
+                        local mode agnostic and instead making the image deletion and volume
+
+                        deletion configurable via function arguments.
+
+
+                        This also has the benefit to make the treatment of local mode
+
+                        applications more similar to cloud mode applications, allowing for
+
+                        API endpoints to function the same way both modes.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Remove ignoreImages argument from getRequiredSteps
+                      hash: 76d5be64e56c63c01474cee2ead43d02470c1389
+                      body: >
+                        The argument was unused and hence unnecesary. This is
+                        just a bit of
+
+                        cleanup
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-14.10.7
+                  title: ""
+                  date: 2023-04-21T23:04:18.417Z
+          version: meta-balena-2.114.8
+          title: ""
+          date: 2023-04-22T02:27:23.269Z
+        - commits:
+            - subject: Update balena-supervisor to v14.10.6
+              hash: ddd2e839ed3cab692488640cb98cdd6a795fcfba
+              body: |
+                Update balena-supervisor from 14.10.4 to 14.10.6
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: Do not restart balena-hostname on rename
+                      hash: 7b68ee4c4f03f464c762afc0b3da06e3f4620440
+                      body: >
+                        The OS since v2.82.6 will monitor changes to config.json
+                        and restart
+
+                        the relevant services to apply the changes. There is no need to trigger
+
+                        restart of the services via the supervisor. Users on older OS versions
+
+                        will need to update their OS or restart the services manually as OS
+
+                        loses support after 2y.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Closes: "#2160"
+                        closes: "#2160"
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-14.10.6
+                  title: ""
+                  date: 2023-04-20T18:25:01.001Z
+                - commits:
+                    - subject: Remove anonymous build volume from Dockerfile
+                      hash: a3675651898f050eaefce0a9c4e02890ddc57b57
+                      body: >
+                        We don't need this anonymous volume as /data is bind
+                        mounted into
+
+                        the container from host (legacy), and will soon be mounted by the
+
+                        Supervisor itself on startup.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-14.10.5
+                  title: ""
+                  date: 2023-04-13T21:01:21.133Z
+          version: meta-balena-2.114.7
+          title: ""
+          date: 2023-04-20T20:18:09.935Z
+        - commits:
+            - subject: Update db and dbx hashes during HUP when secure boot is enabled
+              hash: 775dc7dba7afe2674dc0ef84e00bb773495d4c98
+              body: >
+                After moving to hashes for authenticating the allowed OS list,
+                we need
+
+                to update the db variable on each HUP to make sure the new OS
+
+                will be bootable. After confirming that the update went through,
+
+                we need to update the dbx variable to make sure the old OS is
+
+                no longer bootable.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: "balena-db-hashes: ship both db and dbx updates"
+              hash: c428010c83fd3a3ca1f4cdc72fc94a90f6be6ee4
+              body: >
+                In order to use hashes we can not use UEFI time-based
+                authentication
+
+                for updates as this would prevent rollbacks. Instead we ship appendable
+
+                updates for both db and dbx that HUP can use.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: Use hashes instead of certificates for secure boot image validation
+              hash: c205b247c14cbdd132cb1bb335da2d17fa40caf5
+              body: >
+                This patch changes the validation of bootable images from
+                certificate
+
+                signatures to a list of allowed hashes of binaries. This only applies
+
+                on db level, PK and KEK are still certificates.
+
+
+                The motivation is that certificates expire and we need to be sure
+
+                that even devices that have been lying on a shelf for several years
+
+                or whose CMOS battery has died and reset date to 1970-01-01 are still
+
+                bootable. Using hashes is more aligned with this use-case and also
+
+                more similar to the approach that embedded SoCs use.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.114.6
+          title: ""
+          date: 2023-04-20T04:15:18.461Z
+        - commits:
+            - subject: Ship separate GRUB images for secure boot
+              hash: 1eb49acca051d7c34fa0e48bd673fc764320b2e9
+              body: >
+                Shipping a single image with signature checks enabled will
+                enforce
+
+                the signatures on non-secure-boot systems as well. GRUB does not have
+
+                a simple method to check whether secure boot is enabled that could
+
+                be embedded with the default built-in config.
+
+
+                With this patch we build two separate images - one enforcing
+
+                the signatures and the other one not, keeping the original behavior.
+
+                HUP and flasher both can detect if secure boot is enabled so they
+
+                put the correct image in place when installing/updating GRUB.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.114.5
+          title: ""
+          date: 2023-04-19T10:14:40.931Z
+        - commits:
+            - subject: "initedscripts: recovery: do not use strings for timeout"
+              hash: c17da3802213251c69ba8a99ce6a8a63b358f022
+              body: >
+                Remove the `m` suffix to the timeout as they are supposed to be
+                compared
+
+                as integer numbers.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "resin-init-flasher: limit boot device identification to booting disk"
+              hash: 5ee9a12075c3c0a11455ccb342ce4499916395be
+              body: >
+                The installer is to copy configuration files into the boot
+                partition on
+
+                the installer disk - searching by label needs to be restriced to the
+
+                booting disk to avoid clashes if there are other disks with matching
+
+                labels present.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "resin-init-flasher: add verbose copy of migration log"
+              hash: 8fe29890b6e3c2caca1c603f1ecbe046d9cd1fc1
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "resin-init-flasher: fix EFI installation for multiple disks"
+              hash: 69459a964f62adbe4b9661b718994391c4a78363
+              body: >
+                Search for the installation disk on the same device the system
+                is being
+
+                installed on. This avoids problems when there are more than one disk
+
+                with balena/resin labelling.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "initrdscripts: migrate: correctly identify boot device"
+              hash: 27fd9e05d16d60a7340a16abcda5e93fd1fdb199
+              body: >
+                The internal target device to program is not always the device
+                the system
+
+                is booting from. Make sure the `flash-boot` partition search is done
+
+                on the booting device.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "distro: balena-os: update GRUB key id for signature"
+              hash: f4242aa560e869892a7289ac8523bed055feffe3
+              body: >
+                Update the default Grub key id so it matches the currently
+                configured
+
+                key. This avoids having to configure this in the build jobs.
+
+
+                [skip ci]
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.114.4
+          title: ""
+          date: 2023-04-18T12:20:45.009Z
+        - commits:
+            - subject: Update balena-supervisor to v14.10.4
+              hash: 8dc882977526603790280a7550985df3bce4db09
+              body: |
+                Update balena-supervisor from 14.10.2 to 14.10.4
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: Log uncaught promise exceptions on the app entry
+                      hash: 676464142690da2e36a810cb35e4ea4d0d751636
+                      body: >
+                        Node 15 [changed the way it treats unhandled promise
+                        rejections](https://github.com/nodejs/node/blob/main/doc/changelogs/CHANGELOG_V15.md#throw-on-unhandled-rejections---33021)
+                        from a warning to a throw.
+
+                        For this reason errors like a corrupt migration directory, that happens when trying to
+
+                        roll back to a previous supervisor version were no longer showing a
+
+                        message but dumping the full minimized code into the journal logs.
+
+
+                        This PR adds a catchall on app.ts to log the exception and throw an exit
+
+                        code of 1.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-14.10.4
+                  title: ""
+                  date: 2023-04-10T18:15:41.878Z
+                - commits:
+                    - subject: Fix assertion error in restart-service
+                      hash: b9e1464d96824f5332c71324d753d94ddbdecf90
+                      body: >
+                        From:
+                        https://github.com/balena-os/balena-supervisor/pull/2153/commits/c0b4fafe842115933b1da9b4d68e601a19c3e4eb
+
+                        Restart-service checks that both services have restarted in its test assertion, which is
+
+                        incorrect as restart-service should only restart one service.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-14.10.3
+                  title: ""
+                  date: 2023-04-10T15:17:58.539Z
+          version: meta-balena-2.114.3
+          title: ""
+          date: 2023-04-12T13:45:48.569Z
+        - commits:
+            - subject: "tests: cloud: convert ssh tunneling to test"
+              hash: 248e90fc904bf6ebd5db30d9bb20b354292acf7f
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: "tests: hup: convert ssh tunneling to test"
+              hash: 7e5651325fc5350a6380f0725149223c93e2e48c
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: "tests: os: convert ssh tunneling to test"
+              hash: cbf245f22c4726a8a89038c683efe0f0ae1e3f3f
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: "tests: cloud: check engine+sv ok in suite"
+              hash: 6a3f7954003491513fd4e32d9f6cff2866dad202
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: "tests: os: check engine+sv ok in suite"
+              hash: 2d312e67a8d347083e3f036fcb488a4118b37f87
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: "tests:cloud: convert initial SSH attempt into test"
+              hash: e14af621a3224979c5b50b36476a814ea4c5fbe1
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: "tests: hup: convert initial SSH attempt into test"
+              hash: 6aa5127d328c798bc8d36f34fc96dba3dd845506
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: "tests: os: convert initial SSH attempt into test"
+              hash: 42de079f6adc8e2bf8bd1aaf1b8e36e7dca0056c
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.114.2
+          title: ""
+          date: 2023-04-12T08:58:35.753Z
+        - commits:
+            - subject: Update balena-supervisor to v14.10.2
+              hash: 822ccaddeb62a8cc732f6422566f1f3ec129c3a0
+              body: |
+                Update balena-supervisor from 14.10.1 to 14.10.2
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: "backends: Add Jetson Orin NX custom device-tree support"
+                      hash: 6b67db98e54cd7756d7e31d9676d31ab305c4d56
+                      body: ""
+                      footer:
+                        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                        signed-off-by: Alexandru Costache <alexandru@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Alexandru Costache
+                      nested: []
+                  version: balena-supervisor-14.10.2
+                  title: ""
+                  date: 2023-04-07T18:35:17.559Z
+          version: meta-balena-2.114.1
+          title: ""
+          date: 2023-04-07T21:27:08.879Z
+        - commits:
+            - subject: Update balena-supervisor to v14.10.1
+              hash: 0bb69e86e973bf449539a942dec3ac82660ed37a
+              body: |
+                Update balena-supervisor from 14.9.8 to 14.10.1
+              footer:
+                Change-type: minor
+                change-type: minor
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: Use dbus-send to get current boot block device instead of fdisk
+                      hash: 4ab8250c971e2f05d9dbf5870f9feb8dd298bdda
+                      body: ""
+                      footer:
+                        Closes: "#2150"
+                        closes: "#2150"
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-14.10.1
+                  title: ""
+                  date: 2023-04-07T00:15:59.534Z
+                - commits:
+                    - subject: Mount boot partition into container on Supervisor start
+                      hash: 49ee1042a87ce0b101054e32b84afaa324a371de
+                      body: >
+                        As the Supervisor is a privileged container, it has
+                        access to host /dev, and therefore has access
+
+                        to boot, data, and state balenaOS partitions. This commit sets up the framework for the following:
+
+
+                        - Finds the /dev partition that corresponds to each partition based on partition label
+
+                        - Mounts the partitions into set mountpoints in the device
+
+                        - Removes reliance on env vars and mountpoints provided by host's start-balena-supervisor script
+
+                        - Simplifies host path querying by centralizing these queries through methods in lib/host-utils.ts
+
+
+                        This particular changes env vars for and mounts the boot partition.
+
+
+                        Since the Supervisor would no longer rely on container `run` arguments provided by a host script,
+
+                        this change moves Supervisor closer to being able to start itself (Supervisor-as-an-app).
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-14.10.0
+                  title: ""
+                  date: 2023-03-28T19:13:49.886Z
+          version: meta-balena-2.114.0
+          title: ""
+          date: 2023-04-07T02:24:02.321Z
+        - commits:
+            - subject: Update balena-engine to v20.10.34
+              hash: 5400eacc4003ff9fdf7d9d6e8b60ffb96dde9d87
+              body: |
+                Update balena-engine from 20.10.33 to 20.10.34
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update librsync-go to v0.8.5, circbuf to v0.1.3
+                      hash: a7c917a97048314e956d7264e97598465f88c1c7
+                      body: >
+                        Notable improvements these new versions bring:
+
+
+                        * Optimized code path for generating deltas with blocks that are
+                          power-of-two-sized.
+                        * Avoid allocating unbounded amounts of memory when the target differs
+                          completely from the source.
+                        * Several bugfixes in edge cases that shall not affect balenaEngine.
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                  version: balena-engine-20.10.34
+                  title: ""
+                  date: 2023-04-05T13:06:06.674Z
+          version: meta-balena-2.113.35
+          title: ""
+          date: 2023-04-05T15:18:23.115Z
+        - commits:
+            - subject: Update tests/leviathan digest to 5785e44
+              hash: 47268fc3f69a0dc59d11d0ab1e12e7c229c5af24
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: Deprecate worker release env var (again)
+                      hash: cb7f600321dc11cc7481bc3ffd111155f763e621
+                      body: |
+                        This env var breaks Renovate parsing, and it is
+                        no longer used by Jenkins or leviathan-worker e2e tests.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: leviathan-2.24.1
+                  title: ""
+                  date: 2023-04-04T21:10:17.519Z
+                - commits:
+                    - subject: "minor: Add Leviathan Test Helpers"
+                      hash: f3f2752cb25fca9ad851de96cc246916f84012ce
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.24.0
+                  title: ""
+                  date: 2023-04-03T06:44:28.297Z
+                - commits:
+                    - subject: "patch: Output final-result in the end"
+                      hash: eacad86187f72586ddbcd36041f619fb40c5b7ad
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.23.6
+                  title: ""
+                  date: 2023-03-31T13:18:07.076Z
+                - commits:
+                    - subject: update default worker version
+                      hash: 5b659e8a3d0921f01f1cf493373a97f909d60d26
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                  version: leviathan-2.23.5
+                  title: ""
+                  date: 2023-03-31T12:49:09.258Z
+                - commits:
+                    - subject: "swtpm: store state in tmpfs"
+                      hash: 25460508d5477dd27a4743b4684e97e6d0f8529a
+                      body: >
+                        swtpm stores state in the directory specified in the
+                        --tpmstate argument
+
+
+                        If the same state directory/files are used for multiple installations,
+
+                        the available space can be filled, and the installer will fail with the
+
+                        error "insufficient space for NV allocation".
+
+
+                        Move swtpm state to tmpfs to create new state files every run.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Joseph Kogut <joseph@balena.io>
+                        signed-off-by: Joseph Kogut <joseph@balena.io>
+                      author: Joseph Kogut
+                      nested: []
+                  version: leviathan-2.23.4
+                  title: ""
+                  date: 2023-03-29T22:31:39.865Z
+                - commits:
+                    - subject: Update core/contracts digest to fa51fae
+                      hash: 10e156b48610903182257493aea812f8d8893b84
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Renovate Bot
+                      nested: []
+                  version: leviathan-2.23.3
+                  title: ""
+                  date: 2023-03-29T20:32:23.397Z
+          version: meta-balena-2.113.34
+          title: ""
+          date: 2023-04-04T23:15:50.826Z
+        - commits:
+            - subject: Update tests/leviathan digest to e5dcbae
+              hash: a536523b56cbbfc50b9db7e356cd142bb674e9fd
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: "patch: Update path to balena-io/renovate-config"
+                      hash: 2698c25cb7bf70920b5025f941ea57b16532285c
+                      body: ""
+                      footer: {}
+                      author: Kyle Harding
+                      nested: []
+                  version: leviathan-2.23.2
+                  title: ""
+                  date: 2023-03-28T17:08:00.960Z
+          version: meta-balena-2.113.33
+          title: ""
+          date: 2023-03-28T20:47:58.221Z
+        - commits:
+            - subject: "renovate: Inherit automerge settings from org"
+              hash: 1db559de9180eaf96235bed661060b4b34d98ca4
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-2.113.32
+          title: ""
+          date: 2023-03-28T16:06:51.691Z
+        - commits:
+            - subject: Don't create core dumps in containers by default
+              hash: 1a78f2a1a27684bf244c881555b691d63a3247f6
+              body: >
+                Setting `LimitCORE=0` will avoid the creation of core dump files
+                on
+
+                containers. This will avoid cases in which a crashlooping user app ends
+
+                up filling up the entire storage with dump files.
+
+
+                Users can re-enable core dumps in their services by manually setting the
+
+                `ulimits.core`. For example:
+
+
+                ```
+
+                services:
+                  my-service:
+                    ulimits:
+                      core: -1
+                ```
+
+
+                (Where -1 is used to mean "unlimited")
+              footer:
+                Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                Change-type: patch
+                change-type: patch
+              author: Leandro Motta Barros
+              nested: []
+            - subject: Make sure balenaEngine owns the container cgroups
+              hash: 5efa793c5af63ef177de95b8b4251799b0de7f40
+              body: >
+                Setting `Delegate=yes` ensures that systemd will not change
+                anything on
+
+                the cgroups created for running the containers.
+
+
+                This setting is used upstream since this commit:
+
+                https://github.com/moby/moby/commit/d16737f971092767c1b9d28302a3f5aedbe2f576
+
+
+                And also is recommended by systemd: https://systemd.io/CGROUP_DELEGATION/
+              footer:
+                Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                Change-type: patch
+                change-type: patch
+              author: Leandro Motta Barros
+              nested: []
+          version: meta-balena-2.113.31
+          title: ""
+          date: 2023-03-28T03:45:14.883Z
+        - commits:
+            - subject: Update balena-engine to v20.10.33
+              hash: e902f495278255bdea5f341ac7634d5ec0238d5d
+              body: |
+                Update balena-engine from 20.10.32 to 20.10.33
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: Add integration tests for balena's "delta on load"
+                      hash: 47a0a065f8c28bfdcbac2f0e96d9cbc3adb1c3bb
+                      body: ""
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                    - subject: Simplify and improve delta error handling
+                      hash: 2c972dff108a153896116b07798bbc959c07ef01
+                      body: >
+                        The original delta code on the `xfer` package used to
+                        set `d.err` when
+
+                        an unexpected EOF was found in the delta tar stream. Turns out `d.err`
+
+                        would end up being overwritten before it was read, so that initial
+
+                        assignment was effectively a no-op.
+
+
+                        This commit simplifies the code a little bit by removing this bogus
+
+                        assignment and also improves the error reporting a notch by adding more
+
+                        context to the error messages.
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                    - subject: Refactor the xfer portions of delta
+                      hash: 8c9e6ec7c0efcb81c718c979ad45133f64679fc8
+                      body: >
+                        This factors out portions of the `xfer` package, so that
+                        we can
+
+                        reuse this functionality between `balena pull` and `balena load`. There
+
+                        was a good deal of duplication.
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                    - subject: Refactor the distribution portions of delta
+                      hash: 34dd5a92f29e85a77926b9c5983552054dd483c8
+                      body: >
+                        This factors out portions of the `distribution` package,
+                        so that we can
+
+                        reuse this functionality between `balena pull` and `balena load`. There
+
+                        was a good deal of duplication.
+
+
+                        This piece of code is tricky to factor out into a separate function.
+
+                        Basically we had two options:
+
+
+                        1. Create a completely reusable, DRY function that encapsulates all the
+                           duplicate code. Sounds nice until you noticed that would be a
+                           horrendous function with 5 return values and overly obscure
+                           semantics.
+                        2. We create a small set of functions with clearer interfaces and
+                           semantics, but which will still lead to some code duplication between
+                           the `pull` and `load` implementations.
+
+                        I opted for the second alternative because the resulting code is much
+
+                        easier to understand and maintain. Also, the remaining duplication is
+
+                        mostly dumb, integration and error handling code that almost writes
+
+                        itself as we call the new reusable functions -- so, this is sort of a
+
+                        benign duplication.
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                  version: balena-engine-20.10.33
+                  title: ""
+                  date: 2023-03-27T18:46:44.671Z
+          version: meta-balena-2.113.30
+          title: ""
+          date: 2023-03-27T21:30:24.970Z
+  version: 2.114.18
+  title: ""
+  date: 2023-05-04T00:09:50.806Z
+- commits:
     - subject: Add picontrol recipe for newer kunbus kernel version 5.10.152
       hash: adb0d0fe65a4d04f199e9c576a793bb6c1efb31f
       body: |
