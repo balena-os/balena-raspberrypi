@@ -1,0 +1,72 @@
+From 866eb4dbefb929241aeff093675685e9db72b47e Mon Sep 17 00:00:00 2001
+From: Frank_Liyang <Fli@edatec.cn>
+Date: Wed, 23 Nov 2022 10:14:09 +0800
+Subject: [PATCH 2/3] Add infineon-tpm DT overlay for Phoenix Board
+
+---
+ arch/arm/boot/dts/overlays/Makefile           |  1 +
+ .../dts/overlays/ed-infineon-tpm-overlay.dts  | 40 +++++++++++++++++++
+ 2 files changed, 41 insertions(+)
+ create mode 100644 arch/arm/boot/dts/overlays/ed-infineon-tpm-overlay.dts
+
+diff --git a/arch/arm/boot/dts/overlays/Makefile b/arch/arm/boot/dts/overlays/Makefile
+index 40c529e8d8dc..9c07d65a16ac 100644
+--- a/arch/arm/boot/dts/overlays/Makefile
++++ b/arch/arm/boot/dts/overlays/Makefile
+@@ -48,6 +48,7 @@ dtbo-$(CONFIG_ARCH_BCM2835) += \
+ 	dwc-otg.dtbo \
+ 	dwc2.dtbo \
+ 	ed-gpio-wdt.dtbo \
++	ed-infineon-tpm.dtbo \
+ 	edt-ft5406.dtbo \
+ 	enc28j60.dtbo \
+ 	enc28j60-spi2.dtbo \
+diff --git a/arch/arm/boot/dts/overlays/ed-infineon-tpm-overlay.dts b/arch/arm/boot/dts/overlays/ed-infineon-tpm-overlay.dts
+new file mode 100644
+index 000000000000..92062e6c2fa0
+--- /dev/null
++++ b/arch/arm/boot/dts/overlays/ed-infineon-tpm-overlay.dts
+@@ -0,0 +1,40 @@
++/*
++* Device Tree overlay for Infineon SLx 9670
++*/
++/dts-v1/;
++/plugin/;
++/ {
++    ompatible = "brcm,bcm2835", "brcm,bcm2708", "brcm,bcm2709";
++
++    fragment@0 {
++        target = <&spi1>;
++        __overlay__ {
++        status = "okay";
++        };
++    };
++
++    fragment@1 {
++        target = <&spidev1>;
++        __overlay__ {
++            status = "disabled";
++        };
++    };
++
++    fragment@2 {
++        target = <&spi1>;
++        __overlay__ {
++            /* needed to avoid dtc warning */
++            #address-cells = <1>;
++            #size-cells = <0>;
++            slb9670: slb9670@0{
++                compatible = "infineon,slb9670";
++                reg = <0>; /* CE0 */
++                #address-cells = <1>;
++                #size-cells = <0>;
++                spi-max-frequency = <32000000>;
++                status = "okay";
++            };
++
++        };
++    };
++};
+-- 
+2.17.1
+

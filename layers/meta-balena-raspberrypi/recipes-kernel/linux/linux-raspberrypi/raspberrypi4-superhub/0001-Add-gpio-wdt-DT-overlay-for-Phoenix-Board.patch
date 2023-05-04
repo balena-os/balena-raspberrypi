@@ -1,0 +1,68 @@
+From 1b982d940944775050001666f5c63757e59f48e0 Mon Sep 17 00:00:00 2001
+From: Frank_Liyang <Fli@edatec.cn>
+Date: Wed, 23 Nov 2022 10:11:00 +0800
+Subject: [PATCH 1/3] Add gpio-wdt DT overlay for Phoenix Board
+
+---
+ arch/arm/boot/dts/overlays/Makefile           |  1 +
+ .../boot/dts/overlays/ed-gpio-wdt-overlay.dts | 36 +++++++++++++++++++
+ 2 files changed, 37 insertions(+)
+ create mode 100644 arch/arm/boot/dts/overlays/ed-gpio-wdt-overlay.dts
+
+diff --git a/arch/arm/boot/dts/overlays/Makefile b/arch/arm/boot/dts/overlays/Makefile
+index 6b4a1b3f21a4..40c529e8d8dc 100644
+--- a/arch/arm/boot/dts/overlays/Makefile
++++ b/arch/arm/boot/dts/overlays/Makefile
+@@ -47,6 +47,7 @@ dtbo-$(CONFIG_ARCH_BCM2835) += \
+ 	draws.dtbo \
+ 	dwc-otg.dtbo \
+ 	dwc2.dtbo \
++	ed-gpio-wdt.dtbo \
+ 	edt-ft5406.dtbo \
+ 	enc28j60.dtbo \
+ 	enc28j60-spi2.dtbo \
+diff --git a/arch/arm/boot/dts/overlays/ed-gpio-wdt-overlay.dts b/arch/arm/boot/dts/overlays/ed-gpio-wdt-overlay.dts
+new file mode 100644
+index 000000000000..56f39255b5fb
+--- /dev/null
++++ b/arch/arm/boot/dts/overlays/ed-gpio-wdt-overlay.dts
+@@ -0,0 +1,36 @@
++/*
++* Device Tree overlay for Watchdog
++*/
++
++/dts-v1/;
++/plugin/;
++
++/ {
++    compatible = "brcm,bcm2835";
++    fragment@0 {
++                target-path = "/";
++                __overlay__ {
++                    gpio_watchdog: gpio_watchdog {
++                        compatible = "linux,wdt-gpio";
++                        gpios = <&gpio 0 1>;
++                        hw_algo = "toggle";
++                        hw_margin_ms = <1600>;
++                    };
++                };
++        };
++
++    fragment@1 {
++                target = <&gpio>;
++                __overlay__ {
++                        watchdog_ctrl_pins: watchdog_ctrl_pins {
++                            brcm,pins = <0>;
++                            brcm,function = <1>; // out
++                        };
++                };
++        };
++
++    __overrides__ {
++		gpiowdt =<&gpio_watchdog>,"gpios:4",
++			    <&watchdog_ctrl_pins>,"brcm,pins:0";
++	};
++};
+-- 
+2.17.1
+
