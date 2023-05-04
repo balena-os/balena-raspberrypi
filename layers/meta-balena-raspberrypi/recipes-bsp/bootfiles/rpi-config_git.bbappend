@@ -35,6 +35,25 @@ do_deploy:append:raspberrypi3-unipi-neuron() {
 	echo "dtoverlay=neuron-spi-new" >> ${DEPLOYDIR}/bootfiles/config.txt
 }
 
+do_deploy:append:raspberrypi4-superhub() {
+	# Disable spi0
+	sed -i '/dtparam=spi=on/ c\dtparam=spi=off' ${DEPLOYDIR}/bootfiles/config.txt
+
+	# Use the dt overlays required by the raspberrypi4 superhub boards
+	echo "dtparam=ant2" >> ${DEPLOYDIR}/bootfiles/config.txt
+	echo "dtoverlay=dwc2,dr_mode=host" >> ${DEPLOYDIR}/bootfiles/config.txt
+	echo "dtoverlay=i2c-rtc,pcf8563" >> ${DEPLOYDIR}/bootfiles/config.txt
+	echo "dtoverlay=pca953x,pca9555" >> ${DEPLOYDIR}/bootfiles/config.txt
+	echo "dtoverlay=pca953x,pca9555,addr=0x21" >> ${DEPLOYDIR}/bootfiles/config.txt
+	echo "dtoverlay=pca953x,pca9555,addr=0x22" >> ${DEPLOYDIR}/bootfiles/config.txt
+	echo "dtoverlay=uart3" >> ${DEPLOYDIR}/bootfiles/config.txt
+	echo "dtoverlay=uart5" >> ${DEPLOYDIR}/bootfiles/config.txt
+	echo "dtoverlay=ed-gpio-wdt" >> ${DEPLOYDIR}/bootfiles/config.txt
+	echo "dtoverlay=ed-spi1-1cs" >> ${DEPLOYDIR}/bootfiles/config.txt
+	echo "dtoverlay=ed-infineon-tpm" >> ${DEPLOYDIR}/bootfiles/config.txt
+	echo "dtoverlay=ed-sdhost" >> ${DEPLOYDIR}/bootfiles/config.txt
+}
+
 do_deploy:append:raspberrypi4-unipi-neuron() {
 	# Use the dt overlays required by the UniPi Neuron family of boards
 	echo "dtoverlay=neuronee" >> ${DEPLOYDIR}/bootfiles/config.txt
