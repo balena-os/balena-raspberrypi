@@ -26,6 +26,7 @@ DISABLE_VC4GRAPHICS = "1"
 DISABLE_VC4GRAPHICS:remove:raspberrypi3-64 = "1"
 DISABLE_VC4GRAPHICS:remove:raspberrypi4-64 = "1"
 DISABLE_VC4GRAPHICS:remove:raspberrypi0-2w-64 = "1"
+DISABLE_VC4GRAPHICS:remove:revpi-connect-s = "1"
 
 # RPI BSP uses uncompressed kernel images by default
 KERNEL_IMAGETYPE="zImage"
