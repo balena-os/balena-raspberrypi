@@ -1,0 +1,68 @@
+From 861d2472f3df2252b35dee444affe36d204873d0 Mon Sep 17 00:00:00 2001
+From: Frank_Liyang <Fli@edatec.cn>
+Date: Thu, 22 Dec 2022 15:59:59 +0800
+Subject: [PATCH 4/4] Add SD host DT overlay for Phoenix Board
+
+---
+ arch/arm/boot/dts/overlays/Makefile           |  1 +
+ .../boot/dts/overlays/ed-sdhost-overlay.dts   | 36 +++++++++++++++++++
+ 2 files changed, 37 insertions(+)
+ create mode 100644 arch/arm/boot/dts/overlays/ed-sdhost-overlay.dts
+
+diff --git a/arch/arm/boot/dts/overlays/Makefile b/arch/arm/boot/dts/overlays/Makefile
+index def6c4fad598..363e65211cfe 100644
+--- a/arch/arm/boot/dts/overlays/Makefile
++++ b/arch/arm/boot/dts/overlays/Makefile
+@@ -49,6 +49,7 @@ dtbo-$(CONFIG_ARCH_BCM2835) += \
+ 	dwc2.dtbo \
+ 	ed-gpio-wdt.dtbo \
+ 	ed-infineon-tpm.dtbo \
++	ed-sdhost.dtbo \
+ 	ed-spi1-1cs.dtbo \
+ 	edt-ft5406.dtbo \
+ 	enc28j60.dtbo \
+diff --git a/arch/arm/boot/dts/overlays/ed-sdhost-overlay.dts b/arch/arm/boot/dts/overlays/ed-sdhost-overlay.dts
+new file mode 100644
+index 000000000000..2b1ba6eb57f1
+--- /dev/null
++++ b/arch/arm/boot/dts/overlays/ed-sdhost-overlay.dts
+@@ -0,0 +1,36 @@
++/dts-v1/;
++/plugin/;
++
++/{
++	compatible = "brcm,bcm2711";
++
++	fragment@0 {
++		target = <&sdhost>;
++		frag0: __overlay__ {
++			pinctrl-names = "default";
++			pinctrl-0 = <&sdio_gpio_22_27>;
++            bus-width = <4>;
++			brcm,overclock-50 = <0>;
++			brcm,pio-limit = <1>;
++			status = "okay";
++		};
++	};
++
++	fragment@1 {
++		target = <&gpio>;
++		__overlay__ {
++			sdio_gpio_22_27: sdio_gpio_22_27 {
++				brcm,pins = <22 23 24 25 26 27>;
++				brcm,function = <4>; /* BCM2835_FSEL_ALT0, SD0 */
++				brcm,pull = <0 2 2 2 2 2>;
++			};
++		};
++	};
++
++	__overrides__ {
++		overclock_50     = <&frag0>,"brcm,overclock-50:0";
++		force_pio        = <&frag0>,"brcm,force-pio?";
++		pio_limit        = <&frag0>,"brcm,pio-limit:0";
++		debug            = <&frag0>,"brcm,debug?";
++	};
++};
+-- 
+2.17.1
+

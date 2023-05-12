@@ -54,3 +54,6 @@ IMAGE_INSTALL:append:rpi = " u-boot"
 do_resin_boot_dirgen_and_deploy[depends] += "virtual/kernel:do_install"
 
 RPI_KERNEL_DEVICETREE:remove:revpi = "bcm2708-rpi-zero-w.dtb bcm2710-rpi-3-b-plus.dtb bcm2711-rpi-4-b.dtb"
+
+# this being a pi4 based board, increase to 400 MiB (up from 320 MiB) to make sure we have enough space in the rootfs
+IMAGE_ROOTFS_SIZE:raspberrypi4-superhub="409600"

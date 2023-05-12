@@ -1,0 +1,92 @@
+From 5a1e61a198b4733da111b259bb683bbe6c855166 Mon Sep 17 00:00:00 2001
+From: Frank_Liyang <Fli@edatec.cn>
+Date: Wed, 23 Nov 2022 10:16:08 +0800
+Subject: [PATCH 3/3] Add spi1 DT overlay for Phoenix Board
+
+---
+ arch/arm/boot/dts/overlays/Makefile           |  1 +
+ .../boot/dts/overlays/ed-spi1-1cs-overlay.dts | 60 +++++++++++++++++++
+ 2 files changed, 61 insertions(+)
+ create mode 100644 arch/arm/boot/dts/overlays/ed-spi1-1cs-overlay.dts
+
+diff --git a/arch/arm/boot/dts/overlays/Makefile b/arch/arm/boot/dts/overlays/Makefile
+index 9c07d65a16ac..def6c4fad598 100644
+--- a/arch/arm/boot/dts/overlays/Makefile
++++ b/arch/arm/boot/dts/overlays/Makefile
+@@ -49,6 +49,7 @@ dtbo-$(CONFIG_ARCH_BCM2835) += \
+ 	dwc2.dtbo \
+ 	ed-gpio-wdt.dtbo \
+ 	ed-infineon-tpm.dtbo \
++	ed-spi1-1cs.dtbo \
+ 	edt-ft5406.dtbo \
+ 	enc28j60.dtbo \
+ 	enc28j60-spi2.dtbo \
+diff --git a/arch/arm/boot/dts/overlays/ed-spi1-1cs-overlay.dts b/arch/arm/boot/dts/overlays/ed-spi1-1cs-overlay.dts
+new file mode 100644
+index 000000000000..65e7e01f6671
+--- /dev/null
++++ b/arch/arm/boot/dts/overlays/ed-spi1-1cs-overlay.dts
+@@ -0,0 +1,60 @@
++/*
++* Device Tree overlay for SPI1
++*/
++/dts-v1/;
++/plugin/;
++
++
++/ {
++	compatible = "brcm,bcm2835";
++
++	fragment@0 {
++		target = <&gpio>;
++		__overlay__ {
++			spi1_pins: spi1_pins {
++				brcm,pins = <19 20 21>;
++				brcm,function = <3>; /* alt4 */
++			};
++
++			spi1_cs_pins: spi1_cs_pins {
++				brcm,pins = <18>;
++				brcm,function = <1>; /* output */
++			};
++		};
++	};
++
++	fragment@1 {
++		target = <&spi1>;
++		frag1: __overlay__ {
++			/* needed to avoid dtc warning */
++			#address-cells = <1>;
++			#size-cells = <0>;
++			pinctrl-names = "default";
++			pinctrl-0 = <&spi1_pins &spi1_cs_pins>;
++			cs-gpios = <&gpio 18 1>;
++			status = "okay";
++
++			spidev1_0: spidev@0 {
++				compatible = "spidev";
++				reg = <0>;      /* CE0 */
++				#address-cells = <1>;
++				#size-cells = <0>;
++				spi-max-frequency = <125000000>;
++				status = "disabled";
++			};
++		};
++	};
++
++	fragment@2 {
++		target = <&aux>;
++		__overlay__ {
++			status = "okay";
++		};
++	};
++
++	__overrides__ {
++		cs0_pin  = <&spi1_cs_pins>,"brcm,pins:0",
++			   <&frag1>,"cs-gpios:4";
++		cs0_spidev = <&spidev1_0>,"status";
++	};
++};
+-- 
+2.17.1
+
