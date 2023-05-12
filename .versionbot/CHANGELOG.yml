@@ -1,4 +1,18 @@
 - commits:
+    - subject: Add support for raspberrypi4-superhub
+      hash: 5b78ceecd0ca651ef3e207f723dbccec45689068
+      body: ""
+      footer:
+        Changelog-entry: Add support for raspberrypi4-superhub
+        changelog-entry: Add support for raspberrypi4-superhub
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.114.18+rev1
+  title: ""
+  date: 2023-05-12T13:21:31.124Z
+- commits:
     - subject: Update layers/meta-balena to 0d43fec5037b2b4be928647e9b626c62c794c6f0
       hash: dbee5c1577efe2464cf1d9753ea12b627e142998
       body: Update layers/meta-balena

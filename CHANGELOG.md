@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.114.18+rev1
+## (2023-05-12)
+
+* Add support for raspberrypi4-superhub [Florin Sarbu]
+
 # v2.114.18
 ## (2023-05-04)
 
