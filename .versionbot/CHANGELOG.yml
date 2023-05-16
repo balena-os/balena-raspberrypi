@@ -1,4 +1,124 @@
 - commits:
+    - subject: Updated patch to match upstream
+      hash: d4543d76ba15ea77c9a0dbc9f9667bd6d7939569
+      body: ""
+      footer:
+        Changelog-entry: Updated patch to match upstream
+        changelog-entry: Updated patch to match upstream
+        Signed-off-by: Obaid Chemkhi <obaid.chemkhi@voltstorage.com>
+        signed-off-by: Obaid Chemkhi <obaid.chemkhi@voltstorage.com>
+      author: Waqar Rashid
+      nested: []
+    - subject: Increase rootfs size, added partitions for revpi-connect-s device
+      hash: e4288c8830ddf684aa5e4e788e560bdf2f4de4c2
+      body: |
+        Increase rootfs size, added partitions for revpi-connect-s device
+      footer:
+        Changelog-entry: Increase rootfs size, added partitions for revpi-connect-s device
+        changelog-entry: Increase rootfs size, added partitions for revpi-connect-s device
+        Signed-off-by: Obaid Chemkhi <obaid.chemkhi@voltstorage.com>
+        signed-off-by: Obaid Chemkhi <obaid.chemkhi@voltstorage.com>
+      author: Waqar Rashid
+      nested: []
+    - subject: Applied to patch to revpi-connect-s, similar to revpi-connect device
+      hash: f1ff240090cc56ed77a0fe9ae756336c9a390823
+      body: |
+        Applied to patch to revpi-connect-s, similar to revpi-connect device
+      footer:
+        Changelog-entry: Applied to patch to revpi-connect-s, similar to revpi-connect device
+        changelog-entry: Applied to patch to revpi-connect-s, similar to revpi-connect device
+        Signed-off-by: Obaid Chemkhi <obaid.chemkhi@voltstorage.com>
+        signed-off-by: Obaid Chemkhi <obaid.chemkhi@voltstorage.com>
+      author: Waqar Rashid
+      nested: []
+    - subject: added device tree overlay for revpi-connect-s into
+        rpi-config_git.bbappend
+      hash: 6dadbe56e1f3c65e56f4669cb77f0a9764997165
+      body: >
+        added device tree overlay for revpi-connect-s into
+        rpi-config_git.bbappend
+      footer:
+        Changelog-entry: added device tree overlay for revpi-connect-s into
+          rpi-config_git.bbappend
+        changelog-entry: added device tree overlay for revpi-connect-s into
+          rpi-config_git.bbappend
+        Signed-off-by: Obaid Chemkhi <obaid.chemkhi@voltstorage.com>
+        signed-off-by: Obaid Chemkhi <obaid.chemkhi@voltstorage.com>
+      author: Waqar Rashid
+      nested: []
+    - subject: Enabled vc4graphic for revpi-connect-s
+      hash: aa202e1bdf9bbfac91aa8b3dbe760695fe9004d2
+      body: |
+        Enabled vc4graphic for revpi-connect-s
+      footer:
+        Changelog-entry: Enabled vc4graphic for revpi-connect-s
+        changelog-entry: Enabled vc4graphic for revpi-connect-s
+        Signed-off-by: Obaid Chemkhi <obaid.chemkhi@voltstorage.com>
+        signed-off-by: Obaid Chemkhi <obaid.chemkhi@voltstorage.com>
+      author: Waqar Rashid
+      nested: []
+    - subject: Added revpi-connect-s to list of supported machines
+      hash: 0653d02dc6ff28a511439245069035e57d24023f
+      body: |
+        Added revpi-connect-s to list of supported machines.
+      footer:
+        Changelog-entry: Added revpi-connect-s to list of supported machines
+        changelog-entry: Added revpi-connect-s to list of supported machines
+        Signed-off-by: Obaid Chemkhi <obaid.chemkhi@voltstorage.com>
+        signed-off-by: Obaid Chemkhi <obaid.chemkhi@voltstorage.com>
+      author: Waqar Rashid
+      nested: []
+    - subject: Removed vfat for revpi-connect-s
+      hash: 0074f094e21c6b2231dc7cc02f2ad9e04c8a519e
+      body: >
+        Removed vfat for revpi-connect-s devices as it was done for revpi-connect
+      footer:
+        Changelog-entry: Removed vfat for revpi-connect-s
+        changelog-entry: Removed vfat for revpi-connect-s
+        Signed-off-by: Obaid Chemkhi <obaid.chemkhi@voltstorage.com>
+        signed-off-by: Obaid Chemkhi <obaid.chemkhi@voltstorage.com>
+      author: Waqar Rashid
+      nested: []
+    - subject: Added device tree for cm4s
+      hash: b9f1eb9406211795d3910ccaea94e7edf0fcf9ff
+      body: |
+        revpi-connect-s is based on raspberry pi compute module 4s and we
+        need the device trees for that device in our layer.conf
+      footer:
+        Changelog-entry: Added device tree for cm4s
+        changelog-entry: Added device tree for cm4s
+        Signed-off-by: Obaid Chemkhi <obaid.chemkhi@voltstorage.com>
+        signed-off-by: Obaid Chemkhi <obaid.chemkhi@voltstorage.com>
+      author: Waqar Rashid
+      nested: []
+    - subject: Added machine file for revpi-connect-s
+      hash: d350d146a588f9b4cf2656e706e78006a516cf94
+      body: |
+        Added .conf (machine) file for revpi-connect-s device. We also included
+        the revpi4.inc in this machine file.
+      footer:
+        Changelog-entry: Added machine file for revpi-connect-s
+        changelog-entry: Added machine file for revpi-connect-s
+        Signed-off-by: Obaid Chemkhi <obaid.chemkhi@voltstorage.com>
+        signed-off-by: Obaid Chemkhi <obaid.chemkhi@voltstorage.com>
+      author: Waqar Rashid
+      nested: []
+    - subject: Added coffee file for revpi-connect-s
+      hash: 9fdb77ce10b4a2a3296c5ddc65b0a6e2a6147e19
+      body: |
+        Added .coffee file for revpi-connect-s device. This device is very
+        similar to revpi-connect.
+      footer:
+        Changelog-entry: Added coffee file for revpi-connect-s
+        changelog-entry: Added coffee file for revpi-connect-s
+        Signed-off-by: Obaid Chemkhi <obaid.chemkhi@voltstorage.com>
+        signed-off-by: Obaid Chemkhi <obaid.chemkhi@voltstorage.com>
+      author: Waqar Rashid
+      nested: []
+  version: 2.114.18+rev2
+  title: ""
+  date: 2023-05-16T13:37:17.286Z
+- commits:
     - subject: Add support for raspberrypi4-superhub
       hash: 5b78ceecd0ca651ef3e207f723dbccec45689068
       body: ""

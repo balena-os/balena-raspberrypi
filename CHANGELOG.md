@@ -1,6 +1,20 @@
 Change log
 -----------
 
+# v2.114.18+rev2
+## (2023-05-16)
+
+* Updated patch to match upstream [Waqar Rashid]
+* Increase rootfs size, added partitions for revpi-connect-s device [Waqar Rashid]
+* Applied to patch to revpi-connect-s, similar to revpi-connect device [Waqar Rashid]
+* added device tree overlay for revpi-connect-s into rpi-config_git.bbappend [Waqar Rashid]
+* Enabled vc4graphic for revpi-connect-s [Waqar Rashid]
+* Added revpi-connect-s to list of supported machines [Waqar Rashid]
+* Removed vfat for revpi-connect-s [Waqar Rashid]
+* Added device tree for cm4s [Waqar Rashid]
+* Added machine file for revpi-connect-s [Waqar Rashid]
+* Added coffee file for revpi-connect-s [Waqar Rashid]
+
 # v2.114.18+rev1
 ## (2023-05-12)
 
