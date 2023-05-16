@@ -11,6 +11,12 @@ SDIMG_KERNELIMAGE:raspberrypi2 ?= "kernel7.img"
 SDIMG_KERNELIMAGE:raspberrypi3-64 ?= "kernel8.img"
 SDIMG_KERNELIMAGE:raspberrypi0-2w-64 ?= "kernel8.img"
 
+# Increase Root File system size
+IMAGE_ROOTFS_SIZE:revpi-connect-s ?= "319488"
+IMAGE_OVERHEAD_FACTOR:revpi-connect-s ?= "1.0"
+IMAGE_ROOTFS_EXTRA_SPACE:revpi-connect-s ?= "53248"
+IMAGE_ROOTFS_MAXSIZE:revpi-connect-s ?= "372736"
+
 # Customize balenaos-img
 BALENA_IMAGE_BOOTLOADER:rpi = "rpi-bootfiles"
 BALENA_BOOT_PARTITION_FILES:rpi = " \
@@ -22,6 +28,8 @@ BALENA_BOOT_PARTITION_FILES:rpi = " \
 BALENA_BOOT_PARTITION_FILES:append:revpi-core-3 = " revpi-core-dt-blob-overlay.dtb:/dt-blob.bin"
 
 BALENA_BOOT_PARTITION_FILES:append:revpi-connect = " revpi-connect-dt-blob-overlay.dtb:/dt-blob.bin"
+
+BALENA_BOOT_PARTITION_FILES:append:revpi-connect-s = " revpi-connect-dt-blob-overlay.dtb:/dt-blob.bin"
 
 python overlay_dtbs_handler () {
     # Add all the dtb files programatically
