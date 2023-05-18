@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.114.18+rev3
+## (2023-05-18)
+
+* Fix revpi-connect-s build by including missing vc4graphics.cfg [Florin Sarbu]
+* Remove redundant yocto kernel config fragments from linux-raspberrypi [Florin Sarbu]
+
 # v2.114.18+rev2
 ## (2023-05-16)
 

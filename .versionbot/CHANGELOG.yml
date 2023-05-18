@@ -1,4 +1,34 @@
 - commits:
+    - subject: Fix revpi-connect-s build by including missing vc4graphics.cfg
+      hash: f6159f2b78ed1b98208c6218c090aabdc5de3edb
+      body: |
+        The linux-kunbus kernel recipe includes the file linux-raspberrypi.inc
+        which is present in the BSP layer. As such we also need to add here
+        the kernel config fragment(s) the BSP include file uses.
+      footer:
+        Changelog-entry: Fix revpi-connect-s build by including missing vc4graphics.cfg
+        changelog-entry: Fix revpi-connect-s build by including missing vc4graphics.cfg
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+    - subject: Remove redundant yocto kernel config fragments from linux-raspberrypi
+      hash: 3169fd430c355d391f935af2dd5a821b0c0bc7d0
+      body: |
+        These were brought in when we added the raspberrypi kernel in our layer.
+        Since we now use the kernel from the BSP layer, let's remove these files
+        from here since they are already in the BSP layer.
+      footer:
+        Changelog-entry: Remove redundant yocto kernel config fragments from linux-raspberrypi
+        changelog-entry: Remove redundant yocto kernel config fragments from linux-raspberrypi
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.114.18+rev3
+  title: ""
+  date: 2023-05-18T10:44:37.789Z
+- commits:
     - subject: Updated patch to match upstream
       hash: d4543d76ba15ea77c9a0dbc9f9667bd6d7939569
       body: ""
