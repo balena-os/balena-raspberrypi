@@ -1,4 +1,579 @@
 - commits:
+    - subject: Update layers/meta-balena to 5bf3a7b37f4e33264629144c9bf355b4d81c1dee
+      hash: dd55dfb8f7f0cae3377c8117e004ba9f59d87644
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 5bf3a7b37f4e33264629144c9bf355b4d81c1dee
+        changelog-entry: Update layers/meta-balena to 5bf3a7b37f4e33264629144c9bf355b4d81c1dee
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "tests: config: set both network options to false"
+              hash: 3715edcd98aaadb983419d6389d666c10391afc9
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: "tests: hup: use contract to configure network"
+              hash: c054e184f2dd96c9c878008d9f16d96928e5dff3
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: "tests: cloud: use contract to configure network"
+              hash: 5c81d124453159a6bb7374a68d27275bb1141fa0
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: "tests: os: use contract to configure network"
+              hash: 81c0c7c5df0727df3979db20a6a4a6b00c82b12a
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.115.1
+          title: ""
+          date: 2023-05-17T08:32:52.294Z
+        - commits:
+            - subject: Update balena-supervisor to v14.11.1
+              hash: 1222c7adec29b958dec4277ea5b716cad3f6a9b1
+              body: |
+                Update balena-supervisor from 14.10.10 to 14.11.1
+              footer:
+                Change-type: minor
+                change-type: minor
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: Fix `sw.arch` typo when testing contracts
+                      hash: 2758e190b28ea07d5b40daaa9e59434f2bfc28e9
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-14.11.1
+                  title: ""
+                  date: 2023-05-11T22:07:32.863Z
+                - commits:
+                    - subject: Add `arch.sw` to the valid container requirements
+                      hash: 8656bd62f705624a5cb02a0b0677888b21dd4627
+                      body: ""
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Allow using slug to validate hw.device-type contract
+                      hash: f1f09e0e27b1b538d0ca806cd1bb167303d65779
+                      body: >
+                        This also adds the hw.device-type test case to the unit
+                        tests.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Simplify and move lib/contract.spec.ts to tests/unit
+                      hash: a884a58b4cdbc9e06be01929138b4973e5e8ffd9
+                      body: >
+                        Improve contract tests to remove dependence on stubs and
+                        unnecessary
+
+                        system calls.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-14.11.0
+                  title: ""
+                  date: 2023-05-10T12:39:14.767Z
+                - commits:
+                    - subject: Add information about hdmi port 2 config vars
+                      hash: d5cc8238cbe7218d318cf1ce0375ab649a4495c6
+                      body: >
+                        Support for colon characters was added v14.6.0 which
+                        enabled
+
+                        configurations for HDMI port 2 (e.g on the RPi 4). These configurations
+
+                        are not documented anywhere else so this allows users to be able to
+
+                        better find the relevant information for working with HDMI.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Relates-to: "#2090"
+                        relates-to: "#2090"
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Update table formatting on configurations.md
+                      hash: ba39cf539ef381f6cb80f81408f8e4571fd61179
+                      body: |
+                        For better readability on text editor
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-14.10.11
+                  title: ""
+                  date: 2023-05-08T20:35:26.833Z
+          version: meta-balena-2.115.0
+          title: ""
+          date: 2023-05-12T21:42:33.085Z
+        - commits:
+            - subject: "tests: hup: enable boot-switch skip"
+              hash: f8f0b66b5a9d9f93c61f19f6998a57a7214ffe3a
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: "tests: cloud: enable boot-switch skip Commit body"
+              hash: 9a724ff741b0ad0f873b031108535f3cf4e99b15
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: "tests: os: enable boot-switch skip"
+              hash: 25094a479849cccf743c97f55f81a5c8dff17933
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-2.114.25
+          title: ""
+          date: 2023-05-12T17:21:39.646Z
+        - commits:
+            - subject: "resin-init-flasher: add more comments around efi/boot partition split"
+              hash: 63663b30f8962be8b6d8070340fe89e435f8915b
+              body: |
+                This is hard to follow when reading the code without context.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: "resin-init-flasher: reboot into signed flasher when provisioning
+                secure boot"
+              hash: ceedc55646898e4eacb840f89710f39c58674323
+              body: >
+                When programming keys for secure boot, some devices do not clear
+
+                the setup mode flag after a new PK is installed. In this case
+
+                flasher will reboot in order to ensure the keys are actually saved
+
+                and the device comes back with secure boot enabled. Since we changed
+
+                flasher to be unsigned by default, this reboot causes a security
+
+                violation.
+
+
+                With this patch flasher will add a new boot entry before issuing
+
+                the reboot so that signed flasher comes up and the installation process
+
+                can continue.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: "resin-init-flasher: Fill db EFI variable from esl file instead of
+                auth"
+              hash: d1e045b826c48168d75163cf9bb9fb1a387ed4f2
+              body: >
+                Currently the db.auth file is signed as "append" in order to
+                make HUP work.
+
+                Most UEFI firmwares will accept such file even for "replace", which we do
+
+                during the initial provisioning, however we have seen devices that will
+
+                only allow appending, which makes flasher fail.
+
+
+                With this patch flasher will use the esl file for initial programming
+
+                of the db variable.
+
+
+                PK and KEK are unaffected.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.114.24
+          title: ""
+          date: 2023-05-11T20:31:43.765Z
+        - commits:
+            - subject: "tests: suites: remove default migration force configuration"
+              hash: 6cbb6a983574158cb8531b24e3baeff8518ebe1a
+              body: |
+                Instead we will configure this on specific Jenkins jobs.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "resin-init-flasher: avoid partition labels clashes"
+              hash: 6af87bf9a3cae40ab7b9cad844b8ed71f6d004f8
+              body: >
+                When using labels to mount partitions, restrict it to a specific
+                drive
+
+                to avoid clashes.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "initrdscripts: recovery: set adb default timeouts in minutes"
+              hash: ecb720889cc870670b2e683913f28251f7ccbd88
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "tests: move installerForceMigration suite configuration to balenaOS
+                section"
+              hash: 020f7da433b0743e5c045239a24e3ed00445b8dc
+              body: >
+                The balenaOS section is the logical place for this configuration
+                to be.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "tests: simplify accessing config.json data"
+              hash: 831c12fd9bd49fec048cb20509fe5ac6255e8da8
+              body: |
+                There is no longer need to go through the context for this.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.114.23
+          title: ""
+          date: 2023-05-06T19:31:19.959Z
+        - commits:
+            - subject: Update balena-engine to v20.10.36
+              hash: 192ab1d65bcfb50495378f0b7a1481827cc1ae10
+              body: |
+                Update balena-engine from 20.10.35 to 20.10.36
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: Further improve resilience of image pulls
+                      hash: d864e340bfe050144252db8b0de9c66a3a40fa20
+                      body: >
+                        Previously, we'd time-out a pull operation after
+                        unsuccessfully retrying
+
+                        for about 17 minutes (for details see commit
+
+                        582487f832c59c2f734a780ab0492833f29002c9). This worked fine in most
+
+                        situations, but we have seen at least one case of a particularly
+
+                        unreliable network connection that would not be able to finish a large
+
+                        pull when operating under this policy.
+
+
+                        This commit:
+
+
+                        * Completely removes timeouts from image pulls. We'll keep retrying
+                          forever, or until users cancel the pull. (From the perspective of the
+                          REST API, "canceling" mean closing the HTTP connection. This is what
+                          happens when a user Ctrl+C during a pull in the CLI, or, say, we kill
+                          a curl process that was using the REST API to pull image.)
+                        * Still uses exponential back-off, but we now limit the interval between
+                          retries to 5 minutes. The rationale is that some very unreliable
+                          networks may be up only for relatively small time windows. Therefore,
+                          using intervals that are too long would increase the risk of missing
+                          these windows.
+                        * Tries to avoid flooding the log stream with messages about retries.
+                          We'll log every retry attempt up to the 10th. After that, we'll log
+                          retries only once about every 2h. This retry count is reset every time
+                          we successfully download any amount of data.
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                  version: balena-engine-20.10.36
+                  title: ""
+                  date: 2023-05-04T10:15:21.705Z
+          version: meta-balena-2.114.22
+          title: ""
+          date: 2023-05-05T07:14:09.662Z
+        - commits:
+            - subject: Update tests/leviathan digest to 256b844
+              hash: e9c98147c26054bff79cd5dee1638a3ba4c2d611
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: "suite: move installer configuration to balenaOS configuration section"
+                      hash: 342f30a9f5665ac70fcc648af28e6751c50c6ef5
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                        signed-off-by: Alex Gonzalez <alexg@balena.io>
+                      author: Alex Gonzalez
+                      nested: []
+                  version: leviathan-2.25.6
+                  title: ""
+                  date: 2023-05-04T10:24:35.420Z
+          version: meta-balena-2.114.21
+          title: ""
+          date: 2023-05-05T02:33:12.010Z
+        - commits:
+            - subject: Updated the CDS link
+              hash: c3614eaa6e757f6e8276f87ecefc1af4d0314150
+              body: Updated CDS link to the balena.io subdomain one
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Hampton (@rhampt) <rhampt@balena.io>
+                signed-off-by: Ryan Hampton (@rhampt) <rhampt@balena.io>
+              author: Ryan
+              nested: []
+          version: meta-balena-2.114.20
+          title: ""
+          date: 2023-05-04T22:20:34.357Z
+        - commits:
+            - subject: Update tests/leviathan digest to e6180e9
+              hash: 315d127dc824089da1eb4392c7d8361bbbbd3766
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update core/contracts digest to 75cd5e9
+                      hash: 6b45662a5ec0dde4d499ecaf7a4ef3d119e626c6
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Renovate Bot
+                      nested: []
+                  version: leviathan-2.25.5
+                  title: ""
+                  date: 2023-05-03T11:00:17.452Z
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.6
+                      hash: b5bf6d376cfe1f99eb55f4ed7f8b179205dfacf0
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.4 to 2.9.6
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Renovate Bot
+                      nested: []
+                  version: leviathan-2.25.4
+                  title: ""
+                  date: 2023-05-01T19:03:59.596Z
+                - commits:
+                    - subject: Update core/contracts digest to 6c6ed28
+                      hash: 940ba252779573f7dcef0b99d163de94ca934e3d
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Renovate Bot
+                      nested: []
+                  version: leviathan-2.25.3
+                  title: ""
+                  date: 2023-05-01T18:07:18.096Z
+                - commits:
+                    - subject: "suite: add installerForceMigration configuration"
+                      hash: 70674774a7652a9e7766710bc74a829cd1156aa0
+                      body: >
+                        Read the suite configuration for the force migration
+                        flag which configures
+
+                        the flasher image to force an installer migration.
+
+
+                        With the current QEMU setting, `installerForceMigration` alone is not
+
+                        enough and the QEMU_INTERNAL_STORAGE also needs to be set to false in
+
+                        the worker's environment so only a single external disk is attached to
+
+                        the emulator.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                        signed-off-by: Alex Gonzalez <alexg@balena.io>
+                      author: Alex Gonzalez
+                      nested: []
+                  version: leviathan-2.25.2
+                  title: ""
+                  date: 2023-04-26T12:24:07.524Z
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.4
+                      hash: 669aa2e1cb3ebc3286483912981eac3a25a9b7e0
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.2 to 2.9.4
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Renovate Bot
+                      nested: []
+                  version: leviathan-2.25.1
+                  title: ""
+                  date: 2023-04-25T18:48:00.802Z
+                - commits:
+                    - subject: Update Node.js to v18.16.0
+                      hash: 2f2d14f3919f306c1ff3add08caff08ee7b7a8e9
+                      body: |
+                        Update node from 18.13.0 to 18.16.0
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                      author: Renovate Bot
+                      nested: []
+                  version: leviathan-2.25.0
+                  title: ""
+                  date: 2023-04-20T23:53:28.826Z
+                - commits:
+                    - subject: Update alpine Docker tag to v3.17.3
+                      hash: 0b2f18af6469d216a003c2ac8078b035064160cc
+                      body: |
+                        Update alpine from 3.17.1 to 3.17.3
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Renovate Bot
+                      nested: []
+                  version: leviathan-2.24.5
+                  title: ""
+                  date: 2023-04-20T22:45:55.982Z
+                - commits:
+                    - subject: Update core/contracts digest to 777cd35
+                      hash: 997f3e27ac0dc6143f5dc7371078e8e3b5e796ae
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Renovate Bot
+                      nested: []
+                  version: leviathan-2.24.4
+                  title: ""
+                  date: 2023-04-20T21:54:11.743Z
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.2
+                      hash: 6028bb0b206db9fbb4b796058867e3496af54cbd
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.1 to 2.9.2
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Renovate Bot
+                      nested: []
+                  version: leviathan-2.24.3
+                  title: ""
+                  date: 2023-04-17T13:55:54.890Z
+                - commits:
+                    - subject: "docker-compose-qemu: allow to configure internal disk"
+                      hash: 24778477fe25c36558d36e619f14e2755f8d1eab
+                      body: >
+                        Whether the internal disk is attached or not will be
+                        defined by the
+
+                        environment. This allows to test the migrator that requires booting only
+
+                        the external disk.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                        signed-off-by: Alex Gonzalez <alexg@balena.io>
+                      author: Alex Gonzalez
+                      nested: []
+                  version: leviathan-2.24.2
+                  title: ""
+                  date: 2023-04-15T14:20:36.020Z
+          version: meta-balena-2.114.19
+          title: ""
+          date: 2023-05-04T09:05:39.686Z
+  version: 2.115.1
+  title: ""
+  date: 2023-05-22T15:01:09.937Z
+- commits:
     - subject: Fix revpi-connect-s build by including missing vc4graphics.cfg
       hash: f6159f2b78ed1b98208c6218c090aabdc5de3edb
       body: |
