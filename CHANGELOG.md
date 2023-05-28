@@ -1,6 +1,47 @@
 Change log
 -----------
 
+# v2.115.1+rev1
+## (2023-05-28)
+
+
+<details>
+<summary> Update contracts to fd4af4e5694608cc0c87d9bff2a5b27b2c5f2f39 [Renovate Bot] </summary>
+
+> ## contracts-2.0.60
+> ### (2023-05-04)
+> 
+> * Fix LED support for ISG-503 [Alexandru Costache]
+> 
+> ## contracts-2.0.59
+> ### (2023-05-03)
+> 
+> * hw.device-type: Add revpi-connect-s [Obaid Ch]
+> 
+> ## contracts-2.0.58
+> ### (2023-04-27)
+> 
+> * jetson-agx-orin-devkit: Mention the RAM configuration in the device name [Alexandru Costache]
+> 
+> ## contracts-2.0.57
+> ### (2023-04-07)
+> 
+> * debian/ubuntu jetson-orin-nx-xavier-nx-devkit: Add distro configs [Alexandru Costache]
+> * Orin NX: Update flashing steps [Alexandru Costache]
+> 
+> ## contracts-2.0.56
+> ### (2023-04-04)
+> 
+> * jetson-orin-nx-xavier-nx-devkit: Add contract for device type [Alexandru Costache]
+> 
+> ## contracts-2.0.55
+> ### (2023-03-29)
+> 
+> * iot-gate-imx8plus: Update provisioning instructions [Alexandru]
+> 
+
+</details>
+
 # v2.115.1
 ## (2023-05-22)
 
