@@ -1,4 +1,130 @@
 - commits:
+    - subject: Update balena-yocto-scripts to f2a164e0acaaa66795d5f31af248f1743dd0ffb7
+      hash: 9eefb6368820098a7aa014c6fa24e18163a71775
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to f2a164e0acaaa66795d5f31af248f1743dd0ffb7
+        changelog-entry: Update balena-yocto-scripts to f2a164e0acaaa66795d5f31af248f1743dd0ffb7
+      author: Renovate Bot
+      nested:
+        - commits:
+            - subject: "generate_ami: opt-in secure boot when using signed images"
+              hash: 7925369a76060ad9e2adb16856e78cd3ca09b02c
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-generate-ami: comply with default AMI quotas"
+              hash: 27d34aa2a35b0bf6d7c1ffb563c1ad65d773e1fc
+              body: >
+                Comply with AWS public AMI quota, taking into account we have
+                two
+
+                architectures that publish AMI images and we need free slots for custom
+
+                version request.
+
+
+                Make the oldest public image back to private before publishing a new image.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.30
+          title: ""
+          date: 2023-05-23T18:02:32.156Z
+        - commits:
+            - subject: "balena-deploy: add secureBoot feature into contract"
+              hash: 67e694d63918e9911de99f497c39d84dfef28df7
+              body: >
+                When building signed images, add the secureBoot feature flag
+                into the
+
+                OS contract. This is needed for other components to identify secureBoot
+
+                compatible software releases.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.29
+          title: ""
+          date: 2023-05-19T11:42:58.818Z
+        - commits:
+            - subject: "jenkins_build: accept bitbake extra arguments"
+              hash: 6847515a46b62726e24156f6ce05365dd4f00ea8
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.28
+          title: ""
+          date: 2023-05-06T15:44:43.740Z
+        - commits:
+            - subject: "barys: fix removal of equals sign from argval"
+              hash: 8855ad4d31b45187e4007763b6bb084e08974807
+              body: >
+                When parsing additional variables to be passed to the bitbake
+                build,
+
+                keys and values are split using equals as a delimiter. However, the
+
+                splitting process does not split only on the first occurrence, which
+
+                results in removing equals signs from the value as well. This is
+
+                problematic with base64 encoded strings, which are padded with equals
+
+                signs.
+
+
+                Split only on the first occurrence, leaving the value intact.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: balena-yocto-scripts-1.19.27
+          title: ""
+          date: 2023-04-21T22:08:39.297Z
+        - commits:
+            - subject: "balena-lib: Do not return error if no balena user token is available"
+              hash: e335e248305cda86ce55f934b2b3ba8202f17454
+              body: >
+                The balena API token is only required for private device access
+                so don't
+
+                fail if there is not one available.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.26
+          title: ""
+          date: 2023-04-12T15:18:36.631Z
+  version: 2.115.1+rev3
+  title: ""
+  date: 2023-05-29T21:44:58.955Z
+- commits:
     - subject: Clean up the contributing section from README.md
       hash: a5d4ba44b141c7068e6f1fd4763c33c452381408
       body: |
