@@ -1,10 +1,6 @@
 inherit resin-u-boot
-UBOOT_KCONFIG_SUPPORT = "1"
 
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
-
-# Remove patch inherited from meta-resin. This needs to be rebased for v2018.07
-SRC_URI:remove = " file://resin-specific-env-integration-kconfig.patch "
 
 # Update to u-boot v2021.10 on top of which
 # we apply the NVME patches for CM4.
@@ -21,7 +17,6 @@ RPI_PATCHES = " \
 "
 
 SRC_URI += " \
-    file://0001-Integrate-machine-independent-resin-environment-conf.patch \
     ${RPI_PATCHES} \
 "
 
