@@ -13,9 +13,6 @@
 [submodule "balena-yocto-scripts"]
 	path = balena-yocto-scripts
 	url = https://github.com/balena-os/balena-yocto-scripts.git
-[submodule "tests/autohat"]
-	path = tests/autohat
-	url = https://github.com/balena-io/autohat.git
 [submodule "contracts"]
 	path = contracts
 	url = https://github.com/balena-io/contracts.git
