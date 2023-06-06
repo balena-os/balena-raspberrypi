@@ -1,4 +1,42 @@
 - commits:
+    - subject: Update meta-raspberrypi to latest kirkstone
+      hash: f30a2587ecce8c2b9e1a256e31a4aa287693adcf
+      body: |
+        This is needed to fix a bluetooth issue on BCM2711 based boards
+      footer:
+        Changelog-entry: Update meta-raspberrypi to latest kirkstone
+        changelog-entry: Update meta-raspberrypi to latest kirkstone
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+    - subject: Remove pull_request_target event run for ESR targets
+      hash: 49dd0694d19fd0010002f5df85c2535703555962
+      body: >
+        Backporting to ESR branches hits a flowzone error as both pull_request
+
+        and pull_request_target run and this only works for master.
+
+
+        Removing the pull_request_target run for ESR branches fixes this, but
+
+        also removes the possibility of external pull requests into ESR branches,
+
+        which we don't actually need.
+
+
+        [skip ci]
+      footer:
+        Changelog-entry: Remove pull_request_target event run for ESR targets
+        changelog-entry: Remove pull_request_target event run for ESR targets
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.115.1+rev4
+  title: ""
+  date: 2023-06-06T14:58:57.590Z
+- commits:
     - subject: Update balena-yocto-scripts to f2a164e0acaaa66795d5f31af248f1743dd0ffb7
       hash: 9eefb6368820098a7aa014c6fa24e18163a71775
       body: Update balena-yocto-scripts

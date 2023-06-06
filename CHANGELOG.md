@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v2.115.1+rev4
+## (2023-06-06)
+
+* Update meta-raspberrypi to latest kirkstone [Florin Sarbu]
+* Remove pull_request_target event run for ESR targets [Alex Gonzalez]
+
 # v2.115.1+rev3
 ## (2023-05-29)
 
