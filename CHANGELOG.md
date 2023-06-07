@@ -1,6 +1,13 @@
 Change log
 -----------
 
+# v2023.4.1
+## (2023-06-07)
+
+* remove autohat [Alex Gonzalez]
+* Remove pull_request_target event run for ESR targets [Alex Gonzalez]
+* Update meta-balena from v2.112.15 to v2.112.16 [Alex Gonzalez]
+
 # 2023.4.0
 ## (2023-04-19)
 
