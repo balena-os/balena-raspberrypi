@@ -1,4 +1,82 @@
 - commits:
+    - subject: Update layers/meta-balena to f06ec1fc32f6c5baa0c734eaf9e94ee88f7993bb
+      hash: a16b27f79736f92d67a48f9979555393d42999c2
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to f06ec1fc32f6c5baa0c734eaf9e94ee88f7993bb
+        changelog-entry: Update layers/meta-balena to f06ec1fc32f6c5baa0c734eaf9e94ee88f7993bb
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "docs: Make secure boot docs more detailed"
+              hash: 96ec764b245197380d58a556949011ab444ce96e
+              body: >
+                This patch extends secure boot documentation with more details
+                about
+
+                how the feature works and tries to explain why some decisions were made.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.115.4
+          title: ""
+          date: 2023-06-01T09:37:58.007Z
+        - commits:
+            - subject: "resin-init-flasher: check that commands exist before calling"
+              hash: 6782f81954dd6e5ca6e848603ea0153ded2f7dd0
+              body: >
+                When running in the initramfs, the resin-device-progress package
+                is not
+
+                installed as we cannot guarantee that the initramfs would be able to
+
+                bring up all types of network interfaces.
+
+
+                This commit adds a check for the script to exists instead of getting a
+
+                `command not found` when an API endpoint is defined.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.115.3
+          title: ""
+          date: 2023-05-29T14:28:02.605Z
+        - commits:
+            - subject: "os-helpers: do not fail build if API tests fail"
+              hash: 933f265da4a6919183a28d6ca8e0cfb0f1811fee
+              body: >
+                The purpose of testing the API calls is to detect breaking
+                changes, not
+
+                to fail builds because of temporary network or API access problems.
+
+
+                Printing a warning instead should be enough for developers to detect
+
+                breaking changes.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.115.2
+          title: ""
+          date: 2023-05-28T13:40:24.584Z
+  version: 2.115.4
+  title: ""
+  date: 2023-06-07T10:02:00.488Z
+- commits:
     - subject: Update meta-raspberrypi to latest kirkstone
       hash: f30a2587ecce8c2b9e1a256e31a4aa287693adcf
       body: |
