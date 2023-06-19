@@ -1,4 +1,47 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 91474e62b74d6390c285d1033b34f77092fe1824
+      hash: 2b85956f93433499f1cad9b48f7d22eb4900b78c
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 91474e62b74d6390c285d1033b34f77092fe1824
+        changelog-entry: Update balena-yocto-scripts to 91474e62b74d6390c285d1033b34f77092fe1824
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "balena-deploy: Newer meta-balena do not create a kernel_source
+                tarball"
+              hash: 62660e16161c559653dd2c32196ab94631753ce5
+              body: |
+                This artifact did not contain kernel sources since Yocto Thud.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.32
+          title: ""
+          date: 2023-06-19T18:06:35.539Z
+        - commits:
+            - subject: "balena-deploy: add a compressed licenses tarball to the deploy
+                artifacts"
+              hash: 13ab5d114a679cca3a2df41230e4ad611e1c8292
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.31
+          title: ""
+          date: 2023-06-05T15:07:23.610Z
+  version: 2.115.7+rev2
+  title: ""
+  date: 2023-06-19T23:51:28.115Z
+- commits:
     - subject: Update balena-os/github-workflows to
       hash: c1e09997040d8c46ca36644e9d157b4b58d0dc2b
       body: Update balena-os/github-workflows
