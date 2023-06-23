@@ -1,4 +1,18 @@
 - commits:
+    - subject: Add required packages to raspberrypi4-superhub's rootfs
+      hash: 08ed9c0041ca3afd57612c577bee088614596e8d
+      body: ""
+      footer:
+        Changelog-entry: Add required packages to raspberrypi4-superhub's rootfs
+        changelog-entry: Add required packages to raspberrypi4-superhub's rootfs
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.115.7+rev3
+  title: ""
+  date: 2023-06-23T09:04:32.150Z
+- commits:
     - subject: Update balena-yocto-scripts to 91474e62b74d6390c285d1033b34f77092fe1824
       hash: 2b85956f93433499f1cad9b48f7d22eb4900b78c
       body: Update balena-yocto-scripts

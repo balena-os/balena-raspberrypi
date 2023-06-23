@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.115.7+rev3
+## (2023-06-23)
+
+* Add required packages to raspberrypi4-superhub's rootfs [Florin Sarbu]
+
 # v2.115.7+rev2
 ## (2023-06-19)
 
