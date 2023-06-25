@@ -1,4 +1,24 @@
 - commits:
+    - subject: Make the boot firmware filtering for rpi4 based hw generic
+      hash: 9364924f4c3a1fcbc8d2447681a4d157c21849c9
+      body: >
+        We do this so we don't need to always increase this list we check each
+        time
+
+        we add new raspberrypi4-64 based machines. Instead, we rely on the fact that
+
+        all new RPI4 based machines will inherit the raspberrypi4-64 machine.
+      footer:
+        Changelog-entry: Make the boot firmware filtering for rpi4 based hw generic
+        changelog-entry: Make the boot firmware filtering for rpi4 based hw generic
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.115.7+rev4
+  title: ""
+  date: 2023-06-25T11:12:31.926Z
+- commits:
     - subject: Add required packages to raspberrypi4-superhub's rootfs
       hash: 08ed9c0041ca3afd57612c577bee088614596e8d
       body: ""

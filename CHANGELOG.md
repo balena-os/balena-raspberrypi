@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.115.7+rev4
+## (2023-06-25)
+
+* Make the boot firmware filtering for rpi4 based hw generic [Florin Sarbu]
+
 # v2.115.7+rev3
 ## (2023-06-23)
 
