@@ -1,4 +1,18 @@
 - commits:
+    - subject: Flag the fincm3 as discontinued
+      hash: 22a525daf45018d118a3ea4b9bb282ffd44dffea
+      body: ""
+      footer:
+        Changelog-entry: Flag the fincm3 as discontinued
+        changelog-entry: Flag the fincm3 as discontinued
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.115.7+rev5
+  title: ""
+  date: 2023-06-26T09:31:37.618Z
+- commits:
     - subject: Make the boot firmware filtering for rpi4 based hw generic
       hash: 9364924f4c3a1fcbc8d2447681a4d157c21849c9
       body: >

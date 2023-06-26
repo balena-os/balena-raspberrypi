@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.115.7+rev5
+## (2023-06-26)
+
+* Flag the fincm3 as discontinued [Alex Gonzalez]
+
 # v2.115.7+rev4
 ## (2023-06-25)
 
