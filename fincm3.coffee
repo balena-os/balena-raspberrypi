@@ -12,7 +12,7 @@ module.exports =
 	aliases: [ 'fincm3' ]
 	name: 'Balena Fin (CM3)'
 	arch: 'armv7hf'
-	state: 'released'
+	state: 'discontinued'
 
 	instructions: [
 	 	FIN_DEBUG
