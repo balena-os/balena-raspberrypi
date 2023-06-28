@@ -1,4 +1,18 @@
 - commits:
+    - subject: update linux-raspberry to 5.15.92
+      hash: 629037b3cf95af96ee3a30bac6dcf738e4ef4286
+      body: ""
+      footer:
+        Changelog-entry: update linux-raspberry to 5.15.92
+        changelog-entry: update linux-raspberry to 5.15.92
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2.115.7+rev6
+  title: ""
+  date: 2023-06-28T15:45:45.773Z
+- commits:
     - subject: Flag the fincm3 as discontinued
       hash: 22a525daf45018d118a3ea4b9bb282ffd44dffea
       body: ""

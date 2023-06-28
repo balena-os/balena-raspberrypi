@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.115.7+rev6
+## (2023-06-28)
+
+* update linux-raspberry to 5.15.92 [Alex Gonzalez]
+
 # v2.115.7+rev5
 ## (2023-06-26)
 
