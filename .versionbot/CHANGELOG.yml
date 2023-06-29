@@ -1,4 +1,624 @@
 - commits:
+    - subject: Update layers/meta-balena to c087c2dbcff4ed666bbad7901fe0f28794c99bc0
+      hash: 55f9747840f37242fefd68f35004ceaff9007a87
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to c087c2dbcff4ed666bbad7901fe0f28794c99bc0
+        changelog-entry: Update layers/meta-balena to c087c2dbcff4ed666bbad7901fe0f28794c99bc0
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "resin-init-flasher: Increase size of LUKS header to 16MB"
+              hash: 024a6dfc244247f739f5c6bf72c8bf55cbe8b6e1
+              body: >
+                After switching to LUKS2, the header size increased from 2MB to
+                16MB.
+
+                While HUP of older systems works, it is impossible to provision
+
+                new encrypted systems.
+
+
+                This patch fixes the header size in flasher.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.115.18
+          title: ""
+          date: 2023-06-29T08:26:11.052Z
+        - commits:
+            - subject: "balena-keys: add SIGN_KMOD_KEY_APPEND"
+              hash: 981a4eec5106bc41643dc708bd64470093ad741c
+              body: >
+                This variable accepts the base64 encoded public key of a kernel
+                module
+
+                signing keypair and appends it to the list of trusted keys the kernel
+
+                will use to validate signed modules. Multiple keys may be appended,
+
+                delimited with a semicolon.
+
+
+                A PEM file can be used like so:
+
+
+                SIGN_KMOD_KEY_APPEND="$( sed -e '/-----BEGIN CERTIFICATE-----/d' \
+                                             -e 's/-----END CERTIFICATE-----/;/g' \
+                                             -e '$d' signing_key.pem \
+                                         | tr -d '\n' )"
+
+                balena-yocto-scripts/build/balena-build.sh \
+                    -g "-a SIGN_KMOD_KEY_APPEND=${SIGN_KMOD_KEY_APPEND}" \
+                    ...
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-2.115.17
+          title: ""
+          date: 2023-06-28T20:35:09.852Z
+        - commits:
+            - subject: Update balena-supervisor to v14.11.8
+              hash: ff30642b741a2bd44091fa41e7b2d0f5c13470fd
+              body: |
+                Update balena-supervisor from 14.11.7 to 14.11.8
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Parse container exit error message instead of status
+                      hash: 71d24d6e3366b28e1466e99322d58420b5ebbb67
+                      body: >
+                        The previous implementation in #2170 of parsing the
+                        container status was too general,
+
+                        because it relied on the mistaken assumption that a container would have a status of
+
+                        `Stopped` if it was manually stopped. This turned out to be untrue, as manually stopped
+
+                        containers were also getting restarted by the Supervisor due to their inspect status of
+
+                        `exited`. With this, parsing the exit message became unavoidable as there are no other
+
+                        clear ways to discern a container that has been manually stopped and shouldn't be started
+
+                        from a container experiencing the Engine-host race condition issue (again, see #2170).
+
+
+                        Since we're just parsing the exit error message, we don't need to worry about different behaviors
+
+                        amongst restart policies, as any container with the error message on exit should be started.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Closes: "#2178"
+                        closes: "#2178"
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina W
+                      nested: []
+                  version: balena-supervisor-14.11.8
+                  title: ""
+                  date: 2023-06-23T18:46:22.881Z
+          version: meta-balena-2.115.16
+          title: ""
+          date: 2023-06-28T07:37:09.027Z
+        - commits:
+            - subject: Update balena-engine to v20.10.37
+              hash: c607d7be4d740802ab5e27b67f5e6714e1407855
+              body: |
+                Update balena-engine from 20.10.36 to 20.10.37
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: "Bugfix: concatReadSeekCloser.Read() with buffers of any size"
+                      hash: 84471473ce02a0b8820e13105f845b67c19903c9
+                      body: >
+                        Previously, `concatReadSeekCloser.Read()` would
+                        incorrectly return
+
+                        an `io.ErrUnexpectedEOF` if the last read from the second concatenated
+
+                        `Reader` didn't completely fill the passed buffer.
+
+
+                        For instance:
+
+
+                        ```
+                              First Reader    Second Reader
+                            |aaaaaaaaaaaaa|bbbbbbbbbbbbbbbbbbb|      <--- concatReadSeekCloser
+                            |--- previously read ---|--- buffer ---| <--- last read
+                                                              |xxxx| <--- "excess" buffer
+                        ```
+
+
+                        In this example, we have a `concatReadSeekCloser` that concatenates two
+
+                        `Reader`s (`aaa...` and `bbb...`). The last `Read()` used a buffer
+
+                        larger than the yet-to-be-read portion of the `bbb...`. So, it would
+
+                        incorrectly return an `io.ErrUnexpectedEOF`.
+
+
+                        This commit makes sure that last `Read()` returns all the remaining data
+
+                        without an error. It also adds various test cases for
+
+                        `concatReadSeekCloser.Read()`, many of which would fail before this
+
+                        correction.
+
+
+                        Interestingly, this bug was silently affecting us. Not in a fatal way,
+
+                        but causing deltas to be larger than necessary. Indeed, running
+
+                        `TestDeltaSize` after this commit shows that some test cases are
+
+                        producing deltas smaller than what we expected before. For posterity,
+
+                        see all the details below.
+
+
+                        We use `concatReadSeekCloser`s to concatenate all layers of the basis
+
+                        image when creating the "signature" of the basis image. In this process,
+
+                        the `concatReadSeekCloser`s are wrapped around by a buffered reader with
+
+                        a buffer of 65kB.
+
+
+                        If, in any read, part of this 65kB buffer was beyond the second
+
+                        concatenated reader, it would result in an `io.ErrUnexpectedEOF`. This
+
+                        would not cause the whole process to fail, but would prematurely end the
+
+                        signature generation: some of the final blocks in the basis image would
+
+                        not be added to the signature. Therefore, if those blocks appeared in
+
+                        the target image, they'd result in (larger) LITERAL, instead of
+
+                        (smaller) COPY operations.
+
+
+                        For illustration, here's the delta generated for the `delta-006-008`
+
+                        test case. First before this commit:
+
+
+                        ```
+                          OP_COPY_N1_N2 0 512
+                          OP_COPY_N2_N2 1536 1024
+                          OP_COPY_N2_N2 3584 1024
+                          OP_COPY_N2_N2 5632 1536
+                          OP_COPY_N2_N2 8192 1536
+                          OP_COPY_N2_N2 10752 4096
+                          OP_COPY_N2_N2 15872 8704
+                          OP_COPY_N2_N2 25600 10752
+                          OP_COPY_N2_N2 37376 10752
+                          OP_COPY_N2_N4 49152 131584
+                          OP_COPY_N4_N4 181760 150528
+                          OP_COPY_N4_N4 333312 500736
+                          OP_COPY_N4_N4 835072 1000960
+                          OP_COPY_N4_N4 1837056 1000960
+                          OP_COPY_N4_N4 2839040 1027584    # Here: a COPY op...
+                          OP_LITERAL_N2 21504              # ...followed by a 21 kB LITERAL.
+                          OP_COPY_N4_N2 2838528 512
+                          OP_COPY_N4_N2 2838528 512
+                                 OP_END
+                        ```
+
+
+                        And after this commit:
+
+
+                        ```
+                         OP_COPY_N1_N2 0 512
+                          OP_COPY_N2_N2 1536 1024
+                          OP_COPY_N2_N2 3584 1024
+                          OP_COPY_N2_N2 5632 1536
+                          OP_COPY_N2_N2 8192 1536
+                          OP_COPY_N2_N2 10752 4096
+                          OP_COPY_N2_N2 15872 8704
+                          OP_COPY_N2_N2 25600 10752
+                          OP_COPY_N2_N2 37376 10752
+                          OP_COPY_N2_N4 49152 131584
+                          OP_COPY_N4_N4 181760 150528
+                          OP_COPY_N4_N4 333312 500736
+                          OP_COPY_N4_N4 835072 1000960
+                          OP_COPY_N4_N4 1837056 1000960
+                          OP_COPY_N4_N4 2839040 1049088    # COPY only, since we detected a longer match
+                          OP_COPY_N4_N2 3888640 512
+                          OP_COPY_N4_N2 3888640 512
+                                 OP_END
+                        ```
+
+
+                        That 21kB LITERAL is the difference in size we saw in the test results.
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                    - subject: Minor code and comments tweaks
+                      hash: 7dd51428c918980163fbe34511152dc72e7a3372
+                      body: >
+                        Using `defer` for the sake of being more idiomatic (and
+                        maybe slightly
+
+                        more reliable); plus, using the proper doc comment standards.
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                  version: balena-engine-20.10.37
+                  title: ""
+                  date: 2023-06-26T13:44:22.217Z
+          version: meta-balena-2.115.15
+          title: ""
+          date: 2023-06-28T02:21:32.534Z
+        - commits:
+            - subject: Update tests/leviathan digest to a19d6ef
+              hash: 2283326d55c288889a02f04c471fe058576fd9b4
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.8
+                      hash: 2a3757973579a8beeaa1aca0f226a58857d28e32
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.7 to 2.9.8
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.27.9
+                  title: ""
+                  date: 2023-06-27T15:57:35.158Z
+                - commits:
+                    - subject: Update core/contracts digest to 6c4386a
+                      hash: 18ddcf64b3db0ac97051e86e9efaf63f5a183d2a
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.27.8
+                  title: ""
+                  date: 2023-06-27T12:08:02.856Z
+                - commits:
+                    - subject: "patch: Update QEMU getting started guide"
+                      hash: 04333e2ffabf3044ad288c6588470373d6a97b6f
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.27.7
+                  title: ""
+                  date: 2023-06-22T12:30:58.563Z
+          version: meta-balena-2.115.14
+          title: ""
+          date: 2023-06-27T20:32:39.974Z
+        - commits:
+            - subject: "os-helpers: Fix os-helpers-api build warnings"
+              hash: 46e6802ee5e8abf5eea4c8fd9ab737115382b033
+              body: |
+                * Add curl as a native dependency
+                * Add package dependencies to test api
+                * Replace status code check for a POSIX compliant version
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-2.115.13
+          title: ""
+          date: 2023-06-26T13:15:57.968Z
+        - commits:
+            - subject: Update balena-supervisor to v14.11.7
+              hash: d2277092cfb2f61f7fcd1197f0b431f45fe169d7
+              body: |
+                Update balena-supervisor from 14.11.3 to 14.11.7
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Fix /v2/applications/state endpoint
+                      hash: 12eac04484e3c0a347b6f31783ed7973991046fa
+                      body: >
+                        It was returning stale information, particularly the
+                        download progress
+
+                        of the target release images never got updated.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Closes: "#2174"
+                        closes: "#2174"
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-14.11.7
+                  title: ""
+                  date: 2023-06-19T21:54:56.093Z
+                - commits:
+                    - subject: Add fail-safe to test the image architecture
+                      hash: 1cf325d5c55bfb9d2ebb4cde7b9c448a6cfb2067
+                      body: >
+                        Verify that the target image architecture matches what
+                        is expected
+
+                        according to the balena app architecture.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Use multi-arch in dockerfile
+                      hash: c1b157971d5fe15f9b85cdc6f0eed90b8d2eb22f
+                      body: >
+                        This is necessary since the builder no longer passes the
+                        platform flag
+
+                        to the build. This would lead to dockerfiles that are mixing multi and single
+
+                        arch stages to pull the wrong architecture images, particularly when
+
+                        trying to build images in emulated builds (e.g. armv7hf built on aarch64).
+
+
+                        Moving the full build to multi-arch solves this as the docker engine is
+
+                        capable of chosing the right architecture from the manifest.
+                      footer:
+                        Relatest-to: balena-io/balena-builder#1010
+                        relatest-to: balena-io/balena-builder#1010
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-14.11.6
+                  title: ""
+                  date: 2023-06-19T20:53:34.395Z
+                - commits:
+                    - subject: Improve tests surrounding Engine-host race patch
+                      hash: 7eba48f8b832ec16465565f210e659a9f822e5b3
+                      body: ""
+                      footer:
+                        See: "#2170"
+                        see: "#2170"
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-14.11.5
+                  title: ""
+                  date: 2023-06-19T19:01:19.323Z
+                - commits:
+                    - subject: Specify fs type when mounting partitions to prevent "Can't open
+                        blockdev" warnings
+                      hash: e6662f664c15a16e4f36fa128510c5367b20a09f
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-14.11.4
+                  title: ""
+                  date: 2023-06-19T07:56:33.558Z
+          version: meta-balena-2.115.12
+          title: ""
+          date: 2023-06-23T09:04:04.118Z
+        - commits:
+            - subject: Update tests/leviathan digest to 09eff9c
+              hash: 7826281aa5efacde91b68ee468a65d0cf12a56cd
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.7
+                      hash: 2c1ab4511f9c1f65460ac182527b99a25681a27e
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.6 to 2.9.7
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.27.6
+                  title: ""
+                  date: 2023-06-19T15:04:05.885Z
+                - commits:
+                    - subject: "tests: only do serial file read with testbot"
+                      hash: a947d2a02aed6125d3ec406152c7ee2d670ee2aa
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                    - subject: "core: enable serial executeCommandinHostOS"
+                      hash: 95d11c34f427479c5adee718029169af3db3e68c
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                  version: leviathan-2.27.5
+                  title: ""
+                  date: 2023-06-19T13:36:32.892Z
+                - commits:
+                    - subject: Update alpine Docker tag to v3.18.2
+                      hash: a25d1904ff9ecc703d5b5ed17253bf7c153b1083
+                      body: |
+                        Update alpine from 3.18.0 to 3.18.2
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.27.4
+                  title: ""
+                  date: 2023-06-16T12:09:58.840Z
+                - commits:
+                    - subject: Update core/contracts digest to c777910
+                      hash: 4e53b2c01825ba15b9da03b3d76c8b19da7d4a94
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.27.3
+                  title: ""
+                  date: 2023-06-16T11:05:22.184Z
+                - commits:
+                    - subject: 'patch: Revert "minor: Add Leviathan Test Helpers"'
+                      hash: 691f2b21428bc9920c2bf03f982e3f1e2b6963fd
+                      body: ""
+                      footer: {}
+                      author: Vipul Gupta
+                      nested: []
+                  version: leviathan-2.27.2
+                  title: ""
+                  date: 2023-06-16T09:59:06.250Z
+                - commits:
+                    - subject: Update Pin dependencies
+                      hash: 1a8858c782269f69ae99a3984eeaa4f91d70efe9
+                      body: |
+                        Pin actions/checkout
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.27.1
+                  title: ""
+                  date: 2023-06-09T16:29:10.820Z
+          version: meta-balena-2.115.11
+          title: ""
+          date: 2023-06-21T14:16:09.680Z
+        - commits:
+            - subject: "resin-init-flasher: Format encrypted partitions as LUKS2"
+              hash: 9e01a5d485ee93975b531b9dbd304db9b73de3fa
+              body: >
+                This should be the default but with no explicit argument we
+                still
+
+                end up with LUKS1 partitions. This patch adds the parameter to enforce
+
+                LUKS2 formatting and adds conversion to LUKS2 to the cryptsetup
+
+                initrd script.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-2.115.10
+          title: ""
+          date: 2023-06-21T05:08:09.995Z
+        - commits:
+            - subject: Update balena-supervisor to v14.11.3
+              hash: 1d9f52fee5040b952077846bef79ea99bdf465e0
+              body: |
+                Update balena-supervisor from 14.11.2 to 14.11.3
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update balena-io/deploy-to-balena-action to v0.27.0
+                      hash: 1675c16622d861ce6e6e445400b5440a447688f7
+                      body: |
+                        Update balena-io/deploy-to-balena-action
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Changelog-entry: Update balena-io/deploy-to-balena-action to v0.27.0
+                        changelog-entry: Update balena-io/deploy-to-balena-action to v0.27.0
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-14.11.3
+                  title: ""
+                  date: 2023-06-15T19:49:42.493Z
+          version: meta-balena-2.115.9
+          title: ""
+          date: 2023-06-15T23:43:34.815Z
+        - commits:
+            - subject: "balena_check_crc: Add helper u-boot command for crc manipulation"
+              hash: 770cbdbb2c961a06dfb887b0898cae362e680947
+              body: |
+                This helper command saves and compares crc32 sum for a memory
+                area where the kernel image or the device-tree is loaded.
+
+                Can be used after loading the kernel and the dtb, and also prior
+                to calling booti.
+              footer:
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+                Change-type: patch
+                change-type: patch
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-2.115.8
+          title: ""
+          date: 2023-06-14T12:41:03.634Z
+  version: 2.115.18
+  title: ""
+  date: 2023-06-29T18:27:48.108Z
+- commits:
     - subject: update linux-raspberry to 5.15.92
       hash: 629037b3cf95af96ee3a30bac6dcf738e4ef4286
       body: ""

@@ -1,6 +1,190 @@
 Change log
 -----------
 
+# v2.115.18
+## (2023-06-29)
+
+
+<details>
+<summary> Update layers/meta-balena to c087c2dbcff4ed666bbad7901fe0f28794c99bc0 [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-2.115.18
+> ### (2023-06-29)
+> 
+> * resin-init-flasher: Increase size of LUKS header to 16MB [Michal Toman]
+> 
+> ## meta-balena-2.115.17
+> ### (2023-06-28)
+> 
+> * balena-keys: add SIGN_KMOD_KEY_APPEND [Joseph Kogut]
+> 
+> ## meta-balena-2.115.16
+> ### (2023-06-28)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v14.11.8 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-14.11.8
+>> #### (2023-06-23)
+>> 
+>> * Parse container exit error message instead of status [Christina W]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.115.15
+> ### (2023-06-28)
+> 
+> 
+> <details>
+> <summary> Update balena-engine to v20.10.37 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-engine-20.10.37
+>> #### (2023-06-26)
+>> 
+>> * Bugfix: concatReadSeekCloser.Read() with buffers of any size [Leandro Motta Barros]
+>> * Minor code and comments tweaks [Leandro Motta Barros]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.115.14
+> ### (2023-06-27)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to a19d6ef [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.27.9
+>> #### (2023-06-27)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.8 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.27.8
+>> #### (2023-06-27)
+>> 
+>> * Update core/contracts digest to 6c4386a [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.27.7
+>> #### (2023-06-22)
+>> 
+>> * patch: Update QEMU getting started guide [Vipul Gupta (@vipulgupta2048)]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.115.13
+> ### (2023-06-26)
+> 
+> * os-helpers: Fix os-helpers-api build warnings [Alex Gonzalez]
+> 
+> ## meta-balena-2.115.12
+> ### (2023-06-23)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v14.11.7 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-14.11.7
+>> #### (2023-06-19)
+>> 
+>> * Fix /v2/applications/state endpoint [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-14.11.6
+>> #### (2023-06-19)
+>> 
+>> * Add fail-safe to test the image architecture [Felipe Lalanne]
+>> * Use multi-arch in dockerfile [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-14.11.5
+>> #### (2023-06-19)
+>> 
+>> * Improve tests surrounding Engine-host race patch [Christina Ying Wang]
+>> 
+>> ### balena-supervisor-14.11.4
+>> #### (2023-06-19)
+>> 
+>> * Specify fs type when mounting partitions to prevent "Can't open blockdev" warnings [Christina Ying Wang]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.115.11
+> ### (2023-06-21)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 09eff9c [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.27.6
+>> #### (2023-06-19)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.7 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.27.5
+>> #### (2023-06-19)
+>> 
+>> * tests: only do serial file read with testbot [rcooke-warwick]
+>> * core: enable serial executeCommandinHostOS [rcooke-warwick]
+>> 
+>> ### leviathan-2.27.4
+>> #### (2023-06-16)
+>> 
+>> * Update alpine Docker tag to v3.18.2 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.27.3
+>> #### (2023-06-16)
+>> 
+>> * Update core/contracts digest to c777910 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.27.2
+>> #### (2023-06-16)
+>> 
+>> * patch: Revert "minor: Add Leviathan Test Helpers" [Vipul Gupta]
+>> 
+>> ### leviathan-2.27.1
+>> #### (2023-06-09)
+>> 
+>> * Update Pin dependencies [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.115.10
+> ### (2023-06-21)
+> 
+> * resin-init-flasher: Format encrypted partitions as LUKS2 [Michal Toman]
+> 
+> ## meta-balena-2.115.9
+> ### (2023-06-15)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v14.11.3 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-14.11.3
+>> #### (2023-06-15)
+>> 
+>> * Update balena-io/deploy-to-balena-action to v0.27.0 [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-2.115.8
+> ### (2023-06-14)
+> 
+> * balena_check_crc: Add helper u-boot command for crc manipulation [Alexandru Costache]
+> 
+
+</details>
+
 # v2.115.7+rev6
 ## (2023-06-28)
 
