@@ -1,4 +1,19 @@
 - commits:
+    - subject: Update meta-balena from v2.112.16 to v2.112.17
+      hash: 657dc976b207ee5a1b3c4423c5e27ef2e582954c
+      body: |
+        Update meta-balena from 2.112.16 to 2.112.17
+      footer:
+        Changelog-entry: Update meta-balena from v2.112.16 to v2.112.17
+        changelog-entry: Update meta-balena from v2.112.16 to v2.112.17
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2023.4.2
+  title: ""
+  date: 2023-06-30T13:54:04.647Z
+- commits:
     - subject: remove autohat
       hash: d9d69d4e64b99ac418760329bed054b41eddb864
       body: |
