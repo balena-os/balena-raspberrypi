@@ -1,6 +1,31 @@
 Change log
 -----------
 
+# v2.115.18+rev1
+## (2023-06-30)
+
+
+<details>
+<summary> Update contracts to 6e3d563f610303a24d0cbf43839919e451879899 [Self-hosted Renovate Bot] </summary>
+
+> ## contracts-2.0.63
+> ### (2023-06-29)
+> 
+> * sw.os+hw.device-type: Add ubuntu and debian distro configs for Orin Nano [Alexandru Costache]
+> 
+> ## contracts-2.0.62
+> ### (2023-06-27)
+> 
+> * hw.device-type: Add Jetson Orin Nano Devkit 8GB (SD) module [Alexandru Costache]
+> 
+> ## contracts-2.0.61
+> ### (2023-06-14)
+> 
+> * hw/device-type: Update contract.json for iot-gate-imx8 [Alexandru Costache]
+> 
+
+</details>
+
 # v2.115.18
 ## (2023-06-29)
 
