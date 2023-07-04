@@ -1,4 +1,22 @@
 - commits:
+    - subject: Fix phoenix-peripheral RDEPENDS syntax in order to have watchdog in
+        rootfs for raspberrypi4-superhub
+      hash: f6b3447f8b39168f55d514f20d49bfaa4793ddbc
+      body: |
+        Since we are using Poky Kirkstone we need to use the proper syntax
+      footer:
+        Changelog-entry: Fix phoenix-peripheral RDEPENDS syntax in order to have
+          watchdog in rootfs for raspberrypi4-superhub
+        changelog-entry: Fix phoenix-peripheral RDEPENDS syntax in order to have
+          watchdog in rootfs for raspberrypi4-superhub
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 2.115.18+rev2
+  title: ""
+  date: 2023-07-04T12:46:43.446Z
+- commits:
     - subject: Update contracts to 6e3d563f610303a24d0cbf43839919e451879899
       hash: 2f412cb8c1c3ef05a1d65039b2cf87b637c27f41
       body: Update contracts

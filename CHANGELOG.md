@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2.115.18+rev2
+## (2023-07-04)
+
+* Fix phoenix-peripheral RDEPENDS syntax in order to have watchdog in rootfs for raspberrypi4-superhub [Florin Sarbu]
+
 # v2.115.18+rev1
 ## (2023-06-30)
 
