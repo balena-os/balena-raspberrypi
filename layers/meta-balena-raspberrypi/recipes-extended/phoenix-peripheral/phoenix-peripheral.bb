@@ -10,7 +10,7 @@ S = "${WORKDIR}/git"
 inherit systemd
 
 PACKAGES =+ "${PN}-button-trig ${PN}-lvd-hook ${PN}-gpio-wdt ${PN}-rtc-sync"
-RDEPENDS_${PN}-gpio-wdt += "watchdog"
+RDEPENDS:${PN}-gpio-wdt += "watchdog"
 
 FILES:${PN} = " \
     ${datadir}/phoenix/peripheral/* \
