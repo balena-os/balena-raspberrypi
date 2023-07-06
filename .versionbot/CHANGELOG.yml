@@ -1,4 +1,45 @@
 - commits:
+    - subject: Update layers/meta-balena to f7963b6b6d2cafd4d2b9ab4cfb12052d1afa0e53
+      hash: a9177de8a8167798eaf32efc82ec74b791e886e5
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to f7963b6b6d2cafd4d2b9ab4cfb12052d1afa0e53
+        changelog-entry: Update layers/meta-balena to f7963b6b6d2cafd4d2b9ab4cfb12052d1afa0e53
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "kernel-devsrc: fix for v6.1+"
+              hash: 1687110706cbde4a4d968afb04b3abc07e5c7eaa
+              body: >
+                Adapted as a bbappend from:
+
+                https://git.yoctoproject.org/poky/commit/meta/recipes-kernel/linux/kernel-devsrc.bb?id=2be1b5d7d38d72c35ec593b98366d128fe5ce12c
+
+
+                The 6.1 kernel has a number of Kbuild and architecture changes
+
+                that required us to update our devsrc recipe. With these changes
+
+                we are once again able to build on target modules for all
+
+                supported archectures.
+
+
+                (From OE-Core rev: a3972b3f919400a12bb9a546ae98092cbfdcdbb8)
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-3.0.6
+          title: ""
+          date: 2023-07-06T09:59:05.261Z
+  version: 3.0.6
+  title: ""
+  date: 2023-07-06T15:04:59.515Z
+- commits:
     - subject: Update layers/meta-balena to 5fca7f6bd85c00824689bedb2ceb4ee3fb5faad2
       hash: 8777e45b4a60b08523b0e1aa04720c2589b5550c
       body: Update layers/meta-balena

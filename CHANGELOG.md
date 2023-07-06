@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v3.0.6
+## (2023-07-06)
+
+
+<details>
+<summary> Update layers/meta-balena to f7963b6b6d2cafd4d2b9ab4cfb12052d1afa0e53 [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-3.0.6
+> ### (2023-07-06)
+> 
+> * kernel-devsrc: fix for v6.1+ [Alex Gonzalez]
+> 
+
+</details>
+
 # v3.0.5
 ## (2023-07-06)
 
