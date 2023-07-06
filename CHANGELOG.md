@@ -1,6 +1,110 @@
 Change log
 -----------
 
+# v3.0.5
+## (2023-07-06)
+
+
+<details>
+<summary> Update layers/meta-balena to 5fca7f6bd85c00824689bedb2ceb4ee3fb5faad2 [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-3.0.5
+> ### (2023-07-06)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v14.11.10 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-14.11.10
+>> #### (2023-07-05)
+>> 
+>> * Add revpi-connect-s to Raspberry Pi variants [Florin Sarbu]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-3.0.4
+> ### (2023-07-05)
+> 
+> 
+> <details>
+> <summary> Update balena-engine to v20.10.38 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-engine-20.10.38
+>> #### (2023-07-03)
+>> 
+>> * Document a couple of troubleshooting tips [Leandro Motta Barros]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-3.0.3
+> ### (2023-07-05)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v14.11.9 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-14.11.9
+>> #### (2023-06-28)
+>> 
+>> * Remove the 'Stopped' status for services [Christina Ying Wang]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-3.0.2
+> ### (2023-07-05)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 498d4cb [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.28.3
+>> #### (2023-07-05)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.9 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.28.2
+>> #### (2023-07-05)
+>> 
+>> * Update core/contracts digest to 6e3d563 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.28.1
+>> #### (2023-07-05)
+>> 
+>> * patch: Pass env variables to client [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.28.0
+>> #### (Invalid date)
+>> 
+>> * minor: Make client work with different balenaCloud environments [Vipul Gupta (@vipulgupta2048)]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-3.0.1
+> ### (2023-07-04)
+> 
+> * docs: Explain TPM ownership and possible TPM fill-up with secure boot [Michal Toman]
+> * docs: Recommend BIOS password and no F-key shortcuts with secure boot [Michal Toman]
+> 
+> ## meta-balena-3.0.0
+> ### (2023-07-04)
+> 
+> * mkfs-hostapp-native: Allow the compile task to access the network [Alex Gonzalez]
+> * mkfs-hostapp-native: Use image tags instead of parsing docker output [Alex Gonzalez]
+> * kernel-headers-test: Use image tags instead of parsing docker output [Alex Gonzalez]
+> * kernel-headers-test: Allow network access for compile task [Alex Gonzalez]
+> * kernel-modules-headers: use kernel-devsrc to provide kernel headers [Alex Gonzalez]
+> 
+
+</details>
+
 # v2.115.18+rev2
 ## (2023-07-04)
 
