@@ -67,6 +67,8 @@ RPI_KERNEL_DEVICETREE:remove:revpi = "bcm2708-rpi-zero-w.dtb bcm2710-rpi-3-b-plu
 IMAGE_ROOTFS_SIZE:raspberrypi4-superhub="409600"
 
 IMAGE_INSTALL:append:raspberrypi4-superhub = " \
+    watchdog \
+    watchdog-config \
     phoenix-peripheral \
     phoenix-peripheral-button-trig \
     phoenix-peripheral-lvd-hook \

@@ -3,7 +3,7 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
  
 SRC_URI = "git://github.com/balena-os/phoenix-peripheral.git;branch=master;protocol=https"
-SRCREV="31cf0f93aca0b2b1e52fc4f48e2baa733b8bd137"
+SRCREV="80aaedf02021246a786f1ba2b8c2bfd04e620c62"
 
 S = "${WORKDIR}/git"
 
