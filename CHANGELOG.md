@@ -1,6 +1,37 @@
 Change log
 -----------
 
+# v3.0.8
+## (2023-07-10)
+
+
+<details>
+<summary> Update layers/meta-balena to d36ec27a6f467d936e93a0f4c64f59cd917a00a2 [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-3.0.8
+> ### (2023-07-10)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to e081190 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.28.4
+>> #### (2023-07-07)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.10 [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-3.0.7
+> ### (2023-07-06)
+> 
+> * bail out in kexec initramfs hook on failure [Joseph Kogut]
+> 
+
+</details>
+
 # v3.0.6+rev1
 ## (2023-07-10)
 
