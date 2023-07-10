@@ -1,4 +1,19 @@
 - commits:
+    - subject: Remove balenaFin
+      hash: a011550119cb00496da42d9e3306edf067987852
+      body: |
+        This device type has been discontinued.
+      footer:
+        Changelog-entry: Remove balenaFin
+        changelog-entry: Remove balenaFin
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 3.0.6+rev1
+  title: ""
+  date: 2023-07-10T15:28:40.966Z
+- commits:
     - subject: Update layers/meta-balena to f7963b6b6d2cafd4d2b9ab4cfb12052d1afa0e53
       hash: a9177de8a8167798eaf32efc82ec74b791e886e5
       body: Update layers/meta-balena
