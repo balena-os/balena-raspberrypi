@@ -33,7 +33,7 @@ index 000000000000..92062e6c2fa0
 +/dts-v1/;
 +/plugin/;
 +/ {
-+    ompatible = "brcm,bcm2835", "brcm,bcm2708", "brcm,bcm2709";
++    compatible = "brcm,bcm2835", "brcm,bcm2708", "brcm,bcm2709";
 +
 +    fragment@0 {
 +        target = <&spi1>;
