@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v3.0.8+rev1
+## (2023-07-11)
+
+* Update phoenix-peripheral to latest version [Frank_Liyang]
+
 # v3.0.8
 ## (2023-07-10)
 

@@ -1,4 +1,20 @@
 - commits:
+    - subject: Update phoenix-peripheral to latest version
+      hash: ef238176d9917f999f18836d3b2b2695ac606451
+      body: >
+        This update brings in changes needed for latest revision of the
+        raspberrypi4-superhub hw
+      footer:
+        Changelog-entry: Update phoenix-peripheral to latest version
+        changelog-entry: Update phoenix-peripheral to latest version
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Frank_Liyang
+      nested: []
+  version: 3.0.8+rev1
+  title: ""
+  date: 2023-07-11T17:28:23.226Z
+- commits:
     - subject: Update layers/meta-balena to d36ec27a6f467d936e93a0f4c64f59cd917a00a2
       hash: 95aeede993658fe0c35f049eaa4e5770298d92c6
       body: Update layers/meta-balena
