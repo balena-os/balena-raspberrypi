@@ -1,4 +1,126 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 45e32821ac6e3efba81e24a21e417a375da5e154
+      hash: be0da51bbeb69b30dc02a8d8a34c188355d49e8d
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 45e32821ac6e3efba81e24a21e417a375da5e154
+        changelog-entry: Update balena-yocto-scripts to 45e32821ac6e3efba81e24a21e417a375da5e154
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Remove all traces of --skip-discontinued
+              hash: c0974ffb5f64818dcb5040d233348dd95c8e6c40
+              body: >
+                This option was removed in
+                https://github.com/balena-os/balena-yocto-scripts/pull/313
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Remove all traces of --skip-discontinued
+                changelog-entry: Remove all traces of --skip-discontinued
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+            - subject: "barys: Remove documenting the --skip-discontinued option"
+              hash: 0bd9144ebed207734e7eecb584306b74b25ed53d
+              body: >
+                This option was removed in
+                https://github.com/balena-os/balena-yocto-scripts/pull/313
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: balena-yocto-scripts-1.19.34
+          title: ""
+          date: 2023-07-12T07:04:24.994Z
+        - commits:
+            - subject: Update device-types package from v10.3.0 to v10.5.1
+              hash: 4bd1b5ed1298013cc2c4e766822b0e6869e83a47
+              body: |
+                Update device-types package from v10.3.0 to v10.5.1
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Update device-types package from v10.3.0 to v10.5.1
+                changelog-entry: Update device-types package from v10.3.0 to v10.5.1
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "barys: remove option to skip discontinued device types"
+              hash: a20413eac9cda4c5993841cdd771d904c0e8c0b5
+              body: |
+                A discontinued device type has the coffee file removed from the
+                documentation so there is no need for this argument.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-lib: remove balena_lib_get_dt_state"
+              hash: 2bf60f21a4486859760168ecbf4b35af2eec88a1
+              body: >
+                There is no requirement in balenaCloud to inform about a device
+
+                deprecation. This allows to just remove the coffee file from the
+
+                device repository when a device is deprecated so there will be no
+
+                more releases and no need for checks on a discontinued state.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "jenkins_build: remove discontinued device check"
+              hash: db359a88cf3ada613afef703a969e612b1706c2f
+              body: >
+                There is no requirement in balenaCloud to inform about a device
+
+                deprecation. This allows to just remove the coffee file from the
+
+                device repository when a device is deprecated so there will be no
+
+                more releases and no need for checks on a discontinued state.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-deploy: remove discontinued check"
+              hash: fe94d22851698916f576647b3a3ada3002b6e352
+              body: >
+                There is no requirement in balenaCloud to inform about a device
+
+                deprecation. This allows to just remove the coffee file from the
+
+                device repository when a device is deprecated so there will be no
+
+                more releases and no need for checks on a discontinued state.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.19.33
+          title: ""
+          date: 2023-07-10T15:29:53.674Z
+  version: 3.0.8+rev2
+  title: ""
+  date: 2023-07-12T13:17:41.824Z
+- commits:
     - subject: Update phoenix-peripheral to latest version
       hash: ef238176d9917f999f18836d3b2b2695ac606451
       body: >
