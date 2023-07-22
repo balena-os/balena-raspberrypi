@@ -1,6 +1,109 @@
 Change log
 -----------
 
+# v3.0.16
+## (2023-07-22)
+
+
+<details>
+<summary> Update layers/meta-balena to e1f474a9b8d28d5b0a0b993dd52108c214a376ea [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-3.0.16
+> ### (2023-07-22)
+> 
+> * modemmanager: increase qmi port open timeout [Alexandru Costache]
+> * Update ModemManager to v1.20.6 [Zahari Petkov]
+> 
+> ## meta-balena-3.0.15
+> ### (2023-07-20)
+> 
+> * tests: cloud: sv-timer: account for conn. error [rcooke-warwick]
+> * tests: cloud: use local ssh for sv timer test [rcooke-warwick]
+> * tests: cloud: remove preload log check [rcooke-warwick]
+> * tests: allow for configurable BC env [rcooke-warwick]
+> 
+> ## meta-balena-3.0.14
+> ### (2023-07-20)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v14.11.12 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-14.11.12
+>> #### (2023-07-19)
+>> 
+>> * mount-partitions: do not hardcode partition types [Alex Gonzalez]
+>> 
+>> ### balena-supervisor-14.11.11
+>> #### (2023-07-12)
+>> 
+>> * backends: Add Jetson Orin NANO custom device-tree support [Alexandru Costache]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-3.0.13
+> ### (2023-07-19)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 4e4c1bb [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.28.8
+>> #### (2023-07-19)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.13 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.28.7
+>> #### (2023-07-18)
+>> 
+>> * update e2e tests to use sshconfig [rcooke-warwick]
+>> * core: allow configurable ssh target [rcooke-warwick]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-3.0.12
+> ### (2023-07-16)
+> 
+> * tests/os: skip boot switch during provisioning [Alexandru Costache]
+> 
+> ## meta-balena-3.0.11
+> ### (2023-07-14)
+> 
+> * .github/workflows: Replace GitHub PAT with ephemeral app tokens [Kyle Harding]
+> 
+> ## meta-balena-3.0.10
+> ### (2023-07-14)
+> 
+> * initrdscripts: make initramfs-module-cryptsetup pull libgcc in [Michal Toman]
+> 
+> ## meta-balena-3.0.9
+> ### (2023-07-13)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to b1581a2 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.28.6
+>> #### (2023-07-13)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.12 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.28.5
+>> #### (2023-07-13)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.11 [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v3.0.8+rev2
 ## (2023-07-12)
 

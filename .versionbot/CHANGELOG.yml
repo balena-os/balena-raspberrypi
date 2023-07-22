@@ -1,4 +1,284 @@
 - commits:
+    - subject: Update layers/meta-balena to e1f474a9b8d28d5b0a0b993dd52108c214a376ea
+      hash: 9d9fb561443c5d1a8c31602e393a445c705d7a97
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to e1f474a9b8d28d5b0a0b993dd52108c214a376ea
+        changelog-entry: Update layers/meta-balena to e1f474a9b8d28d5b0a0b993dd52108c214a376ea
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "modemmanager: increase qmi port open timeout"
+              hash: d3358a33b29cf1c8404f2a0c266bbb2023235f84
+              body: |
+                The SIM7600G modem will fail to connect using
+                QMI and the default 45s timeout, nor will it work
+                with a 65s one. The value we found to work consistently
+                with this modem connected over pcie is 95s.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+            - subject: Update ModemManager to v1.20.6
+              hash: 0d629552a0caf3745e9e3738b3e74bbf802b020c
+              body: |
+                Also updated are the dependencies libqmi and libmbim.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Update ModemManager to v1.20.6
+                changelog-entry: Update ModemManager to v1.20.6
+                Signed-off-by: Zahari Petkov <zahari@balena.io>
+                signed-off-by: Zahari Petkov <zahari@balena.io>
+              author: Zahari Petkov
+              nested: []
+          version: meta-balena-3.0.16
+          title: ""
+          date: 2023-07-22T05:19:59.203Z
+        - commits:
+            - subject: "tests: cloud: sv-timer: account for conn. error"
+              hash: 11464aad53779c62199efb0b19f835835e332c72
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: "tests: cloud: use local ssh for sv timer test"
+              hash: d7ece01f84ebec41fe094cf5dbf8175e043c38e3
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: "tests: cloud: remove preload log check"
+              hash: 4d0a75a4dab16efe919ad040578b19bc7de19439
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: "tests: allow for configurable BC env"
+              hash: be732d8955e661116477a8aca59697bec748f306
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-3.0.15
+          title: ""
+          date: 2023-07-20T15:06:12.237Z
+        - commits:
+            - subject: Update balena-supervisor to v14.11.12
+              hash: dd6b9c93a5cfc4f4a04e190700284c79d4bd9f9a
+              body: |
+                Update balena-supervisor from 14.11.10 to 14.11.12
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: "mount-partitions: do not hardcode partition types"
+                      hash: cc2ca84448e2a3894294c39b8078c050c0237b87
+                      body: >
+                        Query instead the device for its filesystem type before
+                        mounting.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                        signed-off-by: Alex Gonzalez <alexg@balena.io>
+                      author: Alex Gonzalez
+                      nested: []
+                  version: balena-supervisor-14.11.12
+                  title: ""
+                  date: 2023-07-19T07:55:53.054Z
+                - commits:
+                    - subject: "backends: Add Jetson Orin NANO custom device-tree support"
+                      hash: 512240c54490ccd0cb83c13f0c6e8cae43fe9a88
+                      body: ""
+                      footer:
+                        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                        signed-off-by: Alexandru Costache <alexandru@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Alexandru Costache
+                      nested: []
+                  version: balena-supervisor-14.11.11
+                  title: ""
+                  date: 2023-07-12T08:35:23.009Z
+          version: meta-balena-3.0.14
+          title: ""
+          date: 2023-07-20T06:59:16.510Z
+        - commits:
+            - subject: Update tests/leviathan digest to 4e4c1bb
+              hash: ea0654d17b9ddf5babc8e647a919199b36f26e09
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.13
+                      hash: ea149d835fd8b170ae9a8554e063e964c4b34af6
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.12 to 2.9.13
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.28.8
+                  title: ""
+                  date: 2023-07-19T09:05:02.721Z
+                - commits:
+                    - subject: update e2e tests to use sshconfig
+                      hash: 1f44580c2010f0e88eb395da951cb539b6afbcdb
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                    - subject: "core: allow configurable ssh target"
+                      hash: 3b72e4963586aa9687aad5f6339910f587201fc2
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                  version: leviathan-2.28.7
+                  title: ""
+                  date: 2023-07-18T14:08:01.343Z
+          version: meta-balena-3.0.13
+          title: ""
+          date: 2023-07-19T18:45:09.490Z
+        - commits:
+            - subject: "tests/os: skip boot switch during provisioning"
+              hash: 7320af76d0a64561ff563384e5710f37c27a5852
+              body: |
+                The imx8mm-var-dart-plt also uses a custom implementation
+                for detecting the boot switch, so let's make use of the
+                existing support in meta-balena for the testbot provisioning
+                use-case and add this DT in the Autokit.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io
+                signed-off-by: Alexandru Costache <alexandru@balena.io
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-3.0.12
+          title: ""
+          date: 2023-07-16T10:42:23.885Z
+        - commits:
+            - subject: ".github/workflows: Replace GitHub PAT with ephemeral app tokens"
+              hash: d62f8a2d4450b588147c3065e1437af741185418
+              body: |
+                GitHub App installation tokens are short-lived and do not
+                need to be rotated the same way PATs do.
+
+                The default app ID and installation ID correspond to
+                flowzone-bot[app] installed in the balena-os Org.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-3.0.11
+          title: ""
+          date: 2023-07-14T12:47:33.615Z
+        - commits:
+            - subject: "initrdscripts: make initramfs-module-cryptsetup pull libgcc in"
+              hash: 046a17ec1494fe15da45e3accb1de562ff7e976e
+              body: >
+                cryptsetup lazily depends on libgcc. With libgcc missing,
+                certain
+
+                operations, especially luksOpen will fail with
+
+                `libgcc_s.so.1 must be installed for pthread_exit to work`
+
+                which panics the kernel and triggers a reboot loop indistinguishable
+
+                from a "device has been tampered with" state on regular builds
+
+                with no console output.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-3.0.10
+          title: ""
+          date: 2023-07-14T11:06:57.107Z
+        - commits:
+            - subject: Update tests/leviathan digest to b1581a2
+              hash: 4db34bf47ba5a581d427d6c897e7b57424c2485b
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.12
+                      hash: 5cf43a3e84d16110d16df6a9d740781294a10879
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.11 to 2.9.12
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.28.6
+                  title: ""
+                  date: 2023-07-13T13:06:30.963Z
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.11
+                      hash: 94444ca4ab7b5878c2b02981a80b633b17e5d1ac
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.10 to 2.9.11
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.28.5
+                  title: ""
+                  date: 2023-07-13T11:59:23.815Z
+          version: meta-balena-3.0.9
+          title: ""
+          date: 2023-07-13T17:21:31.286Z
+  version: 3.0.16
+  title: ""
+  date: 2023-07-22T10:55:49.533Z
+- commits:
     - subject: Update balena-yocto-scripts to 45e32821ac6e3efba81e24a21e417a375da5e154
       hash: be0da51bbeb69b30dc02a8d8a34c188355d49e8d
       body: Update balena-yocto-scripts
