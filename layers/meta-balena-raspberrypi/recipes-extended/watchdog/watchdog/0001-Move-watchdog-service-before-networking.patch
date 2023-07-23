@@ -1,0 +1,22 @@
+From 39823832c202a61fadae787c534d79ceb0ba7642 Mon Sep 17 00:00:00 2001
+From: Cyrus Chan <cyrus.chan@energybox.com>
+Date: Sun, 23 Jul 2023 21:30:47 +0800
+Subject: [PATCH] Move watchdog service before networking
+
+---
+ debian/watchdog.service | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/debian/watchdog.service b/debian/watchdog.service
+index 50bcecc..70303f1 100644
+--- a/debian/watchdog.service
++++ b/debian/watchdog.service
+@@ -1,6 +1,7 @@
+ [Unit]
+ Description=watchdog daemon
+-After=multi-user.target
++Before=network-pre.target
++Wants=network-pre.target
+ 
+ [Service]
+ Type=forking
