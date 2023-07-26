@@ -1,4 +1,104 @@
 - commits:
+    - subject: Update layers/meta-balena to 76a64e46ebf953fba9e78aa7e60892113ccb9ad7
+      hash: 2ed2355804539631cf3b48eb2058420a2afe67b9
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 76a64e46ebf953fba9e78aa7e60892113ccb9ad7
+        changelog-entry: Update layers/meta-balena to 76a64e46ebf953fba9e78aa7e60892113ccb9ad7
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "linux-firmware: upgrade 20210511 -> 20230404"
+              hash: 6035e749c4bd989f7b8d23a5f48848af7d75efd8
+              body: ""
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "common: firmware: repackage iwlwifi-quz-a0-hr-b0"
+              hash: 1bf5489acc3e4c3696bccdae98ea95653ec0d8b7
+              body: |
+                Package all subversions of this firmware
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "common: firmware: repackage iwlwifi-cc-a0"
+              hash: 1336cb0802c8589439557afca0c28d2aee248e60
+              body: >
+                Repackage iwlwifi-cc-a0 to include all firmware versions shipped
+
+                upstream, rather than only an older version (48) that's no longer
+
+                shipped as of 20230404.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "compat: connectivity: drop deprecated iwlwifi files"
+              hash: daef22bbb706898721eee131872862a5e2d7709e
+              body: >
+                linux-firmware-20230404 no longer ships several older firmware
+                versions,
+
+                remove them.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "compat: install linux-firmware-iwlwifi-3160"
+              hash: 9442d98a51bb0ef62991bd4292717e2052cd39ef
+              body: >
+                Replace older versioned iwlwifi packages with
+
+                linux-firmware-iwlwifi-3160 package that includes all versions shipped
+
+                in linux-firmware.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-3.1.0
+          title: ""
+          date: 2023-07-25T21:09:07.177Z
+        - commits:
+            - subject: "balena-image: Install extra_uEnv for all boards that use u-boot"
+              hash: c9d665f0c2a0454a84d9890d56e4d93f57bf93ad
+              body: >
+                Some board BSPs may define UBOOT_MACHINE, others UBOOT_CONFIG,
+
+                let's make sure we include the extra_uEnv.txt file in the non-flasher
+
+                image for both cases.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-3.0.17
+          title: ""
+          date: 2023-07-25T13:45:11.862Z
+  version: 3.1.0
+  title: ""
+  date: 2023-07-26T02:29:29.390Z
+- commits:
     - subject: Update layers/meta-balena to e1f474a9b8d28d5b0a0b993dd52108c214a376ea
       hash: 9d9fb561443c5d1a8c31602e393a445c705d7a97
       body: Update layers/meta-balena
