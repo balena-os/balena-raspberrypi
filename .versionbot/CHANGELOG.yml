@@ -1,4 +1,38 @@
 - commits:
+    - subject: Update layers/meta-balena to ced059b1f06281129434311dddc8ddab3d65fb5b
+      hash: ae438188ab0956a1a78e4dced133e18cd652a4fb
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to ced059b1f06281129434311dddc8ddab3d65fb5b
+        changelog-entry: Update layers/meta-balena to ced059b1f06281129434311dddc8ddab3d65fb5b
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "linux/kernel-devsrc: Fix aarch64 kernel-headers-test build"
+              hash: 65abb381ec266066b24f53fa3119dd47ec8af1a3
+              body: >
+                This fix has been ported from the following upstream
+
+                change: https://patchwork.yoctoproject.org/project/oe-core/patch/002c31d6add77e1002fb1ccd4050ce826a654170.1659653543.git.bruce.ashfield@gmail.com/
+
+                and fixes the following compilation error on generic-aarch64:
+
+                    make[1]: *** No rule to make target 'arch/arm64/tools/gen-sysreg.awk',
+                    needed by 'arch/arm64/include/generated/asm/sysreg-defs.h'.  Stop.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-3.1.1
+          title: ""
+          date: 2023-07-26T18:12:23.719Z
+  version: 3.1.1
+  title: ""
+  date: 2023-07-26T23:13:17.751Z
+- commits:
     - subject: Update layers/meta-balena to 76a64e46ebf953fba9e78aa7e60892113ccb9ad7
       hash: 2ed2355804539631cf3b48eb2058420a2afe67b9
       body: Update layers/meta-balena
