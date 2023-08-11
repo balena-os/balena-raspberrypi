@@ -1,4 +1,20 @@
 - commits:
+    - subject: Update build instructions in README
+      hash: 34140d8adcb806a382f7ca71b1d76a136bab50b6
+      body: |
+        Update the build instructions with
+        steps for containerized builds.
+      footer:
+        Changelog-entry: Update build instructions in README
+        changelog-entry: Update build instructions in README
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 3.1.1+rev1
+  title: ""
+  date: 2023-08-11T09:24:35.968Z
+- commits:
     - subject: Update layers/meta-balena to ced059b1f06281129434311dddc8ddab3d65fb5b
       hash: ae438188ab0956a1a78e4dced133e18cd652a4fb
       body: Update layers/meta-balena
