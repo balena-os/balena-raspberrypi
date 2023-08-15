@@ -1,6 +1,95 @@
 Change log
 -----------
 
+# v3.1.12
+## (2023-08-15)
+
+
+<details>
+<summary> Update layers/meta-balena to 07e9c06daa0b46154a241b448569c89ab307b6e7 [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-3.1.12
+> ### (2023-08-15)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v14.11.14 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-14.11.14
+>> #### (2023-08-14)
+>> 
+>> * Update balena-io/deploy-to-balena-action to v0.28.0 [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-3.1.11
+> ### (2023-08-12)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v14.11.13 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-14.11.13
+>> #### (2023-08-10)
+>> 
+>> * patch: Remove reference of override_lock variable [Vipul Gupta]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-3.1.10
+> ### (2023-08-12)
+> 
+> * hostapp-update: bind-mount /sys for Jetson efivars [Alexandru Costache]
+> 
+> ## meta-balena-3.1.9
+> ### (2023-08-10)
+> 
+> * tests: secureboot: add test for module signing [Joseph Kogut]
+> 
+> ## meta-balena-3.1.8
+> ### (2023-08-09)
+> 
+> * tests: hup: retry sending image if fails [rcooke-warwick]
+> 
+> ## meta-balena-3.1.7
+> ### (2023-08-08)
+> 
+> * tests: os: eng. healthcheck: retry timeout change [rcooke-warwick]
+> 
+> ## meta-balena-3.1.6
+> ### (2023-08-02)
+> 
+> * resin-init-flasher: Allow background device registration [Michal Toman]
+> 
+> ## meta-balena-3.1.5
+> ### (2023-08-01)
+> 
+> * Reduce scope of app token used for backports and ESR [Kyle Harding]
+> 
+> ## meta-balena-3.1.4
+> ### (Invalid date)
+> 
+> * kernel-balena: remove mispelled config setting [Alex Gonzalez]
+> 
+> ## meta-balena-3.1.3
+> ### (2023-07-28)
+> 
+> * resin-init-flasher: Install the dispatcher scripts to installation media [Alex Gonzalez]
+> * balena-net-config: populate the dispatcher bind mount [Alex Gonzalez]
+> * resin-mounts: add dispatcher.d bind mount [Alex Gonzalez]
+> 
+> ## meta-balena-3.1.2
+> ### (2023-07-27)
+> 
+> * grub-conf: Do not hardcode the path for grub_extraenv [Michal Toman]
+> 
+
+</details>
+
 # v3.1.1+rev1
 ## (2023-08-11)
 

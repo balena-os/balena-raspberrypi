@@ -1,4 +1,320 @@
 - commits:
+    - subject: Update layers/meta-balena to 07e9c06daa0b46154a241b448569c89ab307b6e7
+      hash: e59c285f40d3e5a204ef1e6d726fdfcf72bfa1c4
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 07e9c06daa0b46154a241b448569c89ab307b6e7
+        changelog-entry: Update layers/meta-balena to 07e9c06daa0b46154a241b448569c89ab307b6e7
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Update balena-supervisor to v14.11.14
+              hash: f42a9345171daeb1834ec50edae5a60cfac4f1c7
+              body: |
+                Update balena-supervisor from 14.11.13 to 14.11.14
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update balena-io/deploy-to-balena-action to v0.28.0
+                      hash: 4f54395be2cbbb7bcd1d0c1a9acef3b707f34691
+                      body: Update balena-io/deploy-to-balena-action
+                      footer:
+                        Changelog-entry: Update balena-io/deploy-to-balena-action to v0.28.0
+                        changelog-entry: Update balena-io/deploy-to-balena-action to v0.28.0
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-14.11.14
+                  title: ""
+                  date: 2023-08-14T23:47:06.985Z
+          version: meta-balena-3.1.12
+          title: ""
+          date: 2023-08-15T04:26:33.597Z
+        - commits:
+            - subject: Update balena-supervisor to v14.11.13
+              hash: dd37dc33373fed3295dd64658a8728ddd6a3998e
+              body: |
+                Update balena-supervisor from 14.11.12 to 14.11.13
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: "patch: Remove reference of override_lock variable"
+                      hash: 7560c70a085d27d8b44eb0dab8b3fa40ab0c9e94
+                      body: This is being done to keep the source of truth for this variable in one
+                        place and reduce confusion since it's better for
+                        dashboard users to reference the dashboard option rather
+                        than the actual variable name
+                      footer: {}
+                      author: Vipul Gupta
+                      nested: []
+                  version: balena-supervisor-14.11.13
+                  title: ""
+                  date: 2023-08-10T16:51:23.863Z
+          version: meta-balena-3.1.11
+          title: ""
+          date: 2023-08-12T05:34:05.584Z
+        - commits:
+            - subject: "hostapp-update: bind-mount /sys for Jetson efivars"
+              hash: 5e0dbce7a08ec04a281e21a7df8c03affafeb8f2
+              body: |
+                The hostapp-update hooks for UEFI capsule updates
+                need to create and update the contents of some platform
+                specific efi variables inside the /sys directory, and thus
+                we need to bindmount this directory in the hostapp-update
+                script for internal testing, as well as in balenahup for
+                api triggered updates.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-3.1.10
+          title: ""
+          date: 2023-08-12T00:14:11.652Z
+        - commits:
+            - subject: "tests: secureboot: add test for module signing"
+              hash: 20120b58d1d3ac5eba164862df7405b226efee92
+              body: >
+                Verify kernel lockdown prohibits loading of unsigned modules,
+                and still
+
+                loads modules with a signature that validates against a trusted key.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-3.1.9
+          title: ""
+          date: 2023-08-10T20:10:05.348Z
+        - commits:
+            - subject: "tests: hup: retry sending image if fails"
+              hash: 22466325860a1de70724c4bbbb45a8458d3cf8dd
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-3.1.8
+          title: ""
+          date: 2023-08-09T13:34:42.388Z
+        - commits:
+            - subject: "tests: os: eng. healthcheck: retry timeout change"
+              hash: 288ccf608306695c7a709ca682726e82282918f0
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-3.1.7
+          title: ""
+          date: 2023-08-08T12:49:13.321Z
+        - commits:
+            - subject: "resin-init-flasher: Allow background device registration"
+              hash: 0b246409da5359741138a81b552fcc6bb3ecc24e
+              body: >
+                314047e and b5c5214 made flasher block until the
+                resin-device-register
+
+                service exits and made resin-device-register give up after 6 seconds
+
+                not to block infinitely when no network is available. This effectively
+
+                means that if the device fails to register within first 6 seconds,
+
+                it will never retry, flasher will not report status to the dashboard
+
+                and the device will only register on first boot.
+
+
+                This patch changes the logic back to resin-device-register trying
+
+                in the background in an infinite loop and moves the "give the device
+
+                a chance to register" delay to flasher itself. It also extends
+
+                the wait to openvpn as flasher already does that and wants VPN to run
+
+                to be debuggable - in case flashing fails, it would be possible
+
+                to SSH in via the VPN and look at the logs remotely.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-3.1.6
+          title: ""
+          date: 2023-08-02T08:37:52.265Z
+        - commits:
+            - subject: Reduce scope of app token used for backports and ESR
+              hash: 331589395a0dbbb16fc9d9491c5c43c2ca68c1fa
+              body: >
+                These permissions have already been removed from
+                flowzone-app[bot]
+
+                so they cannot be requested at runtime.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-3.1.5
+          title: ""
+          date: 2023-08-01T21:53:05.189Z
+        - commits:
+            - subject: "kernel-balena: remove mispelled config setting"
+              hash: c73973972067d5c1afeb133ed7868684c054a0d9
+              body: >
+                The kernel-balena class contains:
+
+                CONIFG_SECURITY=n
+
+
+                which is mispelled and not being applied. The commit where this was
+
+                introduced claims it's needed to completely disable the audit logs, and
+
+                also that the security framework is unused.
+
+
+                I disagree in that it's unused - the hostOS is not using any security
+
+                framework, but applications may, so luckily the security framework was
+
+                never disabled.
+
+
+                Removing this mispelled entry should have no functional effect. Whether
+
+                the audit subsystem is disabled will depend on the final kernel
+
+                configuration. Definitely we have not seen a need to disable it recently,
+
+                and we have not seen the kernel log flooded with messages.
+
+
+                I'd argue the disabling of the audit subsystem in meta-balena serves no
+
+                need but I also have no specific reason to remove it at the moment.
+
+
+                Fixes #2947
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-3.1.4
+          title: ""
+          date: 2023-07-30T14:26:53.310Z
+        - commits:
+            - subject: "resin-init-flasher: Install the dispatcher scripts to installation
+                media"
+              hash: 77d61290946ed69f348f05887334b28fc2aa0435
+              body: >
+                The flasher/installer image can be configured by the user and
+                that
+
+                configuration finishes up in the installed image. Add the dispatcher
+
+                scripts to this existing mechanim.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-net-config: populate the dispatcher bind mount"
+              hash: 0d1798d8742f34d92fd0d98314d349ba4b5dc54a
+              body: >
+                On boot, the dispatcher script are copied from the boot
+                partition where
+
+                the user has configured them, to the bind mount used by the running
+
+                applications.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "resin-mounts: add dispatcher.d bind mount"
+              hash: 32abffb44d74fc0be6949ed6e893ee3476ffcf2e
+              body: >
+                This allows for user configuration of NetworkManager's
+                dispatcher
+
+                scripts.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-3.1.3
+          title: ""
+          date: 2023-07-28T11:36:17.599Z
+        - commits:
+            - subject: "grub-conf: Do not hardcode the path for grub_extraenv"
+              hash: f7ec67bd53e0998c12bcbdcaccea99f1f6856bcf
+              body: >
+                At this moment grub.cfg sources /grub/grub_extraenv which works
+                fine
+
+                on MBR systems, however on EFI systems this does not work because GRUB
+
+                is installed in /EFI/BOOT/ rather than /grub/.
+
+
+                This patch replaces the hardcoded /grub with ${prefix} which should
+
+                expand to the appropriate directory regardless of the platform. It also
+
+                removes the loading of grub_extraenv from the secure boot variant
+
+                of the GRUB config since this would not load without a signature anyway.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-3.1.2
+          title: ""
+          date: 2023-07-27T15:15:34.234Z
+  version: 3.1.12
+  title: ""
+  date: 2023-08-15T10:27:33.590Z
+- commits:
     - subject: Update build instructions in README
       hash: 34140d8adcb806a382f7ca71b1d76a136bab50b6
       body: |
