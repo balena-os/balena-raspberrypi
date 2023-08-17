@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v3.2.1
+## (2023-08-17)
+
+
+<details>
+<summary> Update layers/meta-balena to ec885550473b00b86e986f84bfd74f06a137fd24 [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-3.2.1
+> ### (2023-08-17)
+> 
+> * meta-balena-thud: adapt migrate module dependencies [Alex Gonzalez]
+> 
+
+</details>
+
 # v3.2.0
 ## (2023-08-17)
 
