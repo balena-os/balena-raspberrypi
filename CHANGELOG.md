@@ -1,6 +1,80 @@
 Change log
 -----------
 
+# v3.2.7
+## (2023-08-24)
+
+
+<details>
+<summary> Update layers/meta-balena to d0fb824dca1869d27592e5c48b757cbf95ae106f [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-3.2.7
+> ### (2023-08-24)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to e7622aa [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.28.12
+>> #### (2023-08-23)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.18 [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-3.2.6
+> ### (2023-08-23)
+> 
+> * resin-u-boot.class: Fix for older u-boot versions [Alex Gonzalez]
+> 
+> ## meta-balena-3.2.5
+> ### (2023-08-22)
+> 
+> * contributing-device-support.md: Clarify repo set-up in balenaOS org for private device types [Florin Sarbu]
+> 
+> ## meta-balena-3.2.4
+> ### (2023-08-21)
+> 
+> * tests: cloud: lockfile: change test order [rcooke-warwick]
+> 
+> ## meta-balena-3.2.3
+> ### (2023-08-21)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 26e6cea [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.28.11
+>> #### (2023-08-18)
+>> 
+>> * improve autokit quickstart [rcooke-warwick]
+>> 
+>> ### leviathan-2.28.10
+>> #### (2023-08-18)
+>> 
+>> * patch: Update suites dependencies to latest [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.28.9
+>> #### (2023-08-18)
+>> 
+>> * patch: Add balenaCloud configurable environments to e2e [Vipul Gupta (@vipulgupta2048)]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-3.2.2
+> ### (2023-08-18)
+> 
+> * modemmanager: hold ModemManager 1.14.2 on Thud [Alex Gonzalez]
+> * meta-balena-thud: libqmi: Use v1.26.0 [Alex Gonzalez]
+> * meta-balena-thud: libmbim: use v 1.24.2 [Alex Gonzalez]
+> 
+
+</details>
+
 # v3.2.1
 ## (2023-08-17)
 

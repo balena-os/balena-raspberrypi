@@ -1,4 +1,184 @@
 - commits:
+    - subject: Update layers/meta-balena to d0fb824dca1869d27592e5c48b757cbf95ae106f
+      hash: a8fe5c0b719d3df52f39cea09a5239933b77d181
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to d0fb824dca1869d27592e5c48b757cbf95ae106f
+        changelog-entry: Update layers/meta-balena to d0fb824dca1869d27592e5c48b757cbf95ae106f
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Update tests/leviathan digest to e7622aa
+              hash: 0734600358fedd609c76d95ac14067584c4643c9
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.18
+                      hash: 2b27e7a539bd30b96ffb02e0491f720095e0c484
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.13 to 2.9.18
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.28.12
+                  title: ""
+                  date: 2023-08-23T21:00:04.376Z
+          version: meta-balena-3.2.7
+          title: ""
+          date: 2023-08-24T02:00:02.949Z
+        - commits:
+            - subject: "resin-u-boot.class: Fix for older u-boot versions"
+              hash: 8da86ebc124eacda1a1bf22d183f13a112c22158
+              body: |
+                The env_get() function was renamed from getenv() in commit
+                00caae6d47645e68d6e5277aceb69592b49381a6
+                env: Rename getenv/_f() to env_get()
+
+                Fix the balena_check_crc32 function to build for those older
+                u-boots too.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-3.2.6
+          title: ""
+          date: 2023-08-23T19:20:53.089Z
+        - commits:
+            - subject: "contributing-device-support.md: Clarify repo set-up in balenaOS org
+                for private device types"
+              hash: 2e4da2fdd63a1eb0328ffd12209d90a9fdeb6545
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-3.2.5
+          title: ""
+          date: 2023-08-22T15:55:05.868Z
+        - commits:
+            - subject: "tests: cloud: lockfile: change test order"
+              hash: 3134d64124c6dbbcd34f54874a1f4eaee09a4c6f
+              body: |
+                Change the test order to make things more consistent.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-3.2.4
+          title: ""
+          date: 2023-08-21T17:51:32.589Z
+        - commits:
+            - subject: Update tests/leviathan digest to 26e6cea
+              hash: 59254670dbe87a26764f9264e5a2d2839deb245d
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: improve autokit quickstart
+                      hash: fb7005cb55d91ce5b0713af9e534803d0841ff57
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                  version: leviathan-2.28.11
+                  title: ""
+                  date: 2023-08-18T14:21:19.299Z
+                - commits:
+                    - subject: "patch: Update suites dependencies to latest"
+                      hash: 6b20fa345404169da50b3b9bd853c41105448e67
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.28.10
+                  title: ""
+                  date: 2023-08-18T14:00:30.655Z
+                - commits:
+                    - subject: "patch: Add balenaCloud configurable environments to e2e"
+                      hash: e1858f52a46fc154644352ae9d85d22959523e22
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.28.9
+                  title: ""
+                  date: 2023-08-18T10:12:14.545Z
+          version: meta-balena-3.2.3
+          title: ""
+          date: 2023-08-21T11:51:01.752Z
+        - commits:
+            - subject: "modemmanager: hold ModemManager 1.14.2 on Thud"
+              hash: a13370eb1f57c42aaf78364b09e3424c8d801049
+              body: >
+                Latest stable ModemManager does not compile anymore on Thud, so
+                we
+
+                there use the previous version 1.14.2.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "meta-balena-thud: libqmi: Use v1.26.0"
+              hash: c0f6308d2308551e2bf9b51c1512cfd1ad3ef6b9
+              body: |
+                Newer versions are incompatible with the libc available in sumo.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "meta-balena-thud: libmbim: use v 1.24.2"
+              hash: 2dc7b072896e9793fa9292e9dcdc06de54f2ce4d
+              body: >
+                The current meta-balena libmbim is not compatible with thud's
+                libc
+
+                version.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-3.2.2
+          title: ""
+          date: 2023-08-18T12:38:52.035Z
+  version: 3.2.7
+  title: ""
+  date: 2023-08-24T13:36:47.340Z
+- commits:
     - subject: Update layers/meta-balena to ec885550473b00b86e986f84bfd74f06a137fd24
       hash: 0e9dd418e3720f68efc117a14f84af42484584e1
       body: Update layers/meta-balena
