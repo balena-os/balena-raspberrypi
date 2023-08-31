@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v3.2.7+rev1
+## (2023-08-31)
+
+* Update watchdog config for superhub device type [Cyrus Chan]
+
 # v3.2.7
 ## (2023-08-24)
 

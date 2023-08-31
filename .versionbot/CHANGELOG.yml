@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update watchdog config for superhub device type
+      hash: 60fb3fe4bb2febc26663ec1417dcbb574520df91
+      body: |
+        This update brings in changes needed to speedup watchdog startup
+      footer:
+        Changelog-entry: Update watchdog config for superhub device type
+        changelog-entry: Update watchdog config for superhub device type
+      author: Cyrus Chan
+      nested: []
+  version: 3.2.7+rev1
+  title: ""
+  date: 2023-08-31T10:46:20.735Z
+- commits:
     - subject: Update layers/meta-balena to d0fb824dca1869d27592e5c48b757cbf95ae106f
       hash: a8fe5c0b719d3df52f39cea09a5239933b77d181
       body: Update layers/meta-balena
