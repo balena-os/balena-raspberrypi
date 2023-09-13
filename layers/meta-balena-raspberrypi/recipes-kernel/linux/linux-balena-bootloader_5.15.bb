@@ -21,10 +21,10 @@ require linux-raspberrypi-balena.inc
 
 KERNEL_DTC_FLAGS += "-@ -H epapr"
 
-INITRAMFS_IMAGE = "balena-image-boot-initramfs"
+INITRAMFS_IMAGE = "balena-image-bootloader-initramfs"
 
-KERNEL_PACKAGE_NAME = "balena-kboot"
+KERNEL_PACKAGE_NAME = "balena-bootloader"
 
 KERNEL_DEVICETREE = "${RPI_KERNEL_DEVICETREE}"
 
-PROVIDES = "virtual/balena-kboot"
+PROVIDES = "virtual/balena-bootloader"
