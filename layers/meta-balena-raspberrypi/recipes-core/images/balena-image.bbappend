@@ -25,6 +25,16 @@ BALENA_BOOT_PARTITION_FILES:rpi = " \
     bootfiles:/ \
     "
 
+BALENA_BOOT_PARTITION_FILES:remove:raspberrypi4-64 = " \
+    u-boot.bin:/${SDIMG_KERNELIMAGE} \
+    boot.scr:/boot.scr \
+    balena-bootloader/${KERNEL_IMAGETYPE}-initramfs-${MACHINE}.bin:/${KERNEL_IMAGETYPE} \
+    "
+
+BALENA_BOOT_PARTITION_FILES:append:raspberrypi4-64 = " \
+    balena-bootloader/${KERNEL_IMAGETYPE}-initramfs-${MACHINE}.bin:/${SDIMG_KERNELIMAGE} \
+    "
+
 BALENA_BOOT_PARTITION_FILES:append:revpi-core-3 = " revpi-core-dt-blob-overlay.dtb:/dt-blob.bin"
 
 BALENA_BOOT_PARTITION_FILES:append:revpi-connect = " revpi-connect-dt-blob-overlay.dtb:/dt-blob.bin"
@@ -58,6 +68,10 @@ python overlay_dtbs_handler () {
 do_resin_boot_dirgen_and_deploy[prefuncs] += "overlay_dtbs_handler"
 
 IMAGE_INSTALL:append:rpi = " u-boot"
+IMAGE_INSTALL:remove:raspberrypi4-64 = " u-boot"
+# When using 2nd stage bootloader this has to be unset, otherwise
+# do_resin_boot_dirgen_and_deploy tries to deploy non-existing u-boot files
+UBOOT_MACHINE:raspberrypi4-64 = ""
 
 do_resin_boot_dirgen_and_deploy[depends] += "virtual/kernel:do_install"
 
