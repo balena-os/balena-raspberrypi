@@ -6,3 +6,7 @@ CMDLINE += " ${@bb.utils.contains('DISTRO_FEATURES','osdev-image',"console=tty1 
 CMDLINE += " cgroup_enable=memory"
 CMDLINE:remove = "root=/dev/mmcblk0p2"
 CMDLINE_DEBUG = ""
+
+# Necessary for the linux-based 2nd stage bootloader to work
+# These will not be passed to the actual kernel
+CMDLINE += " balena_stage2 maxcpus=0"
