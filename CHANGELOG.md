@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v4.0.7+rev2
+## (2023-09-26)
+
+* Remove redundant UBOOT_MACHINE setting for raspberrypi4-64 [Florin Sarbu]
+
 # v4.0.7+rev1
 ## (2023-09-19)
 
