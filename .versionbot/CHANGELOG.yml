@@ -1,4 +1,150 @@
 - commits:
+    - subject: Update contracts to 27ea28be5e65c06cac559ab5bddeccf77d13830f
+      hash: cfb86291f6857a7e8057a4a5b07e1617bf348794
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 27ea28be5e65c06cac559ab5bddeccf77d13830f
+        changelog-entry: Update contracts to 27ea28be5e65c06cac559ab5bddeccf77d13830f
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "raspberrypi5: Add new device type"
+              hash: cde68c6076b7ed4277027f29778efac42109b0e8
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+          version: contracts-2.0.73
+          title: ""
+          date: 2023-09-28T07:07:06.913Z
+        - commits:
+            - subject: "raspberrypi4-unipi-neuron: Add new device type"
+              hash: e45a691e7773e85f5b3db9f0d9050e7f39a1b2e0
+              body: |
+                This was moved from private to public as agreed with the initial
+                customer.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+          version: contracts-2.0.72
+          title: ""
+          date: 2023-09-04T06:45:04.941Z
+        - commits:
+            - subject: Add the BeagleBone AI-64.
+              hash: 4296cf27d047c669da781c1c7b304bab5fa848fe
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Add the BeagleBone AI-64.
+                changelog-entry: Add the BeagleBone AI-64.
+                Signed-off-by: Lisandro Pérez Meyer <lperezmeyer@ics.com>
+                signed-off-by: Lisandro Pérez Meyer <lperezmeyer@ics.com>
+              author: Lisandro Damián Nicanor Pérez Meyer
+          version: contracts-2.0.71
+          title: ""
+          date: 2023-08-29T11:19:00.577Z
+        - commits:
+            - subject: Add alpine 3.18
+              hash: d0c33e6434de4e194a3e940a339f58d248b11709
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+          version: contracts-2.0.70
+          title: ""
+          date: 2023-08-23T12:54:03.746Z
+        - commits:
+            - subject: Remove Ubuntu Impish and Kinetic and add Lunar
+              hash: 44b45eae5a0e77c8cae05971aed7d1c4906221f9
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+          version: contracts-2.0.69
+          title: ""
+          date: 2023-08-22T16:59:36.789Z
+        - commits:
+            - subject: "iot-gate-imx8plus: Improve provisioning instructions for Windows"
+              hash: dbfd03e791d69c657a295d92cd823e32f4bf2369
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+          version: contracts-2.0.68
+          title: ""
+          date: 2023-08-15T07:20:27.206Z
+        - commits:
+            - subject: Fix conditional when installing libssl1.1
+              hash: 29e5a99050fb93fcea404fd48d2db029acf4acb3
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+          version: contracts-2.0.67
+          title: ""
+          date: 2023-08-03T20:27:02.315Z
+        - commits:
+            - subject: Fix a condition where /etc/nsswitch.conf exists and the build fails
+              hash: c8c521ae9fdb908fb37642154d5fbe73a2849985
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+          version: contracts-2.0.66
+          title: ""
+          date: 2023-08-03T20:04:14.870Z
+        - commits:
+            - subject: Replace ifupdown with ifupdown-ng for alpine edge
+              hash: cf7dde1ae72cd0edaa94c783da271b1bf22542ea
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+          version: contracts-2.0.65
+          title: ""
+          date: 2023-08-02T20:23:30.063Z
+        - commits:
+            - subject: Remove OpenJDK v7 as it has been removed from alpine edge
+              hash: 343a2f5d0a08de2f9bb5ad1013150e98f23feb2c
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+          version: contracts-2.0.64
+          title: ""
+          date: 2023-08-02T20:02:24.824Z
+  version: 4.0.7+rev3
+  title: ""
+  date: 2023-09-28T13:39:35.429Z
+- commits:
     - subject: Remove redundant UBOOT_MACHINE setting for raspberrypi4-64
       hash: 434b5817a892bbc6ffc2143219664603581c4f23
       body: |

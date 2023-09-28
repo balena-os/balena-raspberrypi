@@ -1,6 +1,66 @@
 Change log
 -----------
 
+# v4.0.7+rev3
+## (2023-09-28)
+
+
+<details>
+<summary> Update contracts to 27ea28be5e65c06cac559ab5bddeccf77d13830f [Self-hosted Renovate Bot] </summary>
+
+> ## contracts-2.0.73
+> ### (2023-09-28)
+> 
+> * raspberrypi5: Add new device type [Florin Sarbu]
+> 
+> ## contracts-2.0.72
+> ### (2023-09-04)
+> 
+> * raspberrypi4-unipi-neuron: Add new device type [Florin Sarbu]
+> 
+> ## contracts-2.0.71
+> ### (2023-08-29)
+> 
+> * Add the BeagleBone AI-64. [Lisandro Damián Nicanor Pérez Meyer]
+> 
+> ## contracts-2.0.70
+> ### (2023-08-23)
+> 
+> * Add alpine 3.18 [Kyle Harding]
+> 
+> ## contracts-2.0.69
+> ### (2023-08-22)
+> 
+> * Remove Ubuntu Impish and Kinetic and add Lunar [Kyle Harding]
+> 
+> ## contracts-2.0.68
+> ### (2023-08-15)
+> 
+> * iot-gate-imx8plus: Improve provisioning instructions for Windows [Alexandru Costache]
+> 
+> ## contracts-2.0.67
+> ### (2023-08-03)
+> 
+> * Fix conditional when installing libssl1.1 [Kyle Harding]
+> 
+> ## contracts-2.0.66
+> ### (2023-08-03)
+> 
+> * Fix a condition where /etc/nsswitch.conf exists and the build fails [Kyle Harding]
+> 
+> ## contracts-2.0.65
+> ### (2023-08-02)
+> 
+> * Replace ifupdown with ifupdown-ng for alpine edge [Kyle Harding]
+> 
+> ## contracts-2.0.64
+> ### (2023-08-02)
+> 
+> * Remove OpenJDK v7 as it has been removed from alpine edge [Kyle Harding]
+> 
+
+</details>
+
 # v4.0.7+rev2
 ## (2023-09-26)
 
