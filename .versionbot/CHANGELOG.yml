@@ -1,4 +1,332 @@
 - commits:
+    - subject: Update layers/meta-balena to 1c9c4813033186cefde51b9639edf7035f070c9d
+      hash: a81c3897150e36825754c43ada0e58ba82c4d5b7
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 1c9c4813033186cefde51b9639edf7035f070c9d
+        changelog-entry: Update layers/meta-balena to 1c9c4813033186cefde51b9639edf7035f070c9d
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Update tests/leviathan digest to 04a53d3
+              hash: 0be7bf36487912ce1c82aa8ec53013f849bf4463
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update core/contracts digest to 27ea28b
+                      hash: f0c4b6939f15d10dd359589f52066ecd0b55711d
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.28.31
+                  title: ""
+                  date: 2023-09-28T07:41:51.643Z
+          version: meta-balena-4.0.16
+          title: ""
+          date: 2023-09-28T11:16:09.515Z
+        - commits:
+            - subject: Update tests/leviathan digest to b4e68c8
+              hash: f772b9dde29bd43c1baf88edc0abc954a32040af
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update actions/checkout action to v4
+                      hash: eb892035fb8c34e2a87ebf37f2b7f8bd8b00a61c
+                      body: |
+                        Update actions/checkout from 3 to 4
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.28.30
+                  title: ""
+                  date: 2023-09-25T14:25:17.184Z
+          version: meta-balena-4.0.15
+          title: ""
+          date: 2023-09-27T20:13:31.640Z
+        - commits:
+            - subject: "patch: Add custom build docs"
+              hash: 1d5f8ba92d5bd5b7a1fd26fa25473febc8e097d2
+              body: ""
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+              author: Vipul Gupta (@vipulgupta2048)
+              nested: []
+          version: meta-balena-4.0.14
+          title: ""
+          date: 2023-09-27T13:13:37.324Z
+        - commits:
+            - subject: "balena-rollback: Add support for balena bootloader"
+              hash: 3175beaa5cc1e8685bc56e528f3b74f6974e3384
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: "hostapp-update-hooks: Add hook for balena bootloader"
+              hash: c0a1e5f003ea49455056e11d480357bdb028c8c6
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: "initrdscripts: add a script that switches between rootA and rootB"
+              hash: 7aa14b6887da279c0b7bb6f665eebb83e2ec12df
+              body: >
+                This is done by the bootloader (uboot/grub) at this moment but
+                as we
+
+                are moving towards the balena 2nd stage bootloader, it needs to be
+
+                moved into the initramfs.
+
+
+                This adds a standalone recipe - by default yocto tries to build all
+
+                modules defined in the initramfs-framework recipe, which breaks
+
+                on armv7 when abroot is defined there. This is because it depends
+
+                on grub-editenv which is not supported on armv7.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: "initrdscripts: make kexec script more robust"
+              hash: a075c7b89e888edb7575fc72b56d29be8eecfa09
+              body: |
+                * Do not hardcode bzImage kernel type
+                * Do not assume root=XXX kernel parameter is always defined
+                * Remove maxcpus=0 kernel parameter if defined for compatibility
+                * Add missing dependency on os-helpers-logging
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: "initrdscripts: add missing dependencies to rootfs script"
+              hash: 6be16523780ef5d0eedccd5a6f3f75c53748c5f5
+              body: >
+                The rootfs script uses both os-helpers-fs and os-helpers-logging
+
+                though the package depends on neither. This seems to work now because
+
+                in most cases something else pulls in the dependencies or the code
+
+                on a particular device does not fall under the branches that use
+
+                the missing functions.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: "balena-image-bootloader-initramfs: Add balena bootloader"
+              hash: 32982ff3e2958dd17b27b06b1b847f1b40ce0617
+              body: >
+                This minimal image is executed by a vendor provided bootloader
+                and will
+
+                kexec into BalenaOS.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-4.0.13
+          title: ""
+          date: 2023-09-26T12:05:37.168Z
+        - commits:
+            - subject: Check if SUPERVISOR_OVERRIDE_LOCK is set
+              hash: 02c52347758feb3214990ef6d83be5d804b6e6f2
+              body: |
+                This is so that we respect user's decision
+                to skip update locks on HUP as well.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: jaomaloy <jaomaloy@balena.io>
+                signed-off-by: jaomaloy <jaomaloy@balena.io>
+              author: jaomaloy
+              nested: []
+            - subject: Check and get service lockfiles on HUP reboot
+              hash: 0ab1230d19f4f60cb780d9d1495eb9062b5ec5e0
+              body: |
+                This is so that the HUP reboot doesn't interrupt
+                any user service processes.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: jaomaloy <jao.maloy@balena.io>
+                signed-off-by: jaomaloy <jao.maloy@balena.io>
+              author: jaomaloy
+              nested: []
+          version: meta-balena-4.0.12
+          title: ""
+          date: 2023-09-25T12:04:56.750Z
+        - commits:
+            - subject: Update balena-engine to v20.10.40
+              hash: aae06988f0dcfda16c63f62521ed63bbcf757ae2
+              body: |
+                Update balena-engine from 20.10.39 to 20.10.40
+              footer:
+                Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                Change-type: patch
+                change-type: patch
+              author: Leandro Motta Barros
+              nested:
+                - commits:
+                    - subject: Re-vendor to get the containerd-shim-runc-v2 sources
+                      hash: 155b7771ff14a9dc9abf65f34bdf716baac04481
+                      body: >
+                        Including changes we did to make it work with
+                        balenaEngine's amalgamated
+
+                        binary.
+                      footer:
+                        Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                        Change-type: patch
+                        change-type: patch
+                      author: Leandro Motta Barros
+                      nested: []
+                    - subject: Default to io.containerd.runc.v2
+                      hash: cd0ca50fe417e59f2e2345e12b9ba43a694bf74e
+                      body: >
+                        runc.v1 was deprecated with the 20.10 major release of
+                        moby
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Robert Günzler <robertg@balena.io>
+                        signed-off-by: Robert Günzler <robertg@balena.io>
+                      author: Robert Günzler
+                      nested: []
+                  version: balena-engine-20.10.40
+                  title: ""
+                  date: 2023-09-11T19:02:17.939Z
+          version: meta-balena-4.0.11
+          title: ""
+          date: 2023-09-21T15:09:12.808Z
+        - commits:
+            - subject: Update balena-supervisor to v14.12.2
+              hash: 3a0ac5e503021781f9b9af8c5cd592cecc9e4ea1
+              body: |
+                Update balena-supervisor from 14.12.1 to 14.12.2
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Dump target-state to hostOS tmp dir
+                      hash: ab513cc021d90b1337bd79b58e6bb9e0c91e11d0
+                      body: |
+                        This change is mainly for the hostOS
+                        to know if update locks should be ignored
+                        when updating to a newer version.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: jaomaloy <jao.maloy@balena.io>
+                        signed-off-by: jaomaloy <jao.maloy@balena.io>
+                      author: jaomaloy
+                      nested: []
+                  version: balena-supervisor-14.12.2
+                  title: ""
+                  date: 2023-09-15T01:57:40.718Z
+          version: meta-balena-4.0.10
+          title: ""
+          date: 2023-09-20T14:01:36.751Z
+        - commits:
+            - subject: Update tests/leviathan digest to 397a10f
+              hash: b8421872d45f16e654fde0e1d1e240968c475422
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.23
+                      hash: 7c2d1e6651350949eafa17fd038018bae40df8d7
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.22 to 2.9.23
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.28.29
+                  title: ""
+                  date: 2023-09-14T10:54:52.758Z
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.22
+                      hash: 3d8c8a9c5c8e3d9d8b09300a4d65af8bb42db05c
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.21 to 2.9.22
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.28.28
+                  title: ""
+                  date: 2023-09-12T16:58:45.014Z
+          version: meta-balena-4.0.9
+          title: ""
+          date: 2023-09-15T23:27:58.821Z
+        - commits:
+            - subject: Enable back ModemManager AT commands through D-Bus and	mmcli
+              hash: da1a6c0dd2e74fc8b98aafb109eed5aed7e95c43
+              body: >
+                That feature was lost when transitioning from autotools to meson.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Enable back ModemManager AT commands through D-Bus and	mmcli
+                changelog-entry: Enable back ModemManager AT commands through D-Bus and	mmcli
+                Signed-off-by: Zahari Petkov <zahari@balena.io>
+                signed-off-by: Zahari Petkov <zahari@balena.io>
+              author: Zahari Petkov
+              nested: []
+          version: meta-balena-4.0.8
+          title: ""
+          date: 2023-09-15T17:27:00.202Z
+  version: 4.0.16
+  title: ""
+  date: 2023-09-29T15:20:21.123Z
+- commits:
     - subject: Update contracts to 27ea28be5e65c06cac559ab5bddeccf77d13830f
       hash: cfb86291f6857a7e8057a4a5b07e1617bf348794
       body: Update contracts

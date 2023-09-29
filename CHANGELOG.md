@@ -1,6 +1,128 @@
 Change log
 -----------
 
+# v4.0.16
+## (2023-09-29)
+
+
+<details>
+<summary> Update layers/meta-balena to 1c9c4813033186cefde51b9639edf7035f070c9d [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-4.0.16
+> ### (2023-09-28)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 04a53d3 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.28.31
+>> #### (2023-09-28)
+>> 
+>> * Update core/contracts digest to 27ea28b [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-4.0.15
+> ### (2023-09-27)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to b4e68c8 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.28.30
+>> #### (2023-09-25)
+>> 
+>> * Update actions/checkout action to v4 [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-4.0.14
+> ### (2023-09-27)
+> 
+> * patch: Add custom build docs [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## meta-balena-4.0.13
+> ### (2023-09-26)
+> 
+> * balena-rollback: Add support for balena bootloader [Michal Toman]
+> * hostapp-update-hooks: Add hook for balena bootloader [Michal Toman]
+> * initrdscripts: add a script that switches between rootA and rootB [Michal Toman]
+> * initrdscripts: make kexec script more robust [Michal Toman]
+> * initrdscripts: add missing dependencies to rootfs script [Michal Toman]
+> * balena-image-bootloader-initramfs: Add balena bootloader [Alex Gonzalez]
+> 
+> ## meta-balena-4.0.12
+> ### (2023-09-25)
+> 
+> * Check if SUPERVISOR_OVERRIDE_LOCK is set [jaomaloy]
+> * Check and get service lockfiles on HUP reboot [jaomaloy]
+> 
+> ## meta-balena-4.0.11
+> ### (2023-09-21)
+> 
+> 
+> <details>
+> <summary> Update balena-engine to v20.10.40 [Leandro Motta Barros] </summary>
+> 
+>> ### balena-engine-20.10.40
+>> #### (2023-09-11)
+>> 
+>> * Re-vendor to get the containerd-shim-runc-v2 sources [Leandro Motta Barros]
+>> * Default to io.containerd.runc.v2 [Robert Günzler]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-4.0.10
+> ### (2023-09-20)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v14.12.2 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-14.12.2
+>> #### (2023-09-15)
+>> 
+>> * Dump target-state to hostOS tmp dir [jaomaloy]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-4.0.9
+> ### (2023-09-15)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 397a10f [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.28.29
+>> #### (2023-09-14)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.23 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.28.28
+>> #### (2023-09-12)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.22 [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-4.0.8
+> ### (2023-09-15)
+> 
+> * Enable back ModemManager AT commands through D-Bus and	mmcli [Zahari Petkov]
+> 
+
+</details>
+
 # v4.0.7+rev3
 ## (2023-09-28)
 
