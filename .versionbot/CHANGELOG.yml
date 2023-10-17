@@ -1,4 +1,328 @@
 - commits:
+    - subject: Update layers/meta-balena to b4ba19cb95af296ddb8a4c9998cc741ec9562659
+      hash: 79370774a51fe05c3d8940d7dd163c27493b515e
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to b4ba19cb95af296ddb8a4c9998cc741ec9562659
+        changelog-entry: Update layers/meta-balena to b4ba19cb95af296ddb8a4c9998cc741ec9562659
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Update tests/leviathan digest to 62974d9
+              hash: 9f29eda9c04b60dc4b89cb502eb055095424171d
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: "minor: Add Zip Compression support"
+                      hash: 3fc402a6b4ea7de55a3092454e9682d098fd8a61
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.29.0
+                  title: ""
+                  date: 2023-10-16T20:52:51.445Z
+                - commits:
+                    - subject: "client: enable searching multiple apps for worker"
+                      hash: 7efc9e006c545a07cd27b7bf8f2c4f94653152b7
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                  version: leviathan-2.28.35
+                  title: ""
+                  date: 2023-10-16T20:28:34.452Z
+                - commits:
+                    - subject: Update core/contracts digest to a06c0cc
+                      hash: ca4ef2e5af70e8e46edd34f27daa2a45d9fb5cee
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.28.34
+                  title: ""
+                  date: 2023-10-13T09:43:01.695Z
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.24
+                      hash: dcb165a7894925cbafff76229dd0f5b9a65d90d2
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.23 to 2.9.24
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.28.33
+                  title: ""
+                  date: 2023-10-13T09:15:02.195Z
+                - commits:
+                    - subject: Update core/contracts digest to d68265e
+                      hash: fbfc19a33c02fab16f0dc874437b5689aeb38de8
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.28.32
+                  title: ""
+                  date: 2023-10-02T07:37:20.892Z
+          version: meta-balena-4.0.26
+          title: ""
+          date: 2023-10-17T00:42:36.952Z
+        - commits:
+            - subject: Update Pin dependencies
+              hash: 52aec8faecdffd8c957d75bef99bb632ab79aceb
+              body: |
+                Update actions/checkout
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested: []
+          version: meta-balena-4.0.25
+          title: ""
+          date: 2023-10-11T21:28:49.290Z
+        - commits:
+            - subject: "classes: image_types_balena: do not hardcode path to data image"
+              hash: 68365fdf211485e4a9694192cf10899136ce75ce
+              body: >
+                Use the `DEPLOY_DIR_IMAGES` variable which is filled by the
+                deploy
+
+                class from the docker-disk recipe deploy task.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-4.0.24
+          title: ""
+          date: 2023-10-11T16:21:53.282Z
+        - commits:
+            - subject: "os-helpers-fs: fix returning multiple matching devices"
+              hash: 3d99028daf1f9bfb0513f4e0702f3863aed3a205
+              body: >
+                When searching for devices matching the glob list in
+
+                get_internal_device(), a glob match breaks from a nested loop rather
+
+                than the parent loop, allowing the function to output multiple matches.
+
+
+                When running the flasher, this results in the script failing with an
+
+                incorrect path to the internal disk.
+
+
+                Break from the parent loop to fix this behavior.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-4.0.23
+          title: ""
+          date: 2023-10-10T20:22:32.072Z
+        - commits:
+            - subject: Update tibdex/github-app-token action to v2.1.0
+              hash: 033be56bc0ff464afb21488430dfea7d0d16c847
+              body: |
+                Update tibdex/github-app-token from v2.0.0 to v2.1.0
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested: []
+          version: meta-balena-4.0.22
+          title: ""
+          date: 2023-10-09T23:14:49.240Z
+        - commits:
+            - subject: Update backports with current 2.112.x
+              hash: 5e933611adce56c0028507838b8582635b4421e4
+              body: |
+                Set current to 2.112.x, next to 2.114.x and sunset to 2.107.x
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: BalenaCI github workflow
+              nested: []
+          version: meta-balena-4.0.21
+          title: ""
+          date: 2023-10-09T17:57:35.519Z
+        - commits:
+            - subject: "balena-net-config: Ensure NM dispatcher scripts are executable"
+              hash: ee6083ce3c690aff7c617af1455e19144d3048fc
+              body: >
+                This commit fixes the following error:
+                    nm-dispatcher[4209]: req:1 hostname: find-scripts:
+                        Cannot execute ... 50-example-script.sh: not executable by owner.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-4.0.20
+          title: ""
+          date: 2023-10-05T14:41:28.636Z
+        - commits:
+            - subject: "flowzone: meta-balena-esr: add weekly run to keep workflow enabled"
+              hash: 858161349540531fb1554be2ca3bcf1468f57dea
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-4.0.19
+          title: ""
+          date: 2023-10-03T10:42:46.377Z
+        - commits:
+            - subject: Update balena-supervisor to v14.13.4
+              hash: 5d0cd299c2ee51c73e4165df5681ab9ef9fcba81
+              body: |
+                Update balena-supervisor from 14.12.2 to 14.13.4
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Add tmpfs for /mnt/root/tmp in test env
+                      hash: 5564a51acf4897c7981808d8bdd28e1c016caca1
+                      body: >
+                        This is to prevent the target state cache from getting
+                        written to host
+
+                        during tests.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-14.13.4
+                  title: ""
+                  date: 2023-10-02T21:38:10.350Z
+                - commits:
+                    - subject: Use `~=` to specify alpine package versions
+                      hash: 4a4a8a59bfd664e9683f60d4681a0c6583c68dd1
+                      body: >
+                        Alpine allows the `~=` syntax to match a part of the
+                        package version
+
+                        when installing. In this case we want to use it to specify node and
+
+                        npm major versions
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-14.13.3
+                  title: ""
+                  date: 2023-10-02T14:22:18.491Z
+                - commits:
+                    - subject: Use native structuredClone instead of _.cloneDeep
+                      hash: 06d4775178af40264d0dfe476ee11815235fc52e
+                      body: >
+                        Memory tests have shown performance improvements to
+                        using the native method.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-14.13.2
+                  title: ""
+                  date: 2023-09-30T00:37:03.496Z
+                - commits:
+                    - subject: Update balena-io/deploy-to-balena-action to v1.0.3
+                      hash: aa07a160e9fb7b94576b428064ff61b6de193170
+                      body: Update balena-io/deploy-to-balena-action
+                      footer:
+                        Changelog-entry: Update balena-io/deploy-to-balena-action to v1.0.3
+                        changelog-entry: Update balena-io/deploy-to-balena-action to v1.0.3
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-14.13.1
+                  title: ""
+                  date: 2023-09-28T20:17:05.922Z
+                - commits:
+                    - subject: Update runtime-base image to alpine:3.18
+                      hash: 3766013cbdbb8864abf2f353332b27713c357818
+                      body: |
+                        We were still on 3.16, where the nodejs package was
+                        pointed at Node 16. 3.18 moves the pointer to Node 18.
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-14.13.0
+                  title: ""
+                  date: 2023-09-28T18:13:11.954Z
+          version: meta-balena-4.0.18
+          title: ""
+          date: 2023-10-03T10:09:53.629Z
+        - commits:
+            - subject: "workflows: Switch to balenaOS ESR [bot] for authentication"
+              hash: 6cb9379a3055da7811215ad6572f2205658ec986
+              body: >
+                Flowzone App no longer has workflow:write permissions for
+                security reasons.
+
+
+                This new balenaOS ESR bot has contents:write and workflows:write permissions
+
+                but is only available on balenaOS repositories.
+              footer:
+                See: https://github.com/apps/balenaos-esr
+                see: https://github.com/apps/balenaos-esr
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-4.0.17
+          title: ""
+          date: 2023-10-02T20:32:23.925Z
+  version: 4.0.26
+  title: ""
+  date: 2023-10-17T06:26:50.722Z
+- commits:
     - subject: Update contracts to d68265ebeac98e7814829da7e7f6bb2a9aff8e39
       hash: 9b70685708533b037ae6867e50c1cc69e5bbdfdc
       body: Update contracts

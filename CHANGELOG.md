@@ -1,6 +1,128 @@
 Change log
 -----------
 
+# v4.0.26
+## (2023-10-17)
+
+
+<details>
+<summary> Update layers/meta-balena to b4ba19cb95af296ddb8a4c9998cc741ec9562659 [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-4.0.26
+> ### (2023-10-17)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 62974d9 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.29.0
+>> #### (2023-10-16)
+>> 
+>> * minor: Add Zip Compression support [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.28.35
+>> #### (2023-10-16)
+>> 
+>> * client: enable searching multiple apps for worker [rcooke-warwick]
+>> 
+>> ### leviathan-2.28.34
+>> #### (2023-10-13)
+>> 
+>> * Update core/contracts digest to a06c0cc [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.28.33
+>> #### (2023-10-13)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.24 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.28.32
+>> #### (2023-10-02)
+>> 
+>> * Update core/contracts digest to d68265e [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-4.0.25
+> ### (2023-10-11)
+> 
+> * Update Pin dependencies [Self-hosted Renovate Bot]
+> 
+> ## meta-balena-4.0.24
+> ### (2023-10-11)
+> 
+> * classes: image_types_balena: do not hardcode path to data image [Alex Gonzalez]
+> 
+> ## meta-balena-4.0.23
+> ### (2023-10-10)
+> 
+> * os-helpers-fs: fix returning multiple matching devices [Joseph Kogut]
+> 
+> ## meta-balena-4.0.22
+> ### (2023-10-09)
+> 
+> * Update tibdex/github-app-token action to v2.1.0 [Self-hosted Renovate Bot]
+> 
+> ## meta-balena-4.0.21
+> ### (2023-10-09)
+> 
+> * Update backports with current 2.112.x [BalenaCI github workflow]
+> 
+> ## meta-balena-4.0.20
+> ### (2023-10-05)
+> 
+> * balena-net-config: Ensure NM dispatcher scripts are executable [Alexandru Costache]
+> 
+> ## meta-balena-4.0.19
+> ### (2023-10-03)
+> 
+> * flowzone: meta-balena-esr: add weekly run to keep workflow enabled [Alex Gonzalez]
+> 
+> ## meta-balena-4.0.18
+> ### (2023-10-03)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v14.13.4 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-14.13.4
+>> #### (2023-10-02)
+>> 
+>> * Add tmpfs for /mnt/root/tmp in test env [Christina Ying Wang]
+>> 
+>> ### balena-supervisor-14.13.3
+>> #### (2023-10-02)
+>> 
+>> * Use `~=` to specify alpine package versions [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-14.13.2
+>> #### (Invalid date)
+>> 
+>> * Use native structuredClone instead of _.cloneDeep [Christina Ying Wang]
+>> 
+>> ### balena-supervisor-14.13.1
+>> #### (2023-09-28)
+>> 
+>> * Update balena-io/deploy-to-balena-action to v1.0.3 [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-14.13.0
+>> #### (2023-09-28)
+>> 
+>> * Update runtime-base image to alpine:3.18 [Christina Ying Wang]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-4.0.17
+> ### (2023-10-02)
+> 
+> * workflows: Switch to balenaOS ESR [bot] for authentication [Kyle Harding]
+> 
+
+</details>
+
 # v4.0.16+rev1
 ## (2023-10-02)
 
