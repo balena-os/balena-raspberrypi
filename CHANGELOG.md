@@ -1,6 +1,157 @@
 Change log
 -----------
 
+# v4.1.1
+## (2023-10-30)
+
+
+<details>
+<summary> Update layers/meta-balena to 0608f561a79e1b4b2ba5e83a10c4b9d2010a00cd [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-4.1.1
+> ### (2023-10-25)
+> 
+> * plymouth: Remove --retain-splash flag from plymouth quit [Kyle Harding]
+> 
+> ## meta-balena-4.1.0
+> ### (2023-10-25)
+> 
+> * tests: add safe reboot checks [Alex Gonzalez]
+> * hostapp-update: move lock checking to helper function [Alex Gonzalez]
+> * os-helpers-logging: output script logging to journald [Alex Gonzalez]
+> * os-helpers: add safe_reboot function [Alex Gonzalez]
+> 
+> ## meta-balena-4.0.31
+> ### (2023-10-24)
+> 
+> * Revert "kernel-balena: Remove apparmor support" [Alex Gonzalez]
+> 
+> ## meta-balena-4.0.30
+> ### (2023-10-23)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 5a3ce72 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.29.5
+>> #### (2023-10-23)
+>> 
+>> * Update Lock file maintenance [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-4.0.29
+> ### (2023-10-23)
+> 
+> * resin-device-progress: Add status code check and error reporting [Alex Gonzalez]
+> 
+> ## meta-balena-4.0.28
+> ### (2023-10-20)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to cd38f4a [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.29.4
+>> #### (2023-10-20)
+>> 
+>> * Update core/contracts digest to 42e712d [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.29.3
+>> #### (2023-10-19)
+>> 
+>> * Update core/contracts digest to 2d44c9c [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.29.2
+>> #### (2023-10-19)
+>> 
+>> * Update actions/checkout digest to b4ffde6 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.29.1
+>> #### (2023-10-19)
+>> 
+>> * Update core/contracts digest to 97f176d [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-4.0.27
+> ### (2023-10-18)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v14.13.13 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-14.13.13
+>> #### (2023-10-16)
+>> 
+>> * Switch some _.includes usage to native versions [Pagan Gazzard]
+>> * Switch _.assign usage to native versions [Pagan Gazzard]
+>> * Switch _.isNaN usage to native versions [Pagan Gazzard]
+>> * Switch _.isFunction usage to native versions [Pagan Gazzard]
+>> * Switch _.isUndefined usage to native versions [Pagan Gazzard]
+>> * Switch _.isNull usage to native versions [Pagan Gazzard]
+>> * Switch _.isNumber usage to native versions [Pagan Gazzard]
+>> * Switch _.isArray usage to native versions [Pagan Gazzard]
+>> * Switch _.isString usage to native versions [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-14.13.12
+>> #### (2023-10-16)
+>> 
+>> * Revert "Do not expose ports from image if service network mode" [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-14.13.11
+>> #### (2023-10-16)
+>> 
+>> * Fix husky config for automatic linting on commit [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-14.13.10
+>> #### (2023-10-16)
+>> 
+>> * Convert multiple bluebird uses to native promises [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-14.13.9
+>> #### (2023-10-16)
+>> 
+>> * Do not expose ports from image if service network mode [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-14.13.8
+>> #### (2023-10-12)
+>> 
+>> * Move mdns-resolver to devDependencies [Felipe Lalanne]
+>> * Move got to devDependencies [Felipe Lalanne]
+>> * Move semver to dev-dependencies [Felipe Lalanne]
+>> * Move happy-eyeballs to dev-dependencies [Felipe Lalanne]
+>> * Move systeminformation to devDependencies [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-14.13.7
+>> #### (2023-10-12)
+>> 
+>> * Use mutation for adding service/image ids to logs to reduce allocations [Pagan Gazzard]
+>> * Keep the container lock for the entire duration of attaching logs [Pagan Gazzard]
+>> * Remove unnecessary async on handling journald stderr entries [Pagan Gazzard]
+>> * Avoid unnecessary work in systemd log row handling for invalid logs [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-14.13.6
+>> #### (2023-10-11)
+>> 
+>> * Remove unused docker logs logging code [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-14.13.5
+>> #### (2023-10-10)
+>> 
+>> * Revert os-release path to /mnt/root [Christina Ying Wang]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v4.0.26+rev1
 ## (2023-10-20)
 
