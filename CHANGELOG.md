@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2023.10.1
+## (2023-11-01)
+
+* Update meta-balena from v3.2.12 to v3.2.13 [Alex Gonzalez]
+
 # 2023.10.0
 ## (2023-10-03)
 

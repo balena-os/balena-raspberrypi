@@ -1,4 +1,19 @@
 - commits:
+    - subject: Update meta-balena from v3.2.12 to v3.2.13
+      hash: 53a65e8950483760c36b6c3899afa40aaf2c0d8b
+      body: |
+        Update meta-balena from 3.2.12 to 3.2.13
+      footer:
+        Changelog-entry: Update meta-balena from v3.2.12 to v3.2.13
+        changelog-entry: Update meta-balena from v3.2.12 to v3.2.13
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2023.10.1
+  title: ""
+  date: 2023-11-01T12:49:59.794Z
+- commits:
     - subject: Update watchdog config for superhub device type
       hash: 60fb3fe4bb2febc26663ec1417dcbb574520df91
       body: |
