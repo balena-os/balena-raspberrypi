@@ -95,3 +95,5 @@ IMAGE_INSTALL:append:raspberrypi4-superhub = " \
     phoenix-peripheral-gpio-wdt \
     phoenix-peripheral-rtc-sync \
 "
+
+inherit image-sign-rpi
