@@ -1,4 +1,138 @@
 - commits:
+    - subject: Update layers/meta-balena to 6fcf0103c06b9a20d5fbc06e1433cce71145bb2f
+      hash: 9a859131dedfc58f2701674f1b0d7b8d1dc31500
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 6fcf0103c06b9a20d5fbc06e1433cce71145bb2f
+        changelog-entry: Update layers/meta-balena to 6fcf0103c06b9a20d5fbc06e1433cce71145bb2f
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Update tests/leviathan digest to 2a64939
+              hash: 44b9074caa94ce8704c2caeac46269338ec30466
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update Lock file maintenance
+                      hash: ae22f3efcbe5858619bb87acb78e1f9e8001ef90
+                      body: |
+                        Update
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.29.9
+                  title: ""
+                  date: 2023-11-06T00:53:48.210Z
+                - commits:
+                    - subject: "patch: Update Learn More docs content"
+                      hash: 2e4d53c54239eb550c252dc1a6d7eabdb059ed3e
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.29.8
+                  title: ""
+                  date: 2023-10-30T14:22:19.959Z
+                - commits:
+                    - subject: Update Lock file maintenance
+                      hash: 7fb3d995abf9949466994affea68419e5ee91ae5
+                      body: |
+                        Update
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.29.7
+                  title: ""
+                  date: 2023-10-30T00:51:53.810Z
+                - commits:
+                    - subject: Update core/contracts digest to 1091793
+                      hash: 4a2ffb821d539af2e4a2e42cf467120bc950c99c
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.29.6
+                  title: ""
+                  date: 2023-10-26T07:39:59.321Z
+          version: meta-balena-4.1.3
+          title: ""
+          date: 2023-11-06T05:41:30.588Z
+        - commits:
+            - subject: "flasher: remove user mode check after programming keys"
+              hash: 05d3d41323c20f557a773229766afaef1dbf1eb5
+              body: >
+                This check is now done in the cryptsetup initramfs hook rather
+                than
+
+                during installation, which obviates the need to perform it during setup.
+
+                Remove it.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "initrdscripts: unlock LUKS partitions only in user mode"
+              hash: 63672541fefde9643040a555ba125e0bd021dc46
+              body: >
+                During installation, some firmwares may allow keys to be
+                enrolled but
+
+                fail to tip the system into user mode until the system is rebooted. We
+
+                don't want to mislead users with only full-disk encryption into thinking
+
+                their system also has secure boot enabled when it doesn't.
+
+
+                Disable the hook to unlock encrypted partitions if the firmware fails to
+
+                boot into user mode.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "os-helpers: add secure boot helpers"
+              hash: c8e0369c239b229366278d5d7725bfcd2e8ac86d
+              body: >
+                We now have several places where secure boot specific
+                configuration is
+
+                checked. Create an os-helpers-secureboot package to consolidate and
+
+                reuse this code.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-4.1.2
+          title: ""
+          date: 2023-11-01T08:29:33.877Z
+  version: 4.1.3
+  title: ""
+  date: 2023-11-06T12:43:14.786Z
+- commits:
     - subject: Update layers/meta-balena to 0608f561a79e1b4b2ba5e83a10c4b9d2010a00cd
       hash: 0f39c39c8525d83d867d2fa6c31d983b83ed632d
       body: Update layers/meta-balena
