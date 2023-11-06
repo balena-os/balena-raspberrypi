@@ -33,7 +33,6 @@ do_deploy:append:revpi-connect-s() {
 	echo "dtoverlay=revpi-connect" >> ${DEPLOYDIR}/bootfiles/config.txt
         echo "dtoverlay=dwc2" >> ${DEPLOYDIR}/bootfiles/config.txt
         echo "dr_mode=host" >> ${DEPLOYDIR}/bootfiles/config.txt
-
 }
 
 do_deploy:append:raspberrypi3-unipi-neuron() {
