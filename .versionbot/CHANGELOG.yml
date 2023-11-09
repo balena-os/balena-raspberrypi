@@ -1,4 +1,29 @@
 - commits:
+    - subject: Update contracts to 109179385bb4b862cd7572be14d4c5edddbd93c9
+      hash: b9421e9c6cb8e6a4dd91ab2822a49cc28376542e
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to 109179385bb4b862cd7572be14d4c5edddbd93c9
+        changelog-entry: Update contracts to 109179385bb4b862cd7572be14d4c5edddbd93c9
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "hw.device-type: Add imx8mm-lpddr4-evk device"
+              hash: 2ecc1b82d8a5e3d4a39e3d200a6c39d748c4d737
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex J Lennon <ajlennon@dynamicdevices.co.uk>
+                signed-off-by: Alex J Lennon <ajlennon@dynamicdevices.co.uk>
+              author: Alex J Lennon
+          version: contracts-2.0.81
+          title: ""
+          date: 2023-10-26T06:31:05.497Z
+  version: 4.1.3+rev1
+  title: ""
+  date: 2023-11-09T13:00:47.538Z
+- commits:
     - subject: Update layers/meta-balena to 6fcf0103c06b9a20d5fbc06e1433cce71145bb2f
       hash: 9a859131dedfc58f2701674f1b0d7b8d1dc31500
       body: Update layers/meta-balena
