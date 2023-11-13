@@ -1,33 +1,33 @@
-FILESEXTRAPATHS:append := ":${THISDIR}/files"
-
+SUMMARY = "Installation scripts and binaries for the Raspberry Pi 4 EEPROM"
 DESCRIPTION = "This repository contains the rpi4 bootloader and scripts \
 for updating it in the spi eeprom"
-LICENSE = "BSD-3-Clause"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=7dcd1a1eb18ae569857c21cae81347cb"
+LICENSE = "BSD-3-Clause & Broadcom-RPi"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=f546ed4f47e9d4c1fe954ecc9d3ef4f3"
+
+SRC_URI = " \
+    git://github.com/raspberrypi/rpi-eeprom.git;protocol=https;branch=master \
+"
 
 # EEPROM configuration default values for this version, as specified at
 # https://www.raspberrypi.org/documentation/hardware/raspberrypi/booteeprom.md
-SRC_URI = " \
-    git://github.com/${SRCFORK}/rpi-eeprom.git;protocol=https;branch=${SRCBRANCH} \
+SRC_URI += " \
     file://default-config.txt \
 "
 
-COMPATIBLE_MACHINE = "raspberrypi4-64"
-
-SRCBRANCH = "master"
-SRCFORK = "raspberrypi"
-SRCREV = "7cb9d4162f330c5ca578376b1a3d5e748843e81c"
-
-inherit deploy python3native
-
-# Use the date of the above commit as the package version. Update this when
-# SRCREV is changed.
-PV = "20210111"
+SRCREV = "3b393d31ac0f1864420d47028b5703a70ad8da8f"
+PV = "v2023.10.18-2712"
 
 # We use the latest stable version
 # which is available in "stable"
-LATEST_STABLE_PIEEPROM_FW = "2021-01-11"
+LATEST_STABLE_PIEEPROM_FW:raspberrypi4-64 = "2023-05-11"
 VL805_FW_REV = "000138a1"
+LATEST_STABLE_PIEEPROM_FW:raspberrypi5 = "2023-10-18"
+FIRMWARE:raspberrypi4-64 = "firmware-2711"
+FIRMWARE:raspberrypi5 = "firmware-2712"
+
+S = "${WORKDIR}/git"
+
+inherit deploy python3native sign-rsa
 
 S = "${WORKDIR}/git"
 
@@ -35,11 +35,62 @@ S = "${WORKDIR}/git"
 # for this fw release, and provides a way for altering
 # the configuration that exists in the binary
 do_compile() {
-    cd ${WORKDIR} && cp ${S}/rpi-eeprom-config .
-    $(which python3) ./rpi-eeprom-config ${S}/firmware/stable/pieeprom-${LATEST_STABLE_PIEEPROM_FW}.bin \
-        --config ./default-config.txt \
-        --out ./pieeprom-latest-stable.bin
+    src_eeprom_bin="pieeprom-${LATEST_STABLE_PIEEPROM_FW}.bin"
+    tgt_eeprom_bin="pieeprom-latest-stable.bin"
+    cp ${S}/rpi-eeprom-config "${WORKDIR}"
+    cp "${S}/${FIRMWARE}/stable/${src_eeprom_bin}" "${WORKDIR}/"
+    boot_conf="${WORKDIR}/default-config.txt"
+
+    if [ "x${SIGN_API}" != "x" ]; then
+        # Make sure the firmware is secure boot capable
+        BOOTLOADER_SECURE_BOOT_MIN_VERSION=1632136573
+        update_version=$(strings "${WORKDIR}/${src_eeprom_bin}" | grep BUILD_TIMESTAMP | sed 's/.*=//g')
+        if [ "${BOOTLOADER_SECURE_BOOT_MIN_VERSION}" -gt "${update_version}" ]; then
+            bbfatal "Bootloader is not secure boot capable"
+        fi
+
+        # Configure for secure boot
+        if grep -q "SIGNED_BOOT=" "${boot_conf}"; then
+            sed -i 's/SIGNED_BOOT=.*/SIGNED_BOOT=1/g' "${boot_conf}"
+        else
+            echo "SIGNED_BOOT=1" >> "${boot_conf}"
+        fi
+
+        # Configure for self-update so that the EEPROM can be updated in secure boot mode
+        if grep -q "ENABLE_SELF_UPDATE=" "${boot_conf}"; then
+            sed -i 's/ENABLE_SELF_UPDATE=.*/ENABLE_SELF_UPDATE=1/g' "${boot_conf}"
+        else
+            echo "ENABLE_SELF_UPDATE=1" >> "${boot_conf}"
+        fi
+
+        # Fix the boot order to SDcard/eMMC
+        if grep -q "BOOT_ORDER=" "${boot_conf}"; then
+            sed -i 's/BOOT_ORDER=.*/BOOT_ORDER=0xf1/g' "${boot_conf}"
+        else
+            echo "BOOT_ORDER=0xf1" >> "${boot_conf}"
+        fi
+
+        # Sign the configuratin file
+        do_sign_rsa "${boot_conf}" "${boot_conf}.sig"
+
+        # Merge the configuration file into the firmware
+        $(command -v python3) "${WORKDIR}/rpi-eeprom-config" --config "${boot_conf}" --digest "${boot_conf}.sig" \
+              --out "${WORKDIR}/${tgt_eeprom_bin}" "${WORKDIR}/${src_eeprom_bin}"
+
+        # Sign the firmware
+        do_sign_rsa "${WORKDIR}/${tgt_eeprom_bin}" "${WORKDIR}/${tgt_eeprom_bin%.bin}.sig"
+    else
+        $(command -v python3) "${WORKDIR}/rpi-eeprom-config" --config "${boot_conf}" \
+              --out "${WORKDIR}/${tgt_eeprom_bin}" "${WORKDIR}/${src_eeprom_bin}"
+    fi
 }
+do_compile[network] = "1"
+do_compile[depends] += " \
+    curl-native:do_populate_sysroot \
+    jq-native:do_populate_sysroot \
+    ca-certificates-native:do_populate_sysroot \
+    coreutils-native:do_populate_sysroot \
+"
 
 do_deploy () {
     if [ -d ${DEPLOY_DIR_IMAGE}/rpi-eeprom ]; then
@@ -47,9 +98,10 @@ do_deploy () {
     fi
     mkdir ${DEPLOY_DIR_IMAGE}/rpi-eeprom/
 
-    cp "${WORKDIR}/pieeprom-latest-stable.bin" ${DEPLOY_DIR_IMAGE}/rpi-eeprom/pieeprom-latest-stable.bin
-
-    cp ${S}/firmware/critical/vl805-${VL805_FW_REV}.bin ${DEPLOY_DIR_IMAGE}/${PN}/vl805-latest-stable.bin
+    cp ${WORKDIR}/pieeprom-latest-stable.bin* ${DEPLOY_DIR_IMAGE}/rpi-eeprom/
+    if [ -f "${S}/${FIRMWARE}/critical/vl805-${VL805_FW_REV}.bin" ]; then
+        cp ${S}/${FIRMWARE}/critical/vl805-${VL805_FW_REV}.bin ${DEPLOY_DIR_IMAGE}/${PN}/vl805-latest-stable.bin
+    fi
 }
 
 # vl805 utility is deprecated, see https://github.com/raspberrypi/rpi-eeprom/commit/fed1ca62a5752cb5a990608c8c897ce0b077600a
@@ -63,5 +115,7 @@ INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
 do_deploy[nostamp] = "1"
 
 do_deploy[depends] += " \
-    bootfiles:do_deploy \
+    rpi-bootfiles:do_deploy \
 "
+
+COMPATIBLE_MACHINE = "raspberrypi5|raspberrypi4-64"
