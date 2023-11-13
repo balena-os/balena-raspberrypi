@@ -8,6 +8,8 @@
 
 set -o errexit
 
+. /usr/libexec/os-helpers-logging
+
 CURR_IMG=pieeprom-current.bin.tmp
 CURR_IMG_PATH=/dev/shm
 NEW_IMG=pieeprom-latest-stable.bin
@@ -22,14 +24,14 @@ function spi_modules() {
         rmmod spidev
         rmmod spi-bcm2835
     else
-        echo "[WARN] spi_modules: no arugment provided"
+        warn "spi_modules: no arugment provided"
     fi
 }
 
 # According to documentation, custom EEPROM update scripts
 # must also check for FREEZE_VERSION flag
 if [ $(/usr/bin/vcgencmd bootloader_config | grep "FREEZE_VERSION=1" || true) ]; then
-    echo "[WARN] Bootloader config contains FREEZE_VERSION=1. Will NOT update SPI EEPROM firmware!"
+    warn "Bootloader config contains FREEZE_VERSION=1. Will NOT update SPI EEPROM firmware!"
     exit 0
 fi
 
@@ -47,9 +49,9 @@ curr_eeprom_md5sum=$(md5sum ${CURR_IMG_PATH}/${CURR_IMG} | awk '{print $1}')
 new_eeprom_md5sum=$(md5sum ${NEW_IMG_PATH}/${NEW_IMG} | awk '{print $1}')
 
 if [ $curr_eeprom_md5sum = $new_eeprom_md5sum ]; then
-    echo "[INFO] SPI EEPROM fw update is not necessary"
+    info "SPI EEPROM fw update is not necessary"
 else
-    echo "[INFO] Performing SPI EEPROM fw update..."
+    info "Performing SPI EEPROM fw update..."
     flashrom -p "linux_spi:dev=/dev/spidev0.0,spispeed=${SPI_SPEED}" --write ${NEW_IMG_PATH}/${NEW_IMG}
 fi
 
