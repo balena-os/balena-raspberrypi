@@ -7,6 +7,7 @@
 set -o errexit
 
 . /usr/sbin/balena-config-vars
+. /usr/libexec/os-helpers-logging
 
 DURING_UPDATE=${DURING_UPDATE:-0}
 
@@ -17,8 +18,8 @@ if [ "$DURING_UPDATE" = "1" ]; then
 			# instead as all future roots will have the kernel in root partition in /boot
 			# This leaves the kernel lying around in boot partition until the next HUP
 			if [ -e "/boot/zImage" ]; then
-				printf "[INFO] u-boot boot.scr now reads kernel from root partitions but found zImage in boot \n"
-				printf "[INFO] removing $BALENA_BOOT_MOUNTPOINT/zImage \n"
+				info "u-boot boot.scr now reads kernel from root partitions but found zImage in boot \n"
+				info "removing $BALENA_BOOT_MOUNTPOINT/zImage \n"
 				rm -f "$BALENA_BOOT_MOUNTPOINT/zImage" || true
 				sync -f "$BALENA_BOOT_MOUNTPOINT"
 			fi
