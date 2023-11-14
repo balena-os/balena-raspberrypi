@@ -1,0 +1,76 @@
+#
+# Device interface for secure boot programming
+#
+#
+
+# diskenc_setup
+#   * Generate and encrypt disk encryption keys
+
+. /usr/libexec/os-helpers-logging
+. /usr/libexec/os-helpers-otp
+
+# 256 bits number, 32 bytes = 64 hex characters (each byte is represented by 2 hex characters)
+OTP_KEY_LENGTH=32
+OTP_KEY_REP_LENGTH=64
+
+otp_write_key() {
+    local _key="${1}"
+    local _count
+    local _key_params
+    local _start
+    local _end
+
+    if [ -n "$(otp_read_key | sed s/0//g)" ]; then
+        info "Private key has already been programmed"
+        return 0
+    fi
+
+    if [ "$(echo -n "${_key}" | wc -c)" != ${OTP_KEY_REP_LENGTH} ]; then
+        fail "Invalid key argument"
+    fi
+
+    if [ -z "$(echo -n "${_key}" | sed s/0//g)" ]; then
+        fail "Argument is an empty key"
+    fi
+
+    # Sanity checks
+    _key="$(echo "${_key}" | tr 'A-Z' 'a-z')"
+    _key="$(echo "${_key}" | sed 's/[^a-f0-9]//g')"
+
+    _count=0
+    _key_params=""
+    while [ ${_count} -lt 8 ]; do
+        _start=$(((_count * 8) + 1))
+        _end=$((_start + 7))
+        _key_params="${_key_params} 0x$(echo -n "${_key}" | cut -c${_start}-${_end})"
+        _count=$((_count + 1))
+    done
+
+    vcmailbox 0x38081 40 40 0 8 ${_key_params} || fail "Failed to write key"
+    if [ "$(otp_read_key)" != "${_key}" ]; then
+        fail "Key validation failed"
+    fi
+}
+
+otp_generate_key() {
+    local _key_length
+    _key_length="${1}"
+    head -c ${_key_length} /dev/urandom | xxd -p -c ${_key_length}
+}
+
+diskenc_setup() {
+        local _key
+
+        # Make sure the private key is present in OTP
+        _key=$(otp_generate_key ${OTP_KEY_LENGTH})
+        otp_write_key "${_key}" || fail "Failed to write private key to OTP"
+
+        TPM_RESULT_DIR=$(mktemp -d)
+        PASSPHRASE_FILE="$(mktemp -p "${TPM_RESULT_DIR}")"
+        # Generate the disk encryption passphrase
+        otp_generate_key ${OTP_KEY_LENGTH} > "${PASSPHRASE_FILE}"
+
+        # Encrypt the passphrase using the private key
+        ENC_PASSPHRASE_FILE=$(mktemp -u -p ${TPM_RESULT_DIR})
+        gpg --symmetric --cipher-algo AES256 --batch --passphrase $(otp_read_key) -o "${ENC_PASSPHRASE_FILE}" < "${PASSPHRASE_FILE}" || fail "Failed to encrypt passphrase"
+}
