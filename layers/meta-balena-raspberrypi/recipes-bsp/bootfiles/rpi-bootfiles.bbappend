@@ -6,6 +6,11 @@ SRC_URI += " \
     file://fincm3-dt-blob.bin \
 "
 
+RPIFW_DATE = "20230509~buster"
+
+SRC_URI[md5sum] = "20053767dd390cff9543a9b29f01729d"
+SRC_URI[sha256sum] = "1d9eb83111826b708f461101766fd2000d45f1c171ad573936d000f623ca8098"
+
 do_deploy:append() {
     # exclude from balenaOS the binaries with additional debug assertions (they
     # grow the used size in resin-boot and this potentially breaks hostapps
