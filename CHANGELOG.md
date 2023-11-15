@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v4.1.3+rev2
+## (2023-11-15)
+
+* Update rpi firmware to version 20230509 for newer hw revisions [Florin Sarbu]
+
 # v4.1.3+rev1
 ## (2023-11-09)
 

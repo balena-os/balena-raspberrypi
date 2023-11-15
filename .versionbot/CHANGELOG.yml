@@ -1,4 +1,20 @@
 - commits:
+    - subject: Update rpi firmware to version 20230509 for newer hw revisions
+      hash: efdceae0b9de7ec77a1d77a5c20c95d795814d4c
+      body: >
+        This update is needed for newer revisions of the hw (Pi 3 A+ PCB R2 for
+        example)
+      footer:
+        Changelog-entry: Update rpi firmware to version 20230509 for newer hw revisions
+        changelog-entry: Update rpi firmware to version 20230509 for newer hw revisions
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 4.1.3+rev2
+  title: ""
+  date: 2023-11-15T11:17:10.301Z
+- commits:
     - subject: Update contracts to 109179385bb4b862cd7572be14d4c5edddbd93c9
       hash: b9421e9c6cb8e6a4dd91ab2822a49cc28376542e
       body: Update contracts
