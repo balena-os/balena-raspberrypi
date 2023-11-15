@@ -6,6 +6,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=f546ed4f47e9d4c1fe954ecc9d3ef4f3"
 
 SRC_URI = " \
     git://github.com/raspberrypi/rpi-eeprom.git;protocol=https;branch=master \
+    file://pieeprom-update.sh \
 "
 
 # EEPROM configuration default values for this version, as specified at
@@ -31,6 +32,8 @@ inherit deploy python3native sign-rsa
 
 S = "${WORKDIR}/git"
 
+RDEPENDS:${PN} = "kmod dtc flashrom userlandtools"
+
 # default-config.txt contains the default options
 # for this fw release, and provides a way for altering
 # the configuration that exists in the binary
@@ -49,6 +52,15 @@ do_compile() {
             bbfatal "Bootloader is not secure boot capable"
         fi
 
+        # Configure for development UART output
+        if ${@bb.utils.contains('DISTRO_FEATURES','osdev-image','true','false',d)}; then
+            if grep -q "BOOT_UART=" "${boot_conf}"; then
+                sed -i 's/BOOT_UART=.*/BOOT_UART=1/g' "${boot_conf}"
+            else
+                echo "BOOT_UART=1" >> "${boot_conf}"
+            fi
+        fi
+
         # Configure for secure boot
         if grep -q "SIGNED_BOOT=" "${boot_conf}"; then
             sed -i 's/SIGNED_BOOT=.*/SIGNED_BOOT=1/g' "${boot_conf}"
@@ -63,24 +75,17 @@ do_compile() {
             echo "ENABLE_SELF_UPDATE=1" >> "${boot_conf}"
         fi
 
-        # Fix the boot order to SDcard/eMMC
-        if grep -q "BOOT_ORDER=" "${boot_conf}"; then
-            sed -i 's/BOOT_ORDER=.*/BOOT_ORDER=0xf1/g' "${boot_conf}"
-        else
-            echo "BOOT_ORDER=0xf1" >> "${boot_conf}"
-        fi
-
         # Sign the configuratin file
         do_sign_rsa "${boot_conf}" "${boot_conf}.sig"
 
         # Merge the configuration file into the firmware
-        $(command -v python3) "${WORKDIR}/rpi-eeprom-config" --config "${boot_conf}" --digest "${boot_conf}.sig" \
-              --out "${WORKDIR}/${tgt_eeprom_bin}" "${WORKDIR}/${src_eeprom_bin}"
+        ${PYTHON} "${WORKDIR}/rpi-eeprom-config" --config "${boot_conf}" --digest "${boot_conf}.sig" \
+              --out "${WORKDIR}/${tgt_eeprom_bin}" --pubkey "${DEPLOY_DIR_IMAGE}/balena-keys/rpi.pem" "${WORKDIR}/${src_eeprom_bin}"
 
         # Sign the firmware
         do_sign_rsa "${WORKDIR}/${tgt_eeprom_bin}" "${WORKDIR}/${tgt_eeprom_bin%.bin}.sig"
     else
-        $(command -v python3) "${WORKDIR}/rpi-eeprom-config" --config "${boot_conf}" \
+        ${PYTHON} "${WORKDIR}/rpi-eeprom-config" --config "${boot_conf}" \
               --out "${WORKDIR}/${tgt_eeprom_bin}" "${WORKDIR}/${src_eeprom_bin}"
     fi
 }
@@ -90,6 +95,16 @@ do_compile[depends] += " \
     jq-native:do_populate_sysroot \
     ca-certificates-native:do_populate_sysroot \
     coreutils-native:do_populate_sysroot \
+    python3-pycryptodomex-native:do_populate_sysroot \
+    balena-keys:do_deploy \
+"
+
+do_install() {
+  install -d ${D}${libexecdir}
+	install -m 0775 ${WORKDIR}/pieeprom-update.sh ${D}${libexecdir}/pieeprom-update.sh
+}
+do_install[depends] += "\
+    rpi-bootfiles:do_deploy \
 "
 
 do_deploy () {
@@ -98,7 +113,7 @@ do_deploy () {
     fi
     mkdir ${DEPLOY_DIR_IMAGE}/rpi-eeprom/
 
-    cp ${WORKDIR}/pieeprom-latest-stable.bin* ${DEPLOY_DIR_IMAGE}/rpi-eeprom/
+    cp ${WORKDIR}/pieeprom-latest-stable* ${DEPLOY_DIR_IMAGE}/rpi-eeprom/
     if [ -f "${S}/${FIRMWARE}/critical/vl805-${VL805_FW_REV}.bin" ]; then
         cp ${S}/${FIRMWARE}/critical/vl805-${VL805_FW_REV}.bin ${DEPLOY_DIR_IMAGE}/${PN}/vl805-latest-stable.bin
     fi
@@ -117,5 +132,7 @@ do_deploy[nostamp] = "1"
 do_deploy[depends] += " \
     rpi-bootfiles:do_deploy \
 "
+
+FILES:${PN} = "${libexecdir}/pieeprom-update.sh"
 
 COMPATIBLE_MACHINE = "raspberrypi5|raspberrypi4-64"
