@@ -32,7 +32,7 @@ inherit deploy python3native sign-rsa
 
 S = "${WORKDIR}/git"
 
-RDEPENDS:${PN} = "kmod dtc flashrom userlandtools"
+RDEPENDS:${PN} = "dtc flashrom userlandtools"
 
 # default-config.txt contains the default options
 # for this fw release, and provides a way for altering
