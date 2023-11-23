@@ -3,6 +3,6 @@
 
 set -e
 
-modprobe i2c-dev
+modprobe i2c-dev || true
 
 exit 0
