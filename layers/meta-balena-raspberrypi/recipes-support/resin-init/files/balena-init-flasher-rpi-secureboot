@@ -56,9 +56,6 @@ bootpart_split() {
 
     rm -rf "$TPM_RESULT_DIR"
 
-    # At this point just copy the flasher kernel to unencrypted partition
-    find / -xdev -type f -name @@KERNEL_IMAGETYPE@@ -exec cp -a {} "${NONENC_BOOT_MOUNT_DIR}" +
-
     # Regenerate fingerprint in both partitions
     generate_fingerprint "${NONENC_BOOT_MOUNT_DIR}"
     generate_fingerprint "${INTERNAL_DEVICE_BOOT_PART_MOUNTPOINT}"
