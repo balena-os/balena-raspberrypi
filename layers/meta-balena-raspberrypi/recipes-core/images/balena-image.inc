@@ -37,6 +37,8 @@ BALENA_ESSENTIAL_BOOT_FILES:append:raspberrypi4-64 = " \
     "
 do_rootfs[vardeps] += "${@oe.utils.conditional('SIGN_API','','','BALENA_ESSENTIAL_BOOT_FILES',d)}"
 
+BALENA_BOOT_PARTITION_FILES:append:rpi = "${@oe.utils.conditional('SIGN_API','',''," ${KERNEL_IMAGETYPE}-initramfs-${MACHINE}.bin:/${KERNEL_IMAGETYPE}",d)}"
+
 BALENA_BOOT_PARTITION_FILES:append:revpi-core-3 = " revpi-core-dt-blob-overlay.dtb:/dt-blob.bin"
 
 BALENA_BOOT_PARTITION_FILES:append:revpi-connect = " revpi-connect-dt-blob-overlay.dtb:/dt-blob.bin"
