@@ -99,6 +99,7 @@ RPI_KERNEL_DEVICETREE:remove:revpi = "bcm2708-rpi-zero-w.dtb bcm2710-rpi-3-b-plu
 
 # this being a pi4 based board, increase to 400 MiB (up from 320 MiB) to make sure we have enough space in the rootfs
 IMAGE_ROOTFS_SIZE:raspberrypi4-superhub="409600"
+IMAGE_ROOTFS_SIZE:raspberrypicm4-ioboard-sb="409600"
 
 IMAGE_INSTALL:append:raspberrypi4-superhub = " \
     phoenix-peripheral \
