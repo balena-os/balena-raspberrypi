@@ -11,6 +11,9 @@ SDIMG_KERNELIMAGE:raspberrypi2 ?= "kernel7.img"
 SDIMG_KERNELIMAGE:raspberrypi3-64 ?= "kernel8.img"
 SDIMG_KERNELIMAGE:raspberrypi0-2w-64 ?= "kernel8.img"
 
+# Increase boot partition size
+BALENA_BOOT_SIZE:raspberrypicm4-ioboard-sb = "131072"
+
 # Increase Root File system size
 IMAGE_ROOTFS_SIZE:revpi-connect-s ?= "319488"
 IMAGE_OVERHEAD_FACTOR:revpi-connect-s ?= "1.0"
