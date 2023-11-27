@@ -91,5 +91,7 @@ IMAGE_INSTALL:append:raspberrypi4-superhub = " \
 
 BALENA_BOOT_PARTITION_FILES:append:raspberrypi4-64 = "${@oe.utils.conditional('SIGN_API','','',' rpi-eeprom/pieeprom-latest-stable.bin:/pieeprom-latest-stable.bin rpi-eeprom/pieeprom-latest-stable.sig:/pieeprom-latest-stable.sig rpi-eeprom/vl805-latest-stable.bin:/vl805-latest-stable.bin',d)}"
 
+BALENA_BOOT_SIZE:raspberrypi4-64 = "131072"
+
 inherit image-sign-rpi
 
