@@ -1,6 +1,160 @@
 Change log
 -----------
 
+# v5.0.1
+## (2023-11-30)
+
+
+<details>
+<summary> Update layers/meta-balena to 0fed99ef0c338962d463b38eb58cd64cdf5804ae [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-5.0.1
+> ### (2023-11-29)
+> 
+> * Make Engine healthcheck performance test aware of device type [Leandro Motta Barros]
+> 
+> ## meta-balena-5.0.0
+> ### (2023-11-28)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v15 [Felipe Lalanne] </summary>
+> 
+>> ### balena-supervisor-15.0.1
+>> #### (2023-10-25)
+>> 
+>> * Expose ports from port mappings on services [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-15.0.0
+>> #### (2023-10-23)
+>> 
+>> * Ignore `expose` service compose configuration [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-14.13.14
+>> #### (2023-10-23)
+>> 
+>> * Add note regading API jitter on target state poll [Felipe Lalanne]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-4.1.11
+> ### (2023-11-27)
+> 
+> * tests: os: safe-reboot: wait for SV to start [rcooke-warwick]
+> 
+> ## meta-balena-4.1.10
+> ### (2023-11-27)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to c8d2f66 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.29.18
+>> #### (2023-11-27)
+>> 
+>> * Update Lock file maintenance [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.29.17
+>> #### (2023-11-24)
+>> 
+>> * Update core/contracts digest to 9a88055 [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-4.1.9
+> ### (2023-11-24)
+> 
+> * tests: allow for multiple worker fleets [rcooke-warwick]
+> 
+> ## meta-balena-4.1.8
+> ### (2023-11-22)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 935f8ef [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.29.16
+>> #### (2023-11-22)
+>> 
+>> * Update Lock file maintenance [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.29.15
+>> #### (2023-11-22)
+>> 
+>> * Update core/contracts digest to c45079c [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-4.1.7
+> ### (2023-11-17)
+> 
+> * meta-balena-common: Move code from meta-balena-kirkstone [Florin Sarbu]
+> 
+> ## meta-balena-4.1.6
+> ### (2023-11-17)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 30c115d [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.29.14
+>> #### (2023-11-15)
+>> 
+>> * patch: Add support for local autokit support [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.29.13
+>> #### (2023-11-13)
+>> 
+>> * Update Lock file maintenance [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.29.12
+>> #### (2023-11-13)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.25 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.29.11
+>> #### (2023-11-13)
+>> 
+>> * Update Lock file maintenance [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-4.1.5
+> ### (2023-11-10)
+> 
+> * update-balena-supervisor: ensure target supervisor is running [Alex Gonzalez]
+> * update-balena-supervisor: use os-helpers logging [Alex Gonzalez]
+> * hostapp-update: surface logs to journal [Alex Gonzalez]
+> * hostapp-update-hooks: surface logs to journal [Alex Gonzalez]
+> * os-helpers-logging: skip logging to journal from a container [Alex Gonzalez]
+> 
+> ## meta-balena-4.1.4
+> ### (2023-11-10)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to af50e8d [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.29.10
+>> #### (2023-11-08)
+>> 
+>> * core: remove request timeout on flashing [rcooke-warwick]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v4.1.3+rev2
 ## (2023-11-15)
 

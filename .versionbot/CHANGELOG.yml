@@ -1,4 +1,427 @@
 - commits:
+    - subject: Update layers/meta-balena to 0fed99ef0c338962d463b38eb58cd64cdf5804ae
+      hash: 06d73f4052069ac272e16a6589471d392ba76364
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 0fed99ef0c338962d463b38eb58cd64cdf5804ae
+        changelog-entry: Update layers/meta-balena to 0fed99ef0c338962d463b38eb58cd64cdf5804ae
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Make Engine healthcheck performance test aware of device type
+              hash: def871a2cc2e35076ba5d57e0885b05ae80a6bd9
+              body: >
+                We previously tried to use a single time limit for the execution
+                of the
+
+                healthcheck test on all device types. This was causing occasional false
+
+                positives in our Continuous Integration pipeline, though -- especially
+
+                on slow devices like Pi Zeros and the generic-aarch64, which runs on
+
+                emulated hardware.
+
+
+                This commit addresses this issue, this commit:
+
+
+                1. Limits execution for device types for which we have collected enough
+                   data to have a good idea of how long the test should take.
+                2. Uses time limits specific for each device type.
+              footer:
+                Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                Change-type: patch
+                change-type: patch
+              author: Leandro Motta Barros
+              nested: []
+          version: meta-balena-5.0.1
+          title: ""
+          date: 2023-11-29T14:34:44.373Z
+        - commits:
+            - subject: Update balena-supervisor to v15
+              hash: c41b110760f510d97ed4244bf39531a0f5bf562b
+              body: |
+                Update balena-supervisor from 14.13.13 to 15.0.1
+              footer:
+                Change-type: major
+                change-type: major
+              author: Felipe Lalanne
+              nested:
+                - commits:
+                    - subject: Expose ports from port mappings on services
+                      hash: 9bd216327fda4526cd60ccf98178960242383769
+                      body: >
+                        PR #2217 removed the expose configuration but also
+                        caused a regresion
+
+                        where ports set via the `ports` configuration would no longer get
+
+                        exposed to the host, despite portmappings being set. This fixes that
+
+                        issue by exposing only those ports comming from port mappings.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-15.0.1
+                  title: ""
+                  date: 2023-10-25T13:04:05.171Z
+                - commits:
+                    - subject: Ignore `expose` service compose configuration
+                      hash: 416170bc05a9a725f5a7f8ecbab4f8b1c8da5ddf
+                      body: >
+                        The docker EXPOSE directive and corresponding
+                        docker-compose `expose`
+
+                        service configuration serves as documentation/metadata that a container
+
+                        listens on a certain port that may be used for service discovery but it doesn't
+
+                        have any real impact on the ability for
+
+                        other containers on the same network to access the exposed service via
+
+                        the port. In newer engine implementations, this property may conflict
+
+                        with other network configurations, and prevent the container from being
+
+                        started by the docker engine (see #2211).
+
+
+                        This PR removes code that would manage the expose property and takes the
+
+                        property out of the whitelist. A composition with the `expose` property
+
+                        will result in the log message `Ignoring unsupported or unknown compose fields: expose`.
+
+
+                        While this change should not have operational impact, it still removes
+
+                        a previously supported configuration and as such there is a chance of it
+
+                        being a breaking change for some applications. For this reason it is
+
+                        being published as a new major version.
+                      footer:
+                        Change-type: major
+                        change-type: major
+                        Closes: "#2211"
+                        closes: "#2211"
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-15.0.0
+                  title: ""
+                  date: 2023-10-23T17:31:08.436Z
+                - commits:
+                    - subject: Add note regading API jitter on target state poll
+                      hash: b107868765563e26ec04746f84d1bc15dd211723
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-14.13.14
+                  title: ""
+                  date: 2023-10-23T13:34:41.452Z
+          version: meta-balena-5.0.0
+          title: ""
+          date: 2023-11-28T14:07:17.302Z
+        - commits:
+            - subject: "tests: os: safe-reboot: wait for SV to start"
+              hash: 7f301ec876ad361ea0f355e1976c92d83a661d3b
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-4.1.11
+          title: ""
+          date: 2023-11-27T14:31:02.562Z
+        - commits:
+            - subject: Update tests/leviathan digest to c8d2f66
+              hash: 374a90c8dc7a7eb20cc9f7a22019ca81f24b0f2d
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update Lock file maintenance
+                      hash: 5fb29e0cb00d6a8167d19ef6b2db812f7dce0b28
+                      body: |
+                        Update
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.29.18
+                  title: ""
+                  date: 2023-11-27T00:49:28.576Z
+                - commits:
+                    - subject: Update core/contracts digest to 9a88055
+                      hash: 1b2b778dd3f1d9cc1f6784f82f119131564215b4
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.29.17
+                  title: ""
+                  date: 2023-11-24T10:35:06.748Z
+          version: meta-balena-4.1.10
+          title: ""
+          date: 2023-11-27T05:11:30.909Z
+        - commits:
+            - subject: "tests: allow for multiple worker fleets"
+              hash: 7797aa081ab0a5339eea6e2fd326947d9e6ec6f1
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-4.1.9
+          title: ""
+          date: 2023-11-24T15:52:04.744Z
+        - commits:
+            - subject: Update tests/leviathan digest to 935f8ef
+              hash: 8b9f83c774bd7df17714dfa5443cf41822702ad6
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update Lock file maintenance
+                      hash: 3a19b6a005b2354d247e43ee63f374fd2822e4ef
+                      body: |
+                        Update
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.29.16
+                  title: ""
+                  date: 2023-11-22T11:32:22.495Z
+                - commits:
+                    - subject: Update core/contracts digest to c45079c
+                      hash: 1d890adc096a64d8a7766ca22ffe4e11d8933434
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.29.15
+                  title: ""
+                  date: 2023-11-22T10:35:34.292Z
+          version: meta-balena-4.1.8
+          title: ""
+          date: 2023-11-22T15:44:31.064Z
+        - commits:
+            - subject: "meta-balena-common: Move code from meta-balena-kirkstone"
+              hash: a8098360caf7ec3c6ede8aa953361fab2004b766
+              body: >
+                The code moved from meta-balena-kirkstone was not really
+                specific to
+
+                kirkstone so let's move it here so that future branches for newer yocto
+
+                releases which we'll base off kirkstone don't continue to add this
+
+                unneeded  duplication.
+
+                There are other meta-balena-* directories that still contain the
+
+                duplication we moved from meta-balena-kirkstone but we're not really
+
+                concerned with that because going forward those old directories will
+
+                naturally get deprecated.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-4.1.7
+          title: ""
+          date: 2023-11-17T10:23:11.798Z
+        - commits:
+            - subject: Update tests/leviathan digest to 30c115d
+              hash: 910c9b89c2c867b48b2e47a9a3775249e0211329
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: "patch: Add support for local autokit support"
+                      hash: 0c9fa8af880987316dbb0ca096ae15522784735b
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.29.14
+                  title: ""
+                  date: 2023-11-15T19:24:24.674Z
+                - commits:
+                    - subject: Update Lock file maintenance
+                      hash: 1bd306de3510c8da83b42f87f49905fc532cfaf5
+                      body: |
+                        Update
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.29.13
+                  title: ""
+                  date: 2023-11-13T03:35:12.022Z
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.25
+                      hash: 0e6357d94d2e05d8cef28dfc5f09e8fceea49114
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.24 to 2.9.25
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.29.12
+                  title: ""
+                  date: 2023-11-13T01:58:28.069Z
+                - commits:
+                    - subject: Update Lock file maintenance
+                      hash: 4699166b073f9a6912b51e2814a38f1c9d8955d7
+                      body: |
+                        Update
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.29.11
+                  title: ""
+                  date: 2023-11-13T00:59:30.237Z
+          version: meta-balena-4.1.6
+          title: ""
+          date: 2023-11-17T10:10:54.558Z
+        - commits:
+            - subject: "update-balena-supervisor: ensure target supervisor is running"
+              hash: bb56c90dd91913773bb838ee5361731ab65fc754
+              body: >
+                If the target supervisor image is already cached but there is no
+
+                container running with it, the update script would just exit without
+
+                actually running the target supervisor.
+
+
+                This commit checks whether there is a running container using the
+
+                target image and restarts the supervisor if there is none.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "update-balena-supervisor: use os-helpers logging"
+              hash: 65419a73aab31f92f640dee998dd85f9620e3ca8
+              body: |
+                This allows the script to log messages to the journal.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "hostapp-update: surface logs to journal"
+              hash: f34090d23ceef8c352d188a6aa34351885971239
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "hostapp-update-hooks: surface logs to journal"
+              hash: 5e1fdf9e3d94af2f814e9cef44b4f114b7ac2b76
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "os-helpers-logging: skip logging to journal from a container"
+              hash: 07f32d8098ef6a826b49f09cda04f9a11181409d
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-4.1.5
+          title: ""
+          date: 2023-11-10T16:58:38.759Z
+        - commits:
+            - subject: Update tests/leviathan digest to af50e8d
+              hash: c2f33c50ca7e24e74afed1bd8490b1c49d67ddfa
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: "core: remove request timeout on flashing"
+                      hash: 8c8ff58cfd7d2c93cda7735cb48f92556445e053
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                  version: leviathan-2.29.10
+                  title: ""
+                  date: 2023-11-08T10:24:24.736Z
+          version: meta-balena-4.1.4
+          title: ""
+          date: 2023-11-10T09:57:20.312Z
+  version: 5.0.1
+  title: ""
+  date: 2023-11-30T16:02:49.545Z
+- commits:
     - subject: Update rpi firmware to version 20230509 for newer hw revisions
       hash: efdceae0b9de7ec77a1d77a5c20c95d795814d4c
       body: >
