@@ -1,0 +1,17 @@
+[Unit]
+Description=Balena RPI partition mount service
+DefaultDependencies=no
+After=resin-boot.service
+Requires=resin-boot.service
+Before=umount.target
+Conflicts=umount.target
+ConditionVirtualization=!docker
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/resin-partition-mounter --mount @@BALENA_NONENC_BOOT_LABEL@@
+ExecStop=/usr/bin/resin-partition-mounter --umount @@BALENA_NONENC_BOOT_LABEL@@
+
+[Install]
+WantedBy=multi-user.target
