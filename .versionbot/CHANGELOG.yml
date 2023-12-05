@@ -1,4 +1,22 @@
 - commits:
+    - subject: Added support for revpi-connect-4 device
+      hash: 2cfad44f1fb733267ef8e0c09ce5f68c1709cd74
+      body: >
+        This adds supports for revpi-connect-4. These changes were done by
+        looking at the PR for the
+
+        revpi-connect-s.
+      footer:
+        Changelog-entry: Added support for revpi-connect-4 device
+        changelog-entry: Added support for revpi-connect-4 device
+        Signed-off-by: Waqar Rashid <waqar.rashid@voltstorage.com>
+        signed-off-by: Waqar Rashid <waqar.rashid@voltstorage.com>
+      author: Waqar Rashid
+      nested: []
+  version: 5.0.1+rev1
+  title: ""
+  date: 2023-12-05T16:35:56.640Z
+- commits:
     - subject: Update layers/meta-balena to 0fed99ef0c338962d463b38eb58cd64cdf5804ae
       hash: 06d73f4052069ac272e16a6589471d392ba76364
       body: Update layers/meta-balena

@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v5.0.1+rev1
+## (2023-12-05)
+
+* Added support for revpi-connect-4 device [Waqar Rashid]
+
 # v5.0.1
 ## (2023-11-30)
 
