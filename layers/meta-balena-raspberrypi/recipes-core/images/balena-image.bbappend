@@ -17,6 +17,11 @@ IMAGE_OVERHEAD_FACTOR:revpi-connect-s ?= "1.0"
 IMAGE_ROOTFS_EXTRA_SPACE:revpi-connect-s ?= "53248"
 IMAGE_ROOTFS_MAXSIZE:revpi-connect-s ?= "372736"
 
+IMAGE_ROOTFS_SIZE:revpi-connect-4 ?= "319488"
+IMAGE_OVERHEAD_FACTOR:revpi-connect-4 ?= "1.0"
+IMAGE_ROOTFS_EXTRA_SPACE:revpi-connect-4 ?= "53248"
+IMAGE_ROOTFS_MAXSIZE:revpi-connect-4 ?= "372736"
+
 # Customize balenaos-img
 BALENA_IMAGE_BOOTLOADER:rpi = "rpi-bootfiles"
 BALENA_BOOT_PARTITION_FILES:rpi = " \
