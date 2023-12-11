@@ -1,4 +1,255 @@
 - commits:
+    - subject: Update layers/meta-balena to e7a8680cc8db8bd7529ed389dd59999a1492c1aa
+      hash: 1854ea1c17a0b42cc9c8fc2346c88d6c1ac08389
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to e7a8680cc8db8bd7529ed389dd59999a1492c1aa
+        changelog-entry: Update layers/meta-balena to e7a8680cc8db8bd7529ed389dd59999a1492c1aa
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Update tests/leviathan digest to c681ee1
+              hash: 6e1450efaad2cad10e16251d46c98566f750bc6b
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update Lock file maintenance
+                      hash: 56b11b13ea28cb9370f43cf834399bb71fa609ee
+                      body: |
+                        Update
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.29.22
+                  title: ""
+                  date: 2023-12-11T00:48:58.323Z
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.26
+                      hash: 7dc880e73bf2fb125c4dd842ac8e5636f2fa04e3
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.25 to 2.9.26
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.29.21
+                  title: ""
+                  date: 2023-12-04T11:32:45.776Z
+                - commits:
+                    - subject: Update Lock file maintenance
+                      hash: 54dc38c908a7a40a3abe2f360c652e134359f28a
+                      body: |
+                        Update
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.29.20
+                  title: ""
+                  date: 2023-12-04T00:52:55.581Z
+          version: meta-balena-5.0.8
+          title: ""
+          date: 2023-12-11T05:56:11.919Z
+        - commits:
+            - subject: Update actions/setup-python action to v5
+              hash: 964061a70249cd4dabc99ae98083be5f1e650bc3
+              body: |
+                Update actions/setup-python from v4 to v5
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested: []
+          version: meta-balena-5.0.7
+          title: ""
+          date: 2023-12-06T16:38:31.017Z
+        - commits:
+            - subject: "os-helpers-logging: replace broken container check"
+              hash: 2dc4f8eb88dc51304cca55498b4bd5ceb7127d98
+              body: >
+                Detecting whether the script is running in a PID namespace by
+                checking
+
+                `/proc/1/sched` does not work for newer kernels
+
+                (see https://github.com/systemd/systemd/pull/17917).
+
+
+                Properly detecting this is too cumbersome for a bash logging script,
+
+                see https://github.com/systemd/systemd/pull/17902, however, falling
+
+                back to the last check, that is, seeing if `/.dockerenv` exists is easy
+
+                enough and works for our use case.
+
+
+                This script will only be called from the hostOS, and the only case it is
+
+                called from a container is during HUP and the container is always a hostOS
+
+                image. So even though the interface chosen by moby, a file under /,
+
+                is a bad interface in general, it works fine for the specific limitations
+
+                of balenaOS.
+
+
+                Also, check for `/run/.containerenv` which is the equivalent interface
+
+                for podman for future proofing.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-5.0.6
+          title: ""
+          date: 2023-12-05T18:35:11.870Z
+        - commits:
+            - subject: Update tests/leviathan digest to eaf8774
+              hash: 12d2ce997733de80dc89c6d0d84a4cb67a5c2da2
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: add jetson-agx-orin-devkit resin-boot index
+                      hash: 2a27941b65cc163899016fddf12339e1073e2e97
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                  version: leviathan-2.29.19
+                  title: ""
+                  date: 2023-12-01T12:13:53.767Z
+          version: meta-balena-5.0.5
+          title: ""
+          date: 2023-12-02T05:21:14.848Z
+        - commits:
+            - subject: Update balena-engine to v20.10.41
+              hash: 791d6306a9b33554606977fd1a8252a90a6a1235
+              body: |
+                Update balena-engine from 20.10.40 to 20.10.41
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Simplified development doc 'Build and run' instructions
+                      hash: e23a01b24a60f3a686e1ed9d3667dcc56db437a3
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ken Bannister <kb2ma@runbox.com>
+                        signed-off-by: Ken Bannister <kb2ma@runbox.com>
+                      author: Ken Bannister
+                      nested: []
+                  version: balena-engine-20.10.41
+                  title: ""
+                  date: 2023-12-01T18:50:14.756Z
+          version: meta-balena-5.0.4
+          title: ""
+          date: 2023-12-01T22:19:50.474Z
+        - commits:
+            - subject: Update balena-supervisor to v15.0.4
+              hash: 16a85aa4e2fc58f61b189585969872f7b7566946
+              body: |
+                Update balena-supervisor from 15.0.2 to 15.0.4
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Only build sqlite3 from source
+                      hash: d18292f68e09d5846eb0fa254d5205f07052dea8
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Update @balena/systemd to 0.5.0
+                      hash: 7981e6becd6b6d7e5317979277ab02eb7a24840a
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-15.0.4
+                  title: ""
+                  date: 2023-11-22T17:10:54.919Z
+                - commits:
+                    - subject: Cache last reported current state to /mnt/root/tmp
+                      hash: eb8ad11cd702e7d5ffba499c6b2d2fcadc030dd4
+                      body: >
+                        Whenever the Supervisor reports current state, it diffs
+                        the current state
+
+                        with its last reported current state. However, when the Supervisor starts
+
+                        up, there is no last reported state, since that last report is stored in
+
+                        process memory. Caching the last report in a location that survives
+
+                        Supervisor restarts will reduce the current report bandwidth used on startup.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-15.0.3
+                  title: ""
+                  date: 2023-11-22T00:32:48.806Z
+          version: meta-balena-5.0.3
+          title: ""
+          date: 2023-11-30T23:16:20.736Z
+        - commits:
+            - subject: "balena-rollback: If applicable, run device specific healthchecks"
+              hash: 58315e05dc6624eb393fc9e5e3d8b35541755bc3
+              body: |
+                We add a script which can be replaced by device repositories
+                to implement device-specific healthchecks. One usecase for this
+                test is the Jetson UEFI firmware update check,
+                but can be extended to all other devices as needed.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-5.0.2
+          title: ""
+          date: 2023-11-30T16:33:10.689Z
+  version: 5.0.8
+  title: ""
+  date: 2023-12-11T18:16:11.703Z
+- commits:
     - subject: Added support for revpi-connect-4 device
       hash: 2cfad44f1fb733267ef8e0c09ce5f68c1709cd74
       body: >
