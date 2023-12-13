@@ -38,6 +38,8 @@ do_deploy:append:revpi-connect-s() {
 do_deploy:append:revpi-connect-4() {
 	# Use the RevPi Connect device tree overlay
 	echo "dtoverlay=revpi-connect4" >> ${DEPLOYDIR}/bootfiles/config.txt
+	echo "dtoverlay=dwc2" >> ${DEPLOYDIR}/bootfiles/config.txt
+	echo "dr_mode=host" >> ${DEPLOYDIR}/bootfiles/config.txt
 }
 
 do_deploy:append:raspberrypi3-unipi-neuron() {
