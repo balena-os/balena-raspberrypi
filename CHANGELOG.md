@@ -1,6 +1,111 @@
 Change log
 -----------
 
+# v5.0.8
+## (2023-12-11)
+
+
+<details>
+<summary> Update layers/meta-balena to e7a8680cc8db8bd7529ed389dd59999a1492c1aa [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-5.0.8
+> ### (2023-12-11)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to c681ee1 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.29.22
+>> #### (2023-12-11)
+>> 
+>> * Update Lock file maintenance [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.29.21
+>> #### (2023-12-04)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.26 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.29.20
+>> #### (2023-12-04)
+>> 
+>> * Update Lock file maintenance [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.0.7
+> ### (2023-12-06)
+> 
+> * Update actions/setup-python action to v5 [Self-hosted Renovate Bot]
+> 
+> ## meta-balena-5.0.6
+> ### (2023-12-05)
+> 
+> * os-helpers-logging: replace broken container check [Alex Gonzalez]
+> 
+> ## meta-balena-5.0.5
+> ### (2023-12-02)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to eaf8774 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.29.19
+>> #### (2023-12-01)
+>> 
+>> * add jetson-agx-orin-devkit resin-boot index [rcooke-warwick]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.0.4
+> ### (2023-12-01)
+> 
+> 
+> <details>
+> <summary> Update balena-engine to v20.10.41 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-engine-20.10.41
+>> #### (2023-12-01)
+>> 
+>> * Simplified development doc 'Build and run' instructions [Ken Bannister]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.0.3
+> ### (Invalid date)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v15.0.4 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-15.0.4
+>> #### (2023-11-22)
+>> 
+>> * Only build sqlite3 from source [Felipe Lalanne]
+>> * Update @balena/systemd to 0.5.0 [Christina Ying Wang]
+>> 
+>> ### balena-supervisor-15.0.3
+>> #### (2023-11-22)
+>> 
+>> * Cache last reported current state to /mnt/root/tmp [Christina Ying Wang]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.0.2
+> ### (Invalid date)
+> 
+> * balena-rollback: If applicable, run device specific healthchecks [Alexandru Costache]
+> 
+
+</details>
+
 # v5.0.1+rev1
 ## (2023-12-05)
 
