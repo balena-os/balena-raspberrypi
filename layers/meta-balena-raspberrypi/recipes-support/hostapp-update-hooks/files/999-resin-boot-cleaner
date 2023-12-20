@@ -12,16 +12,16 @@ set -o errexit
 DURING_UPDATE=${DURING_UPDATE:-0}
 
 if [ "$DURING_UPDATE" = "1" ]; then
-	if  grep -q "ext4load" "$BALENA_BOOT_MOUNTPOINT/boot.scr" ; then
-		if [ -e "$BALENA_BOOT_MOUNTPOINT/zImage" ]; then
+	if  grep -q "ext4load" "$BALENA_NONENC_BOOT_MOUNTPOINT/boot.scr" ; then
+		if [ -e "$BALENA_NONENC_BOOT_MOUNTPOINT/zImage" ]; then
 			# Testing the destination sysroot kernel is tricky. Lets check current root
 			# instead as all future roots will have the kernel in root partition in /boot
 			# This leaves the kernel lying around in boot partition until the next HUP
 			if [ -e "/boot/zImage" ]; then
 				info "u-boot boot.scr now reads kernel from root partitions but found zImage in boot \n"
-				info "removing $BALENA_BOOT_MOUNTPOINT/zImage \n"
-				rm -f "$BALENA_BOOT_MOUNTPOINT/zImage" || true
-				sync -f "$BALENA_BOOT_MOUNTPOINT"
+				info "removing $BALENA_NONENC_BOOT_MOUNTPOINT/zImage \n"
+				rm -f "$BALENA_NONENC_BOOT_MOUNTPOINT/zImage" || true
+				sync -f "$BALENA_NONENC_BOOT_MOUNTPOINT"
 			fi
 		fi
 	fi
