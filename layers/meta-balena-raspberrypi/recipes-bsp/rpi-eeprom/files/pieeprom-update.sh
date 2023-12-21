@@ -5,6 +5,11 @@ set -o errexit
 
 . /usr/libexec/os-helpers-logging
 
+if /usr/bin/vcgencmd bootloader_config | grep -q "SIGNED_BOOT=1"; then
+    info "A signed boot enabled system must use the self-update EEPROM mechanism"
+    exit 0
+fi
+
 NEW_IMG="${1:-pieeprom-latest-stable.bin}"
 CURR_IMG=pieeprom-current.bin.tmp
 CURR_IMG_PATH=/tmp
