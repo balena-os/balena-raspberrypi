@@ -5,6 +5,11 @@ set -o errexit
 
 . /usr/libexec/os-helpers-logging
 
+if grep -q lockdown /proc/cmdline; then
+    info "A locked down system must use the self-update EEPROM mechanism"
+    exit 0
+fi
+
 NEW_IMG="${1:-pieeprom-latest-stable.bin}"
 CURR_IMG=pieeprom-current.bin.tmp
 CURR_IMG_PATH=/dev/shm
