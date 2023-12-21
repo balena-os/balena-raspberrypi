@@ -3,7 +3,15 @@
 
 set -o errexit
 
+# shellcheck disable=SC1091
 . /usr/libexec/os-helpers-logging
+# shellcheck disable=SC1091
+[ -f "/usr/libexec/os-helpers-sb" ] && . /usr/libexec/os-helpers-sb
+
+if type is_secured >/dev/null 2>&1 && is_secured; then
+    info "A signed boot enabled system must use the self-update EEPROM mechanism"
+    exit 0
+fi
 
 NEW_IMG="${1:-pieeprom-latest-stable.bin}"
 CURR_IMG=pieeprom-current.bin.tmp
