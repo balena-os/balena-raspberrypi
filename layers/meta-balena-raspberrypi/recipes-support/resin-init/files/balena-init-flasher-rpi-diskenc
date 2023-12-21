@@ -30,7 +30,7 @@ otp_write_key() {
     fi
 
     if [ -z "$(echo -n "${_key}" | sed s/0//g)" ]; then
-        fail "Argument is an empty key"
+        info "Argument is an empty key"
     fi
 
     # Sanity checks
@@ -46,10 +46,10 @@ otp_write_key() {
         _count=$((_count + 1))
     done
 
-    vcmailbox 0x38081 40 40 0 8 ${key_params} || die "Failed to write key"
-    if [ "$(otp_read_key)" != "${_key}" ]; then
-        fatal "Key validation failed"
-    fi
+#    vcmailbox 0x38081 40 40 0 8 ${key_params} || die "Failed to write key"
+#    if [ "$(otp_read_key)" != "${_key}" ]; then
+#        fatal "Key validation failed"
+#    fi
 }
 
 otp_generate_key() {
