@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v5.0.8+rev1
+## (2023-12-26)
+
+* remove migrator module for revpi family [Alex Gonzalez]
+
 # v5.0.8
 ## (2023-12-11)
 

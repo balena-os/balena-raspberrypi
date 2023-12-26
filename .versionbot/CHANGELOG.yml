@@ -1,4 +1,34 @@
 - commits:
+    - subject: remove migrator module for revpi family
+      hash: ed8d120c754e130b2409562a4e97c774c9c9dab3
+      body: |
+        The Revolution Pi are particular devices as they define an
+        internal storage in the contract, but they do not use a flasher
+        image and instead rely on the bootloader's exposing the internal
+        storage.
+
+        However, resin-init-flasher has a built time check for all devices
+        that define internal storage to define INTERNAL_DEVICE_KERNEL, so the
+        build fails when initramfs-framework builds the resin-init-flasher
+        dependency.
+
+        The lack of a `jq` dependency on earlier versions of meta-balena
+        meant that the check was non-operative, but it started failing when
+        the dependency was added.
+
+        This commit removes the migrator module from being built and included
+        in the initramfs.
+      footer:
+        Changelog-entry: remove migrator module for revpi family
+        changelog-entry: remove migrator module for revpi family
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 5.0.8+rev1
+  title: ""
+  date: 2023-12-26T10:10:20.374Z
+- commits:
     - subject: Update layers/meta-balena to e7a8680cc8db8bd7529ed389dd59999a1492c1aa
       hash: 1854ea1c17a0b42cc9c8fc2346c88d6c1ac08389
       body: Update layers/meta-balena
