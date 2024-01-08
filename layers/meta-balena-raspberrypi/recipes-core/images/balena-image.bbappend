@@ -30,6 +30,16 @@ BALENA_BOOT_PARTITION_FILES:rpi = " \
     bootfiles:/ \
     "
 
+BALENA_BOOT_PARTITION_FILES:remove:raspberrypicm4-ioboard-sb = " \
+    u-boot.bin:/${SDIMG_KERNELIMAGE} \
+    boot.scr:/boot.scr \
+    "
+
+BALENA_BOOT_PARTITION_FILES:append:raspberrypicm4-ioboard-sb = " \
+    balena-bootloader/${KERNEL_IMAGETYPE}-initramfs-${MACHINE}.bin:/${SDIMG_KERNELIMAGE} \
+    balena-bootloader/bootenv:/bootenv \
+    "
+
 BALENA_BOOT_PARTITION_FILES:append:revpi-core-3 = " revpi-core-dt-blob-overlay.dtb:/dt-blob.bin"
 
 BALENA_BOOT_PARTITION_FILES:append:revpi-connect = " revpi-connect-dt-blob-overlay.dtb:/dt-blob.bin"
@@ -63,6 +73,11 @@ python overlay_dtbs_handler () {
 do_resin_boot_dirgen_and_deploy[prefuncs] += "overlay_dtbs_handler"
 
 IMAGE_INSTALL:append:rpi = " u-boot"
+IMAGE_INSTALL:remove:raspberrypicm4-ioboard-sb = " u-boot"
+IMAGE_INSTALL:append:raspberrypicm4-ioboard-sb = " grub-editenv"
+
+do_rootfs[depends] += "${@oe.utils.conditional('MACHINE','raspberrypicm4-ioboard-sb',' virtual/balena-bootloader:do_deploy','',d)}"
+do_image_balenaos_img[depends] += "${@oe.utils.conditional('MACHINE','raspberrypicm4-ioboard-sb',' virtual/balena-bootloader:do_deploy','',d)}"
 
 do_resin_boot_dirgen_and_deploy[depends] += "virtual/kernel:do_install"
 
