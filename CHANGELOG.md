@@ -1,6 +1,221 @@
 Change log
 -----------
 
+# v5.1.10
+## (2024-01-17)
+
+
+<details>
+<summary> Update layers/meta-balena to d4e80942c09f500b3f6272395b29f8b13faa9253 [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-5.1.10
+> ### (2024-01-12)
+> 
+> * tests/bluetooth: Leave Autokit host discoverable on BT for a longer period of time [Alexandru Costache]
+> 
+> ## meta-balena-5.1.9
+> ### (2024-01-11)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 0210c02 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.29.35
+>> #### (2024-01-11)
+>> 
+>> * change to ssh tunnel [rcooke-warwick]
+>> 
+>> ### leviathan-2.29.34
+>> #### (2024-01-10)
+>> 
+>> * Update core/contracts digest to 14a10d9 [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.1.8
+> ### (2024-01-09)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to dbcacdb [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.29.33
+>> #### (2024-01-09)
+>> 
+>> * timeout netcat process [rcooke-warwick]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.1.7
+> ### (2024-01-09)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v15.2.0 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-15.2.0
+>> #### (2024-01-08)
+>> 
+>> * Try MDNS lookup only if regular DNS lookup fails [Felipe Lalanne]
+>> * Refactor mdns lookup code in app entry [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-15.1.1
+>> #### (2024-01-02)
+>> 
+>> * docs: api: start-service: specify this endpoint affects the device [Alex Gonzalez]
+>> 
+>> ### balena-supervisor-15.1.0
+>> #### (2023-11-22)
+>> 
+>> * Force remove container if updateMetadata fails [Felipe Lalanne]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.1.6
+> ### (2024-01-08)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 5163c31 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.29.32
+>> #### (2024-01-08)
+>> 
+>> * Update Lock file maintenance [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.29.31
+>> #### (2024-01-05)
+>> 
+>> * Update core/contracts digest to b469f31 [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.1.5
+> ### (2024-01-01)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 70db044 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.29.30
+>> #### (2024-01-01)
+>> 
+>> * Update core/contracts digest to dd3614e [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.29.29
+>> #### (2024-01-01)
+>> 
+>> * Update Lock file maintenance [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.1.4
+> ### (2023-12-25)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 5068028 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.29.28
+>> #### (2023-12-25)
+>> 
+>> * Update Lock file maintenance [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.1.3
+> ### (2023-12-22)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 57546f9 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.29.27
+>> #### (2023-12-22)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.27 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.29.26
+>> #### (2023-12-21)
+>> 
+>> * Update core/contracts digest to 31188f5 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.29.25
+>> #### (2023-12-18)
+>> 
+>> * Update actions/upload-artifact action to v4 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.29.24
+>> #### (2023-12-18)
+>> 
+>> * Update Lock file maintenance [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.29.23
+>> #### (2023-12-13)
+>> 
+>> * Update core/contracts digest to 591fda9 [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.1.2
+> ### (2023-12-21)
+> 
+> * balena-config-vars: increase config.json parsing resilience [Alex Gonzalez]
+> 
+> ## meta-balena-5.1.1
+> ### (2023-12-20)
+> 
+> 
+> <details>
+> <summary> Update balena-engine to v20.10.42 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-engine-20.10.42
+>> #### (2023-12-19)
+>> 
+>> * Update actions/upload-artifact to v4 and generate unique artifacts [Kyle Harding]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.1.0
+> ### (2023-12-19)
+> 
+> * migrate: check for mount point before umounting [Alex Gonzalez]
+> * initrdscripts: move mounting of log mounts to finish module [Alex Gonzalez]
+> 
+> ## meta-balena-5.0.11
+> ### (2023-12-14)
+> 
+> * update-balena-supervisor: fix supervisor.conf when image already downloaded [Alex Gonzalez]
+> 
+> ## meta-balena-5.0.10
+> ### (2023-12-13)
+> 
+> * hostapp-update-hooks: add debug mode [Alex Gonzalez]
+> 
+> ## meta-balena-5.0.9
+> ### (2023-12-12)
+> 
+> * timesync-https: increase default connection max time to 10s [Alex Gonzalez]
+> 
+
+</details>
+
 # v5.0.8+rev1
 ## (2023-12-26)
 
