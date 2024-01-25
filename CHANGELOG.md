@@ -1,6 +1,55 @@
 Change log
 -----------
 
+# v5.1.10+rev1
+## (2024-01-25)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 0008306e565a95aa51d04a8a0fcc318df3df59a2 [Self-hosted Renovate Bot] </summary>
+
+> ## balena-yocto-scripts-1.19.41
+> ### (2023-12-22)
+> 
+> * automation/balena-deploy: Pin to known working version of balena-img [Alexandru Costache]
+> 
+> ## balena-yocto-scripts-1.19.40
+> ### (2023-11-13)
+> 
+> * Dockerfiles: update balenaCLI version to 17.2.2 [Alex Gonzalez]
+> * balena-deploy-block.sh: deploy licenses and changelog as release assets [Alex Gonzalez]
+> * balena-deploy: Add changelog to deployed artifacts [Alex Gonzalez]
+> * balena-api: add release assets helper functions [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.19.39
+> ### (2023-10-20)
+> 
+> * Dockerfile_yocto-build-env: Install rsync and uudecode host dependencies [Alexandru Costache]
+> 
+> ## balena-yocto-scripts-1.19.38
+> ### (2023-10-11)
+> 
+> * README.md ChangeType is needed for PR so add to README example [Alex J Lennon]
+> 
+> ## balena-yocto-scripts-1.19.37
+> ### (2023-10-10)
+> 
+> * Dockerfile_yocto-build-env: Add screen [Alex J Lennon]
+> 
+> ## balena-yocto-scripts-1.19.36
+> ### (2023-10-10)
+> 
+> * flowzone: allow external contributions [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.19.35
+> ### (2023-09-28)
+> 
+> * balena-deploy: fail if device type not found [rcooke-warwick]
+> * balena-api: Dont assume private if can't get DT [rcooke-warwick]
+> 
+
+</details>
+
 # v5.1.10
 ## (2024-01-17)
 
