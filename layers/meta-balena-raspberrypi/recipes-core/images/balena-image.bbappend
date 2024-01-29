@@ -79,6 +79,8 @@ IMAGE_INSTALL:append:raspberrypi4-64 = " grub-editenv"
 do_rootfs[depends] += "${@oe.utils.conditional('MACHINE','raspberrypi4-64',' virtual/balena-bootloader:do_deploy','',d)}"
 do_image_balenaos_img[depends] += "${@oe.utils.conditional('MACHINE','raspberrypi4-64',' virtual/balena-bootloader:do_deploy','',d)}"
 
+do_rootfs[depends] += "${@oe.utils.conditional('MACHINE','raspberrypicm4-ioboard',' virtual/balena-bootloader:do_deploy','',d)}"
+do_image_balenaos_img[depends] += "${@oe.utils.conditional('MACHINE','raspberrypicm4-ioboard',' virtual/balena-bootloader:do_deploy','',d)}"
 do_resin_boot_dirgen_and_deploy[depends] += "virtual/kernel:do_install"
 
 RPI_KERNEL_DEVICETREE:remove:revpi = "bcm2708-rpi-zero-w.dtb bcm2710-rpi-3-b-plus.dtb bcm2711-rpi-4-b.dtb"
