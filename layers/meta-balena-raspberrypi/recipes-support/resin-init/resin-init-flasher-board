@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -e
+
+. /usr/libexec/os-helpers-logging
+
+if ! /usr/libexec/pieeprom-update.sh; then
+	error "Failed to update SPI EEPROM"
+	exit 1
+fi
+
+exit 0

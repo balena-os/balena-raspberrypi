@@ -6,10 +6,12 @@
 
 set -o errexit
 
-printf "[INFO] Applying quirk to remove dtoverlay=mmc from config.txt"
+. /usr/libexec/os-helpers-logging
+
+info "Applying quirk to remove dtoverlay=mmc from config.txt"
 sed "/dtoverlay=mmc/d" /mnt/boot/config.txt > /mnt/boot/config.txt.new
 
-printf "[INFO] Checking and applying if needed the quirks for removing older kunbus overlay"
+info "Checking and applying if needed the quirks for removing older kunbus overlay"
 sed "/Enable RevPi specific pins for i2c/d" /mnt/boot/config.txt > /mnt/boot/config.txt.new
 sed "/dtoverlay=i2c1-bcm2708,sda1_pin=44,scl1_pin=45,pin_func=6/d" /mnt/boot/config.txt > /mnt/boot/config.txt.new
 sed "/Enable RevPi realtime clock/d" /mnt/boot/config.txt > /mnt/boot/config.txt.new
@@ -20,4 +22,4 @@ sed "s/dtoverlay=kunbus/dtoverlay=revpi-core/g" /mnt/boot/config.txt > /mnt/boot
 sync -f /mnt/boot
 mv /mnt/boot/config.txt.new /mnt/boot/config.txt
 sync -f /mnt/boot
-printf " done.\n"
+info " done."
