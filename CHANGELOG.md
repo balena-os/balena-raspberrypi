@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v5.1.10+rev2
+## (2024-01-30)
+
+* configure panic on hung tasks and extend timeout [Alex Gonzalez]
+
 # v5.1.10+rev1
 ## (2024-01-25)
 

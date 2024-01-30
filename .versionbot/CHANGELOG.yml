@@ -1,4 +1,26 @@
 - commits:
+    - subject: configure panic on hung tasks and extend timeout
+      hash: 6cf23e1245a3590ebfe966e728901369bc7b5621
+      body: |
+        On long run reboot tests we have seen devices get stuck on reboot
+        when systemd-shutdown hangs and systemd is still refreshing the
+        hardware watchdog. Those devices are unreachable until power cycled.
+
+        To avoid this, we configure the devices to panic on hung task detection
+        which will reboot the device. However, as we know the engine might hang
+        itself when pulling big images, we also extend the timeout from 2m to 4m
+        to try and avoid this.
+      footer:
+        Changelog-entry: configure panic on hung tasks and extend timeout
+        changelog-entry: configure panic on hung tasks and extend timeout
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 5.1.10+rev2
+  title: ""
+  date: 2024-01-30T11:38:21.570Z
+- commits:
     - subject: Update balena-yocto-scripts to 0008306e565a95aa51d04a8a0fcc318df3df59a2
       hash: d9afe2bd4fff1dc5d33fd72d3ec2abbb4d8cce69
       body: Update balena-yocto-scripts
