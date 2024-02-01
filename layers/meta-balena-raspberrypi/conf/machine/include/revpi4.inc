@@ -5,7 +5,7 @@ include conf/machine/raspberrypi4-64.conf
 # courtesy of https://github.com/balena-os/balena-jetson/pull/112/commits/9d21df6899e595b4aeab4cc9a939ae6c564c669a
 MACHINEOVERRIDES := "${@'${MACHINEOVERRIDES}'.replace(':${MACHINE}',':raspberrypi4-64:${MACHINE}')}"
 
-SOC_FAMILY = "rpi:revpi"
+SOC_FAMILY = "rpi:revpi4"
 
 PREFERRED_PROVIDER_virtual/kernel = "linux-kunbus"
 
