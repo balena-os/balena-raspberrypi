@@ -1,4 +1,19 @@
 - commits:
+    - subject: Update meta-balena from v3.2.13 to v3.2.17
+      hash: 38356affa39c086d713add30680933aa56625097
+      body: |
+        Update meta-balena from 3.2.13 to 3.2.17
+      footer:
+        Changelog-entry: Update meta-balena from v3.2.13 to v3.2.17
+        changelog-entry: Update meta-balena from v3.2.13 to v3.2.17
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2023.10.2
+  title: ""
+  date: 2024-02-01T18:10:58.666Z
+- commits:
     - subject: Update meta-balena from v3.2.12 to v3.2.13
       hash: 53a65e8950483760c36b6c3899afa40aaf2c0d8b
       body: |
