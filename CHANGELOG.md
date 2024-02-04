@@ -1,6 +1,49 @@
 Change log
 -----------
 
+# v2023.10.3
+## (2024-02-04)
+
+
+<details>
+<summary> Update balena-yocto-scripts to v1.19.41 [Alex Gonzalez] </summary>
+
+> ## balena-yocto-scripts-1.19.41
+> ### (2023-12-22)
+> 
+> * automation/balena-deploy: Pin to known working version of balena-img [Alexandru Costache]
+> 
+> ## balena-yocto-scripts-1.19.40
+> ### (2023-11-13)
+> 
+> * Dockerfiles: update balenaCLI version to 17.2.2 [Alex Gonzalez]
+> * balena-deploy-block.sh: deploy licenses and changelog as release assets [Alex Gonzalez]
+> * balena-deploy: Add changelog to deployed artifacts [Alex Gonzalez]
+> * balena-api: add release assets helper functions [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.19.39
+> ### (2023-10-20)
+> 
+> * Dockerfile_yocto-build-env: Install rsync and uudecode host dependencies [Alexandru Costache]
+> 
+> ## balena-yocto-scripts-1.19.38
+> ### (2023-10-11)
+> 
+> * README.md ChangeType is needed for PR so add to README example [Alex J Lennon]
+> 
+> ## balena-yocto-scripts-1.19.37
+> ### (2023-10-10)
+> 
+> * Dockerfile_yocto-build-env: Add screen [Alex J Lennon]
+> 
+> ## balena-yocto-scripts-1.19.36
+> ### (2023-10-10)
+> 
+> * flowzone: allow external contributions [Alex Gonzalez]
+> 
+
+</details>
+
 # v2023.10.2
 ## (2024-02-01)
 
