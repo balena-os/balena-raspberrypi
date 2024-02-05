@@ -1,4 +1,22 @@
 - commits:
+    - subject: apply revpi machine override for revpi4 family
+      hash: 7daeea06025dcef724a365095532dd469a3d5d52
+      body: |
+        Move the SOC_MACHINE setting before the MACHINEOVERRIDES immediate
+        assignment so it gets taken into account when setting MACHINEOVERRIDES.
+
+        Otherwise the `revpi` machine override gets lost.
+      footer:
+        Changelog-entry: apply revpi machine override for revpi4 family
+        changelog-entry: apply revpi machine override for revpi4 family
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 5.1.20+rev1
+  title: ""
+  date: 2024-02-05T14:54:49.658Z
+- commits:
     - subject: Update layers/meta-balena to cb6fcbc870bbb5c3a39a36647fb3c91747718a93
       hash: 3c7993ef70e7a5aefcca2423bfef5a56a0116663
       body: Update layers/meta-balena

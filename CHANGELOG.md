@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v5.1.20+rev1
+## (2024-02-05)
+
+* apply revpi machine override for revpi4 family [Alex Gonzalez]
+
 # v5.1.20
 ## (2024-02-01)
 
