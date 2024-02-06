@@ -18,4 +18,4 @@ do_install:append() {
 	fi
 }
 
-RDEPENDS:${PN} += "os-helpers-otp os-helpers-sb userlandtools gnupg"
+RDEPENDS:${PN} += "os-helpers-otp os-helpers-sb gnupg"
