@@ -7,7 +7,7 @@ set -o errexit
 
 NEW_IMG="${1:-pieeprom-latest-stable.bin}"
 CURR_IMG=pieeprom-current.bin.tmp
-CURR_IMG_PATH=/dev/shm
+CURR_IMG_PATH=/tmp
 NEW_IMG_PATH=/mnt/boot
 SPI_SPEED=16000
 
