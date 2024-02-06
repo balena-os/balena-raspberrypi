@@ -29,6 +29,17 @@ BALENA_CONFIGS[rpisense] = " \
     CONFIG_FB_RPISENSE=n \
     "
 
+BALENA_CONFIGS_DEPS[secureboot] += " \
+    CONFIG_MODULE_SIG_FORMAT=y \
+    CONFIG_PKCS7_MESSAGE_PARSER=y \
+    CONFIG_SYSTEM_DATA_VERIFICATION=y \
+    CONFIG_SIGNED_PE_FILE_VERIFICATION=y \
+    "
+
+BALENA_CONFIGS[secureboot] += " \
+    CONFIG_KEXEC_IMAGE_VERIFY_SIG=y \
+    "
+
 do_deploy:append () {
     BOOTENV_FILE="${DEPLOYDIR}/${KERNEL_PACKAGE_NAME}/bootenv"
     grub-editenv "${BOOTENV_FILE}" create
