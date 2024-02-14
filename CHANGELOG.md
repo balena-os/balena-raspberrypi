@@ -1,6 +1,215 @@
 Change log
 -----------
 
+# v5.1.33
+## (2024-02-14)
+
+
+<details>
+<summary> Update layers/meta-balena to 905446e98206f871145d1c70107c01d567e1303d [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-5.1.33
+> ### (2024-02-14)
+> 
+> * tests: cloud: if no existing release, create generic fleet [rcooke-warwick]
+> 
+> ## meta-balena-5.1.32
+> ### (2024-02-13)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 4b9de7e [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.29.57
+>> #### (2024-02-13)
+>> 
+>> * patch: Authenticate the validator before validation [Vipul Gupta (@vipulgupta2048)]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.1.31
+> ### (2024-02-13)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 00ee51c [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.29.56
+>> #### (2024-02-12)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.36 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.29.55
+>> #### (2024-02-12)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.35 [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.1.30
+> ### (2024-02-12)
+> 
+> * balena-image-bootloader-initramfs.bb: Add fsck module [Florin Sarbu]
+> 
+> ## meta-balena-5.1.29
+> ### (2024-02-12)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to f6a3391 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.29.54
+>> #### (2024-02-12)
+>> 
+>> * Update core/contracts digest to 4f7dba1 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.29.53
+>> #### (2024-02-12)
+>> 
+>> * Update Lock file maintenance [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.29.52
+>> #### (2024-02-08)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.34 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.29.51
+>> #### (2024-02-06)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.33 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.29.50
+>> #### (2024-02-06)
+>> 
+>> * patch: Add config.js validator [Vipul Gupta (@vipulgupta2048)]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.1.28
+> ### (2024-02-11)
+> 
+> 
+> <details>
+> <summary> Update balena-engine to v20.10.43 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-engine-20.10.43
+>> #### (2024-02-06)
+>> 
+>> * Update runc component to v1.1.12 from balena-runc repo [Ken Bannister]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.1.27
+> ### (2024-02-09)
+> 
+> * patch: upgrade recipes/devtools/go to 1.17.13 [JOASSART Edwin]
+> * patch: removes recipes/devtools/go to 1.16 [JOASSART Edwin]
+> 
+> ## meta-balena-5.1.26
+> ### (2024-02-06)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v15.3.1 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-15.3.1
+>> #### (2024-02-01)
+>> 
+>> * Respect update strategies app-wide instead of at the service level [Christina Ying Wang]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.1.25
+> ### (2024-02-06)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to a708a7f [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.29.49
+>> #### (2024-02-05)
+>> 
+>> * Update actions/upload-artifact digest to 5d5d22a [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.1.24
+> ### (2024-02-05)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 57ba19b [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.29.48
+>> #### (2024-02-05)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.32 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.29.47
+>> #### (2024-02-05)
+>> 
+>> * Update Lock file maintenance [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.1.23
+> ### (2024-02-05)
+> 
+> * tests: cloud: disable dut internet after flashing [rcooke-warwick]
+> 
+> ## meta-balena-5.1.22
+> ### (2024-02-02)
+> 
+> * balena-rollback/rollback-health: Allow old OS hooks to access efivars [Alexandru Costache]
+> 
+> ## meta-balena-5.1.21
+> ### (2024-02-01)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to dd2285a [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.29.46
+>> #### (2024-02-01)
+>> 
+>> * Update core/contracts digest to 75a9764 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.29.45
+>> #### (2024-02-01)
+>> 
+>> * Update core/contracts digest to 8dfe06b [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.29.44
+>> #### (Invalid date)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.30 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.29.43
+>> #### (2024-01-29)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.29 [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v5.1.20+rev1
 ## (2024-02-05)
 
