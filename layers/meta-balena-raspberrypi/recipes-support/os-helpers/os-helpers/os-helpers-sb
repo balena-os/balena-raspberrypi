@@ -32,7 +32,7 @@ BALENA_NONENCRYPTED_BOOT_PARTITION_FILES="\
     bootenv \
 "
 
-doSkip() {
+do_skip() {
 	_file="$1"
 	for b in $BALENA_NONENCRYPTED_BOOT_PARTITION_FILES; do
 		# See if file is in the non-encrypted boot partition file list
