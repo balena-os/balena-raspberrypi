@@ -1,6 +1,42 @@
 Change log
 -----------
 
+# v5.1.33+rev1
+## (2024-02-21)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 0cb57aede8dea798c14ddfc6546525b920504970 [Self-hosted Renovate Bot] </summary>
+
+> ## balena-yocto-scripts-1.21.3
+> ### (2024-02-11)
+> 
+> * Enable S3 Server Side Encryption flags [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.21.2
+> ### (2024-02-08)
+> 
+> * automation/include: Pass helper image version [Florin Sarbu]
+> 
+> ## balena-yocto-scripts-1.21.1
+> ### (2024-02-07)
+> 
+> * balena-deploy: Remove docker.io when pulling image [Alexandru]
+> 
+> ## balena-yocto-scripts-1.21.0
+> ### (2024-02-02)
+> 
+> * Return image id after pulling helper images [Kyle Harding]
+> * Build and publish helper images with Flowzone [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.20.0
+> ### (2024-02-02)
+> 
+> * Remove unused block-build functions [Kyle Harding]
+> 
+
+</details>
+
 # v5.1.33
 ## (2024-02-14)
 
