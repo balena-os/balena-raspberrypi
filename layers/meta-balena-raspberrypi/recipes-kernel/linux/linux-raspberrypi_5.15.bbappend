@@ -70,8 +70,6 @@ BALENA_CONFIGS[fbtft] = " \
     CONFIG_FB_TFT_UC1701=m \
     CONFIG_FB_TFT_UPD161704=m \
     CONFIG_FB_TFT_WATTEROTT=m \
-    CONFIG_FB_FLEX=m \
-    CONFIG_FB_TFT_FBTFT_DEVICE=m \
     "
 
 BALENA_CONFIGS:append = " pca955_gpio_expander"
