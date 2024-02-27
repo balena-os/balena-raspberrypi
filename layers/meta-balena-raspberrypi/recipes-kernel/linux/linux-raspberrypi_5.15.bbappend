@@ -163,7 +163,7 @@ BALENA_CONFIGS_DEPS[mcp3422_adc_driver] = " \
 BALENA_CONFIGS:append = " sd8787_pwrseq_driver"
 
 BALENA_CONFIGS[sd8787_pwrseq_driver] = " \
-    CONFIG_PWRSEQ_SD8787=y \
+    CONFIG_PWRSEQ_SD8787=m \
 "
 
 BALENA_CONFIGS_DEPS[sd8787_pwrseq_driver] = " \
