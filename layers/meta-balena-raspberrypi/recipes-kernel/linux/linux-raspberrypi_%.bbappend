@@ -13,7 +13,7 @@ BALENA_CONFIGS:append:raspberrypi3-64 = " aufs"
 BALENA_CONFIGS:append:raspberrypi3 = " aufs"
 
 python do_overlays() {
-    import glob, re
+    import glob, re, os
     overlays = []
     source_path = d.getVar('S', True) + '/arch/' + d.getVar('ARCH',True) + '/boot/dts/overlays/*-overlay.dts'
     for overlay in glob.glob(source_path):
@@ -21,6 +21,8 @@ python do_overlays() {
     for dtbo in overlays:
         d.setVar('KERNEL_DEVICETREE', d.getVar('KERNEL_DEVICETREE', True) + ' ' + dtbo)
 
+    if not os.path.exists(d.getVar('DEPLOY_DIR_IMAGE')):
+        os.makedirs(d.getVar('DEPLOY_DIR_IMAGE'))
     f = open(d.getVar('DEPLOY_DIR_IMAGE') + '/overlays.txt', "w")
     f.write(d.getVar('KERNEL_DEVICETREE', True))
     f.close
