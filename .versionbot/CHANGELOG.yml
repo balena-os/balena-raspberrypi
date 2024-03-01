@@ -1,4 +1,20 @@
 - commits:
+    - subject: Make sure DEPLOY_DIR_IMAGE dir exists when writing overlays.txt into it
+      hash: 8cad2c82271bacc2a4b7d7ef874654932c5b90a4
+      body: |
+        We need to make sure the DEPLOY_DIR_IMAGE directory exists at the time
+        we create the overlays.txt file in it.
+      footer:
+        Changelog-entry: Make sure DEPLOY_DIR_IMAGE dir exists when writing overlays.txt into it
+        changelog-entry: Make sure DEPLOY_DIR_IMAGE dir exists when writing overlays.txt into it
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 5.1.33+rev2
+  title: ""
+  date: 2024-03-01T12:18:20.059Z
+- commits:
     - subject: Update balena-yocto-scripts to 0cb57aede8dea798c14ddfc6546525b920504970
       hash: 92ba48110f8559f4a40f18885757fa18f595b18a
       body: Update balena-yocto-scripts

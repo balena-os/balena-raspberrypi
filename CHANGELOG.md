@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v5.1.33+rev2
+## (2024-03-01)
+
+* Make sure DEPLOY_DIR_IMAGE dir exists when writing overlays.txt into it [Florin Sarbu]
+
 # v5.1.33+rev1
 ## (2024-02-21)
 
