@@ -1,6 +1,206 @@
 Change log
 -----------
 
+# v5.1.47
+## (2024-03-05)
+
+
+<details>
+<summary> Update layers/meta-balena to 6accf97a7c0276a78d47b8d5fa93c515f31d24c2 [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-5.1.47
+> ### (2024-03-03)
+> 
+> * classes: kernel-balena: fix secureboot append [Alex Gonzalez]
+> * classes: kernel-balena: correct dmcrypt dependencies [Alex Gonzalez]
+> * classes: kernel-balena: separate kexec configuration [Alex Gonzalez]
+> * kernel-balena: remove EFI specific settings [Alex Gonzalez]
+> * kernel-balena: separate EFI specific secure boot configurations [Alex Gonzalez]
+> * kernel-balena: remove deprecated kernel configuration [Alex Gonzalez]
+> * kernel-balena: add nfsd kernel setting [Alex Gonzalez]
+> 
+> ## meta-balena-5.1.46
+> ### (2024-03-02)
+> 
+> * resin_update_state_probe: ignore RAID members when looking for root [Michal Toman]
+> 
+> ## meta-balena-5.1.45
+> ### (2024-02-29)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 2b34fec [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.29.63
+>> #### (2024-02-27)
+>> 
+>> * Update core/contracts digest to f3ba2ee [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.1.44
+> ### (2024-02-29)
+> 
+> * resin-init-flasher: Allow building images for non-flasher devices that have internal storage [Alexandru]
+> 
+> ## meta-balena-5.1.43
+> ### (2024-02-28)
+> 
+> * Start os-config service after extracting CA [jaomaloy]
+> 
+> ## meta-balena-5.1.42
+> ### (2024-02-28)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v16 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-16.1.0
+>> #### (2024-02-27)
+>> 
+>> * Add support for repeated overlays [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-16.0.4
+>> #### (2024-02-27)
+>> 
+>> * Fix support for rsync deltas [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-16.0.3
+>> #### (2024-02-21)
+>> 
+>> * Patch default dtparam handling in config.txt [Christina Ying Wang]
+>> 
+>> ### balena-supervisor-16.0.2
+>> #### (2024-02-17)
+>> 
+>> * Patch config.txt backend to return array configs correctly [Christina Ying Wang]
+>> 
+>> ### balena-supervisor-16.0.1
+>> #### (2024-02-12)
+>> 
+>> * Update balena-io/deploy-to-balena-action to v2.0.27 [Self-hosted Renovate Bot]
+>> 
+>> ### balena-supervisor-16.0.0
+>> #### (2024-02-08)
+>> 
+>> * Add special case for base DTO params on RPI config [Felipe Lalanne]
+>> * Fix processing of dtoverlay/dtparams on config.txt [Felipe Lalanne]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.1.41
+> ### (2024-02-27)
+> 
+> * tests: hup: use secondary antenna for revpi4 [rcooke-warwick]
+> * tests: cloud : use secondary antenna for revpi4 [rcooke-warwick]
+> * tests: os: use secondary antenna for revpi4 [rcooke-warwick]
+> 
+> ## meta-balena-5.1.40
+> ### (2024-02-26)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to d71ce8f [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.29.62
+>> #### (2024-02-26)
+>> 
+>> * ad extra autokit setup information, and basic troubleshooting [rcooke-warwick]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.1.39
+> ### (2024-02-26)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to ef8cbac [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.29.61
+>> #### (2024-02-26)
+>> 
+>> * Update Lock file maintenance [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.29.60
+>> #### (2024-02-26)
+>> 
+>> * Update Lock file maintenance [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.1.38
+> ### (2024-02-23)
+> 
+> * balena-rollback: adapt to secure boot support [Alex Gonzalez]
+> * hostapp-update-hooks: Adapt resin-uboot hook to secure boot [Alex Gonzalez]
+> * classes: u-boot: use global secure boot kernel command line instead of hardcoding [Alex Gonzalez]
+> * grub: use global secure boot kernel command line instead of hardcoding [Alex Gonzalez]
+> * conf: distro: define kernel command line for secure boot [Alex Gonzalez]
+> * resindataexpander: encrypted partitions will auto-expand on unlock [Alex Gonzalez]
+> * initrdscripts: migrate: replace hardcoded kernel image names [Alex Gonzalez]
+> * resin-mounts: generalize secure boot mounts [Alex Gonzalez]
+> * initrdscripts: abroot: Use the global label for non-encrypted boot partitions [Alex Gonzalez]
+> * initrdscripts: allow for cryptsetup to support different secure boot implementations [Alex Gonzalez]
+> * os-helpers-fs: add shared wait4udev function [Alex Gonzalez]
+> * balena-image-flasher: fix appended variable with a leading space [Alex Gonzalez]
+> * balena-config-vars: customize for secure boot support [Alex Gonzalez]
+> * os-helpers: add dummy os-helpers-sb [Alex Gonzalez]
+> * resin-init-flasher: allow flasher image use in devices without internal storage [Alex Gonzalez]
+> * resin-init-flasher: flag non-encrypted boot partition as bootable [Alex Gonzalez]
+> * resin-init-flasher: replace hardcoded kernel image names [Alex Gonzalez]
+> * resin-init-flasher: split secureboot and disk encryption interfaces [Alex Gonzalez]
+> * distro: balena-os: define the boot labels as global [Alex Gonzalez]
+> * distro: balena-os: Specify full GO version [Alex Gonzalez]
+> 
+> ## meta-balena-5.1.37
+> ### (2024-02-22)
+> 
+> * tests/device-tree: Minor spelling fixes [Alexandru]
+> * test/device-tree: Send vcdbg to DUT [Alexandru Costache]
+> * patch: Add vcdbg binary to tests [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## meta-balena-5.1.36
+> ### (2024-02-21)
+> 
+> * tests: hup: test breadcrumbs after rollback services [Joseph Kogut]
+> 
+> ## meta-balena-5.1.35
+> ### (2024-02-19)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 95a9d72 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.29.59
+>> #### (2024-02-19)
+>> 
+>> * Update Lock file maintenance [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.29.58
+>> #### (2024-02-14)
+>> 
+>> * Update core/contracts digest to 0c54ce2 [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.1.34
+> ### (2024-02-14)
+> 
+> * resin-init-flasher: add jq dependency [Alex Gonzalez]
+> 
+
+</details>
+
 # v5.1.33+rev2
 ## (2024-03-01)
 
