@@ -1,6 +1,87 @@
 Change log
 -----------
 
+# v5.1.51+rev1
+## (2024-03-12)
+
+
+<details>
+<summary> Update contracts to f3ba2eee92e77c5a595bf22ffbeaa9164683ff1b [Self-hosted Renovate Bot] </summary>
+
+> ## contracts-2.0.95
+> ### (2024-02-26)
+> 
+> * sw.os+hw.device-type: Update Jetson Orin repositories [Alexandru Costache]
+> * jetson-orin-nx-seeed-j4012: Add ubuntu and debian distro tpl files [Alexandru Costache]
+> 
+> ## contracts-2.0.94
+> ### (2024-02-14)
+> 
+> * odyssey-x86: Update icon to latest revision [Alexandru Costache]
+> 
+> ## contracts-2.0.93
+> ### (2024-02-08)
+> 
+> * hw.device-type: Add Kontron i.MX8M Mini device [joris-bright]
+> 
+> ## contracts-2.0.92
+> ### (2024-02-01)
+> 
+> * hw.device-type: Add phyboard-lyra-am62xx-2 device [Atanas Bunchev]
+> 
+> ## contracts-2.0.91
+> ### (2024-02-01)
+> 
+> * Remove generic-amd64-fde device type [Michal Toman]
+> 
+> ## contracts-2.0.90
+> ### (2024-01-10)
+> 
+> * hw.device-type: Update svg icon for seeed-j4012 [Alexandru Costache]
+> 
+> ## contracts-2.0.89
+> ### (2024-01-05)
+> 
+> * hw.device-type: Fix hyperlinks in provisioning instructions [Alexandru Costache]
+> 
+> ## contracts-2.0.88
+> ### (2024-01-03)
+> 
+> * jetson-orin-nx-seeed-j4012: Add Seeed J4012 device-type [Alexandru Costache]
+> 
+> ## contracts-2.0.87
+> ### (2023-12-29)
+> 
+> * hw.device-type: Fix device type is_private flag for imx8mp-var-dart [Florin Sarbu]
+> 
+> ## contracts-2.0.86
+> ### (2023-12-28)
+> 
+> * hw.device-type: Add Variscite DART-MX8M-PLUS [Florin Sarbu]
+> 
+> ## contracts-2.0.85
+> ### (2023-12-21)
+> 
+> * patch: Remove wiki link reference to flash Tinker Board [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## contracts-2.0.84
+> ### (2023-12-13)
+> 
+> * iot-gate-imx8plus: Update flashing instructions and name [Alexandru Costache]
+> 
+> ## contracts-2.0.83
+> ### (2023-11-24)
+> 
+> * revpi-connect-4: Added contract files for revpi-connect-4 [Waqar Rashid]
+> 
+> ## contracts-2.0.82
+> ### (2023-11-22)
+> 
+> * lcbzu9: boot from internal storage [Francois Loubser]
+> 
+
+</details>
+
 # v5.1.51
 ## (2024-03-09)
 
