@@ -70,8 +70,6 @@ BALENA_CONFIGS[fbtft] = " \
     CONFIG_FB_TFT_UC1701=m \
     CONFIG_FB_TFT_UPD161704=m \
     CONFIG_FB_TFT_WATTEROTT=m \
-    CONFIG_FB_FLEX=m \
-    CONFIG_FB_TFT_FBTFT_DEVICE=m \
     "
 
 BALENA_CONFIGS:append = " pca955_gpio_expander"
@@ -165,7 +163,7 @@ BALENA_CONFIGS_DEPS[mcp3422_adc_driver] = " \
 BALENA_CONFIGS:append = " sd8787_pwrseq_driver"
 
 BALENA_CONFIGS[sd8787_pwrseq_driver] = " \
-    CONFIG_PWRSEQ_SD8787=y \
+    CONFIG_PWRSEQ_SD8787=m \
 "
 
 BALENA_CONFIGS_DEPS[sd8787_pwrseq_driver] = " \
@@ -188,17 +186,6 @@ BALENA_CONFIGS[rtrpi300cfgs] = " \
     CONFIG_SPI=y \
     CONFIG_SPI_BCM2835=m \
     CONFIG_CH432T_SPI=m \
-"
-
-BALENA_CONFIGS:append = " nfsfs"
-BALENA_CONFIGS[nfsfs] = " \
-    CONFIG_NFS_FS=m \
-    CONFIG_NFS_V2=y \
-    CONFIG_NFS_V3=y \
-    CONFIG_NFS_V4=y \
-    CONFIG_NFSD=m \
-    CONFIG_NFSD_V3=y \
-    CONFIG_NFSD_V4=y \
 "
 
 # The Pi3-64 and Pi4-64 are the only boards very low on rootfs space for now
