@@ -1,4 +1,45 @@
 - commits:
+    - subject: fix kernel configuration checks warning
+      hash: 234eef6173d9bb4424c7713afde8331d67c59a74
+      body: |
+        The PWRSEQ_SD8787 driver did not comply with the dependencies to be
+        built-in, so change to module which is its actual setting avoiding
+        the kernel check warning.
+      footer:
+        Changelog-entry: fix kernel configuration checks warning
+        changelog-entry: fix kernel configuration checks warning
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: remove redundant nfsfs kernel settings
+      hash: 25fd41f9239681ee6389b8fb0b1daefbe1f265ad
+      body: |
+        These are now set from meta-balena so they are shared with all
+        device types.
+      footer:
+        Changelog-entry: remove redundant nfsfs kernel settings
+        changelog-entry: remove redundant nfsfs kernel settings
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: remove deprecated kernel settings
+      hash: 159f838e220dbf9fbd9ba9de27a9f799ea04029c
+      body: |
+        Both the FB_FLEX and FB_TFT_FBTFT_DEVICE drivers were removed in
+        kernel v5.9.
+      footer:
+        Changelog-entry: remove deprecated kernel settings
+        changelog-entry: remove deprecated kernel settings
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 5.1.54+rev1
+  title: ""
+  date: 2024-03-17T16:00:33.538Z
+- commits:
     - subject: Update layers/meta-balena to 2cef02167e0e780d1e96da0f801f1f4d5e27e79f
       hash: 892f1386fb73f8d2d37e54255e72f86d8bd96a37
       body: Update layers/meta-balena

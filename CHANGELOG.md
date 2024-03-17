@@ -1,6 +1,13 @@
 Change log
 -----------
 
+# v5.1.54+rev1
+## (2024-03-17)
+
+* fix kernel configuration checks warning [Alex Gonzalez]
+* remove redundant nfsfs kernel settings [Alex Gonzalez]
+* remove deprecated kernel settings [Alex Gonzalez]
+
 # v5.1.54
 ## (2024-03-14)
 
