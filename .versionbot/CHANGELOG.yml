@@ -1,4 +1,100 @@
 - commits:
+    - subject: Update layers/meta-balena to b551e7d7a37d040165676862dba5a29ff1109b13
+      hash: b4bca1fde5d8c008aa34de185d78df9d86ae3fd5
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to b551e7d7a37d040165676862dba5a29ff1109b13
+        changelog-entry: Update layers/meta-balena to b551e7d7a37d040165676862dba5a29ff1109b13
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: Update contributing-device-support with balena-info documentation
+              hash: a42c71a14701a2d06d3025abfbbbc869c52b062d
+              body: |
+                Info on the ascii art for consoles was missing, so we add that
+                in this commit.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru
+              nested: []
+          version: meta-balena-5.2.2
+          title: ""
+          date: 2024-03-20T03:17:05.884Z
+        - commits:
+            - subject: "networkmanager: Wait for iptables lock in shared dispatcher script"
+              hash: 374c4c32df59cc00e0b04d0c619f6fb98a69f1a5
+              body: >
+                The dispatcher script that moves around FORWARD rules of shared
+
+                interfaces currently calls iptables assuming it will always work
+
+                but in practice two iptables commands can not run in parallel
+
+                and we have occasionally seen the script fail with:
+
+
+                Another app is currently holding the xtables lock.
+
+                Perhaps you want to use the -w option?
+
+
+                This patch adds the -w option to make the script wait for the
+                lock
+
+                when necessary.
+
+
+                It also makes the script exit with an error code if anything
+                fails,
+
+                which will log the output as WARN instead of INFO as the errors
+
+                are easy to overlook at this moment.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-5.2.1
+          title: ""
+          date: 2024-03-18T17:11:28.023Z
+        - commits:
+            - subject: Update NetworkManager to version 1.46.0
+              hash: 9d88a4566b7a9afc7226df97b40d266f0ece64b6
+              body: >
+                This recipe is taken from meta-openembedded commit
+
+                f240c5cecf3d7ee75d5ec1ece4c412c94434a879 with the only changes
+                being that
+
+                we removed from it the init.d, iwd, and dhcpcd daemon
+                configurations which
+
+                are not used by us.
+
+
+                This is the latest stable version available.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Changelog-entry: Update NetworkManager to version 1.46.0
+                changelog-entry: Update NetworkManager to version 1.46.0
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-5.2.0
+          title: ""
+          date: 2024-03-16T12:02:30.009Z
+  version: 5.2.2
+  title: ""
+  date: 2024-03-20T12:19:51.393Z
+- commits:
     - subject: fix kernel configuration checks warning
       hash: 234eef6173d9bb4424c7713afde8331d67c59a74
       body: |
