@@ -1,4 +1,19 @@
 - commits:
+    - subject: Update meta-balena from v5.1.54 to v5.1.55
+      hash: fd64ffa2b3267c07c06bb6643c2367dc2e871dce
+      body: |
+        Update meta-balena from 5.1.54 to 5.1.55
+      footer:
+        Changelog-entry: Update meta-balena from v5.1.54 to v5.1.55
+        changelog-entry: Update meta-balena from v5.1.54 to v5.1.55
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2024.4.1
+  title: ""
+  date: 2024-04-08T13:17:51.999Z
+- commits:
     - subject: fix kernel configuration checks warning
       hash: 234eef6173d9bb4424c7713afde8331d67c59a74
       body: |
