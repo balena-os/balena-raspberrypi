@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v5.2.2+rev1
+## (2024-04-15)
+
+* Use balena bootloader for raspberrypicm4-ioboard-sb [Michal Toman]
+
 # v5.2.2
 ## (2024-03-20)
 

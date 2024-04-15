@@ -1,4 +1,18 @@
 - commits:
+    - subject: Use balena bootloader for raspberrypicm4-ioboard-sb
+      hash: c18a5e88c9f37539aebaa3f91744028bfb00c972
+      body: ""
+      footer:
+        Changelog-entry: Use balena bootloader for raspberrypicm4-ioboard-sb
+        changelog-entry: Use balena bootloader for raspberrypicm4-ioboard-sb
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Michal Toman
+      nested: []
+  version: 5.2.2+rev1
+  title: ""
+  date: 2024-04-15T14:23:27.151Z
+- commits:
     - subject: Update layers/meta-balena to b551e7d7a37d040165676862dba5a29ff1109b13
       hash: b4bca1fde5d8c008aa34de185d78df9d86ae3fd5
       body: Update layers/meta-balena
