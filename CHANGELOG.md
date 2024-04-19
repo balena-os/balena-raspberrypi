@@ -1,6 +1,161 @@
 Change log
 -----------
 
+# v5.2.8
+## (2024-04-19)
+
+
+<details>
+<summary> Update layers/meta-balena to 5d7a7ecfdc69c481e6e762e38e66b8b291a70e32 [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-5.2.8
+> ### (2024-04-17)
+> 
+> * Test: Unmanaged: Replace ping command in tests with curl [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## meta-balena-5.2.7
+> ### (2024-04-16)
+> 
+> * packagegroup-resin: Install ldd script in balenaOS images [Alexandru]
+> 
+> ## meta-balena-5.2.6
+> ### (2024-04-16)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 0c2f44d [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.30.9
+>> #### (2024-04-15)
+>> 
+>> * Update Lock file maintenance [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.30.8
+>> #### (2024-04-11)
+>> 
+>> * Update core/contracts digest to d06ad25 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.30.7
+>> #### (2024-04-11)
+>> 
+>> * Update core/contracts digest to bdc5ec8 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.30.6
+>> #### (2024-04-10)
+>> 
+>> * Update core/contracts digest to 619554d [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.30.5
+>> #### (2024-04-08)
+>> 
+>> * Update Lock file maintenance [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.30.4
+>> #### (2024-04-08)
+>> 
+>> * Update core/contracts digest to cb7b222 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.30.3
+>> #### (2024-04-04)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.37 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.30.2
+>> #### (2024-04-04)
+>> 
+>> * core/lib/components: Specify Jetson Xavier boot partition indexes [Alexandru Costache]
+>> 
+>> ### leviathan-2.30.1
+>> #### (2024-04-01)
+>> 
+>> * Update Lock file maintenance [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.30.0
+>> #### (2024-03-26)
+>> 
+>> * minor: Add general FAQ to Leviathan [Vipul Gupta (@vipulgupta2048)]
+>> 
+>> ### leviathan-2.29.67
+>> #### (2024-03-26)
+>> 
+>> * Update Lock file maintenance [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.29.66
+>> #### (2024-03-26)
+>> 
+>> * Update core/contracts digest to 8631765 [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.29.65
+>> #### (2024-03-21)
+>> 
+>> * Update core/contracts digest to 2de3526 [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.2.5
+> ### (2024-04-12)
+> 
+> * classes: sign-rsa: add class for RSA artifact signing [Alex Gonzalez]
+> 
+> ## meta-balena-5.2.4
+> ### (2024-04-03)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v16.1.10 [Self-hosted Renovate Bot] </summary>
+> 
+>> ### balena-supervisor-16.1.10
+>> #### (2024-03-28)
+>> 
+>> * Add revpi-connect-4 to RPi variants We need the supervisor to be able to manage config.txt changes for the RevPi Connect 4. [Shreya Patel]
+>> 
+>> ### balena-supervisor-16.1.9
+>> #### (2024-03-25)
+>> 
+>> * Log the full error on device state report failure as it is more useful [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-16.1.8
+>> #### (2024-03-25)
+>> 
+>> * Set @balena/es-version to es2022 to match tsconfig.json [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-16.1.7
+>> #### (2024-03-25)
+>> 
+>> * Increase the timeout for auto select family to 5000ms to avoid issues [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-16.1.6
+>> #### (2024-03-18)
+>> 
+>> * Pin iptables to 1.8.9 (legacy) [Christina Ying Wang]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-5.2.3
+> ### (2024-03-22)
+> 
+> * mv docs/{,uefi-}secure-boot.md [Joseph Kogut]
+> * docs: secure-boot: update for PCR7 sealing [Joseph Kogut]
+> * os-helpers: compute_pcr7: merge event log digests [Joseph Kogut]
+> * Update policy's PCR7 value in hostapp-update hook [Joseph Kogut]
+> * os-helpers-tpm2: compute_pcr7: allow overriding efivars [Joseph Kogut]
+> * Move policy update to HUP commit hook [Joseph Kogut]
+> * rollback-health: move apply-dbx to HUP commit hook [Joseph Kogut]
+> * hostapp-hooks: include 0-signed-update only for efi [Joseph Kogut]
+> * secure boot: seal luks passphrase w/ PCR7 [Joseph Kogut]
+> * os-helpers-tpm2: separate authentication from crypto [Joseph Kogut]
+> * tcgtool: new recipe [Joseph Kogut]
+> * recipes-bsp: add recipe for GRUB 2.12 [Joseph Kogut]
+> * tests: skip bootloader config integrity check [Joseph Kogut]
+> * secureboot: enroll kernel hash in db for EFISTUB [Joseph Kogut]
+> 
+
+</details>
+
 # v5.2.2+rev1
 ## (2024-04-15)
 
