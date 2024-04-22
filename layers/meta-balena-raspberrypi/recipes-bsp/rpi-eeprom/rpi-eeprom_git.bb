@@ -31,6 +31,7 @@ inherit deploy python3native sign-rsa
 S = "${WORKDIR}/git"
 
 RDEPENDS:${PN} = "dtc flashrom userlandtools"
+DEPENDS += "${@oe.utils.conditional('SIGN_API','','',' usbboot-native',d)}"
 
 # default-config.txt contains the default options
 # for this fw release, and provides a way for altering
