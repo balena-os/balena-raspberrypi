@@ -35,6 +35,11 @@ do_deploy:append:revpi-connect-s() {
         echo "dr_mode=host" >> ${DEPLOYDIR}/bootfiles/config.txt
 }
 
+# the RevPi Connect 4 features a HAT EEPROM and the overlay name to be used is available the EEPROM so no need for a dtoverlay statement for that
+do_deploy:append:revpi-connect-4() {
+	echo "dtoverlay=dwc2,dr_mode=host" >> ${DEPLOYDIR}/bootfiles/config.txt
+}
+
 do_deploy:append:raspberrypi3-unipi-neuron() {
 	# Use the dt overlays required by the UniPi Neuron family of boards
 	echo "dtoverlay=neuronee" >> ${DEPLOYDIR}/bootfiles/config.txt
