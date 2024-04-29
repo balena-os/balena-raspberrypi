@@ -1,6 +1,67 @@
 Change log
 -----------
 
+# v5.3.2
+## (2024-04-29)
+
+
+<details>
+<summary> Update layers/meta-balena to f212a46b75701da1ad174eaca183c5b9f55075ec [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-5.3.2
+> ### (2024-04-25)
+> 
+> * contributing-device-support.md: Rework repo transfer and autokit requirement steps [Florin Sarbu]
+> 
+> ## meta-balena-5.3.1
+> ### (2024-04-24)
+> 
+> * tests: os: address race in internet con. sharing tests [rcooke-warwick]
+> 
+> ## meta-balena-5.3.0
+> ### (2024-04-24)
+> 
+> * hup: signed-update: silence tpm2-tools output [Joseph Kogut]
+> * hup: silence mountpoint [Joseph Kogut]
+> * hup: signed-update: print predicted PCR values after creating a policy [Joseph Kogut]
+> * os-helpers-tpm2: firmware_measures_efibins: silence grep [Joseph Kogut]
+> * os-helpers-tpm2: specify TCTI backend [Joseph Kogut]
+> * os-helpers-sb: silence 'command -v' [Joseph Kogut]
+> * hup: signed-update: update boot files as needed [Joseph Kogut]
+> * hup: signed-update: always remove policy directory [Joseph Kogut]
+> * os-helpers-tpm2: append event log digests before separator [Joseph Kogut]
+> * hostapp-update-hooks: signed-update: fix exit code conditional [Joseph Kogut]
+> * os-helpers-tpm2: fix awk syntax error causing unbootable machines [Joseph Kogut]
+> 
+> ## meta-balena-5.2.10
+> ### (2024-04-23)
+> 
+> * hostapp-update-hooks: check for logging helper [Alex Gonzalez]
+> 
+> ## meta-balena-5.2.9
+> ### (2024-04-22)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 5984adc [Self-hosted Renovate Bot] </summary>
+> 
+>> ### leviathan-2.30.11
+>> #### (2024-04-22)
+>> 
+>> * Update actions/upload-artifact digest to 1746f4a [Self-hosted Renovate Bot]
+>> 
+>> ### leviathan-2.30.10
+>> #### (2024-04-22)
+>> 
+>> * Update Lock file maintenance [Self-hosted Renovate Bot]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v5.2.8
 ## (2024-04-19)
 
