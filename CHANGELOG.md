@@ -1,6 +1,16 @@
 Change log
 -----------
 
+# v5.3.2+rev1
+## (2024-05-02)
+
+* Add EEPROM binaries to boot partition [Alex Gonzalez]
+* adapt board init scripts to initramfs [Alex Gonzalez]
+* Run EEPROM update hook on HUP [Alex Gonzalez]
+* use os logging functions in update hooks [Alex Gonzalez]
+* add spi eeprom programming tool [Alex Gonzalez]
+* built-in SPI kernel modules for EEPROM update [Alex Gonzalez]
+
 # v5.3.2
 ## (2024-04-29)
 

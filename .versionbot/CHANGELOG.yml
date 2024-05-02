@@ -1,4 +1,75 @@
 - commits:
+    - subject: Add EEPROM binaries to boot partition
+      hash: 3fcd23148dfa546915684df7dfcb0cd0b59529c6
+      body: |
+        These are used on the EEPROM programming scripts.
+      footer:
+        Changelog-entry: Add EEPROM binaries to boot partition
+        changelog-entry: Add EEPROM binaries to boot partition
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: adapt board init scripts to initramfs
+      hash: 586e78768fd8c2ed719fc0c014b92680e9287ae4
+      body: |
+        Do not fail when trying to load modules from initramfs.
+      footer:
+        Changelog-entry: adapt board init scripts to initramfs
+        changelog-entry: adapt board init scripts to initramfs
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: Run EEPROM update hook on HUP
+      hash: e0cdcf479f2ae1abd6c7e82115afe12ae6058a0e
+      body: |
+        This allows for the EEPROM to be updated in the hostOS update process.
+      footer:
+        Changelog-entry: Run EEPROM update hook on HUP
+        changelog-entry: Run EEPROM update hook on HUP
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: use os logging functions in update hooks
+      hash: 7dcff92a197a8e0c0e4faaf3261837a0060efdf6
+      body: ""
+      footer:
+        Changelog-entry: use os logging functions in update hooks
+        changelog-entry: use os logging functions in update hooks
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: add spi eeprom programming tool
+      hash: 7b7205d3e866ac9385678a8077961ab14d1d8284
+      body: |
+        Add an EEPROM programming tool that supports secure boot and uses
+        built-in SPI driver support along with binding/unbinding of the driver
+        when specific dynamic configuration is changed.
+      footer:
+        Changelog-entry: add spi eeprom programming tool
+        changelog-entry: add spi eeprom programming tool
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: built-in SPI kernel modules for EEPROM update
+      hash: 13c02d26a104476d11ffd623ec10beab5a8b78fc
+      body: |
+        This avoid kernel and rootfs mismatches on rollbacks.
+      footer:
+        Changelog-entry: built-in SPI kernel modules for EEPROM update
+        changelog-entry: built-in SPI kernel modules for EEPROM update
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 5.3.2+rev1
+  title: ""
+  date: 2024-05-02T09:17:03.903Z
+- commits:
     - subject: Update layers/meta-balena to f212a46b75701da1ad174eaca183c5b9f55075ec
       hash: 983b52d9c3b5717c465b3d164e97db2fa0ff4bff
       body: Update layers/meta-balena
