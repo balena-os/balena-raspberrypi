@@ -93,3 +93,10 @@ IMAGE_INSTALL:append:raspberrypi4-superhub = " \
     phoenix-peripheral-gpio-wdt \
     phoenix-peripheral-rtc-sync \
 "
+
+BALENA_BOOT_PARTITION_FILES:append:raspberrypi4-64 = " \
+    rpi-eeprom/pieeprom-latest-stable.bin:/pieeprom-latest-stable.bin \
+    rpi-eeprom/vl805-latest-stable.bin:/vl805-latest-stable.bin \
+"
+
+BALENA_BOOT_PARTITION_FILES:append:raspberrypi4-64 = "${@oe.utils.conditional('SIGN_API','','',' rpi-eeprom/pieeprom-latest-stable.sig:/pieeprom-latest-stable.sig',d)}"

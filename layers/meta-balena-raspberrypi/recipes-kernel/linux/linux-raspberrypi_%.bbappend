@@ -37,3 +37,12 @@ do_deploy[prefuncs] += "do_overlays"
 # we have to ensure the overlays list is populated so that
 # the boot partition can be generated correctly
 do_install[nostamp] = "1"
+
+# Built-in SPI drivers needed for API EEPROM update
+# Otherwise on A/B rollback modules won't match running kernel
+BALENA_CONFIGS:append:raspberrypi4-64 = " pieeprom"
+BALENA_CONFIGS[pieeprom] = " \
+    CONFIG_SPI=y \
+    CONFIG_SPI_BCM2835=y \
+    CONFIG_SPI_SPIDEV=y \
+"
