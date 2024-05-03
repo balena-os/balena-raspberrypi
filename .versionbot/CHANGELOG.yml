@@ -1,4 +1,30 @@
 - commits:
+    - subject: Update layers/meta-balena to cc46d73fa73a599f744a2f06a6c6983d76a45a41
+      hash: d400e2c31d59ff53ba00f7891bf8cdd9fbb89396
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to cc46d73fa73a599f744a2f06a6c6983d76a45a41
+        changelog-entry: Update layers/meta-balena to cc46d73fa73a599f744a2f06a6c6983d76a45a41
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "docs: elaborate automated testing requirement in board support guide"
+              hash: aad242195fb191cbe9c8230b9cf36aa4b0679fbe
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-5.3.3
+          title: ""
+          date: 2024-05-01T12:04:46.013Z
+  version: 5.3.3
+  title: ""
+  date: 2024-05-03T11:14:00.706Z
+- commits:
     - subject: Update picontrol to 2024.02.05 for Revolution Pi 4 based devices
       hash: 715b989be44411caf1232a18c0b1ec110d95dc11
       body: ""
