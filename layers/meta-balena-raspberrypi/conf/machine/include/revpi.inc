@@ -1,4 +1,4 @@
-MACHINEOVERRIDES = "raspberrypi3:${MACHINE}"
+MACHINEOVERRIDES =. "raspberrypi3:"
 include conf/machine/raspberrypi3.conf
 
 SOC_FAMILY = "rpi:revpi"

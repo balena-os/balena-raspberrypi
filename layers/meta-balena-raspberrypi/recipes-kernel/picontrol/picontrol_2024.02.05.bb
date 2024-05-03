@@ -5,13 +5,11 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
 inherit module
 
 SRC_URI = " \
-	git://github.com/RevolutionPi/piControl;protocol=https;nobranch=1; \
+	git://gitlab.com/revolutionpi/piControl;protocol=https;branch=master; \
 	file://0001-Use-modules_install-as-wanted-by-yocto.patch \
 	file://0002-Search-config-file-in-mnt-boot.patch \
 "
-
-# Commit for raspberrypi-kernel_1%9.20221118-5.10.152+revpi1
-SRCREV ="f6a3014af983caeae09318e6379e543b43d1c356"
+SRCREV = "79ad74f89ad7485a67de8fc90907a2e98f314c5f"
 
 S = "${WORKDIR}/git"
 
