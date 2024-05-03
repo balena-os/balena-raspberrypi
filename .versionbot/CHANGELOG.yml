@@ -1,4 +1,41 @@
 - commits:
+    - subject: Update picontrol to 2024.02.05 for Revolution Pi 4 based devices
+      hash: 715b989be44411caf1232a18c0b1ec110d95dc11
+      body: ""
+      footer:
+        Changelog-entry: Update picontrol to 2024.02.05 for Revolution Pi 4 based devices
+        changelog-entry: Update picontrol to 2024.02.05 for Revolution Pi 4 based devices
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+    - subject: Update linux-kunbus to 6.1.46 for Revolution Pi 4 based devices
+      hash: cca8c0de3dbe13e21b9c517503e98b6942fdb1f5
+      body: ""
+      footer:
+        Changelog-entry: Update linux-kunbus to 6.1.46 for Revolution Pi 4 based devices
+        changelog-entry: Update linux-kunbus to 6.1.46 for Revolution Pi 4 based devices
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+    - subject: Define correct KBUILD_DEFCONFIG
+      hash: 23dc316ab6c1cfa40d40fbae260dc85b01876b75
+      body: |
+        We also do not need to do the MACHINEOVERRIDES gimmick anymore
+        because with the latest poky updates we have made the machine
+        overriding expansion mechanism works as intended.
+      footer:
+        Changelog-entry: Define correct KBUILD_DEFCONFIG
+        changelog-entry: Define correct KBUILD_DEFCONFIG
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 5.3.2+rev2
+  title: ""
+  date: 2024-05-03T09:10:58.825Z
+- commits:
     - subject: Add EEPROM binaries to boot partition
       hash: 3fcd23148dfa546915684df7dfcb0cd0b59529c6
       body: |

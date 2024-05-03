@@ -1,6 +1,13 @@
 Change log
 -----------
 
+# v5.3.2+rev2
+## (2024-05-03)
+
+* Update picontrol to 2024.02.05 for Revolution Pi 4 based devices [Florin Sarbu]
+* Update linux-kunbus to 6.1.46 for Revolution Pi 4 based devices [Florin Sarbu]
+* Define correct KBUILD_DEFCONFIG [Florin Sarbu]
+
 # v5.3.2+rev1
 ## (2024-05-02)
 
