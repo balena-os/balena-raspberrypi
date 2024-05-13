@@ -1,4 +1,147 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 466d6ec592656bb950a393fc1c7a5d5ff4cf3455
+      hash: fb09fd0a535ea6fd54d0f56bc13e732341838f91
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 466d6ec592656bb950a393fc1c7a5d5ff4cf3455
+        changelog-entry: Update balena-yocto-scripts to 466d6ec592656bb950a393fc1c7a5d5ff4cf3455
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "balena-deploy: deploy usbboot if available"
+              hash: a62a90bcf05fdccc9cdbaa9961d2db823bbeb9b5
+              body: |
+                This is where the RPI family deploys provisioning artifacts.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.21.10
+          title: ""
+          date: 2024-05-02T09:18:16.451Z
+        - commits:
+            - subject: "balena-lib: improve base tag detection"
+              hash: 872bb3b1df920b026b524e041bf4f4f7c422cb2f
+              body: >
+                When a ESR release is deployed a tag with the base meta-balena
+                version
+
+                is created. This is used by the API to check for a valid OS
+                version
+
+                for updates.
+
+
+                The current mechanism to find the base version only provides an
+                ESR
+
+                version for the first commit after the branch has been created.
+
+
+                Using merge-base to find the common ancestor and `tag
+                --points-at` to
+
+                find the actual tag works for all commits after the branch is
+                created.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.21.9
+          title: ""
+          date: 2024-04-30T14:17:29.958Z
+        - commits:
+            - subject: Support commit tags when extracting version tag from git
+              hash: 98fec51fae4721224e64cfec52480a5f17b8e271
+              body: >
+                Git describe does not include commit tags by default, and only
+                annotated tags are shown.
+
+
+                This behaviour was fine until a recent CI issue changed the
+                types of tags used to version the repositories.
+
+
+                This commit allows supporting of both types while the CI issue
+                is investigated.
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.21.8
+          title: ""
+          date: 2024-04-29T17:17:30.203Z
+        - commits:
+            - subject: Add missing $select for release_asset.asset_key
+              hash: 4f4f65c0b2cace726eccbea5d5ed8ed0f8302e54
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Thodoris Greasidis
+              nested: []
+          version: balena-yocto-scripts-1.21.7
+          title: ""
+          date: 2024-04-19T14:22:55.708Z
+        - commits:
+            - subject: 'Revert "balena-build: avoid using device-type as a prefix in yocto
+                sstate"'
+              hash: 7a85083784a3225debf2276a978558df5a307ec7
+              body: |
+                This reverts commit f4a9566941083770151ebe3edd78e9866b4856fb.
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.21.6
+          title: ""
+          date: 2024-03-25T14:58:37.715Z
+        - commits:
+            - subject: Merge AMI publishing dependencies into yocto-build-env
+              hash: c208a885e849b1b49231de31268a482344220d38
+              body: |
+                This allows us to build and publish fewer helper images.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.21.5
+          title: ""
+          date: 2024-03-14T19:05:22.682Z
+        - commits:
+            - subject: "balena-build: avoid using device-type as a prefix in yocto sstate"
+              hash: f4a9566941083770151ebe3edd78e9866b4856fb
+              body: >
+                Yocto already splits the build sstate by target arch, native
+                arch, toolchains, and machine where applicable.
+
+
+                Keeping the caches separated by device type prevents sharing of
+                common cache steps between identical toolchains and
+                architectures.
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.21.4
+          title: ""
+          date: 2024-03-13T18:16:12.920Z
+  version: 5.3.3+rev2
+  title: ""
+  date: 2024-05-13T14:56:25.641Z
+- commits:
     - subject: Update contracts to d06ad25196f67c4d20ad309941192fdddf80e307
       hash: 5b620cb48e14c9326e5c44b9f4881001de454448
       body: Update contracts
