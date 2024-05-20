@@ -1,0 +1,64 @@
+#
+# Device interface for secure boot programming
+#
+#
+
+# secureboot_setup
+#   * Secure boot setup mode
+#   * Key enrollment
+#   * Secure boot mode checks
+# bootpart_split
+#   * Split boot partition into encrypted and non-encrypted partitions
+# secureboot_bootloader_setup
+#   * Hook for secureboot bootloader setup
+# secureboot_bootloader_postsetup
+#   * Hook for secureboot bootloader post-setup
+
+[ -f "/usr/libexec/os-helpers-sb" ] && . /usr/libexec/os-helpers-sb
+if ! command -v generate_bootpart_fingerprint > /dev/null; then . /usr/libexec/os-helpers-fs; fi
+
+BALENA_NONENC_BOOT_LABEL=@@BALENA_NONENC_BOOT_LABEL@@
+
+secureboot_setup() {
+    return 0
+}
+
+bootpart_split() {
+    # Split the boot partition in an encrypted and non-encrypted partition
+    # Encrypted resin-boot already mounted in $INTERNAL_DEVICE_BOOT_PART_MOUNTPOINT
+    NONENC_BOOT_MOUNT_DIR="$(mktemp -d)"
+    NONENC_BOOT_MOUNT=$(get_dev_path_in_device_with_label "${internal_dev}" "${BALENA_NONENC_BOOT_LABEL}")
+    if ! mount "${NONENC_BOOT_MOUNT}" "$NONENC_BOOT_MOUNT_DIR"; then
+        fail "Failed to mount disk labeled as ${BALENA_NONENC_BOOT_LABEL}."
+    fi
+
+    # Move all to be encrypted files to encrypted boot partition
+    for FILE in "$NONENC_BOOT_MOUNT_DIR/"*; do
+        _file=$(basename "$FILE")
+        if [[ "${BALENA_NONENCRYPTED_BOOT_PARTITION_FILES}" == *"${_file}"* ]]; then
+            continue
+        fi
+
+        mv "$FILE" "$INTERNAL_DEVICE_BOOT_PART_MOUNTPOINT/"
+    done
+
+    # Store files necessary for TPM decryption to the unencrypted partitions
+    mv "${ENC_PASSPHRASE_FILE}" "$NONENC_BOOT_MOUNT_DIR/balena-luks.enc" && sync
+
+    rm -rf "$TPM_RESULT_DIR"
+
+    # Regenerate fingerprint in both partitions
+    generate_bootpart_fingerprint "${NONENC_BOOT_MOUNT_DIR}"
+    generate_bootpart_fingerprint "${INTERNAL_DEVICE_BOOT_PART_MOUNTPOINT}"
+
+    # Do not umount - flasher script will still copy configuration files
+}
+
+secureboot_bootloader_setup() {
+    return 0
+}
+
+secureboot_bootloader_postsetup() {
+    return 0
+}
+

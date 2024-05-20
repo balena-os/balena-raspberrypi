@@ -1,0 +1,22 @@
+otp_read_key() {
+    local _key
+    _key="$(vcmailbox 0x00030081 40 40 0 8 0 0 0 0 0 0 0 0)"
+    echo "${_key}" | sed 's/0x//g' | awk '{for(i=8;i<16;i++) printf $i; print ""}'
+}
+
+otp_read_register() {
+    local _reg="${1}"
+    vcgencmd otp_dump 2>/dev/null | grep "^${_reg}" | cut -d':' -f2
+}
+
+# Return success if the sha256 RSA key is written in the OTP
+otp_has_rsa_digest() {
+    for r in $(seq 47 54); do
+        local _out
+        _out=$(otp_read_register "$r")
+        if [ -n "${_out}" ] && [ "${_out}" != "00000000" ]; then
+            return 0
+        fi
+    done
+    return 1
+}
