@@ -1,4 +1,206 @@
 - commits:
+    - subject: add secure boot and disk encryption documentation
+      hash: 82ea45716ca20581ca5fceb6c2e2299e9aa581ce
+      body: ""
+      footer:
+        Changelog-entry: add secure boot and disk encryption documentation
+        changelog-entry: add secure boot and disk encryption documentation
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: add usbboot native dependency
+      hash: af44205550056f1ddce5f906d993e00e1536148d
+      body: |
+        This deploys the signed artifacts needed for a locked device
+        reprovisioning.
+      footer:
+        Changelog-entry: add usbboot native dependency
+        changelog-entry: add usbboot native dependency
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: add usbboot native recipe
+      hash: e668e4a948f73153946c679bba98b67ef999d64f
+      body: ""
+      footer:
+        Changelog-entry: add usbboot native recipe
+        changelog-entry: add usbboot native recipe
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: adjust initramfs size for RPI4
+      hash: 8ad9a7152b30f84d7d5bb824dc4a224a4a0a54e3
+      body: |
+        With the definition of SIGN_API the initramfs image has increased. This
+        still fits in the existing partition layout so there is really no other
+        implications.
+      footer:
+        Changelog-entry: adjust initramfs size for RPI4
+        changelog-entry: adjust initramfs size for RPI4
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: increase the boot partition size for CM4 to support secure boot
+      hash: 5ec24a2f313afa562533375a73217c5d70cef00e
+      body: |
+        When performing a hostOS update we perform atomic writes of individual
+        files, that is, first we copy a new file, and then we rename.
+
+        The rename operation is atomic on some filesystems like ext4, but on
+        vfat it has not been atomic until Linux kernel v6.0.
+
+        Hence, balenaOS uses a `fatrw` library that keeps a checksummed copy of
+        the file until the rename completes and can be verified. Unfortunately,
+        for hostOS updates `fatrw` will fallback to a non-atomic rename if there
+        is not enough space to keep a checksummed copy of the file. This will
+        stop being a problem once a >6.0 kernel is used.
+
+        Now, a secure boot enabled CM4/RPI4 required a single boot.img that
+        contains all the essential boot firmware. This contains the balena
+        bootloader and its initramfs that needs packages to mount encrypted
+        file systems. Basically, the size of the balena booloader increases to
+        around 50M, and the size of boot.img to around 60M, so we need at least
+        double that in order to perform atomic updates of this file.
+      footer:
+        Changelog-entry: increase the boot partition size for CM4 to support secure boot
+        changelog-entry: increase the boot partition size for CM4 to support secure boot
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: use distribution's kernel command line variables
+      hash: dee17b3c986972b4a958c92932027811844953eb
+      body: |
+        Inherit the use of OS_KERNEL_CMDLINE and OS_KERNEL_SECUREBOOT_CMDLINE
+        from balenaOS distro settings.
+
+        Also, use early console settings for osdev images.
+      footer:
+        Changelog-entry: use distribution's kernel command line variables
+        changelog-entry: use distribution's kernel command line variables
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: customize hostOS update script for secure boot
+      hash: 16426e77ff8628eb4ada210170c5a5f73f2c4ff0
+      body: >
+        Duplicate 1-bootfiles into 2-rpifiles so that the bootfiles are
+
+        installed in two passes, one for the non-encrypted boot partition and
+
+        a second one for the encrypted boot partition.
+
+
+        The 1-bootfiles will differentiate based on the script name whether
+
+        to target the encrypted or non-encrypted partittions for file
+        installation.
+      footer:
+        Changelog-entry: customize hostOS update script for secure boot
+        changelog-entry: customize hostOS update script for secure boot
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: add mount service for the unencrypted boot partition
+      hash: 0fb5f65a9173cf7e5bc5934353c8aeddf09c046c
+      body: |
+        Add a mount service for the unencrypted boot partition.
+      footer:
+        Changelog-entry: add mount service for the unencrypted boot partition
+        changelog-entry: add mount service for the unencrypted boot partition
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: specialize cryptsetup module for RPI
+      hash: 3017f7534688da0b422cd54a7675620e6c25077e
+      body: ""
+      footer:
+        Changelog-entry: specialize cryptsetup module for RPI
+        changelog-entry: specialize cryptsetup module for RPI
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: provide secure boot and disk encryption abstraction
+      hash: 02f5d0bb7c109019171d9c590016e049d9102b25
+      body: |
+        Include the files with the secureboot and disk encryption interface.
+      footer:
+        Changelog-entry: provide secure boot and disk encryption abstraction
+        changelog-entry: provide secure boot and disk encryption abstraction
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: Support flasher image for secure boot use cases.
+      hash: 46fc4e40c4f4203a80a8ff02eb4cbefca791ec7c
+      body: |
+        Making balena-image-flasher buildable for secure boot use cases.
+
+        Also, place EEPROM binaries in the boot partition so they can be used in
+        the provisioning process.
+      footer:
+        Changelog-entry: Support flasher image for secure boot use cases.
+        changelog-entry: Support flasher image for secure boot use cases.
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: add os-helpers-sb
+      hash: c2a019dfd165028b69290b1d94ded39628998cb0
+      body: |
+        This helper file is used to customize HUP and share variables with the
+        flasher script.
+      footer:
+        Changelog-entry: add os-helpers-sb
+        changelog-entry: add os-helpers-sb
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: add public interface to OTP
+      hash: c9d461b7cce7afb792ecd5bb9824932343df9580
+      body: >
+        Adds an os-helper-otp file that contains the shared interface to the OTP.
+      footer:
+        Changelog-entry: add public interface to OTP
+        changelog-entry: add public interface to OTP
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: Deploy RPI public key
+      hash: a0bbeb6cb6ee86006d561d03dd6b0f2e182f32a8
+      body: |
+        This will be used in provisioning and copied to the SPI EEPROM.
+      footer:
+        Changelog-entry: Deploy RPI public key
+        changelog-entry: Deploy RPI public key
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: add secure boot enabled Raspberrypicm4 ioboard support
+      hash: 52deecaf6b21b830bd81380c385c4361bb4a2721
+      body: ""
+      footer:
+        Changelog-entry: add secure boot enabled Raspberrypicm4 ioboard support
+        changelog-entry: add secure boot enabled Raspberrypicm4 ioboard support
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 5.3.5+rev1
+  title: ""
+  date: 2024-05-20T08:27:47.010Z
+- commits:
     - subject: Update layers/meta-balena to 760b2d6a41eee84c2db144fa6b5f4d40b0c9326a
       hash: 8e64139a779f255055dd8b9ede6e74057fa73308
       body: Update layers/meta-balena

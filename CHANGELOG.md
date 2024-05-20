@@ -1,6 +1,25 @@
 Change log
 -----------
 
+# v5.3.5+rev1
+## (2024-05-20)
+
+* add secure boot and disk encryption documentation [Alex Gonzalez]
+* add usbboot native dependency [Alex Gonzalez]
+* add usbboot native recipe [Alex Gonzalez]
+* adjust initramfs size for RPI4 [Alex Gonzalez]
+* increase the boot partition size for CM4 to support secure boot [Alex Gonzalez]
+* use distribution's kernel command line variables [Alex Gonzalez]
+* customize hostOS update script for secure boot [Alex Gonzalez]
+* add mount service for the unencrypted boot partition [Alex Gonzalez]
+* specialize cryptsetup module for RPI [Alex Gonzalez]
+* provide secure boot and disk encryption abstraction [Alex Gonzalez]
+* Support flasher image for secure boot use cases. [Alex Gonzalez]
+* add os-helpers-sb [Alex Gonzalez]
+* add public interface to OTP [Alex Gonzalez]
+* Deploy RPI public key [Alex Gonzalez]
+* add secure boot enabled Raspberrypicm4 ioboard support [Alex Gonzalez]
+
 # v5.3.5
 ## (2024-05-17)
 
