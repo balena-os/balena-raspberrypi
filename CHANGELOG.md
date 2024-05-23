@@ -1,6 +1,26 @@
 Change log
 -----------
 
+# v5.3.7
+## (2024-05-23)
+
+
+<details>
+<summary> Update layers/meta-balena to 98a8dc813fb1df71c510732e14fa31446ef883e6 [Self-hosted Renovate Bot] </summary>
+
+> ## meta-balena-5.3.7
+> ### (2024-05-22)
+> 
+> * tests: os: modem: fix curl command [rcooke-warwick]
+> 
+> ## meta-balena-5.3.6
+> ### (2024-05-20)
+> 
+> * peak: Update to version 8.17.0 [Florin Sarbu]
+> 
+
+</details>
+
 # v5.3.5+rev1
 ## (2024-05-20)
 

@@ -1,4 +1,50 @@
 - commits:
+    - subject: Update layers/meta-balena to 98a8dc813fb1df71c510732e14fa31446ef883e6
+      hash: 4178e106a81ae1e8041214c923644140bbbe23dc
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 98a8dc813fb1df71c510732e14fa31446ef883e6
+        changelog-entry: Update layers/meta-balena to 98a8dc813fb1df71c510732e14fa31446ef883e6
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "tests: os: modem: fix curl command"
+              hash: 6a62c9fea1611658504e3ccdff29bd8ae7467b3d
+              body: >
+                The modem test was broken when changing from ping to curl as
+                part of 071c018. Here it is fixed
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-5.3.7
+          title: ""
+          date: 2024-05-22T07:06:53.156Z
+        - commits:
+            - subject: "peak: Update to version 8.17.0"
+              hash: 2ab3cb2eb859d0a8658fda0739e6d287adc0bc6d
+              body: >
+                This is needed to have it compiled against kernel version
+                6.6.23,
+
+                which we will include in balena-generic.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-5.3.6
+          title: ""
+          date: 2024-05-20T08:35:07.780Z
+  version: 5.3.7
+  title: ""
+  date: 2024-05-23T09:29:05.442Z
+- commits:
     - subject: add secure boot and disk encryption documentation
       hash: 82ea45716ca20581ca5fceb6c2e2299e9aa581ce
       body: ""
