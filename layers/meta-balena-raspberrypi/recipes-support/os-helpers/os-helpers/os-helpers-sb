@@ -37,15 +37,7 @@ BALENA_NONENCRYPTED_BOOT_PARTITION_FILES="\
 is_secured() {
 	# Check the private key has been programmed
 	if [ -n "$(otp_read_key | sed s/0//g)" ]; then
-		# Check that the RSA digest has been programmed
-		# Skip on balena bootloader that has no VHCI access
-		if grep -q "balena_stage2" < /proc/cmdline; then
 			return 0
-		else
-			if otp_has_rsa_digest; then
-				return 0
-			fi
-		fi
 	fi
 	return 1
 }
