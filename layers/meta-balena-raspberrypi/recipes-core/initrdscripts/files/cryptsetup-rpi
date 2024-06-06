@@ -16,8 +16,27 @@ wait4file "/dev/disk/by-state" "50"
 BALENA_NONENC_BOOT_DEV=""
 
 cryptsetup_enabled() {
+    BALENA_NONENC_BOOT_DEV=$(get_state_path_from_label @@BALENA_NONENC_BOOT_LABEL@@)
+    # Only run if the boot partition is split
+    if [ ! -e "$BALENA_NONENC_BOOT_DEV" ]; then
+        return 1
+    fi
+
     # Flasher should not try to unlock the partitions
     if [ "$bootparam_flasher" = "true" ]; then
+        # Remove the encrypted key to guarantee flasher cannot mount pre-existing partitions
+        _tmpdir=$(mktemp -d)
+        if mount "$BALENA_NONENC_BOOT_DEV" "$_tmpdir"; then
+            if [ -f "${_tmpdir}/balena-luks.enc" ]; then
+                if ! rm "${_tmpdir}/balena-luks.enc"; then
+                    fail "Failure to remove pre-installed LUKS key - aborting boot"
+                fi
+                sync
+                info "Removed pre-installed LUKS key."
+            fi
+        else
+            fail "Failure to mount $BALENA_NONENC_BOOT_DEV - aborting boot"
+        fi
         return 1
     fi
 
@@ -26,11 +45,6 @@ cryptsetup_enabled() {
       fail "Device not locked - boot aborted"
     fi
 
-    BALENA_NONENC_BOOT_DEV=$(get_state_path_from_label @@BALENA_NONENC_BOOT_LABEL@@)
-    # Only run if the boot partition is split
-    if [ ! -e "$BALENA_NONENC_BOOT_DEV" ]; then
-        return 1
-    fi
 
     # Check whether there are any LUKS partitions
     if ! lsblk -nlo fstype | grep -q crypto_LUKS; then
