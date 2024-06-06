@@ -4,7 +4,7 @@ HOMEPAGE = "https://github.com/raspberrypi/usbboot"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=e3fc50a88d0a364313df4b21ef20c29e"
 
-SRCREV = "dce11e8d491051430d4ece572fea03448586a708"
+SRCREV = "dce7f60c78e16794c8a03ba1f0089fec1d23a873"
 SRC_URI = "git://github.com/raspberrypi/usbboot.git;protocol=https;branch=master"
 
 inherit sign-rsa pkgconfig deploy native
