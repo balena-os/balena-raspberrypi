@@ -17,9 +17,9 @@ on:
       - "master"
 
 jobs:
-  dummy:
-    name: Dummy Job
-
+  yocto:
+    name: Yocto
+    uses: balena-os/balena-yocto-scripts/.github/workflows/yocto-build-deploy.yml@b5b12bc2f8e08f90634d766afe30623c9899f323
     # prevent duplicate workflow executions for pull_request and pull_request_target
     if: |
       (
@@ -29,9 +29,8 @@ jobs:
         github.event.pull_request.head.repo.full_name != github.repository &&
         github.event_name == 'pull_request_target'
       )
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Dummt step
-      run: echo "This is a dummy step!"
+    secrets: inherit
+    with:
+      machine: raspberrypi3
+      # Needed for testing - deafults to production
+      environment: balena-staging.com
