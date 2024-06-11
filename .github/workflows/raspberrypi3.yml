@@ -1,0 +1,37 @@
+name: Raspberry Pi 3
+
+on:
+  # With these triggers the Yocto jobs will run
+  # in parallel with the Flowzone jobs, which is fine for now
+  # and allows us to better control what we want to test and when.
+  # It is expected that Flowzone could fail, but yocto jobs will run.
+  pull_request:
+    types: [opened, synchronize, closed]
+    branches:
+      - "main"
+      - "master"
+  pull_request_target:
+    types: [opened, synchronize, closed]
+    branches:
+      - "main"
+      - "master"
+
+jobs:
+  dummy:
+    name: Dummy Job
+
+    # prevent duplicate workflow executions for pull_request and pull_request_target
+    if: |
+      (
+        github.event.pull_request.head.repo.full_name == github.repository &&
+        github.event_name == 'pull_request'
+      ) || (
+        github.event.pull_request.head.repo.full_name != github.repository &&
+        github.event_name == 'pull_request_target'
+      )
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Dummt step
+      run: echo "This is a dummy step!"
