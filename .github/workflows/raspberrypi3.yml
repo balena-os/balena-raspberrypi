@@ -1,25 +1,26 @@
 name: Raspberry Pi 3
 
 on:
-  # With these triggers the Yocto jobs will run
-  # in parallel with the Flowzone jobs, which is fine for now
-  # and allows us to better control what we want to test and when.
-  # It is expected that Flowzone could fail, but yocto jobs will run.
   pull_request:
-    types: [opened, synchronize, closed]
     branches:
       - "main"
       - "master"
   pull_request_target:
-    types: [opened, synchronize, closed]
     branches:
       - "main"
       - "master"
 
-jobs:
-  dummy:
-    name: Dummy Job
+  push:
+    tags:
+      - v[0-9]+.[0-9]+.[0-9]+\+?r?e?v?*
+      - v20[0-9][0-9].[0-1]?[1470].[0-9]+
 
+  workflow_dispatch:
+
+jobs:
+  yocto:
+    name: Yocto
+    uses: balena-os/balena-yocto-scripts/.github/workflows/yocto-build-deploy.yml@2bb54e7c3c715176446a895ed765346c52d480b2
     # prevent duplicate workflow executions for pull_request and pull_request_target
     if: |
       (
@@ -29,9 +30,8 @@ jobs:
         github.event.pull_request.head.repo.full_name != github.repository &&
         github.event_name == 'pull_request_target'
       )
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Dummt step
-      run: echo "This is a dummy step!"
+    secrets: inherit
+    with:
+      machine: raspberrypi3
+      test-environment: bm.balena-dev.com
+      environment: balena-staging.com
