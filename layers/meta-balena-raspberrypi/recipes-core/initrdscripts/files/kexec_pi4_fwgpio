@@ -1,0 +1,68 @@
+#!/bin/sh
+
+# shellcheck disable=SC1091
+. /usr/libexec/os-helpers-logging
+
+kexec_pi4_fwgpio_enabled() {
+    if [ "$bootparam_balena_stage2" = "true" ]; then
+        return 0
+    fi
+
+    if [ -n "$bootparam_balena_pi4_fwgpio" ]; then
+        return 0
+    fi
+
+    return 1
+}
+
+kexec_pi4_fwgpio_run() {
+    # Find the wifi/bt device labelled "mmcnr" in the device tree
+    WIFI_DT_NODE="mmcnr"
+    WIFI_SYSFS_PATH="$(find /sys/bus/platform/devices -name "*.${WIFI_DT_NODE}")"
+
+    # Exactly one device should match, but let's be defensive
+    if [ "$(echo "${WIFI_SYSFS_PATH}" | wc -l)" -gt 1 ]; then
+        warn "Multiple '${WIFI_DT_NODE}' devices found, will use the first one"
+        WIFI_SYSFS_PATH="$(echo "${WIFI_SYSFS_PATH}" | head -n 1)"
+    fi
+
+    # readlink here, because the driver unbinds as we manipulate the GPIOs
+    WIFI_DRIVER_DIR="$(readlink -f "${WIFI_SYSFS_PATH}/driver")"
+    WIFI_DEV="$(basename "${WIFI_SYSFS_PATH}")"
+
+    GPIO_SYSFS_DIR="/sys/class/gpio"
+
+    FW_GPIO_BASE="504"
+    BT_ON="0"
+    WL_ON="1"
+
+    NEED_RESET="0"
+    CURRENT_STATE="0"
+    for PIN in "${BT_ON}" "${WL_ON}"; do
+        GPIO=$["${FW_GPIO_BASE}" + "${PIN}"]
+        echo "${GPIO}" > "${GPIO_SYSFS_DIR}/export"
+        PIN_VALUE="$(cat "${GPIO_SYSFS_DIR}/gpio${GPIO}/value")"
+
+        if [ "$bootparam_balena_stage2" = "true" ]; then
+            CURRENT_STATE=$["${CURRENT_STATE}" | ("${PIN_VALUE}" << "${PIN}")]
+        elif [ -n "$bootparam_balena_pi4_fwgpio" ]; then
+            NEW_VALUE=$[("$bootparam_balena_pi4_fwgpio" >> "${PIN}") & 1]
+            echo "${NEW_VALUE}" > "${GPIO_SYSFS_DIR}/gpio${GPIO}/value"
+
+            if [ "${PIN_VALUE}" != "${NEW_VALUE}" ]; then
+                NEED_RESET="1"
+            fi
+        fi
+
+        echo "${GPIO}" > "${GPIO_SYSFS_DIR}/unexport"
+    done
+
+    if [ "${NEED_RESET}" = "1" ]; then
+        echo -n "${WIFI_DEV}" > "${WIFI_DRIVER_DIR}/unbind"
+        echo -n "${WIFI_DEV}" > "${WIFI_DRIVER_DIR}/bind"
+    fi
+
+    if [ "$bootparam_balena_stage2" = "true" ]; then
+        export KEXEC_EXTRA_ARGS="${KEXEC_EXTRA_ARGS} balena_pi4_fwgpio=${CURRENT_STATE}"
+    fi
+}
