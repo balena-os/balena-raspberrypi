@@ -19,7 +19,7 @@ on:
 jobs:
   yocto:
     name: Yocto
-    uses: balena-os/balena-yocto-scripts/.github/workflows/yocto-build-deploy.yml@b5b12bc2f8e08f90634d766afe30623c9899f323
+    uses: balena-os/balena-yocto-scripts/.github/workflows/yocto-build-deploy.yml@2bb54e7c3c715176446a895ed765346c52d480b2
     # prevent duplicate workflow executions for pull_request and pull_request_target
     if: |
       (
