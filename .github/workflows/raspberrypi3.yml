@@ -21,7 +21,8 @@ jobs:
   yocto:
     name: Yocto
     uses: balena-os/balena-yocto-scripts/.github/workflows/yocto-build-deploy.yml@2bb54e7c3c715176446a895ed765346c52d480b2
-    # prevent duplicate workflow executions for pull_request and pull_request_target
+    # prevent duplicate workflow executions for pull_request and pull_request_target.
+    # run also for pushes, to trigger the build when a tag is pushed.
     if: |
       (
         github.event.pull_request.head.repo.full_name == github.repository &&
