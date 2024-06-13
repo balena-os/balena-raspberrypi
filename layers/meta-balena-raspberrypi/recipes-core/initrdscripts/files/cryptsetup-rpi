@@ -58,6 +58,12 @@ cryptsetup_run() {
     TMP_MOUNT_DIR=$(mktemp -d)
     mount "$BALENA_NONENC_BOOT_DEV" "$TMP_MOUNT_DIR"
 
+    LUKS_COUNT=$(lsblk -nlo fstype | grep -v crypto_LUKS)
+    NONLUKS_COUNT=$(lsblk -nlo fstype | grep -c -v crypto_LUKS)
+    if [ "${LUKS_COUNT}" -ne "4" ] || [ "${NONLUKS_COUNT}" -ne 1 ]; then
+        fail "Unexpected partition topology"
+    fi
+
     PASSPHRASE_FILE=$(mktemp -u)
     if ! gpg --decrypt --batch --passphrase "$(otp_read_key)" -o "$PASSPHRASE_FILE" "${TMP_MOUNT_DIR}/balena-luks.enc"; then
         umount "$TMP_MOUNT_DIR"
@@ -72,7 +78,9 @@ cryptsetup_run() {
     # and wait for them in a separate loop later
     LUKS_UNLOCKED=""
     for LUKS_UUID in $(lsblk -nlo uuid,fstype "/dev/${BOOT_DEVICE}" | grep crypto_LUKS | cut -d " " -f 1); do
-        cryptsetup luksOpen --key-file $PASSPHRASE_FILE UUID="${LUKS_UUID}" luks-"${LUKS_UUID}"
+        if ! cryptsetup luksOpen --key-file $PASSPHRASE_FILE UUID="${LUKS_UUID}" luks-"${LUKS_UUID}"; then
+            fail "Failure to open LUKS partition with UUID ${LUKS_UUID}"
+        fi
         LUKS_UNLOCKED="${LUKS_UNLOCKED} luks-${LUKS_UUID}"
     done
 
