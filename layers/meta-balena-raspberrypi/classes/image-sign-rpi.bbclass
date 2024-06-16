@@ -124,4 +124,4 @@ do_balena_signed_bootgen_and_deploy[vardeps] += " \
     SIGN_RSA_KEY_ID \
     "
 
-addtask balena_signed_bootgen_and_deploy after do_resin_boot_dirgen_and_deploy  before do_image_complete
+addtask balena_signed_bootgen_and_deploy after do_resin_boot_dirgen_and_deploy  before do_image_balenaos_img
