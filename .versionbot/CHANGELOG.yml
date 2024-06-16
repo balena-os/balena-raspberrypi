@@ -1,4 +1,29 @@
 - commits:
+    - subject: Fix race condition between signing and generating boot partition
+      hash: 6a5a8eca98bbead52004f54811b1d2a91f22d9a4
+      body: |
+        At this moment do_balena_signed_bootgen_and_deploy
+        and do_image_balenaos_img tasks run in parallel, which is causing
+        problems as do_image_balenaos_img needs to use the output
+        of do_balena_signed_bootgen_and_deploy to generate the contents
+        of the boot partition. Since the call to the signing server takes
+        several seconds, sometimes `boot.sig` or `boot.img` or both
+        are not included in the final image, depending on when
+        do_image_balenaos_img is actually executed.
+
+        This patch reorders the tasks so that do_image_balenaos_img is only
+        started after do_balena_signed_bootgen_and_deploy.
+      footer:
+        Changelog-entry: Fix race condition between signing and generating boot partition
+        changelog-entry: Fix race condition between signing and generating boot partition
+        Signed-off-by: Michal Toman <michalt@balena.io>
+        signed-off-by: Michal Toman <michalt@balena.io>
+      author: Michal Toman
+      nested: []
+  version: 5.3.7+rev1
+  title: ""
+  date: 2024-06-16T22:02:44.198Z
+- commits:
     - subject: Update layers/meta-balena to 98a8dc813fb1df71c510732e14fa31446ef883e6
       hash: 4178e106a81ae1e8041214c923644140bbbe23dc
       body: Update layers/meta-balena

@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v5.3.7+rev1
+## (2024-06-16)
+
+* Fix race condition between signing and generating boot partition [Michal Toman]
+
 # v5.3.7
 ## (2024-05-23)
 
