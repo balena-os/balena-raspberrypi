@@ -3,7 +3,7 @@ deviceTypesCommon = require '@resin.io/device-types/common'
 
 UNPACK_IMAGE = 'Unzip the image downloaded from the dashboard.'
 CM4IOB_WRITE_SD="If using a CM4 Lite: write the OS file you downloaded to your SD card. We recommend using <a href=\"http://www.etcher.io/\">Etcher</a>. After flashing, insert the freshly burnt SD card into the IO Board"
-CM4IOB_WRITE_EMMC="If using a CM4 eMMC: fit jumper to disable eMMC boot on J2 and connect the IO Board's microUSB port to your PC. Power the board and use <a href=\"https://github.com/raspberrypi/usbboot\">usbboot</a> to put the eMMC in mass storage mode. Write the OS file you downloaded to mass storage device."
+CM4IOB_WRITE_EMMC="If using a CM4 eMMC: fit jumper to disable eMMC boot on J2 and connect the IO Board's microUSB port to your PC. Power the board. If you're not using <a href=\"https://balena.io/etcher\">balenaEtcher</a>, you'll need to use <a href=\"https://github.com/raspberrypi/usbboot\">usbboot</a> to put the eMMC in mass storage mode (. Write the OS file you downloaded to mass storage device."
 CM4IOB_WRITE_BOOT="Disconnect the power source and eMMC boot jumper if using the CM4 eMMC. Connect the CM4 IO Board to the internet, then power it up."
 
 module.exports =
