@@ -97,6 +97,7 @@ do_compile[depends] += " \
     python3-pycryptodomex-native:do_populate_sysroot \
     balena-keys:do_deploy \
 "
+do_compile[vardeps] = "SIGN_API"
 
 do_install() {
   install -d ${D}${libexecdir}
