@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v5.3.7+rev2
+## (2024-06-19)
+
+* Fix missing wifi and BT when balena bootloader is used [Michal Toman]
+
 # v5.3.7+rev1
 ## (2024-06-16)
 

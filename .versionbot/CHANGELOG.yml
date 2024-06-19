@@ -1,4 +1,28 @@
 - commits:
+    - subject: Fix missing wifi and BT when balena bootloader is used
+      hash: 7e4cfb998d66ccfce97d99ed355b065026918296
+      body: |
+        The Pi4 devices (Pi4, CM4, Pi400) use an internal 8-pin GPIO header
+        to control some firmware features including wifi and bluetooth.
+        Initially these are set up by the broadcom bootloader, but after kexec
+        (which the balena bootloader uses), they are all reset to zeroes.
+        This means wifi and bluetooth "disappear" after kexec.
+
+        This patch adds an initrd scripts that reads the GPIO pin values before
+        kexec and appends them as an extra kernel argument. After kexec,
+        it reads the kernel argument and restores the pin values to what they
+        originally were.
+      footer:
+        Changelog-entry: Fix missing wifi and BT when balena bootloader is used
+        changelog-entry: Fix missing wifi and BT when balena bootloader is used
+        Signed-off-by: Michal Toman <michalt@balena.io>
+        signed-off-by: Michal Toman <michalt@balena.io>
+      author: Michal Toman
+      nested: []
+  version: 5.3.7+rev2
+  title: ""
+  date: 2024-06-19T14:17:31.854Z
+- commits:
     - subject: Fix race condition between signing and generating boot partition
       hash: 6a5a8eca98bbead52004f54811b1d2a91f22d9a4
       body: |
