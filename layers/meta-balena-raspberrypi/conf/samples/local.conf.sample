@@ -15,6 +15,7 @@
 #MACHINE ?= "raspberrypi3-unipi-neuron"
 #MACHINE ?= "raspberrypi4-superhub"
 #MACHINE ?= "raspberrypi4-unipi-neuron"
+#MACHINE ?= "raspberrypi5"
 
 # More info meta-resin/README.md
 #TARGET_REPOSITORY ?= ""
@@ -35,11 +36,13 @@ KERNEL_IMAGETYPE="zImage"
 KERNEL_BOOTCMD="bootz"
 
 # When u-boot is enabled we need to use the "Image" format and the "booti"
-# command to load the kernel for rpi3 64 bits
+# command to load the kernel for 64 bits machines
 KERNEL_IMAGETYPE:raspberrypi3-64="Image.gz"
 KERNEL_BOOTCMD:raspberrypi3-64 = "booti"
 KERNEL_IMAGETYPE:raspberrypi4-64="Image.gz"
 KERNEL_BOOTCMD:raspberrypi4-64 = "booti"
+KERNEL_IMAGETYPE:raspberrypi5="Image.gz"
+KERNEL_BOOTCMD:raspberrypi5 = "booti"
 KERNEL_IMAGETYPE:raspberrypi0-2w-64 = "Image.gz"
 KERNEL_BOOTCMD:raspberrypi0-2w-64 = "booti"
 
