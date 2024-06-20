@@ -11,6 +11,10 @@ SDIMG_KERNELIMAGE:raspberrypi2 ?= "kernel7.img"
 SDIMG_KERNELIMAGE:raspberrypi3-64 ?= "kernel8.img"
 SDIMG_KERNELIMAGE:raspberrypi0-2w-64 ?= "kernel8.img"
 
+# Double the root partition size from 320MiB to 640MiB and boot partition size from 40MiB to 80MiB for the Pi5
+IMAGE_ROOTFS_SIZE:raspberrypi5="655360"
+BALENA_BOOT_SIZE:raspberrypi5="81920"
+
 # Increase boot partition size
 BALENA_BOOT_SIZE:raspberrypicm4-ioboard-sb = "131072"
 
@@ -57,6 +61,16 @@ BALENA_ESSENTIAL_BOOT_FILES:append:raspberrypi4-64 = " \
     "
 do_rootfs[vardeps] += "${@oe.utils.conditional('SIGN_API','','','BALENA_ESSENTIAL_BOOT_FILES',d)}"
 
+BALENA_BOOT_PARTITION_FILES:remove:raspberrypi5 = " \
+    u-boot.bin:/${SDIMG_KERNELIMAGE} \
+    boot.scr:/boot.scr \
+    "
+
+BALENA_BOOT_PARTITION_FILES:append:raspberrypi5 = " \
+    balena-bootloader/${KERNEL_IMAGETYPE}-initramfs-${MACHINE}.bin:/${SDIMG_KERNELIMAGE} \
+    balena-bootloader/bootenv:/bootenv \
+    "
+
 BALENA_BOOT_PARTITION_FILES:append:revpi-core-3 = " revpi-core-dt-blob-overlay.dtb:/dt-blob.bin"
 
 BALENA_BOOT_PARTITION_FILES:append:revpi-connect = " revpi-connect-dt-blob-overlay.dtb:/dt-blob.bin"
@@ -92,9 +106,13 @@ do_resin_boot_dirgen_and_deploy[prefuncs] += "overlay_dtbs_handler"
 IMAGE_INSTALL:append:rpi = " u-boot"
 IMAGE_INSTALL:remove:raspberrypicm4-ioboard-sb = " u-boot"
 IMAGE_INSTALL:append:raspberrypicm4-ioboard-sb = " grub-editenv"
+IMAGE_INSTALL:remove:raspberrypi5 = " u-boot"
+IMAGE_INSTALL:append:raspberrypi5 = " grub-editenv"
 
 do_rootfs[depends] += "${@oe.utils.conditional('MACHINE','raspberrypicm4-ioboard-sb',' virtual/balena-bootloader:do_deploy','',d)}"
 do_image_balenaos_img[depends] += "${@oe.utils.conditional('MACHINE','raspberrypicm4-ioboard-sb',' virtual/balena-bootloader:do_deploy','',d)}"
+do_rootfs[depends] += "${@oe.utils.conditional('MACHINE','raspberrypi5',' virtual/balena-bootloader:do_deploy','',d)}"
+do_image_balenaos_img[depends] += "${@oe.utils.conditional('MACHINE','raspberrypi5',' virtual/balena-bootloader:do_deploy','',d)}"
 
 do_resin_boot_dirgen_and_deploy[depends] += "virtual/kernel:do_install"
 
