@@ -20,7 +20,9 @@ on:
 jobs:
   yocto:
     name: Yocto
-    uses: balena-os/balena-yocto-scripts/.github/workflows/yocto-build-deploy.yml@bdd131fd36a3edcc9a1bb2af493794ced60379a6
+    # Pin the workflow to a specific commit to prevent unexpected changes while
+    # I am learning.
+    uses: balena-os/balena-yocto-scripts/.github/workflows/yocto-build-deploy.yml@a880342e40fe05d00a0f1cf2582a0699921152e0
     # Prevent duplicate workflow executions for pull_request (PR) and pull_request_target (PRT) events.
     # Both PR and PRT will be triggered for the same pull request, whether it is internal or from a fork.
     # This condition will prevent the workflow from running twice for the same pull request while
@@ -38,21 +40,8 @@ jobs:
       machine: raspberrypi3
       environment: balena-staging.com
       test_matrix: >
-        [
-          {
-            "test_suite": "os",
-            "environment": "bm.balena-dev.com",
-            "worker_type": "testbot"
-          },
-          {
-            "test_suite": "cloud",
-            "environment": "bm.balena-dev.com",
-            "worker_type": "testbot",
-            "test_org": "testbot"
-          },
-          {
-            "test_suite": "hup",
-            "environment": "bm.balena-dev.com",
-            "worker_type": "testbot"
-          },
-        ]
+        {
+          "test_suite": ["os","cloud","hup"],
+          "environment": ["bm.balena-dev.com"],
+          "worker_type": ["testbot"],
+        }
