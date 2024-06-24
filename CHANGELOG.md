@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v5.3.7+rev3
+## (2024-06-24)
+
+* update usbboot to match EEPROM firmware version [Alex Gonzalez]
+
 # v5.3.7+rev2
 ## (2024-06-19)
 

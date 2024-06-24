@@ -1,4 +1,22 @@
 - commits:
+    - subject: update usbboot to match EEPROM firmware version
+      hash: 3dc08d2ca7183b4ccd1a8b625511dd4869236759
+      body: |
+        The rpi-eeprom recipe is using 3b393d31ac0f1864420d47028b5703a70ad8da8f.
+
+        This commit updates the usbboot recipe to build a version that includes
+        the above EEPROM firmware.
+      footer:
+        Changelog-entry: update usbboot to match EEPROM firmware version
+        changelog-entry: update usbboot to match EEPROM firmware version
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 5.3.7+rev3
+  title: ""
+  date: 2024-06-24T15:05:45.482Z
+- commits:
     - subject: Fix missing wifi and BT when balena bootloader is used
       hash: 7e4cfb998d66ccfce97d99ed355b065026918296
       body: |
