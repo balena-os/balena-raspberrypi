@@ -1,4 +1,758 @@
 - commits:
+    - subject: Update layers/meta-balena to cacc9bcb2b67a9f37654ca8500c96c833f741762
+      hash: 4df94af04bcb7e418fcc29323ed179b4b581d62e
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to cacc9bcb2b67a9f37654ca8500c96c833f741762
+        changelog-entry: Update layers/meta-balena to cacc9bcb2b67a9f37654ca8500c96c833f741762
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "initrdscripts: Allow passing extra kernel arguments to kexec"
+              hash: 02d42d3cc887fb761da348f86bf5e13f1dacaeb2
+              body: >
+                At this moment the kexec initrd script just takes the original
+                kernel
+
+                command line, replaces root with UUID and removes bootloader
+                args.
+
+
+                We have found at least one use-case (on the Pi4 and firmware
+                GPIOs),
+
+                where a different initrd script needs to pass extra arguments
+
+                to the kexec'd kernel. With this patch it will append the
+                contents
+
+                of the KEXEC_EXTRA_ARGS variable to the kernel command line.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-5.3.21
+          title: ""
+          date: 2024-06-13T10:02:03.824Z
+        - commits:
+            - subject: "hostapp-update-hooks: Re-add check for UEFI to signed-update hook"
+              hash: 972ef5f6090fc48a94a313bf01d8d59c6a3570d9
+              body: >
+                In 328222014146f0116e0208443f3e255d0e85ef15 we have removed
+
+                the signed-update hook from systems that do not have EFI
+
+                in MACHINE_FEATURES. This on its own makes sense, however
+                together
+
+                with it we have also removed the runtime check for whether the
+                running
+
+                system is actually booted in UEFI mode.
+
+
+                This effectively means it is no longer possible to update the
+                host OS
+
+                on a device type able to boot in both UEFI and BIOS modes
+
+                (intel-nuc and genericx86-64-ext) when booted in BIOS mode,
+
+                as the signed-update hook is executed unconditionally and fails
+
+                if the device is not running UEFI.
+
+
+                This patch re-adds the runtime check to only execute the hook
+
+                if the system is actually booted in UEFI mode.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-5.3.20
+          title: ""
+          date: 2024-06-11T12:55:22.727Z
+        - commits:
+            - subject: "kernel-balena: do not use cache for signed kernel modules"
+              hash: 389054e84c0b1fd382d737c39fb2bb02c2b3e9b2
+              body: >
+                On parallel builds that share a state cache there are mismatches
+                between
+
+                a signed kernel and modules. Avoid using the cache when building
+                signed
+
+                modules to avoid this mismatch.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-5.3.19
+          title: ""
+          date: 2024-06-10T16:38:00.806Z
+        - commits:
+            - subject: Update balena-supervisor to v16.3.15
+              hash: c2d302e736ee35a65ccb57094aac780ddecd48cd
+              body: |
+                Update balena-supervisor from 16.3.14 to 16.3.15
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update balena-io/deploy-to-balena-action action to v2.0.71
+                      hash: 552f77cef5aa4ff0107c5bd558755e4ed4c81ab2
+                      body: >
+                        Update balena-io/deploy-to-balena-action from 2.0.70 to
+                        2.0.71
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.3.15
+                  title: ""
+                  date: 2024-06-10T01:57:02.800Z
+          version: meta-balena-5.3.18
+          title: ""
+          date: 2024-06-10T06:36:26.645Z
+        - commits:
+            - subject: Update balena-supervisor to v16.3.14
+              hash: 30faae36bf1a000b2aa0ca6a0d99bf374426354a
+              body: |
+                Update balena-supervisor from 16.3.11 to 16.3.14
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update got to v14.4.1
+                      hash: 11628cda16986b76f67969970fe708e24d3ab125
+                      body: |
+                        Update got from 14.3.0 to 14.4.1
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.3.14
+                  title: ""
+                  date: 2024-06-09T13:29:56.248Z
+                - commits:
+                    - subject: Split target state set/get into separate module
+                      hash: 45d1f1f964e777b5168b089858af0cec33f98c68
+                      body: >
+                        This removes the circular dependency between device
+                        state index and
+
+                        preloading and cleans up the device state module code
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Move device-state.ts into the device-state/index.ts
+                      hash: fedeb518e5315a7cb593818c2e80a5d8e459cefa
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Move device-state/target state to api-binder/poll
+                      hash: 9497eed380e63f3b5d794071879ad9e8e4369178
+                      body: >
+                        This goes in the direction of grouping modules by
+                        responsibility. The
+
+                        api-binder module is the middleware between the device
+                        and the backend,
+
+                        thus the target state polling code makes more sense
+                        there.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-16.3.13
+                  title: ""
+                  date: 2024-06-05T20:43:08.205Z
+                - commits:
+                    - subject: Update balena-io/deploy-to-balena-action action to v2.0.70
+                      hash: d7a325b80a5c79d290b7bb232dabb4a7ac2737f9
+                      body: >
+                        Update balena-io/deploy-to-balena-action from 2.0.69 to
+                        2.0.70
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.3.12
+                  title: ""
+                  date: 2024-06-03T01:55:57.227Z
+          version: meta-balena-5.3.17
+          title: ""
+          date: 2024-06-09T18:34:28.024Z
+        - commits:
+            - subject: Work around uuid file corruption in balenaEngine health check
+              hash: e3696fc97f5553f138c92947c5f080ccdef5c6e5
+              body: >
+                We have detected one more way in which the uuid file used by
+                containerd
+
+                can get corrupted. This time, the file is not empty, but doesn't
+                contain
+
+                a valid UUID either.
+
+
+                This commit thus extends the existing workaround to also handle
+                this
+
+                case.
+
+
+                See https://github.com/balena-os/balena-engine/issues/322
+              footer:
+                Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                Change-type: patch
+                change-type: patch
+              author: Leandro Motta Barros
+              nested: []
+          version: meta-balena-5.3.16
+          title: ""
+          date: 2024-06-06T22:28:17.347Z
+        - commits:
+            - subject: "os-helpers-tpm2: fix empty efivar reads"
+              hash: 3f9d048f964f922c9bfaeee4939197cb31c8eef6
+              body: >
+                When reading from efi variables in hostapp-update hooks during
+                rollback,
+
+                tcgtool will improperly read zero bytes from efivar files. This
+                results
+
+                in an improper calculation of the PCR 7 digest, and an
+                unbootable
+
+                system.
+
+
+                Read the file contents, skipping the first four bytes that are
+
+                attributes, and pipe the data directly to tcgtool to work around
+                this.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "rollback-health: bind mount EFI partition in old_rootfs"
+              hash: 8761c1d6536d86249757f37925ae40d905716cc3
+              body: >
+                Some hooks, such as 0-signed-update, will attempt to read files
+                from the
+
+                EFI system partition, such as combined policy binaries.
+
+
+                Bind mount the EFI partition into old_rootfs before running
+                hooks to
+
+                ensure this is available.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "rollback-health: mount securityfs in old_rootfs"
+              hash: e87838103af3c5ee05c60b7105353f987af47e61
+              body: >
+                When rollback-health runs, a failing healthcheck causes the
+
+                hostapp-update hooks to be run from the inactive partition, to
+                make the
+
+                inactive system bootable again.
+
+
+                The 0-signed-update hook, which updates the sealing policy for
+                secure
+
+                boot enabled systems, reads from the securityfs mounted at
+
+                /sys/kernel/security in order to parse the TPM event log.
+
+
+                If this filesystem isn't mounted, the hook will improperly
+                detect that
+
+                the TPM event log isn't available, and unneccessarily create a
+                combined
+
+                policy when a single PCR policy would suffice.
+
+
+                Mount this filesystem in old_rootfs before chrooting to fix
+                this.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "os-helpers-tpm2: compute_pcr7 w/ events post separator"
+              hash: e4f8f6f9c79f994f873bc930bfa028f2161a29d9
+              body: >
+                In commit 1c19ebb, we append digests from the TPM event log
+
+                corresponding to events that are logged before EV_SEPARATOR. For
+
+                instance, parsing the event log on a typical system for event
+                types, the
+
+                output looks like this:
+
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (SecureBoot)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (PK)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (KEK)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (db)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (dbx)
+
+                EV_SEPARATOR
+
+
+                This system requires no merging of event log digests.
+
+
+                On systems that measure EFI binaries (mostly only QEMU w/ edk2),
+                we also
+
+                get this:
+
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (SecureBoot)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (PK)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (KEK)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (db)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (dbx)
+
+                EV_SEPARATOR
+
+                EV_EFI_VARIABLE_AUTHORITY (bootx64.efi)
+
+                EV_EFI_VARIABLE_AUTHORITY (bzImage)
+
+
+                Again, this requires no merging. We compute the signature of the
+
+                relevant EFI binaries ourselves, as they're subject to change
+                during
+
+                hostapp-update.
+
+
+                However, we've also seen event logs like this:
+
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (SecureBoot)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (PK)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (KEK)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (db)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (dbx)
+
+                EV_EFI_ACTION (DMA Protection Disabled)
+
+                EV_SEPARATOR
+
+
+                This case is the one we've handled previously, by reading from
+                the event
+
+                log and appending event digests before EV_SEPARATOR. We stopped
+                at
+
+                EV_SEPARATOR because we weren't parsing event types previously,
+                and this
+
+                digest is a constant that's easily recognized. However, we've
+                since
+
+                encountered systems that have unexpected events *after*
+                EV_SEPARATOR, as
+
+                shown below.
+
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (SecureBoot)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (PK)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (KEK)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (db)
+
+                EV_EFI_VARIABLE_DRIVER_CONFIG (dbx)
+
+                EV_SEPARATOR
+
+                Unknown event type (?!)
+
+
+                In order to handle this, parse digests and event types into
+                temporary
+
+                files and iterate through them together. We only stop appending
+                digests
+
+                from the event log when the next event type is
+                EV_EFI_VARIABLE_AUTHORITY
+
+                (EFI binary signature) or we hit the end of the list. This
+                should
+
+                account for all possible variations.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-5.3.15
+          title: ""
+          date: 2024-06-05T00:15:59.506Z
+        - commits:
+            - subject: "rtl8192cu: Remove this unmaintained out-of-tree kernel driver"
+              hash: e3b7a1555542e6b1381f1a5f7131b935d1f66f22
+              body: >
+                The source code for this driver hasn't been updated in 9 years
+                so
+
+                let's remove it by also considering we were not using it.
+                Instead,
+
+                machines that need to use a driver for this WiFi chipset can
+                selectively
+
+                enable the in-tree kernel driver which has been improved in the
+                last years.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-5.3.14
+          title: ""
+          date: 2024-06-02T18:07:03.720Z
+        - commits:
+            - subject: Update balena-supervisor to v16.3.11
+              hash: 55af41dcebb294ea9ebeeb2fd759d79065dc3bf2
+              body: |
+                Update balena-supervisor from 16.3.10 to 16.3.11
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Move OS variant retrieval to config module
+                      hash: 027c2575b1147b5395c61e3d824f9dff95e7f1d0
+                      body: >
+                        This also deprecates the `getOSVariant` function of the
+                        `os-release`
+
+                        module, as the OS variant are no longer defined in
+                        `/etc/os-release`.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Do not export balenaApi on api-binder
+                      hash: 59689b27892a0bb3e6ec692c158070b6defb48a9
+                      body: >
+                        Instead, add `getBalenaApi` function to api-helper so
+                        other modules can
+
+                        access a balena API instance.
+
+
+                        Further reduces circular dependencies to 5
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Move api-keys module to src/lib
+                      hash: ac2db38742962a31af63549f0d9f257e6a1331f3
+                      body: >
+                        This removes circular dependencies between the
+                        device-api module and
+
+                        the compose module, reducing total circular dependencies
+                        to 15
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Do not re-export ContractObject on lib/contracts
+                      hash: 48f75e61b8c53c532c27eb0c3f0d878312b4f2e7
+                      body: |
+                        Further reduce circular dependencies to 10
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Move Compose(Network|Volume)Config to top level types
+                      hash: bef5e784400d13d2788748e059e36c761d956f23
+                      body: |
+                        This reduces dependencies from 80 to 47
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Move composition types to compose/types
+                      hash: 234e0de07599c1033d04c77d2df9a000d38f60dd
+                      body: >
+                        This reduces circular dependencies from 250 to 80 by
+                        ensuring that
+
+                        modules that only require types do not import the full
+                        module with all
+
+                        its dependencies.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Split compose types into interface and implementation
+                      hash: 94de4006a07baada9336721c4084a00f885a6572
+                      body: >
+                        This splits `App`, `Network`, `Service` and `Volume`
+                        which used to be
+
+                        defined as classes into an interface and a class
+                        implementation that is
+
+                        not exported. This will allow to work with just the
+                        types in some cases
+
+                        and prevent circular dependencies when importing.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-16.3.11
+                  title: ""
+                  date: 2024-05-27T20:04:25.017Z
+          version: meta-balena-5.3.13
+          title: ""
+          date: 2024-05-31T23:09:30.017Z
+        - commits:
+            - subject: "patch: Add Test Suite specific config for GHA"
+              hash: 4ecd7852f4eb0cd204e31cf3b8634c168782ce46
+              body: ""
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+              author: Vipul Gupta (@vipulgupta2048)
+              nested: []
+          version: meta-balena-5.3.12
+          title: ""
+          date: 2024-05-31T16:03:25.568Z
+        - commits:
+            - subject: Update balena-supervisor to v16.3.10
+              hash: a500fccd65e2cf7d31ed6730cc6fd12e0220b757
+              body: |
+                Update balena-supervisor from 16.3.8 to 16.3.10
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update got to v14.3.0
+                      hash: 4764bca2c4122a37f1f4c684e673ddca3812b4c9
+                      body: |
+                        Update got from 14.2.1 to 14.3.0
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.3.10
+                  title: ""
+                  date: 2024-05-27T02:41:46.106Z
+                - commits:
+                    - subject: Update balena-io/deploy-to-balena-action action to v2.0.69
+                      hash: 9cdb363e4cf274e5506247cc55cebef0c676de7e
+                      body: >
+                        Update balena-io/deploy-to-balena-action from 2.0.68 to
+                        2.0.69
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.3.9
+                  title: ""
+                  date: 2024-05-27T01:59:21.096Z
+          version: meta-balena-5.3.11
+          title: ""
+          date: 2024-05-27T06:50:02.553Z
+        - commits:
+            - subject: Update balena-supervisor to v16.3.8
+              hash: ca994c7c5d3598b0f1844e3c98bc37b756d056c6
+              body: |
+                Update balena-supervisor from 16.3.5 to 16.3.8
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update balena-io/deploy-to-balena-action action to v2.0.68
+                      hash: 8a7972c783845576741c626f7ac543671ebf868b
+                      body: >
+                        Update balena-io/deploy-to-balena-action from 2.0.67 to
+                        2.0.68
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.3.8
+                  title: ""
+                  date: 2024-05-24T14:29:17.821Z
+                - commits:
+                    - subject: Update sinon to v18
+                      hash: 6b47c3572dea75c161e3931f05f37c46828d90a2
+                      body: |
+                        Update sinon from 17.0.1 to 18.0.0
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.3.7
+                  title: ""
+                  date: 2024-05-24T13:45:20.892Z
+                - commits:
+                    - subject: Update balena-io/deploy-to-balena-action action to v2.0.67
+                      hash: 21f72b0ce9fd977517df3bf0ee5c186a17d432c9
+                      body: >
+                        Update balena-io/deploy-to-balena-action from 2.0.66 to
+                        2.0.67
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.3.6
+                  title: ""
+                  date: 2024-05-20T01:54:04.811Z
+          version: meta-balena-5.3.10
+          title: ""
+          date: 2024-05-24T22:52:04.637Z
+        - commits:
+            - subject: "NetworkManager: do not use FW rule numbers in shared dispatcher
+                script"
+              hash: ab8d61194d84045e4b74f60e4172a69dd52a3509
+              body: >
+                Manipulating the firewall rules by index introduces a race
+                condition.
+
+                Both NetworkManager and balenaEngine add the rules to the top
+
+                of the FORWARD chain instead of appending, so if we first look
+                up
+
+                a rule by number and then use the number to refer to it, we can
+                not
+
+                guarantee that the rule number has not changed (iow the rule has
+                not
+
+                been moved down) in the meantime.
+
+
+                This patch removes the use of rule numbers completely and makes
+
+                the "shared" dispatcher script refer to the rules by definition.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-5.3.9
+          title: ""
+          date: 2024-05-24T12:34:18.221Z
+        - commits:
+            - subject: "tests: safe-reboot: fetch and modify target state"
+              hash: af4d36646c2c301fceadcd10143096b187b67bd1
+              body: >
+                This is a fix targeted for the revpi-connect-4 which requires a
+                config.txt param to be present to connect to wifi. The old way
+                we did this test results in the config.txt being wiped - so now
+                we fetch and change the current state to maintain the existing
+                configuration and avoid this
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-5.3.8
+          title: ""
+          date: 2024-05-23T11:43:26.464Z
+  version: 5.3.21
+  title: ""
+  date: 2024-06-26T19:55:16.140Z
+- commits:
     - subject: update usbboot to match EEPROM firmware version
       hash: 3dc08d2ca7183b4ccd1a8b625511dd4869236759
       body: |
