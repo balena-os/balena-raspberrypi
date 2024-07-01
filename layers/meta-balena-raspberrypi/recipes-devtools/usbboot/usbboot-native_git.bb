@@ -20,7 +20,7 @@ do_install(){
   install -m 644 ${S}/msd/bootcode4.bin ${D}
   install -m 644 ${S}/msd/start.elf ${D}
   install -m 644 ${S}/msd/start4.elf ${D}
-  if [ "x${SIGN_API}" != "x" ]; then
+  if [ "x${SIGN_API}" != "x" ] && [ "${BALENA_SIGN_MSD}" = "1" ]; then
      install -d ${D}/secure-boot-msd/
      if ! do_sign_rsa "${S}/secure-boot-msd/boot.img" "${D}/secure-boot-msd/boot.sig"; then
         bbfatal "Failed to sign boot image"
