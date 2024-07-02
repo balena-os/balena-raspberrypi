@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v5.3.21+rev1
+## (2024-07-02)
+
+* Switch SRC_URI from gitlab to github for linux-kunbus_6.1.46 [Florin Sarbu]
+
 # v5.3.21
 ## (2024-06-26)
 

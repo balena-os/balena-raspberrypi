@@ -1,4 +1,23 @@
 - commits:
+    - subject: Switch SRC_URI from gitlab to github for linux-kunbus_6.1.46
+      hash: fc168c1a408d1d016e5807c02fd21bdda6465798
+      body: >
+        Builds recently started failing with the following error:
+
+
+        fatal: unable to access 'https://gitlab.com/revolutionpi/linux/': Failed
+        to connect to gitlab.com port 443: No route to host
+      footer:
+        Changelog-entry: Switch SRC_URI from gitlab to github for linux-kunbus_6.1.46
+        changelog-entry: Switch SRC_URI from gitlab to github for linux-kunbus_6.1.46
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 5.3.21+rev1
+  title: ""
+  date: 2024-07-02T06:30:29.973Z
+- commits:
     - subject: Update layers/meta-balena to cacc9bcb2b67a9f37654ca8500c96c833f741762
       hash: 4df94af04bcb7e418fcc29323ed179b4b581d62e
       body: Update layers/meta-balena
