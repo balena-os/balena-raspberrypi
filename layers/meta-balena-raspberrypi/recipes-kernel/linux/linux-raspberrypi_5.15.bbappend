@@ -1,8 +1,5 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:${THISDIR}/${MACHINE}:"
 
-LINUX_VERSION = "5.15.92"
-SRCREV_machine = "14b35093ca68bf2c81bbc90aace5007142b40b40"
-
 SRC_URI:append:fincm3 = " \
 	file://0001-overlays-fin-add-internal-pull-ups-to-i2c_soft.patch \
 	file://0004-mmc-pwrseq-Repurpose-for-Marvell-SD8777.patch \
