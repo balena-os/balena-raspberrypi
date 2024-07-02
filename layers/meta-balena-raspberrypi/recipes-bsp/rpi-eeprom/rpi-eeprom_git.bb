@@ -117,6 +117,17 @@ do_deploy () {
     if [ -f "${S}/${FIRMWARE}/critical/vl805-${VL805_FW_REV}.bin" ]; then
         cp ${S}/${FIRMWARE}/critical/vl805-${VL805_FW_REV}.bin ${DEPLOY_DIR_IMAGE}/${PN}/vl805-latest-stable.bin
     fi
+    if [ "x${SIGN_API}" != "x" ]; then
+        install -d ${DEPLOY_DIR_IMAGE}/rpi-eeprom/secure-boot-lock
+        cp -avL ${S}/${FIRMWARE}/stable/recovery.bin ${DEPLOY_DIR_IMAGE}/rpi-eeprom/secure-boot-lock/bootcode4.bin
+        echo "uart_2ndstage=1" > ${DEPLOY_DIR_IMAGE}/rpi-eeprom/secure-boot-lock/config.txt
+        echo "eeprom_write_protect=1" >> ${DEPLOY_DIR_IMAGE}/rpi-eeprom/secure-boot-lock/config.txt
+        echo "program_pubkey=1" >> ${DEPLOY_DIR_IMAGE}/rpi-eeprom/secure-boot-lock/config.txt
+        echo "revoke_devkey=1" >> ${DEPLOY_DIR_IMAGE}/rpi-eeprom/secure-boot-lock/config.txt
+        echo "program_jtag_lock=1" >> ${DEPLOY_DIR_IMAGE}/rpi-eeprom/secure-boot-lock/config.txt
+        cp -av ${WORKDIR}/pieeprom-latest-stable*bin ${DEPLOY_DIR_IMAGE}/rpi-eeprom/secure-boot-lock/pieeprom.bin
+        cp -av ${WORKDIR}/pieeprom-latest-stable*sig ${DEPLOY_DIR_IMAGE}/rpi-eeprom/secure-boot-lock/pieeprom.sig
+    fi
 }
 
 # vl805 utility is deprecated, see https://github.com/raspberrypi/rpi-eeprom/commit/fed1ca62a5752cb5a990608c8c897ce0b077600a
