@@ -1,4 +1,286 @@
 - commits:
+    - subject: Update balena-yocto-scripts to da6fe23e89509549866b16cbc6ff404980a189c0
+      hash: 3bf62f5b66958fda81a1d83908f86994eefb81b7
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to da6fe23e89509549866b16cbc6ff404980a189c0
+        changelog-entry: Update balena-yocto-scripts to da6fe23e89509549866b16cbc6ff404980a189c0
+      author: Self-hosted Renovate Bot
+      nested:
+        - commits:
+            - subject: "patch: No upload to GH artifacts when PR is closed"
+              hash: cdee530e227972e251a2c7c06f4a3e97747419ca
+              body: >
+                Uploading artifacts to GH artifact storage when PR is merged
+
+                (closed event) is wasterful. Since they are only uploaded for
+                temporary
+
+                basis so it can be used for testing. Hence, the PR to stop doing
+                that
+
+                for closed PR event
+              footer:
+                Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+              author: Vipul Gupta (@vipulgupta2048)
+              nested: []
+          version: balena-yocto-scripts-1.24.3
+          title: ""
+          date: 2024-07-02T22:05:09.072Z
+        - commits:
+            - subject: Fix quoting of $GITHUB_OUTPUT
+              hash: 5f56f3236d8ee3d764e46e419aa2431dd42d45ff
+              body: |
+                We had typos in two cases, in which we missed the opening quote.
+              footer:
+                Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                Change-type: patch
+                change-type: patch
+              author: Leandro Motta Barros
+              nested: []
+          version: balena-yocto-scripts-1.24.2
+          title: ""
+          date: 2024-07-02T00:54:39.074Z
+        - commits:
+            - subject: Simplify check for secure boot
+              hash: be189f7e2f6fb26f778f29e1f955a1cdd01bc8a4
+              body: >
+                We were previously introducing a variable that was essentially
+
+                replicating the contents of an input. This commit makes use of
+                the input
+
+                directly.
+
+
+                Incidentally, the previous code also had a small bug/typo, in
+                which we
+
+                mixed a test for string length with a test for string equality.
+              footer:
+                Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                Change-type: patch
+                change-type: patch
+              author: Leandro Motta Barros
+              nested: []
+          version: balena-yocto-scripts-1.24.1
+          title: ""
+          date: 2024-06-27T20:35:29.474Z
+        - commits:
+            - subject: Support runner selection in the test matrix
+              hash: d409cb0fbaa307a179973b60e5faff8cda6bc34b
+              body: >
+                Default to self-hosted X64 with KVM for now to align with
+                Jenkins but in the future
+
+                we should consider using GitHub hosted runners for the testbot
+                workers.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: Allow both combinatorial and include syntax for test_matrix
+              hash: 2bfc3a0d72830626366cf210f4fe9a0e649688c5
+              body: >
+                The include syntax allows full control over settings used
+
+                in each test job, but the combinatorial is simpler to write
+
+                for basic use cases.
+
+
+                Rather than force one, we can allow both and default to the
+                simple
+
+                syntax.
+
+
+                Marking as minor since the input syntax has changed, but isn't
+
+                currently used in production anywhere.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.24.0
+          title: ""
+          date: 2024-06-26T21:26:13.711Z
+        - commits:
+            - subject: Refactor secrets and variables to use environments
+              hash: c46eb9cfa4a272f00af4029c31e355477169802a
+              body: |
+                Reduce the required secrets and inputs required by
+                relying on vars and secrets set in each GitHub Environment.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.23.1
+          title: ""
+          date: 2024-06-26T12:43:22.833Z
+        - commits:
+            - subject: "Dockerfiles: update balenaCLI version to 18.2.2"
+              hash: cd6ff2606e5f7a251c6b03d4cfbea371d00a9db7
+              body: |
+                Update balena CLI from 17.2.2 to 18.2.2.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "Dockerfile_yocto-build-env: bump base image to 22.04"
+              hash: e027c512dbcf801a66a4bb4da15639ca67eedd2e
+              body: >
+                This brings a new Docker engine version which supports cgroup v2.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: balena-yocto-scripts-1.23.0
+          title: ""
+          date: 2024-06-19T15:20:58.274Z
+        - commits:
+            - subject: Update job conditions to allow non-PR events for internal branches
+              hash: 2d0f1029d7b5489feb7c98d749ff66c8faf2f1e7
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: Hardcode environment paths at the job level
+              hash: 5dc710c0cc5d8a1c0da97bbb9d39fdb51f5a4497
+              body: |
+                This is easier to read and less likely to break
+                with unexpected values.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: Replace test inputs with a single JSON matrix input
+              hash: 0d6cb8ac05fec8dd314f12e5335f847ef3f8ab78
+              body: |
+                This allows full control over which test conditions are
+                used for each test job without combinatorial explosion.
+
+                For example, different environments could be used for
+                specific test suites, or the cloud suite could be run
+                twice while the other suites run once.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.22.4
+          title: ""
+          date: 2024-06-14T15:57:11.418Z
+        - commits:
+            - subject: "jenkins_generate_ami: pass yocto scripts version as an env var to
+                helper container"
+              hash: af71169b93e855c8ecb378b5de3d4a1c12f44510
+              body: >
+                The ami deploys in jenkins fail at the moment because the
+                balena-lib.inc script fails to fetch the version of the yocto
+                scripts when running inside the helper image. Passing the
+                version to the helper image via an env var helps this
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: balena-yocto-scripts-1.22.3
+          title: ""
+          date: 2024-06-13T19:04:31.350Z
+        - commits:
+            - subject: Update the triggers on the example test workflow
+              hash: 1f09e509e09a1a44b62772b9e197fe183c72744d
+              body: |
+                We do not need to run the workflow on close/merge, and we
+                can skip the manual workflow runs on this project as
+                each device type will have it's own workflow in the device
+                repos supporting manual triggers.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.22.2
+          title: ""
+          date: 2024-06-12T17:54:57.718Z
+        - commits:
+            - subject: Prevent duplicate workflow runs for multiple triggers
+              hash: e0132cfba86fcc05527dc4702d6841723752be38
+              body: |
+                This may need to be force merged.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: Add catchall job to yocto-build-deploy for merge requirements
+              hash: 6b023b572a35d18743cf4a5d36b9d2f7443fc744
+              body: |
+                This is a helper job to avoid having to mark all build/test
+                matrices as required, as this job will always run and return
+                success or failure.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.22.1
+          title: ""
+          date: 2024-06-07T13:45:18.699Z
+        - commits:
+            - subject: Create workflow to build and deploy balenaOS
+              hash: 5868caaa3b7bf506381c8d22f7b0b4035f7e2658
+              body: ""
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.22.0
+          title: ""
+          date: 2024-06-06T17:24:03.676Z
+  version: 5.3.21+rev2
+  title: ""
+  date: 2024-07-03T04:11:15.670Z
+- commits:
     - subject: Switch SRC_URI from gitlab to github for linux-kunbus_6.1.46
       hash: fc168c1a408d1d016e5807c02fd21bdda6465798
       body: >
