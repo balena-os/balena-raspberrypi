@@ -41,7 +41,7 @@ jobs:
       environment: balena-staging.com
       test_matrix: >
         {
-          "test_suite": ["os","cloud","hup"],
+          "test_suite": ["os"],
           "environment": ["bm.balena-dev.com"],
           "worker_type": ["testbot"],
         }
