@@ -1,6 +1,14 @@
 Change log
 -----------
 
+# v5.3.21+rev3
+## (2024-07-04)
+
+* Fix revpi-connect-s build by including missing default-cpu-governor.cfg [Florin Sarbu]
+* Use balena bootloader on Raspberry Pi 5 [Florin Sarbu]
+* Add Raspberry Pi 5 [Florin Sarbu]
+* Update meta-raspberrypi BSP to latest kirkstone [Florin Sarbu]
+
 # v5.3.21+rev2
 ## (2024-07-03)
 

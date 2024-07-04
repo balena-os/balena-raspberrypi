@@ -1,4 +1,53 @@
 - commits:
+    - subject: Fix revpi-connect-s build by including missing default-cpu-governor.cfg
+      hash: 05eb48bef16839f523c31633638906a46ecd4262
+      body: |
+        The linux-kunbus kernel recipe includes the file linux-raspberrypi.inc
+        which is present in the BSP layer. As such we also need to add here
+        the kernel config fragment(s) the BSP include file uses.
+      footer:
+        Changelog-entry: Fix revpi-connect-s build by including missing default-cpu-governor.cfg
+        changelog-entry: Fix revpi-connect-s build by including missing default-cpu-governor.cfg
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+    - subject: Use balena bootloader on Raspberry Pi 5
+      hash: 836e3214c885023c41f627801f0fd9753683ae05
+      body: ""
+      footer:
+        Changelog-entry: Use balena bootloader on Raspberry Pi 5
+        changelog-entry: Use balena bootloader on Raspberry Pi 5
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+    - subject: Add Raspberry Pi 5
+      hash: e16ea781747b5073bfa9edcfc4ccb05763301a2c
+      body: ""
+      footer:
+        Changelog-entry: Add Raspberry Pi 5
+        changelog-entry: Add Raspberry Pi 5
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+    - subject: Update meta-raspberrypi BSP to latest kirkstone
+      hash: 2464cb5740c1dd067411187960921a11341f9ea0
+      body: |
+        We need this update so as to have Raspberry Pi 5 support
+        from the upstream BSP.
+      footer:
+        Changelog-entry: Update meta-raspberrypi BSP to latest kirkstone
+        changelog-entry: Update meta-raspberrypi BSP to latest kirkstone
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 5.3.21+rev3
+  title: ""
+  date: 2024-07-04T12:22:06.410Z
+- commits:
     - subject: Update balena-yocto-scripts to da6fe23e89509549866b16cbc6ff404980a189c0
       hash: 3bf62f5b66958fda81a1d83908f86994eefb81b7
       body: Update balena-yocto-scripts
