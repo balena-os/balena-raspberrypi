@@ -1,0 +1,74 @@
+# SPDX-FileCopyrightText: 2024 KUNBUS GmbH
+#
+# SPDX-License-Identifier: GPL-2.0-or-later
+
+#
+# NOTE: Original file was downloaded from https://gitlab.com/revolutionpi/revpi-base-files/-/blob/master/udev/50-revpi.rules?ref_type=heads
+#
+
+PROGRAM="/bin/grep -Fz -m 1 'kunbus,revpi-' /sys/firmware/devicetree/base/compatible"
+RESULT=="kunbus,revpi-core", GOTO="revpi_core"
+RESULT=="kunbus,revpi-core-2022", GOTO="revpi_core"
+RESULT=="kunbus,revpi-core-s-2022", GOTO="revpi_core"
+RESULT=="kunbus,revpi-core-se-2022", GOTO="revpi_core"
+RESULT=="kunbus,revpi-connect", GOTO="revpi_connect"
+RESULT=="kunbus,revpi-connect-se", GOTO="revpi_connect"
+RESULT=="kunbus,revpi-connect4", GOTO="revpi_connect4"
+RESULT=="kunbus,revpi-compact", GOTO="revpi_compact"
+RESULT=="kunbus,revpi-flat-s-2022", GOTO="revpi_flat_s"
+RESULT=="kunbus,revpi-flat", GOTO="revpi_flat"
+GOTO="revpi_end"
+
+LABEL="revpi_core"
+# The following two rules are disabled as the quirks service is not present on Balena OS
+# ACTION=="add", SUBSYSTEM=="net", DEVPATH=="*/spi0.0/net/*eth*", NAME="pileft", TAG+="systemd", ENV{SYSTEMD_WANTS}="pileft-quirks.service"
+# ACTION=="add", SUBSYSTEM=="net", DEVPATH=="*/spi0.1/net/*eth*", NAME="piright", TAG+="systemd", ENV{SYSTEMD_WANTS}="piright-quirks.service"
+ACTION=="add", SUBSYSTEM=="net", DEVPATH=="*/usb1/1-1/1-1.1/1-1.1:1.0/*", NAME="eth0"
+GOTO="revpi_end"
+
+LABEL="revpi_connect"
+ACTION=="add", SUBSYSTEM=="tty", DEVPATH=="*/usb1/1-1/1-1.5/1-1.5.2/*", SYMLINK+="ttyRS485"
+ACTION=="add", SUBSYSTEM=="tty", DEVPATH=="*/usb1/1-1/1-1.5/1-1.5.3/*", SYMLINK+="ttyConBridge"
+# This rule doesn't match on the RevPi Connect SE as it has no ethernet on the pibridge.
+ACTION=="add", SUBSYSTEM=="net", DEVPATH=="*/spi0.1/net/*eth*", NAME="pileft"
+
+ACTION=="add", SUBSYSTEM=="net", DEVPATH=="*/usb1/1-1/1-1.1/1-1.1:1.0/*", NAME="eth0"
+ACTION=="add", SUBSYSTEM=="net", DEVPATH=="*/usb1/1-1/1-1.5/1-1.5.1/1-1.5.1:1.0/*", NAME="eth1"
+GOTO="revpi_end"
+
+LABEL="revpi_connect4"
+ACTION=="add", SUBSYSTEM=="tty", DEVPATH=="*/fe201a00.serial/tty/*", SYMLINK+="ttyRS485"
+ACTION=="add", SUBSYSTEM=="net", ATTR{type}=="1", DEVPATH=="*/fd580000.ethernet/net/*", NAME="eth0", PROGRAM="revpi_mac %k 0"
+ACTION=="add", SUBSYSTEM=="net", ATTR{type}=="1", DEVPATH=="*/usb2/2-3/2-3:1.0/net/*", NAME="eth1"
+ACTION=="add", SUBSYSTEM=="net", ATTR{type}=="1", DEVPATH=="*/fe300000.mmcnr/mmc_host/mmc1/mmc1:0001/mmc1:0001:1/net/*", NAME="wlan0", PROGRAM="revpi_mac %k 2"
+GOTO="revpi_end"
+
+LABEL="revpi_compact"
+ACTION=="add", ENV{OF_COMPATIBLE_0}=="fairchild,74hc595", SYMLINK+="gpiochip_dout"
+ACTION=="add", ENV{OF_COMPATIBLE_0}=="maxim,max31913", SYMLINK+="gpiochip_din"
+ACTION=="add", SUBSYSTEM=="net", DEVPATH=="*/usb1/1-1/1-1.1/1-1.1:1.0/*", NAME="eth0"
+ACTION=="add", SUBSYSTEM=="net", DEVPATH=="*/spi0.2/net/*eth*", NAME="eth1"
+ACTION=="add", SUBSYSTEM=="tty", DEVPATH=="*/3f201000.serial/tty/*", SYMLINK+="ttyRS485"
+GOTO="revpi_end"
+
+LABEL="revpi_flat"
+ACTION=="add", SUBSYSTEM=="tty", DEVPATH=="*/*201000.serial/tty/*", SYMLINK+="ttyRS485-0"
+ACTION=="add", SUBSYSTEM=="tty", DEVPATH=="*/*215040.serial/tty/*", SYMLINK+="ttyRS485-1"
+ACTION=="add", ENV{SYSTEMD_WANTS}="hdmi-disable.service"
+ACTION=="add", SUBSYSTEM=="net", DEVPATH=="*/usb1/1-1/1-1.1/1-1.1:1.0/*", NAME="eth0"
+ACTION=="add", SUBSYSTEM=="net", DEVPATH=="*/usb1/1-1/1-1.4/1-1.4:1.0/*", NAME="eth1"
+GOTO="revpi_end"
+
+LABEL="revpi_flat_s"
+ACTION=="add", ENV{SYSTEMD_WANTS}="hdmi-disable.service"
+ACTION=="add", SUBSYSTEM=="tty", DEVPATH=="*/fe201600.serial/tty/*", SYMLINK+="ttyRS485-0"
+ACTION=="add", SUBSYSTEM=="tty", DEVPATH=="*/fe201800.serial/tty/*", SYMLINK+="ttyRS485-1"
+ACTION=="add", SUBSYSTEM=="net", DEVPATH=="*/usb1/1-1/1-1.1/1-1.1:1.0/*", NAME="eth0"
+ACTION=="add", SUBSYSTEM=="net", DEVPATH=="*/usb1/1-1/1-1.4/1-1.4:1.0/*", NAME="eth1"
+ACTION=="add", SUBSYSTEM=="net", ATTR{type}=="1", DEVPATH=="*/spi5/spi5.1/net/swp1", NAME="swp1", PROGRAM="revpi_mac %k 2"
+ACTION=="add", SUBSYSTEM=="net", ATTR{type}=="1", DEVPATH=="*/spi5/spi5.1/net/swp2", NAME="swp2", PROGRAM="revpi_mac %k 3"
+ACTION=="add", SUBSYSTEM=="net", ATTR{type}=="1", DEVPATH=="*/spi5/spi5.1/net/swp3", NAME="swp3", PROGRAM="revpi_mac %k 4"
+ACTION=="add", SUBSYSTEM=="net", ATTR{type}=="1", DEVPATH=="*/mmc3\:0001\:1/net/*", NAME="wlan0", PROGRAM="revpi_mac %k 5"
+GOTO="revpi_end"
+
+LABEL="revpi_end"
