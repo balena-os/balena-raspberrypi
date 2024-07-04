@@ -13,6 +13,7 @@ SRC_URI = " \
 "
 SRC_URI:remove = "file://initramfs-image-bundle.cfg"
 SRC_URI:remove = "file://vc4graphics.cfg"
+SRC_URI:remove = "file://default-cpu-governor.cfg"
 
 require recipes-kernel/linux/linux-raspberrypi.inc
 
