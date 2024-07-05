@@ -49,14 +49,12 @@ The partitions are mounted under `/mnt/boot` and `/mnt/rpi` respectively.
 
 ## Device locking
 
-RaspberryPi devices require post-installation setup to lock the device after the installer image completes programming. This locking process needs to write to OTP and requires a USB connection and the `rpiboot` utility loading a dedicated signed `boot.img` file with the following `config.txt` settings:
+RaspberryPi devices require post-installation setup to lock the device after the installer image completes programming. This locking process needs to write to OTP and requires a USB connection and the `rpiboot` utility loading a dedicated signed EEPROM image file with the following `config.txt` settings:
 
 * **revoke_devkey=1**: Prevents EEPROM downgrades to versions that don't support secure boot
 * **program_pubkey=1**: Programs the digest of the EEPROM's public key to OTP
 * **program_jtag_lock=1**: Disables the GPU JTAG interface
 * **eeprom_write_protect=1**: Sets the EEPROM to write protect
-
-Finally, further OTP changes can be locked down to prevent mangling of OTP data.
 
 ## EEPROM updates on locked devices
 
@@ -64,7 +62,7 @@ Once a device is secure boot enabled and is locked down, `rpiboot` driven EEPROM
 
 ## Re-programming of locked devices
 
-Once a device is secure boot enabled and is locked down, `rpiboot` needs to use a dedicated signed `boot.img` to expose the encrypted internal storage and allow re-programming.
+Once a device is secure boot enabled and is locked down, re-programming can be done by USB booting a signed flasher images. The use of `rpiboot` to expose internal storage is not supported.
 
 ## Debugging
 
