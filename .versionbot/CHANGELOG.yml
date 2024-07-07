@@ -1,4 +1,35 @@
 - commits:
+    - subject: adjust reboot watchdog timeout
+      hash: dc157ca57779d79b3afcf886bb093703a4adaa37
+      body: >
+        By default, the second stage watchdog time that is used to set the
+
+        watchdog once systemd-shutdown has stopped all services and replaced
+
+        PID1 with itself is set to 10m.
+
+
+        However, the RPI watchdog has a maximum timeout of 15s, so we adjust
+        this
+
+        value accordingly.
+
+
+        This helps ensure that when a shutdown or reboot is triggered, the
+        device
+
+        can fallback to a watchdog reboot if it gets stuck.
+      footer:
+        Changelog-entry: adjust reboot watchdog timeout
+        changelog-entry: adjust reboot watchdog timeout
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 5.3.21+rev4
+  title: ""
+  date: 2024-07-07T20:24:21.277Z
+- commits:
     - subject: Fix revpi-connect-s build by including missing default-cpu-governor.cfg
       hash: 05eb48bef16839f523c31633638906a46ecd4262
       body: |

@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v5.3.21+rev4
+## (2024-07-07)
+
+* adjust reboot watchdog timeout [Alex Gonzalez]
+
 # v5.3.21+rev3
 ## (2024-07-04)
 
