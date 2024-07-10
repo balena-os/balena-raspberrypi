@@ -61,8 +61,11 @@ BALENA_CONFIGS[fbtft] = " \
     CONFIG_FB_TFT_TLS8204=m \
     CONFIG_FB_TFT_UC1701=m \
     CONFIG_FB_TFT_UPD161704=m \
-    CONFIG_FB_TFT_WATTEROTT=m \
     "
+
+
+BALENA_CONFIGS:append = " ${@configure_from_version("5.17", "", " fb_tft_watterott", d)}"
+BALENA_CONFIGS[fb_tft_watterott] = "CONFIG_FB_TFT_WATTEROTT=m"
 
 BALENA_CONFIGS:append = " pca955_gpio_expander"
 BALENA_CONFIGS[pca955_gpio_expander] = " \
