@@ -41,7 +41,7 @@ do_deploy:append:revpi-connect-4() {
 }
 
 do_deploy:append:raspberrypicm4-ioboard-sb() {
-    echo "otg_mode=1" >> ${DEPLOYDIR}/bootfiles/config.txt
+    echo "dtoverlay=dwc2,dr_mode=host" >> ${DEPLOYDIR}/bootfiles/config.txt
 }
 
 do_deploy:append:raspberrypi3-unipi-neuron() {
