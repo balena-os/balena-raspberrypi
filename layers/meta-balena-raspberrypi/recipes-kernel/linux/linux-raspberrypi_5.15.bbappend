@@ -23,6 +23,7 @@ SRC_URI:append = " \
 	file://0001-seeed-studio-can-bus-v2-Add-dtbo-for-this-can-bus.patch \
 	file://0011-USB-serial-Add-support-for-more-Quectel-modules.patch \
 	file://0001-waveshare-sim7600-Add-dtbo-for-this-modem.patch \
+	file://0001-overlays-Add-overlay-for-Seeed-reComputer-R1000.patch \
 "
 
 SRC_URI:append:rt-rpi-300 = " \
