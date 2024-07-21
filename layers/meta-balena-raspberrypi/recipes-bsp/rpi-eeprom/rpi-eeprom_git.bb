@@ -2,7 +2,7 @@ SUMMARY = "Installation scripts and binaries for the Raspberry Pi 4 EEPROM"
 DESCRIPTION = "This repository contains the rpi4 bootloader and scripts \
 for updating it in the spi eeprom"
 LICENSE = "BSD-3-Clause & Broadcom-RPi"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=f546ed4f47e9d4c1fe954ecc9d3ef4f3"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=449418bd5e2b674b51a36c78f3f85a01"
 
 SRC_URI = " \
     git://github.com/raspberrypi/rpi-eeprom.git;protocol=https;branch=master \
@@ -15,12 +15,12 @@ SRC_URI += " \
     file://default-config.txt \
 "
 
-SRCREV = "3b393d31ac0f1864420d47028b5703a70ad8da8f"
-PV = "v2023.10.18-2712"
+SRCREV = "e430a41e7323a1e28fb42b53cf79e5ba9b5ee975"
+PV = "v2024.06.05-2712"
 
 # We use the latest stable version
 # which is available in "stable"
-LATEST_STABLE_PIEEPROM_FW:raspberrypi4-64 = "2023-05-11"
+LATEST_STABLE_PIEEPROM_FW:raspberrypi4-64 = "2024-05-17"
 VL805_FW_REV = "000138a1"
 FIRMWARE:raspberrypi4-64 = "firmware-2711"
 
@@ -116,6 +116,17 @@ do_deploy () {
     cp ${WORKDIR}/pieeprom-latest-stable* ${DEPLOY_DIR_IMAGE}/rpi-eeprom/
     if [ -f "${S}/${FIRMWARE}/critical/vl805-${VL805_FW_REV}.bin" ]; then
         cp ${S}/${FIRMWARE}/critical/vl805-${VL805_FW_REV}.bin ${DEPLOY_DIR_IMAGE}/${PN}/vl805-latest-stable.bin
+    fi
+    if [ "x${SIGN_API}" != "x" ]; then
+        install -d ${DEPLOY_DIR_IMAGE}/rpi-eeprom/secure-boot-lock
+        cp -avL ${S}/${FIRMWARE}/stable/recovery.bin ${DEPLOY_DIR_IMAGE}/rpi-eeprom/secure-boot-lock/bootcode4.bin
+        echo "uart_2ndstage=1" > ${DEPLOY_DIR_IMAGE}/rpi-eeprom/secure-boot-lock/config.txt
+        echo "eeprom_write_protect=1" >> ${DEPLOY_DIR_IMAGE}/rpi-eeprom/secure-boot-lock/config.txt
+        echo "program_pubkey=1" >> ${DEPLOY_DIR_IMAGE}/rpi-eeprom/secure-boot-lock/config.txt
+        echo "revoke_devkey=1" >> ${DEPLOY_DIR_IMAGE}/rpi-eeprom/secure-boot-lock/config.txt
+        echo "program_jtag_lock=1" >> ${DEPLOY_DIR_IMAGE}/rpi-eeprom/secure-boot-lock/config.txt
+        cp -av ${WORKDIR}/pieeprom-latest-stable*bin ${DEPLOY_DIR_IMAGE}/rpi-eeprom/secure-boot-lock/pieeprom.bin
+        cp -av ${WORKDIR}/pieeprom-latest-stable*sig ${DEPLOY_DIR_IMAGE}/rpi-eeprom/secure-boot-lock/pieeprom.sig
     fi
 }
 

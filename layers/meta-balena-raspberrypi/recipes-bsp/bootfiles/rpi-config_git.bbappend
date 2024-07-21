@@ -40,6 +40,10 @@ do_deploy:append:revpi-connect-4() {
 	echo "dtoverlay=dwc2,dr_mode=host" >> ${DEPLOYDIR}/bootfiles/config.txt
 }
 
+do_deploy:append:raspberrypicm4-ioboard-sb() {
+    echo "dtoverlay=dwc2,dr_mode=host" >> ${DEPLOYDIR}/bootfiles/config.txt
+}
+
 do_deploy:append:raspberrypi3-unipi-neuron() {
 	# Use the dt overlays required by the UniPi Neuron family of boards
 	echo "dtoverlay=neuronee" >> ${DEPLOYDIR}/bootfiles/config.txt
