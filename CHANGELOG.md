@@ -1,6 +1,18 @@
 Change log
 -----------
 
+# v5.4.0+rev1
+## (2024-07-21)
+
+* add dwc2 support to the raspberrypicm4-ioboard-sb kernel [Alex Gonzalez]
+* use dwc2 driver for USB host mode in CM4-SB. [Alex Gonzalez]
+* update rpi-eeprom firmware to 2024-05-17 [Alex Gonzalez]
+* deploy CM4/RPI4 locking binaries [Alex Gonzalez]
+* do not sign msd binaries by default as they are not needed [Alex Gonzalez]
+* enable USB 2.0 for raspberrypicm4-ioboard-sb [Alex Gonzalez]
+* configure to power off on halt for raspberrypicm4-ioboard-sb [Alex Gonzalez]
+* Modify boot order to prioritize USB boot [Alex Gonzalez]
+
 # v5.4.0
 ## (2024-07-15)
 

@@ -1,4 +1,168 @@
 - commits:
+    - subject: add dwc2 support to the raspberrypicm4-ioboard-sb kernel
+      hash: e6d55dd064d6ed0e496fdd3506df1f7d3fd75aad
+      body: |
+        This adds support for the DesignWare Core USB 2.0 controller, required
+        for the USB boot flow.
+      footer:
+        Changelog-entry: add dwc2 support to the raspberrypicm4-ioboard-sb kernel
+        changelog-entry: add dwc2 support to the raspberrypicm4-ioboard-sb kernel
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: use dwc2 driver for USB host mode in CM4-SB.
+      hash: fdb332ba7f2d5faf79f2a5cc831cffdadae83400
+      body: |
+        The `otg_mode=1` setting makes the firmware mux the USB port
+        to the XHCI host-only controller. However, even though this correctly
+        enabled host mode in the USB port, the kernel drivers oops when a cable
+        is plugged into the OTG port in the ioboard, probably because the XCHI
+        controller does not support OTG or device mode.
+
+        This commit reverts to using the dwc2 kernel overlay which has less
+        performance but does not crash.
+      footer:
+        Changelog-entry: use dwc2 driver for USB host mode in CM4-SB.
+        changelog-entry: use dwc2 driver for USB host mode in CM4-SB.
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: update rpi-eeprom firmware to 2024-05-17
+      hash: 3336d35ddfc690b0ae78772155e0b6bc82bc19ee
+      body: ""
+      footer:
+        Changelog-entry: update rpi-eeprom firmware to 2024-05-17
+        changelog-entry: update rpi-eeprom firmware to 2024-05-17
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: deploy CM4/RPI4 locking binaries
+      hash: 3da91bb444d4da5a431027a6e7c8ee336363d669
+      body: ""
+      footer:
+        Changelog-entry: deploy CM4/RPI4 locking binaries
+        changelog-entry: deploy CM4/RPI4 locking binaries
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: do not sign msd binaries by default as they are not needed
+      hash: 3cc312fb0776cbbdbd1a3d6125cb0d9a14c0b281
+      body: |
+        With the USB provisioning being preferred, the msd binaries are no
+        longer required.
+
+        This commit adds a recipe configuration to make the signing conditional.
+      footer:
+        Changelog-entry: do not sign msd binaries by default as they are not needed
+        changelog-entry: do not sign msd binaries by default as they are not needed
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: enable USB 2.0 for raspberrypicm4-ioboard-sb
+      hash: 6838519e97b7526e580b6a4e4491cbdec3ac0f7f
+      body: >
+        As CM4 and CM4IO don’t include the external USB 3 controller,
+
+        RaspberryPi OS sets `otg_mode=1` for better performance.
+
+
+        See
+        https://www.raspberrypi.com/documentation/computers/config_txt.html#otg_mode-raspberry-pi-4-only
+
+
+        However, while testing, the kernel driver oops when the otg cable is
+
+        connected at boot (works well if it is connected after boot though).
+
+
+        As this is only needed in the USB provisioning mode, restrict the change
+
+        to the raspberrypicm4-ioboard-sb for the time being.
+      footer:
+        Changelog-entry: enable USB 2.0 for raspberrypicm4-ioboard-sb
+        changelog-entry: enable USB 2.0 for raspberrypicm4-ioboard-sb
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: configure to power off on halt for raspberrypicm4-ioboard-sb
+      hash: 5641da608e1694f2169c87869f96e4dcc27921ab
+      body: >
+        This is useful for the use case of a flasher image ran from external
+
+        media, like in the traditional flasher workflow that expects the device
+
+        to shutdown after programming.
+
+
+        From
+        https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#POWER_OFF_ON_HALT
+      footer:
+        Changelog-entry: configure to power off on halt for raspberrypicm4-ioboard-sb
+        changelog-entry: configure to power off on halt for raspberrypicm4-ioboard-sb
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: Modify boot order to prioritize USB boot
+      hash: dad87cfcd68052e35adb5efcf916e6d3726540ed
+      body: >
+        With this change the device will first attempt to boot from USB and then
+
+        boot from the NVME/internal eMMC/SD card. This allows to use USB flasher
+
+        images as provisioning tools in preference of usbboot.
+
+
+        5: USB 2.0 boot from USB type A socket (CM4) or Type C socket (RPI4)
+
+        6: NVME
+
+        1: eMMC / SD Card
+
+        2: Network boot
+
+
+        We place NVME before eMMC/SDcard as there are reports that NVME is not
+
+        working if initialized after.
+
+
+        Also, there is no USB mass storage boot to limit this option to using
+
+        physical jumper configuration.
+
+
+        See
+        https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#BOOT_ORDER
+
+
+        Note that trying USB boot first adds a considerable delay to the boot
+
+        process as the CM4 has a timeout of 2s (5s if extended via
+
+        `program_usb_boot_timeout=1`  per USB port enumeration.
+
+
+        As such, this change is only done to the `raspberrypicm4-ioboard-sb`
+
+        that requires USB boot for the secure boot provisioning flow.
+      footer:
+        Changelog-entry: Modify boot order to prioritize USB boot
+        changelog-entry: Modify boot order to prioritize USB boot
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 5.4.0+rev1
+  title: ""
+  date: 2024-07-21T17:42:17.340Z
+- commits:
     - subject: Update layers/meta-balena to 5b9716f19794b0e0da9c474e4e0ffadbde337c30
       hash: afbc82977373e0ece9bf173123bcd74864c15287
       body: Update layers/meta-balena
