@@ -1,4 +1,19 @@
 - commits:
+    - subject: Update meta-balena from v5.1.58 to v5.1.62
+      hash: 864d05973a37a41e1f1c72d7adc365f72843e5ea
+      body: |
+        Update meta-balena from 5.1.58 to 5.1.62
+      footer:
+        Changelog-entry: Update meta-balena from v5.1.58 to v5.1.62
+        changelog-entry: Update meta-balena from v5.1.58 to v5.1.62
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2024.4.3
+  title: ""
+  date: 2024-08-02T15:04:39.756Z
+- commits:
     - subject: Update meta-balena from v5.1.55 to v5.1.58
       hash: 4ac023d0d732464e5ee3d5b3a1da5c957b2ede0b
       body: |
