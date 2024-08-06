@@ -1,4 +1,19 @@
 - commits:
+    - subject: Update meta-balena from v5.2.10 to v5.2.13
+      hash: 727768e027bf7e7dd340b5412125aad46601b6d5
+      body: |
+        Update meta-balena from 5.2.10 to 5.2.13
+      footer:
+        Changelog-entry: Update meta-balena from v5.2.10 to v5.2.13
+        changelog-entry: Update meta-balena from v5.2.10 to v5.2.13
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 2024.7.1
+  title: ""
+  date: 2024-08-06T19:20:28.324Z
+- commits:
     - subject: Update layers/meta-balena to 5d7a7ecfdc69c481e6e762e38e66b8b291a70e32
       hash: 96ae30310b37824ca86e93feddba2fc73c0ab319
       body: Update layers/meta-balena
