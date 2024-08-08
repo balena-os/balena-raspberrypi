@@ -22,3 +22,6 @@ jobs:
     name: Create ESR branch and tag
     uses: balena-os/github-workflows/.github/workflows/esr.yml@master
     secrets: inherit
+    with:
+      esr-version: ${{ github.event.inputs.esr-version }}
+      os-version: ${{ github.event.inputs.os-version }}
