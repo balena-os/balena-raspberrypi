@@ -1,12 +1,5 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:${THISDIR}/${MACHINE}:"
 
-SRC_URI:append:fincm3 = " \
-	file://0001-overlays-fin-add-internal-pull-ups-to-i2c_soft.patch \
-	file://0004-mmc-pwrseq-Repurpose-for-Marvell-SD8777.patch \
-	file://0005-balena-fin-wifi-sta-uap-mode.patch \
-	file://0007-overlays-Add-spyfly.dts.patch \
-"
-
 SRC_URI:append:raspberrypi4-superhub = " \
 	file://0001-Add-gpio-wdt-DT-overlay-for-Phoenix-Board.patch \
 	file://0002-Add-infineon-tpm-DT-overlay-for-Phoenix-Board.patch \
@@ -66,8 +59,11 @@ BALENA_CONFIGS[fbtft] = " \
     CONFIG_FB_TFT_TLS8204=m \
     CONFIG_FB_TFT_UC1701=m \
     CONFIG_FB_TFT_UPD161704=m \
-    CONFIG_FB_TFT_WATTEROTT=m \
     "
+
+
+BALENA_CONFIGS:append = " ${@configure_from_version("5.17", "", " fb_tft_watterott", d)}"
+BALENA_CONFIGS[fb_tft_watterott] = "CONFIG_FB_TFT_WATTEROTT=m"
 
 BALENA_CONFIGS:append = " pca955_gpio_expander"
 BALENA_CONFIGS[pca955_gpio_expander] = " \
