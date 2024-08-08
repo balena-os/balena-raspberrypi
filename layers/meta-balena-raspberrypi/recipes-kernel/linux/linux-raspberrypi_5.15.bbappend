@@ -74,9 +74,13 @@ BALENA_CONFIGS[pca955_gpio_expander] = " \
     CONFIG_GPIO_PCA953X=y \
     CONFIG_GPIO_PCA953X_IRQ=y \
     "
+BALENA_CONFIGS:append = " rtl8192"
+BALENA_CONFIGS[rtl8192] = " \
+    CONFIG_RTL8192CU=m \
+    "
 
-KERNEL_MODULE_PROBECONF += "rtl8192cu"
-module_conf_rtl8192cu = "blacklist rtl8192cu"
+#KERNEL_MODULE_PROBECONF += "rtl8192cu"
+#module_conf_rtl8192cu = "blacklist rtl8192cu"
 
 # requested by customer (support for Kontron PLD devices)
 BALENA_CONFIGS:append = " gpio_i2c_kempld"
