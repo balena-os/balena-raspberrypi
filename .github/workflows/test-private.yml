@@ -1,6 +1,10 @@
-name: Raspberry Pi 3
+name: Test Private
 
 on:
+  # With these triggers the Yocto jobs will run
+  # in parallel with the Flowzone jobs, which is fine for now
+  # and allows us to better control what we want to test and when.
+  # It is expected that Flowzone could fail, but yocto jobs will run.
   pull_request:
     branches:
       - "main"
@@ -9,39 +13,29 @@ on:
     branches:
       - "main"
       - "master"
-
   push:
     tags:
       - v[0-9]+.[0-9]+.[0-9]+\+?r?e?v?*
       - v20[0-9][0-9].[0-1]?[1470].[0-9]+
 
-  workflow_dispatch:
-
 jobs:
   yocto:
     name: Yocto
-    # Pin the workflow to a specific commit to prevent unexpected changes while
-    # I am learning.
-    uses: balena-os/balena-yocto-scripts/.github/workflows/yocto-build-deploy.yml@ad06820f4174568383678710fa68b2054da6db57
+    uses: balena-os/balena-yocto-scripts/.github/workflows/yocto-build-deploy.yml@master
     # Prevent duplicate workflow executions for pull_request (PR) and pull_request_target (PRT) events.
     # Both PR and PRT will be triggered for the same pull request, whether it is internal or from a fork.
     # This condition will prevent the workflow from running twice for the same pull request while
     # still allowing it to run for all other event types.
-    # - internal PR (true == true) ok
-    # - internal PRT (true != false) skip
-    # - fork PR (false != true) skip
-    # - fork PRT (false == false) ok
-    # - push (false == false) ok
-    # - workflow_dispatch (false == false) ok
-    # - any trigger other than PR/PRT (false == false) ok
     if: (github.event.pull_request.head.repo.full_name == github.repository) == (github.event_name == 'pull_request')
     secrets: inherit
     with:
-      machine: raspberrypi3
+      machine: test-private
+      # Needed for testing - defaults to production
       environment: balena-staging.com
+      deploy-hostapp: true # needed for testing deploy
       test_matrix: >
         {
-          "test_suite": ["os"],
+          "test_suite": ["os","cloud","hup"],
           "environment": ["bm.balena-dev.com"],
-          "worker_type": ["testbot"],
+          "runs_on": [["ubuntu-latest"]]
         }
