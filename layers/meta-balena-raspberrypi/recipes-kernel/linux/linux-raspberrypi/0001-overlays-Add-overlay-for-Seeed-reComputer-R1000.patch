@@ -1,0 +1,306 @@
+From 52fa96d5fae3f05653b7626130e681510b374392 Mon Sep 17 00:00:00 2001
+From: Florin Sarbu <florin@balena.io>
+Date: Fri, 12 Jul 2024 09:05:28 +0000
+Subject: [PATCH] overlays: Add overlay for Seeed reComputer R1000
+
+Signed-off-by: Florin Sarbu <florin@balena.io>
+---
+ .../dts/overlays/reComputer-R100x-overlay.dts | 285 ++++++++++++++++++
+ 1 file changed, 285 insertions(+)
+ create mode 100644 arch/arm/boot/dts/overlays/reComputer-R100x-overlay.dts
+
+diff --git a/arch/arm/boot/dts/overlays/reComputer-R100x-overlay.dts b/arch/arm/boot/dts/overlays/reComputer-R100x-overlay.dts
+new file mode 100644
+index 000000000000..68f11af67f90
+--- /dev/null
++++ b/arch/arm/boot/dts/overlays/reComputer-R100x-overlay.dts
+@@ -0,0 +1,285 @@
++/*
++ * Copyright (C) 2021 Seeed Studio
++ * ruiqian <ruiqian.tang@seeed.cc>
++ *
++ * MIT License
++ *
++ */
++ /dts-v1/;
++ /plugin/;
++
++ #include "dt-bindings/gpio/gpio.h"
++
++ / {
++	compatible = "brcm,bcm2835", "brcm,bcm2708", "brcm,bcm2709", "brcm,bcm2711";
++
++	fragment@0 {
++        target-path="/";
++        __overlay__ {
++            hardware = "reComputer-R100x V1.0";
++        };
++    };
++
++	fragment@1 {
++		target = <&i2c0>;
++		__overlay__ {
++			status = "okay";
++			clock-frequency = <400000>;
++			#address-cells = <1>;
++			#size-cells = <0>;
++		};
++	};
++
++	fragment@2 {
++		target = <&i2c1>;
++		__overlay__ {
++			status = "okay";
++			clock-frequency = <100000>;
++			#address-cells = <1>;
++			#size-cells = <0>;
++		};
++	};
++		
++	fragment@3 {
++		target = <&i2c3>;
++		__overlay__ {
++			status = "okay";
++			clock-frequency = <400000>;
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			pcf857x: pcf@21 {
++				compatible = "nxp,pca9535";
++				reg = <0x21>;
++				status = "okay";
++
++				gpio-controller;
++				#gpio-cells = <2>;
++
++				gpio-line-names =
++					"LoRaWAN_SX1262_CS"	 	,"LoRaWAN_SX1262_RST",
++					"LoRaWAN_SX1302_RST"	,"LTE_RESET",
++					"TPM_RST"				,"gpio_pin5",
++					"gpio_pin6"				,"gpio_pin7",
++					"EEPROM_WP"				,"VDD_OUT_CTL",
++					"VDD_5V_OUT_CTL"		,"USB2_RST_EN",
++					"RS485_POWER_EN"		,"gpio_pin13",
++					"gpio_pin14"			,"gpio_pin15";
++					
++				LoRaWAN_SX1262_CS {
++					gpios = <&pcf857x 0 GPIO_ACTIVE_HIGH>;
++					output-low;
++					line-name = "LoRaWAN_SX1262_CS";
++				};
++
++				LoRaWAN_SX1262_RST {
++					gpios = <&pcf857x 1 GPIO_ACTIVE_HIGH>;
++					output-low;
++					line-name = "LoRaWAN_SX1262_RST";
++				};
++
++				LoRaWAN_SX1302_RST {
++					gpios = <&pcf857x 2 GPIO_ACTIVE_HIGH>;
++					output-low;
++					line-name = "LoRaWAN_SX1302_RST";
++				};
++
++				LTE_RESET {
++					gpios = <&pcf857x 3 GPIO_ACTIVE_HIGH>;
++					output-high;
++					line-name = "LTE_RESET";
++				};
++
++				TPM_RST {
++					gpios = <&pcf857x 4 GPIO_ACTIVE_HIGH>;
++					output-high;
++					line-name = "TPM_RST";
++				};
++
++				VDD_OUT_CTL {
++					gpios = <&pcf857x 9 GPIO_ACTIVE_HIGH>;
++					output-high;
++					line-name = "VDD_OUT_CTL";
++				};
++
++				VDD_5V_OUT_CTL {
++					gpios = <&pcf857x 10 GPIO_ACTIVE_HIGH>;
++					output-high;
++					line-name = "VDD_5V_OUT_CTL";
++				};
++
++				USB2_RST_EN {
++					gpios = <&pcf857x 11 GPIO_ACTIVE_HIGH>;
++					output-high;
++					line-name = "USB2_RST_EN";
++				};
++
++				RS485_POWER_EN {
++					gpios = <&pcf857x 12 GPIO_ACTIVE_HIGH>;
++					output-high;
++					line-name = "RS485_POWER_EN";
++				};
++			};
++		};
++	};
++
++	fragment@4 {
++		target = <&i2c6>;
++		__overlay__ {
++			status = "okay";
++			clock-frequency = <100000>;
++			#address-cells = <1>;
++			#size-cells = <0>;
++			
++			pcf8563w@51 {
++				compatible = "nxp,pcf8563w";
++				reg = <0x51>;
++				reset-source;
++				/* 0 = 4096Hz, 1 = 64Hz, 2 = 1Hz, 3 = 1/60Hz */
++				timer-frequency = <0x02>;
++				/* Timeout count, max 255 min 2*/
++				default-timeout =  <120>;
++				min-hw-heartbeat-ms = <2000>;
++			};
++
++			eeprom@50 {
++				compatible = "atmel,24c256";
++				reg = <0x50>;
++			};
++
++		};
++	};
++
++	fragment@5 {
++		target = <&uart2>;
++		__overlay__ {
++			label = "RS485_1";
++			pinctrl-names = "default";
++			pinctrl-0 = <&uart2_pins>;
++			rts-gpio = <&gpio 6 GPIO_ACTIVE_HIGH>;
++			status = "okay";
++		};
++	};
++
++	fragment@6 {
++		target = <&uart3>;
++		__overlay__ {
++			label = "RS485_2";
++			pinctrl-names = "default";
++			pinctrl-0 = <&uart3_pins>;
++			rts-gpio = <&gpio 17 GPIO_ACTIVE_HIGH>;
++			status = "okay";
++		};
++	};
++
++	fragment@7 {
++		target = <&uart5>;
++		__overlay__ {
++			label = "RS485_3";
++			pinctrl-names = "default";
++			pinctrl-0 = <&uart5_pins>;
++			rts-gpio = <&gpio 24 GPIO_ACTIVE_HIGH>;
++			status = "okay";
++		};
++	};
++
++	fragment@8 {
++		target = <&uart2_pins>;
++		__dormant__ {
++			brcm,pins = <0 1>;
++			brcm,pull = <0 2>;
++		};
++	};
++
++	fragment@9 {
++		target = <&uart3_pins>;
++		__dormant__ {
++			brcm,pins = <4 5>;
++			brcm,pull = <0 2>;
++		};
++	};
++
++	fragment@a {
++		target = <&uart5_pins>;
++		__dormant__ {
++			brcm,pins = <12 13>;
++			brcm,pull = <0 2>;
++		};
++	};
++
++	fragment@b {
++		target = <&spi0>;
++		__overlay__ {
++			status = "okay";
++		};
++	};
++
++	fragment@c {
++		target = <&spidev0>;
++		__overlay__ {
++			status = "disabled";
++		};
++	};
++
++	fragment@d {
++		target = <&spi0>;
++		__overlay__ {
++			#address-cells = <1>;
++			#size-cells = <0>;
++			slb9670: slb9670@0 {
++				compatible = "infineon,slb9670";
++				reg = <0>;	/* CE0 */
++				#address-cells = <1>;
++				#size-cells = <0>;
++				spi-max-frequency = <32000000>;
++				status = "okay";
++			};
++
++		};
++	};
++
++
++	fragment@f {
++		target = <&leds>;
++		__overlay__ {
++			compatible = "gpio-leds";
++
++			led_red: led_red {
++				label = "led-red";
++				linux,default-trigger = "default-off";
++				gpios = <&gpio 20 GPIO_ACTIVE_LOW>;
++				default-state = "off";
++			};
++			
++			led_green: led_green {
++				label = "led-green";
++				linux,default-trigger = "default-off";
++				gpios = <&gpio 26 GPIO_ACTIVE_LOW>;
++				default-state = "off";
++			};
++
++			led_blue: led_blue {
++				label = "led-blue";
++				linux,default-trigger = "default-off";
++				gpios = <&gpio 27 GPIO_ACTIVE_LOW>;
++				default-state = "off";
++			};
++		};
++	};
++
++	fragment@10 {
++		target-path="/";
++		__overlay__ {
++			beeper: beeper {
++				compatible = "gpio-beeper";
++				gpios = <&gpio 21 GPIO_ACTIVE_HIGH>;
++				status = "okay";
++			};
++		};
++	};
++
++	__overrides__ {
++		uart2  = <0>,"=5!1";
++		i2c0 = <0>,"!5=1";
++	};
++};	
+\ No newline at end of file
+-- 
+2.17.1
+
