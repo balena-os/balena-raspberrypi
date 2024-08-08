@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v5.4.0+rev2
+## (2024-08-08)
+
+* extend initramfs size for raspberrypi4-64 [Alex Gonzalez]
+* Update layers/meta-openembedded to 52ecd66835dcfd8b4e55c9cb6325908ccea6a4e7 [balena-renovate[bot]]
+
 # v5.4.0+rev1
 ## (2024-07-21)
 

@@ -1,4 +1,32 @@
 - commits:
+    - subject: extend initramfs size for raspberrypi4-64
+      hash: ecc7626fdaa4415129a278068ff8830790f6bf7e
+      body: |
+        The latest layers updates have reached the maximum size. This increase
+        should not affect existing devices as long as the new kernel plus
+        initramfs bundle still fits in the existing partitions.
+      footer:
+        Changelog-entry: extend initramfs size for raspberrypi4-64
+        changelog-entry: extend initramfs size for raspberrypi4-64
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: Update layers/meta-openembedded to
+        52ecd66835dcfd8b4e55c9cb6325908ccea6a4e7
+      hash: 4b695faba0a88995df321539c3cb708ef3996a31
+      body: Update layers/meta-openembedded
+      footer:
+        Changelog-entry: Update layers/meta-openembedded to
+          52ecd66835dcfd8b4e55c9cb6325908ccea6a4e7
+        changelog-entry: Update layers/meta-openembedded to
+          52ecd66835dcfd8b4e55c9cb6325908ccea6a4e7
+      author: balena-renovate[bot]
+      nested: []
+  version: 5.4.0+rev2
+  title: ""
+  date: 2024-08-08T15:27:41.910Z
+- commits:
     - subject: add dwc2 support to the raspberrypicm4-ioboard-sb kernel
       hash: e6d55dd064d6ed0e496fdd3506df1f7d3fd75aad
       body: |
