@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# SPDX-FileCopyrightText: 2023 KUNBUS GmbH
+# 
+# SPDX-License-Identifier: GPL-2.0-or-later
+
+DEVNAME=$1
+OFFSET=$2
+
+if [ ! -f /proc/device-tree/hat/custom_5 ]; then
+    exit 1
+fi
+
+read -r BASE_MAC < /proc/device-tree/hat/custom_5
+if [ -z "$BASE_MAC" ]; then
+    exit 2
+fi
+
+MAC_NUM="${BASE_MAC//:/}"
+OFFSET_NUM=$(printf "%x" $((16#$MAC_NUM + $OFFSET)))
+OFFSET_MAC="$(echo "$OFFSET_NUM" | sed 's/.\{2\}/&:/g')"
+OFFSET_MAC="${OFFSET_MAC::-1}"
+
+/sbin/ip link set "$DEVNAME" address "$OFFSET_MAC"
+
+exit $?
