@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v5.4.0+rev3
+## (2024-08-09)
+
+* Add RevPi udev rules [Nicolai Buchwitz]
+
 # v5.4.0+rev2
 ## (2024-08-08)
 

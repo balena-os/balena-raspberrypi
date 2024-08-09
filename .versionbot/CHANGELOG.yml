@@ -1,4 +1,35 @@
 - commits:
+    - subject: Add RevPi udev rules
+      hash: eb654958d643293801f24d831dd30793ff5896d9
+      body: >
+        Add RevPi specific udev rules and helper script for mac address
+
+        configuration from HAT eeprom. The ruleset will ensure that the
+        following
+
+        things behave similar to a stock RevPi OS:
+
+
+        - Alias for RS485 interfaces (eg. /dev/ttyRS485)
+
+        - Set mac address from HAT EEPROM for interfaces without own eeprom
+
+        - Set interfaces names according to device markings
+
+        - Use correct interface names for PiBridge ethernet interfaces (without
+        this
+          gateways can't work with piControl)
+      footer:
+        Changelog-entry: Add RevPi udev rules
+        changelog-entry: Add RevPi udev rules
+        Signed-off-by: Nicolai Buchwitz <n.buchwitz@kunbus.com>
+        signed-off-by: Nicolai Buchwitz <n.buchwitz@kunbus.com>
+      author: Nicolai Buchwitz
+      nested: []
+  version: 5.4.0+rev3
+  title: ""
+  date: 2024-08-09T17:34:56.553Z
+- commits:
     - subject: extend initramfs size for raspberrypi4-64
       hash: ecc7626fdaa4415129a278068ff8830790f6bf7e
       body: |
