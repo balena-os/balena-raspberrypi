@@ -21,7 +21,7 @@ on:
 jobs:
   yocto:
     name: Yocto
-    uses: balena-os/balena-yocto-scripts/.github/workflows/yocto-build-deploy.yml@master
+    uses: balena-os/balena-yocto-scripts/.github/workflows/yocto-build-deploy.yml@43092320cfdd0d44bb2fd9079f73eacbf705efe8
     # Prevent duplicate workflow executions for pull_request (PR) and pull_request_target (PRT) events.
     # Both PR and PRT will be triggered for the same pull request, whether it is internal or from a fork.
     # This condition will prevent the workflow from running twice for the same pull request while
@@ -33,6 +33,7 @@ jobs:
       # Needed for testing - defaults to production
       environment: balena-staging.com
       deploy-hostapp: true # needed for testing deploy
+      OVERRIDE_TEST_DEVICE_TYPE: raspberrypi3
       test_matrix: >
         {
           "test_suite": ["os","cloud","hup"],
