@@ -1,4 +1,362 @@
 - commits:
+    - subject: Update layers/meta-balena to cd2ee87b79d8b8edadc424084593a4ad9b69cb4f
+      hash: 52af6f7742cda670ae12533f989b23f9615ee956
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to cd2ee87b79d8b8edadc424084593a4ad9b69cb4f
+        changelog-entry: Update layers/meta-balena to cd2ee87b79d8b8edadc424084593a4ad9b69cb4f
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "modemmanager: Fix Quectel modems initialization bug"
+              hash: 2d53d2cb60a155ece0563fbb39629056e2c959d0
+              body: >
+                With the update to ModemManager version 1.22.0 we now have some
+                Quectel modems failing
+
+                to use QMI properly:
+
+
+                ModemManager[1178]: [modem0] power state updated: on
+
+                ModemManager[1178]: [modem0] (quectel) modem reset detected,
+                triggering reprobe
+
+                ModemManager[1178]: [modem0] (quectel) modem reset detected,
+                triggering reprobe
+
+                .
+
+                .
+
+                .
+
+                ModemManager[1178]: [modem0] failed waiting for final state: Too
+                much time waiting to get to a final state
+
+                ModemManager[1178]: [modem0] failed enabling modem: Operation
+                was cancelled
+
+                ModemManager[1178]: [modem1] couldn't start initialization:
+                Transaction timed out
+
+                ModemManager[1178]: [modem1] fatal error initializing: Fatal
+                error: modem is unusable
+
+
+                This has been fixed upstream with the 2 patches we backport
+                here:
+
+
+                ModemManager[1139]: [modem0] power state updated: on
+
+                ModemManager[1139]: [modem0] (quectel) continuing without
+                enabling profile manager events
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-6.0.7
+          title: ""
+          date: 2024-08-09T17:47:34.390Z
+        - commits:
+            - subject: "patch: Fix broken links in CDS Docs"
+              hash: 1a9cee2069b3381eddbea606a5aeaa4a436f5643
+              body: ""
+              footer: {}
+              author: Vipul Gupta
+              nested: []
+          version: meta-balena-6.0.6
+          title: ""
+          date: 2024-07-25T10:23:04.133Z
+        - commits:
+            - subject: Update balena-supervisor to v16.4.4
+              hash: cd92e92408d399a81fa11e221cbd6f23849cefbb
+              body: |
+                Update balena-supervisor from 16.4.1 to 16.4.4
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Improve log message typing
+                      hash: 4976578a830f3db6484e940a710928544709511d
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-16.4.4
+                  title: ""
+                  date: 2024-07-17T14:48:47.790Z
+                - commits:
+                    - subject: "Logs: only truncate the message if it's possible it will need it"
+                      hash: c5d0eafea9016792d3eea04bf9d9df7886eb8bc0
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                    - subject: "Logs: skip setting default values if we're dropping as an invalid log"
+                      hash: 34cf8b67081d7d353319839eab129569a186cd71
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                    - subject: "Logs: only call `Date.now()` if a timestamp is not already present"
+                      hash: 0a817af10c7dc107b7524a63b2410ff84c275a8d
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-16.4.3
+                  title: ""
+                  date: 2024-07-16T22:28:15.802Z
+                - commits:
+                    - subject: Cleanup images after state-engine tests
+                      hash: f38714d40ffa0c1a885016e8fdfbca46aff4108f
+                      body: >
+                        Tests on GitHub started failing recently because of
+                        leftover images from
+
+                        the state engine test suite. This fixes that issue to
+                        allow tests to
+
+                        pass.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-16.4.2
+                  title: ""
+                  date: 2024-07-16T21:55:49.331Z
+          version: meta-balena-6.0.5
+          title: ""
+          date: 2024-07-22T10:13:24.211Z
+        - commits:
+            - subject: Update balena-os/balena-yocto-scripts action to v1.25.8
+              hash: a8e3ff95943773edee89f4b1b5b4762b8e9e9bdd
+              body: |
+                Update balena-os/balena-yocto-scripts from v1.25.7 to v1.25.8
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested: []
+          version: meta-balena-6.0.4
+          title: ""
+          date: 2024-07-22T09:14:24.239Z
+        - commits:
+            - subject: Update docker API version to match the v20.10 engine version
+              hash: b129f29043de773bf9f6b2259e30cd62487c3d41
+              body: >
+                Update the API version to the version set in the distro
+                configuration,
+
+                which must match the API version of the balena package.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "conf: distro: set default docker API version"
+              hash: 39194a01acb4bfaf51f6d59a0a77b1988519620f
+              body: >
+                This is used to match the API version used in the build pipeline
+                with
+
+                the balena version used in the image.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-6.0.3
+          title: ""
+          date: 2024-07-22T08:23:04.274Z
+        - commits:
+            - subject: Update tests/leviathan digest to 081cbeb
+              hash: 1440f5c245ed251c5677cc72ec9de6e120b41c38
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Self-hosted Renovate Bot
+              nested:
+                - commits:
+                    - subject: Update core/contracts digest to 17b44ca
+                      hash: c889b407e4ad56080c98850022def0d122108863
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.31.20
+                  title: ""
+                  date: 2024-07-15T14:07:29.332Z
+                - commits:
+                    - subject: Update core/contracts digest to 773c77c
+                      hash: 2e512d7f1aac17346613962564293e78a0ecd971
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.31.19
+                  title: ""
+                  date: 2024-07-12T10:30:54.239Z
+                - commits:
+                    - subject: "client: use /start endpoint of worker to reserve worker if IDLE
+                        immediately"
+                      hash: 41b535e9ad160a6c663cf39137da562b4843829a
+                      body: >
+                        There is a problem where if the multiple jobs are
+                        running at the same time, all waiting for a worker to be
+                        IDLE, multiple jobs start using the worker at the same
+                        time. The reason was that first, the state of the worker
+                        is polled using /state - then, after some delay, it is
+                        reserved using the /start endpoint. Problem 1 was that
+                        there is a delay between checking and reserving -
+                        leading to a window of time where another job could do
+                        the same thing. Problem 2 is that once /start was used,
+                        there was nothing to stop the client from continuing,
+                        even if the worker was BUSY. This commit forgoes the
+                        /state endpoint, and just skips to trying /start - if
+                        the worker is IDLE, its instanly reserved, if its BUSY,
+                        the reponse is actually checked and nothing happens.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                  version: leviathan-2.31.18
+                  title: ""
+                  date: 2024-07-12T09:25:30.846Z
+          version: meta-balena-6.0.2
+          title: ""
+          date: 2024-07-19T23:27:39.748Z
+        - commits:
+            - subject: "NetworkManager: remove duplicate rules in shared dispatcher script"
+              hash: 90093d5d780bb236e21add3a55f270c08623768a
+              body: >
+                Sometimes on NetworkManager restart a new rule for a shared
+                interface
+
+                is added, but the old rule is not cleaned up properly, so the
+                rules
+
+                are just piling up. This patch makes the shared dispatcher
+                script
+
+                clean up duplicates if it finds any.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-6.0.1
+          title: ""
+          date: 2024-07-19T16:09:46.427Z
+        - commits:
+            - subject: "common: remove module compression bbclass"
+              hash: fbb35d54e5833db8a05b37e6cbce4bf1ca6ec1b7
+              body: >
+                This class is no longer necessary, as the kernel is configured
+                to use
+
+                module compression and in-kernel decompression when available.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "kernel-balena: enable zstd module compression"
+              hash: 3aa66ff60a50af2fa21714223f390f09114dbb1d
+              body: >
+                Enable zstandard module compression in kernels > v5.13, as this
+                feature
+
+                was introduced in commit c3d7ef377eb25, first published in that
+                release.
+              footer:
+                Change-type: major
+                change-type: major
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "image-balena: support zst compressed modules"
+              hash: 77ce253c9593b0d25e94d72e295a71e484a3b55e
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "kmod: enable zstd"
+              hash: df352c7fcd132871842326023bf61f8da80d5a22
+              body: >
+                Enable zstd support for kmod to allow modprobe to load
+                compressed
+
+                modules.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-6.0.0
+          title: ""
+          date: 2024-07-19T00:08:00.449Z
+        - commits:
+            - subject: Add build-only GHA workflows for missing devices
+              hash: af70358b6b17b309cb043a3f15e1cca8084b1976
+              body: |
+                For meta-balena PRs we only want to test virtual devices,
+                but we will do a sanity build for many types.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-5.4.1
+          title: ""
+          date: 2024-07-17T18:02:25.707Z
+  version: 6.0.7
+  title: ""
+  date: 2024-08-12T14:42:51.923Z
+- commits:
     - subject: Add RevPi udev rules
       hash: eb654958d643293801f24d831dd30793ff5896d9
       body: >
