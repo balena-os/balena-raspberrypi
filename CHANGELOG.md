@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.0.7+rev1
+## (2024-08-13)
+
+* Add device tree overlays for Seeed reComputer-R100x [Florin Sarbu]
+
 # v6.0.7
 ## (2024-08-12)
 

@@ -1,4 +1,20 @@
 - commits:
+    - subject: Add device tree overlays for Seeed reComputer-R100x
+      hash: 395ddfa99d7079024665f470013815bcb8155cad
+      body: >
+        This overlay is taken from
+        https://github.com/Seeed-Studio/seeed-linux-dtoverlays/tree/master/overlays/rpi
+      footer:
+        Changelog-entry: Add device tree overlays for Seeed reComputer-R100x
+        changelog-entry: Add device tree overlays for Seeed reComputer-R100x
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 6.0.7+rev1
+  title: ""
+  date: 2024-08-13T15:54:20.692Z
+- commits:
     - subject: Update layers/meta-balena to cd2ee87b79d8b8edadc424084593a4ad9b69cb4f
       hash: 52af6f7742cda670ae12533f989b23f9615ee956
       body: Update layers/meta-balena
