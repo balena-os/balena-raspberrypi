@@ -1,22 +1,37 @@
 name: Raspberry Pi 3
 
 on:
-  # With these triggers the Yocto jobs will run
-  # in parallel with the Flowzone jobs, which is fine for now
-  # and allows us to better control what we want to test and when.
-  # It is expected that Flowzone could fail, but yocto jobs will run.
+  # https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#onpushbranchestagsbranches-ignoretags-ignore
+  # https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
   pull_request:
     branches:
-      - "main"
-      - "master"
+      - main
+      - master
+      # ESR branches glob pattern
+      - v20[0-9][0-9].[0-1]?[1470].[0-9]+
   pull_request_target:
     branches:
-      - "main"
-      - "master"
+      - main
+      - master
+      # ESR branches glob pattern
+      - v20[0-9][0-9].[0-1]?[1470].[0-9]+
   push:
     tags:
+      # Semver tags glob pattern (includes ESR in format v20YY.MM.PATCH)
       - v[0-9]+.[0-9]+.[0-9]+\+?r?e?v?*
-      - v20[0-9][0-9].[0-1]?[1470].[0-9]+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+      force-finalize:
+        description: Force finalize of the build (implicitly enables hostapp and S3 deployments)
+        required: false
+        type: boolean
+        default: false
+      deploy-environment:
+        description: Environment to use for build and deploy
+        required: false
+        type: string
+        default: balena-staging.com
 
 jobs:
   yocto:
@@ -31,6 +46,7 @@ jobs:
     with:
       machine: raspberrypi3
       # Needed for testing - defaults to production
+      # Default to balena-staging.com for workflow dispatch, but balena-cloud.com for other events
       deploy-environment: balena-staging.com
       test_matrix: >
         {
@@ -38,3 +54,5 @@ jobs:
           "environment": ["bm.balena-dev.com"],
           "runs_on": [["ubuntu-latest"]]
         }
+      # Allow manual workflow runs to force finalize without checking previous test runs
+      force-finalize: ${{ inputs.force-finalize || false }}
