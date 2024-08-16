@@ -2,6 +2,7 @@
 #MACHINE ?= "raspberrypi"
 #MACHINE ?= "raspberrypi2"
 #MACHINE ?= "raspberrypi3"
+#MACHINE ?= "test-private"
 #MACHINE ?= "raspberrypi3-64"
 #MACHINE ?= "revpi-connect"
 #MACHINE ?= "revpi-connect-s"
