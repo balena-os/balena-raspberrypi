@@ -1,4 +1,153 @@
 - commits:
+    - subject: Update layers/meta-balena to 8fde3b3743c86febb753e38b1f809d66e41f7756
+      hash: bb5c6b580d28d3a630298e5050bb502c874e3f9a
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 8fde3b3743c86febb753e38b1f809d66e41f7756
+        changelog-entry: Update layers/meta-balena to 8fde3b3743c86febb753e38b1f809d66e41f7756
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Update balena-supervisor to v16.4.6
+              hash: 6137928e264def6afbbe5a42f8bc496419ab65a4
+              body: |
+                Update balena-supervisor from 16.4.4 to 16.4.6
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Update semver to v7.6.3
+                      hash: 340e69d0c22e12281ac8608eda2b5a871e645e19
+                      body: |
+                        Update semver from 7.6.2 to 7.6.3
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.4.6
+                  title: ""
+                  date: 2024-07-30T14:43:21.325Z
+                - commits:
+                    - subject: Update balena-io/deploy-to-balena-action action to v2.0.74
+                      hash: 92be067b0d2e408a526e55bd3a6a57e46dc52687
+                      body: >
+                        Update balena-io/deploy-to-balena-action from 2.0.72 to
+                        2.0.74
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: balena-supervisor-16.4.5
+                  title: ""
+                  date: 2024-07-25T14:31:14.222Z
+          version: meta-balena-6.0.10
+          title: ""
+          date: 2024-08-14T20:51:23.124Z
+        - commits:
+            - subject: Update tests/leviathan digest to f4e9332
+              hash: d475c7b424d396d03c712befb3fdb2934d7513f0
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Update actions/upload-artifact digest to 834a144
+                      hash: 6a81dc37849f6290f104e3bbb95bc8b60f240ab5
+                      body: |
+                        Update actions/upload-artifact
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.25
+                  title: ""
+                  date: 2024-08-06T15:54:52.299Z
+                - commits:
+                    - subject: Update core/contracts digest to 6d69a05
+                      hash: 02819efbdc5ca46918d80ec2b23c18274995629b
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.24
+                  title: ""
+                  date: 2024-08-06T10:14:13.280Z
+                - commits:
+                    - subject: "core: remove nested retries in getDutIp function"
+                      hash: fc8a48737153dc528a005f4d963e0f3f54426aae
+                      body: >
+                        the function that was being used to fetch the DUT ip
+                        from the worker had nested retries that led to 30x5 =
+                        150 retries, and timeouts taking ~40 mins in the case
+                        the DUT wasn't reachable (autokit setup fault, device
+                        not booting, problem during flashing). This removes the
+                        nested retries and reduces the retries to 50 /  ~ 10mins
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                  version: leviathan-2.31.23
+                  title: ""
+                  date: 2024-07-23T13:24:35.947Z
+                - commits:
+                    - subject: "patch: Add migration & secureboot options to e2e test suite"
+                      hash: 7abd1e4f8483b2a5704c5f4e0b1f974e0fafc762
+                      body: ""
+                      footer:
+                        Signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                        signed-off-by: Vipul Gupta (@vipulgupta2048) <vipulgupta2048@gmail.com>
+                      author: Vipul Gupta (@vipulgupta2048)
+                      nested: []
+                  version: leviathan-2.31.22
+                  title: ""
+                  date: 2024-07-23T13:00:12.436Z
+                - commits:
+                    - subject: Update docker/setup-buildx-action digest to aa33708
+                      hash: dda330bb67cff678a5b7758f31ebf53bbc58886c
+                      body: |
+                        Update docker/setup-buildx-action
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Self-hosted Renovate Bot
+                      nested: []
+                  version: leviathan-2.31.21
+                  title: ""
+                  date: 2024-07-22T10:33:23.487Z
+          version: meta-balena-6.0.9
+          title: ""
+          date: 2024-08-14T11:50:03.782Z
+        - commits:
+            - subject: "tests: os: add check for iptables rules"
+              hash: ac651d898929d492f3ec93a852f65b46d3883ac7
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-6.0.8
+          title: ""
+          date: 2024-08-14T01:35:51.540Z
+  version: 6.0.10
+  title: ""
+  date: 2024-08-20T13:32:14.377Z
+- commits:
     - subject: Add device tree overlays for Seeed reComputer-R100x
       hash: 395ddfa99d7079024665f470013815bcb8155cad
       body: >
