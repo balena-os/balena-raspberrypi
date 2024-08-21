@@ -1,6 +1,138 @@
 Change log
 -----------
 
+# v6.0.10+rev1
+## (2024-08-21)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 87762ec55616db7a361d41ae0fb115f8a9d4e034 [balena-renovate[bot]] </summary>
+
+> ## balena-yocto-scripts-1.25.23
+> ### (2024-08-15)
+> 
+> * Add mermaid flowchart to yocto workflow README [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.25.22
+> ### (2024-08-12)
+> 
+> * Update Lock file maintenance [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.21
+> ### (2024-08-06)
+> 
+> * Update balena-os/leviathan digest to f4e9332 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.20
+> ### (2024-08-06)
+> 
+> * Update actions/upload-artifact action to v4.3.6 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.19
+> ### (2024-08-06)
+> 
+> * Update balena-os/leviathan digest to a16cf0f [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.18
+> ### (2024-08-05)
+> 
+> * Update actions/upload-artifact action to v4.3.5 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.17
+> ### (2024-08-05)
+> 
+> * Update Lock file maintenance [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.16
+> ### (Invalid date)
+> 
+> * Update docker/login-action action to v3.3.0 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.15
+> ### (Invalid date)
+> 
+> * Update actions/upload-artifact action to v4.3.4 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.14
+> ### (2024-07-29)
+> 
+> * Update balena-os/leviathan digest to 36aafe0 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.13
+> ### (2024-07-29)
+> 
+> * Update actions/checkout action to v4.1.7 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.12
+> ### (2024-07-29)
+> 
+> * Update Pin dependencies [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.11
+> ### (2024-07-29)
+> 
+> * revovate: change config to use balena-io template [rcooke-warwick]
+> 
+> ## balena-yocto-scripts-1.25.10
+> ### (2024-07-23)
+> 
+> * By default, deploy hostapp on push only [Leandro Motta Barros]
+> 
+> ## balena-yocto-scripts-1.25.9
+> ### (2024-07-22)
+> 
+> * use token to fetch private contracts [rcooke-warwick]
+> * unroll balena_lib_build_contract function [rcooke-warwick]
+> * unroll balena_api_is_dt_private function [rcooke-warwick]
+> 
+> ## balena-yocto-scripts-1.25.8
+> ### (2024-07-17)
+> 
+> * Use env vars BALENA_HOST and BALENACLOUD_SSH_URL when provided [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.25.7
+> ### (2024-07-16)
+> 
+> * Fix handling of empty test matrix input [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.25.6
+> ### (2024-07-15)
+> 
+> * Use App Installation tokens so we can clone private submodules [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.25.5
+> ### (2024-07-08)
+> 
+> * only login to s3 if deploying to s3 [rcooke-warwick]
+> 
+> ## balena-yocto-scripts-1.25.4
+> ### (2024-07-06)
+> 
+> * balena-deploy: deploy secure boot lock artifacts if available [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.25.3
+> ### (2024-07-05)
+> 
+> * use workflow run of PR head instead of statuses to determine test results [rcooke-warwick]
+> 
+> ## balena-yocto-scripts-1.25.2
+> ### (2024-07-03)
+> 
+> * Remove dry-run flag from S3 upload [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.25.1
+> ### (2024-07-03)
+> 
+> * Fix actionlint errors and warnings in shell steps [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.25.0
+> ### (2024-07-03)
+> 
+> * Do not run any tests by default unless provided by calling workflow [Kyle Harding]
+> 
+
+</details>
+
 # v6.0.10
 ## (2024-08-20)
 

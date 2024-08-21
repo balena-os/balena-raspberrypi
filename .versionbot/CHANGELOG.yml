@@ -1,4 +1,395 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 87762ec55616db7a361d41ae0fb115f8a9d4e034
+      hash: 329a54eb12043cfd24fea9d73e35081982fff48c
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 87762ec55616db7a361d41ae0fb115f8a9d4e034
+        changelog-entry: Update balena-yocto-scripts to 87762ec55616db7a361d41ae0fb115f8a9d4e034
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Add mermaid flowchart to yocto workflow README
+              hash: af6f93c1a415ecf90785428c32b31801b26ad160
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.25.23
+          title: ""
+          date: 2024-08-15T20:45:12.698Z
+        - commits:
+            - subject: Update Lock file maintenance
+              hash: 156711aceb7e2be7048ea668800ff9368bf35df8
+              body: |
+                Update 
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.25.22
+          title: ""
+          date: 2024-08-12T01:57:02.017Z
+        - commits:
+            - subject: Update balena-os/leviathan digest to f4e9332
+              hash: 6a7097208111936aac9a8862c61d6f600d1652dd
+              body: |
+                Update balena-os/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.25.21
+          title: ""
+          date: 2024-08-06T18:50:02.588Z
+        - commits:
+            - subject: Update actions/upload-artifact action to v4.3.6
+              hash: 03b4f76a25f7c887c3c1cbae6293bce772773f6d
+              body: |
+                Update actions/upload-artifact from 4.3.5 to 4.3.6
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.25.20
+          title: ""
+          date: 2024-08-06T16:39:55.294Z
+        - commits:
+            - subject: Update balena-os/leviathan digest to a16cf0f
+              hash: f0d8fdd6add9aa34a89234491e6a82ac7583b48e
+              body: |
+                Update balena-os/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.25.19
+          title: ""
+          date: 2024-08-06T12:46:47.450Z
+        - commits:
+            - subject: Update actions/upload-artifact action to v4.3.5
+              hash: 47535180af9f0a0dcb35ba6b0edea204e7de3ba7
+              body: |
+                Update actions/upload-artifact from 4.3.4 to 4.3.5
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.25.18
+          title: ""
+          date: 2024-08-05T04:31:00.525Z
+        - commits:
+            - subject: Update Lock file maintenance
+              hash: bb1923b984c6646d36356f4acf171a30cabdfd3d
+              body: |
+                Update 
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.25.17
+          title: ""
+          date: 2024-08-05T02:04:43.860Z
+        - commits:
+            - subject: Update docker/login-action action to v3.3.0
+              hash: 65a653d66efd1cbfdca1616d62a9387dc47eb50e
+              body: |
+                Update docker/login-action from 3.0.0 to 3.3.0
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.25.16
+          title: ""
+          date: 2024-07-30T03:01:08.144Z
+        - commits:
+            - subject: Update actions/upload-artifact action to v4.3.4
+              hash: f81cf0f07965cf34d687b76e9ad7befc6f49cf9c
+              body: |
+                Update actions/upload-artifact from 4.3.0 to 4.3.4
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.25.15
+          title: ""
+          date: 2024-07-30T01:00:25.663Z
+        - commits:
+            - subject: Update balena-os/leviathan digest to 36aafe0
+              hash: e5842524bf70adc29c62f35e0744ee970d232866
+              body: |
+                Update balena-os/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.25.14
+          title: ""
+          date: 2024-07-29T22:37:24.756Z
+        - commits:
+            - subject: Update actions/checkout action to v4.1.7
+              hash: c9da5d524bbebe7dde5175584589cce5634b7a41
+              body: |
+                Update actions/checkout from 4.1.1 to 4.1.7
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.25.13
+          title: ""
+          date: 2024-07-29T20:55:15.720Z
+        - commits:
+            - subject: Update Pin dependencies
+              hash: c48f1f984f2f22f49fc9aee3f1cc9883f8ca7ec5
+              body: |
+                Update actions/checkout
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.25.12
+          title: ""
+          date: 2024-07-29T18:13:01.088Z
+        - commits:
+            - subject: "revovate: change config to use balena-io template"
+              hash: f4d82d9029f39245cf15d2433a783d33787a73d1
+              body: >
+                in this repo we are using "change-type" commits, but renovate is
+                using the balena-os default which is using "changelog-entry"
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: balena-yocto-scripts-1.25.11
+          title: ""
+          date: 2024-07-29T15:14:59.755Z
+        - commits:
+            - subject: By default, deploy hostapp on push only
+              hash: 87763dfc75504522c1dadc698f74576bbf0e9320
+              body: >
+                This is meant to keep the defaults of `deploy-s3` and
+                `deploy-hostapp`
+
+                consistent.
+              footer:
+                Signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                signed-off-by: Leandro Motta Barros <leandro@balena.io>
+                Change-type: patch
+                change-type: patch
+              author: Leandro Motta Barros
+              nested: []
+          version: balena-yocto-scripts-1.25.10
+          title: ""
+          date: 2024-07-23T02:23:14.094Z
+        - commits:
+            - subject: use token to fetch private contracts
+              hash: acfc8d20ce8dd4b29eae67679dd1a89ffcc75c7c
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: unroll balena_lib_build_contract function
+              hash: 82c9e482f3bfb0fcd960c455f2c8ff0c42c98baa
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+            - subject: unroll balena_api_is_dt_private function
+              hash: cc3102dbb1348ee563b08dfd3afd37daaa0404ca
+              body: >
+                when building + deploying or a private DT , the check to see if
+                the DT is private fails. This is due to
+                https://github.com/balena-os/balena-yocto-scripts/blob/master/automation/include/balena-api.inc#L424
+                using this function:
+                https://github.com/balena-os/balena-yocto-scripts/blob/master/automation/include/balena-lib.inc#L191
+                - which uses the jenkins deployTo variable to select the correct
+                api url and token.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: balena-yocto-scripts-1.25.9
+          title: ""
+          date: 2024-07-22T16:18:49.689Z
+        - commits:
+            - subject: Use env vars BALENA_HOST and BALENACLOUD_SSH_URL when provided
+              hash: f04607fc0f50a99bb2fd14370a2e2dae0e3f7094
+              body: |
+                These currently differ between environments, and we will need
+                to start supporting environment names that are not the same
+                as the balena host.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.25.8
+          title: ""
+          date: 2024-07-17T19:56:20.231Z
+        - commits:
+            - subject: Fix handling of empty test matrix input
+              hash: 727d8d275455361d3bc82b5aec392e9aaa08248b
+              body: |
+                Previously an empty test matrix would cause
+                an error in the workflow.
+
+                Added an if condition to check for a valid
+                test_suite property where applicable.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.25.7
+          title: ""
+          date: 2024-07-16T20:10:01.990Z
+        - commits:
+            - subject: Use App Installation tokens so we can clone private submodules
+              hash: 9ca32e51938efc3c5cd01b96eecce85665fb9698
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.25.6
+          title: ""
+          date: 2024-07-15T15:11:37.708Z
+        - commits:
+            - subject: only login to s3 if deploying to s3
+              hash: a23ed7074fd2af18b952b9d0f6ee2623dd6a76f8
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: balena-yocto-scripts-1.25.5
+          title: ""
+          date: 2024-07-08T16:52:21.474Z
+        - commits:
+            - subject: "balena-deploy: deploy secure boot lock artifacts if available"
+              hash: 01378a49b0b2264afcf6d2dc4d016e2be206fde7
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.25.4
+          title: ""
+          date: 2024-07-06T09:01:53.726Z
+        - commits:
+            - subject: use workflow run of PR head instead of statuses to determine test
+                results
+              hash: ad06820f4174568383678710fa68b2054da6db57
+              body: >
+                Since we have moved to workflows for tests instead of status
+                checks, we have to fetch the workflow runs for the appropriate
+                commit to determine a test pass/fail.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: balena-yocto-scripts-1.25.3
+          title: ""
+          date: 2024-07-05T12:42:09.570Z
+        - commits:
+            - subject: Remove dry-run flag from S3 upload
+              hash: cf0301996022ef58a9c19d40d002d72a1bbcf705
+              body: |
+                We are publishing hostapp releases to staging already, we should
+                start including the associated S3 files as well.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.25.2
+          title: ""
+          date: 2024-07-03T21:19:20.964Z
+        - commits:
+            - subject: Fix actionlint errors and warnings in shell steps
+              hash: da910ed9ac6fdd70bd0ebd1beb0dbbd1248517fd
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.25.1
+          title: ""
+          date: 2024-07-03T18:33:05.802Z
+        - commits:
+            - subject: Do not run any tests by default unless provided by calling workflow
+              hash: d0cfc42cf8a17ef6b5f2ac4eed6f84d1581435e6
+              body: >
+                As there are currently more device types without tests than
+                with,
+
+                and some of those with tests need to provide overrides anyway,
+                it's
+
+                simpler to assume an empty test matrix unless provided.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.25.0
+          title: ""
+          date: 2024-07-03T15:44:25.729Z
+  version: 6.0.10+rev1
+  title: ""
+  date: 2024-08-21T11:17:46.841Z
+- commits:
     - subject: Update layers/meta-balena to 8fde3b3743c86febb753e38b1f809d66e41f7756
       hash: bb5c6b580d28d3a630298e5050bb502c874e3f9a
       body: Update layers/meta-balena
