@@ -11,7 +11,7 @@ on:
 
 jobs:
   release-on-tag:
-    uses: balena-os/github-workflows/.github/workflows/build_and_deploy.yml@v0.0.19
+    uses: balena-os/github-workflows/.github/workflows/build_and_deploy.yml@0192d70429dd7bce1aee056ec3369514f682d48a # v0.0.27
     with:
       deployTo: "production"
     secrets: inherit
