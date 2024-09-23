@@ -1,4 +1,429 @@
 - commits:
+    - subject: Update layers/meta-balena to f2c72d6bbd312821f0bb97897fe7836c525950f7
+      hash: 03ac1385f2ceac123399adbae76053e6e640c35a
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to f2c72d6bbd312821f0bb97897fe7836c525950f7
+        changelog-entry: Update layers/meta-balena to f2c72d6bbd312821f0bb97897fe7836c525950f7
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Override the default commit body for digest updates
+              hash: 767ecdac82438fd9390628796100165902c8fe14
+              body: >
+                A commit body is provided for digest updates in the
+
+                top-level config here:
+                https://github.com/balena-os/renovate-config
+
+
+                So we must override the digest setting explicitly at the repo
+
+                level in order to use Change-type vs Changelog-entry
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-6.0.33
+          title: ""
+          date: 2024-09-22T20:57:17.943Z
+        - commits:
+            - subject: "kernel-headers-test: update dockerfile to bullseye"
+              hash: b1ba4caa955dc751d01e10e4159fde34dfb69f92
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-6.0.32
+          title: ""
+          date: 2024-09-21T17:20:33.365Z
+        - commits:
+            - subject: "mkfs-hostapp-native: update Dockerfile to using trixie"
+              hash: 61265dc52127a461b476c225268e3d6be6f9eabf
+              body: >-
+                This is required to be able to build in host distributions that
+                use
+
+                glibc v2.39 to avoid errors such as:
+
+
+                ```
+
+                | + hostapp-update -f /input -n
+
+                | Running hostapp update...
+
+                | touch: /lib/x86_64-linux-gnu/libc.so.6: version `GLIBC_2.38'
+                not found (required by touch)
+
+                ```
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "meta-balena-rust: rust-llvm: backport a fix for build with gcc-13"
+              hash: c8863a14595c7147a7072b21420eb803ef146779
+              body: |
+                * needed for rust-llvm-native on hosts with gcc-13
+
+                (backport from
+                335eb3a93e96 rust-llvm: backport a fix for build with gcc-13)
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-6.0.31
+          title: ""
+          date: 2024-09-20T21:32:01.568Z
+        - commits:
+            - subject: Update tests/leviathan digest to 17c522f
+              hash: d4f0f9ccb2a819a22213d7cb5822534a5191014d
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Update balena-io/balena-cli to v19.0.11
+                      hash: 2824ed421ede89a422157bae190ce00d1443548e
+                      body: |
+                        Update balena-io/balena-cli from 19.0.10 to 19.0.11
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.44
+                  title: ""
+                  date: 2024-09-18T17:49:06.237Z
+          version: meta-balena-6.0.30
+          title: ""
+          date: 2024-09-18T21:20:36.785Z
+        - commits:
+            - subject: "modemmanager: Fix SIM7100E crash"
+              hash: e397c18742117596fed133e0b5992362e230f538
+              body: >
+                With the update to MM 1.22.0 we have received reports that
+
+                SIM7100E is not functioning correctly.
+
+                Followed up with ModemManager devs and it was discovered the
+                issue
+
+                is related to a PCO setting:
+
+                https://gitlab.freedesktop.org/mobile-broadband/ModemManager/-/issues/884
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-6.0.29
+          title: ""
+          date: 2024-09-18T12:31:58.505Z
+        - commits:
+            - subject: "initrdscripts: replace cut by awk for parsing lsblk in cryptsetup
+                hook"
+              hash: c9544aaf502943f3b492d0a5907f1c1e401c6ac7
+              body: >
+                cut is sensitive to the amount of delimiter characters when
+                parsing
+
+                output, so e.g. an additional space between two elements causes
+
+                every field shift by one index.
+
+
+                This patch replaces the use of cut by awk, which should be more
+                robust.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-6.0.28
+          title: ""
+          date: 2024-09-18T04:59:46.616Z
+        - commits:
+            - subject: "tests:os: Use writeConfigJsonProp helper function"
+              hash: b44642caa14c4fb791d99e5705499b710a98c3e9
+              body: >
+                Use the existing helper function to write changes to config.json.
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-6.0.27
+          title: ""
+          date: 2024-09-17T13:31:39.490Z
+        - commits:
+            - subject: Update tests/leviathan digest to 384eab3
+              hash: d83cff4412e56f15966c9ea9f3c5c6a54ef628da
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.47
+                      hash: b53c1c88c58c9778c65d1374e0e6974c4ade9b7b
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.46 to 2.9.47
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.43
+                  title: ""
+                  date: 2024-09-16T18:05:30.777Z
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.46
+                      hash: f3f95ce7b0f5db843a74254ab46e601c8d02e946
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.45 to 2.9.46
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.42
+                  title: ""
+                  date: 2024-09-16T15:31:00.845Z
+                - commits:
+                    - subject: Update balena-io/balena-cli to v19.0.10
+                      hash: 7a610c2fa5f291963246490217351c9615fe24fc
+                      body: |
+                        Update balena-io/balena-cli from 19.0.9 to 19.0.10
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.41
+                  title: ""
+                  date: 2024-09-13T00:37:52.211Z
+                - commits:
+                    - subject: Update balena-io/balena-cli to v19.0.9
+                      hash: 4fa611fe286f7992201ca189399bc1d8de3cb5e5
+                      body: |
+                        Update balena-io/balena-cli from 19.0.8 to 19.0.9
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.40
+                  title: ""
+                  date: 2024-09-12T16:34:55.992Z
+                - commits:
+                    - subject: Update balena-io/balena-cli to v19.0.8
+                      hash: db7090769dc27d334c8469e2506d9c292b858808
+                      body: |
+                        Update balena-io/balena-cli from 19.0.7 to 19.0.8
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.39
+                  title: ""
+                  date: 2024-09-12T15:33:44.784Z
+                - commits:
+                    - subject: Update balena-io/balena-cli to v19.0.7
+                      hash: 23b1c74ae99df11d669829f17d59e0ca3be47760
+                      body: |
+                        Update balena-io/balena-cli from 19.0.5 to 19.0.7
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.38
+                  title: ""
+                  date: 2024-09-12T14:36:50.579Z
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.45
+                      hash: 0dc026dca2f747f842c1409a13f47cea9b9d04a9
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.44 to 2.9.45
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.37
+                  title: ""
+                  date: 2024-09-12T07:31:44.179Z
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.44
+                      hash: 6b43e8f2ffa27d0fb6c37da4bfaba4851df2f7f0
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.43 to 2.9.44
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.36
+                  title: ""
+                  date: 2024-09-11T23:32:37.123Z
+                - commits:
+                    - subject: Update balena-io/balena-cli to v19.0.5
+                      hash: c174e083809828878a0c4ffff762e9f559accfe4
+                      body: |
+                        Update balena-io/balena-cli from 19.0.3 to 19.0.5
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.35
+                  title: ""
+                  date: 2024-09-10T15:33:10.681Z
+                - commits:
+                    - subject: Always upload reports, especially when tests fail
+                      hash: c09fee58e73b0717726d5c3d381574cb12eadd83
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: leviathan-2.31.34
+                  title: ""
+                  date: 2024-09-05T20:56:32.116Z
+                - commits:
+                    - subject: Update balena-io/balena-cli to v19.0.3
+                      hash: b321cbdc50680242d6e4e61b0ae7b044593ddb75
+                      body: |
+                        Update balena-io/balena-cli from 19.0.2 to 19.0.3
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.33
+                  title: ""
+                  date: 2024-09-05T13:36:48.504Z
+                - commits:
+                    - subject: Update balena-io/balena-cli to v19.0.2
+                      hash: 37461510767eeabbf8e9c20fe7b93a3ffc1ede7d
+                      body: |
+                        Update balena-io/balena-cli from 19.0.1 to 19.0.2
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.32
+                  title: ""
+                  date: 2024-09-03T15:32:37.054Z
+                - commits:
+                    - subject: Update actions/upload-artifact digest to 5076954
+                      hash: bbcc990c22373d8e04ebca6d20c36e500cee96ed
+                      body: |
+                        Update actions/upload-artifact
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.31
+                  title: ""
+                  date: 2024-09-02T15:34:35.548Z
+                - commits:
+                    - subject: Update balena-io/balena-cli to v19.0.1
+                      hash: 1b906986e45c2fb485e3040ea1ac8af6ef54ad85
+                      body: |
+                        Update balena-io/balena-cli from 19.0.0 to 19.0.1
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.30
+                  title: ""
+                  date: 2024-09-02T14:30:18.866Z
+          version: meta-balena-6.0.26
+          title: ""
+          date: 2024-09-16T20:58:39.824Z
+        - commits:
+            - subject: "initrdscripts: Make cryptsetup fail hard in unexpected conditions"
+              hash: c1bccdbd95bcb0202c4b80679ade0967df643342
+              body: >
+                This patch adds a set of checks that make sure that the
+                partition
+
+                layout is as expected on a system with encrypted disks. Namely
+                it
+
+                * Checks that the boot partition is split
+
+                * Checks that it can find the correct amount of encrypted
+                partitions
+
+                * Checks that the label on the unlocked filesystem matches the
+                label
+                  on the encrypted partition
+                * Checks that system is not mixing encrypted and unencrypted
+                  partitions
+                * Checks there are no ambiguities or duplicit partitions
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-6.0.25
+          title: ""
+          date: 2024-09-13T16:23:25.632Z
+        - commits:
+            - subject: "common: fix return in commit_apply-dbx HUP hook"
+              hash: a557b614a0ce2cf39d6bdfb3e464834b0d570895
+              body: >
+                This code was moved from rollback-health into a hostapp-update
+                commit
+
+                hook, where it now runs outside of a function.
+
+
+                Replace the invalid return statements with exits.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-6.0.24
+          title: ""
+          date: 2024-09-13T08:22:06.217Z
+  version: 6.0.33
+  title: ""
+  date: 2024-09-23T14:38:16.889Z
+- commits:
     - subject: Update balena-os/balena-yocto-scripts to v1.25.45
       hash: 4115d8bc84547e2cb066cb84d43c442e6fb7bf65
       body: Update balena-os/balena-yocto-scripts

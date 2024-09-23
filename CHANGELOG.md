@@ -1,6 +1,154 @@
 Change log
 -----------
 
+# v6.0.33
+## (2024-09-23)
+
+
+<details>
+<summary> Update layers/meta-balena to f2c72d6bbd312821f0bb97897fe7836c525950f7 [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.0.33
+> ### (2024-09-22)
+> 
+> * Override the default commit body for digest updates [Kyle Harding]
+> 
+> ## meta-balena-6.0.32
+> ### (2024-09-21)
+> 
+> * kernel-headers-test: update dockerfile to bullseye [Alex Gonzalez]
+> 
+> ## meta-balena-6.0.31
+> ### (2024-09-20)
+> 
+> * mkfs-hostapp-native: update Dockerfile to using trixie [Alex Gonzalez]
+> * meta-balena-rust: rust-llvm: backport a fix for build with gcc-13 [Alex Gonzalez]
+> 
+> ## meta-balena-6.0.30
+> ### (2024-09-18)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 17c522f [balena-renovate[bot]] </summary>
+> 
+>> ### leviathan-2.31.44
+>> #### (2024-09-18)
+>> 
+>> * Update balena-io/balena-cli to v19.0.11 [balena-renovate[bot]]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-6.0.29
+> ### (2024-09-18)
+> 
+> * modemmanager: Fix SIM7100E crash [Florin Sarbu]
+> 
+> ## meta-balena-6.0.28
+> ### (2024-09-18)
+> 
+> * initrdscripts: replace cut by awk for parsing lsblk in cryptsetup hook [Michal Toman]
+> 
+> ## meta-balena-6.0.27
+> ### (2024-09-17)
+> 
+> * tests:os: Use writeConfigJsonProp helper function [Kyle Harding]
+> 
+> ## meta-balena-6.0.26
+> ### (2024-09-16)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 384eab3 [balena-renovate[bot]] </summary>
+> 
+>> ### leviathan-2.31.43
+>> #### (2024-09-16)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.47 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.42
+>> #### (2024-09-16)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.46 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.41
+>> #### (2024-09-13)
+>> 
+>> * Update balena-io/balena-cli to v19.0.10 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.40
+>> #### (2024-09-12)
+>> 
+>> * Update balena-io/balena-cli to v19.0.9 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.39
+>> #### (2024-09-12)
+>> 
+>> * Update balena-io/balena-cli to v19.0.8 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.38
+>> #### (2024-09-12)
+>> 
+>> * Update balena-io/balena-cli to v19.0.7 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.37
+>> #### (2024-09-12)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.45 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.36
+>> #### (2024-09-11)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.44 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.35
+>> #### (2024-09-10)
+>> 
+>> * Update balena-io/balena-cli to v19.0.5 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.34
+>> #### (2024-09-05)
+>> 
+>> * Always upload reports, especially when tests fail [Kyle Harding]
+>> 
+>> ### leviathan-2.31.33
+>> #### (2024-09-05)
+>> 
+>> * Update balena-io/balena-cli to v19.0.3 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.32
+>> #### (2024-09-03)
+>> 
+>> * Update balena-io/balena-cli to v19.0.2 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.31
+>> #### (2024-09-02)
+>> 
+>> * Update actions/upload-artifact digest to 5076954 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.30
+>> #### (2024-09-02)
+>> 
+>> * Update balena-io/balena-cli to v19.0.1 [balena-renovate[bot]]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-6.0.25
+> ### (2024-09-13)
+> 
+> * initrdscripts: Make cryptsetup fail hard in unexpected conditions [Michal Toman]
+> 
+> ## meta-balena-6.0.24
+> ### (2024-09-13)
+> 
+> * common: fix return in commit_apply-dbx HUP hook [Joseph Kogut]
+> 
+
+</details>
+
 # v6.0.23+rev1
 ## (2024-09-20)
 
