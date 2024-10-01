@@ -52,6 +52,6 @@ jobs:
           "runs_on": [["ubuntu-latest"]]
         }
       # Allow manual workflow runs to force finalize without checking previous test runs
-      # force-finalize: ${{ inputs.force-finalize || false }}
+      force-finalize: ${{ inputs.force-finalize || false }}
       # Default to balena-staging.com for workflow dispatch, but balena-cloud.com for other events
       deploy-environment: ${{ inputs.deploy-environment || 'balena-cloud.com' }}
