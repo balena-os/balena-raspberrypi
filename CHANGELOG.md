@@ -1,6 +1,14 @@
 Change log
 -----------
 
+# v6.0.33+rev1
+## (2024-10-02)
+
+* bump yocto-scripts action to v1.25.47 [rcooke-warwick]
+* Allow force-finalize for manual workflow dispatch [rcooke-warwick]
+* remove test_matrix from devices without tests setup [rcooke-warwick]
+* cleanup workflow triggers [rcooke-warwick]
+
 # v6.0.33
 ## (2024-09-23)
 

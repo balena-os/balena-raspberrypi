@@ -1,4 +1,48 @@
 - commits:
+    - subject: bump yocto-scripts action to v1.25.47
+      hash: 0781921b89b781c287ae888375ec69649c873b1f
+      body: ""
+      footer:
+        Changelog-entry: bump yocto-scripts action to v1.25.47
+        changelog-entry: bump yocto-scripts action to v1.25.47
+        Signed-off-by: Ryan Cooke <ryan@balena.io>
+        signed-off-by: Ryan Cooke <ryan@balena.io>
+      author: rcooke-warwick
+      nested: []
+    - subject: Allow force-finalize for manual workflow dispatch
+      hash: 75c1ac49579f64e612d145bd8171f0142a3eaf30
+      body: ""
+      footer:
+        Changelog-entry: Allow force-finalize for manual workflow dispatch
+        changelog-entry: Allow force-finalize for manual workflow dispatch
+        Signed-off-by: Ryan Cooke <ryan@balena.io>
+        signed-off-by: Ryan Cooke <ryan@balena.io>
+      author: rcooke-warwick
+      nested: []
+    - subject: remove test_matrix from devices without tests setup
+      hash: 8bbd61b236b81aff920082c2a505b8e45ee57baf
+      body: ""
+      footer:
+        Changelog-entry: remove test_matrix from devices without tests setup
+        changelog-entry: remove test_matrix from devices without tests setup
+        Signed-off-by: Ryan Cooke <ryan@balena.io>
+        signed-off-by: Ryan Cooke <ryan@balena.io>
+      author: rcooke-warwick
+      nested: []
+    - subject: cleanup workflow triggers
+      hash: b0b0ef2a2d43c826ca8fd9f8062d4ade97185bb0
+      body: ""
+      footer:
+        Changelog-entry: cleanup workflow triggers
+        changelog-entry: cleanup workflow triggers
+        Signed-off-by: Ryan Cooke <ryan@balena.io>
+        signed-off-by: Ryan Cooke <ryan@balena.io>
+      author: rcooke-warwick
+      nested: []
+  version: 6.0.33+rev1
+  title: ""
+  date: 2024-10-02T10:14:14.130Z
+- commits:
     - subject: Update layers/meta-balena to f2c72d6bbd312821f0bb97897fe7836c525950f7
       hash: 03ac1385f2ceac123399adbae76053e6e640c35a
       body: Update layers/meta-balena
