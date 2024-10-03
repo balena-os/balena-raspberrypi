@@ -1,0 +1,66 @@
+From ec4e5cc6a5e68eb93b4775eb28626cddd0ff7a89 Mon Sep 17 00:00:00 2001
+From: qian <ruiqian.tang@seeed.cc>
+Date: Fri, 16 Aug 2024 06:03:06 +0000
+Subject: [PATCH] Add serial RTS control gpio
+
+---
+ drivers/tty/serial/serial_core.c | 16 ++++++++++++++++
+ include/linux/serial_core.h      |  1 +
+ 2 files changed, 17 insertions(+)
+
+diff --git a/drivers/tty/serial/serial_core.c b/drivers/tty/serial/serial_core.c
+index 45b721abaa2f..8fa249678f52 100644
+--- a/drivers/tty/serial/serial_core.c
++++ b/drivers/tty/serial/serial_core.c
+@@ -567,6 +567,10 @@ static int uart_write(struct tty_struct *tty,
+ 	}
+ 
+ 	port = uart_port_lock(state, flags);
++	if(port->rts_gpio)
++	{
++		gpiod_set_value(port->rts_gpio, 1);
++	}
+ 	circ = &state->xmit;
+ 	if (!circ->buf) {
+ 		uart_port_unlock(port, flags);
+@@ -587,6 +591,11 @@ static int uart_write(struct tty_struct *tty,
+ 	}
+ 
+ 	__uart_start(tty);
++
++	if(port->rts_gpio)
++	{
++		gpiod_set_value(port->rts_gpio, 0);
++	}
+ 	uart_port_unlock(port, flags);
+ 	return ret;
+ }
+@@ -2991,6 +3000,13 @@ int uart_add_one_port(struct uart_driver *drv, struct uart_port *uport)
+ 	 */
+ 	uport->flags &= ~UPF_DEAD;
+ 
++	uport->rts_gpio = devm_gpiod_get_optional(uport->dev, "rts",
++							GPIOD_OUT_LOW);
++	if (IS_ERR(uport->rts_gpio)) {
++		ret = PTR_ERR(uport->rts_gpio);
++		uport->rts_gpio = NULL;
++		return dev_err_probe(uport->dev, ret, "Cannot get rts-gpios\n");
++	}
+  out:
+ 	mutex_unlock(&port->mutex);
+ 	mutex_unlock(&port_mutex);
+diff --git a/include/linux/serial_core.h b/include/linux/serial_core.h
+index d5b6b1550d59..3ba7bf798bff 100644
+--- a/include/linux/serial_core.h
++++ b/include/linux/serial_core.h
+@@ -256,6 +256,7 @@ struct uart_port {
+ 	struct serial_rs485     rs485;
+ 	const struct serial_rs485	*rs485_supported;	/* Supported mask for serial_rs485 */
+ 	struct gpio_desc	*rs485_term_gpio;	/* enable RS485 bus termination */
++	struct gpio_desc	*rts_gpio;		/* enable RS485 RTS */
+ 	struct serial_iso7816   iso7816;
+ 	void			*private_data;		/* generic platform data pointer */
+ };
+-- 
+2.25.1
+
