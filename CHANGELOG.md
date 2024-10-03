@@ -1,6 +1,31 @@
 Change log
 -----------
 
+# v6.0.36
+## (2024-10-03)
+
+
+<details>
+<summary> Update layers/meta-balena to 41a79d918e5a8b62b88b9e137ce7e47122ca6b28 [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.0.36
+> ### (2024-10-01)
+> 
+> * Update balena-os/balena-yocto-scripts action to v1.25.49 [balena-renovate[bot]]
+> 
+> ## meta-balena-6.0.35
+> ### (Invalid date)
+> 
+> * tests: cloud: prevent hanging in cloud suite teardown [rcooke-warwick]
+> 
+> ## meta-balena-6.0.34
+> ### (2024-09-27)
+> 
+> * CI: Update checkout settings [Pagan Gazzard]
+> 
+
+</details>
+
 # v6.0.33+rev1
 ## (2024-10-02)
 

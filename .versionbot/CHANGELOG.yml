@@ -1,4 +1,55 @@
 - commits:
+    - subject: Update layers/meta-balena to 41a79d918e5a8b62b88b9e137ce7e47122ca6b28
+      hash: a926610df592788391862d249222d499328faf8b
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 41a79d918e5a8b62b88b9e137ce7e47122ca6b28
+        changelog-entry: Update layers/meta-balena to 41a79d918e5a8b62b88b9e137ce7e47122ca6b28
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Update balena-os/balena-yocto-scripts action to v1.25.49
+              hash: 8ecf11ed610cea0624111f5adefed55fbe1360e7
+              body: |
+                Update balena-os/balena-yocto-scripts from v1.25.39 to v1.25.49
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: meta-balena-6.0.36
+          title: ""
+          date: 2024-10-01T19:50:30.591Z
+        - commits:
+            - subject: "tests: cloud: prevent hanging in cloud suite teardown"
+              hash: 66c2e28b0b5bb108308feda044418f04a113b742
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: rcooke-warwick
+              nested: []
+          version: meta-balena-6.0.35
+          title: ""
+          date: 2024-09-30T14:59:40.189Z
+        - commits:
+            - subject: "CI: Update checkout settings"
+              hash: 1bf597cd14ca59a1086c952cf03279d6d2046ca3
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Pagan Gazzard
+              nested: []
+          version: meta-balena-6.0.34
+          title: ""
+          date: 2024-09-27T15:27:30.053Z
+  version: 6.0.36
+  title: ""
+  date: 2024-10-03T17:49:55.255Z
+- commits:
     - subject: bump yocto-scripts action to v1.25.47
       hash: 0781921b89b781c287ae888375ec69649c873b1f
       body: ""
