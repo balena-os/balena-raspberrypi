@@ -1,0 +1,45 @@
+From fced8e67bbf077f53c8ea1b006bcceba53fdc136 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Fri, 24 May 2024 11:43:06 +0000
+Subject: [PATCH] Add back LED driver unregister logs
+
+... so we can trace if the unipi led drivers have
+been unregistered completely.
+
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+Upstream-status: Inappropiate [configuration]
+---
+ modules/unipi/src/unipi_platform.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/modules/unipi/src/unipi_platform.c b/modules/unipi/src/unipi_platform.c
+index d482af7..ed053f0 100644
+--- a/modules/unipi/src/unipi_platform.c
++++ b/modules/unipi/src/unipi_platform.c
+@@ -2312,12 +2312,12 @@ void neuronspi_board_device_remove(struct platform_device * board_device)
+         }
+         kfree(board_data->led_driver);
+         board_data->led_driver = NULL;
+-        //unipi_spi_trace(KERN_INFO "UNIPISPI: LED Driver unregistered\n");
++        printk(KERN_INFO "UNIPISPI: LED Driver unregistered\n");
+     }
+     if (board_data->di_driver) { neuronspi_gpio_remove(board_data->di_driver); }
+     if (board_data->do_driver) { neuronspi_gpio_remove(board_data->do_driver); }
+     if (board_data->ro_driver) { neuronspi_gpio_remove(board_data->ro_driver); }
+-    //unipi_spi_trace(KERN_INFO "UNIPISPI: GPIO Driver unregistered\n");
++    printk(KERN_INFO "UNIPISPI: GPIO Driver unregistered\n");
+ 
+     if (board_data->stm_ai_driver) { iio_device_unregister(board_data->stm_ai_driver); }
+     if (board_data->stm_ao_driver) {	iio_device_unregister(board_data->stm_ao_driver); }
+@@ -2335,7 +2335,7 @@ void neuronspi_board_device_remove(struct platform_device * board_device)
+         kfree(board_data->sec_ao_driver);
+         board_data->sec_ao_driver = NULL;
+     }
+-    //unipi_spi_trace(KERN_INFO "UNIPISPI: IIO Driver unregistered\n");
++    printk(KERN_INFO "UNIPISPI: IIO Driver unregistered\n");
+ 
+ 
+     platform_set_drvdata(board_device, 0);
+-- 
+2.17.1
+
