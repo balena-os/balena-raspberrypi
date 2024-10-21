@@ -9,7 +9,7 @@ This config was removed from rpi.h and moved to the defconfigs,
 so we add it back for all PIs except for Pi4 and Pi400 where
 there were requests to boot from USB drives.
 
-Upstream-status: Inappropriate [configuration]
+Upstream-Status: Inappropriate [configuration]
 Signed-off-by: Alexandru Costache <alexandru@balena.io>
 ---
  configs/rpi_0_w_defconfig   | 2 +-

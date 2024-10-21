@@ -5,7 +5,7 @@ Subject: [PATCH] Revert "remove include/config_defaults.h"
 
 This reverts commit 5c6a4d5a2779d7c2611319076d9aa4a23981855f.
 
-Upstream-status: Inappropriate [configuration]
+Upstream-Status: Inappropriate [configuration]
 Signed-off-by: Alexandru Costache <alexandru@balena.io>
 ---
  include/config_defaults.h | 12 ++++++++++++
