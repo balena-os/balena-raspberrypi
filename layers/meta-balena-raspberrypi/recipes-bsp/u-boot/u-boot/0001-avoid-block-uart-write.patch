@@ -9,7 +9,7 @@ thus preventing the board from booting.
 
 Let's add a retry count to unblock in such cases.
 
-Upstream-status: Inappropriate [configuration]
+Upstream-Status: Inappropriate [configuration]
 Signed-off-by: Alexandru Costache <alexandru@balena.io>
 ---
  drivers/serial/serial_bcm283x_mu.c | 12 +++++++++---

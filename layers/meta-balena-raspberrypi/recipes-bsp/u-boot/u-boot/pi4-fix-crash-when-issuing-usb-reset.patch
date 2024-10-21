@@ -13,7 +13,7 @@ u-boot won't crash or reset.
 Rebased from last patch in this series:
 http://u-boot.10912.n7.nabble.com/RFC-PATCH-v2-0-5-Improve-USB-Keyboard-support-for-rpi3-rpi4-td418314.html#a418316
 
-Upstream-status: Pending
+Upstream-Status: Pending
 Signed-off-by: Alexandru Costache <alexandru@balena.io>
 ---
  drivers/usb/host/xhci-ring.c | 15 +++++++++++----
