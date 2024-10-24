@@ -6,7 +6,7 @@ Subject: [PATCH] include/configs: Use config defaults
 Upstream does not include the config defaults
 as added by meta-balena. Let's include them.
 
-Upstream-status: Inappropriate[configuration]
+Upstream-Status: Inappropriate [configuration]
 Signed-off-by: Alexandru Costache <alexandru@balena.io>
 ---
  include/configs/rpi.h | 6 ++++++

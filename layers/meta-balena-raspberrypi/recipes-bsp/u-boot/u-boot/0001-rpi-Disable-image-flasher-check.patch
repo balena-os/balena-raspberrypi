@@ -10,7 +10,7 @@ executed without reason when booting
 from sd-card, IF "usb" is also present
 in resin_uboot_device_types array.
 
-Upstream-status: Inappropriate[configuration]
+Upstream-Status: Inappropriate [configuration]
 Signed-off-by: Alexandru Costache <alexandru@balena.io>
 ---
  include/configs/rpi.h | 3 ++-
