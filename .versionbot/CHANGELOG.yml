@@ -1,4 +1,20 @@
 - commits:
+    - subject: Correct the Upstream-Status of u-boot patches
+      hash: 8fa3274dca0c8d2000680fa367d9894ea7e3e6ef
+      body: >
+        As indicated at
+        https://docs.yoctoproject.org/contributor-guide/recipe-style-guide.html#patch-upstream-status
+      footer:
+        Changelog-entry: Correct the Upstream-Status of u-boot patches
+        changelog-entry: Correct the Upstream-Status of u-boot patches
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 6.0.36+rev1
+  title: ""
+  date: 2024-10-24T10:07:05.275Z
+- commits:
     - subject: Update layers/meta-balena to 41a79d918e5a8b62b88b9e137ce7e47122ca6b28
       hash: a926610df592788391862d249222d499328faf8b
       body: Update layers/meta-balena

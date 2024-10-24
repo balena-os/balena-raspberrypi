@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.0.36+rev1
+## (2024-10-24)
+
+* Correct the Upstream-Status of u-boot patches [Florin Sarbu]
+
 # v6.0.36
 ## (2024-10-03)
 
