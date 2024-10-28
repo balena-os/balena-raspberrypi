@@ -1,4 +1,622 @@
 - commits:
+    - subject: Update layers/meta-balena to bbfe78062182eaacc9a524383144a24b731a7372
+      hash: a775fa782adfdda555dba8f08f0dd7a40d8b05e2
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to bbfe78062182eaacc9a524383144a24b731a7372
+        changelog-entry: Update layers/meta-balena to bbfe78062182eaacc9a524383144a24b731a7372
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "tests: secureboot: add test to ensure partition integrity"
+              hash: 3cf94c892cd6a21f91c1c3ab7718f3feca35435f
+              body: >
+                Ensure the signed kernel aborts the boot process when partitions
+                or
+
+                filesystems have been tampered with.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-6.0.50
+          title: ""
+          date: 2024-10-26T23:12:59.729Z
+        - commits:
+            - subject: "tests/os: Add Jetson Orin device-specific fan and power mode smoke
+                tests"
+              hash: 87e5e8450911fbd3eb400ca76b1273f6b3deb15d
+              body: |
+                These tests are the same for all public Orin device types
+                and validate that the power mode and the fan profile can be
+                changed by writing directly to the config.json file
+                in the boot partition of an un-managed OS.
+              footer:
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+                Change-type: patch
+                change-type: patch
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-6.0.49
+          title: ""
+          date: 2024-10-25T13:54:52.420Z
+        - commits:
+            - subject: "os-helpers-fs: introduce a script to split boot partitions"
+              hash: 1c3fe3b3fd259cadf1f8b684aa883dd4274a6f0f
+              body: >
+                Secure boot enabled partitions need to split the boot partition
+                into
+
+                an encrypted and a non-encrypted one.
+
+
+                Unless the device type natively separates the files that the
+                bootROM
+
+                needs to boot, like EFI does into /mnt/boot/EFI, a list of files
+                to
+
+                move to the non-encrypted partition needs to be provided on the
+
+                BALENA_NONENCRYPTED_BOOT_PARTITION_FILES variable, and a
+                function
+
+                to implement the split needs to be provided.
+
+
+                This commit introduces a split_bootpartition() function that
+                performs
+
+                this and can be used for those platforms that need to list the
+                boot
+
+                essential files in a BALENA_NONENCRYPTED_BOOT_PARTITION_FILES
+                variable.
+
+
+                This is typically called from the bootpart_split() function in
+                the
+
+                balena-init-flasher customization file.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "os-helpers-fs: add a shared script to deploy non-encrypted boot file"
+              hash: d1deb3e4fc8744fe66e1b5a726c82b4a856f2fe4
+              body: >
+                On secure boot enabled devices the boot partition is split into
+                an
+
+                encrypted boot partition (/mnt/boot) and a non-encrypted boot
+                partition
+
+                (/mnt/<name>).
+
+
+                On the built rootfs all files live in `/mnt/boot`, and the
+                installation
+
+                needs to create an encrypted /mnt/<name> and move some files
+                from
+
+                /mnt/boot there.
+
+
+                UEFI platforms make this easy as the non-encrypted files are
+                stored on a
+
+                different /mnt/boot/EFI folder. However, other platforms need to
+                list
+
+                which files to move by name.
+
+
+                This commit introduces a skip_nonencrypted_boot_files() helper
+                function
+
+                for these other platforms to use.
+
+
+                It is typically called from a do_skip() function in the
+                os-helpers-sb
+
+                secure boot customization file.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "systemd: disable systemd-gpt-generator"
+              hash: e5a17eabfbb1b1d262858ec0324e61c3fbd1bc09
+              body: |
+                This service is unused in balenaOS.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "resin-mounts: generalize non-enc boot partition mounter"
+              hash: ed26eb561680ac1136645f83d2210f7997bca1c3
+              body: >
+                This avoids having to append this recipe on each device
+                repository.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "classes: kernel-balena: do not remove whole build directory"
+              hash: 1222daab16e2e09727868ad998affc35c24f6e29
+              body: >
+                When signing, only remove the certs directory in the build
+                folder.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "efitools: Fix syntax"
+              hash: 42af7cf026fe0284768f7c1e6b8bfc07f649680c
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-6.0.48
+          title: ""
+          date: 2024-10-24T16:31:08.793Z
+        - commits:
+            - subject: "hostapp-update-hooks: remove alternative bootloader environment files"
+              hash: b152124216f8360514961b83195c0e49f63c1a73
+              body: >
+                The rollback-parse-bootloader script will give priority to
+
+                resinOS_uEnv.txt so make sure there are no U-Boot leftovers when
+
+                migrating to a balena-bootloader enabled system which needs to
+                read
+
+                the bootenv environment file on rollbacks.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-6.0.47
+          title: ""
+          date: 2024-10-21T17:55:13.550Z
+        - commits:
+            - subject: "balena-units-conf: Add os-fan-profile to units conf"
+              hash: 1424e413680f30a156bef66e46ead170562edaf4
+              body: |
+                This service needs to be restarted every time the
+                fan profile is modified in config.json, so that
+                it can apply the change and restart the device
+                specific fan control daemon. This is unlike the
+                power model service, which only runs once, at startup.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-6.0.46
+          title: ""
+          date: 2024-10-19T16:51:02.546Z
+        - commits:
+            - subject: "workflows/meta-balena-esr: fix version creation bash"
+              hash: 40266212820dca50c7d6a938ca512b779dbd24b3
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: Ryan Cooke
+              nested: []
+          version: meta-balena-6.0.45
+          title: ""
+          date: 2024-10-18T13:39:38.158Z
+        - commits:
+            - subject: Update tests/leviathan digest to cf58b57
+              hash: c44463d0bd4d94ded14173a9d91a6a6d8d8f95ec
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: add secureboot identifier into report name
+                      hash: 7ca3cb281f0aae1b0b0ee5e157081fa5a7109098
+                      body: >
+                        This is to avoid calshes of artifact names when running
+                        a test matrix with the secureboot option enabled
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: Ryan Cooke
+                      nested: []
+                  version: leviathan-2.31.59
+                  title: ""
+                  date: 2024-10-10T18:06:05.535Z
+                - commits:
+                    - subject: Update core/contracts digest to 5ac053b
+                      hash: c40cc096fd39c13321cca04efce98944f725ee34
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.58
+                  title: ""
+                  date: 2024-10-10T15:33:51.355Z
+                - commits:
+                    - subject: Update actions/upload-artifact digest to b4b15b8
+                      hash: 7bc68fe8c3ef8c699b708e3b241ceaec3134c9d2
+                      body: |
+                        Update actions/upload-artifact
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.57
+                  title: ""
+                  date: 2024-10-10T14:35:54.037Z
+                - commits:
+                    - subject: "compose: map qemu volume into worker"
+                      hash: 2e1669d6f34df4930fb9511a0edd52e7cc050ee7
+                      body: >
+                        This volume is used to share qemu's QMP socket between
+                        the worker and
+
+                        core containers, allowing tests to connect, receive
+                        events from, and
+
+                        control qemu.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Joseph Kogut <joseph@balena.io>
+                        signed-off-by: Joseph Kogut <joseph@balena.io>
+                      author: Joseph Kogut
+                      nested: []
+                  version: leviathan-2.31.56
+                  title: ""
+                  date: 2024-10-09T05:09:41.584Z
+                - commits:
+                    - subject: Update actions/upload-artifact digest to 8448086
+                      hash: 4eb9e7b49a0a56d4ad899479a9989d3fa6429cf1
+                      body: |
+                        Update actions/upload-artifact
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.55
+                  title: ""
+                  date: 2024-10-08T20:36:27.136Z
+                - commits:
+                    - subject: Update balena-io/balena-cli to v19.0.18
+                      hash: 511f30f40338084b2bf59e1213194bd7afd62ad7
+                      body: |
+                        Update balena-io/balena-cli from 19.0.17 to 19.0.18
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.54
+                  title: ""
+                  date: 2024-10-08T16:35:10.880Z
+                - commits:
+                    - subject: Update actions/checkout digest to eef6144
+                      hash: 486a37fa55077267e9d2bebaef9d9fdb7cbf6b43
+                      body: |
+                        Update actions/checkout
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.53
+                  title: ""
+                  date: 2024-10-08T15:35:10.306Z
+                - commits:
+                    - subject: Update balena-io/balena-cli to v19.0.17
+                      hash: 2f8cfd61761fbb0b0ea12a038d25fb71f98facd2
+                      body: |
+                        Update balena-io/balena-cli from 19.0.13 to 19.0.17
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.52
+                  title: ""
+                  date: 2024-10-08T14:33:13.530Z
+                - commits:
+                    - subject: Update actions/upload-artifact digest to 604373d
+                      hash: 9dad57269d0016bb2a8e06d098923205e4e626be
+                      body: |
+                        Update actions/upload-artifact
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.51
+                  title: ""
+                  date: 2024-10-07T16:37:31.362Z
+          version: meta-balena-6.0.44
+          title: ""
+          date: 2024-10-10T20:36:08.884Z
+        - commits:
+            - subject: "initrdscripts: Wait for boot partition in the abroot script"
+              hash: 2ede3ce578907c2f2eb75598b0b599bb12913929
+              body: |
+                At this moment the abroot script assumes that the boot partition
+                is already in place when it executes. This might not be true
+                if the rootfs sits on a device that takes a while to initialize,
+                such as a USB drive. The script fails hard if that is the case.
+
+                This patch replicates a waiting loop from the rootfs script,
+                which addresses the same issue for systems that do not use
+                the balena bootloader.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-6.0.43
+          title: ""
+          date: 2024-10-10T15:37:21.568Z
+        - commits:
+            - subject: "flasher: improve logging with secure boot"
+              hash: ebde0895df02810798d80c585d5496d3b8d72909
+              body: >
+                Print the PCR digest values used to create the PCR policy used
+                to seal
+
+                the LUKS passphrase during flashing. These values can be cross
+
+                referenced with the logs during secure boot to diagnose policy
+                check
+
+                failures.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-6.0.42
+          title: ""
+          date: 2024-10-09T18:02:04.416Z
+        - commits:
+            - subject: Update balena-os/balena-yocto-scripts action to v1.25.59
+              hash: b657c30b13e4bf9e66dbd1fd0d9612ce2f27768c
+              body: |
+                Update balena-os/balena-yocto-scripts from v1.25.49 to v1.25.59
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: meta-balena-6.0.41
+          title: ""
+          date: 2024-10-09T12:24:24.775Z
+        - commits:
+            - subject: "os-helpers-efi: silence secure boot variable checks"
+              hash: 7815bc8ea4496a704fe1c6dc6ecae36d1d9bbb86
+              body: >
+                If the SecureBoot variable is non-existent, the parsed value is
+                not an
+
+                integer, and test complains. Redirect stderr to silence this.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "os-helpers-efi: silence od stderr"
+              hash: 095d63b8fe773ebd7c9075bb6495f4620fcd238f
+              body: >
+                When parsing an efivar value, od will complain if a given file
+                does not
+
+                exist, such as the SecureBoot variable.
+
+
+                Silence stderr to ignore this.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-6.0.40
+          title: ""
+          date: 2024-10-08T20:12:41.671Z
+        - commits:
+            - subject: "tests: hup: login with sdk before fetching image"
+              hash: b8e558c74ad626dfaf77f56aad5952225fed3e17
+              body: >
+                This is to ensure we have an authenticated SDK before trying to
+                get the last known production image - it needs to be
+                authenticated in case the DT is private
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: Ryan Cooke
+              nested: []
+          version: meta-balena-6.0.39
+          title: ""
+          date: 2024-10-07T16:47:42.103Z
+        - commits:
+            - subject: "tpm2: ensure auth session contexts are flushed after use"
+              hash: 93f949ff05ecf745378a864a303a76278b0d1c27
+              body: >
+                The TPM is capable of storing a limited number of auth session
+                handles.
+
+                Ensure auth sessions are flushed after use, to prevent
+
+                tpm2_startauthsession from failing with 'out of session
+                handles'.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-6.0.38
+          title: ""
+          date: 2024-10-04T23:25:13.415Z
+        - commits:
+            - subject: Update tests/leviathan digest to 3a1a989
+              hash: 64b36498e5e23a742d3222df6d13c2eb38efdd8e
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Update ubuntu to v24
+                      hash: 50fb50ae3f0a80116e392e33962c7b430e631f77
+                      body: |
+                        Update ubuntu from 22.04 to 24.04
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.50
+                  title: ""
+                  date: 2024-10-04T09:34:18.914Z
+                - commits:
+                    - subject: Update docker/setup-buildx-action digest to c47758b
+                      hash: 11f62cd9d67252ae4efd6a59011e988dc06782ce
+                      body: |
+                        Update docker/setup-buildx-action
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.49
+                  title: ""
+                  date: 2024-10-04T08:34:28.663Z
+                - commits:
+                    - subject: Update balena-io/balena-cli to v19.0.13
+                      hash: 1d7483d08118632d302c1797e3ee67c84dbcf935
+                      body: |
+                        Update balena-io/balena-cli from 19.0.11 to 19.0.13
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.48
+                  title: ""
+                  date: 2024-10-03T18:34:06.132Z
+                - commits:
+                    - subject: Update docker/setup-buildx-action digest to 8026d2b
+                      hash: 22ce1f283f4a9a21ad648cf89b0b35767d236530
+                      body: |
+                        Update docker/setup-buildx-action
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.47
+                  title: ""
+                  date: 2024-10-03T17:38:19.765Z
+                - commits:
+                    - subject: Update core/contracts digest to 1fb0b0c
+                      hash: 92c249e93ea3f1cd2dc8b09b05c1031f643fa268
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.46
+                  title: ""
+                  date: 2024-10-03T16:33:04.116Z
+                - commits:
+                    - subject: add .git to dockerignore
+                      hash: f67d5611247197f63e7798b1516218f361dcb3f7
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                    - subject: remove pull request target trigger from workflows
+                      hash: d3fbb311a9e602ce2ed2e8073b6228dd9c13dd42
+                      body: >
+                        This will block external contributions - but right now
+                        we aren't really getting any anyway.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: rcooke-warwick
+                      nested: []
+                  version: leviathan-2.31.45
+                  title: ""
+                  date: 2024-10-03T15:47:50.285Z
+          version: meta-balena-6.0.37
+          title: ""
+          date: 2024-10-04T11:58:11.117Z
+  version: 6.0.50
+  title: ""
+  date: 2024-10-28T11:27:10.566Z
+- commits:
     - subject: Correct the Upstream-Status of u-boot patches
       hash: 8fa3274dca0c8d2000680fa367d9894ea7e3e6ef
       body: >
