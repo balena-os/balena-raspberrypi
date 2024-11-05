@@ -1,6 +1,275 @@
 Change log
 -----------
 
+# v6.0.50+rev1
+## (2024-11-05)
+
+
+<details>
+<summary> Update balena-yocto-scripts to d8d6b50ec334769cfc000ef8b619cfb35a5a65d5 [balena-renovate[bot]] </summary>
+
+> ## balena-yocto-scripts-1.27.8
+> ### (2024-11-04)
+> 
+> * Update product-os/review-commit-action action to v0.1.7 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.27.7
+> ### (2024-11-04)
+> 
+> * Update Pin product-os/review-commit-action action to 81db18c [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.27.6
+> ### (2024-11-04)
+> 
+> * Use official aws cli binaries and commands [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.27.5
+> ### (2024-11-04)
+> 
+> * Update Lock file maintenance [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.27.4
+> ### (2024-11-01)
+> 
+> * Update actions/checkout action to v4.2.2 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.27.3
+> ### (2024-10-29)
+> 
+> * Add pull request write permissions for workflow approvals [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.27.2
+> ### (2024-10-23)
+> 
+> * Update Lock file maintenance [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.27.1
+> ### (2024-10-23)
+> 
+> * remove CLI check if not deploying [rcooke-warwick]
+> 
+> ## balena-yocto-scripts-1.27.0
+> ### (2024-10-23)
+> 
+> * add review-commit-action to wait for approvals on PRT events [Ryan Cooke]
+> 
+> ## balena-yocto-scripts-1.26.0
+> ### (2024-10-15)
+> 
+> * Expose secure boot testing features via matrix input [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.25.63
+> ### (2024-10-11)
+> 
+> * Update balena-os/leviathan action to v2.31.60 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.62
+> ### (2024-10-11)
+> 
+> * Fix concurrency and cancel in progress contexts [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.25.61
+> ### (2024-10-10)
+> 
+> * Update balena-os/leviathan action to v2.31.59 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.60
+> ### (2024-10-09)
+> 
+> * Update actions/upload-artifact action to v4.4.3 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.59
+> ### (2024-10-09)
+> 
+> * Update actions/upload-artifact action to v4.4.2 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.58
+> ### (2024-10-09)
+> 
+> * Update balena-os/leviathan action to v2.31.56 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.57
+> ### (2024-10-08)
+> 
+> * Update balena-os/leviathan action to v2.31.54 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.56
+> ### (2024-10-07)
+> 
+> * Update actions/upload-artifact action to v4.4.1 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.55
+> ### (2024-10-07)
+> 
+> * Update balena-os/leviathan action to v2.31.51 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.54
+> ### (2024-10-07)
+> 
+> * Update actions/checkout action to v4.2.1 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.53
+> ### (2024-10-07)
+> 
+> * fix balena deploy quotes [Ryan Cooke]
+> 
+> ## balena-yocto-scripts-1.25.52
+> ### (2024-10-07)
+> 
+> * Update Lock file maintenance [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.51
+> ### (2024-10-04)
+> 
+> * Update balena-os/leviathan action to v2.31.50 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.50
+> ### (2024-10-02)
+> 
+> * use github app installation token for device repository cloning [Ryan Cooke]
+> 
+> ## balena-yocto-scripts-1.25.49
+> ### (2024-10-01)
+> 
+> * Only attempt to decrypt if we have encrypted in the build step [Ryan Cooke]
+> * Fetch full depth in order to checkout custom meta-balena-refs [Kyle Harding]
+> * Encrypt balenaOS artifacts at rest in GitHub [Anton Belodedenko]
+> 
+> ## balena-yocto-scripts-1.25.48
+> ### (2024-10-01)
+> 
+> * Update actions/checkout action to v4.2.0 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.47
+> ### (Invalid date)
+> 
+> * patch: Stop persisting credentials in actions/checkout [Vipul Gupta (@vipulgupta2048)]
+> 
+> ## balena-yocto-scripts-1.25.46
+> ### (2024-09-27)
+> 
+> * use genericx86-64-ext image for testing the workflow [rcooke-warwick]
+> 
+> ## balena-yocto-scripts-1.25.45
+> ### (2024-09-19)
+> 
+> * fix check of finalize value [rcooke-warwick]
+> * Improve checking of previous test results [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.25.44
+> ### (2024-09-18)
+> 
+> * Update balena-os/leviathan action to v2.31.44 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.43
+> ### (2024-09-18)
+> 
+> * Update balena-os/leviathan action to v2.31.43 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.42
+> ### (2024-09-18)
+> 
+> * only upload artifacts when test_matrix is defined [rcooke-warwick]
+> 
+> ## balena-yocto-scripts-1.25.41
+> ### (2024-09-12)
+> 
+> * Update balena-os/leviathan action to v2.31.40 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.40
+> ### (2024-09-12)
+> 
+> * Update balena-os/leviathan action to v2.31.37 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.39
+> ### (2024-09-11)
+> 
+> * Update actions/create-github-app-token action to v1.11.0 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.38
+> ### (2024-09-09)
+> 
+> * Include semver when bumping leviathan action [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.25.37
+> ### (2024-09-05)
+> 
+> * Update balena-os/leviathan digest to 8fb47f2 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.36
+> ### (2024-09-05)
+> 
+> * Update balena-os/leviathan digest to 5db2b5d [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.35
+> ### (2024-09-04)
+> 
+> * Update balena-os/leviathan digest to da52396 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.34
+> ### (2024-09-04)
+> 
+> * Update actions/create-github-app-token action to v1.10.4 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.33
+> ### (2024-09-02)
+> 
+> * Update balena-os/leviathan digest to d8572e2 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.32
+> ### (2024-09-02)
+> 
+> * Update Lock file maintenance [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.31
+> ### (2024-09-01)
+> 
+> * Update actions/upload-artifact action to v4.4.0 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.30
+> ### (2024-09-01)
+> 
+> * Update balena-os/leviathan digest to ff6a079 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.25.29
+> ### (2024-09-01)
+> 
+> * Restrict runners via yocto label, not 16cpu [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.25.28
+> ### (Invalid date)
+> 
+> * checkout private contracts for test job [rcooke-warwick]
+> 
+> ## balena-yocto-scripts-1.25.27
+> ### (2024-08-29)
+> 
+> * use apt-get to install s4cmd instead of pip [rcooke-warwick]
+> 
+> ## balena-yocto-scripts-1.25.26
+> ### (2024-08-27)
+> 
+> * Fix if condition for checking merge commit test results [rcooke-warwick]
+> 
+> ## balena-yocto-scripts-1.25.25
+> ### (2024-08-23)
+> 
+> * Add unique unique identifiers to summary job [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.25.24
+> ### (2024-08-21)
+> 
+> * ensure "force-finalize" guarantees a finalized release [rcooke-warwick]
+> * update example workflow to use "deploy-environment" input [rcooke-warwick]
+> * remove "deploy-esr" input [rcooke-warwick]
+> * remove "deploy-s3" input [rcooke-warwick]
+> * remove "deploy-hostapp" and add "force-finalize" and "finalize-on-push-if-tests-passed" [rcooke-warwick]
+> * rename "envinroment" input to "deploy-environment" for clarity [rcooke-warwick]
+> * remove os-dev input [rcooke-warwick]
+> 
+
+</details>
+
 # v6.0.50
 ## (2024-10-28)
 
