@@ -1,4 +1,18 @@
 - commits:
+    - subject: "revpi-connect-4: configure to use external antenna by default"
+      hash: 38a7dce98e33d0642936348769c7640b56c6c2fc
+      body: ""
+      footer:
+        Changelog-entry: "revpi-connect-4: configure to use external antenna by default"
+        changelog-entry: "revpi-connect-4: configure to use external antenna by default"
+        Signed-off-by: Ryan Cooke <ryan@balena.io>
+        signed-off-by: Ryan Cooke <ryan@balena.io>
+      author: Ryan Cooke
+      nested: []
+  version: 6.0.50+rev3
+  title: ""
+  date: 2024-11-15T18:58:44.446Z
+- commits:
     - subject: Update balena-os/balena-yocto-scripts to v1.27.8
       hash: 5fb90bd4fd2189dc9f661b7f61cda76438b2eaa8
       body: Update balena-os/balena-yocto-scripts

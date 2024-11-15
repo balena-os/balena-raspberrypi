@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.0.50+rev3
+## (2024-11-15)
+
+* revpi-connect-4: configure to use external antenna by default [Ryan Cooke]
+
 # v6.0.50+rev2
 ## (2024-11-08)
 
