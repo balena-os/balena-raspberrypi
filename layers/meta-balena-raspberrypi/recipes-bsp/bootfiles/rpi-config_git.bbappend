@@ -38,6 +38,9 @@ do_deploy:append:revpi-connect-s() {
 # the RevPi Connect 4 features a HAT EEPROM and the overlay name to be used is available the EEPROM so no need for a dtoverlay statement for that
 do_deploy:append:revpi-connect-4() {
 	echo "dtoverlay=dwc2,dr_mode=host" >> ${DEPLOYDIR}/bootfiles/config.txt
+	# RevPi Connect 4 can have issues connecting to wifi AP's when using the default PCB antenna - configure to use external - even if no external
+	# antenna is connected, the pigtail still provides improvement
+	echo "dtparam=ant2" >> ${DEPLOYDIR}/bootfiles/config.txt
 }
 
 do_deploy:append:raspberrypicm4-ioboard-sb() {
