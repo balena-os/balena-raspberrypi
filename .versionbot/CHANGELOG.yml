@@ -1,4 +1,566 @@
 - commits:
+    - subject: Update layers/meta-balena to 690845219abf6bf0a5be048cd754af6c2119e1a9
+      hash: 6ba6949734d8744032a0b4607fdb3fb7fbc9cd71
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 690845219abf6bf0a5be048cd754af6c2119e1a9
+        changelog-entry: Update layers/meta-balena to 690845219abf6bf0a5be048cd754af6c2119e1a9
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Update tests/leviathan digest to 64ba6a3
+              hash: 186adb94af303adaa002e64c3cb25f99c992e80b
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.50
+                      hash: 53f09c362c19fc010065841707727effcc5d2aa6
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.47 to 2.9.50
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.65
+                  title: ""
+                  date: 2024-11-23T20:34:16.707Z
+                - commits:
+                    - subject: Update core/contracts digest to 88fb8ad
+                      hash: 0652731d7054fbe8431c9a8e4c7eadc9dc5164b1
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.64
+                  title: ""
+                  date: 2024-11-23T19:35:52.250Z
+                - commits:
+                    - subject: Update balena-io/balena-cli to v20
+                      hash: 55962849de4bfebaf83fb9d6c226f8ad0220446c
+                      body: |
+                        Update balena-io/balena-cli from 19.16.0 to 20.0.7
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.63
+                  title: ""
+                  date: 2024-11-23T18:36:27.695Z
+          version: meta-balena-6.1.14
+          title: ""
+          date: 2024-11-23T22:50:40.547Z
+        - commits:
+            - subject: "u-boot: env_resin: fix use of skip bootcount"
+              hash: 5fbf52822a0743ead7693364f41da7895d69ce72
+              body: >
+                When `os_bc_skip` is set, the bootcount variable is not set and
+                the
+
+                altboot check incorrectly assumes the boot limit has exceeded.
+
+
+                Make sure the bootcount comparison only takes place if bootcount
+                has
+
+                been set.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "initrdscripts: migrate: panic on installation failure"
+              hash: 0277b0573d25dd314fe4b0eda5ca5b3e08b69ce2
+              body: >
+                Right now if the flashing script errors out the initramfs just
+                keeps
+
+                running modules. This is a security risk specially for secure
+                boot
+
+                systems as at that point we have an authorized trusted OS
+                running in
+
+                an unvetted path.
+
+
+                This commit exits init if the flasher returns, and also attemps
+                to crash
+
+                the kernel followed by an infinite sleep for paranoic reasons.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-6.1.13
+          title: ""
+          date: 2024-11-22T14:23:50.319Z
+        - commits:
+            - subject: "balena-os: allow to specify early console for OS development builds"
+              hash: eea406c78c131ec36c2fd8b26f6072f055dec89a
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-6.1.12
+          title: ""
+          date: 2024-11-21T13:18:17.719Z
+        - commits:
+            - subject: Update tests/leviathan digest to ae505eb
+              hash: 42464576742648b84f86795f7d39cae12ff9bb9a
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Update actions/checkout digest to 11bd719
+                      hash: 9653c1e68ca07d9a9d7545cb018c4b2e09cbe914
+                      body: |
+                        Update actions/checkout
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.62
+                  title: ""
+                  date: 2024-11-20T16:48:51.826Z
+                - commits:
+                    - subject: Update balena-io/balena-cli to v19.16.0
+                      hash: 6b53a5af4bd9cb758ae28a3b595d1effd7d96b82
+                      body: |
+                        Update balena-io/balena-cli from 19.0.18 to 19.16.0
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.61
+                  title: ""
+                  date: 2024-11-20T15:54:30.635Z
+          version: meta-balena-6.1.11
+          title: ""
+          date: 2024-11-20T18:59:00.812Z
+        - commits:
+            - subject: Update balena-supervisor to v16.7.7
+              hash: a5fa76b78ede4419deacb69c891b5acd880115d0
+              body: |
+                Update balena-supervisor from 16.7.6 to 16.7.7
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: "Firewall: allow DNS requests from custom Docker bridge networks"
+                      hash: 7e1cafa866d7ce04d983a990aa219dbd23de26c7
+                      body: >
+                        We only allow DNS requests through `balena0` interface,
+                        but this
+
+                        is the default Docker bridge which is used for
+                        containers that
+
+                        don't have a custom bridge. However, the Supervisor
+                        creates a
+
+                        custom bridge for all containers unless another network
+                        mode is
+
+                        specified.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-16.7.7
+                  title: ""
+                  date: 2024-11-11T19:02:34.485Z
+          version: meta-balena-6.1.10
+          title: ""
+          date: 2024-11-15T17:15:00.902Z
+        - commits:
+            - subject: Update actions/setup-python digest to 0b93645
+              hash: 1fd94da81b2613f9ff1d01e83f82705195ef51d7
+              body: >
+                Update actions/setup-python to
+                0b93645e9fea7318ecaed2b359559ac225c90a2b
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: meta-balena-6.1.9
+          title: ""
+          date: 2024-11-15T14:34:07.387Z
+        - commits:
+            - subject: "recipes-kernel/linux-firmware: Package Intel AX210 firmware"
+              hash: 2ca4f0ebd247db9981d1c488327960cbde9d0e46
+              body: |
+                This was requested for the AGX Orin 64GB devkit image,
+                and will be included from the device repository.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-6.1.8
+          title: ""
+          date: 2024-11-15T11:29:41.983Z
+        - commits:
+            - subject: Update actions/checkout digest to 11bd719
+              hash: a4da39b99f863a49ce9aa608383c7ddf45300b3d
+              body: >
+                Update actions/checkout to
+                11bd71901bbe5b1630ceea73d27597364c9af683
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: meta-balena-6.1.7
+          title: ""
+          date: 2024-11-13T22:30:24.613Z
+        - commits:
+            - subject: Update balena-os/balena-yocto-scripts action to v1.27.10
+              hash: 18b6a519955e8e66e51948adcd6a6e4ec70c0779
+              body: |
+                Update balena-os/balena-yocto-scripts from v1.25.59 to v1.27.10
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: meta-balena-6.1.6
+          title: ""
+          date: 2024-11-13T19:27:40.260Z
+        - commits:
+            - subject: "recipes-support/os-fan-profile: Don't print logs unless configured"
+              hash: dfc023721aefc427255e996f7589450296836de3
+              body: >
+                Supervisor PR #2382 adds log streaming for this service. Let's
+                not print
+
+                any logs in the dashboard for devices which don't support
+                configurable
+
+                fan profiles, unless a value is specified in config.json, to
+                avoid
+
+                any confusion.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+            - subject: Update tests/leviathan digest to 8234f44
+              hash: a27959f1322d02d874cfe42136853e8649872878
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: meta-balena-6.1.5
+          title: ""
+          date: 2024-11-13T15:09:19.450Z
+        - commits:
+            - subject: "os: test for rootfs by-state link uniqueness"
+              hash: d4341f15bc0398721e9b26cd728f91b1be7914f8
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "common: fix udev helper by-state link creation"
+              hash: b260c964ddc5adf7e9e86d3825e1afe59500082d
+              body: >
+                The 65-resin-update-state udev rules creates links for the
+                active and
+
+                inactive root filesystems in /dev/disk/by-state.
+
+
+                Filter the output of lsblk to remove devices that aren't
+                partitions of
+
+                $parent, which is a problem when using software RAID.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-6.1.4
+          title: ""
+          date: 2024-11-12T16:10:47.705Z
+        - commits:
+            - subject: Update balena-supervisor to v16.7.6
+              hash: 5b70d63d3b5c6c41d43a451576e9963937e92863
+              body: |
+                Update balena-supervisor from 16.6.1 to 16.7.6
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Update firewall documentation
+                      hash: 1b747f6d65372632a5491a0630e7de00f92c773f
+                      body: |
+                        Removes experimental warning and updates issues
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-16.7.6
+                  title: ""
+                  date: 2024-11-07T21:02:38.875Z
+                - commits:
+                    - subject: Delete apps not in target from db by appUuid instead of appId
+                      hash: 3d3f659f1616cc291824d1f46da08583c138f39c
+                      body: >
+                        Resolve an issue in balenaMachine instances that were
+                        installed at <v14.1.0,
+
+                        in which a Supervisor app with random UUID is kept in
+                        the target db due to its appId
+
+                        being the same, even after the BM instance has upgraded
+                        to v14.1.0 which patches
+
+                        the correct reserved Supervisor app UUIDs in. This
+                        results in two Supervisors running
+
+                        on devices under the BM instance which persists after BM
+                        upgrade.
+                      footer:
+                        See: https://balena.fibery.io/search/T7ozi#Inputs/Pattern/Two-supervisors-are-running-on-device-3370
+                        see: https://balena.fibery.io/search/T7ozi#Inputs/Pattern/Two-supervisors-are-running-on-device-3370
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-16.7.5
+                  title: ""
+                  date: 2024-11-07T13:34:05.062Z
+                - commits:
+                    - subject: Update express to v4.20.0 [SECURITY]
+                      hash: f2aaf7372d0716e3b62118ed3102a7eac0f169a5
+                      body: |
+                        Update express from 4.19.2 to 4.20.0
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: balena-supervisor-16.7.4
+                  title: ""
+                  date: 2024-10-28T14:40:42.702Z
+                - commits:
+                    - subject: Add NXP support to balenaOS secure boot
+                      hash: 619f64429931975a6f33f1ef444928962d82e200
+                      body: >
+                        On NXP iMX devices the partitions are not encrypted with
+                        LUKS but with
+
+                        the lower level dm-crypt subsystem.
+
+
+                        Adapt the partition mount script to use dmsetup which
+                        works for both
+
+                        LUKS and dm-crypt encrypted partitions.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                        signed-off-by: Alex Gonzalez <alexg@balena.io>
+                      author: Alex Gonzalez
+                      nested: []
+                  version: balena-supervisor-16.7.3
+                  title: ""
+                  date: 2024-10-28T14:04:22.141Z
+                - commits:
+                    - subject: Use bookworm image to source journalctl binaries
+                      hash: 57a17ea2075d7aadd440b7c2be78f52136988ad9
+                      body: >
+                        Debian no longer publishes linux/arm/v5 images for
+                        bullseye, breaking
+
+                        support for raspberry pi zero.
+
+
+                        This change might not solve the issue indefinitely
+
+                        as we don't know how long debian will continue
+                        publishing armv5 images.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-16.7.2
+                  title: ""
+                  date: 2024-10-18T15:20:52.555Z
+                - commits:
+                    - subject: Add support for init field from compose
+                      hash: ed1c18e3691e60bc22652e930be49e428d2ef1fe
+                      body: >
+                        Init supports boolean values, and is not included in the
+                        config when
+
+                        not defined.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-16.7.1
+                  title: ""
+                  date: 2024-09-26T14:28:03.356Z
+                - commits:
+                    - subject: Store rejected apps in the database
+                      hash: e9a52e6786e94f6be5e23c9410fc7b59df4726b5
+                      body: >
+                        This moves from throwing an error when an app is
+                        rejected due to unmet
+
+                        requirements (because of contracts) to storing the
+                        target with a
+
+                        `rejected` flag on the database.
+
+
+                        The application manager filters rejected apps when
+                        calculating steps to
+
+                        prevent them from affecting the current state. The state
+                        engine uses the
+
+                        rejection info to generate the state report.
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Set the app update status when reporting state
+                      hash: 227fee9941b77ec5a7589231979b083fb62d4f00
+                      body: ""
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Add update status to types
+                      hash: e9f460fd75e296fb295b9e1f7a7bb56f7929035d
+                      body: ""
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-16.7.0
+                  title: ""
+                  date: 2024-09-02T15:33:39.300Z
+          version: meta-balena-6.1.3
+          title: ""
+          date: 2024-11-11T18:30:47.169Z
+        - commits:
+            - subject: "modemmanager: Update outdated context of patches"
+              hash: 9c86d383ae2038f81f8459768a5ad3732fd171d4
+              body: >
+                We do this in preparation for the Scarthgap update because with
+                newer
+
+                Yocto versions the patches with outdated context will trigger
+                fatal build errors.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-6.1.2
+          title: ""
+          date: 2024-11-11T13:39:41.407Z
+        - commits:
+            - subject: "README: format the supported Yocto versions for legibility"
+              hash: 848985f1c041fa2e3c3b66baeaa5b97b5d7ed6c7
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: Extend README to add balena bootloader
+              hash: f4f10eb6d6291ae568a61800cc89ef0423ff9c17
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-6.1.1
+          title: ""
+          date: 2024-11-07T15:40:15.964Z
+        - commits:
+            - subject: Add auth. header to /os/v1/config requests
+              hash: 0c35aa38fec436fa0469aaf414fbcf68d97f6b0b
+              body: >
+                Allows the API to identify devices requesting configuration and
+                apply routing logic (e.g. switch from TCP to UDP OpenVPN
+                configuration).
+              footer:
+                change-type: minor
+              author: Anton Belodedenko
+              nested: []
+          version: meta-balena-6.1.0
+          title: ""
+          date: 2024-11-01T13:53:03.607Z
+  version: 6.1.14
+  title: ""
+  date: 2024-11-26T10:30:09.654Z
+- commits:
     - subject: Update contracts to 88fb8adfa09a1a270d9cd5d59627255298e1684e
       hash: 6230d33967f29f80e27711f96fe1de3ca2651bfc
       body: Update contracts
