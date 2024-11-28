@@ -1,4 +1,52 @@
 - commits:
+    - subject: Update layers/meta-balena to 229a6ad1da498c4ce8aaa17501ddad3e99806f08
+      hash: 3286e9bf982c741d209fc5b6b4af2fd94f14fbe2
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 229a6ad1da498c4ce8aaa17501ddad3e99806f08
+        changelog-entry: Update layers/meta-balena to 229a6ad1da498c4ce8aaa17501ddad3e99806f08
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "classes/kernel-balena: Add aufs patches for 6.1 kernels"
+              hash: 87d1cdcd707cf90dc40a760d0307fdb1573498b4
+              body: |
+                Also, aufs5 and aufs6 patches are in the same git repo now.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-6.1.16
+          title: ""
+          date: 2024-11-27T19:50:52.083Z
+        - commits:
+            - subject: "initrdscripts/migrate: Allow overriding of target internal devices"
+              hash: d969fcf547bad87cab45231ee30f59e48b32b6d4
+              body: >
+                ... on flasher images by specifying installer.target_devices in
+                config.json,
+
+                which will be used during migration instead of the list of
+                devices specified
+
+                at boot time.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-6.1.15
+          title: ""
+          date: 2024-11-26T17:20:05.226Z
+  version: 6.1.16
+  title: ""
+  date: 2024-11-28T07:49:13.403Z
+- commits:
     - subject: Update layers/meta-balena to 690845219abf6bf0a5be048cd754af6c2119e1a9
       hash: 6ba6949734d8744032a0b4607fdb3fb7fbc9cd71
       body: Update layers/meta-balena
