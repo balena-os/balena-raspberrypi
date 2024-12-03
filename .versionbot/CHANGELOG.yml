@@ -1,4 +1,18 @@
 - commits:
+    - subject: Explicitly set GITHUB_TOKEN permissions for yocto workflow
+      hash: 669effc2c00d4ad48c6078c94309c961c42c3881
+      body: ""
+      footer:
+        Changelog-entry: Explicitly set GITHUB_TOKEN permissions for yocto workflow
+        changelog-entry: Explicitly set GITHUB_TOKEN permissions for yocto workflow
+        Signed-off-by: Ryan Cooke <ryan@balena.io>
+        signed-off-by: Ryan Cooke <ryan@balena.io>
+      author: Ryan Cooke
+      nested: []
+  version: 6.1.16+rev1
+  title: ""
+  date: 2024-12-03T16:38:25.878Z
+- commits:
     - subject: Update layers/meta-balena to 229a6ad1da498c4ce8aaa17501ddad3e99806f08
       hash: 3286e9bf982c741d209fc5b6b4af2fd94f14fbe2
       body: Update layers/meta-balena
