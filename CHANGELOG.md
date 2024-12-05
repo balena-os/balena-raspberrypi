@@ -1,6 +1,61 @@
 Change log
 -----------
 
+# v6.1.21
+## (2024-12-05)
+
+
+<details>
+<summary> Update layers/meta-balena to e6d699bfffea71667b9551a93f6ee40f56a8ad79 [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.1.21
+> ### (2024-12-04)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 90d1685 [balena-renovate[bot]] </summary>
+> 
+>> ### leviathan-2.31.66
+>> #### (2024-12-04)
+>> 
+>> * Update core/contracts digest to 474ab2d [balena-renovate[bot]]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-6.1.20
+> ### (2024-12-04)
+> 
+> * kernel-module-build: update to 3.0.1 [Alex Gonzalez]
+> * tests: secureboot: fix passing of kernel headers version [Alex Gonzalez]
+> * tests: secureboot: add dm devices support in FDE test [Alex Gonzalez]
+> * tests: secureboot: add imx specialization [Alex Gonzalez]
+> 
+> ## meta-balena-6.1.19
+> ### (2024-12-03)
+> 
+> * balena-image-initramfs: add zram module [Alex Gonzalez]
+> * initrdscripts: add zram module [Alex Gonzalez]
+> * resin-init-flasher: search /tmp explicitly [Joseph Kogut]
+> * kernel-balena: enable CRYPTO_ZSTD for zram [Joseph Kogut]
+> 
+> ## meta-balena-6.1.18
+> ### (2024-12-03)
+> 
+> * Explicitly set GITHUB_TOKEN permissions for yocto workflow [Ryan Cooke]
+> 
+> ## meta-balena-6.1.17
+> ### (2024-12-02)
+> 
+> * resin-init-flasher: adapt EFI snippets to non-LUKS devices support [Alex Gonzalez]
+> * balena-config-vars: adapt to flasher non-LUKS device support [Alex Gonzalez]
+> * resin-init-flasher: add default LUKS configuration [Alex Gonzalez]
+> * hostapp-update-hooks: replace the identification of encrypted partitions [Alex Gonzalez]
+> 
+
+</details>
+
 # v6.1.16+rev1
 ## (2024-12-03)
 

@@ -1,4 +1,220 @@
 - commits:
+    - subject: Update layers/meta-balena to e6d699bfffea71667b9551a93f6ee40f56a8ad79
+      hash: 87b1f40acf91bcdf179e1d0446eac130f68c9b02
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to e6d699bfffea71667b9551a93f6ee40f56a8ad79
+        changelog-entry: Update layers/meta-balena to e6d699bfffea71667b9551a93f6ee40f56a8ad79
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Update tests/leviathan digest to 90d1685
+              hash: 647ef9196e83407d5220e03d1ce3fe09575c5bc8
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Update core/contracts digest to 474ab2d
+                      hash: 8faa54c6388d41797667a2d2bc51a9b4a8ebad1c
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.66
+                  title: ""
+                  date: 2024-12-04T18:50:19.476Z
+          version: meta-balena-6.1.21
+          title: ""
+          date: 2024-12-04T21:36:12.833Z
+        - commits:
+            - subject: "kernel-module-build: update to 3.0.1"
+              hash: 87d1b45fad357cb25eda2bd82c9ea12b3c0645b2
+              body: |
+                This adds a required dependency.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "tests: secureboot: fix passing of kernel headers version"
+              hash: 4484c59fc924100232cc10303a4636ed0082760a
+              body: |
+                Specifying the kernel headers version was not woriking.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "tests: secureboot: add dm devices support in FDE test"
+              hash: 89518778741013d099048319cba8846530261dee
+              body: >
+                Use dmsetup to identify encrypted partitions instead of
+                filesystem type
+
+                as this will work for both LUKS and DM encrypted partitions.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "tests: secureboot: add imx specialization"
+              hash: 539bca4652ccef5d2ec8be9a5b669bcd2f073f27
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-6.1.20
+          title: ""
+          date: 2024-12-04T12:38:37.422Z
+        - commits:
+            - subject: "balena-image-initramfs: add zram module"
+              hash: a121381818b49fc669362ab295fb96ce88396dff
+              body: |
+                This modules mounts /tmp as a zram device.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "initrdscripts: add zram module"
+              hash: 3f45fed4444d01f2dff1a2169bb795401ae5f3ea
+              body: >
+                This module mounts /tmp as a zram to take advantage of memory
+
+                compression so that migration can work on devices with reduced
+                memory
+
+                availability.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "resin-init-flasher: search /tmp explicitly"
+              hash: 7741fcee4b3a3129a23a7d4673dcf9647129f2e2
+              body: >
+                GNU find option -xdev prohibits descending into directories on
+                other
+
+                filesystems. Add /tmp as an explicit search path to allow for
+                finding
+
+                the balenaOS image on zram, such as when migrating.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "kernel-balena: enable CRYPTO_ZSTD for zram"
+              hash: 7f622ab9a10a8e2cd065b85860826cfb18f02269
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-6.1.19
+          title: ""
+          date: 2024-12-03T16:30:32.869Z
+        - commits:
+            - subject: Explicitly set GITHUB_TOKEN permissions for yocto workflow
+              hash: 30dc4c7b07ec1c877ee7a8b3feb234942eddac0c
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: Ryan Cooke
+              nested: []
+          version: meta-balena-6.1.18
+          title: ""
+          date: 2024-12-03T13:04:14.122Z
+        - commits:
+            - subject: "resin-init-flasher: adapt EFI snippets to non-LUKS devices support"
+              hash: 014cfbc22b26cb642a9ebd59612208866d22497f
+              body: >
+                Adapt the EFI include file to the non-LUKS device support
+                changes
+
+                introduced in cfa24c60b25699cadd2ca2e6c00232b515c1c6dc.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-config-vars: adapt to flasher non-LUKS device support"
+              hash: 426fd4aa88f25e6b231d017ca26659e07cd06f13
+              body: >
+                Adapt to the changes to the flasher script to support non-LUKS
+                devices
+
+                introduced in cfa24c60b25699cadd2ca2e6c00232b515c1c6dc.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "resin-init-flasher: add default LUKS configuration"
+              hash: 29df43ae23c12afd821f1e3d4ce3017bd201ca1a
+              body: >
+                The LUKS configuration now lives in the flasher configuration
+                file.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "hostapp-update-hooks: replace the identification of encrypted
+                partitions"
+              hash: 910a88eaf84e571bc53ea50ca167d9e703a063d8
+              body: |
+                Adapt the grub update hook to the changes introduced in
+                https://github.com/balena-os/meta-balena/commit/d50e221988b3eda595bd86f93fd08965d6a09293
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-6.1.17
+          title: ""
+          date: 2024-12-02T09:47:19.858Z
+  version: 6.1.21
+  title: ""
+  date: 2024-12-05T16:45:21.181Z
+- commits:
     - subject: Explicitly set GITHUB_TOKEN permissions for yocto workflow
       hash: 669effc2c00d4ad48c6078c94309c961c42c3881
       body: ""
