@@ -1,6 +1,131 @@
 Change log
 -----------
 
+# v6.1.21+rev1
+## (2024-12-07)
+
+
+<details>
+<summary> Update balena-yocto-scripts to cece7bfab266136d81db610c3b22dae221ee7682 [balena-renovate[bot]] </summary>
+
+> ## balena-yocto-scripts-1.27.19
+> ### (2024-12-07)
+> 
+> * Update balena-os/leviathan action to v2.31.68 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.27.18
+> ### (2024-12-07)
+> 
+> * Update balena-os/leviathan action to v2.31.67 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.27.17
+> ### (2024-12-04)
+> 
+> * Update balena-os/leviathan action to v2.31.66 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.27.16
+> ### (2024-11-29)
+> 
+> * Set additional github token permissions [Ryan Cooke]
+> 
+> ## balena-yocto-scripts-1.27.15
+> ### (2024-11-23)
+> 
+> * Update balena-os/leviathan action to v2.31.65 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.27.14
+> ### (2024-11-20)
+> 
+> * Update balena-os/leviathan action to v2.31.62 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.27.13
+> ### (2024-11-18)
+> 
+> * Explicitly set GH_TOKEN permissions [Anton Belodedenko]
+> 
+> ## balena-yocto-scripts-1.27.12
+> ### (2024-11-18)
+> 
+> * Update Lock file maintenance [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.27.11
+> ### (2024-11-17)
+> 
+> * github/workflows/yocto-build-deploy.yml: Add hostapp metadata to OS release [Florin Sarbu]
+> 
+> ## balena-yocto-scripts-1.27.10
+> ### (2024-11-11)
+> 
+> * Set explicit permissions at the job level [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.27.9
+> ### (2024-11-11)
+> 
+> * Update Lock file maintenance [balena-renovate[bot]]
+> 
+
+</details>
+
+# v6.1.21
+## (2024-12-05)
+
+
+<details>
+<summary> Update layers/meta-balena to e6d699bfffea71667b9551a93f6ee40f56a8ad79 [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.1.21
+> ### (2024-12-04)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 90d1685 [balena-renovate[bot]] </summary>
+> 
+>> ### leviathan-2.31.66
+>> #### (2024-12-04)
+>> 
+>> * Update core/contracts digest to 474ab2d [balena-renovate[bot]]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-6.1.20
+> ### (2024-12-04)
+> 
+> * kernel-module-build: update to 3.0.1 [Alex Gonzalez]
+> * tests: secureboot: fix passing of kernel headers version [Alex Gonzalez]
+> * tests: secureboot: add dm devices support in FDE test [Alex Gonzalez]
+> * tests: secureboot: add imx specialization [Alex Gonzalez]
+> 
+> ## meta-balena-6.1.19
+> ### (2024-12-03)
+> 
+> * balena-image-initramfs: add zram module [Alex Gonzalez]
+> * initrdscripts: add zram module [Alex Gonzalez]
+> * resin-init-flasher: search /tmp explicitly [Joseph Kogut]
+> * kernel-balena: enable CRYPTO_ZSTD for zram [Joseph Kogut]
+> 
+> ## meta-balena-6.1.18
+> ### (2024-12-03)
+> 
+> * Explicitly set GITHUB_TOKEN permissions for yocto workflow [Ryan Cooke]
+> 
+> ## meta-balena-6.1.17
+> ### (2024-12-02)
+> 
+> * resin-init-flasher: adapt EFI snippets to non-LUKS devices support [Alex Gonzalez]
+> * balena-config-vars: adapt to flasher non-LUKS device support [Alex Gonzalez]
+> * resin-init-flasher: add default LUKS configuration [Alex Gonzalez]
+> * hostapp-update-hooks: replace the identification of encrypted partitions [Alex Gonzalez]
+> 
+
+</details>
+
+# v6.1.16+rev1
+## (2024-12-03)
+
+* Explicitly set GITHUB_TOKEN permissions for yocto workflow [Ryan Cooke]
+
 # v6.1.16
 ## (2024-11-28)
 
