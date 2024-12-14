@@ -1,4 +1,196 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 47f64ca1617288a0e4da6af73609155981865712
+      hash: cf0c242ec7167764f39be93fe6d8350812bf93db
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 47f64ca1617288a0e4da6af73609155981865712
+        changelog-entry: Update balena-yocto-scripts to 47f64ca1617288a0e4da6af73609155981865712
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Compress artifacts with gzip and zstd before encrypting
+              hash: b838c5782722dba194d1d6ff56d8986f5f918ec9
+              body: |
+                Otherwise encrypted images are unable to be compressed.
+                This saves a lot of space and time on uploading/downloading
+                artifacts.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.29.4
+          title: ""
+          date: 2024-12-14T00:35:39.056Z
+        - commits:
+            - subject: Update Pin dependencies
+              hash: fc31531088f22db582ed6c45a6127d172e59ff6a
+              body: |
+                Update actions/github-script
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.29.3
+          title: ""
+          date: 2024-12-13T23:23:55.009Z
+        - commits:
+            - subject: Update balena-os/leviathan action to v2.31.70
+              hash: 6adf4bd6777747e2644800175f6b36ba996169dc
+              body: |
+                Update balena-os/leviathan from 2.31.69 to 2.31.70
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.29.2
+          title: ""
+          date: 2024-12-13T21:17:34.042Z
+        - commits:
+            - subject: re-enable AMI deploys
+              hash: 6b951a1ef76da4896e676477a8f550b3186b7e55
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: Ryan Cooke
+              nested: []
+          version: balena-yocto-scripts-1.29.1
+          title: ""
+          date: 2024-12-13T18:55:49.988Z
+        - commits:
+            - subject: Use S3 sstate cache on self-hosted runners
+              hash: 3cd0f501bd49dd0979a3cc5202781aef638d2da1
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: Sync shared downloads to S3 to use as a sources mirror
+              hash: edfa5f6d89b9ced619b54d060af1ce7ae4290b62
+              body: ""
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: Sync the shared sstate to github actions cache
+              hash: d4e300f5a562b7a033673041d2f3192fedee6e3d
+              body: |
+                This allows the per-device sstate to be ephemeral
+                and best effort, with automatic size and expiry limits
+                enforced by GitHub and scoped to the repository and branch.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: Use legacy yocto NFS cache as a source mirror
+              hash: d98d44c587bc6d6e8dc7b7c661e56a0719e56f14
+              body: |
+                This change makes the legacy NFS cache mount
+                optional, and will not fail the build if unset
+                or unreachable.
+
+                Instead, if the NFS is available it will be used
+                as a read-only mirror for shared downloads,
+                but will not be updated with new files.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: Enable mirror tarballs bitbake feature
+              hash: 2cfb433fd6511cd3b182187a21507c81e1c73ae6
+              body: >
+                Causes tarballs of the source control repositories (e.g. Git
+                repositories),
+
+                including metadata, to be placed in the DL_DIR directory
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.29.0
+          title: ""
+          date: 2024-12-13T11:01:47.680Z
+        - commits:
+            - subject: Update balena-os/leviathan action to v2.31.69
+              hash: da7a483a6987556af6e663e61477917f5c486fa2
+              body: |
+                Update balena-os/leviathan from 2.31.68 to 2.31.69
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.28.1
+          title: ""
+          date: 2024-12-10T11:34:33.849Z
+        - commits:
+            - subject: Update the App Id and Private Key for ephemeral app tokens
+              hash: 583241b9d2ae902b302fd00bb037ef0c844ca289
+              body: |
+                This changes the yocto scripts workflow to use a dedicated
+                balenaOS CI app, rather than the Flowzone app.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.28.0
+          title: ""
+          date: 2024-12-09T16:21:11.861Z
+        - commits:
+            - subject: "barys: add support for scarthgap"
+              hash: fa730241fc31bf1cda183e4e42f733372948a4fd
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+            - subject: "barys: make honister+ syntax default"
+              hash: 8d9f26fb9f11b32aba1b0c364a093415be90b576
+              body: |
+                Rather than require new Yocto versions to be added to
+                NEW_SYNTAX_RELEASES, make the new syntax the default.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: balena-yocto-scripts-1.27.20
+          title: ""
+          date: 2024-12-09T09:35:53.011Z
+  version: 6.1.24+rev1
+  title: ""
+  date: 2024-12-14T07:42:36.936Z
+- commits:
     - subject: Update layers/meta-balena to 955eb6cd447b3b1bee456b0df9376f8b40adf812
       hash: 21ff68cf64bc6101f7fc372ebde1b0833dc7347c
       body: Update layers/meta-balena
