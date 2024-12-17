@@ -1,6 +1,16 @@
 Change log
 -----------
 
+# v2024.10.1
+## (2024-12-17)
+
+* bump yocto-scripts action to v1.25.47 [rcooke-warwick]
+* Allow force-finalize for manual workflow dispatch [rcooke-warwick]
+* remove test_matrix from devices without tests setup [rcooke-warwick]
+* cleanup workflow triggers [rcooke-warwick]
+* Update balena-os/balena-yocto-scripts to v1.25.45 [balena-renovate[bot]]
+* Add GHA build test deploy workflows to repository [Vipul Gupta (@vipulgupta2048)]
+
 # 2024.10.0
 ## (2024-10-25)
 
