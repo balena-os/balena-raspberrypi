@@ -1,0 +1,64 @@
+name: Rocktech-RPI-300
+
+on:
+  # https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#onpushbranchestagsbranches-ignoretags-ignore
+  # https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
+  pull_request:
+    branches:
+      - main
+      - master
+      # ESR branches glob pattern
+      - 20[0-9][0-9].[0-1]?[1470].x
+  # pull_request_target:
+  #   branches:
+  #     - main
+  #     - master
+  push:
+    tags:
+      # Semver tags glob pattern (includes ESR in format v20YY.MM.PATCH)
+      - v[0-9]+.[0-9]+.[0-9]+\+?r?e?v?*
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+      force-finalize:
+        description: Force finalize of the build (implicitly enables hostapp and S3 deployments)
+        required: false
+        type: boolean
+        default: false
+      deploy-environment:
+        description: Environment to use for build and deploy
+        required: false
+        type: string
+        default: balena-staging.com
+
+permissions:
+  id-token: write # This is required for requesting the JWT #https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services#requesting-the-access-token
+  actions: read # We are fetching workflow run results of a merge commit when workflow is triggered by new tag, to see if tests pass
+  pull-requests: write # Read is required to fetch the PR that merged, in order to get the test results. Write is required to create PR comments for workflow approvals.
+  packages: read
+  contents: read
+
+jobs:
+  yocto:
+    name: Yocto
+    uses: balena-os/balena-yocto-scripts/.github/workflows/yocto-build-deploy.yml@master
+    # Prevent duplicate workflow executions for pull_request (PR) and pull_request_target (PRT) events.
+    # Both PR and PRT will be triggered for the same pull request, whether it is internal or from a fork.
+    # This condition will prevent the workflow from running twice for the same pull request while
+    # still allowing it to run for all other event types.
+    if: (github.event.pull_request.head.repo.full_name == github.repository) == (github.event_name == 'pull_request')
+    secrets: inherit
+    with:
+      machine: rt-rpi-300
+      # worker_type defaults to testbot
+      # worker_fleets defaults to balena/testbot-rig,balena/testbot-rig-partners,balena/testbot-rig-x86,balena/testbot-rig-partners-x86
+      test_matrix: >
+        {
+          "test_suite": ["os","cloud","hup"],
+          "environment": ["balena-cloud.com"],
+          "runs_on": [["ubuntu-latest"]]
+        }
+      # Allow manual workflow runs to force finalize without checking previous test runs
+      force-finalize: ${{ inputs.force-finalize || false }}
+      # Default to balena-staging.com for workflow dispatch, but balena-cloud.com for other events
+      deploy-environment: ${{ inputs.deploy-environment || 'balena-cloud.com' }}
