@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.1.24+rev3
+## (2024-12-18)
+
+* Add custom overlay for SC16IS752 used in Industrial Shields RPI PLC [RickyFA]
+
 # v6.1.24+rev2
 ## (2024-12-16)
 

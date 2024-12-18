@@ -1,4 +1,19 @@
 - commits:
+    - subject: Add custom overlay for SC16IS752 used in Industrial Shields RPI PLC
+      hash: d9dcfb806f4fd4e95673c013c646f155100f4652
+      body: |
+        This overlay is a modified version from https://github.com/raspberrypi/linux/blob/rpi-6.6.y/arch/arm/boot/dts/overlays/sc16is752-spi1-overlay.dts, intended for use with the Industrial Shields RPI PLC
+      footer:
+        Changelog-entry: Add custom overlay for SC16IS752 used in Industrial Shields RPI PLC
+        changelog-entry: Add custom overlay for SC16IS752 used in Industrial Shields RPI PLC
+        Signed-off-by: Ricard Franch <rfa@industrialshields.com>
+        signed-off-by: Ricard Franch <rfa@industrialshields.com>
+      author: RickyFA
+      nested: []
+  version: 6.1.24+rev3
+  title: ""
+  date: 2024-12-18T09:39:54.976Z
+- commits:
     - subject: Update contracts to 9ce0ad766c4f9b46cd78462813ff01600a61cde5
       hash: c3ece0db5030a58980afd39b4e9e0971b3ab34e8
       body: Update contracts
