@@ -1,4 +1,19 @@
 - commits:
+    - subject: Update layers/meta-openembedded to
+        7b3fdcdfaab2fc964bbf9eec2cce4e03001fa8cf
+      hash: c51e6c6dbeb25953530be43ee4849617deec4285
+      body: Update layers/meta-openembedded
+      footer:
+        Changelog-entry: Update layers/meta-openembedded to
+          7b3fdcdfaab2fc964bbf9eec2cce4e03001fa8cf
+        changelog-entry: Update layers/meta-openembedded to
+          7b3fdcdfaab2fc964bbf9eec2cce4e03001fa8cf
+      author: balena-renovate[bot]
+      nested: []
+  version: 6.1.24+rev4
+  title: ""
+  date: 2024-12-21T13:12:21.936Z
+- commits:
     - subject: Add custom overlay for SC16IS752 used in Industrial Shields RPI PLC
       hash: d9dcfb806f4fd4e95673c013c646f155100f4652
       body: |
