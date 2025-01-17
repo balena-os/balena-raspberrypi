@@ -11,6 +11,10 @@ SDIMG_KERNELIMAGE:raspberrypi2 ?= "kernel7.img"
 SDIMG_KERNELIMAGE:raspberrypi3-64 ?= "kernel8.img"
 SDIMG_KERNELIMAGE:raspberrypi0-2w-64 ?= "kernel8.img"
 
+# We want to stick with kernel8.img for the Pi5,
+# even though upstream uses kernel_2712.img
+SDIMG_KERNELIMAGE:raspberrypi5 ?= "kernel8.img"
+
 # Double the root partition size from 320MiB to 640MiB and boot partition size from 40MiB to 80MiB for the Pi5
 IMAGE_ROOTFS_SIZE:raspberrypi5="655360"
 BALENA_BOOT_SIZE:raspberrypi5="81920"
