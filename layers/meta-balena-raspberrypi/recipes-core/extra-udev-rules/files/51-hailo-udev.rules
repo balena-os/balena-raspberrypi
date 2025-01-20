@@ -1,0 +1,2 @@
+#Change mode rules for Hailo's PCIe driver if RPI AI kit is installed
+SUBSYSTEM=="hailo_chardev", MODE="0666"
