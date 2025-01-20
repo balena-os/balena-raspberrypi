@@ -136,7 +136,6 @@ IMAGE_INSTALL:append:raspberrypi4-superhub = " \
 
 IMAGE_INSTALL:append:raspberrypi5 = " \
     hailo-firmware \
-    hailo-pci \
 "
 
 BALENA_BOOT_PARTITION_FILES:append:raspberrypi4-64 = " \
