@@ -1,4 +1,3 @@
-From d211b4e01d2621ce03854f722f8db5acfe457ae0 Mon Sep 17 00:00:00 2001
 From: Michal Toman <michalt@balena.io>
 Date: Mon, 1 Feb 2021 16:05:38 +0100
 Subject: [PATCH] Add tpm-slb9670-tis-spi DT overlay
@@ -11,17 +10,17 @@ Signed-off-by: Michal Toman <michalt@balena.io>
  create mode 100644 arch/arm/boot/dts/overlays/tpm-slb9670-tis-spi-overlay.dts
 
 diff --git a/arch/arm/boot/dts/overlays/Makefile b/arch/arm/boot/dts/overlays/Makefile
-index d8a3677b583e..696b5789e64c 100644
+index 9203448db803..f6d410d31f8c 100644
 --- a/arch/arm/boot/dts/overlays/Makefile
 +++ b/arch/arm/boot/dts/overlays/Makefile
-@@ -194,6 +194,7 @@ dtbo-$(CONFIG_ARCH_BCM2835) += \
+@@ -276,6 +276,7 @@ dtbo-$(CONFIG_ARCH_BCM2835) += \
  	tc358743-audio.dtbo \
  	tinylcd35.dtbo \
  	tpm-slb9670.dtbo \
 +	tpm-slb9670-tis-spi.dtbo \
+ 	tpm-slb9673.dtbo \
  	uart0.dtbo \
- 	uart1.dtbo \
- 	uart2.dtbo \
+ 	uart0-pi5.dtbo \
 diff --git a/arch/arm/boot/dts/overlays/tpm-slb9670-tis-spi-overlay.dts b/arch/arm/boot/dts/overlays/tpm-slb9670-tis-spi-overlay.dts
 new file mode 100644
 index 000000000000..e43f8cd248ec
@@ -49,6 +48,3 @@ index 000000000000..e43f8cd248ec
 +		};
 +	};
 +};
--- 
-2.26.2
-
