@@ -1,4 +1,65 @@
 - commits:
+    - subject: Update rpi-bootfiles to verson 20241126
+      hash: a141edbc4cd68a83c7ef7e3d054056f79c7a29a2
+      body: ""
+      footer:
+        Changelog-entry: Update rpi-bootfiles to verson 20241126
+        changelog-entry: Update rpi-bootfiles to verson 20241126
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+    - subject: Pin the Unipi boards to kernel 5.15 because of older unipi-kernel-modules
+      hash: 8c28477be9741026dbe3651760ca5a3c38dbda81
+      body: >
+        The Unipi Raspberry Pi boards we support need the unipi-kernel-modules
+
+        recipe to compile against the kernel but these modules do not compile
+
+        against kernel version 6 so until we hear back from the vendor we keep
+
+        the 2 boards on the 5.15 kernel.
+
+
+        Also we do not apply 0006-overlays-Add-Hyperpixel4-overlays.patch and
+        0001-Add-tpm-slb9670-tis-spi-DT-overlay.patch
+
+        for the 5.15 anymore since the requests for them were not for the Unipi
+        boards.
+      footer:
+        Changelog-entry: Pin the Unipi boards to kernel 5.15 because of older
+          unipi-kernel-modules
+        changelog-entry: Pin the Unipi boards to kernel 5.15 because of older
+          unipi-kernel-modules
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+    - subject: remove linux kernel configuration checks warnings for 6.1
+      hash: 8238420f0ccd4a61fec42eb9653941352f15a0f6
+      body: |
+        FB_TFT_WATTEROTT has been removed since v5.17 in afa9755e359dcabc
+      footer:
+        Changelog-entry: remove linux kernel configuration checks warnings for 6.1
+        changelog-entry: remove linux kernel configuration checks warnings for 6.1
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: default to Linux kernel v6.1
+      hash: c246cbe6f739ff56575b423c7fad50a12418b51b
+      body: ""
+      footer:
+        Changelog-entry: default to Linux kernel v6.1
+        changelog-entry: default to Linux kernel v6.1
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 6.1.24+rev5
+  title: ""
+  date: 2025-01-23T07:33:36.360Z
+- commits:
     - subject: Update layers/meta-openembedded to
         7b3fdcdfaab2fc964bbf9eec2cce4e03001fa8cf
       hash: c51e6c6dbeb25953530be43ee4849617deec4285

@@ -1,6 +1,14 @@
 Change log
 -----------
 
+# v6.1.24+rev5
+## (2025-01-23)
+
+* Update rpi-bootfiles to verson 20241126 [Florin Sarbu]
+* Pin the Unipi boards to kernel 5.15 because of older unipi-kernel-modules [Florin Sarbu]
+* remove linux kernel configuration checks warnings for 6.1 [Alex Gonzalez]
+* default to Linux kernel v6.1 [Alex Gonzalez]
+
 # v6.1.24+rev4
 ## (2024-12-21)
 
