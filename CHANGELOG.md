@@ -1,6 +1,378 @@
 Change log
 -----------
 
+# v6.3.18
+## (2025-02-10)
+
+
+<details>
+<summary> Update layers/meta-balena to 83093879d05654ba3a01c4409813f1cf0fe56206 [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.3.18
+> ### (2025-02-07)
+> 
+> * Update actions/setup-python digest to 4237552 [balena-renovate[bot]]
+> 
+> ## meta-balena-6.3.17
+> ### (2025-02-07)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to ae96a7e [balena-renovate[bot]] </summary>
+> 
+>> ### leviathan-2.31.89
+>> #### (2025-02-06)
+>> 
+>> * Update balena-os/leviathan-worker to v2.9.57 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.88
+>> #### (2025-02-06)
+>> 
+>> * Fix running tests over local worker IP [Ryan Cooke]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-6.3.16
+> ### (2025-02-06)
+> 
+> * tests: os: swap: increase wiggle room in swap check [Ryan Cooke]
+> 
+> ## meta-balena-6.3.15
+> ### (2025-02-06)
+> 
+> * tests: cloud: env vars: restart supervisor to speed up tests [Ryan Cooke]
+> 
+> ## meta-balena-6.3.14
+> ### (2025-02-05)
+> 
+> * tests: secureboot: remove preload test for secureboot enabled DUTs [Ryan Cooke]
+> 
+> ## meta-balena-6.3.13
+> ### (2025-02-01)
+> 
+> * tests: secureboot: fix reference to unavailable kernel-module-headers [Ryan Cooke]
+> 
+> ## meta-balena-6.3.12
+> ### (Invalid date)
+> 
+> * kernel-balena.bbclass: silence regex escape warnings [Michal Toman]
+> * kernel-balena.bbclass: Add aufs patches for 6.6 kernels [Michal Toman]
+> 
+> ## meta-balena-6.3.11
+> ### (2025-01-27)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v16.12.0 [balena-renovate[bot]] </summary>
+> 
+>> ### balena-supervisor-16.12.0
+>> #### (2025-01-20)
+>> 
+>> * Update contrato to v0.12.0 [Felipe Lalanne]
+>> * Update alpine base image to 3.21 [Felipe Lalanne]
+>> * Update Node support to v22 [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-16.11.0
+>> #### (2025-01-14)
+>> 
+>> * Add support for `io.balena.update.requires-reboot` [Felipe Lalanne]
+>> * Move reboot breadcrumb check to device-state [Felipe Lalanne]
+>> * Refactor device-config as part of device-state [Felipe Lalanne]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-6.3.10
+> ### (2025-01-27)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 25370da [balena-renovate[bot]] </summary>
+> 
+>> ### leviathan-2.31.87
+>> #### (2025-01-26)
+>> 
+>> * Update actions/upload-artifact digest to 65c4c4a [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.86
+>> #### (2025-01-26)
+>> 
+>> * Fix extractVersion renovate template [Kyle Harding]
+>> 
+>> ### leviathan-2.31.85
+>> #### (2025-01-24)
+>> 
+>> * Update core/contracts digest to cde8b88 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.84
+>> #### (2025-01-23)
+>> 
+>> * lib/components: Add partition index for Jetson TX2 NX types [Alexandru Costache]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-6.3.9
+> ### (2025-01-27)
+> 
+> * workflows: iot-gate-imx8plus: add custom template path [Alexandru Costache]
+> 
+> ## meta-balena-6.3.8
+> ### (2025-01-22)
+> 
+> * resin-init-flasher: add openssl dependency [Alex Gonzalez]
+> * initrdscript: copy image signature to memory if required [Alex Gonzalez]
+> 
+> ## meta-balena-6.3.7
+> ### (2025-01-20)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 03a7057 [balena-renovate[bot]] </summary>
+> 
+>> ### leviathan-2.31.83
+>> #### (2025-01-09)
+>> 
+>> * Update balena-io/balena-cli to v20.2.1 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.82
+>> #### (2025-01-09)
+>> 
+>> * patch: Add retention & compression to Leviathan action artifacts [Vipul Gupta]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-6.3.6
+> ### (2025-01-17)
+> 
+> * images: balena-image*: Set balenaos-img.sig image type for signed builds [Alex Gonzalez]
+> * classes: balenaos-img.sig: Rename the sign image type to balenaos-img.sig [Alex Gonzalez]
+> * image_types_balena.bbclass: Move image signing code here [Florin Sarbu]
+> 
+> ## meta-balena-6.3.5
+> ### (2025-01-16)
+> 
+> * classes/kernel-balena: Avoid re-building kernel modules when not signed [Alexandru Costache]
+> 
+> ## meta-balena-6.3.4
+> ### (2025-01-16)
+> 
+> * workflows: iot-gate-imx8: add custom template path [Alex Gonzalez]
+> 
+> ## meta-balena-6.3.3
+> ### (2025-01-15)
+> 
+> * tests: hup: rollback-altboot: replace while loop over SSH to speed up tests [Ryan Cooke]
+> 
+> ## meta-balena-6.3.2
+> ### (2025-01-14)
+> 
+> * tests: secureboot: imx: refactor bootloader config integrity tests [Alex Gonzalez]
+> * tests: secureboot: imx: refactor bootloader integrity test [Alex Gonzalez]
+> * tests: secureboot: imx: support compressed files pattern replacement [Alex Gonzalez]
+> * tests: secureboot: fix function that confirms a failed boot [Alex Gonzalez]
+> 
+> ## meta-balena-6.3.1
+> ### (2025-01-13)
+> 
+> * peak: Update to version 8.19.0 [Florin Sarbu]
+> 
+> ## meta-balena-6.3.0
+> ### (2025-01-09)
+> 
+> * Update usb-modeswitch to version 2.6.1 [Florin Sarbu]
+> 
+> ## meta-balena-6.2.8
+> ### (2025-01-08)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 6652ce0 [balena-renovate[bot]] </summary>
+> 
+>> ### leviathan-2.31.81
+>> #### (2025-01-07)
+>> 
+>> * Update core/contracts digest to b7d2bb8 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.80
+>> #### (2025-01-06)
+>> 
+>> * Update core/contracts digest to 44bbd40 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.79
+>> #### (2025-01-06)
+>> 
+>> * Update balena-io/balena-cli to v20.1.6 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.78
+>> #### (2025-01-06)
+>> 
+>> * core: ssh tunnels: fix auth errors when worker is in prod mode [rcooke-warwick]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-6.2.7
+> ### (2025-01-08)
+> 
+> * balena-image-flasher: depend on balena-image:do_image_complete [Michal Toman]
+> 
+> ## meta-balena-6.2.6
+> ### (2025-01-03)
+> 
+> * workflows/meta-balena-esr: fix version array bash [Ryan Cooke]
+> 
+> ## meta-balena-6.2.5
+> ### (Invalid date)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to c4feff6 [balena-renovate[bot]] </summary>
+> 
+>> ### leviathan-2.31.77
+>> #### (Invalid date)
+>> 
+>> * Update core/contracts digest to 8bd5651 [balena-renovate[bot]]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-6.2.4
+> ### (2024-12-26)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v16.10.3 [balena-renovate[bot]] </summary>
+> 
+>> ### balena-supervisor-16.10.3
+>> #### (2024-12-20)
+>> 
+>> * Update systeminformation to v5.23.8 [SECURITY] [balena-renovate[bot]]
+>> 
+>> ### balena-supervisor-16.10.2
+>> #### (2024-12-18)
+>> 
+>> * Wait for service dependencies to be running [Felipe Lalanne]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-6.2.3
+> ### (2024-12-21)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 2a609bc [balena-renovate[bot]] </summary>
+> 
+>> ### leviathan-2.31.76
+>> #### (2024-12-19)
+>> 
+>> * lib/components/os: Add SRD3 JP4 and JP5 device type boot partition indexes [Alexandru Costache]
+>> 
+>> ### leviathan-2.31.75
+>> #### (2024-12-19)
+>> 
+>> * Update balena-io/balena-cli to v20.1.2 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.74
+>> #### (2024-12-19)
+>> 
+>> * Update docker/setup-buildx-action digest to 6524bf6 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.73
+>> #### (2024-12-18)
+>> 
+>> * Update core/contracts digest to 9383b36 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.72
+>> #### (2024-12-18)
+>> 
+>> * Update actions/upload-artifact digest to 6f51ac0 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.71
+>> #### (2024-12-17)
+>> 
+>> * Enable selection of workers with locked DUT in secureboot tests [Ryan Cooke]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-6.2.2
+> ### (2024-12-20)
+> 
+> * hostapp-update-hooks: fix path for grub_extraenv in blacklist [Alex Gonzalez]
+> 
+> ## meta-balena-6.2.1
+> ### (2024-12-19)
+> 
+> * classes: kernel-balena: configure reset on oops [Alex Gonzalez]
+> 
+> ## meta-balena-6.2.0
+> ### (2024-12-16)
+> 
+> * resin-init-flasher: with secure boot, authenticate the inner image [Michal Toman]
+> 
+> ## meta-balena-6.1.27
+> ### (2024-12-14)
+> 
+> * README: Add fan profile and power mode info to docs [Alexandru Costache]
+> 
+> ## meta-balena-6.1.26
+> ### (2024-12-12)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to f308947 [balena-renovate[bot]] </summary>
+> 
+>> ### leviathan-2.31.70
+>> #### (2024-12-12)
+>> 
+>> * Update balena-io/balena-cli to v20.1.0 [balena-renovate[bot]]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-6.1.25
+> ### (2024-12-11)
+> 
+> * github/workflows: Add yocto label to runs_on [Alexandru Costache]
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 3a37005 [balena-renovate[bot]] </summary>
+> 
+>> ### leviathan-2.31.69
+>> #### (2024-12-10)
+>> 
+>> * os/balenaos: Update Xavier and Xavier NX boot partitions for JP5 [Alexandru]
+>> 
+>> ### leviathan-2.31.68
+>> #### (2024-12-07)
+>> 
+>> * Update balena-io/balena-cli to v20.0.9 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.31.67
+>> #### (2024-12-06)
+>> 
+>> * Make leviathan worker ref configurable via env var [Ryan Cooke]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v6.1.24+rev5
 ## (2025-01-23)
 
