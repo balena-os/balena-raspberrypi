@@ -70,7 +70,6 @@ REMOVED_FOR_HUP_SPACE = " \
     linux-firmware-rpidistro-bcm43430 \
     linux-firmware-sd8887 \
     bluez-firmware-rpidistro-bcm43430a1-hcd \
-    linux-firmware-mt7601u \
 "
 
 # Temporary make space for HUP, untill firmwares
