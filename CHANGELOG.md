@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.3.18+rev1
+## (2025-02-14)
+
+* recipes-core/packagegroups: add linux-firmware-mt7601u back to all pi device types [Ryan Cooke]
+
 # v6.3.18
 ## (2025-02-10)
 

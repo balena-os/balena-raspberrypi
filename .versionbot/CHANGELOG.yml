@@ -1,4 +1,23 @@
 - commits:
+    - subject: "recipes-core/packagegroups: add linux-firmware-mt7601u back to all pi
+        device types"
+      hash: a7422b9973e72d48d1df0de09ef69140dcc6ea47
+      body: >
+        This firmware is used by the rpi foundation wifi dongle that they
+        recommend to use - we should allow for it
+      footer:
+        Changelog-entry: "recipes-core/packagegroups: add linux-firmware-mt7601u back to
+          all pi device types"
+        changelog-entry: "recipes-core/packagegroups: add linux-firmware-mt7601u back to
+          all pi device types"
+        Signed-off-by: Ryan Cooke <ryan@balena.io>
+        signed-off-by: Ryan Cooke <ryan@balena.io>
+      author: Ryan Cooke
+      nested: []
+  version: 6.3.18+rev1
+  title: ""
+  date: 2025-02-14T12:39:52.993Z
+- commits:
     - subject: Update layers/meta-balena to 83093879d05654ba3a01c4409813f1cf0fe56206
       hash: 1f61d681761c4e40039168d5f81c97695b9781f7
       body: Update layers/meta-balena
