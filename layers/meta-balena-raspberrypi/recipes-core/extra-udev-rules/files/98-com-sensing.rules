@@ -1,0 +1,8 @@
+# Used to generate uart aliases for EDATEC's CM4 Sensing.
+# Support: support@edatec.cn
+
+KERNEL=="serial0", SYMLINK+="rs232"
+KERNEL=="ttyAMA2", SYMLINK+="rs485-3"
+KERNEL=="ttyAMA3", SYMLINK+="rs485-1"
+KERNEL=="ttyAMA4", SYMLINK+="rs485-2"
+KERNEL=="ttyAMA5", SYMLINK+="rs485-4"
