@@ -1,4 +1,50 @@
 - commits:
+    - subject: Update layers/meta-balena to 12c56bcfd6d3dbae81fafa8e3eb3641be575e7c0
+      hash: a990f14772cb4bcb34958959a93a782e5a01fb64
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 12c56bcfd6d3dbae81fafa8e3eb3641be575e7c0
+        changelog-entry: Update layers/meta-balena to 12c56bcfd6d3dbae81fafa8e3eb3641be575e7c0
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "modemmanager: patch for Cinterion port types"
+              hash: 6cd7bdcef2405b836975d2a06cdd83cbb5177499
+              body: >
+                Patch with changes in udev rules for ALAS5 for proper support of
+                port types
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Kirill Zabelin
+              nested: []
+          version: meta-balena-6.3.23
+          title: ""
+          date: 2025-02-25T10:26:55.368Z
+        - commits:
+            - subject: "kernel-devsrc.bb: Use recipe from Poky for 6.12+ kernels"
+              hash: 1eb52a251cfd48d32a4dce2ee01b54e791d7b4ea
+              body: >
+                This is taken from Poky rev
+                ae8fe5b896a1f6bd0740d1fa6638b9d9377a8d28 in master.
+
+
+                It is required for being able to compile kernel modules for
+                6.12+ kernels.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-6.3.22
+          title: ""
+          date: 2025-02-24T09:34:34.666Z
+  version: 6.3.23
+  title: ""
+  date: 2025-02-26T03:32:34.874Z
+- commits:
     - subject: Update layers/meta-balena to b87445d1ae125b108e2d8e0fa766382a42ba7730
       hash: b5c45ce6c4a33b68936ea9e52f157a4a046342d8
       body: Update layers/meta-balena
