@@ -30,6 +30,11 @@ on:
         required: false
         type: string
         default: balena-staging.com
+      meta-balena-ref:
+        description: meta-balena ref if not the currently pinned version
+        required: false
+        type: string
+        default: ''
 
 permissions:
   id-token: write # This is required for requesting the JWT #https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services#requesting-the-access-token
@@ -54,3 +59,5 @@ jobs:
       force-finalize: ${{ inputs.force-finalize || false }}
       # Default to balena-staging.com for workflow dispatch, but balena-cloud.com for other events
       deploy-environment: ${{ inputs.deploy-environment || 'balena-cloud.com' }}
+      # Allow overriding the meta-balena ref for workflow dispatch events
+      meta-balena-ref: ${{ inputs.meta-balena-ref || '' }}
