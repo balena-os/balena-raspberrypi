@@ -1,4 +1,20 @@
 - commits:
+    - subject: Allow custom meta-balena ref on workflow dispatch
+      hash: 1a004ad9c87a9d5674798b0709706a30d3ad693a
+      body: |
+        This enables manual testing of meta-balena PRs directly
+        on device repos.
+      footer:
+        Changelog-entry: Allow custom meta-balena ref on workflow dispatch
+        changelog-entry: Allow custom meta-balena ref on workflow dispatch
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 6.4.1+rev2
+  title: ""
+  date: 2025-03-06T07:53:19.199Z
+- commits:
     - subject: Update balena-yocto-scripts to 4e8d58a64e996869301c996fd61aafe7496ebafc
       hash: 3bda7c300678ed6f4f2be15c8ec5a7acd47d4d89
       body: Update balena-yocto-scripts
