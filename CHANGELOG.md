@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.4.1+rev3
+## (2025-03-06)
+
+* Use append style for MACHINEOVERRIDES [Florin Sarbu]
+
 # v6.4.1+rev2
 ## (2025-03-06)
 

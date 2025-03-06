@@ -1,4 +1,18 @@
 - commits:
+    - subject: Use append style for MACHINEOVERRIDES
+      hash: 9f4000ec9ccb380610b333bce937b3d1d650189b
+      body: ""
+      footer:
+        Changelog-entry: Use append style for MACHINEOVERRIDES
+        changelog-entry: Use append style for MACHINEOVERRIDES
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 6.4.1+rev3
+  title: ""
+  date: 2025-03-06T22:50:33.513Z
+- commits:
     - subject: Allow custom meta-balena ref on workflow dispatch
       hash: 1a004ad9c87a9d5674798b0709706a30d3ad693a
       body: |
