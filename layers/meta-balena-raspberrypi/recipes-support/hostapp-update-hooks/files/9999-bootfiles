@@ -19,6 +19,9 @@ sed "/dtoverlay=i2c-rtc,pcf2127/d" /mnt/boot/config.txt > /mnt/boot/config.txt.n
 sed "/Enable RevPi specific pins for spi/d" /mnt/boot/config.txt > /mnt/boot/config.txt.new
 sed "s/dtoverlay=kunbus/dtoverlay=revpi-core/g" /mnt/boot/config.txt > /mnt/boot/config.txt.new
 
+info "Setting the CMA default size to 320M for backwards compatibility"
+sed '/dtoverlay=vc4-kms-v3d,cma-320/! s/dtoverlay=vc4-kms-v3d/dtoverlay=vc4-kms-v3d,cma-320/g' /mnt/boot/config.txt > /mnt/boot/config.txt.new
+
 sync -f /mnt/boot
 mv /mnt/boot/config.txt.new /mnt/boot/config.txt
 sync -f /mnt/boot
