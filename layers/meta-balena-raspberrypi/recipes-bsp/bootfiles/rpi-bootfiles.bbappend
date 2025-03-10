@@ -6,10 +6,16 @@ SRC_URI += " \
     file://fincm3-dt-blob.bin \
 "
 
-RPIFW_DATE = "20230509~buster"
+RPIFW_DATE = "20241126"
+SRCREV = "9f24f4bc2bdd07ffd158cfbb4bce88a2efc4c1f5"
+SHORTREV = "${@d.getVar("SRCREV", False).__str__()[:7]}"
+RPIFW_SRC_URI = "https://api.github.com/repos/raspberrypi/firmware/tarball/9f24f4bc2bdd07ffd158cfbb4bce88a2efc4c1f5;downloadfilename=raspberrypi-firmware-${SHORTREV}.tar.gz"
+RPIFW_S = "${WORKDIR}/raspberrypi-firmware-${SHORTREV}"
 
-SRC_URI[md5sum] = "20053767dd390cff9543a9b29f01729d"
-SRC_URI[sha256sum] = "1d9eb83111826b708f461101766fd2000d45f1c171ad573936d000f623ca8098"
+SRC_URI = "${RPIFW_SRC_URI}"
+SRC_URI[sha256sum] = "4b436f8946b139c6a1202375ef55d4848e3bcd8c1a9cb47000e06d7ecec828f7"
+
+PV = "${RPIFW_DATE}"
 
 do_deploy:append() {
     # exclude from balenaOS the binaries with additional debug assertions (they

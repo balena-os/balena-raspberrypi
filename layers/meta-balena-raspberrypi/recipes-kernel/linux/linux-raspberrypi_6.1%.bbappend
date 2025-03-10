@@ -1,12 +1,5 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:${THISDIR}/${MACHINE}:"
 
-SRC_URI:append:fincm3 = " \
-	file://0001-overlays-fin-add-internal-pull-ups-to-i2c_soft.patch \
-	file://0004-mmc-pwrseq-Repurpose-for-Marvell-SD8777.patch \
-	file://0005-balena-fin-wifi-sta-uap-mode.patch \
-	file://0007-overlays-Add-spyfly.dts.patch \
-"
-
 SRC_URI:append:raspberrypi4-superhub = " \
 	file://0001-Add-gpio-wdt-DT-overlay-for-Phoenix-Board.patch \
 	file://0002-Add-infineon-tpm-DT-overlay-for-Phoenix-Board.patch \
@@ -17,11 +10,14 @@ SRC_URI:append:raspberrypi4-superhub = " \
 SRC_URI:append = " \
 	file://0002-wireless-wext-Bring-back-ndo_do_ioctl-fallback.patch \
 	file://0001-Add-npe-x500-m3-overlay.patch \
+	file://0006-overlays-Add-Hyperpixel4-overlays.patch \
+	file://0001-Add-tpm-slb9670-tis-spi-DT-overlay.patch \
 	file://0010-dts-overlays-Add-UniPi-overlays.patch \
 	file://0001-seeed-studio-can-bus-v2-Add-dtbo-for-this-can-bus.patch \
 	file://0011-USB-serial-Add-support-for-more-Quectel-modules.patch \
 	file://0001-waveshare-sim7600-Add-dtbo-for-this-modem.patch \
 	file://0001-overlays-Add-overlay-for-Seeed-reComputer-R1000.patch \
+	file://0001-overlays-Add-overlay-for-RPI-PLC-SC16IS752.patch \
 "
 
 SRC_URI:append:rt-rpi-300 = " \
@@ -65,8 +61,11 @@ BALENA_CONFIGS[fbtft] = " \
     CONFIG_FB_TFT_TLS8204=m \
     CONFIG_FB_TFT_UC1701=m \
     CONFIG_FB_TFT_UPD161704=m \
-    CONFIG_FB_TFT_WATTEROTT=m \
     "
+
+
+BALENA_CONFIGS:append = " ${@configure_from_version("5.17", "", " fb_tft_watterott", d)}"
+BALENA_CONFIGS[fb_tft_watterott] = "CONFIG_FB_TFT_WATTEROTT=m"
 
 BALENA_CONFIGS:append = " pca955_gpio_expander"
 BALENA_CONFIGS[pca955_gpio_expander] = " \

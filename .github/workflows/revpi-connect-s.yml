@@ -30,6 +30,11 @@ on:
         required: false
         type: string
         default: balena-staging.com
+      meta-balena-ref:
+        description: meta-balena ref if not the currently pinned version
+        required: false
+        type: string
+        default: ''
 
 permissions:
   id-token: write # This is required for requesting the JWT #https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services#requesting-the-access-token
@@ -41,7 +46,7 @@ permissions:
 jobs:
   yocto:
     name: Yocto
-    uses: balena-os/balena-yocto-scripts/.github/workflows/yocto-build-deploy.yml@master
+    uses: balena-os/balena-yocto-scripts/.github/workflows/yocto-build-deploy.yml@4e8d58a64e996869301c996fd61aafe7496ebafc
     # Prevent duplicate workflow executions for pull_request (PR) and pull_request_target (PRT) events.
     # Both PR and PRT will be triggered for the same pull request, whether it is internal or from a fork.
     # This condition will prevent the workflow from running twice for the same pull request while
@@ -54,3 +59,5 @@ jobs:
       force-finalize: ${{ inputs.force-finalize || false }}
       # Default to balena-staging.com for workflow dispatch, but balena-cloud.com for other events
       deploy-environment: ${{ inputs.deploy-environment || 'balena-cloud.com' }}
+      # Allow overriding the meta-balena ref for workflow dispatch events
+      meta-balena-ref: ${{ inputs.meta-balena-ref || '' }}
