@@ -1,6 +1,66 @@
 Change log
 -----------
 
+# v6.4.2+rev1
+## (2025-03-11)
+
+
+<details>
+<summary> Update balena-yocto-scripts to b67855f2ca393dff231d3053814428b8136f7887 [balena-renovate[bot]] </summary>
+
+> ## balena-yocto-scripts-1.31.22
+> ### (2025-03-10)
+> 
+> * Update aws/aws-cli to v2.24.21 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.31.21
+> ### (2025-03-10)
+> 
+> * Update balena-io/balena-cli to v20.2.10 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.31.20
+> ### (2025-03-10)
+> 
+> * Update Lock file maintenance [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.31.19
+> ### (2025-03-07)
+> 
+> * Update aws/aws-cli to v2.24.20 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.31.18
+> ### (2025-03-07)
+> 
+> * Update product-os/review-commit-action action to v0.2.3 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.31.17
+> ### (2025-03-07)
+> 
+> * Update product-os/review-commit-action action to v0.2.2 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.31.16
+> ### (2025-03-06)
+> 
+> * Update aws/aws-cli to v2.24.19 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.31.15
+> ### (2025-03-05)
+> 
+> * Update aws/aws-cli to v2.24.18 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.31.14
+> ### (2025-03-04)
+> 
+> * Update aws/aws-cli to v2.24.17 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.31.13
+> ### (2025-03-04)
+> 
+> * Add signing environment to All Jobs context [Kyle Harding]
+> 
+
+</details>
+
 # v6.4.2
 ## (2025-03-07)
 
