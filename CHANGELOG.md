@@ -1,6 +1,22 @@
 Change log
 -----------
 
+# v6.4.3
+## (2025-03-12)
+
+
+<details>
+<summary> Update layers/meta-balena to 20cbd5aa6f9896b32256a2e6f68cc0b4b55a7650 [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.4.3
+> ### (2025-03-10)
+> 
+> * secureboot: imx: program bootloader in integrity check [Alex Gonzalez]
+> * secureboot: imx: increase kernel headers required version [Alex Gonzalez]
+> 
+
+</details>
+
 # v6.4.2+rev1
 ## (2025-03-11)
 

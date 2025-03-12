@@ -1,4 +1,48 @@
 - commits:
+    - subject: Update layers/meta-balena to 20cbd5aa6f9896b32256a2e6f68cc0b4b55a7650
+      hash: 6c08dd9b89b8d1e9d12e31ce260ee12e7473bd53
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 20cbd5aa6f9896b32256a2e6f68cc0b4b55a7650
+        changelog-entry: Update layers/meta-balena to 20cbd5aa6f9896b32256a2e6f68cc0b4b55a7650
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "secureboot: imx: program bootloader in integrity check"
+              hash: 436297c86c5607985bda16fb156d8f360984c78f
+              body: >
+                After modifying the bootloader binary to corrupt the signature
+                it needs
+
+                to be programmed into disk.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "secureboot: imx: increase kernel headers required version"
+              hash: 58f5ad1b243e99a49fad724180f518ffd1adeb01
+              body: >
+                The chosen version has available releases for the devices that
+                make use
+
+                of the imx secure boot tests.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-6.4.3
+          title: ""
+          date: 2025-03-10T15:11:23.005Z
+  version: 6.4.3
+  title: ""
+  date: 2025-03-12T08:30:32.948Z
+- commits:
     - subject: Update balena-yocto-scripts to b67855f2ca393dff231d3053814428b8136f7887
       hash: a5ca894ae579b74855b3530bf494e77cd93c93bc
       body: Update balena-yocto-scripts
