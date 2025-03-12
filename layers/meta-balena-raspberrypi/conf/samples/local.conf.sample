@@ -14,6 +14,7 @@
 #MACHINE ?= "rt-rpi-300"
 #MACHINE ?= "raspberrypi3-unipi-neuron"
 #MACHINE ?= "raspberrypi4-superhub"
+#MACHINE ?= "raspberrypi4-edatec-sensing"
 #MACHINE ?= "raspberrypi4-unipi-neuron"
 #MACHINE ?= "raspberrypi5"
 
