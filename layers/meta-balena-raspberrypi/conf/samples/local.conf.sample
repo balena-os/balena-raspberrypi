@@ -50,7 +50,7 @@ KERNEL_BOOTCMD:raspberrypi0-2w-64 = "booti"
 RPI_USE_U_BOOT = "1"
 
 # Set this to 1 to disable quiet boot and allow bootloader shell access
-#OS_DEVELOPMENT = "1"
+OS_DEVELOPMENT = "1"
 
 # Set this to make build system generate resinhup bundles
 #RESINHUP ?= "yes"
