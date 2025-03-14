@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v6.4.3+rev1
+## (2025-03-14)
+
+* Fix Revolution Pi build by including missing rpi4-nvmem.cfg [Florin Sarbu]
+* Add support for CM5 and RPi500 and update to kernel version 6.12.1 [Michal Toman]
+
 # v6.4.3
 ## (2025-03-12)
 

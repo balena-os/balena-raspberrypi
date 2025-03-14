@@ -1,4 +1,46 @@
 - commits:
+    - subject: Fix Revolution Pi build by including missing rpi4-nvmem.cfg
+      hash: 9c2f4c2ae56af4119f44c140e7216b02aad2b782
+      body: >
+        The linux-kunbus kernel recipe includes the file linux-raspberrypi.inc
+
+        which we copy over now from the BSP layer. As such we also need to add
+        here
+
+        the kernel config fragment(s) the BSP include file uses.
+      footer:
+        Changelog-entry: Fix Revolution Pi build by including missing rpi4-nvmem.cfg
+        changelog-entry: Fix Revolution Pi build by including missing rpi4-nvmem.cfg
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+    - subject: Add support for CM5 and RPi500 and update to kernel version 6.12.1
+      hash: abc93f8f2d5df8f8d5177f098d98c34483deb320
+      body: |
+        At this moment the RPi5 image does not build properly, and CM5
+        and RPi500 are not supported at all.
+
+        This patch does several things:
+        * Bumps kernel to 6.12
+        * Bumps the balena bootloader kernel to 6.12
+        * Adds CM5 and RPi500 device trees to the RPi5 image
+
+        The 6.12 kernel recipe was backported from meta-raspberrypi
+        rev 923ac579c78ca42d425c303c34b65e199470ef67 in master.
+
+        RPi5, RPi500 and CM5 are therefore supported by a single device type.
+      footer:
+        Changelog-entry: Add support for CM5 and RPi500 and update to kernel version 6.12.1
+        changelog-entry: Add support for CM5 and RPi500 and update to kernel version 6.12.1
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Michal Toman
+      nested: []
+  version: 6.4.3+rev1
+  title: ""
+  date: 2025-03-14T08:24:24.789Z
+- commits:
     - subject: Update layers/meta-balena to 20cbd5aa6f9896b32256a2e6f68cc0b4b55a7650
       hash: 6c08dd9b89b8d1e9d12e31ce260ee12e7473bd53
       body: Update layers/meta-balena
