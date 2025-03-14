@@ -213,3 +213,28 @@ do_compile:append() {
         oe_runmake dtbs CC="${KERNEL_CC} $cc_extra " LD="${KERNEL_LD}" ${KERNEL_EXTRA_ARGS}
     fi
 }
+
+# we need to clean up all the following RPI_KERNEL_DEVICETREE changes when we switch to a newer 6.x kernel
+RPI_KERNEL_DEVICETREE = " \
+    bcm2708-rpi-zero.dtb \
+    bcm2708-rpi-zero-w.dtb \
+    bcm2708-rpi-b.dtb \
+    bcm2708-rpi-b-rev1.dtb \
+    bcm2708-rpi-b-plus.dtb \
+    bcm2709-rpi-2-b.dtb \
+    bcm2710-rpi-2-b.dtb \
+    bcm2710-rpi-3-b.dtb \
+    bcm2710-rpi-3-b-plus.dtb \
+    bcm2710-rpi-zero-2.dtb \
+    bcm2711-rpi-4-b.dtb \
+    bcm2711-rpi-400.dtb \
+    bcm2708-rpi-cm.dtb \
+    bcm2710-rpi-cm3.dtb \
+    bcm2711-rpi-cm4.dtb \
+    bcm2711-rpi-cm4s.dtb \
+"
+
+RPI_KERNEL_DEVICETREE:raspberrypi0-2w-64 = " \
+    broadcom/bcm2710-rpi-zero-2.dtb \
+    broadcom/bcm2710-rpi-cm3.dtb \
+"
