@@ -1,6 +1,51 @@
 Change log
 -----------
 
+# v6.5.1+rev1
+## (2025-03-16)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 67ed08ab80835b69252ca7fbe0bad7eb405ed81e [balena-renovate[bot]] </summary>
+
+> ## balena-yocto-scripts-1.31.29
+> ### (2025-03-14)
+> 
+> * Update aws/aws-cli to v2.24.24 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.31.28
+> ### (2025-03-14)
+> 
+> * Update docker/login-action action to v3.4.0 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.31.27
+> ### (2025-03-13)
+> 
+> * Update aws/aws-cli to v2.24.23 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.31.26
+> ### (2025-03-12)
+> 
+> * Update balena-io/balena-cli to v21.1.0 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.31.25
+> ### (2025-03-11)
+> 
+> * Update aws/aws-cli to v2.24.22 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.31.24
+> ### (2025-03-11)
+> 
+> * Update balena-io/balena-cli to v21 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.31.23
+> ### (2025-03-11)
+> 
+> * workflows: yocto-build-deploy: pass device type to build [Alex Gonzalez]
+> 
+
+</details>
+
 # v6.5.1
 ## (2025-03-15)
 

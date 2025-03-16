@@ -1,4 +1,108 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 67ed08ab80835b69252ca7fbe0bad7eb405ed81e
+      hash: daa76edf04ad151f49fe3e39b057142dbe1a6215
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 67ed08ab80835b69252ca7fbe0bad7eb405ed81e
+        changelog-entry: Update balena-yocto-scripts to 67ed08ab80835b69252ca7fbe0bad7eb405ed81e
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Update aws/aws-cli to v2.24.24
+              hash: 63485a0715a1d0a98252972fba88e0a7c5d4b3d3
+              body: |
+                Update aws/aws-cli from 2.24.23 to 2.24.24
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.31.29
+          title: ""
+          date: 2025-03-14T21:14:59.857Z
+        - commits:
+            - subject: Update docker/login-action action to v3.4.0
+              hash: 48f73a9226e9db731e3084fa0b463587e860fed8
+              body: |
+                Update docker/login-action from 3.3.0 to 3.4.0
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.31.28
+          title: ""
+          date: 2025-03-14T11:33:02.643Z
+        - commits:
+            - subject: Update aws/aws-cli to v2.24.23
+              hash: 9f930a2472bf6ad27ce4248d9db98b1e70c41598
+              body: |
+                Update aws/aws-cli from 2.24.22 to 2.24.23
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.31.27
+          title: ""
+          date: 2025-03-13T20:57:49.972Z
+        - commits:
+            - subject: Update balena-io/balena-cli to v21.1.0
+              hash: b7ea716a541cc19ffbbb8615ef8bf4da17ec3ac3
+              body: |
+                Update balena-io/balena-cli from 21.0.0 to 21.1.0
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.31.26
+          title: ""
+          date: 2025-03-12T21:00:21.792Z
+        - commits:
+            - subject: Update aws/aws-cli to v2.24.22
+              hash: 525330d5a78d60cb1f79262f7ed23edeb2252657
+              body: |
+                Update aws/aws-cli from 2.24.21 to 2.24.22
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.31.25
+          title: ""
+          date: 2025-03-11T21:20:26.830Z
+        - commits:
+            - subject: Update balena-io/balena-cli to v21
+              hash: 34fe16cd44cfc37538597c9256bb0bbcdfc1eaee
+              body: |
+                Update balena-io/balena-cli from 20.2.10 to 21.0.0
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.31.24
+          title: ""
+          date: 2025-03-11T19:39:44.664Z
+        - commits:
+            - subject: "workflows: yocto-build-deploy: pass device type to build"
+              hash: 8670526bd57cd78c6c909f0b6fb1f2a5884cf84d
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.31.23
+          title: ""
+          date: 2025-03-11T16:42:32.413Z
+  version: 6.5.1+rev1
+  title: ""
+  date: 2025-03-16T16:38:02.733Z
+- commits:
     - subject: Update layers/meta-balena to de218895272b288458d86bcba4358eb9a9558c17
       hash: fa35d68d4de8b28128fd6a7b1c36c980560cbc55
       body: Update layers/meta-balena
