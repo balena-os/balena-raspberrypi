@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v6.5.1+rev2
+## (2025-03-17)
+
+* enable VC4 graphics for the RPI5 [Alex Gonzalez]
+* set CMA default size to 320M for backwards compatibility [Alex Gonzalez]
+
 # v6.5.1+rev1
 ## (2025-03-16)
 

@@ -1,4 +1,41 @@
 - commits:
+    - subject: enable VC4 graphics for the RPI5
+      hash: 9582d1aa0fd9f4c4c7e7b59a9350df4ff1f859fc
+      body: ""
+      footer:
+        Changelog-entry: enable VC4 graphics for the RPI5
+        changelog-entry: enable VC4 graphics for the RPI5
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: set CMA default size to 320M for backwards compatibility
+      hash: c4b3f57e4eefa3e79f7f003e93c5666a5364f8e7
+      body: >
+        The default CMA size has been 320M until the 6.1.y kernel increased it
+
+        to 512M in 9b523e1fc8a786da6fb6e0a8301d2fb4a2332dbb.
+
+
+        This breaks applications that were setting high `gpu_mem` values as the
+
+        combination of CMA + GPU memory cannot exceed 32bit DMA accessible
+        memory.
+
+
+        This commit explicitely sets 320M as default to keep backwards
+        compatibility.
+      footer:
+        Changelog-entry: set CMA default size to 320M for backwards compatibility
+        changelog-entry: set CMA default size to 320M for backwards compatibility
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 6.5.1+rev2
+  title: ""
+  date: 2025-03-17T14:20:36.443Z
+- commits:
     - subject: Update balena-yocto-scripts to 67ed08ab80835b69252ca7fbe0bad7eb405ed81e
       hash: daa76edf04ad151f49fe3e39b057142dbe1a6215
       body: Update balena-yocto-scripts
