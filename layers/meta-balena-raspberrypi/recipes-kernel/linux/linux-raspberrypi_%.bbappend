@@ -49,3 +49,8 @@ BALENA_CONFIGS[pieeprom] = " \
 
 BALENA_CONFIGS:append:raspberrypicm4-ioboard-sb = " dwc2"
 BALENA_CONFIGS[dwc2] = "CONFIG_USB_DWC2=y"
+
+BALENA_CONFIGS:append = " ${@configure_from_version("6.11", " memcg", "", d)}"
+BALENA_CONFIGS[memcg] = " \
+    CONFIG_MEMCG_V1=y \
+"
