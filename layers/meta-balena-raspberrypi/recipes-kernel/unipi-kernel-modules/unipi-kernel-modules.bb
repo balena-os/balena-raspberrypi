@@ -15,6 +15,8 @@ SRC_URI = " \
 	file://0007-rtc-unipi-Adapt-to-removal-of-nvram-ABI.patch \
 	file://0008-rtc-unipi-Add-devm-to-rtc_nvmem_register.patch \
 	file://0009-rtc-unipi-Adapt-to-rename-of-rtc_register_device.patch \
+	file://0010-unipispi-Add-deinit-chardev.patch \
+	file://0011-Add-back-LED-driver-unregister-logs.patch \
 "
 
 # Corresponds to v1.80

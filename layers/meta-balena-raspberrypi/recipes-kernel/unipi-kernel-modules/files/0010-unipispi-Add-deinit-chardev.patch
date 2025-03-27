@@ -1,0 +1,316 @@
+From 37ffabc5c8258ea05c287f8b7380eda8784abcae Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Thu, 23 May 2024 08:37:21 +0000
+Subject: [PATCH] unipispi: Allow forced deinitialization
+
+This kernel module contains multiple drivers, and the
+binding and unbinding procedure of the spi driver causes
+this module to initialize twoce. This results in drivers being
+registered twice for unipi leds, as well as the unipi
+spi driver included in this module to interfere with
+the contents written to spidev0.0 by flashrom. Apart from this,
+doubly registered drivers for leds cause the system
+to hang when rfkill deregisters, because it also unregisters
+the rfkill triggers for each led device.
+
+Because this module cannot be unloaded, we expose a new
+chardev which expects the string "deinit" to be written
+to deinitialize all drivers whithin it.
+
+Since EEPROM programming is always done during
+HUP in balenaOS, a reboot will follow so there's no point
+in re-initializing it.
+
+Other systems don't use the spi driver rebind procedure,
+instead they expect only the spi gpio overlay to be applied
+by the firmware as specified in config.txt
+
+Failure log:
+
+kernel: Unable to handle kernel paging request at virtual address ffffffe2bba62c80
+...
+Internal error: Oops: 96000046 [#1] PREEMPT SMP
+kernel: Call trace:
+kernel:  queued_spin_lock_slowpath+0x1e8/0x2c8
+kernel:  do_raw_spin_lock+0x30/0x40
+kernel:  _raw_spin_lock_irq+0x40/0x50
+kernel:  __down_write_common+0x484/0x4dc
+kernel:  down_write+0x1c/0x28
+kernel:  led_trigger_unregister+0xc4/0xf0
+kernel:  rfkill_unregister+0xa0/0xb0 [rfkill]
+kernel:  hci_unregister_dev+0x118/0x148 [bluetooth]
+kernel:  hci_uart_tty_close+0x90/0xd8 [hci_uart]
+kernel:  tty_ldisc_close+0x4c/0x5c
+kernel:  tty_set_ldisc+0xb4/0x1cc
+kernel:  tty_ioctl+0x460/0x758
+kernel:  vfs_ioctl+0x30/0x50
+kernel:  __arm64_sys_ioctl+0x80/0xb4
+kernel:  invoke_syscall+0x84/0x11c
+kernel:  el0_svc_common.constprop.0+0xcc/0x100
+kernel:  do_el0_svc+0x50/0x90
+kernel:  el0_svc+0x24/0x54
+kernel:  el0t_64_sync_handler+0xb4/0x134
+kernel:  el0t_64_sync+0x1a0/0x1a4
+kernel: Code: 51000421 8b000280 f861db01 910022f8 (f8216817)
+kernel: ---[ end trace 716c568e2115c0b0 ]---
+kernel: note: hciattach[2345] exited with preempt_count 1
+
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+Upstream-status: Inappropriate [configuration]
+---
+ modules/unipi/src/unipi_common.h |   3 +
+ modules/unipi/src/unipi_spi.c    | 142 ++++++++++++++++++++++++++++---
+ 2 files changed, 132 insertions(+), 12 deletions(-)
+
+diff --git a/modules/unipi/src/unipi_common.h b/modules/unipi/src/unipi_common.h
+index 857eefb..2a9ca65 100644
+--- a/modules/unipi/src/unipi_common.h
++++ b/modules/unipi/src/unipi_common.h
+@@ -89,6 +89,9 @@
+ #define MAX_RX_QUEUE_LEN                16
+ 
+ #define NEURON_DEVICE_NAME 				"unipispi"
++#define NEURON_DEINIT_DEVICE_NAME			"unipispi_deinit"
++#define NEURON_DEINIT_DEVICE_CLASS			"modbus_deinit_spi"
++#define DEINIT_CMD                                     "deinit"
+ #define NEURON_DEVICE_CLASS 			"modbus_spi"
+ #define NEURON_DRIVER_NAME				"UNIPISPI"
+ #define PORT_NEURONSPI					184
+diff --git a/modules/unipi/src/unipi_spi.c b/modules/unipi/src/unipi_spi.c
+index d6260b1..3f1f410 100644
+--- a/modules/unipi/src/unipi_spi.c
++++ b/modules/unipi/src/unipi_spi.c
+@@ -63,6 +63,16 @@ struct neuronspi_char_driver
+ 	struct device* dev;
+ };
+ 
++struct neuronspi_deinit_char_driver
++{
++        int major_number;
++        u32 open_counter;
++        struct class* driver_class;
++        struct device* dev;
++};
++
++#define DEINIT_BUFFER_SIZE 512
++static char deinit_device_buffer[DEINIT_BUFFER_SIZE];
+ 
+ //struct mutex neuronspi_master_mutex;
+ spinlock_t   unipi_spi_master_lock;
+@@ -77,12 +87,21 @@ static struct spinlock *neuronspi_probe_spinlock;
+ static struct sched_param neuronspi_sched_param = { .sched_priority = MAX_RT_PRIO / 2 };
+ #endif
+ 
++static void neuronspi_deinit(void);
++
+ struct neuronspi_char_driver neuronspi_cdrv =
+ {
+ 	.major_number = -1,
+ 	.dev = NULL
+ };
+ 
++struct neuronspi_deinit_char_driver neuronspi_deinit_cdrv =
++{
++        .major_number = -1,
++        .dev = NULL
++};
++
++
+ struct neuronspi_file_data
+ {
+ 	//struct spi_device** spi_device;
+@@ -775,6 +794,18 @@ int neuronspi_open (struct inode *inode_p, struct file *file_p)
+ 	return 0;
+ }
+ 
++int neuronspi_deinit_open (struct inode *inode_p, struct file *file_p)
++{
++        if (file_p == NULL || inode_p == NULL) {
++                return -1;
++        }
++
++        neuronspi_deinit_cdrv.open_counter += 1;
++        //printk(KERN_INFO "UNIPISPI: neuronspi_deinit_open - open counter: %d \n", neuronspi_deinit_cdrv.open_counter);
++        return 0;
++}
++
++
+ int neuronspi_release (struct inode *inode_p, struct file *file_p)
+ {
+ 	struct neuronspi_file_data *f_internal_data;
+@@ -790,6 +821,47 @@ int neuronspi_release (struct inode *inode_p, struct file *file_p)
+ 	return 0;
+ }
+ 
++int neuronspi_deinit_release (struct inode *inode_p, struct file *file_p)
++{
++        if (file_p == NULL) {
++                return -1;
++        }
++
++        neuronspi_deinit_cdrv.open_counter -= 1;
++        //printk(KERN_INFO "UNIPISPI: neuronspi_deinit_release - open counter: %d \n", neuronspi_deinit_cdrv.open_counter);
++        return 0;
++}
++
++ssize_t neuronspi_deinit_read (struct file *file_p, char *buffer, size_t len, loff_t *offset)
++{
++        //printk(KERN_INFO "UNIPISPI: neuronspi_deinit_read");
++        return 0;
++}
++
++ssize_t neuronspi_deinit_write (struct file *file_p, const char *buffer, size_t len, loff_t *w_offset)
++{
++        int max_bytes;
++        int bytes_to_write;
++        int bytes_writen;
++        max_bytes = DEINIT_BUFFER_SIZE - *w_offset;
++        if (max_bytes > len)
++                bytes_to_write = len;
++        else
++                bytes_to_write = max_bytes;
++
++        bytes_writen = bytes_to_write - copy_from_user(deinit_device_buffer + *w_offset, buffer, bytes_to_write);
++        printk(KERN_INFO "UNIPISPI: neuronspi_deinit_write - %d bytes\n", bytes_writen);
++        *w_offset += bytes_writen;
++        printk(KERN_INFO "UNIPISPI: neuronspi_deinit_write - buffer: %s\n", deinit_device_buffer);
++
++        if (!strncmp(deinit_device_buffer, DEINIT_CMD, strlen(DEINIT_CMD))) {
++                 printk(KERN_INFO "UNIPISPI: neuronspi_deinit got exit request. Forcing deinit...");
++                 neuronspi_deinit();
++        }
++
++        return bytes_writen;
++}
++
+ ssize_t neuronspi_read (struct file *file_p, char *buffer, size_t len, loff_t *offset)
+ {
+ 
+@@ -1514,10 +1586,18 @@ struct file_operations file_ops =
+ 	.owner				= THIS_MODULE
+ };
+ 
++struct file_operations deinit_file_ops =
++{
++        .open                           = neuronspi_deinit_open,
++        .read                           = neuronspi_deinit_read,
++        .write                          = neuronspi_deinit_write,
++        .release                        = neuronspi_deinit_release,
++        .owner                          = THIS_MODULE
++};
+ 
+ int char_register_driver(void)
+ {
+-    int major;
++    int major, deinit_major;
+     struct device *parent = NULL;
+ 	if (neuronspi_cdrv.major_number >= 0) return 0;
+ 
+@@ -1531,6 +1611,13 @@ int char_register_driver(void)
+ 	}
+ 	unipi_spi_trace_1(KERN_DEBUG "UNIPISPI: CDEV major number %d\n", major);
+ 
++        // This chardev is used to force deinitialize the driver, so it does not interfere with eeprom programming or rfkill unregistering
++        deinit_major = register_chrdev(0, NEURON_DEINIT_DEVICE_NAME, &deinit_file_ops);
++        if (deinit_major < 0){
++                printk(KERN_ALERT "NEURONSPI: CDEV Failed to register deinit char dev\n");
++                return deinit_major;
++        }
++
+ 	// Character class registration
+ 	neuronspi_cdrv.driver_class = class_create(THIS_MODULE, NEURON_DEVICE_CLASS);
+ 	if (IS_ERR(neuronspi_cdrv.driver_class)) {
+@@ -1540,6 +1627,14 @@ int char_register_driver(void)
+ 	}
+ 	unipi_spi_trace_1(KERN_DEBUG "UNIPISPI: CDEV Device class registered\n");
+ 
++        neuronspi_deinit_cdrv.driver_class = class_create(THIS_MODULE, NEURON_DEINIT_DEVICE_CLASS);
++        if (IS_ERR(neuronspi_deinit_cdrv.driver_class)) {
++                unregister_chrdev(deinit_major, NEURON_DEINIT_DEVICE_NAME);
++                printk(KERN_ALERT "NEURONSPI: CDEV Failed to register deinit_device class\n");
++                return PTR_ERR(neuronspi_deinit_cdrv.driver_class);
++        }
++        unipi_spi_trace_1(KERN_DEBUG "UNIPISPI: CDEV deinit device class registered\n")
++
+ 	// Device driver registration
+ 	/*neuronspi_cdrv.dev = device_create_with_groups(neuronspi_cdrv.driver_class, &(neuron_plc_dev->dev), \
+                             MKDEV(major, 0), NULL, neuron_plc_attr_groups, NEURON_DEVICE_NAME);*/
+@@ -1553,9 +1648,20 @@ int char_register_driver(void)
+         printk(KERN_ALERT "NEURONSPI: CDEV Failed to create the device\n");
+         return PTR_ERR(neuronspi_cdrv.dev);
+ 	}
++
++        neuronspi_deinit_cdrv.dev = device_create(neuronspi_deinit_cdrv.driver_class, parent, MKDEV(deinit_major, 0), \
++                            neuron_plc_dev, NEURON_DEINIT_DEVICE_NAME);
++        if (IS_ERR(neuronspi_deinit_cdrv.dev)) {
++                class_destroy(neuronspi_deinit_cdrv.driver_class);
++                unregister_chrdev(deinit_major, NEURON_DEINIT_DEVICE_NAME);
++                printk(KERN_ALERT "NEURONSPI: CDEV Failed to create deinit device\n");
++                return PTR_ERR(neuronspi_deinit_cdrv.dev);
++        }
++
+ 	printk(KERN_DEBUG "UNIPISPI: ModBus/SPI interface /dev/%s (%d:0) created.\n", NEURON_DEVICE_NAME, major);
+ 
+-    neuronspi_cdrv.major_number = major;
++	neuronspi_cdrv.major_number = major;
++	neuronspi_deinit_cdrv.major_number = deinit_major;
+ 	return 0;
+ }
+ 
+@@ -1567,6 +1673,12 @@ void char_unregister_driver(void)
+ 	class_destroy(neuronspi_cdrv.driver_class);                             				// Destroy the class
+ 	unregister_chrdev(neuronspi_cdrv.major_number, NEURON_DEVICE_NAME);             		// Unregister the major number
+ 	unipi_spi_trace(KERN_INFO "UNIPISPI: CDEV unloaded\n");
++
++        device_destroy(neuronspi_deinit_cdrv.driver_class, MKDEV(neuronspi_deinit_cdrv.major_number, 0));
++        class_destroy(neuronspi_deinit_cdrv.driver_class);
++        unregister_chrdev(neuronspi_deinit_cdrv.major_number, NEURON_DEINIT_DEVICE_NAME);
++        unipi_spi_trace(KERN_INFO "UNIPISPI: Deinit CDEV removed\n");
++
+ }
+ 
+ /*********************
+@@ -1628,24 +1740,30 @@ static s32 __init neuronspi_init(void)
+ 	return ret;
+ }
+ 
++
+ module_init(neuronspi_init);
+ 
+-static void __exit neuronspi_exit(void)
++static void neuronspi_deinit(void)
+ {
+-	unipi_spi_trace(KERN_INFO "UNIPISPI: Open Counter is %d\n", neuronspi_cdrv.open_counter);
++        unipi_spi_trace(KERN_INFO "UNIPISPI: force_deinit: Open Counter is %d\n", neuronspi_cdrv.open_counter);
+ 
+     if (neuronspi_invalidate_thread) {
+-		kthread_stop(neuronspi_invalidate_thread);
++                kthread_stop(neuronspi_invalidate_thread);
+         neuronspi_invalidate_thread = NULL;
+-	}
+-	char_unregister_driver();
++        }
++        char_unregister_driver();
+     neuronspi_uart_driver_exit();
+     unipi_tty_exit();
+-	spi_unregister_driver(&neuronspi_spi_driver);
+-	if (neuron_plc_dev) {
+-		platform_device_unregister(neuron_plc_dev);
+-	}
+-	printk(KERN_INFO "UNIPISPI: SPI Driver Unregistered\n");
++        spi_unregister_driver(&neuronspi_spi_driver);
++        if (neuron_plc_dev) {
++                platform_device_unregister(neuron_plc_dev);
++        }
++        printk(KERN_INFO "UNIPISPI: SPI Driver Unregistered and deinitialized\n");
++}
++
++static void __exit neuronspi_exit(void)
++{
++	neuronspi_deinit();
+ }
+ module_exit(neuronspi_exit);
+ 
+-- 
+2.17.1
+
