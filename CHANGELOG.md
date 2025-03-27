@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.5.1+rev3
+## (2025-03-27)
+
+* Set raspberrypicm4-ioboard to run the tests against the bm instance [Florin Sarbu]
+
 # v6.5.1+rev2
 ## (2025-03-17)
 

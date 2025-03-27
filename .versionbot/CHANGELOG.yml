@@ -1,4 +1,19 @@
 - commits:
+    - subject: Set raspberrypicm4-ioboard to run the tests against the bm instance
+      hash: 66d37ad28445ec2f9900b9bdcc0136910c8cf44c
+      body: |
+        This is a public dt so let's do as for the other public device types.
+      footer:
+        Changelog-entry: Set raspberrypicm4-ioboard to run the tests against the bm instance
+        changelog-entry: Set raspberrypicm4-ioboard to run the tests against the bm instance
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 6.5.1+rev3
+  title: ""
+  date: 2025-03-27T10:43:23.758Z
+- commits:
     - subject: enable VC4 graphics for the RPI5
       hash: 9582d1aa0fd9f4c4c7e7b59a9350df4ff1f859fc
       body: ""
