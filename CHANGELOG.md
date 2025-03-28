@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.5.1+rev4
+## (2025-03-28)
+
+* Use nonarch_base_libdir variable when packaging files for pi-bluetooth recipe [Florin Sarbu]
+
 # v6.5.1+rev3
 ## (2025-03-27)
 

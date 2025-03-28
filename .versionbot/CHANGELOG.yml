@@ -1,4 +1,25 @@
 - commits:
+    - subject: Use nonarch_base_libdir variable when packaging files for pi-bluetooth
+        recipe
+      hash: c3d557ce840903fa6a44250f6fc6cabb83912d2f
+      body: >
+        Using the nonarch_base_libdir variable instead of hardcoding directly
+        the path
+
+        will help us when we enable the usrmerge feature.
+      footer:
+        Changelog-entry: Use nonarch_base_libdir variable when packaging files for
+          pi-bluetooth recipe
+        changelog-entry: Use nonarch_base_libdir variable when packaging files for
+          pi-bluetooth recipe
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 6.5.1+rev4
+  title: ""
+  date: 2025-03-28T06:54:18.671Z
+- commits:
     - subject: Set raspberrypicm4-ioboard to run the tests against the bm instance
       hash: 66d37ad28445ec2f9900b9bdcc0136910c8cf44c
       body: |
