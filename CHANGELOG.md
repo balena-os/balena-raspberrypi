@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.5.1+rev5
+## (2025-04-02)
+
+* update linux-raspberrypi from 6.12.1 to 6.12.20 [Alex Gonzalez]
+
 # v6.5.1+rev4
 ## (2025-03-28)
 

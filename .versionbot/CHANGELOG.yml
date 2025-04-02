@@ -1,4 +1,20 @@
 - commits:
+    - subject: update linux-raspberrypi from 6.12.1 to 6.12.20
+      hash: 96454128f6dd9ca64ddad1e072a88d85aae0248d
+      body: |
+        Note that the yocto-kernel-cache commit still has not been updated to
+        6.12.20, so we use the current head.
+      footer:
+        Changelog-entry: update linux-raspberrypi from 6.12.1 to 6.12.20
+        changelog-entry: update linux-raspberrypi from 6.12.1 to 6.12.20
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 6.5.1+rev5
+  title: ""
+  date: 2025-04-02T18:21:43.029Z
+- commits:
     - subject: Use nonarch_base_libdir variable when packaging files for pi-bluetooth
         recipe
       hash: c3d557ce840903fa6a44250f6fc6cabb83912d2f
