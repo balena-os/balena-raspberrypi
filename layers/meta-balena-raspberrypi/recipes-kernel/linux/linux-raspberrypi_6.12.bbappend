@@ -12,24 +12,11 @@ SRC_URI:append = " \
 	file://0001-Add-npe-x500-m3-overlay.patch \
 	file://0006-overlays-Add-Hyperpixel4-overlays.patch \
 	file://0001-Add-tpm-slb9670-tis-spi-DT-overlay.patch \
-	file://0010-dts-overlays-Add-UniPi-overlays.patch \
 	file://0001-seeed-studio-can-bus-v2-Add-dtbo-for-this-can-bus.patch \
 	file://0011-USB-serial-Add-support-for-more-Quectel-modules.patch \
 	file://0001-waveshare-sim7600-Add-dtbo-for-this-modem.patch \
 	file://0001-overlays-Add-overlay-for-Seeed-reComputer-R1000.patch \
 	file://0001-overlays-Add-overlay-for-RPI-PLC-SC16IS752.patch \
-"
-
-SRC_URI:append:rt-rpi-300 = " \
-	file://rt-rpi-300-Add-changes-for-this-dt.patch \
-	file://rt-rpi-Add-ch-432t-driver-for-this-chip.patch \
-"
-
-# BalenaOS already disables gcc plugins,
-# however the unipi-neuron adds an extra module
-# which seems to override the default configuration
-SRC_URI:append:raspberrypi3-unipi-neuron = " \
-	file://0001-pi3neuron-disable-gccplugins.patch \
 "
 
 BALENA_CONFIGS:append = " fbtft"
@@ -173,14 +160,6 @@ BALENA_CONFIGS[serial_8250] = " \
     CONFIG_SERIAL_8250_EXTENDED=y \
     CONFIG_SERIAL_8250_SHARE_IRQ=y \
     CONFIG_SERIAL_8250_BCM2835AUX=y \
-"
-
-BALENA_CONFIGS:append:rt-rpi-300 = " rtrpi300cfgs"
-BALENA_CONFIGS[rtrpi300cfgs] = " \
-    CONFIG_RTC_DRV_RX8010=m \
-    CONFIG_SPI=y \
-    CONFIG_SPI_BCM2835=m \
-    CONFIG_CH432T_SPI=m \
 "
 
 # The Pi3-64 and Pi4-64 are the only boards very low on rootfs space for now
