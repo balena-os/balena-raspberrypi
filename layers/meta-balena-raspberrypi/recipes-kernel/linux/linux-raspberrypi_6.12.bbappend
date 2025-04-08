@@ -1,11 +1,4 @@
-FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}_${LINUX_VERSION}:${THISDIR}/${PN}:${THISDIR}/${MACHINE}:"
-
-SRC_URI:append:fincm3 = " \
-	file://0001-overlays-fin-add-internal-pull-ups-to-i2c_soft.patch \
-	file://0004-mmc-pwrseq-Repurpose-for-Marvell-SD8777.patch \
-	file://0005-balena-fin-wifi-sta-uap-mode.patch \
-	file://0007-overlays-Add-spyfly.dts.patch \
-"
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:${THISDIR}/${MACHINE}:"
 
 SRC_URI:append:raspberrypi4-superhub = " \
 	file://0001-Add-gpio-wdt-DT-overlay-for-Phoenix-Board.patch \
@@ -17,23 +10,13 @@ SRC_URI:append:raspberrypi4-superhub = " \
 SRC_URI:append = " \
 	file://0002-wireless-wext-Bring-back-ndo_do_ioctl-fallback.patch \
 	file://0001-Add-npe-x500-m3-overlay.patch \
-	file://0010-dts-overlays-Add-UniPi-overlays.patch \
+	file://0006-overlays-Add-Hyperpixel4-overlays.patch \
+	file://0001-Add-tpm-slb9670-tis-spi-DT-overlay.patch \
 	file://0001-seeed-studio-can-bus-v2-Add-dtbo-for-this-can-bus.patch \
 	file://0011-USB-serial-Add-support-for-more-Quectel-modules.patch \
 	file://0001-waveshare-sim7600-Add-dtbo-for-this-modem.patch \
 	file://0001-overlays-Add-overlay-for-Seeed-reComputer-R1000.patch \
-"
-
-SRC_URI:append:rt-rpi-300 = " \
-	file://rt-rpi-300-Add-changes-for-this-dt.patch \
-	file://rt-rpi-Add-ch-432t-driver-for-this-chip.patch \
-"
-
-# BalenaOS already disables gcc plugins,
-# however the unipi-neuron adds an extra module
-# which seems to override the default configuration
-SRC_URI:append:raspberrypi3-unipi-neuron = " \
-	file://0001-pi3neuron-disable-gccplugins.patch \
+	file://0001-overlays-Add-overlay-for-RPI-PLC-SC16IS752.patch \
 "
 
 BALENA_CONFIGS:append = " fbtft"
@@ -65,8 +48,11 @@ BALENA_CONFIGS[fbtft] = " \
     CONFIG_FB_TFT_TLS8204=m \
     CONFIG_FB_TFT_UC1701=m \
     CONFIG_FB_TFT_UPD161704=m \
-    CONFIG_FB_TFT_WATTEROTT=m \
     "
+
+
+BALENA_CONFIGS:append = " ${@configure_from_version("5.17", "", " fb_tft_watterott", d)}"
+BALENA_CONFIGS[fb_tft_watterott] = "CONFIG_FB_TFT_WATTEROTT=m"
 
 BALENA_CONFIGS:append = " pca955_gpio_expander"
 BALENA_CONFIGS[pca955_gpio_expander] = " \
@@ -176,14 +162,6 @@ BALENA_CONFIGS[serial_8250] = " \
     CONFIG_SERIAL_8250_BCM2835AUX=y \
 "
 
-BALENA_CONFIGS:append:rt-rpi-300 = " rtrpi300cfgs"
-BALENA_CONFIGS[rtrpi300cfgs] = " \
-    CONFIG_RTC_DRV_RX8010=m \
-    CONFIG_SPI=y \
-    CONFIG_SPI_BCM2835=m \
-    CONFIG_CH432T_SPI=m \
-"
-
 # The Pi3-64 and Pi4-64 are the only boards very low on rootfs space for now
 # so we add this as per https://github.com/balena-os/meta-balena/pull/2411
 BALENA_CONFIGS:append:raspberrypi4-64 = " optimize-size"
@@ -213,28 +191,3 @@ do_compile:append() {
         oe_runmake dtbs CC="${KERNEL_CC} $cc_extra " LD="${KERNEL_LD}" ${KERNEL_EXTRA_ARGS}
     fi
 }
-
-# we need to clean up all the following RPI_KERNEL_DEVICETREE changes when we switch to a newer 6.x kernel
-RPI_KERNEL_DEVICETREE = " \
-    bcm2708-rpi-zero.dtb \
-    bcm2708-rpi-zero-w.dtb \
-    bcm2708-rpi-b.dtb \
-    bcm2708-rpi-b-rev1.dtb \
-    bcm2708-rpi-b-plus.dtb \
-    bcm2709-rpi-2-b.dtb \
-    bcm2710-rpi-2-b.dtb \
-    bcm2710-rpi-3-b.dtb \
-    bcm2710-rpi-3-b-plus.dtb \
-    bcm2710-rpi-zero-2.dtb \
-    bcm2711-rpi-4-b.dtb \
-    bcm2711-rpi-400.dtb \
-    bcm2708-rpi-cm.dtb \
-    bcm2710-rpi-cm3.dtb \
-    bcm2711-rpi-cm4.dtb \
-    bcm2711-rpi-cm4s.dtb \
-"
-
-RPI_KERNEL_DEVICETREE:raspberrypi0-2w-64 = " \
-    broadcom/bcm2710-rpi-zero-2.dtb \
-    broadcom/bcm2710-rpi-cm3.dtb \
-"
