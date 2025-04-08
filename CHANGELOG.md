@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.5.9+rev3
+## (2025-04-08)
+
+* Add back overlooked kernel bbappend for kernel 6.12 [Florin Sarbu]
+
 # v6.5.9+rev2
 ## (2025-04-06)
 

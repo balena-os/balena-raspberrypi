@@ -1,4 +1,22 @@
 - commits:
+    - subject: Add back overlooked kernel bbappend for kernel 6.12
+      hash: 7b2e812474b11239d9075811dbe1b844ec8fd488
+      body: >
+        When we updated from kernel 6.1 to 6.12, by mistake this file did not
+        make
+
+        the transition to the new kernel.
+      footer:
+        Changelog-entry: Add back overlooked kernel bbappend for kernel 6.12
+        changelog-entry: Add back overlooked kernel bbappend for kernel 6.12
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 6.5.9+rev3
+  title: ""
+  date: 2025-04-08T05:54:18.116Z
+- commits:
     - subject: Update balena-yocto-scripts to 17e117065455f20d843ff6989e9e28d1f16fec83
       hash: 6362a0713360e6dcb02d91654a3ef1332a966d37
       body: Update balena-yocto-scripts
