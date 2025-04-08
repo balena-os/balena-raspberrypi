@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.5.9+rev4
+## (2025-04-08)
+
+* Add support for EDATEC CM4 Sensing [RayX123456]
+
 # v6.5.9+rev3
 ## (2025-04-08)
 

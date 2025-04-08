@@ -1,4 +1,18 @@
 - commits:
+    - subject: Add support for EDATEC CM4 Sensing
+      hash: 8ae26141082c5dacb223b189aac98ce3fade3f65
+      body: ""
+      footer:
+        Changelog-entry: Add support for EDATEC CM4 Sensing
+        changelog-entry: Add support for EDATEC CM4 Sensing
+        Signed-off-by: Ray <rxie@edatec.cn>
+        signed-off-by: Ray <rxie@edatec.cn>
+      author: RayX123456
+      nested: []
+  version: 6.5.9+rev4
+  title: ""
+  date: 2025-04-08T23:55:37.012Z
+- commits:
     - subject: Add back overlooked kernel bbappend for kernel 6.12
       hash: 7b2e812474b11239d9075811dbe1b844ec8fd488
       body: >
