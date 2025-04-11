@@ -17,8 +17,8 @@ do_install:append:fincm3() {
 
 do_install:append:revpi() {
 	# Install RevPi specific rules
-	install -D -m 0644 ${WORKDIR}/50-revpi.rules ${D}/lib/udev/rules.d/50-revpi.rules
-	install -D -m 0755 ${WORKDIR}/revpi_mac ${D}/lib/udev/revpi_mac
+	install -D -m 0644 ${WORKDIR}/50-revpi.rules ${D}/${nonarch_base_libdir}/udev/rules.d/50-revpi.rules
+	install -D -m 0755 ${WORKDIR}/revpi_mac ${D}/${nonarch_base_libdir}/udev/revpi_mac
 }
 
 do_install:append:raspberrypi4-edatec-sensing() {
