@@ -1,4 +1,26 @@
 - commits:
+    - subject: Use nonarch_base_libdir to install files in /usr/lib instead of /lib
+        for the extra-udev-rules recipe
+      hash: 4f5f5833f2a4c382473412a4152f0508b9f03e5b
+      body: >
+        Using the nonarch_base_libdir variable to change the install path to
+        /usr/lib instead
+
+        of hardcoding directly to /lib will help us when we enable the usrmerge
+        feature.
+      footer:
+        Changelog-entry: Use nonarch_base_libdir to install files in /usr/lib instead of
+          /lib for the extra-udev-rules recipe
+        changelog-entry: Use nonarch_base_libdir to install files in /usr/lib instead of
+          /lib for the extra-udev-rules recipe
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 6.5.9+rev5
+  title: ""
+  date: 2025-04-11T12:51:52.778Z
+- commits:
     - subject: Add support for EDATEC CM4 Sensing
       hash: 8ae26141082c5dacb223b189aac98ce3fade3f65
       body: ""

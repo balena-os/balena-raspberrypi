@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.5.9+rev5
+## (2025-04-11)
+
+* Use nonarch_base_libdir to install files in /usr/lib instead of /lib for the extra-udev-rules recipe [Florin Sarbu]
+
 # v6.5.9+rev4
 ## (2025-04-08)
 
