@@ -1,4 +1,456 @@
 - commits:
+    - subject: Update layers/meta-balena to c2846896f832365bb2205d75d509fe69e034385f
+      hash: 1fa0912423a68f608c6c138c921cafa88644a62a
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to c2846896f832365bb2205d75d509fe69e034385f
+        changelog-entry: Update layers/meta-balena to c2846896f832365bb2205d75d509fe69e034385f
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "tests: os: secureboot: update kernel-module-build to v3.0.2"
+              hash: 230a38b7b558fe4c9104f86fc605d5d1982759b9
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "tests: secureboot: adapt kernel modules test to private device types"
+              hash: ffb5bd295200dbd081a30789cf0c6a7b5d7d1650
+              body: >
+                If a kernel headers file is provided, use it for the kernel
+                module test.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-6.5.17
+          title: ""
+          date: 2025-04-09T21:47:13.513Z
+        - commits:
+            - subject: "os-helpers: tpm_nvram_store_passphrase: remove tpm2_shutdown"
+              hash: 3526cac33a536465ec60a26214213ddf580c099e
+              body: |
+                This should only be called during machine shutdown
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Joseph Kogut <joseph@balena.io>
+                signed-off-by: Joseph Kogut <joseph@balena.io>
+              author: Joseph Kogut
+              nested: []
+          version: meta-balena-6.5.16
+          title: ""
+          date: 2025-04-09T16:17:22.672Z
+        - commits:
+            - subject: "initrdscripts: mount securityfs in migrate script"
+              hash: 37c70ed240e67ff367ae5af44f287a5089a5fde7
+              body: >
+                At this moment securityfs is not mounted in the initramfs,
+
+                so when flasher is running from the migrate script, it won't
+                find
+
+                the TPM event log. This is fine for most systems, but on systems
+
+                that have extra TPM events logged and measured, the expected
+                PCR7
+
+                value will be computed incorrectly.
+
+
+                This patch mounts securityfs before running flasher from the
+                migrate
+
+                script.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-6.5.15
+          title: ""
+          date: 2025-04-09T12:39:41.112Z
+        - commits:
+            - subject: "tests: whitelist extra PCR2 events by default"
+              hash: 0c8fe3a4e9d00a2b766677b1e43b30c586202126
+              body: >
+                By introducing the option to whitelist or ignore extra events in
+                PCR2,
+
+                we have changed the default behavior of the system. Instead of
+                copying
+
+                the contents of PCR2 during provisioning, we now expect no
+                drivers
+
+                to be loaded, unless there was an explicit opt-in through
+                config.json.
+
+                This is the behavior that we've seen on physical hardware,
+                however
+
+                qemu behaves differently - it loads the PXE driver for the
+                network card
+
+                unconditionally, even if secure boot is enabled and the driver
+
+                has not been whitelisted.
+
+
+                This patch makes all the testsuites opt-in for the PCR2
+                whitelist,
+
+                which is just a workaround to restore the previous behavior and
+                unblock
+
+                the automated testsuite.
+
+
+                A proper fix should either be in leviathan, or in QEMU, or
+                implementing
+
+                a proper test for the PCR2 feature, that checks all the possible
+                states.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-6.5.14
+          title: ""
+          date: 2025-04-09T09:23:44.803Z
+        - commits:
+            - subject: Update balena-supervisor to v17
+              hash: ddf24d8375ca4cc9d004798b9ba096ceb9ea3286
+              body: |
+                Update balena-supervisor from 16.12.7 to 17.0.2
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Fix search for app leftover locks
+                      hash: d475b1d8301c83b932ce272d3496bf4aac0ef1ad
+                      body: >
+                        The leftover locks search was creating an array rather
+                        than an object
+
+                        keyed by the appId. This could affect the lock cleanup
+                        and make leftover
+
+                        locks from one app affect the install of the app in
+                        local mode.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-17.0.2
+                  title: ""
+                  date: 2025-04-02T20:16:09.754Z
+                - commits:
+                    - subject: Clarify firewall docs on behavior with host network containers
+                      hash: caed4dcca0043f848f6dd5a3d1a2f82a2466e8d6
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-17.0.1
+                  title: ""
+                  date: 2025-03-25T20:41:20.141Z
+                - commits:
+                    - subject: Add Docker network label if custom ipam config
+                      hash: b596c77ce2d229e79082cbb1f0022f93806f09ae
+                      body: >
+                        In a target release where the only change is the
+                        addition or removal
+
+                        of a custom ipam config, the Supervisor does not
+                        recreate the network
+
+                        due to ignoring ipam config differences when comparing
+                        current and target
+
+                        network (in network.isEqualConfig). This commit
+                        implements the addition of
+
+                        a network label if the target compose object includes a
+                        network with custom
+
+                        ipam. With the label, the Supervisor will detect a
+                        difference between a
+
+                        network with a custom ipam and a network without,
+                        without needing to compare
+
+                        the ipam configs themselves.
+
+
+                        This is a major change, as devices running networks with
+                        custom ipam configs
+
+                        will have their networks recreated to add the network
+                        label.
+                      footer:
+                        Closes: "#2251"
+                        closes: "#2251"
+                        Change-type: major
+                        change-type: major
+                        See: https://balena.fibery.io/Work/Project/Fix-Supervisor-not-recreating-network-when-passed-custom-ipam-config-1127
+                        see: https://balena.fibery.io/Work/Project/Fix-Supervisor-not-recreating-network-when-passed-custom-ipam-config-1127
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-17.0.0
+                  title: ""
+                  date: 2025-03-24T22:18:08.753Z
+                - commits:
+                    - subject: Start a dependent if all dependencies are started
+                      hash: 7764f98c9d357a1942628e57951266767555f67b
+                      body: |
+                        The previous behavior required that dependencies were running beefore
+                        starting the dependent service. This made it that services dependent on
+                        a one-shot service would not get started and goes against the default
+                        docker behavior.
+
+                        Depending on a service to be running will require the implementation of
+                        [long syntax depends_on](https://docs.docker.com/reference/compose-file/services/#long-syntax-1) and the condition
+                        `service_healthy`.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Closes: "#2409"
+                        closes: "#2409"
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-16.12.9
+                  title: ""
+                  date: 2025-03-20T18:43:06.085Z
+                - commits:
+                    - subject: Remove GOT retries on state poll
+                      hash: ae337a1dd7743b0ee0a05c32a5ce01965c5bafef
+                      body: >
+                        The state poll already has retry implementation, making
+                        the GOT default
+
+                        unnecessary.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Ensure poll socket timeout is defined early
+                      hash: bdbc6a4ba4766f9466891497bc02bd33aff1d4c7
+                      body: |
+                        We have observed that even when setting the socket timeout on the
+                        state poll https request, the timeout is only applied once the socket is
+                        connected. This causes issues with Node's auto family selection (happy
+                        eyeballs), as the default https timeout is 5s which means that larger
+                        [auto select attempt timeout](https://nodejs.org/docs/latest-v22.x/api/net.html#netgetdefaultautoselectfamilyattempttimeout) may result in the socket timing out before all connection attempts have been tried.
+
+                        This commit sets a different https Agent for state polling, with a
+                        timeout matching the `apiRequestTimeout` used for other request events.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-16.12.8
+                  title: ""
+                  date: 2025-03-12T14:50:33.204Z
+          version: meta-balena-6.5.13
+          title: ""
+          date: 2025-04-09T04:37:03.228Z
+        - commits:
+            - subject: Update tests/leviathan digest to b8e76d7
+              hash: a782ef21b71a408635e0a75754555d1571c5ab49
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Add kernel headers artifacts
+                      hash: f15ad5e91cd22ba03193a7dd53512324a09ce87e
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                        signed-off-by: Alex Gonzalez <alexg@balena.io>
+                      author: Alex Gonzalez
+                      nested: []
+                  version: leviathan-2.31.103
+                  title: ""
+                  date: 2025-04-08T13:01:01.819Z
+          version: meta-balena-6.5.12
+          title: ""
+          date: 2025-04-08T21:49:57.591Z
+        - commits:
+            - subject: Update tests/leviathan digest to 8b32739
+              hash: eb2866f279a11240267960cf7c63ee874f8c021d
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Update core/contracts digest to 34033e6
+                      hash: ae8c5539e6df98f2ed8b87ae9b9e712825be3ac5
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.102
+                  title: ""
+                  date: 2025-04-07T16:35:24.638Z
+                - commits:
+                    - subject: Update balena-io/balena-cli to v21.1.9
+                      hash: c80880792af05905fe5581bd7cd5eb9bffe95dcb
+                      body: |
+                        Update balena-io/balena-cli from 21.1.4 to 21.1.9
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.101
+                  title: ""
+                  date: 2025-04-07T14:31:34.378Z
+                - commits:
+                    - subject: Update core/contracts digest to d077818
+                      hash: 13ee8b92a54708ce555f948d68e4cd8eeeda9798
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.100
+                  title: ""
+                  date: 2025-04-02T17:08:31.543Z
+                - commits:
+                    - subject: Update balena-io/balena-cli to v21.1.4
+                      hash: 4b66b13964a25bc960528f956616d0644d256db5
+                      body: |
+                        Update balena-io/balena-cli from 21.1.3 to 21.1.4
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.99
+                  title: ""
+                  date: 2025-04-02T11:45:25.557Z
+                - commits:
+                    - subject: Update balena-io/balena-cli to v21.1.3
+                      hash: 9159d3f488fcb6260b834423f5fe265ef65e3e8a
+                      body: |
+                        Update balena-io/balena-cli from 21.1.0 to 21.1.3
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.98
+                  title: ""
+                  date: 2025-04-01T18:42:52.531Z
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.58
+                      hash: 154a4ad9587f3d7bb262f5ae412da9e4a0a11b22
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.57 to 2.9.58
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.97
+                  title: ""
+                  date: 2025-04-01T17:58:10.260Z
+                - commits:
+                    - subject: Improve device selection logs
+                      hash: 6513668024b0c32e0bbb0e73f002f56fee8a1faf
+                      body: |
+                        Print fleets and worker tag used for device selection.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                        signed-off-by: Alex Gonzalez <alexg@balena.io>
+                      author: Alex Gonzalez
+                      nested: []
+                  version: leviathan-2.31.96
+                  title: ""
+                  date: 2025-03-27T16:34:07.013Z
+          version: meta-balena-6.5.11
+          title: ""
+          date: 2025-04-08T13:06:52.864Z
+        - commits:
+            - subject: "resin-init-flasher: Sleep before SysRq to let shutdown properly
+                execute if need be"
+              hash: a059180c9ae5dd4551fd977871fa5a54981b53f2
+              body: >
+                There are cases when at the end of the flashing procedure the
+                board will execute
+
+                "shutdown -h now" but sometimes the shutdown procedure is not
+                immediate and the script will
+
+                continue with the next instruction which is to use SysRq and on
+                some hardware this can happen
+
+                right when the previous shutdown command is still running in the
+                background and the effect will
+
+                be that the board does not actually power off in the end (eth
+                carrier is still on, the power
+
+                circuitry is still online and so on.)
+
+
+                To fix this we sleep for 5 seconds to give the system a chance
+                to properly shutdown. If it has
+
+                not been shutdown in 5 seconds then most likely shutdown is
+                broken so we force it via SysRq.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-6.5.10
+          title: ""
+          date: 2025-04-08T07:44:56.710Z
+  version: 6.5.17
+  title: ""
+  date: 2025-04-15T10:05:34.063Z
+- commits:
     - subject: Update balena-yocto-scripts to b6d2022cd4aedb63d03b40f05103ec31d01adfed
       hash: 7e23fe1548c8a458ba4e4e101c30fc78fc03aaf0
       body: Update balena-yocto-scripts
