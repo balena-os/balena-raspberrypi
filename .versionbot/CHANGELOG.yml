@@ -1,4 +1,43 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 4ebe790eed9dbde36944496ee1ef14ba6bc4c5be
+      hash: d7c9e8808f8318be3fcceee0b86d3ba8f2621483
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 4ebe790eed9dbde36944496ee1ef14ba6bc4c5be
+        changelog-entry: Update balena-yocto-scripts to 4ebe790eed9dbde36944496ee1ef14ba6bc4c5be
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "Leviathan: Add aarch64 testbot fleet to worker pool"
+              hash: db746e411d9640cf48772b87d03a362f1e155fa4
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: Ryan Cooke
+              nested: []
+          version: balena-yocto-scripts-1.31.77
+          title: ""
+          date: 2025-04-15T14:56:51.996Z
+        - commits:
+            - subject: Update aws/aws-cli to v2.26.2
+              hash: 88ec1824b9eba69b15bdfa614d4788eff702d384
+              body: |
+                Update aws/aws-cli from 2.26.1 to 2.26.2
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.31.76
+          title: ""
+          date: 2025-04-14T21:59:45.235Z
+  version: 6.5.17+rev1
+  title: ""
+  date: 2025-04-16T08:12:25.197Z
+- commits:
     - subject: Update layers/meta-balena to c2846896f832365bb2205d75d509fe69e034385f
       hash: 1fa0912423a68f608c6c138c921cafa88644a62a
       body: Update layers/meta-balena
