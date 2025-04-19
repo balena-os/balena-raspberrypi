@@ -1,4 +1,163 @@
 - commits:
+    - subject: Update layers/meta-balena to 5f3124f1b6aca95eab4bcf5a422a96a907966eb6
+      hash: 214fe1122be37954951fee87deb337ec3493852e
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 5f3124f1b6aca95eab4bcf5a422a96a907966eb6
+        changelog-entry: Update layers/meta-balena to 5f3124f1b6aca95eab4bcf5a422a96a907966eb6
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Update tests/leviathan digest to 5ecdcd3
+              hash: 0e98a555c2f4ba4003502b3e01c054828a74c67d
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.9.59
+                      hash: 3664862394cf24a370ae3679d2fba9517c1bf7de
+                      body: |
+                        Update balena-os/leviathan-worker from 2.9.58 to 2.9.59
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.31.104
+                  title: ""
+                  date: 2025-04-16T11:21:05.396Z
+          version: meta-balena-6.5.21
+          title: ""
+          date: 2025-04-19T11:24:43.032Z
+        - commits:
+            - subject: "kernel-balena: add aufs commit for v6.6.84"
+              hash: 6a63c9f2e9e064be591e4e29d6c50f86393c752f
+              body: >
+                We will continue to update to the stable head of v6.6 until
+                v6.12 is
+
+                officially deployed.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-6.5.20
+          title: ""
+          date: 2025-04-19T06:11:53.850Z
+        - commits:
+            - subject: "os-helpers-tpm2: Always use password protection for TPM NVRAM writes"
+              hash: e91e64315c06327d4592ad4c9d72658ae88c4fba
+              body: >
+                At this moment tpm_nvram_store_passphrase checks whether the
+                expected
+
+                policy is currently met or not, and acts differently in each
+                case.
+
+                If the policy doesn't match, the TPM write is protected by a
+                one-time
+
+                password that is lost when the function exits.
+
+                If the policy matches, it will be used to protect the write
+                directly.
+
+                The latter seems to be broken at least in some scenarios
+                (retrying
+
+                HUP after a rollback).
+
+
+                This patch removes the special-casing and makes
+
+                tpm_nvram_store_passphrase always use the password protection.
+                While
+
+                using the current PCR states directly is a nice optimization,
+                always
+
+                using the password is more universal and makes the code simpler.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-6.5.19
+          title: ""
+          date: 2025-04-17T08:41:50.848Z
+        - commits:
+            - subject: "hostapp-update-hooks: make rollback possible when migrating to TPM
+                NVRAM"
+              hash: ce2a7d309a5637dc8f5f17d1106fc925f00a898e
+              body: >
+                At this moment migrating from passphrase encrypted in the EFI
+                partition
+
+                to passphrase stored in TPM NVRAM is a one way operation.
+
+                The signed-update HUP hook will move the passphrase to TPM NVRAM
+
+                and protect it with a new policy, but doesn't update the
+                encrypted
+
+                file in the EFI partition. That way, if the new OS doesn't work
+
+                and triggers a rollback, the passphrase can't be decrypted when
+                running
+
+                the "old" hooks and rollback fails, leaving the system
+
+                in an inconsistent state.
+
+
+                This patch makes the signed-update hook re-encrypt the
+                passphrase
+
+                and update it in the boot partition one last time during the
+                migration.
+
+                * If HUP goes through, the encrypted file is removed from the
+                boot
+                  partition and the system sticks with NVRAM only.
+                * If HUP fails, the system can rollback and the "old" OS version
+                  is able to decrypt the passphrase without involving NVRAM.
+
+                It's worth noting that both the RSA key and the NVRAM slot are
+                protected
+
+                by the same policy, so the "old" OS will be allowed to access
+
+                the passphrase in the TPM NVRAM, even though there is no OS
+                tooling
+
+                that would know how to do that. And the "new" OS will be allowed
+
+                to decrypt the passphrase in the EFI partition until it's
+                removed
+
+                by rollback-health, even though it will prefer to use NVRAM.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-6.5.18
+          title: ""
+          date: 2025-04-15T08:48:17.007Z
+  version: 6.5.21
+  title: ""
+  date: 2025-04-19T18:30:08.910Z
+- commits:
     - subject: Update balena-yocto-scripts to 5e33bdd77f207ccf64016feb3a30f4af05e57e96
       hash: edba9fe7a40a6d33252a23754f2e3291d1a08987
       body: Update balena-yocto-scripts
