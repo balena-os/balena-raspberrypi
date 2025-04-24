@@ -116,3 +116,12 @@ do_deploy:append:raspberrypi4-edatec-sensing() {
 # usable if ENABLE_UART = 1. On OS development images, we want serial console
 # available, production devices can enable it with a configuration variable.
 ENABLE_UART ?= "${@bb.utils.contains('DISTRO_FEATURES','osdev-image','1','0',d)}"
+
+do_deploy:append:raspberrypi4() {
+	# Enable otg_mode on CM4 as per https://www.raspberrypi.com/documentation/computers/config_txt.html#otg_mode-raspberry-pi-4-only
+	cat >> ${DEPLOYDIR}/bootfiles/config.txt << EOF
+
+[cm4]
+otg_mode=1
+EOF
+}
