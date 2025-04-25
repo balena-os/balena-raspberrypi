@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.5.21+rev1
+## (2025-04-25)
+
+* Enable the XHCI USB 2 controller to be used as a host controller on the USB-C connector for CM4 devices [Florin Sarbu]
+
 # v6.5.21
 ## (2025-04-19)
 
