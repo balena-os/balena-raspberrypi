@@ -102,3 +102,5 @@ BB_DISKMON_DIRS = "\
 CONF_VERSION = "2"
 
 HOSTTOOLS += "docker iptables"
+
+LICENSE_FLAGS_ACCEPTED = "synaptics-killswitch"
