@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.5.21+rev2
+## (2025-04-25)
+
+* Update linux-firmware-rpidistro to version 20230625-2+rpt3 for newer wifi firmware [Florin Sarbu]
+
 # v6.5.21+rev1
 ## (2025-04-25)
 

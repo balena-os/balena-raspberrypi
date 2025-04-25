@@ -1,4 +1,28 @@
 - commits:
+    - subject: Update linux-firmware-rpidistro to version 20230625-2+rpt3 for newer
+        wifi firmware
+      hash: fe00a1dc7ed1f08597c44ba3ac3ffb10797b20ce
+      body: |
+        This update brings in additional WiFi firmware for various RPi models.
+
+        This is taken from meta-raspberrypi master branch at revision cd558f77b6b1a6d0fa15cd9558df0c0262d42c91
+
+        Also, this also needs a local.conf change to accept the synaptics-killswitch license but as per
+        https://github.com/RPi-Distro/firmware-nonfree/issues/29#issuecomment-1795717241
+        it should be fine.
+      footer:
+        Changelog-entry: Update linux-firmware-rpidistro to version 20230625-2+rpt3 for
+          newer wifi firmware
+        changelog-entry: Update linux-firmware-rpidistro to version 20230625-2+rpt3 for
+          newer wifi firmware
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 6.5.21+rev2
+  title: ""
+  date: 2025-04-25T12:37:21.181Z
+- commits:
     - subject: Enable the XHCI USB 2 controller to be used as a host controller on the
         USB-C connector for CM4 devices
       hash: e57c801cff79bf0e2d96d7621cb41a5cb5e0b622
