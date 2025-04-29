@@ -1,4 +1,60 @@
 - commits:
+    - subject: Update layers/meta-balena to c5b8f50a26c661b11806e943ffb4c09761e3b186
+      hash: bd3175113ede456c86645c137ee77611e7688c29
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to c5b8f50a26c661b11806e943ffb4c09761e3b186
+        changelog-entry: Update layers/meta-balena to c5b8f50a26c661b11806e943ffb4c09761e3b186
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Update actions/setup-python digest to a26af69
+              hash: 0946c15d23411563fae3fd38b2e4bfa5f11f89fb
+              body: >
+                Update actions/setup-python to
+                a26af69be951a213d495a4c3e4e4022e16d87065
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: meta-balena-6.5.24
+          title: ""
+          date: 2025-04-24T10:53:52.990Z
+        - commits:
+            - subject: Update actions/setup-python digest to 8d9ed9a
+              hash: 50dd1e53238b004511d2854291c81afa6bd9604e
+              body: >
+                Update actions/setup-python to
+                8d9ed9ac5c53483de85588cdf95a591a75ab9f55
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: meta-balena-6.5.23
+          title: ""
+          date: 2025-04-22T10:52:53.386Z
+        - commits:
+            - subject: Use workflow_call for balena-generic device type tests
+              hash: 685b74e962f6805713118c887e8574fadf4148f3
+              body: >
+                This includes adding secure boot tests to the generic-amd64 test
+                matrix.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-6.5.22
+          title: ""
+          date: 2025-04-21T21:24:03.843Z
+  version: 6.5.24
+  title: ""
+  date: 2025-04-29T12:12:34.424Z
+- commits:
     - subject: Update linux-firmware-rpidistro to version 20230625-2+rpt3 for newer
         wifi firmware
       hash: fe00a1dc7ed1f08597c44ba3ac3ffb10797b20ce
