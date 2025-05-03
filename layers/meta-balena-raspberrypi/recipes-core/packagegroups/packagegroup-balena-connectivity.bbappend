@@ -72,6 +72,10 @@ REMOVED_FOR_HUP_SPACE = " \
     bluez-firmware-rpidistro-bcm43430a1-hcd \
 "
 
+CONNECTIVITY_MODULES =+ " \
+        rtl8812au \
+"
+
 # Temporary make space for HUP, untill firmwares
 # are provided by hostapp-extensions
 CONNECTIVITY_FIRMWARES:remove:raspberrypi400-64 = "${REMOVED_FOR_HUP_SPACE}"
