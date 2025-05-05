@@ -1,4 +1,21 @@
 - commits:
+    - subject: Update kernel to 6.12.25
+      hash: 5f86811afde30504b57224ef5eb345994258ec66
+      body: |
+        This also unifies kernel and balena-bootloader versions.
+
+        Fixes: #1236
+      footer:
+        Changelog-entry: Update kernel to 6.12.25
+        changelog-entry: Update kernel to 6.12.25
+        Signed-off-by: Michal Toman <michalt@balena.io>
+        signed-off-by: Michal Toman <michalt@balena.io>
+      author: Michal Toman
+      nested: []
+  version: 6.5.24+rev1
+  title: ""
+  date: 2025-05-05T11:30:48.878Z
+- commits:
     - subject: Update layers/meta-balena to c5b8f50a26c661b11806e943ffb4c09761e3b186
       hash: bd3175113ede456c86645c137ee77611e7688c29
       body: Update layers/meta-balena
