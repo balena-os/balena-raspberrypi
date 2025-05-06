@@ -20,7 +20,7 @@ IMAGE_ROOTFS_SIZE:raspberrypi5="655360"
 BALENA_BOOT_SIZE:raspberrypi5="81920"
 
 # Increase boot partition size
-BALENA_BOOT_SIZE:raspberrypicm4-ioboard-sb = "131072"
+BALENA_BOOT_SIZE:raspberrypicm4-ioboard-sb = "174080"
 
 # Increase Root File system size
 IMAGE_ROOTFS_SIZE:revpi-connect-s ?= "319488"
