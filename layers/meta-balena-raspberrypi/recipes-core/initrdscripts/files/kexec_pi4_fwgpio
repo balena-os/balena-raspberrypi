@@ -30,31 +30,35 @@ kexec_pi4_fwgpio_run() {
     WIFI_DRIVER_DIR="$(readlink -f "${WIFI_SYSFS_PATH}/driver")"
     WIFI_DEV="$(basename "${WIFI_SYSFS_PATH}")"
 
-    GPIO_SYSFS_DIR="/sys/class/gpio"
+    GPIOCHIP="gpiochip1"
 
-    FW_GPIO_BASE="504"
+    # gpiochip1 - 8 lines:
+    #    line   0:      "BT_ON"   "shutdown"  output  active-high [used]
+    #    line   1:      "WL_ON"       unused  output  active-high
+    #    line   2: "PWR_LED_OFF" "PWR" output active-low [used]
+    #    line   3: "GLOBAL_RESET" unused output active-high
+    #    line   4: "VDD_SD_IO_SEL" "vdd-sd-io" output active-high [used]
+    #    line   5:   "CAM_GPIO" "regulator-cam1" output active-high [used]
+    #    line   6:  "SD_PWR_ON" "regulator-sd-vcc" output active-high [used]
+    #    line   7:    "SD_OC_N"       unused   input  active-high
     BT_ON="0"
     WL_ON="1"
 
     NEED_RESET="0"
     CURRENT_STATE="0"
-    for PIN in "${BT_ON}" "${WL_ON}"; do
-        GPIO=$["${FW_GPIO_BASE}" + "${PIN}"]
-        echo "${GPIO}" > "${GPIO_SYSFS_DIR}/export"
-        PIN_VALUE="$(cat "${GPIO_SYSFS_DIR}/gpio${GPIO}/value")"
+    for GPIO in "${BT_ON}" "${WL_ON}"; do
+        PIN_VALUE="$(gpioget "${GPIOCHIP}" "${GPIO}")"
 
         if [ "$bootparam_balena_stage2" = "true" ]; then
-            CURRENT_STATE=$["${CURRENT_STATE}" | ("${PIN_VALUE}" << "${PIN}")]
+            CURRENT_STATE=$(("${CURRENT_STATE}" | ("${PIN_VALUE}" << "${GPIO}")))
         elif [ -n "$bootparam_balena_pi4_fwgpio" ]; then
-            NEW_VALUE=$[("$bootparam_balena_pi4_fwgpio" >> "${PIN}") & 1]
-            echo "${NEW_VALUE}" > "${GPIO_SYSFS_DIR}/gpio${GPIO}/value"
+            NEW_VALUE=$((("$bootparam_balena_pi4_fwgpio" >> "${GPIO}") & 1))
+            gpioset "${GPIOCHIP}" "${GPIO}=${NEW_VALUE}"
 
             if [ "${PIN_VALUE}" != "${NEW_VALUE}" ]; then
                 NEED_RESET="1"
             fi
         fi
-
-        echo "${GPIO}" > "${GPIO_SYSFS_DIR}/unexport"
     done
 
     if [ "${NEED_RESET}" = "1" ]; then
