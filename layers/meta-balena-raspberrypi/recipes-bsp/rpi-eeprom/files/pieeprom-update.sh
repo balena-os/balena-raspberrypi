@@ -49,7 +49,7 @@ fi
 spi_bind unbind
 
 /usr/bin/vcmailbox 0x00030056 4 4 0 > /dev/null || true
-/usr/bin/dtparam -d /mnt/boot/overlays/ audio=off
+/usr/bin/dtoverlay -d /mnt/boot/overlays/ audremap
 /usr/bin/dtoverlay -d /mnt/boot/overlays/ spi-gpio40-45
 
 spi_bind bind
@@ -71,7 +71,7 @@ rm ${CURR_IMG_PATH}/$CURR_IMG
 spi_bind unbind
 
 /usr/bin/dtparam -d /mnt/boot/overlays/ -R spi-gpio40-45
-/usr/bin/dtparam -d /mnt/boot/overlays/ audio=on
+/usr/bin/dtparam -d /mnt/boot/overlays/ -R audremap
 /usr/bin/vcmailbox 0x00030056 4 4 1 > /dev/null || true
 
 spi_bind bind
