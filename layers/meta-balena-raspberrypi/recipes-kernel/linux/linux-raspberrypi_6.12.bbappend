@@ -7,7 +7,7 @@ SRC_URI:append:raspberrypi4-superhub = " \
 	file://0004-Add-SD-host-DT-overlay-for-Phoenix-Board.patch \
 "
 
-SRC_URI:append:raspberrypi4-edatec-sensing = " \
+SRC_URI:append:raspberrypicm4-ioboard = " \
 	file://0001-Add-ed-mcp2515-overlay-and-ed-sdhost-overlay.patch \
 "
 
