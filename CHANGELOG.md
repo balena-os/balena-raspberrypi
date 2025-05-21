@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.5.24+rev2
+## (2025-05-21)
+
+* Add to raspberrypicm4-ioboard OS the overlays for supporting EDATEC CM4 Sensing board [Florin Sarbu]
+
 # v6.5.24+rev1
 ## (2025-05-05)
 
