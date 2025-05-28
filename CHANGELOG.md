@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.5.24+rev3
+## (2025-05-28)
+
+* add workflow for raspberrypicm4-ioboard-sb [Alex Gonzalez]
+
 # v6.5.24+rev2
 ## (2025-05-21)
 

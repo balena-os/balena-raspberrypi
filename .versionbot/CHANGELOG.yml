@@ -1,4 +1,18 @@
 - commits:
+    - subject: add workflow for raspberrypicm4-ioboard-sb
+      hash: 48e1d35445fbb908e2e1d478d545bccd855d13f5
+      body: ""
+      footer:
+        Changelog-entry: add workflow for raspberrypicm4-ioboard-sb
+        changelog-entry: add workflow for raspberrypicm4-ioboard-sb
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 6.5.24+rev3
+  title: ""
+  date: 2025-05-28T08:44:29.124Z
+- commits:
     - subject: Add to raspberrypicm4-ioboard OS the overlays for supporting EDATEC CM4
         Sensing board
       hash: 7a4ffc711e44ddac33f678d0f282e03b707f7bf0
