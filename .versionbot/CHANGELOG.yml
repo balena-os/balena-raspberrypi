@@ -1,4 +1,30 @@
 - commits:
+    - subject: Update Linux kernel to 6.12.32
+      hash: 7686d0f761c00c14326dfd79a0857fe4ae3a7943
+      body: ""
+      footer:
+        Changelog-entry: Update Linux kernel to 6.12.32
+        changelog-entry: Update Linux kernel to 6.12.32
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+    - subject: Update kernel to 6.12.30
+      hash: 25ee882b78093358ea1485bac334cd376d3ef2da
+      body: |
+        The previous update to 6.12.25 has introduced issues with video
+        decoding at least on Pi4 and Pi5, this should address them.
+      footer:
+        Changelog-entry: Update kernel to 6.12.30
+        changelog-entry: Update kernel to 6.12.30
+        Signed-off-by: Michal Toman <michalt@balena.io>
+        signed-off-by: Michal Toman <michalt@balena.io>
+      author: Michal Toman
+      nested: []
+  version: 6.5.24+rev4
+  title: ""
+  date: 2025-06-10T15:40:39.280Z
+- commits:
     - subject: add workflow for raspberrypicm4-ioboard-sb
       hash: 48e1d35445fbb908e2e1d478d545bccd855d13f5
       body: ""

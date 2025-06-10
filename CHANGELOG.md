@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v6.5.24+rev4
+## (2025-06-10)
+
+* Update Linux kernel to 6.12.32 [Kyle Harding]
+* Update kernel to 6.12.30 [Michal Toman]
+
 # v6.5.24+rev3
 ## (2025-05-28)
 
