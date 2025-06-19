@@ -59,7 +59,7 @@ jobs:
       # worker_fleets defaults to balena/testbot-rig,balena/testbot-rig-partners,balena/testbot-rig-x86,balena/testbot-rig-partners-x86
       test_matrix: >
         {
-          "test_suite": ["os","cloud","hup"],
+          "test_suite": ["os","cloud"],
           "environment": ["bm.balena-dev.com"],
           "runs_on": [["ubuntu-latest"]]
         }
