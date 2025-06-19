@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.5.24+rev5
+## (2025-06-19)
+
+* Update Revolution Pi Connect and Core 3 to kernel 6.1.46 [Florin Sarbu]
+
 # v6.5.24+rev4
 ## (2025-06-10)
 

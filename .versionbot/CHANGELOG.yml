@@ -1,4 +1,18 @@
 - commits:
+    - subject: Update Revolution Pi Connect and Core 3 to kernel 6.1.46
+      hash: c1217f94755d926310daf631bf90f82668d4b3d2
+      body: ""
+      footer:
+        Changelog-entry: Update Revolution Pi Connect and Core 3 to kernel 6.1.46
+        changelog-entry: Update Revolution Pi Connect and Core 3 to kernel 6.1.46
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 6.5.24+rev5
+  title: ""
+  date: 2025-06-19T18:05:09.474Z
+- commits:
     - subject: Update Linux kernel to 6.12.32
       hash: 7686d0f761c00c14326dfd79a0857fe4ae3a7943
       body: ""
