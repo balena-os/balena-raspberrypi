@@ -1,0 +1,32 @@
+From ad28eb8cdddf6ad4341ab4c2106db015d78f6f93 Mon Sep 17 00:00:00 2001
+From: Florin Sarbu <florin@balena.io>
+Date: Wed, 18 Jun 2025 08:00:22 +0000
+Subject: [PATCH] aufs: i_op: Add handling for au_pin_hdir_set_owner with RT
+ kernel
+
+Rework of https://github.com/sfjro/aufs-standalone/blob/aufs5.15.5/rt.patch
+
+Signed-off-by: Florin Sarbu <florin@balena.io>
+---
+ fs/aufs/i_op.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/fs/aufs/i_op.c b/fs/aufs/i_op.c
+index a2416992..c024ae20 100644
+--- a/fs/aufs/i_op.c
++++ b/fs/aufs/i_op.c
+@@ -636,7 +636,11 @@ out:
+ 
+ static void au_pin_hdir_set_owner(struct au_pin *p, struct task_struct *task)
+ {
++#if !defined(CONFIG_PREEMPT_RT)
+ 	atomic_long_set(&p->hdir->hi_inode->i_rwsem.owner, (long)task);
++#else
++	p->hdir->hi_inode->i_rwsem.rwbase.rtmutex.owner = task;
++#endif
+ }
+ 
+ void au_pin_hdir_acquire_nest(struct au_pin *p)
+-- 
+2.34.1
+

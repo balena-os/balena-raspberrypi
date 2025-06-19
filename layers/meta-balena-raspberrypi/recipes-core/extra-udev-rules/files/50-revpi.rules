@@ -6,7 +6,7 @@
 # NOTE: Original file was downloaded from https://gitlab.com/revolutionpi/revpi-base-files/-/blob/master/udev/50-revpi.rules?ref_type=heads
 #
 
-PROGRAM="/bin/grep -Fz -m 1 'kunbus,revpi-' /sys/firmware/devicetree/base/compatible"
+PROGRAM="/bin/grep -F -m 1 'kunbus,revpi-' /sys/firmware/devicetree/base/compatible"
 RESULT=="kunbus,revpi-core", GOTO="revpi_core"
 RESULT=="kunbus,revpi-core-2022", GOTO="revpi_core"
 RESULT=="kunbus,revpi-core-s-2022", GOTO="revpi_core"
