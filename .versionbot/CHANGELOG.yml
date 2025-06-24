@@ -1,4 +1,20 @@
 - commits:
+    - subject: Update rpi-bootfiles to version 20250430
+      hash: bb1f36d75194c06c5c916190ec646d726761bd0a
+      body: |
+        ... except for Pi0 which stays on 20241126 due to uart issues
+        in the newer firmware.
+      footer:
+        Changelog-entry: Update rpi-bootfiles to version 20250430
+        changelog-entry: Update rpi-bootfiles to version 20250430
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 6.5.24+rev6
+  title: ""
+  date: 2025-06-24T11:08:10.060Z
+- commits:
     - subject: Update Revolution Pi Connect and Core 3 to kernel 6.1.46
       hash: c1217f94755d926310daf631bf90f82668d4b3d2
       body: ""

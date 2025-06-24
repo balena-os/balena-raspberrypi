@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.5.24+rev6
+## (2025-06-24)
+
+* Update rpi-bootfiles to version 20250430 [Alexandru Costache]
+
 # v6.5.24+rev5
 ## (2025-06-19)
 
