@@ -7,7 +7,7 @@ SRC_URI:append = " \
 
 PACKAGES:append = " initramfs-module-kexec-pi4-fwgpio"
 SUMMARY:initramfs-module-kexec-pi4-fwgpio = "Hook necessary to persist the value of Pi4/CM4 firmware GPIOs after kexec"
-RDEPENDS:initramfs-module-kexec-pi4-fwgpio = "initramfs-module-kexec"
+RDEPENDS:initramfs-module-kexec-pi4-fwgpio = "initramfs-module-kexec libgpiod-tools"
 FILES:initramfs-module-kexec-pi4-fwgpio = "/init.d/73-kexec_pi4_fwgpio"
 
 PACKAGES:remove:revpi = "initramfs-module-migrate"
