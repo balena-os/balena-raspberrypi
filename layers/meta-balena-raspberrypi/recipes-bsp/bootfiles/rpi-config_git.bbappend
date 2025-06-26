@@ -102,3 +102,13 @@ do_deploy:append:raspberrypi4() {
 otg_mode=1
 EOF
 }
+
+# the code introduced by https://github.com/agherzan/meta-raspberrypi/pull/1190 forces us to enable uart in production images but this is something we do not want
+# also the code just errors out if ENABLE_UART is not set instead of actually setting this var as it was stated in that PR
+# and lastly, we did not encounter the issues this PR presumably solves
+
+python remove_deploy_dependency_on_uboot() {
+    d.setVar('RPI_USE_U_BOOT','0')
+}
+
+do_deploy[prefuncs] += "remove_deploy_dependency_on_uboot"
