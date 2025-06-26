@@ -105,6 +105,7 @@ jobs:
     secrets: inherit
     with:
       machine: raspberrypi0-2w-64
+      build-args: '--templates-path layers/meta-balena-raspberrypi/conf/templates/default'
       device-repo: balena-os/balena-raspberrypi
       device-repo-ref: ${{ inputs.device-repo-ref || github.ref }}
       test_matrix: ${{ needs.get_inputs.outputs.test_matrix }}

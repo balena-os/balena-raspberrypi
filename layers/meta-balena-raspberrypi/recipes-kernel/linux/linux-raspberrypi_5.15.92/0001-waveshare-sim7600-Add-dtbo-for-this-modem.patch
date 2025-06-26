@@ -6,7 +6,7 @@ Subject: [PATCH] overlays: Add waveshare-sim7600 dtbo
 This adds dtbo necessary for GPIO setup
 for the waveshare-sim7600 modem.
 
-Upstream-status: Inappropriate [configuration]
+Upstream-Status: Inappropriate [configuration]
 Signed-off-by: Martijn <ask@minusplusminus.com>
 ---
  arch/arm/boot/dts/overlays/Makefile           |  1 +

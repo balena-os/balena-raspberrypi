@@ -5,7 +5,7 @@ Subject: [PATCH] overlays: Add 2xMCP2517FD dtbo
 
 Add dtbo for the Seeed 2xMCP2517FD CAN-Bus board.
 
-Upstream-status: Backport
+Upstream-Status: Backport
 Signed-off-by: Awk34 koroluka@gmail.com
 ---
  .../boot/dts/overlays/2xmcp2517fd-overlay.dts | 106 ++++++++++++++++++
