@@ -8,7 +8,7 @@ BBFILES ?= ""
 BBLAYERS ?= " \
     ${TOPDIR}/../layers/meta-balena/meta-balena-rust \
     ${TOPDIR}/../layers/meta-balena/meta-balena-common \
-    ${TOPDIR}/../layers/meta-balena/meta-balena-kirkstone \
+    ${TOPDIR}/../layers/meta-balena/meta-balena-scarthgap \
     ${TOPDIR}/../layers/meta-balena-raspberrypi \
     ${TOPDIR}/../layers/poky/meta \
     ${TOPDIR}/../layers/poky/meta-poky \
