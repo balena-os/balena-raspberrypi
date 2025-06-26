@@ -85,7 +85,7 @@ jobs:
     with:
       machine: raspberrypicm4-ioboard
       slug: raspberrypicm4-ioboard-sb
-      build-args: '--templates-path layers/meta-balena-rpi-sb/conf/samples/raspberrypicm4-ioboard'
+      build-args: '--templates-path layers/meta-balena-rpi-sb/conf/templates/raspberrypicm4-ioboard'
       # Hardcode the device repo in case this workflow is called by another workflow
       device-repo: balena-os/balena-raspberrypi
       device-repo-ref: ${{ inputs.device-repo-ref || github.ref }}

@@ -3,6 +3,7 @@ From: Cyrus Chan <cyrus.chan@energybox.com>
 Date: Sun, 23 Jul 2023 21:30:47 +0800
 Subject: [PATCH] Move watchdog service before networking
 
+Upstream-Status: Inappropriate [configuration]
 ---
  debian/watchdog.service | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)

@@ -55,6 +55,7 @@ jobs:
     secrets: inherit
     with:
       machine: raspberrypi4-64
+      build-args: '--templates-path layers/meta-balena-raspberrypi/conf/templates/default'
       # worker_type defaults to testbot
       # worker_fleets defaults to balena/testbot-rig,balena/testbot-rig-partners,balena/testbot-rig-x86,balena/testbot-rig-partners-x86
       test_matrix: >

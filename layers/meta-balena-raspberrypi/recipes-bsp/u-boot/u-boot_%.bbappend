@@ -9,6 +9,14 @@ SRC_URI:remove = " file://resin-specific-env-integration-kconfig.patch "
 # Update to u-boot v2021.10 on top of which
 # we apply the NVME patches for CM4.
 SRCREV="d80bb749fab53da72c4a0e09b8c2d2aaa3103c91"
+LIC_FILES_CHKSUM = "file://Licenses/README;md5=5a7450c57ffe5ae63fd732446b988025"
+
+# the following CVE does not cleanly apply and since it comes from Poky we must rework it with devtool and reapply it on our older u-boot version
+SRC_URI:remove = "file://CVE-2024-57257.patch"
+SRC_URI:append = " file://CVE-2024-57257_REWORK.patch"
+
+# the following CVE from Poky patches some files that do not exist in our u-boot version v2021.10
+SRC_URI:remove = "file://CVE-2026-46728.patch"
 
 RPI_PATCHES = " \
     file://Revert-remove-include-config_defaults.h.patch \
