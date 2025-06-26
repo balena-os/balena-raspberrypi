@@ -105,6 +105,7 @@ jobs:
     secrets: inherit
     with:
       machine: raspberrypi5
+      build-args: '--templates-path layers/meta-balena-raspberrypi/conf/templates/default'
       # Hardcode the device repo in case this workflow is called by another workflow
       device-repo: balena-os/balena-raspberrypi
       device-repo-ref: ${{ inputs.device-repo-ref || github.ref }}

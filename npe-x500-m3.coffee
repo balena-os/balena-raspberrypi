@@ -29,7 +29,7 @@ module.exports =
 		machine: 'npe-x500-m3'
 		image: 'balena-image'
 		fstype: 'balenaos-img'
-		version: 'yocto-kirkstone'
+		version: 'yocto-scarthgap'
 		deployArtifact: 'balena-image-npe-x500-m3.balenaos-img'
 		compressed: true
 
