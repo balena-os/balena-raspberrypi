@@ -8,7 +8,7 @@ https://github.com/balena-os/balena-raspberrypi/issues/736
 we applied USB changes for adding support for additional
 Quectel modules.
 
-Upstream-status: Pending
+Upstream-Status: Pending
 Signed-off-by: Florin Sarbu <florin@balena.io>
 ---
  drivers/usb/serial/option.c   | 49 +++++++++++++++++++++++++++++++++++

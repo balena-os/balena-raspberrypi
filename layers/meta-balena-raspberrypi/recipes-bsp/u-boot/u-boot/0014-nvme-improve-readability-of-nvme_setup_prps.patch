@@ -13,7 +13,7 @@ Patch source:
 https://github.com/home-assistant/operating-system/tree/dev/buildroot-external/board/raspberrypi/patches/uboot
 at commit SHA b0bbe70315ee6474637b6c4242c41909c9ec2db8.
 
-Upstream-status: Backport
+Upstream-Status: Backport
 Signed-off-by: Stefan Agner <stefan@agner.ch>
 Signed-off-by: Alexandru Costache <alexandru@balena.io>
 ---

@@ -9,7 +9,7 @@ to AA:AA:AA:AA:AA:AA instead of the right
 value. Let's check for this too and allow
 bthelper to set the correct address in this case.
 
-Upstream-status: Pending
+Upstream-Status: Pending
 Signed-off-by: Alexandru Costache <alexandru@balena.io>
 ---
  usr/bin/bthelper | 2 +-

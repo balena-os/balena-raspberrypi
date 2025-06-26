@@ -11,7 +11,7 @@ be written back to device before switching over a second cluster.
 Without this patch, some added files may be lost even if you don't see
 any failures on write operation.
 
-Upstream-status: Inappropriate [Backport]
+Upstream-Status: Inappropriate [Backport]
 Signed-off-by: AKASHI Takahiro <takahiro.akashi@linaro.org>
 Tested-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
 Signed-off-by: Alexandru Costache <alexandru@balena.io>
