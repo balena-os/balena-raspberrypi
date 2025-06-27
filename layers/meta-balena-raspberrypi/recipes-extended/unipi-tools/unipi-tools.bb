@@ -53,9 +53,9 @@ do_install() {
 }
 
 FILES:${PN} += " \
-    /lib/systemd/system/unipi-ttymxc2-rs485.target \
-    /lib/systemd/system/unipispi.target \
-    /lib/systemd/system/unipi-ttys0-rs485.target \
+    ${systemd_unitdir}/system/unipi-ttymxc2-rs485.target \
+    ${systemd_unitdir}/system/unipispi.target \
+    ${systemd_unitdir}/unipi-ttys0-rs485.target \
     /opt/unipi/data \
     /opt/unipi/tools \
 "
