@@ -16,14 +16,21 @@ wait4file "/dev/disk/by-state" "50"
 BALENA_NONENC_BOOT_DEV=""
 
 cryptsetup_enabled() {
-    # Flasher should not try to unlock the partitions
-    if [ "$bootparam_flasher" = "true" ]; then
-        return 1
+    if ! is_secured; then
+      info "Won't attempt to decrypt drives because secure boot is not enabled"
+      return 1
     fi
 
-    # Ensure that secure boot is enabled and device is locked
-    if ! is_secured; then
-      fail "Device not locked - boot aborted"
+    # Flasher should not try to unlock the partitions
+    if [ "$bootparam_flasher" = "true" ]; then
+        # Booting flasher on a locked and encrypted device
+        # Erase GPT for extra security
+        if [ -L /dev/disk/by-label/${BALENA_NONENC_BOOT_LABEL} ]; then
+            info "Flasher requested on locked device"
+            _internal_dev=$(lsblk -nlo pkname,label | grep "${BALENA_NONENC_BOOT_LABEL}" | awk '{print $1}')
+            erase_disk "${_internal_dev}"
+        fi
+        return 1
     fi
 
     BALENA_NONENC_BOOT_DEV=$(get_state_path_from_label @@BALENA_NONENC_BOOT_LABEL@@)
@@ -42,6 +49,9 @@ cryptsetup_enabled() {
 
 cryptsetup_run() {
     TMP_MOUNT_DIR=$(mktemp -d)
+
+    boot_part_assert
+
     mount "$BALENA_NONENC_BOOT_DEV" "$TMP_MOUNT_DIR"
 
     PASSPHRASE_FILE=$(mktemp -u)
@@ -49,6 +59,8 @@ cryptsetup_run() {
         umount "$TMP_MOUNT_DIR"
         fail "Failed to decrypt LUKS passphrase"
     fi
+
+    luks_parts_premount_assert
 
     BOOT_DEVICE=$(lsblk -nlo pkname "${BALENA_NONENC_BOOT_DEV}")
 
@@ -66,6 +78,8 @@ cryptsetup_run() {
     for DM_NAME in ${LUKS_UNLOCKED}; do
         wait4udev "/dev/mapper/${DM_NAME}"
     done
+
+    luks_parts_postmount_assert
 
     rm -f "$PASSPHRASE_FILE"
     umount "$TMP_MOUNT_DIR"

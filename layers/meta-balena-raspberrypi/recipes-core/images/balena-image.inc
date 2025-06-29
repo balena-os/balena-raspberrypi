@@ -20,7 +20,7 @@ IMAGE_ROOTFS_SIZE:raspberrypi5="655360"
 BALENA_BOOT_SIZE:raspberrypi5="81920"
 
 # Increase boot partition size
-BALENA_BOOT_SIZE:raspberrypicm4-ioboard-sb = "131072"
+BALENA_BOOT_SIZE:raspberrypicm4-ioboard-sb = "174080"
 
 # Increase Root File system size
 IMAGE_ROOTFS_SIZE:revpi-connect-s ?= "319488"
@@ -124,7 +124,7 @@ RPI_KERNEL_DEVICETREE:remove:revpi = "bcm2708-rpi-zero-w.dtb bcm2710-rpi-3-b-plu
 
 # this being a pi4 based board, increase to 400 MiB (up from 320 MiB) to make sure we have enough space in the rootfs
 IMAGE_ROOTFS_SIZE:raspberrypi4-superhub="409600"
-IMAGE_ROOTFS_SIZE:raspberrypicm4-ioboard-sb="409600"
+IMAGE_ROOTFS_SIZE:raspberrypicm4-ioboard-sb="655360"
 
 IMAGE_INSTALL:append:raspberrypi4-superhub = " \
     phoenix-peripheral \
