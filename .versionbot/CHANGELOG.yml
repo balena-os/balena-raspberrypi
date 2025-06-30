@@ -1,4 +1,29 @@
 - commits:
+    - subject: fix build error in unipi-tools package
+      hash: c696f128a1efe4597cd96a3f7de55a95201214b4
+      body: >
+        The recipe uses bitbake path variables to install but not to add files
+
+        to packages resulting in:
+
+
+        ```
+
+        ERROR: unipi-tools-1.0-r0 do_package: QA Issue: unipi-tools:
+        Files/directories were installed but not shipped in any package:
+          /usr/lib/systemd/system/unipispi.target
+        ```
+      footer:
+        Changelog-entry: fix build error in unipi-tools package
+        changelog-entry: fix build error in unipi-tools package
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 6.5.24+rev7
+  title: ""
+  date: 2025-06-30T08:33:20.488Z
+- commits:
     - subject: Update rpi-bootfiles to version 20250430
       hash: bb1f36d75194c06c5c916190ec646d726761bd0a
       body: |

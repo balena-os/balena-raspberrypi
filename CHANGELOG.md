@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.5.24+rev7
+## (2025-06-30)
+
+* fix build error in unipi-tools package [Alex Gonzalez]
+
 # v6.5.24+rev6
 ## (2025-06-24)
 
