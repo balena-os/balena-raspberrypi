@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v6.5.41
+## (2025-07-02)
+
+
+<details>
+<summary> Update layers/meta-balena to ed8866d6a0b4de8bb40dfd35fbdd465c8814bb57 [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.5.41
+> ### (2025-07-02)
+> 
+> * Update outdated context of efitools patches [Florin Sarbu]
+> 
+
+</details>
+
 # v6.5.40
 ## (2025-06-30)
 
