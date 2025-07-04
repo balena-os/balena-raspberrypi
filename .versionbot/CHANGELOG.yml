@@ -1,4 +1,113 @@
 - commits:
+    - subject: perform encryption partition assertions on mount
+      hash: ca68058d659227583c8311714df0e78072e3f5b2
+      body: |
+        Make sure the encrypted partitions structure is as expected - bail out
+        if strange partitions are encountered.
+      footer:
+        Changelog-entry: perform encryption partition assertions on mount
+        changelog-entry: perform encryption partition assertions on mount
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: remap audio pins for raspberrypicm4-ioboard-sb
+      hash: 6ae35318c5c3120ae5b99c027a7710618339532b
+      body: >
+        Previously the audio driver was directly called from the device tree,
+        and
+
+        the audio pins were owned by the audio driver.
+
+
+        Hence, unloading the audio driver would free pins 40/41 and they could
+        be
+
+        dynamically assigned to SPI0 and re-used to program the EEPROM.
+
+
+        On recent kernels the audio driver is now a platform driver called from
+
+        the vchiq driver (message queuing to the video core), and the audio pins
+
+        are now owned by the vchiq driver which cannot be unloaded. Hence, these
+
+        pins cannot be dynamically re-assigned.
+
+
+        This commits remaps the audio pins to GPIOs 12/13 freeing up GPIOs 40/41
+
+        to use for re-programming. This is done only for the
+
+        raspberrypicm4-ioboard-sb given that it's a new board and we do not have
+
+        to worry about existing applications.
+
+
+        For other device types, in particular the Raspberrypi 4 that uses by
+
+        default pins 40/41 for the headphones output, this won't work. We will
+
+        need to move to self-update support, although that still requires to
+
+        re-program the EEPROM to configure it.
+      footer:
+        Changelog-entry: remap audio pins for raspberrypicm4-ioboard-sb
+        changelog-entry: remap audio pins for raspberrypicm4-ioboard-sb
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: fix kexec fixup script on CM4/RPI4.
+      hash: 8aff0b5c607fa527dc1d96fe4fe0f682bf8ec7d7
+      body: >
+        For kernel 6.12, the GPIO offsets have changed so use the new offset.
+
+
+        The sysfs interface is deprecated, but gpiod tools cannot be used to set
+
+        persistent GPIO values, and there doesn't seem to be a better
+        alternative.
+      footer:
+        Changelog-entry: fix kexec fixup script on CM4/RPI4.
+        changelog-entry: fix kexec fixup script on CM4/RPI4.
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: increase the boot partition size for CM4 to support secure boot
+      hash: 9ea41d7ff6c3d98b1c484d2b5048dbdf9c89395d
+      body: >
+        When performing a hostOS update we perform atomic writes of individual
+
+        files, that is, first we copy a new file, and then we rename.
+
+
+        The rename operation is atomic on some filesystems like ext4, but on
+
+        vfat it has not been atomic until Linux kernel v6.0.
+
+
+        Even if probably no longer needed with >v6.0 kernels, we still use fatrw
+
+        to keep a checksummed copy of the file.
+
+
+        The boot.img that contains the kernel and initramfs has increased in
+        size
+
+        and two copies of it no longer fits in the boot partition.
+      footer:
+        Changelog-entry: increase the boot partition size for CM4 to support secure boot
+        changelog-entry: increase the boot partition size for CM4 to support secure boot
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 6.5.41+rev2
+  title: ""
+  date: 2025-07-04T21:25:59.168Z
+- commits:
     - subject: Update balena-yocto-scripts to 76b9918f23e4b100bef64a2ce4ecb3bca70ee5fa
       hash: 1e050d63064dbc561593380d85f373e1ea651267
       body: Update balena-yocto-scripts

@@ -1,6 +1,14 @@
 Change log
 -----------
 
+# v6.5.41+rev2
+## (2025-07-04)
+
+* perform encryption partition assertions on mount [Alex Gonzalez]
+* remap audio pins for raspberrypicm4-ioboard-sb [Alex Gonzalez]
+* fix kexec fixup script on CM4/RPI4. [Alex Gonzalez]
+* increase the boot partition size for CM4 to support secure boot [Alex Gonzalez]
+
 # v6.5.41+rev1
 ## (2025-07-04)
 
