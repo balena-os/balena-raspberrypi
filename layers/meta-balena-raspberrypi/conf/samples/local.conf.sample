@@ -103,3 +103,6 @@ CONF_VERSION = "2"
 HOSTTOOLS += "docker iptables"
 
 LICENSE_FLAGS_ACCEPTED = "synaptics-killswitch"
+
+# CycloneDX SBOM and VEX generation
+INHERIT += "cyclonedx-export"
