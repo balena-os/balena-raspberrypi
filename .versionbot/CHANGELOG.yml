@@ -1,4 +1,50 @@
 - commits:
+    - subject: Update layers/meta-balena to ee3fe620d7465af3eb3cbac007b315c9cfdbd2bc
+      hash: e0828f3fd185ac009a62c3e2a9c333c29c28b1df
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to ee3fe620d7465af3eb3cbac007b315c9cfdbd2bc
+        changelog-entry: Update layers/meta-balena to ee3fe620d7465af3eb3cbac007b315c9cfdbd2bc
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Enable zram zstd compression for 6.12+ kernels
+              hash: ffafb1007a8deab5bd80de5cb65fbc81c18f4e7d
+              body: >
+                Kernels 6.12+ need the corresponding CONFIG_ZRAM_BACKEND_* linux
+
+                kernel config item enabled for the respective compression
+                support
+
+                to be available for zram.
+
+
+                For the flasher we need zram zstd support so we need to enable
+                the new
+
+                CONFIG_ZRAM_BACKEND_ZSTD option.
+
+
+                This fixes the following error when booting a flasher image
+                running a 6.12+ kernel:
+
+                zramctl: /dev/zram1: failed to set algorithm: Invalid argument
+              footer:
+                Change-type: patch
+                change-type: patch
+                Changelog-entry: Enable zram zstd compression for 6.12+ kernels
+                changelog-entry: Enable zram zstd compression for 6.12+ kernels
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-6.5.42
+          title: ""
+          date: 2025-07-03T13:05:08.986Z
+  version: 6.5.42
+  title: ""
+  date: 2025-07-05T09:37:14.794Z
+- commits:
     - subject: perform encryption partition assertions on mount
       hash: ca68058d659227583c8311714df0e78072e3f5b2
       body: |

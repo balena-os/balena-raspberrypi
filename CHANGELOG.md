@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v6.5.42
+## (2025-07-05)
+
+
+<details>
+<summary> Update layers/meta-balena to ee3fe620d7465af3eb3cbac007b315c9cfdbd2bc [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.5.42
+> ### (2025-07-03)
+> 
+> * Enable zram zstd compression for 6.12+ kernels [Florin Sarbu]
+> 
+
+</details>
+
 # v6.5.41+rev2
 ## (2025-07-04)
 
