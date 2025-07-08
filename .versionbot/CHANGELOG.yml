@@ -1,4 +1,38 @@
 - commits:
+    - subject: Revert unnecessary glibc build fix
+      hash: 7b032ed6a95d84e08f7cd1ec69539a77390a6018
+      body: >
+        This reverts commit 242c8fe89329d088313fc41fdbb62e95a786a1f2.
+
+
+        The patch doesn't apply to recent glibc versions, which breaks builds.
+
+        At the same time it doesn't seem to be necessary anymore, the build
+        works
+
+        fine without it, so this has most likely been addressed upstream.
+      footer:
+        Changelog-entry: Revert unnecessary glibc build fix
+        changelog-entry: Revert unnecessary glibc build fix
+        Signed-off-by: Michal Toman <michalt@balena.io>
+        signed-off-by: Michal Toman <michalt@balena.io>
+      author: Michal Toman
+      nested: []
+    - subject: Update layers/meta-openembedded to
+        058249f9a836e3aa866436aa6e37d6d48ff768fd
+      hash: 604556e40ee7439d7b3a583f63927d916888f1f1
+      body: Update layers/meta-openembedded
+      footer:
+        Changelog-entry: Update layers/meta-openembedded to
+          058249f9a836e3aa866436aa6e37d6d48ff768fd
+        changelog-entry: Update layers/meta-openembedded to
+          058249f9a836e3aa866436aa6e37d6d48ff768fd
+      author: balena-renovate[bot]
+      nested: []
+  version: 6.5.42+rev1
+  title: ""
+  date: 2025-07-08T10:06:11.014Z
+- commits:
     - subject: Update layers/meta-balena to ee3fe620d7465af3eb3cbac007b315c9cfdbd2bc
       hash: e0828f3fd185ac009a62c3e2a9c333c29c28b1df
       body: Update layers/meta-balena
