@@ -238,3 +238,11 @@ RPI_KERNEL_DEVICETREE:raspberrypi0-2w-64 = " \
     broadcom/bcm2710-rpi-zero-2.dtb \
     broadcom/bcm2710-rpi-cm3.dtb \
 "
+
+# Only include arm64 dtbs for rt-rpi-300
+RPI_KERNEL_DEVICETREE:rt-rpi-300 = " \
+    broadcom/bcm2711-rpi-4-b.dtb \
+    broadcom/bcm2711-rpi-400.dtb \
+    broadcom/bcm2711-rpi-cm4.dtb \
+    broadcom/bcm2711-rpi-cm4s.dtb \
+"
