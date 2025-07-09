@@ -1,4 +1,21 @@
 - commits:
+    - subject: Fix dtb build error for rt-rpi-300
+      hash: b44deec258cab051e34033dab5b309241a3db342
+      body: >
+        There were build errors trying to compile the dtbs for the 32 bit
+        devices, attempting to fix by only adding the bcm2711 ones, as this
+        device type is a pi4
+      footer:
+        Changelog-entry: Fix dtb build error for rt-rpi-300
+        changelog-entry: Fix dtb build error for rt-rpi-300
+        Signed-off-by: Ryan Cooke<ryan@balena.io>
+        signed-off-by: Ryan Cooke<ryan@balena.io>
+      author: Ryan Cooke
+      nested: []
+  version: 6.5.42+rev2
+  title: ""
+  date: 2025-07-09T09:31:48.356Z
+- commits:
     - subject: Revert unnecessary glibc build fix
       hash: 7b032ed6a95d84e08f7cd1ec69539a77390a6018
       body: >

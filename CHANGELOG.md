@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.5.42+rev2
+## (2025-07-09)
+
+* Fix dtb build error for rt-rpi-300 [Ryan Cooke]
+
 # v6.5.42+rev1
 ## (2025-07-08)
 
