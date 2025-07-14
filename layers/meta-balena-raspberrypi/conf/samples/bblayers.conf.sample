@@ -18,4 +18,5 @@ BBLAYERS ?= " \
     ${TOPDIR}/../layers/meta-openembedded/meta-python \
     ${TOPDIR}/../layers/meta-openembedded/meta-perl \
     ${TOPDIR}/../layers/meta-raspberrypi \
+    ${TOPDIR}/../layers/meta-cyclonedx  \
     "
