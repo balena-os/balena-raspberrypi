@@ -56,6 +56,71 @@ RaspberryPi devices require post-installation setup to lock the device after the
 * **program_jtag_lock=1**: Disables the GPU JTAG interface
 * **eeprom_write_protect=1**: Sets the EEPROM to write protect
 
+This dedicated signed EEPROM is deployed as a `secure-boot-lock.tar.gz` balenaOS release asset and can be downloaded from the dashboard.
+
+### Instructions
+
+After programming a device with a secure boot enabled installer image and letting it shut down, the following steps are required to lock the device:
+
+#### Pre-requisites
+
+* Download and build the `rpiboot` utility:
+```
+git clone https://github.com/raspberrypi/usbboot.git
+cd usbboot
+make
+```
+* Download the `secure-boot-lock.tar.gz` asset from the `balenaOS` release into a `secure-boot-lock` directory inside `usbboot` and unpack it:
+```
+cd secure-boot-lock
+tar xvzf secure-boot-lock.tar.gz
+```
+* The contents will be:
+```
+./config.txt
+./pieeprom.bin
+./pieeprom.sig
+./bootcode4.bin
+```
+* Connect the device to your computer using a USB cable
+* Configure the device to boot into usb boot mode - on the ioboard there is a jumper labelled `Fit jumper to disable eMMC boot`, other boards may have a different way to do this.
+* Power on the device. The kernel log will show:
+```
+[72269.319714] usb 5-4.1.2: New USB device found, idVendor=0a5c, idProduct=2711, bcdDevice= 0.00
+[72269.319718] usb 5-4.1.2: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+[72269.319721] usb 5-4.1.2: Product: BCM2711 Boot
+[72269.319724] usb 5-4.1.2: Manufacturer: Broadcom
+[72269.319726] usb 5-4.1.2: SerialNumber: ba7f425f
+```
+
+#### Device locking
+
+* Run rpiboot from there:
+```
+sudo ../rpiboot -d .
+```
+* Power down, remove serial download jumper / switch, remove USB cable
+* The device will boot and appear in dashboard
+
+#### Post-installation validation
+
+From the device hostOS shell:
+
+* Make sure partitions are encrypted:
+```
+source /usr/libexec/os-helpers-fs
+is_part_encrypted /dev/disk/by-state/resin-data && echo "encrypted" || echo "not encrypted"
+encrypted
+```
+* Make sure secure boot is enabled:
+```
+source /usr/libexec/os-helpers-sb
+is_secured && echo "secured" || echo "not secured"
+secured
+```
+
+Note: Ignore the warnings shown when sourcing the os-helpers files, they're harmless and expected.
+
 ## EEPROM updates on locked devices
 
 Once a device is secure boot enabled and is locked down, `rpiboot` driven EEPROM updates will no longer work. Only EEPROM self-updates are possible.
