@@ -31,7 +31,7 @@ module.exports =
 		machine: 'raspberrypicm4-ioboard-sb'
 		image: 'balena-image-flasher'
 		fstype: 'balenaos-img'
-		version: 'yocto-kirkstone'
+		version: 'yocto-scarthgap'
 		deployArtifact: 'balena-image-flasher-raspberrypicm4-ioboard-sb.balenaos-img'
 		compressed: true
 
