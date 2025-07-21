@@ -80,6 +80,9 @@ BALENA_CONFIGS[revpi_expansion_modules_support] = " \
     CONFIG_CAN_HI311X=m \
 "
 
+BALENA_CONFIGS:append:revpi-connect-4 = "usb_xhci"
+BALENA_CONFIGS[usb_xhci] = "CONFIG_USB_XHCI_PCI"
+
 python do_overlays() {
     import glob, re
     overlays = []
