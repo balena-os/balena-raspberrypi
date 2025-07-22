@@ -1,28 +1,26 @@
-From 2afd1b8f94ecfa04e1896a386a21bc4d57805e31 Mon Sep 17 00:00:00 2001
-From: Sebastian Panceac <sebastian@resin.io>
-Date: Thu, 2 Aug 2018 13:32:58 +0200
+From 0c7d639a5b133793c816a56fe93cc897f0ab8a31 Mon Sep 17 00:00:00 2001
+From: Florin Sarbu <florin@balena.io>
+Date: Tue, 22 Jul 2025 05:29:54 +0000
 Subject: [PATCH] Use modules_install as wanted by yocto
 
 Upstream-Status: Pending
 Signed-off-by: Sebastian Panceac <sebastian@resin.io>
+Signed-off-by: Florin Sarbu <florin@balena.io>
 ---
  Makefile | 3 +++
  1 file changed, 3 insertions(+)
 
 diff --git a/Makefile b/Makefile
-index 56eab93..6d78b95 100644
+index 8d330f6..c348f33 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -44,6 +44,9 @@ EXTRA_CFLAGS += -D__KUNBUSPI_KERNEL__
- all: compiletime.h
- 	$(MAKE) ARCH=$(ARCH) CROSS_COMPILE="$(CROSS_COMPILE)" -C $(KDIR) M=$(PWD)  modules
-
+@@ -40,3 +40,6 @@ all:
+ clean:
+ 	$(MAKE) -C $(KDIR) M=$(PWD) clean
+ 	rm -f $(piControl-y)
++
 +modules_install:
 +	$(MAKE) ARCH=$(ARCH) CROSS_COMPILE="$(CROSS_COMPILE)" -C $(KDIR) M=$(PWD)  modules_install
-+
- compiletime.h:
- 	echo "#define COMPILETIME \""`date`"\"" > compiletime.h
-
---
-2.7.4
+-- 
+2.34.1
 

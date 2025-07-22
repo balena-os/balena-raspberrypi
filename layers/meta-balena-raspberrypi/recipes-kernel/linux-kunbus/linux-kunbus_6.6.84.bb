@@ -1,10 +1,10 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-LINUX_VERSION = "6.1.46"
+LINUX_VERSION = "6.6.84"
 
-SRCREV = "raspberrypi-kernel_1%9.20240205+1-6.1.46-1-revpi11+1"
+SRCREV = "v6.6.84-rt52-revpi9"
 SRC_URI = " \
-	git://github.com/RevolutionPi/linux;protocol=https;branch=revpi-6.1 \
+	git://github.com/RevolutionPi/linux;protocol=https;branch=revpi-6.6 \
 "
 require recipes-kernel/linux/linux-raspberrypi.inc
 

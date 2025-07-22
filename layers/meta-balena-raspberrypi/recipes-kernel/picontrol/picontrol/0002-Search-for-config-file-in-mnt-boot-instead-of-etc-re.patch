@@ -1,0 +1,30 @@
+From 4dddeeba7a14f83cfeab82902956724df21c7faa Mon Sep 17 00:00:00 2001
+From: Florin Sarbu <florin@balena.io>
+Date: Tue, 22 Jul 2025 05:17:36 +0000
+Subject: [PATCH] Search for config file in /mnt/boot instead of
+ /etc/revpi/config.rsc
+
+We do this because we use a readonly rootfs
+
+Upstream-Status: Inappropriate [configuration]
+Signed-off-by: Florin Sarbu <florin@balena.io>
+---
+ src/picontrol_intern.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/picontrol_intern.h b/src/picontrol_intern.h
+index 8c10221..c826091 100644
+--- a/src/picontrol_intern.h
++++ b/src/picontrol_intern.h
+@@ -9,7 +9,7 @@
+ #include <linux/ioctl.h>
+ #include <linux/types.h>
+ 
+-#define PICONFIG_FILE					"/etc/revpi/config.rsc"
++#define PICONFIG_FILE					"/mnt/boot/config.rsc"
+ /* address of first module on the right side of the RevPi Core */
+ #define REV_PI_DEV_FIRST_RIGHT				32
+ #define PICONTROL_FIRMWARE_FORCE_UPLOAD			0x0001
+-- 
+2.34.1
+
