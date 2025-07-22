@@ -15,14 +15,24 @@ SRCREV = "bc7f439c234e19371115e07b57c366df59cc1bc7"
 RPIFW_DATE:raspberrypi = "20241126"
 SRCREV:raspberrypi = "9f24f4bc2bdd07ffd158cfbb4bce88a2efc4c1f5"
 
+# stick to older version because if we use a newer version of the pi firmware then the EEPROM on revpi-connect-4 for example won't be read and the correct overlays won't be autoloaded
+RPIFW_DATE:revpi = "20230405"
+SRCREV:revpi = "055e044d5359ded1aacc5a17a8e35365373d0b8b"
+RPIFW_DATE:revpi4 = "20230405"
+SRCREV:revpi4 = "055e044d5359ded1aacc5a17a8e35365373d0b8b"
+
 SHORTREV = "${@d.getVar("SRCREV", False).__str__()[:7]}"
 RPIFW_SRC_URI = "https://api.github.com/repos/raspberrypi/firmware/tarball/${SRCREV};downloadfilename=raspberrypi-firmware-${SHORTREV}.tar.gz;name=rpifw"
 RPIFW_SRC_URI:raspberrypi = "https://api.github.com/repos/raspberrypi/firmware/tarball/${SRCREV};downloadfilename=raspberrypi-firmware-${SHORTREV}.tar.gz;name=rpifw-pi0"
+RPIFW_SRC_URI:revpi = "https://api.github.com/repos/raspberrypi/firmware/tarball/${SRCREV};downloadfilename=raspberrypi-firmware-${SHORTREV}.tar.gz;name=rpifw-revpis"
+RPIFW_SRC_URI:revpi4 = "https://api.github.com/repos/raspberrypi/firmware/tarball/${SRCREV};downloadfilename=raspberrypi-firmware-${SHORTREV}.tar.gz;name=rpifw-revpis"
 RPIFW_S = "${WORKDIR}/raspberrypi-firmware-${SHORTREV}"
 
 SRC_URI = "${RPIFW_SRC_URI}"
+
 SRC_URI[rpifw.sha256sum] = "2c027debbef53c86c9ff9197d056d501b95f6ad214ad4db00a8a59b947574eb1"
 SRC_URI[rpifw-pi0.sha256sum] = "4b436f8946b139c6a1202375ef55d4848e3bcd8c1a9cb47000e06d7ecec828f7"
+SRC_URI[rpifw-revpis.sha256sum] = "be906803fe55aec321e01fe6af61f7ebca603fc193dbc6bc2e1301b7d152e11a"
 
 PV = "${RPIFW_DATE}"
 
