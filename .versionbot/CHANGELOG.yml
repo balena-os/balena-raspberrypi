@@ -1,4 +1,40 @@
 - commits:
+    - subject: Update linux-kunbus to version 6.6.84 and piControl to version 2.3.7
+      hash: 94c195d9e4b6f21d9812eecaa6763fc1cd10e87b
+      body: |
+        Also update piControl to version 2.3.7 to match the newer kernel
+      footer:
+        Changelog-entry: Update linux-kunbus to version 6.6.84 and piControl to version 2.3.7
+        changelog-entry: Update linux-kunbus to version 6.6.84 and piControl to version 2.3.7
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+    - subject: Pin the boot firmware of Revolution Pi machines to version 20230405
+      hash: 4fb105935ff2ff63a95b5570ff6381efc8efe891
+      body: >
+        Using a newer version of the pi firmware then the EEPROM on
+        revpi-connect-4
+
+        for example won't be read and the correct overlays won't be autoloaded.
+
+
+        With this older version the EEPROM is read correctly and the correct dt
+        overlay gets loaded:
+
+
+        kunbus,revpi-connect4brcm,bcm2711
+      footer:
+        Changelog-entry: Pin the boot firmware of Revolution Pi machines to version 20230405
+        changelog-entry: Pin the boot firmware of Revolution Pi machines to version 20230405
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 6.5.44+rev2
+  title: ""
+  date: 2025-07-23T08:16:48.999Z
+- commits:
     - subject: Generate SBOM and VEX (cycloneDX)
       hash: fc408b2e0e62088b8ac6a655d84bfb0377fc75bc
       body: >

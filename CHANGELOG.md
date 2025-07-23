@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v6.5.44+rev2
+## (2025-07-23)
+
+* Update linux-kunbus to version 6.6.84 and piControl to version 2.3.7 [Florin Sarbu]
+* Pin the boot firmware of Revolution Pi machines to version 20230405 [Florin Sarbu]
+
 # v6.5.44+rev1
 ## (2025-07-14)
 
