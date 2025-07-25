@@ -2,6 +2,7 @@ CONNECTIVITY_FIRMWARES:append = " \
     linux-firmware-rpidistro-bcm43430 \
     linux-firmware-rpidistro-bcm43455 \
     linux-firmware-sd8887 \
+    linux-firmware-mt7612u \
     bluez-firmware-rpidistro-bcm43430a1-hcd \
     bluez-firmware-rpidistro-bcm4345c0-hcd \
 "
