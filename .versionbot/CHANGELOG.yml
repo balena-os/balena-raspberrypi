@@ -1,4 +1,20 @@
 - commits:
+    - subject: Enable the built-in rtl8192cu driver
+      hash: aec0be9934c791c4a7bda720eeac9d900ca063a6
+      body: |
+        The in-tree driver is stable now and should be used instead
+        of the out-of-tree driver we had been using before.
+      footer:
+        Changelog-entry: Enable the built-in rtl8192cu driver
+        changelog-entry: Enable the built-in rtl8192cu driver
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 6.5.47+rev1
+  title: ""
+  date: 2025-08-01T07:52:51.014Z
+- commits:
     - subject: Update layers/meta-balena to 542cca8a05d671b349d4d07be2d9bf086fe3781e
       hash: 17cb093d028f864e68ab52917d093570c1d07fc7
       body: Update layers/meta-balena
