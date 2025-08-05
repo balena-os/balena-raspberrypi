@@ -1,4 +1,29 @@
 - commits:
+    - subject: Update balena-yocto-scripts to bb0a3f5a47cbf6d4ab844a0f7e79e8e592ec4add
+      hash: df1f725e14a4417e63f90b96a33d82b40202a05d
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to bb0a3f5a47cbf6d4ab844a0f7e79e8e592ec4add
+        changelog-entry: Update balena-yocto-scripts to bb0a3f5a47cbf6d4ab844a0f7e79e8e592ec4add
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Update docker/login-action action to v3.5.0
+              hash: 72cdde5fa2bbf24e730b8ff5934b4b2294d60e1c
+              body: |
+                Update docker/login-action from 3.4.0 to 3.5.0
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.37.6
+          title: ""
+          date: 2025-08-04T19:51:09.225Z
+  version: 6.5.48+rev2
+  title: ""
+  date: 2025-08-05T01:02:29.755Z
+- commits:
     - subject: Update balena-yocto-scripts to 55b75b126ca901718a3c1037625b5f6ce51105a4
       hash: e00b7a32725279de6fef504136d56fd5812e5fb7
       body: Update balena-yocto-scripts

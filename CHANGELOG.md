@@ -1,6 +1,21 @@
 Change log
 -----------
 
+# v6.5.48+rev2
+## (2025-08-05)
+
+
+<details>
+<summary> Update balena-yocto-scripts to bb0a3f5a47cbf6d4ab844a0f7e79e8e592ec4add [balena-renovate[bot]] </summary>
+
+> ## balena-yocto-scripts-1.37.6
+> ### (2025-08-04)
+> 
+> * Update docker/login-action action to v3.5.0 [balena-renovate[bot]]
+> 
+
+</details>
+
 # v6.5.48+rev1
 ## (2025-08-04)
 
