@@ -7,6 +7,7 @@
 #MACHINE ?= "revpi-connect-s"
 #MACHINE ?= "revpi-connect-4"
 #MACHINE ?= "revpi-core-3"
+#MACHINE ?= "revpi-core-se"
 #MACHINE ?= "raspberrypi4-64"
 #MACHINE ?= "raspberrypi400-64"
 #MACHINE ?= "raspberrypicm4-ioboard"
