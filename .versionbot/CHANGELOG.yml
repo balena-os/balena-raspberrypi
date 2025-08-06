@@ -1,4 +1,25 @@
 - commits:
+    - subject: Enable the built-in rtl8192cu driver for all boards
+      hash: dbd6d8e80ab7ef2efc6b6843f1aa818676d0ce1a
+      body: >
+        The in-tree driver is stable now and should be used instead of the
+        out-of-tree
+
+        driver we had been using before. Let's enable it for all boards and not
+        just for
+
+        those using kernel version 5.15
+      footer:
+        Changelog-entry: Enable the built-in rtl8192cu driver for all boards
+        changelog-entry: Enable the built-in rtl8192cu driver for all boards
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 6.5.48+rev3
+  title: ""
+  date: 2025-08-06T08:49:44.648Z
+- commits:
     - subject: Update balena-yocto-scripts to bb0a3f5a47cbf6d4ab844a0f7e79e8e592ec4add
       hash: df1f725e14a4417e63f90b96a33d82b40202a05d
       body: Update balena-yocto-scripts

@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.5.48+rev3
+## (2025-08-06)
+
+* Enable the built-in rtl8192cu driver for all boards [Florin Sarbu]
+
 # v6.5.48+rev2
 ## (2025-08-05)
 
