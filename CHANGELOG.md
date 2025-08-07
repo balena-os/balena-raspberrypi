@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.5.48+rev5
+## (2025-08-07)
+
+* Do not blacklist the rtl8192cu kernel driver [Florin Sarbu]
+
 # v6.5.48+rev4
 ## (2025-08-06)
 

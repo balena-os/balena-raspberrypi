@@ -1,4 +1,19 @@
 - commits:
+    - subject: Do not blacklist the rtl8192cu kernel driver
+      hash: 4251a69f109cb57e9b154d2a82452c5025d7558e
+      body: |
+        This driver is deemed stable now and we want to use it
+      footer:
+        Changelog-entry: Do not blacklist the rtl8192cu kernel driver
+        changelog-entry: Do not blacklist the rtl8192cu kernel driver
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 6.5.48+rev5
+  title: ""
+  date: 2025-08-07T11:18:49.906Z
+- commits:
     - subject: Update layers/meta-openembedded to
         06fc0278f10d630838d703dde707bbf0e2999873
       hash: 614e692c25e57101ca5ba212ff45f5ebe0404f16
