@@ -60,9 +60,6 @@ BALENA_CONFIGS[pca955_gpio_expander] = " \
     CONFIG_GPIO_PCA953X_IRQ=y \
     "
 
-KERNEL_MODULE_PROBECONF += "rtl8192cu"
-module_conf:rtl8192cu = "blacklist rtl8192cu"
-
 BALENA_CONFIGS:append = " ${@configure_from_version("6.1", "", " preempt_rt", d)}"
 BALENA_CONFIGS[preempt_rt] = " \
     CONFIG_PREEMPT_RT_FULL=y \
