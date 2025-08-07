@@ -30,3 +30,7 @@
 	path = layers/meta-cyclonedx
 	url = https://github.com/balena-os/meta-cyclonedx
 	branch = kirkstone
+[submodule "layers/meta-balena-rpi-sb"]
+	path = layers/meta-balena-rpi-sb
+	url = https://github.com/balena-os/meta-balena-rpi-sb.git
+	branch = master
