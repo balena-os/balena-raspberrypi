@@ -1,7 +1,6 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 SRC_URI:append = " \
-	file://cryptsetup-rpi \
 	file://kexec_pi4_fwgpio \
 "
 
@@ -18,10 +17,5 @@ do_install:append:revpi() {
 do_install:append() {
 	install -d ${D}/init.d
 
-	install -m 0755 ${WORKDIR}/cryptsetup-rpi ${D}/init.d/72-cryptsetup
-	sed -i -e "s/@@BALENA_NONENC_BOOT_LABEL@@/${BALENA_NONENC_BOOT_LABEL}/g" ${D}/init.d/72-cryptsetup
-
 	install -m 0755 ${WORKDIR}/kexec_pi4_fwgpio ${D}/init.d/73-kexec_pi4_fwgpio
 }
-
-RDEPENDS:initramfs-module-cryptsetup:append = " os-helpers-otp gnupg"
