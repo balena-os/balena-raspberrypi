@@ -55,6 +55,8 @@ jobs:
     secrets: inherit
     with:
       machine: raspberrypicm4-ioboard
+      slug: raspberrypicm4-ioboard
+      build-args: '--templates-path layers/meta-balena-raspberrypi/conf/samples'
       # worker_type defaults to testbot
       # worker_fleets defaults to balena/testbot-rig,balena/testbot-rig-partners,balena/testbot-rig-x86,balena/testbot-rig-partners-x86
       test_matrix: >
