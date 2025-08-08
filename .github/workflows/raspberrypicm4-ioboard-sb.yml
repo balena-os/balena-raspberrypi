@@ -83,7 +83,9 @@ jobs:
     if: (github.event.pull_request.head.repo.full_name == github.repository) == (github.event_name == 'pull_request')
     secrets: inherit
     with:
-      machine: raspberrypicm4-ioboard-sb
+      machine: raspberrypicm4-ioboard
+      slug: raspberrypicm4-ioboard-sb
+      build-args: '--templates-path layers/meta-balena-rpi-sb/conf/samples/raspberrypicm4-ioboard'
       # Hardcode the device repo in case this workflow is called by another workflow
       device-repo: balena-os/balena-raspberrypi
       device-repo-ref: ${{ inputs.device-repo-ref || github.ref }}
