@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.5.48+rev7
+## (2025-08-09)
+
+* add manual provisioning instructions for secure boot [Alex Gonzalez]
+
 # v6.5.48+rev6
 ## (2025-08-08)
 

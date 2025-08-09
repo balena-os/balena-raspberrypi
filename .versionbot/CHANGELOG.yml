@@ -1,4 +1,20 @@
 - commits:
+    - subject: add manual provisioning instructions for secure boot
+      hash: 93d5e3810f6486e1d56e922f9b6b3255ab77cc8f
+      body: |
+        For the time being the final locking needs to be a manual process - make
+        sure it's detailed in the documentation.
+      footer:
+        Changelog-entry: add manual provisioning instructions for secure boot
+        changelog-entry: add manual provisioning instructions for secure boot
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 6.5.48+rev7
+  title: ""
+  date: 2025-08-09T16:16:50.710Z
+- commits:
     - subject: Update balena-yocto-scripts to b3ac171bd72f031b9701c875650bf6bec908414d
       hash: a1b81fcae4b38222338f58dca5e762608c37428a
       body: Update balena-yocto-scripts
