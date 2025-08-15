@@ -1,4 +1,69 @@
 - commits:
+    - subject: Update layers/meta-balena to 1977d99e2bde7837606c3962a7f0620cb0297a95
+      hash: e32eb327fe6d699bf7f9ec4cc0f6281aded4ac02
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 1977d99e2bde7837606c3962a7f0620cb0297a95
+        changelog-entry: Update layers/meta-balena to 1977d99e2bde7837606c3962a7f0620cb0297a95
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "wpa_supplicant: Enable SAE to support WPA3 personal"
+              hash: f293e606129ba9f9f9a67ce0cd1cad208973bd8d
+              body: >
+                At this moment we completely lack WPA3 support in
+                wpa_supplicant.
+
+                Mixed WPA2/WPA3 networks will sometimes fall back to WPA2 and
+                sometimes
+
+                won't work. WPA3-only networks never work.
+
+
+                This patch enables SAE in the config, which should allow
+                networks
+
+                secured with WPA3 personal to work.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-6.5.50
+          title: ""
+          date: 2025-08-13T13:41:27.493Z
+        - commits:
+            - subject: "kernel-balena.bbclass: Remove references to disabling
+                CONFIG_RTL8192CU"
+              hash: 341e9982c25cf7ef902e3a93eb28f5bead090605
+              body: >
+                This commit is a continuation of
+                e3b7a1555542e6b1381f1a5f7131b935d1f66f22
+
+
+                Devices that need a driver for RTL8192 based chipsets should
+                enable the
+
+                in-tree CONFIG_RTL8192CU kernel driver which should be stable in
+                newer
+
+                kernel releases.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-6.5.49
+          title: ""
+          date: 2025-08-11T15:09:39.184Z
+  version: 6.5.50
+  title: ""
+  date: 2025-08-15T10:20:25.329Z
+- commits:
     - subject: Update layers/poky to 81ab000fa437ca04f584a3327b076f7a512dc6d0
       hash: 50a22bc47c8da352aeadd390aeb1c1df364efbf1
       body: Update layers/poky

@@ -1,6 +1,26 @@
 Change log
 -----------
 
+# v6.5.50
+## (2025-08-15)
+
+
+<details>
+<summary> Update layers/meta-balena to 1977d99e2bde7837606c3962a7f0620cb0297a95 [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.5.50
+> ### (2025-08-13)
+> 
+> * wpa_supplicant: Enable SAE to support WPA3 personal [Michal Toman]
+> 
+> ## meta-balena-6.5.49
+> ### (2025-08-11)
+> 
+> * kernel-balena.bbclass: Remove references to disabling CONFIG_RTL8192CU [Florin Sarbu]
+> 
+
+</details>
+
 # v6.5.48+rev10
 ## (2025-08-11)
 
