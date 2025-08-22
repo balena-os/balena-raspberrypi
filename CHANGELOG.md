@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.5.50+rev1
+## (2025-08-22)
+
+* Default to wifi firmware with WPA3 support [Michal Toman]
+
 # v6.5.50
 ## (2025-08-15)
 

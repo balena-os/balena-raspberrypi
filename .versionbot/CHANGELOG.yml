@@ -1,4 +1,24 @@
 - commits:
+    - subject: Default to wifi firmware with WPA3 support
+      hash: c0632f45a9b8f936e1edd47baefe191357ceb765
+      body: |
+        At this moment we're defaulting to the minimal variant
+        of the cyfmac43455-sdio firmware on all devices except Pi5. We inherit
+        this from upstream, who switched to minimal in Jan 2025.
+
+        This patch makes all the devices ship default to the full variant,
+        which makes it possible to connect to WPA3 networks.
+      footer:
+        Changelog-entry: Default to wifi firmware with WPA3 support
+        changelog-entry: Default to wifi firmware with WPA3 support
+        Signed-off-by: Michal Toman <michalt@balena.io>
+        signed-off-by: Michal Toman <michalt@balena.io>
+      author: Michal Toman
+      nested: []
+  version: 6.5.50+rev1
+  title: ""
+  date: 2025-08-22T12:15:38.532Z
+- commits:
     - subject: Update layers/meta-balena to 1977d99e2bde7837606c3962a7f0620cb0297a95
       hash: e32eb327fe6d699bf7f9ec4cc0f6281aded4ac02
       body: Update layers/meta-balena
