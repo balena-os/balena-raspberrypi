@@ -1,4 +1,175 @@
 - commits:
+    - subject: Update balena-yocto-scripts to db2ff5e0c3c5fa09ea62a166365ea1fe9e946c7a
+      hash: 8b5d3d41230ec7cc6d414a0acf22c7abaa53de05
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to db2ff5e0c3c5fa09ea62a166365ea1fe9e946c7a
+        changelog-entry: Update balena-yocto-scripts to db2ff5e0c3c5fa09ea62a166365ea1fe9e946c7a
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Update aws/aws-cli to v2.28.16
+              hash: 4cb24e51447699fdb0932838d97b546c55c81b9a
+              body: |
+                Update aws/aws-cli from 2.28.13 to 2.28.16
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.38.4
+          title: ""
+          date: 2025-08-22T22:44:36.551Z
+        - commits:
+            - subject: Update aws/aws-cli to v2.28.13
+              hash: c78c7654ee815ff272a5066d17f0186881373377
+              body: |
+                Update aws/aws-cli from 2.28.10 to 2.28.13
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.38.3
+          title: ""
+          date: 2025-08-20T00:09:50.856Z
+        - commits:
+            - subject: Update actions/checkout action to v5
+              hash: c41ce053758486bc175b1ce024dae9157d1788d0
+              body: |
+                Update actions/checkout from 4.3.0 to 5.0.0
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.38.2
+          title: ""
+          date: 2025-08-19T00:45:29.248Z
+        - commits:
+            - subject: Update balena-io/balena-cli to v22.2.4
+              hash: 275c8114c340817ce3c2c70c89fcb3b21291396d
+              body: |
+                Update balena-io/balena-cli from 22.2.2 to 22.2.4
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.38.1
+          title: ""
+          date: 2025-08-18T21:00:05.077Z
+        - commits:
+            - subject: Split testing artifacts into individual files
+              hash: d682869435a2cc53bad572a8d11075d221c45cdc
+              body: >
+                This allows downstream jobs to only download the files
+
+                they need, and one at a time, avoiding issues with large
+                artifact
+
+                download timeouts.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.38.0
+          title: ""
+          date: 2025-08-18T14:55:33.762Z
+        - commits:
+            - subject: "barys: default to highest priority layers for template paths"
+              hash: ed52c9ec2bf0e3727e019103abc272bfaf806eb4
+              body: >
+                When different layers contains template files and no
+                --template-path is
+
+                provided, use the highest priority layer.
+
+
+                This provides a default which is better for automation.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.37.20
+          title: ""
+          date: 2025-08-18T09:22:08.388Z
+        - commits:
+            - subject: Update aws/aws-cli to v2.28.10
+              hash: 8e9a895cc872412a10e7200ca3f14f2826be1219
+              body: |
+                Update aws/aws-cli from 2.28.9 to 2.28.10
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.37.19
+          title: ""
+          date: 2025-08-15T00:59:10.590Z
+        - commits:
+            - subject: Update balena-io-examples/setup-balena-action action to v0.0.30
+              hash: f83d638fae1e39707ff61567e835bc02050b564c
+              body: >
+                Update balena-io-examples/setup-balena-action from 0.0.29 to
+                0.0.30
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.37.18
+          title: ""
+          date: 2025-08-14T08:45:42.371Z
+        - commits:
+            - subject: Update actions/checkout action to v4.3.0
+              hash: 13bdb912569170330feea3777b836e32717b0280
+              body: |
+                Update actions/checkout from 4.2.2 to 4.3.0
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.37.17
+          title: ""
+          date: 2025-08-14T06:02:35.100Z
+        - commits:
+            - subject: Update aws/aws-cli to v2.28.9
+              hash: 93bfae4c0bba5cb587575da487ddf84a816cad0b
+              body: |
+                Update aws/aws-cli from 2.28.3 to 2.28.9
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.37.16
+          title: ""
+          date: 2025-08-13T23:41:13.391Z
+        - commits:
+            - subject: Update actions/create-github-app-token action to v2.1.1
+              hash: e6b681e61043c747cdc573b7df1d6b023324424c
+              body: |
+                Update actions/create-github-app-token from 2.0.6 to 2.1.1
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.37.15
+          title: ""
+          date: 2025-08-11T19:42:57.724Z
+  version: 6.5.50+rev2
+  title: ""
+  date: 2025-08-23T18:49:22.451Z
+- commits:
     - subject: Default to wifi firmware with WPA3 support
       hash: c0632f45a9b8f936e1edd47baefe191357ceb765
       body: |
