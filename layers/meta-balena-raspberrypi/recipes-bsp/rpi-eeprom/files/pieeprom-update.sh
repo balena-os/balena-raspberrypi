@@ -19,6 +19,13 @@ CURR_IMG_PATH=/tmp
 NEW_IMG_PATH=/mnt/boot
 SPI_SPEED=16000
 
+# CM4, Pi4, CM4-S, Pi400 require to disable the analog audio driver which
+# shares the GPIO pins used by the bootloader EEPROM.
+check_audio_toggle() {
+    grep -qE 'bcm2711' < /proc/device-tree/compatible || return 0
+    return 1
+}
+
 spi_bind() {
     command="${1}"
     case $command in
@@ -49,7 +56,10 @@ fi
 spi_bind unbind
 
 /usr/bin/vcmailbox 0x00030056 4 4 0 > /dev/null || true
-/usr/bin/dtparam -d /mnt/boot/overlays/ audio=off
+if ! check_audio_toggle; then
+    warn "Audio driver is enabled, disabling it to update the SPI EEPROM firmware"
+    /usr/bin/dtparam -d /mnt/boot/overlays/ audio=off
+fi
 /usr/bin/dtoverlay -d /mnt/boot/overlays/ spi-gpio40-45
 
 spi_bind bind
@@ -71,7 +81,10 @@ rm ${CURR_IMG_PATH}/$CURR_IMG
 spi_bind unbind
 
 /usr/bin/dtparam -d /mnt/boot/overlays/ -R spi-gpio40-45
-/usr/bin/dtparam -d /mnt/boot/overlays/ audio=on
+if ! check_audio_toggle; then
+    warn "Re-enabling audio driver"
+    /usr/bin/dtparam -d /mnt/boot/overlays/ audio=on
+fi
 /usr/bin/vcmailbox 0x00030056 4 4 1 > /dev/null || true
 
 spi_bind bind
