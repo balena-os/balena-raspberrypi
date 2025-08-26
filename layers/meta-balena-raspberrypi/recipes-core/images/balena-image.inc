@@ -33,6 +33,11 @@ IMAGE_OVERHEAD_FACTOR:revpi-connect-4 ?= "1.0"
 IMAGE_ROOTFS_EXTRA_SPACE:revpi-connect-4 ?= "53248"
 IMAGE_ROOTFS_MAXSIZE:revpi-connect-4 ?= "372736"
 
+IMAGE_ROOTFS_SIZE:revpi-core-se ?= "319488"
+IMAGE_OVERHEAD_FACTOR:revpi-core-se ?= "1.0"
+IMAGE_ROOTFS_EXTRA_SPACE:revpi-core-se ?= "53248"
+IMAGE_ROOTFS_MAXSIZE:revpi-core-se ?= "372736"
+
 # Customize balenaos-img
 BALENA_IMAGE_BOOTLOADER:rpi = "rpi-bootfiles"
 BALENA_BOOT_PARTITION_FILES:rpi = " \
@@ -76,6 +81,8 @@ BALENA_BOOT_PARTITION_FILES:append:raspberrypi5 = " \
     "
 
 BALENA_BOOT_PARTITION_FILES:append:revpi-core-3 = " revpi-core-dt-blob-overlay.dtb:/dt-blob.bin"
+
+BALENA_BOOT_PARTITION_FILES:append:revpi-core-se = " revpi-core-dt-blob-overlay.dtb:/dt-blob.bin"
 
 BALENA_BOOT_PARTITION_FILES:append:revpi-connect = " revpi-connect-dt-blob-overlay.dtb:/dt-blob.bin"
 
