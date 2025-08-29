@@ -35,6 +35,42 @@ on:
         required: false
         type: string
         default: ''
+  # Allow this workflow to be called by other workflows
+  workflow_call:
+    inputs:
+      deploy-environment:
+        description: Environment to use for build and deploy
+        required: false
+        type: string
+        default: balena-staging.com
+      meta-balena-ref:
+        description: meta-balena ref if not the currently pinned version
+        required: false
+        type: string
+        default: ''
+      device-repo-ref:
+        description: device-repo ref if not the currently pinned version
+        required: false
+        type: string
+        default: master
+      test_matrix:
+        description: "JSON Leviathan test matrix to use for testing. No tests will be run if not provided."
+        required: false
+        type: string
+        # Use a string with an empty JSON object as the default so it evaluates to "truthy" when no test_matrix is defined in a caller workflow
+        # For PR tiggered workflows, test_matrix isn't a defined input - so the workflow will default to the test matrix defined in the "env"
+        default: '{}'
+
+# worker_type defaults to testbot
+# worker_fleets defaults to balena/testbot-rig,balena/testbot-rig-partners,balena/testbot-rig-x86,balena/testbot-rig-partners-x86
+env:
+  test_matrix: >
+    {
+      "test_suite": ["os","cloud","hup"],
+      "environment": ["bm.balena-dev.com"],
+      "runs_on": [["ubuntu-latest"]],
+      "worker_type": ["testbot"]
+    }
 
 permissions:
   id-token: write # This is required for requesting the JWT #https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services#requesting-the-access-token
@@ -44,9 +80,23 @@ permissions:
   contents: read
 
 jobs:
+  get_inputs:
+    name: Get inputs
+    runs-on: ubuntu-latest
+    # Prevent duplicate workflow executions for pull_request (PR) and pull_request_target (PRT) events.
+    # Both PR and PRT will be triggered for the same pull request, whether it is internal or from a fork.
+    # This condition will prevent the workflow from running twice for the same pull request while
+    # still allowing it to run for all other event types.
+    if: (github.event.pull_request.head.repo.full_name == github.repository) == (github.event_name == 'pull_request')
+    outputs:
+      test_matrix: ${{ inputs.test_matrix || env.test_matrix }} 
+    steps:
+      - run: echo "Hello World!" 
+
   yocto:
     name: Yocto
     uses: balena-os/balena-yocto-scripts/.github/workflows/yocto-build-deploy.yml@b8c1a165f7c1206d9f22a39dafc9d668cf57a05b
+    needs: get_inputs
     # Prevent duplicate workflow executions for pull_request (PR) and pull_request_target (PRT) events.
     # Both PR and PRT will be triggered for the same pull request, whether it is internal or from a fork.
     # This condition will prevent the workflow from running twice for the same pull request while
@@ -55,14 +105,9 @@ jobs:
     secrets: inherit
     with:
       machine: raspberrypi0-2w-64
-      # worker_type defaults to testbot
-      # worker_fleets defaults to balena/testbot-rig,balena/testbot-rig-partners,balena/testbot-rig-x86,balena/testbot-rig-partners-x86
-      test_matrix: >
-        {
-          "test_suite": ["os","cloud","hup"],
-          "environment": ["bm.balena-dev.com"],
-          "runs_on": [["ubuntu-latest"]]
-        }
+      device-repo: balena-os/balena-raspberrypi
+      device-repo-ref: ${{ inputs.device-repo-ref || github.ref }}
+      test_matrix: ${{ needs.get_inputs.outputs.test_matrix }}
       # Allow manual workflow runs to force finalize without checking previous test runs
       force-finalize: ${{ inputs.force-finalize || false }}
       # Default to balena-staging.com for workflow dispatch, but balena-cloud.com for other events
