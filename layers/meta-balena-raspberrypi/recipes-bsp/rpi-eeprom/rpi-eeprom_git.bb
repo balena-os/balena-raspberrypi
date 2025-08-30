@@ -2,7 +2,7 @@ SUMMARY = "Installation scripts and binaries for the Raspberry Pi 4 EEPROM"
 DESCRIPTION = "This repository contains the rpi4 bootloader and scripts \
 for updating it in the spi eeprom"
 LICENSE = "BSD-3-Clause & Broadcom-RPi"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=449418bd5e2b674b51a36c78f3f85a01"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=a6c5149578a16272119f3f9c13d6549b"
 
 SRC_URI = " \
     git://github.com/raspberrypi/rpi-eeprom.git;protocol=https;branch=master \
@@ -15,14 +15,15 @@ SRC_URI += " \
     file://default-config.txt \
 "
 
-SRCREV = "e430a41e7323a1e28fb42b53cf79e5ba9b5ee975"
-PV = "v2024.06.05-2712"
+SRCREV = "b08dff7e46329af656ea93bb8ab504a68c39322d"
+PV = "v2025.05.08-2712"
 
 # We use the latest stable version
 # which is available in "stable"
-LATEST_STABLE_PIEEPROM_FW:raspberrypi4-64 = "2024-05-17"
+LATEST_STABLE_PIEEPROM_FW = "2025-05-08"
 VL805_FW_REV = "000138a1"
 FIRMWARE:raspberrypi4-64 = "firmware-2711"
+FIRMWARE:raspberrypi5 = "firmware-2712"
 
 S = "${WORKDIR}/git"
 
@@ -31,7 +32,6 @@ inherit deploy python3native sign-rsa
 S = "${WORKDIR}/git"
 
 RDEPENDS:${PN} = "dtc flashrom userlandtools"
-DEPENDS += "${@oe.utils.conditional('SIGN_API','','',' usbboot-native',d)}"
 
 # default-config.txt contains the default options
 # for this fw release, and provides a way for altering
@@ -52,52 +52,11 @@ do_compile() {
         fi
     fi
 
-    if [ "x${SIGN_API}" != "x" ]; then
-        # Make sure the firmware is secure boot capable
-        BOOTLOADER_SECURE_BOOT_MIN_VERSION=1632136573
-        update_version=$(strings "${WORKDIR}/${src_eeprom_bin}" | grep BUILD_TIMESTAMP | sed 's/.*=//g')
-        if [ "${BOOTLOADER_SECURE_BOOT_MIN_VERSION}" -gt "${update_version}" ]; then
-            bbfatal "Bootloader is not secure boot capable"
-        fi
-
-        # Configure for secure boot
-        if grep -q "SIGNED_BOOT=" "${boot_conf}"; then
-            sed -i 's/SIGNED_BOOT=.*/SIGNED_BOOT=1/g' "${boot_conf}"
-        else
-            echo "SIGNED_BOOT=1" >> "${boot_conf}"
-        fi
-
-        # Configure for self-update so that the EEPROM can be updated in secure boot mode
-        if grep -q "ENABLE_SELF_UPDATE=" "${boot_conf}"; then
-            sed -i 's/ENABLE_SELF_UPDATE=.*/ENABLE_SELF_UPDATE=1/g' "${boot_conf}"
-        else
-            echo "ENABLE_SELF_UPDATE=1" >> "${boot_conf}"
-        fi
-
-        # Sign the configuratin file
-        do_sign_rsa "${boot_conf}" "${boot_conf}.sig"
-
-        # Merge the configuration file into the firmware
-        ${PYTHON} "${WORKDIR}/rpi-eeprom-config" --config "${boot_conf}" --digest "${boot_conf}.sig" \
-              --out "${WORKDIR}/${tgt_eeprom_bin}" --pubkey "${DEPLOY_DIR_IMAGE}/balena-keys/rsa.pem" "${WORKDIR}/${src_eeprom_bin}"
-
-        # Sign the firmware
-        do_sign_rsa "${WORKDIR}/${tgt_eeprom_bin}" "${WORKDIR}/${tgt_eeprom_bin%.bin}.sig"
-    else
+    if [ "x${SIGN_API}" = "x" ]; then
         ${PYTHON} "${WORKDIR}/rpi-eeprom-config" --config "${boot_conf}" \
               --out "${WORKDIR}/${tgt_eeprom_bin}" "${WORKDIR}/${src_eeprom_bin}"
     fi
 }
-do_compile[network] = "1"
-do_compile[depends] += " \
-    curl-native:do_populate_sysroot \
-    jq-native:do_populate_sysroot \
-    ca-certificates-native:do_populate_sysroot \
-    coreutils-native:do_populate_sysroot \
-    python3-pycryptodomex-native:do_populate_sysroot \
-    balena-keys:do_deploy \
-"
-do_compile[vardeps] = "SIGN_API"
 
 do_install() {
   install -d ${D}${libexecdir}
@@ -117,17 +76,6 @@ do_deploy () {
     if [ -f "${S}/${FIRMWARE}/critical/vl805-${VL805_FW_REV}.bin" ]; then
         cp ${S}/${FIRMWARE}/critical/vl805-${VL805_FW_REV}.bin ${DEPLOY_DIR_IMAGE}/${PN}/vl805-latest-stable.bin
     fi
-    if [ "x${SIGN_API}" != "x" ]; then
-        install -d ${DEPLOY_DIR_IMAGE}/rpi-eeprom/secure-boot-lock
-        cp -avL ${S}/${FIRMWARE}/stable/recovery.bin ${DEPLOY_DIR_IMAGE}/rpi-eeprom/secure-boot-lock/bootcode4.bin
-        echo "uart_2ndstage=1" > ${DEPLOY_DIR_IMAGE}/rpi-eeprom/secure-boot-lock/config.txt
-        echo "eeprom_write_protect=1" >> ${DEPLOY_DIR_IMAGE}/rpi-eeprom/secure-boot-lock/config.txt
-        echo "program_pubkey=1" >> ${DEPLOY_DIR_IMAGE}/rpi-eeprom/secure-boot-lock/config.txt
-        echo "revoke_devkey=1" >> ${DEPLOY_DIR_IMAGE}/rpi-eeprom/secure-boot-lock/config.txt
-        echo "program_jtag_lock=1" >> ${DEPLOY_DIR_IMAGE}/rpi-eeprom/secure-boot-lock/config.txt
-        cp -av ${WORKDIR}/pieeprom-latest-stable*bin ${DEPLOY_DIR_IMAGE}/rpi-eeprom/secure-boot-lock/pieeprom.bin
-        cp -av ${WORKDIR}/pieeprom-latest-stable*sig ${DEPLOY_DIR_IMAGE}/rpi-eeprom/secure-boot-lock/pieeprom.sig
-    fi
 }
 
 # vl805 utility is deprecated, see https://github.com/raspberrypi/rpi-eeprom/commit/fed1ca62a5752cb5a990608c8c897ce0b077600a
@@ -145,4 +93,4 @@ do_deploy[depends] += " \
 "
 
 FILES:${PN} = "${libexecdir}/pieeprom-update.sh"
-COMPATIBLE_MACHINE = "raspberrypi4-64"
+COMPATIBLE_MACHINE = "^(raspberrypi4-64|raspberrypi5)$"

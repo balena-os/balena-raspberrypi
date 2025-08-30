@@ -28,11 +28,11 @@ module.exports =
 	options: [ networkOptions.group ]
 
 	yocto:
-		machine: 'raspberrypicm4-ioboard-sb'
+		machine: 'raspberrypicm4-ioboard'
 		image: 'balena-image-flasher'
 		fstype: 'balenaos-img'
 		version: 'yocto-kirkstone'
-		deployArtifact: 'balena-image-flasher-raspberrypicm4-ioboard-sb.balenaos-img'
+		deployArtifact: 'balena-image-flasher-raspberrypicm4-ioboard.balenaos-img'
 		compressed: true
 
 	configuration:

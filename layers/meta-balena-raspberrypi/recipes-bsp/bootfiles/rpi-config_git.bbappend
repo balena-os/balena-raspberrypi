@@ -9,6 +9,9 @@ do_deploy:append() {
     if ! ${@bb.utils.contains('DISTRO_FEATURES','osdev-image','true','false',d)}; then
         echo "avoid_warnings=1" >>${DEPLOYDIR}/bootfiles/config.txt
     fi
+}
+
+do_deploy:append:raspberrypi4-64() {
     # Enable audio (loads snd_bcm2835)
     echo "dtparam=audio=on" >> ${DEPLOYDIR}/bootfiles/config.txt
 }
@@ -41,12 +44,6 @@ do_deploy:append:revpi-connect-4() {
 	# RevPi Connect 4 can have issues connecting to wifi AP's when using the default PCB antenna - configure to use external - even if no external
 	# antenna is connected, the pigtail still provides improvement
 	echo "dtparam=ant2" >> ${DEPLOYDIR}/bootfiles/config.txt
-}
-
-do_deploy:append:raspberrypicm4-ioboard-sb() {
-    echo "dtoverlay=dwc2,dr_mode=host" >> ${DEPLOYDIR}/bootfiles/config.txt
-    # Remap audio pins to free GPIOs 40/41 for SPI0 EEPROM programming
-    echo "dtoverlay=audremap" >> ${DEPLOYDIR}/bootfiles/config.txt
 }
 
 do_deploy:append:raspberrypi3-unipi-neuron() {
