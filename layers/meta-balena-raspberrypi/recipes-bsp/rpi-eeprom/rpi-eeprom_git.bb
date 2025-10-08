@@ -2,7 +2,7 @@ SUMMARY = "Installation scripts and binaries for the Raspberry Pi 4 EEPROM"
 DESCRIPTION = "This repository contains the rpi4 bootloader and scripts \
 for updating it in the spi eeprom"
 LICENSE = "BSD-3-Clause & Broadcom-RPi"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=449418bd5e2b674b51a36c78f3f85a01"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=a6c5149578a16272119f3f9c13d6549b"
 
 SRC_URI = " \
     git://github.com/raspberrypi/rpi-eeprom.git;protocol=https;branch=master \
@@ -15,13 +15,13 @@ SRC_URI += " \
     file://default-config.txt \
 "
 
-SRCREV = "e430a41e7323a1e28fb42b53cf79e5ba9b5ee975"
-PV = "v2024.06.05-2712"
+SRCREV = "1793f5c4baa091941a8f85db756f6035c743ee5a"
+PV = "20250821+git${SRCPV}"
 
 # We use the latest stable version
 # which is available in "stable"
-LATEST_STABLE_PIEEPROM_FW:raspberrypi4-64 = "2024-05-17"
-VL805_FW_REV = "000138a1"
+LATEST_STABLE_PIEEPROM_FW:raspberrypi4-64 = "2025-08-20"
+VL805_FW_REV = "000138c0"
 FIRMWARE:raspberrypi4-64 = "firmware-2711"
 
 S = "${WORKDIR}/git"
