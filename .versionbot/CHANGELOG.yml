@@ -1,4 +1,29 @@
 - commits:
+    - subject: update RPI4/CM4 GPU/bootloader to latest version
+      hash: 6b1b7bfb28b3dbadc90b76af7d52d2a07ae52296
+      body: |
+        Update the RPI4/CM4 bootloader/GPU firmware to the latest version.
+      footer:
+        Changelog-entry: update RPI4/CM4 GPU/bootloader to latest version
+        changelog-entry: update RPI4/CM4 GPU/bootloader to latest version
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: update RPI4/CM4 firmware to latest version
+      hash: 4dcc6ca5ac1d4b5e1aa9669ed0d479371925af04
+      body: ""
+      footer:
+        Changelog-entry: update RPI4/CM4 firmware to latest version
+        changelog-entry: update RPI4/CM4 firmware to latest version
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 6.5.50+rev3
+  title: ""
+  date: 2025-10-16T12:34:44.059Z
+- commits:
     - subject: Update balena-yocto-scripts to db2ff5e0c3c5fa09ea62a166365ea1fe9e946c7a
       hash: 8b5d3d41230ec7cc6d414a0acf22c7abaa53de05
       body: Update balena-yocto-scripts

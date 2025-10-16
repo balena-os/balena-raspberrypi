@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v6.5.50+rev3
+## (2025-10-16)
+
+* update RPI4/CM4 GPU/bootloader to latest version [Alex Gonzalez]
+* update RPI4/CM4 firmware to latest version [Alex Gonzalez]
+
 # v6.5.50+rev2
 ## (2025-08-23)
 
