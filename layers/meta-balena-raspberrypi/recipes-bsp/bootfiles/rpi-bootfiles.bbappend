@@ -6,8 +6,8 @@ SRC_URI += " \
     file://fincm3-dt-blob.bin \
 "
 
-RPIFW_DATE = "20250430"
-SRCREV = "bc7f439c234e19371115e07b57c366df59cc1bc7"
+RPIFW_DATE = "20250915"
+SRCREV = "676efed1194de38975889a34276091da1f5aadd3"
 
 # The Pi0 stays on the older firmware
 # for now, due to reported issues with uart
@@ -30,7 +30,7 @@ RPIFW_S = "${WORKDIR}/raspberrypi-firmware-${SHORTREV}"
 
 SRC_URI = "${RPIFW_SRC_URI}"
 
-SRC_URI[rpifw.sha256sum] = "2c027debbef53c86c9ff9197d056d501b95f6ad214ad4db00a8a59b947574eb1"
+SRC_URI[rpifw.sha256sum] = "649c49254ed0e78b31d77ece7dadd5bd31f76a2362e2bc9a3556a0a87d6f6c0e"
 SRC_URI[rpifw-pi0.sha256sum] = "4b436f8946b139c6a1202375ef55d4848e3bcd8c1a9cb47000e06d7ecec828f7"
 SRC_URI[rpifw-revpis.sha256sum] = "be906803fe55aec321e01fe6af61f7ebca603fc193dbc6bc2e1301b7d152e11a"
 
