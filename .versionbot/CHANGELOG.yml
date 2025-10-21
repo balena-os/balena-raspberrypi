@@ -1,4 +1,19 @@
 - commits:
+    - subject: "workflows: Add workflow call trigger"
+      hash: e5af26d6a2baef3085ec2c451ad02a50cb014531
+      body: |
+        To enable workflow to be called from meta-balena
+      footer:
+        Changelog-entry: "workflows: Add workflow call trigger"
+        changelog-entry: "workflows: Add workflow call trigger"
+        Signed-off-by: Ryan Cooke<ryan@balena.io>
+        signed-off-by: Ryan Cooke<ryan@balena.io>
+      author: Ryan Cooke
+      nested: []
+  version: 6.5.50+rev5
+  title: ""
+  date: 2025-10-21T01:34:35.490Z
+- commits:
     - subject: Update balena-yocto-scripts to b8c1a165f7c1206d9f22a39dafc9d668cf57a05b
       hash: 6ee625da9d239b18293955c09e0a2d0d502501e3
       body: Update balena-yocto-scripts
