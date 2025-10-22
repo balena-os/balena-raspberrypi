@@ -18,15 +18,15 @@ CONNECTIVITY_FIRMWARES:remove:raspberrypi4-64 = " \
 "
 
 CONNECTIVITY_FIRMWARES:append:raspberrypi0-2w-64 = " \
+    linux-firmware-rpidistro-bcm43430 \
     linux-firmware-rpidistro-bcm43436 \
     linux-firmware-rpidistro-bcm43436s \
+    bluez-firmware-rpidistro-bcm43430a1-hcd \
     bluez-firmware-rpidistro-bcm43430b0-hcd \
 "
 
 CONNECTIVITY_FIRMWARES:remove:raspberrypi0-2w-64 = " \
-    linux-firmware-rpidistro-bcm43430 \
     linux-firmware-rpidistro-bcm43455 \
-    bluez-firmware-rpidistro-bcm43430a1-hcd \
     bluez-firmware-rpidistro-bcm4345c0-hcd \
 "
 
@@ -67,9 +67,7 @@ REMOVED_FOR_HUP_SPACE = " \
     linux-firmware-iwlwifi-8000c \
     linux-firmware-iwlwifi-8265 \
     linux-firmware-wl18xx \
-    linux-firmware-rpidistro-bcm43430 \
     linux-firmware-sd8887 \
-    bluez-firmware-rpidistro-bcm43430a1-hcd \
 "
 
 # Temporary make space for HUP, untill firmwares
