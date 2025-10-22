@@ -1,4 +1,25 @@
 - commits:
+    - subject: Update kernel to 6.12 on Raspberry Pi Zero 2W
+      hash: e068a98fbd0de555a461320fdaef935e9102b3df
+      body: |
+        When updating the kernel to 6.12, wifi on the Zero 2W wasn't working,
+        so we kept it at 5.15. This is because the new kernel loads
+        a different wifi firmware.
+
+        This patch adds the missing firmware and removes the kernel version
+        override, so that the Zero 2W can use the same 6.12 kernel as all
+        the other boards.
+      footer:
+        Changelog-entry: Update kernel to 6.12 on Raspberry Pi Zero 2W
+        changelog-entry: Update kernel to 6.12 on Raspberry Pi Zero 2W
+        Signed-off-by: Michal Toman <michalt@balena.io>
+        signed-off-by: Michal Toman <michalt@balena.io>
+      author: Michal Toman
+      nested: []
+  version: 6.5.50+rev6
+  title: ""
+  date: 2025-10-22T15:17:24.906Z
+- commits:
     - subject: "workflows: Add workflow call trigger"
       hash: e5af26d6a2baef3085ec2c451ad02a50cb014531
       body: |

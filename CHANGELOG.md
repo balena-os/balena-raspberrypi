@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.5.50+rev6
+## (2025-10-22)
+
+* Update kernel to 6.12 on Raspberry Pi Zero 2W [Michal Toman]
+
 # v6.5.50+rev5
 ## (2025-10-21)
 
