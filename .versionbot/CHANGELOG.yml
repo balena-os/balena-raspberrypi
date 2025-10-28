@@ -1,4 +1,25 @@
 - commits:
+    - subject: split secure boot and disk encryption support to a layer
+      hash: 6629ef3e0e0ccb8c1b79a68cf0c37b013757ade5
+      body: |
+        The deployment slug will keep being raspberrypicm4-ioboard-sb until we
+        can integrate the secure boot changes in a single image, but the machine
+        reverts to raspberrypicm4-ioboard as the hardware is the same and the
+        secure boot is just a software feature.
+
+        Aprt from the coffee file, this updates to workflows to specify a
+        templates path.
+      footer:
+        Changelog-entry: split secure boot and disk encryption support to a layer
+        changelog-entry: split secure boot and disk encryption support to a layer
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 6.5.50+rev7
+  title: ""
+  date: 2025-10-28T12:05:13.117Z
+- commits:
     - subject: Update kernel to 6.12 on Raspberry Pi Zero 2W
       hash: e068a98fbd0de555a461320fdaef935e9102b3df
       body: |

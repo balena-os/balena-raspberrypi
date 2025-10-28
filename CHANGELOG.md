@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.5.50+rev7
+## (2025-10-28)
+
+* split secure boot and disk encryption support to a layer [Alex Gonzalez]
+
 # v6.5.50+rev6
 ## (2025-10-22)
 
