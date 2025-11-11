@@ -61,3 +61,11 @@ jobs:
       deploy-environment: ${{ inputs.deploy-environment || 'balena-cloud.com' }}
       # Allow overriding the meta-balena ref for workflow dispatch events
       meta-balena-ref: ${{ inputs.meta-balena-ref || '' }}
+      # worker_type defaults to testbot
+      # worker_fleets defaults to balena/testbot-rig,balena/testbot-rig-aarch64,balena/testbot-rig-partners,balena/testbot-rig-x86,balena/testbot-rig-partners-x86
+      test_matrix: >
+        {
+          "test_suite": ["os","cloud","hup"],
+          "environment": ["balena-cloud.com"],
+          "runs_on": [["self-hosted"]]
+        }
