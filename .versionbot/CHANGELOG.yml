@@ -1,4 +1,18 @@
 - commits:
+    - subject: Enable automated tests for raspberrypi4-superhub
+      hash: 03dc3845f1c5ef98ee28f89b72cca6b278d83d2d
+      body: ""
+      footer:
+        Changelog-entry: Enable automated tests for raspberrypi4-superhub
+        changelog-entry: Enable automated tests for raspberrypi4-superhub
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 6.5.50+rev8
+  title: ""
+  date: 2025-11-13T12:32:47.804Z
+- commits:
     - subject: split secure boot and disk encryption support to a layer
       hash: 6629ef3e0e0ccb8c1b79a68cf0c37b013757ade5
       body: |

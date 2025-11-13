@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.5.50+rev8
+## (2025-11-13)
+
+* Enable automated tests for raspberrypi4-superhub [Florin Sarbu]
+
 # v6.5.50+rev7
 ## (2025-10-28)
 
