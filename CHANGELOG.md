@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.7.7+rev1
+## (2025-12-05)
+
+* recipes-bsp/rpi-u-boot-scr: Add extra firmware configuration env variable [Alexandru Costache]
+
 # v6.7.7
 ## (2025-11-19)
 

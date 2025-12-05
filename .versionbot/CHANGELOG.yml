@@ -1,4 +1,27 @@
 - commits:
+    - subject: "recipes-bsp/rpi-u-boot-scr: Add extra firmware configuration env
+        variable"
+      hash: 6e3361493c4ee022534057f9d4e042261f1173e3
+      body: |
+        ... and also the extra_os_cmdline variable, because it will be
+        used in the future.
+
+        We use a separate u-boot env var for the extra firmware search path
+        because in the future the extra_os_cmdline variable will be managed by
+        a separate configuration unit, based on a whitelist.
+      footer:
+        Changelog-entry: "recipes-bsp/rpi-u-boot-scr: Add extra firmware configuration
+          env variable"
+        changelog-entry: "recipes-bsp/rpi-u-boot-scr: Add extra firmware configuration
+          env variable"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+  version: 6.7.7+rev1
+  title: ""
+  date: 2025-12-05T12:08:23.792Z
+- commits:
     - subject: Update layers/meta-balena to 3655901b8a00af49ac09037f45f17227628eefc5
       hash: ff4f2a0bb78c3dcb20ba85626792db9a9d331fb2
       body: Update layers/meta-balena
