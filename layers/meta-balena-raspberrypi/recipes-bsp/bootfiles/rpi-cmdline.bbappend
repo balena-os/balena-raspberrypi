@@ -1,5 +1,6 @@
 # Set console accordingly to build type
 CMDLINE += " dwc_otg.lpm_enable=0 rootwait"
+CMDLINE += "${OS_KERNEL_CMDLINE}"
 
 # Add earlycon with OS_DEVELOPMENT=1
 CMDLINE:prepend:raspberrypi4-64 = " ${@bb.utils.contains('DISTRO_FEATURES','osdev-image',"earlycon=uart8250,mmio32,0xfe215040 console=tty1","",d)}"
