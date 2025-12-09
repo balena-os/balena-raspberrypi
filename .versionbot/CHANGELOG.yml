@@ -1,4 +1,23 @@
 - commits:
+    - subject: append OS kernel command line
+      hash: e70a2189af443009323428923144fef8ba57d8db
+      body: |
+        The integration layer of the raspberrypi does not use the os_cmdline
+        u-boot argument that meta-balena provides.
+
+        This commit reverts the removal of this append from
+        00a183bcb11ad70be377786b21aae66a55897aab
+      footer:
+        Changelog-entry: append OS kernel command line
+        changelog-entry: append OS kernel command line
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 6.7.7+rev2
+  title: ""
+  date: 2025-12-09T18:54:35.385Z
+- commits:
     - subject: "recipes-bsp/rpi-u-boot-scr: Add extra firmware configuration env
         variable"
       hash: 6e3361493c4ee022534057f9d4e042261f1173e3

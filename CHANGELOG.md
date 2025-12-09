@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.7.7+rev2
+## (2025-12-09)
+
+* append OS kernel command line [Alex Gonzalez]
+
 # v6.7.7+rev1
 ## (2025-12-05)
 
