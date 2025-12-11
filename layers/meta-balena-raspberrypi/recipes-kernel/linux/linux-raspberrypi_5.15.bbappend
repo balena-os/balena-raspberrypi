@@ -211,25 +211,16 @@ do_compile:append() {
     fi
 }
 
-# we need to clean up all the following RPI_KERNEL_DEVICETREE changes when we switch to a newer 6.x kernel
-RPI_KERNEL_DEVICETREE = " \
-    bcm2708-rpi-zero.dtb \
-    bcm2708-rpi-zero-w.dtb \
-    bcm2708-rpi-b.dtb \
-    bcm2708-rpi-b-rev1.dtb \
-    bcm2708-rpi-b-plus.dtb \
-    bcm2709-rpi-2-b.dtb \
-    bcm2710-rpi-2-b.dtb \
-    bcm2710-rpi-3-b.dtb \
-    bcm2710-rpi-3-b-plus.dtb \
-    bcm2710-rpi-zero-2.dtb \
-    bcm2711-rpi-4-b.dtb \
-    bcm2711-rpi-400.dtb \
-    bcm2708-rpi-cm.dtb \
-    bcm2710-rpi-cm3.dtb \
-    bcm2711-rpi-cm4.dtb \
-    bcm2711-rpi-cm4s.dtb \
-"
+# kernel 5.15 does not have the following overlays
+KERNEL_DEVICETREE:remove = "overlays/hifiberry-amp4pro.dtbo"
+KERNEL_DEVICETREE:remove = "overlays/uart0-pi5.dtbo"
+KERNEL_DEVICETREE:remove = "overlays/uart1-pi5.dtbo"
+KERNEL_DEVICETREE:remove = "overlays/uart2-pi5.dtbo"
+KERNEL_DEVICETREE:remove = "overlays/uart3-pi5.dtbo"
+KERNEL_DEVICETREE:remove = "overlays/uart4-pi5.dtbo"
+KERNEL_DEVICETREE:remove = "overlays/vc4-kms-v3d-pi5.dtbo"
+KERNEL_DEVICETREE:remove = "overlays/vc4-kms-dsi-ili9881-7inch.dtbo"
+KERNEL_DEVICETREE:remove = "overlays/bcm2712d0.dtbo"
 
 RPI_KERNEL_DEVICETREE:raspberrypi0-2w-64 = " \
     broadcom/bcm2710-rpi-zero-2.dtb \
