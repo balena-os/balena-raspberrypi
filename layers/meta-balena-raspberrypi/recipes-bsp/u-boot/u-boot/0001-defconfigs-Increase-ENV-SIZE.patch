@@ -1,0 +1,143 @@
+From 9f51debf155d15213900150f02ef3ba394e63359 Mon Sep 17 00:00:00 2001
+From: Alexandru Costache <alexandru@balena.io>
+Date: Wed, 10 Dec 2025 18:23:41 +0000
+Subject: [PATCH] defconfigs: Increase ENV SIZE from 0x4000 to 0x4096
+
+A value of 4096 is not a large increase and is sufficient
+for fixing boot issues on some CM4s with u-boot
+built for production.
+
+Upstream-status: Inappropriate [configuration]
+Signed-off-by: Alexandru Costache <alexandru@balena.io>
+---
+ configs/rpi_0_w_defconfig      | 2 +-
+ configs/rpi_2_defconfig        | 2 +-
+ configs/rpi_3_32b_defconfig    | 2 +-
+ configs/rpi_3_b_plus_defconfig | 2 +-
+ configs/rpi_3_defconfig        | 2 +-
+ configs/rpi_4_32b_defconfig    | 2 +-
+ configs/rpi_4_defconfig        | 2 +-
+ configs/rpi_arm64_defconfig    | 2 +-
+ configs/rpi_defconfig          | 2 +-
+ 9 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/configs/rpi_0_w_defconfig b/configs/rpi_0_w_defconfig
+index 1c1de9c4bf..73eaa05917 100644
+--- a/configs/rpi_0_w_defconfig
++++ b/configs/rpi_0_w_defconfig
+@@ -4,7 +4,7 @@ CONFIG_ARCH_BCM283X=y
+ CONFIG_SYS_TEXT_BASE=0x00008000
+ CONFIG_TARGET_RPI_0_W=y
+ CONFIG_NR_DRAM_BANKS=1
+-CONFIG_ENV_SIZE=0x4000
++CONFIG_ENV_SIZE=0x4096
+ CONFIG_DEFAULT_DEVICE_TREE="bcm2835-rpi-zero-w"
+ CONFIG_DISTRO_DEFAULTS=y
+ CONFIG_OF_BOARD_SETUP=y
+diff --git a/configs/rpi_2_defconfig b/configs/rpi_2_defconfig
+index bde3cfec1c..b9114f05ae 100644
+--- a/configs/rpi_2_defconfig
++++ b/configs/rpi_2_defconfig
+@@ -4,7 +4,7 @@ CONFIG_ARCH_BCM283X=y
+ CONFIG_SYS_TEXT_BASE=0x00008000
+ CONFIG_TARGET_RPI_2=y
+ CONFIG_NR_DRAM_BANKS=1
+-CONFIG_ENV_SIZE=0x4000
++CONFIG_ENV_SIZE=0x4096
+ CONFIG_DEFAULT_DEVICE_TREE="bcm2836-rpi-2-b"
+ CONFIG_DISTRO_DEFAULTS=y
+ CONFIG_OF_BOARD_SETUP=y
+diff --git a/configs/rpi_3_32b_defconfig b/configs/rpi_3_32b_defconfig
+index 686fb454ef..f9af7c6d24 100644
+--- a/configs/rpi_3_32b_defconfig
++++ b/configs/rpi_3_32b_defconfig
+@@ -5,7 +5,7 @@ CONFIG_SYS_TEXT_BASE=0x00008000
+ CONFIG_TARGET_RPI_3_32B=y
+ CONFIG_SYS_MALLOC_F_LEN=0x2000
+ CONFIG_NR_DRAM_BANKS=1
+-CONFIG_ENV_SIZE=0x4000
++CONFIG_ENV_SIZE=0x4096
+ CONFIG_DEFAULT_DEVICE_TREE="bcm2837-rpi-3-b"
+ CONFIG_DISTRO_DEFAULTS=y
+ CONFIG_OF_BOARD_SETUP=y
+diff --git a/configs/rpi_3_b_plus_defconfig b/configs/rpi_3_b_plus_defconfig
+index 043665c3d1..78be61431b 100644
+--- a/configs/rpi_3_b_plus_defconfig
++++ b/configs/rpi_3_b_plus_defconfig
+@@ -5,7 +5,7 @@ CONFIG_SYS_TEXT_BASE=0x00080000
+ CONFIG_TARGET_RPI_3=y
+ CONFIG_SYS_MALLOC_F_LEN=0x2000
+ CONFIG_NR_DRAM_BANKS=1
+-CONFIG_ENV_SIZE=0x4000
++CONFIG_ENV_SIZE=0x4096
+ CONFIG_DEFAULT_DEVICE_TREE="bcm2837-rpi-3-b-plus"
+ CONFIG_DISTRO_DEFAULTS=y
+ CONFIG_OF_BOARD_SETUP=y
+diff --git a/configs/rpi_3_defconfig b/configs/rpi_3_defconfig
+index c6ba064f5f..2b8055f81e 100644
+--- a/configs/rpi_3_defconfig
++++ b/configs/rpi_3_defconfig
+@@ -5,7 +5,7 @@ CONFIG_SYS_TEXT_BASE=0x00080000
+ CONFIG_TARGET_RPI_3=y
+ CONFIG_SYS_MALLOC_F_LEN=0x2000
+ CONFIG_NR_DRAM_BANKS=1
+-CONFIG_ENV_SIZE=0x4000
++CONFIG_ENV_SIZE=0x4096
+ CONFIG_DEFAULT_DEVICE_TREE="bcm2837-rpi-3-b"
+ CONFIG_DISTRO_DEFAULTS=y
+ CONFIG_OF_BOARD_SETUP=y
+diff --git a/configs/rpi_4_32b_defconfig b/configs/rpi_4_32b_defconfig
+index b813d04639..3a9b66d423 100644
+--- a/configs/rpi_4_32b_defconfig
++++ b/configs/rpi_4_32b_defconfig
+@@ -3,7 +3,7 @@ CONFIG_ARCH_BCM283X=y
+ CONFIG_SYS_TEXT_BASE=0x00008000
+ CONFIG_TARGET_RPI_4_32B=y
+ CONFIG_SYS_MALLOC_F_LEN=0x2000
+-CONFIG_ENV_SIZE=0x4000
++CONFIG_ENV_SIZE=0x4096
+ CONFIG_DISTRO_DEFAULTS=y
+ CONFIG_OF_BOARD_SETUP=y
+ CONFIG_USE_PREBOOT=y
+diff --git a/configs/rpi_4_defconfig b/configs/rpi_4_defconfig
+index de2658ae88..9c089bc568 100644
+--- a/configs/rpi_4_defconfig
++++ b/configs/rpi_4_defconfig
+@@ -3,7 +3,7 @@ CONFIG_ARCH_BCM283X=y
+ CONFIG_SYS_TEXT_BASE=0x00080000
+ CONFIG_TARGET_RPI_4=y
+ CONFIG_SYS_MALLOC_F_LEN=0x2000
+-CONFIG_ENV_SIZE=0x4000
++CONFIG_ENV_SIZE=0x4096
+ CONFIG_DISTRO_DEFAULTS=y
+ CONFIG_OF_BOARD_SETUP=y
+ CONFIG_USE_PREBOOT=y
+diff --git a/configs/rpi_arm64_defconfig b/configs/rpi_arm64_defconfig
+index 0224ac5133..69e6a17c5b 100644
+--- a/configs/rpi_arm64_defconfig
++++ b/configs/rpi_arm64_defconfig
+@@ -3,7 +3,7 @@ CONFIG_ARCH_BCM283X=y
+ CONFIG_SYS_TEXT_BASE=0x00080000
+ CONFIG_TARGET_RPI_ARM64=y
+ CONFIG_SYS_MALLOC_F_LEN=0x2000
+-CONFIG_ENV_SIZE=0x4000
++CONFIG_ENV_SIZE=0x4096
+ CONFIG_DISTRO_DEFAULTS=y
+ CONFIG_OF_BOARD_SETUP=y
+ CONFIG_USE_PREBOOT=y
+diff --git a/configs/rpi_defconfig b/configs/rpi_defconfig
+index 560ce4cf96..195e3028b3 100644
+--- a/configs/rpi_defconfig
++++ b/configs/rpi_defconfig
+@@ -4,7 +4,7 @@ CONFIG_ARCH_BCM283X=y
+ CONFIG_SYS_TEXT_BASE=0x00008000
+ CONFIG_TARGET_RPI=y
+ CONFIG_NR_DRAM_BANKS=1
+-CONFIG_ENV_SIZE=0x4000
++CONFIG_ENV_SIZE=0x4096
+ CONFIG_DEFAULT_DEVICE_TREE="bcm2835-rpi-b"
+ CONFIG_DISTRO_DEFAULTS=y
+ CONFIG_OF_BOARD_SETUP=y
+-- 
+2.34.1
+

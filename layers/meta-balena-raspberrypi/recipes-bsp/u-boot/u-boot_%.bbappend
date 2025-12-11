@@ -18,6 +18,7 @@ RPI_PATCHES = " \
     file://0002-raspberrypi-Disable-simple-framebuffer-support.patch \
     file://0001-avoid-block-uart-write.patch \
     file://u-boot-Remove-usb-start-from-CONFIG_PREBOOT.patch \
+    file://0001-defconfigs-Increase-ENV-SIZE.patch \
 "
 
 SRC_URI += " \
