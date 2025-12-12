@@ -95,7 +95,7 @@ jobs:
 
   yocto:
     name: Yocto
-    uses: balena-os/balena-yocto-scripts/.github/workflows/yocto-build-deploy.yml@b8c1a165f7c1206d9f22a39dafc9d668cf57a05b
+    uses: balena-os/balena-yocto-scripts/.github/workflows/yocto-build-deploy.yml@8cbefeedbc99bb8a29a28e9540dee75e216b172f
     needs: get_inputs
     # Prevent duplicate workflow executions for pull_request (PR) and pull_request_target (PRT) events.
     # Both PR and PRT will be triggered for the same pull request, whether it is internal or from a fork.
