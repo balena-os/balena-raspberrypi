@@ -1,4 +1,18 @@
 - commits:
+    - subject: Update linux-raspberrypi-6.12 to latest patch
+      hash: 3c61f2bcde1e418376b6c97a07e7dbe6b492163b
+      body: ""
+      footer:
+        Changelog-entry: Update linux-raspberrypi-6.12 to latest patch
+        changelog-entry: Update linux-raspberrypi-6.12 to latest patch
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 6.9.4+rev1
+  title: ""
+  date: 2025-12-19T14:18:18.712Z
+- commits:
     - subject: Update layers/meta-balena to 2e6f430bd9727edef17e6a268e461bca3a2bdb0e
       hash: af5bea245c152f9ce24098ab3d3239b4451637be
       body: Update layers/meta-balena
