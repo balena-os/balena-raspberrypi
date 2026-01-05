@@ -34,3 +34,7 @@
 	path = layers/meta-balena-rpi-sb
 	url = https://github.com/balena-os/meta-balena-rpi-sb.git
 	branch = master
+[submodule "layers/meta-hailo"]
+	path = layers/meta-hailo
+	url = https://github.com/hailo-ai/meta-hailo.git
+	branch = hailo8-kirkstone
