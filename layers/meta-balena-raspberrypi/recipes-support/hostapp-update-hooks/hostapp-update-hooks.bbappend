@@ -8,3 +8,5 @@ HOSTAPP_HOOKS:append:raspberrypi5 = " 99-balena-bootloader"
 
 HOSTAPP_HOOKS:append:raspberrypi4-64 = " 98-pieeprom"
 RDEPENDS:${PN}:append:raspberrypi4-64 = " rpi-eeprom"
+HOSTAPP_HOOKS:append:raspberrypi5 = " 98-pieeprom"
+RDEPENDS:${PN}:append:raspberrypi5 = " rpi-eeprom"

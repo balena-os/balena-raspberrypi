@@ -106,3 +106,6 @@ BALENA_BOOT_PARTITION_FILES:append:raspberrypi4-64 = " \
     rpi-eeprom/pieeprom-latest-stable.bin:/pieeprom-latest-stable.bin \
     rpi-eeprom/vl805-latest-stable.bin:/vl805-latest-stable.bin \
 "
+BALENA_BOOT_PARTITION_FILES:append:raspberrypi5 = " \
+    rpi-eeprom/pieeprom-latest-stable.bin:/pieeprom-latest-stable.bin \
+"
