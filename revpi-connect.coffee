@@ -32,7 +32,7 @@ module.exports =
 		machine: 'revpi-connect'
 		image: 'balena-image'
 		fstype: 'balenaos-img'
-		version: 'yocto-kirkstone'
+		version: 'yocto-scarthgap'
 		deployArtifact: 'balena-image-revpi-connect.balenaos-img'
 		compressed: true
 
