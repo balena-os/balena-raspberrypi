@@ -19,4 +19,5 @@ BBLAYERS ?= " \
     ${TOPDIR}/../layers/meta-openembedded/meta-perl \
     ${TOPDIR}/../layers/meta-raspberrypi \
     ${TOPDIR}/../layers/meta-cyclonedx  \
+    ${TOPDIR}/../layers/meta-hailo/meta-hailo-accelerator \
     "
