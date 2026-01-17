@@ -1,4 +1,89 @@
 - commits:
+    - subject: Update balena-yocto-scripts to bccb2c71b193c49e3134680ac8cd2713c751dfb0
+      hash: 7dcc612630c8017e90a4fd253af16e871e9761a9
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to bccb2c71b193c49e3134680ac8cd2713c751dfb0
+        changelog-entry: Update balena-yocto-scripts to bccb2c71b193c49e3134680ac8cd2713c751dfb0
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Update balena-io/balena-cli to v23.2.30
+              hash: 3ec7b671fbd29ee24c0e18da44eb6cda16223006
+              body: |
+                Update balena-io/balena-cli from 23.2.14 to 23.2.30
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.39.14
+          title: ""
+          date: 2026-01-17T07:19:31.541Z
+        - commits:
+            - subject: Update balena-io-examples/setup-balena-action action to v0.0.95
+              hash: ac54c48161be2a87ec3c5bc70265808b35e4286e
+              body: >
+                Update balena-io-examples/setup-balena-action from 0.0.75 to
+                0.0.95
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.39.13
+          title: ""
+          date: 2026-01-17T00:46:07.058Z
+        - commits:
+            - subject: Update aws/aws-cli to v2.32.34
+              hash: 5121a18dfcfb0a23f55e35b08174c8c59c075488
+              body: |
+                Update aws/aws-cli from 2.32.25 to 2.32.34
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.39.12
+          title: ""
+          date: 2026-01-14T16:55:33.741Z
+        - commits:
+            - subject: Update actions/upload-artifact action to v6
+              hash: f29e9ca8e2677d74543a9c8f8bdb849240a3fae5
+              body: |
+                Update actions/upload-artifact from 5.0.0 to 6.0.0
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.39.11
+          title: ""
+          date: 2026-01-14T11:48:56.107Z
+        - commits:
+            - subject: "yocto-build-deploy.yml: Search for build logs only in the location
+                where they are produced"
+              hash: 41e750de0d3e3467bcb84b2e82da795873e8873d
+              body: |
+                Fixes the following error when uploading the build logs:
+
+                Error: ELOOP: too many symbolic links encountered, stat '/home/runner/_work/balena-tm3/balena-tm3/build/tmp/work/cortexa53-crypto-poky-linux/libtool-cross/2.4.7-r0/image/false'
+
+                The logs are creatd only in specific directories so there is no point in searching for them in the entire workspace
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: balena-yocto-scripts-1.39.10
+          title: ""
+          date: 2026-01-13T20:45:13.135Z
+  version: 6.9.4+rev3
+  title: ""
+  date: 2026-01-17T17:26:34.974Z
+- commits:
     - subject: Update balena-yocto-scripts to bf41c3ab59edafcb639f490752f7008d8a2d3c0d
       hash: b4d012a58b5208328ebc98c8d8644d2b2f211cf9
       body: Update balena-yocto-scripts
