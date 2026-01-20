@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.9.4+rev5
+## (2026-01-20)
+
+* Update layers/meta-balena-rpi-sb to 52d4a5096849c20f0aa5b7ebf362ab9fde781bde [balena-renovate[bot]]
+
 # v6.9.4+rev4
 ## (2026-01-19)
 

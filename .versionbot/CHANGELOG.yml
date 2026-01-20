@@ -1,4 +1,19 @@
 - commits:
+    - subject: Update layers/meta-balena-rpi-sb to
+        52d4a5096849c20f0aa5b7ebf362ab9fde781bde
+      hash: 0a8724d677b3e110a7dff089ab134390615a8bd8
+      body: Update layers/meta-balena-rpi-sb
+      footer:
+        Changelog-entry: Update layers/meta-balena-rpi-sb to
+          52d4a5096849c20f0aa5b7ebf362ab9fde781bde
+        changelog-entry: Update layers/meta-balena-rpi-sb to
+          52d4a5096849c20f0aa5b7ebf362ab9fde781bde
+      author: balena-renovate[bot]
+      nested: []
+  version: 6.9.4+rev5
+  title: ""
+  date: 2026-01-20T12:52:45.232Z
+- commits:
     - subject: Update balena-yocto-scripts to cd15ea0a40c052c6afd138282fb3971d7da9ff08
       hash: c3c7483b184aa8ee1d5e478067584390e9b2d9db
       body: Update balena-yocto-scripts
