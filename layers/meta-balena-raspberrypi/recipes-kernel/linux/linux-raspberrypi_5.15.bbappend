@@ -36,6 +36,10 @@ SRC_URI:append:raspberrypi3-unipi-neuron = " \
 	file://0001-pi3neuron-disable-gccplugins.patch \
 "
 
+SRC_URI:append:raspberrypicm4-ioboard = " \
+	file://0001-Add-serial-RTS-control-gpio.patch \
+"
+
 BALENA_CONFIGS:append = " fbtft"
 BALENA_CONFIGS[fbtft] = " \
     CONFIG_STAGING=y \
