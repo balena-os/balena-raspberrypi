@@ -46,7 +46,6 @@ REMOVED_FOR_HUP_SPACE = " \
     linux-firmware-rtl8821 \
     linux-firmware-rtl8723b-bt \
     linux-firmware-ralink-nic \
-    linux-firmware-ath9k \
     linux-firmware-rtl8192cu \
     linux-firmware-rtl8192su \
     linux-firmware-bcm43143 \
