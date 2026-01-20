@@ -51,3 +51,10 @@ BALENA_CONFIGS:append = " rtl8192"
 BALENA_CONFIGS[rtl8192] = " \
     CONFIG_RTL8192CU=m \
 "
+
+# requested by customer in issue number 453
+RESIN_CONFIGS_append = " rpivid"
+
+RESIN_CONFIGS[rpivid] = " \
+    CONFIG_RPIVID_MEM=m \
+"
