@@ -70,6 +70,10 @@ REMOVED_FOR_HUP_SPACE = " \
     linux-firmware-sd8887 \
 "
 
+CONNECTIVITY_MODULES =+ " \
+        rtl8812au \
+"
+
 # Temporary make space for HUP, untill firmwares
 # are provided by hostapp-extensions
 CONNECTIVITY_FIRMWARES:remove:raspberrypi400-64 = "${REMOVED_FOR_HUP_SPACE}"
