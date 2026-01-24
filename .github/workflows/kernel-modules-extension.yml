@@ -17,7 +17,7 @@ on:
       deploy-environment:
         required: false
         type: string
-        default: balena-cloud.com
+        default: balena-staging.com
     secrets:
       BALENA_API_DEPLOY_KEY:
         description: balena API key for the deploy environment
@@ -39,7 +39,7 @@ on:
         description: 'Deploy environment'
         required: false
         type: string
-        default: balena-cloud.com
+        default: balena-staging.com
 
 env:
   SHARED_BUILD_DIR: ${{ github.workspace }}/shared
@@ -51,7 +51,7 @@ jobs:
       - self-hosted
       - X64
       - yocto
-    environment: ${{ inputs.deploy-environment || 'balena-cloud.com' }}
+    environment: ${{ inputs.deploy-environment || 'balena-staging.com' }}
 
     strategy:
       fail-fast: false
@@ -106,11 +106,11 @@ jobs:
         with:
           balena-token: ${{ secrets.BALENA_API_DEPLOY_KEY }}
         env:
-          BALENARC_BALENA_URL: ${{ inputs.deploy-environment || 'balena-cloud.com' }}
+          BALENARC_BALENA_URL: ${{ inputs.deploy-environment || 'balena-staging.com' }}
 
       - name: Deploy to balenaCloud
         env:
-          BALENARC_BALENA_URL: ${{ inputs.deploy-environment || 'balena-cloud.com' }}
+          BALENARC_BALENA_URL: ${{ inputs.deploy-environment || 'balena-staging.com' }}
           FLEET: kernel-modules-${{ matrix.machine }}
           ORG: balena_os
         run: |
