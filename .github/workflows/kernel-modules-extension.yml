@@ -1,6 +1,10 @@
 name: Kernel Modules Extension
 
 on:
+  push:
+    branches:
+      - 'alexgg/oci-runtime-v6.12.3'
+
   workflow_call:
     inputs:
       machine:
