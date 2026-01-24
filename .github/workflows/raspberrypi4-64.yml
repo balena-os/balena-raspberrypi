@@ -35,6 +35,11 @@ on:
         required: false
         type: string
         default: ''
+      extensions:
+        description: Space-separated list of OS block extension images to include
+        required: false
+        type: string
+        default: ''
 
 permissions:
   id-token: write # This is required for requesting the JWT #https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services#requesting-the-access-token
@@ -69,3 +74,5 @@ jobs:
       deploy-environment: ${{ inputs.deploy-environment || 'balena-cloud.com' }}
       # Allow overriding the meta-balena ref for workflow dispatch events
       meta-balena-ref: ${{ inputs.meta-balena-ref || '' }}
+      # OS block extensions to include in the OS composition
+      extensions: ${{ inputs.extensions || '' }}

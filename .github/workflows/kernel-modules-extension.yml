@@ -1,0 +1,120 @@
+name: Kernel Modules Extension
+
+on:
+  workflow_call:
+    inputs:
+      machine:
+        required: true
+        type: string
+      os-version:
+        required: true
+        type: string
+      deploy-environment:
+        required: false
+        type: string
+        default: balena-cloud.com
+    secrets:
+      BALENA_API_DEPLOY_KEY:
+        description: balena API key for the deploy environment
+        required: false
+
+  workflow_dispatch:
+    inputs:
+      machine:
+        description: 'Device type'
+        required: true
+        type: choice
+        options:
+          - raspberrypi4-64
+      os-version:
+        description: 'OS version tag'
+        required: true
+        type: string
+      deploy-environment:
+        description: 'Deploy environment'
+        required: false
+        type: string
+        default: balena-cloud.com
+
+env:
+  SHARED_BUILD_DIR: ${{ github.workspace }}/shared
+  SUPPORTED_MACHINES: '["raspberrypi4-64"]'
+
+jobs:
+  build-extension:
+    name: Build kernel modules extension (${{ matrix.machine }})
+    runs-on:
+      - self-hosted
+      - X64
+      - yocto
+    environment: ${{ inputs.deploy-environment || 'balena-cloud.com' }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        machine: ${{ inputs.machine && fromJSON(format('["{0}"]', inputs.machine)) || fromJSON('["raspberrypi4-64"]') }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Build kernel modules via Yocto
+        run: |
+          mkdir -p "${SHARED_BUILD_DIR}"
+
+          ./balena-yocto-scripts/build/balena-build.sh \
+            -d "${{ matrix.machine }}" \
+            -s "${SHARED_BUILD_DIR}" \
+            -i "balena-kernel-modules-block" \
+            -g "-t layers/meta-kernel-modules-block/conf/samples" \
+            | tee build.log
+
+          if ! grep -q "Build for ${{ matrix.machine }} suceeded" build.log; then
+            exit 1
+          fi
+
+      - name: Prepare deployment
+        run: |
+          mkdir -p kernel-modules-deploy/contents
+
+          # Find and extract the tarball
+          targz=$(find build/tmp/deploy/images/${{ matrix.machine }}/ -name "balena-kernel-modules-block*.tar.gz" -type l)
+          tar xf "${targz}" -C kernel-modules-deploy/contents
+
+      - name: Setup balena CLI
+        uses: balena-io-examples/setup-balena-action@v0.0.30
+        with:
+          balena-token: ${{ secrets.BALENA_API_DEPLOY_KEY }}
+        env:
+          BALENARC_BALENA_URL: ${{ inputs.deploy-environment || 'balena-cloud.com' }}
+
+      - name: Deploy to balenaCloud
+        env:
+          BALENARC_BALENA_URL: ${{ inputs.deploy-environment || 'balena-cloud.com' }}
+          FLEET: kernel-modules-${{ matrix.machine }}
+          ORG: balena_os
+        run: |
+          # Create docker-compose.yml with extension labels
+          cat > kernel-modules-deploy/docker-compose.yml <<EOF
+          version: '2.4'
+          services:
+            kernel-modules:
+              build:
+                context: ./
+                dockerfile: Dockerfile
+              labels:
+                io.balena.image.store: 'data'
+                io.balena.image.class: 'overlay'
+                io.balena.image.requires-reboot: '1'
+                io.balena.image.profiles: 'kernel-modules'
+          EOF
+
+          # Create fleet if it doesn't exist
+          if ! balena fleet "${ORG}/${FLEET}" > /dev/null 2>&1; then
+            balena fleet create "${FLEET}" --type "${{ matrix.machine }}" --organization "${ORG}"
+          fi
+
+          # Deploy
+          balena deploy "${ORG}/${FLEET}" --source kernel-modules-deploy
