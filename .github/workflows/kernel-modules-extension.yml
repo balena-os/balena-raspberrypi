@@ -1,6 +1,10 @@
 name: Kernel Modules Extension
 
 on:
+  push:
+    branches:
+      - 'alexgg/os-blocks-kernel-modules'
+
   workflow_call:
     inputs:
       machine:
