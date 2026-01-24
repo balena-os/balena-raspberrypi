@@ -1,6 +1,10 @@
 name: Kernel Modules Extension
 
 on:
+  push:
+    branches:
+      - 'alexgg/oci-runtime-v6.12.3'
+
   workflow_call:
     inputs:
       machine:
@@ -59,6 +63,10 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: true
+          # Fetch tags so branch-push builds (which don't carry an
+          # inputs.os-version) can derive the label from `git describe`.
+          fetch-depth: 0
+          fetch-tags: true
 
       - name: Build kernel modules via Yocto
         run: |
@@ -125,8 +133,31 @@ jobs:
           # +rev1) without re-pull, and is GC'd at the next minor HUP commit.
           # Pipelines that need tighter pinning (signed kernel modules, strict
           # ABI guarantees) should override this to an exact match.
+          #
+          # The label is parsed by balena-extension-manager via filepath.Match
+          # (shell-style glob — "." is a literal). A malformed value like ".*"
+          # never matches any VERSION_ID and causes cleanup --stale-os to
+          # delete the running kernel's extension; guard against that here by
+          # requiring a real M.m prefix before concatenating the glob suffix.
+          #
+          # For branch-push builds (no inputs.os-version), fall back to the
+          # last reachable semver tag so dev images still get a meaningful
+          # M.m.* glob. If no tag is reachable, fall back to "*" so the image
+          # is retained on any VERSION_ID (legacy-safe).
           raw_os_version="${{ inputs.os-version }}"
-          os_version_glob="$(echo "${raw_os_version#v}" | cut -d. -f1,2).*"
+          if [[ -z "${raw_os_version}" ]]; then
+            raw_os_version="$(git describe --tags --abbrev=0 --match='v[0-9]*.[0-9]*.[0-9]*' 2>/dev/null || true)"
+            if [[ -n "${raw_os_version}" ]]; then
+              echo "inputs.os-version empty; derived from last tag: ${raw_os_version}"
+            fi
+          fi
+          stripped="${raw_os_version#v}"
+          if [[ "${stripped}" =~ ^([0-9]+)\.([0-9]+)(\.|$) ]]; then
+            os_version_glob="${BASH_REMATCH[1]}.${BASH_REMATCH[2]}.*"
+          else
+            echo "WARNING: cannot derive M.m from os-version='${raw_os_version}'; falling back to '*' (match any VERSION_ID)"
+            os_version_glob="*"
+          fi
           echo "os_version=${os_version_glob}" >> "${GITHUB_OUTPUT}"
 
       - name: Setup balena CLI
