@@ -1,4 +1,966 @@
 - commits:
+    - subject: Update layers/meta-balena to 01d4419d2bfec3463905464776e17b90dc9e417d
+      hash: b7ca1928c1e19a13c650d4ce7ce9933bcd8460aa
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 01d4419d2bfec3463905464776e17b90dc9e417d
+        changelog-entry: Update layers/meta-balena to 01d4419d2bfec3463905464776e17b90dc9e417d
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "tests: Update kernel-module-build submodule"
+              hash: 36ca85a57312b0187cd6f74fe5542017a61b7ee5
+              body: |
+                ... in the extra-firmware and secure-boot tests.
+
+                The kernel-module-build used a Ubuntu base image,
+                which no longer works for the RaspberryPi because
+                arm32v6 is no longer provided for Ubuntu base images.
+
+                Therefore we're updating the submodule to make use of
+                an Alpine base image.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-6.10.22
+          title: ""
+          date: 2026-01-27T19:02:51.427Z
+        - commits:
+            - subject: "classes/kernel-balena: Fix typo in kernel-balena.bbclass"
+              hash: 892d3d965db1a1fe02ba5e29d76a7e903570f28f
+              body: |
+                The variable allSetConfigs is not in this context and
+                it appears to be a typo. Replacing it with 'allSetKernelConfigs'
+                which appears to be the intended one.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+            - subject: Fix type allSetConfigs -> allSetKernelConfigs
+              hash: 60cdbc889156f816aee432897209f927ee339438
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Christina Ying Wang <christina@balena.io>
+                signed-off-by: Christina Ying Wang <christina@balena.io>
+              author: Christina Ying Wang
+              nested: []
+          version: meta-balena-6.10.21
+          title: ""
+          date: 2026-01-26T21:36:10.894Z
+        - commits:
+            - subject: Update actions/setup-python digest to a309ff8
+              hash: 0b7ff6146520a85ba1d3256e30ac4d76766da2d5
+              body: >
+                Update actions/setup-python to
+                a309ff8b426b58ec0e2a45f0f869d46889d02405
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: meta-balena-6.10.20
+          title: ""
+          date: 2026-01-26T08:08:03.906Z
+        - commits:
+            - subject: Further reduce the size of the balena bootloader by removing PTP clock
+                support
+              hash: 793ab6bf9a64f1a27418c301a5c920454fd75f85
+              body: >
+                This disables support for PTP clock since it's not something
+
+                I foresee us needing in the balena bootloader.
+
+
+                Additionaly, fix the actual bootloader shrinking since the
+                initial
+
+                commit which introduced this did not effectively add the
+                disabling
+
+                of these options to the .config
+              footer:
+                Changelog-entry: Further reduce the size of the balena bootloader by removing
+                  PTP clock support
+                changelog-entry: Further reduce the size of the balena bootloader by removing
+                  PTP clock support
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-6.10.19
+          title: ""
+          date: 2026-01-23T05:03:51.721Z
+        - commits:
+            - subject: "initrdscripts: export IS_ROLLBACK and ROOT_PART flags from abroot
+                script"
+              hash: 19ed842efafa473f1f6d4a39cae8ac3fccf9df64
+              body: >
+                Some device types apply additional (bootloader-level) rollback
+                hooks
+
+                when the abroot script decides to roll back. Right now they keep
+
+                a cusomized fork of the abroot script in the device repo.
+
+
+                This patch exports the ROOT_PART variable from abroot to
+                indicate
+
+                which partition we're about to boot into, as well as a new
+                IS_ROLLBACK
+
+                variable. This way all the device types should be able to use
+                the same
+
+                abroot and add hooks as separate initrd scripts ordered after
+                abroot.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: "initrdscripts: add extrafw script"
+              hash: f51d22a0f232844221badef4e793fa057d70fe1a
+              body: >
+                This enables the balena bootloader to set a custom firmware
+                search path
+
+                on the kernel command line.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+            - subject: "initrdscripts: separate mounting boot partition from abroot"
+              hash: 49a3c942b852dcc1e96b0bdfded6666c1fd7b369
+              body: >
+                Right now, abroot is the only script executed in the balena
+                bootloader
+
+                so it does everything - find the boot partition, mount it, read
+                boot
+
+                configuration, perform A/B selection, and unmount the boot
+                partition.
+
+
+                Long-term, we want to introduce other bootloader scripts that
+                read
+
+                the boot configuration and do other things, so we want to have
+
+                an "entry" script that finds and mounts the boot partition, so
+                that
+
+                the subsequently executed scripts can just use it.
+
+
+                This patch splits the abroot script into two - the mountboot
+                script
+
+                that finds and mounts the boot partition, and the abroot script,
+
+                that only performs tha A/B selection.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-6.10.18
+          title: ""
+          date: 2026-01-21T18:19:00.076Z
+        - commits:
+            - subject: Update vacuum-size to 128M to match vacuum.conf and
+                journald-balena-os.conf
+              hash: 42ac8ca0096c93c486ea29f2de4cd3bacd0460ff
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Chris Sawer <chris.sawer@demandlogic.co.uk>
+                signed-off-by: Chris Sawer <chris.sawer@demandlogic.co.uk>
+              author: Chris Sawer
+              nested: []
+          version: meta-balena-6.10.17
+          title: ""
+          date: 2026-01-21T11:49:44.917Z
+        - commits:
+            - subject: "os-helpers: safe-reboot: always sync filesystem before reboot"
+              hash: 69066785bef32cf64471f4e999d771dfd4d009fb
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-6.10.16
+          title: ""
+          date: 2026-01-20T11:56:13.550Z
+        - commits:
+            - subject: "os-helpers/os-helpers-bootloader-config: Add support for whitelisted
+                cmdline args"
+              hash: 549db4c8ead797a28243d8b99329aa17524dbdb9
+              body: >
+                ... and use grub-editenv where applicable. We also attempt to
+                save
+
+                any existing environment variables from grub_extra env if it was
+
+                created or edited with any tool other than grub-editenv.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-6.10.15
+          title: ""
+          date: 2026-01-12T10:42:48.677Z
+        - commits:
+            - subject: "initrdscripts: Unlock mutex if regenerate_uuid fails in fsuuidsinit"
+              hash: 62657c7ccdb690015405804c8d3df00fa814bd87
+              body: >
+                In commit 3f6a302bf53c6c0a609015c92ff927c7575412d9 we've
+                introduced
+
+                a mutex that prevents a race condition between the fsuuidsinit
+                script
+
+                changing FS UUIDs and udev creating the by-state symlinks. This
+                mutex
+
+                is never unlocked if the FS UUID change fails and leaks out
+
+                from the initrd into the final system, where it blocks
+
+                the 65-resin-update-state udev rule from properly executing. The
+                system
+
+                will usually somewhat come up, but fail in weird ways, e.g.
+                automounts
+
+                not working.
+
+
+                This patch unlocks the mutex on failure.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-6.10.14
+          title: ""
+          date: 2026-01-09T13:35:21.220Z
+        - commits:
+            - subject: "tests/extra-firmware: Skip post-reboot extra-firmware check for a
+                specific device"
+              hash: 7c45dfe5f71004108f8873653ae345a20a9d123e
+              body: >
+                ... on which the cboot bootloader does not have FAT support to
+                access
+
+                the extra_uEnv.txt environment file.
+
+
+                This device-type uses an old version of Jetpack 4.0 which does
+                not
+
+                have uboot / grub / UEFI EDK2 / balena-bootloader support.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-6.10.13
+          title: ""
+          date: 2026-01-08T19:53:44.644Z
+        - commits:
+            - subject: Reduce the size of the balena bootloader by removing unused
+                functionality
+              hash: e658d4b92cb1622009fc5529d573345a426ff09b
+              body: >
+                Newer meta-balena updates are failing for iot-gate-imx8plus-sb
+                with the error:
+
+                ERROR: balena-image-flasher-1.0-r0
+                do_resin_boot_dirgen_and_deploy: resin-boot: Not enough space
+                for atomic copy operations.
+
+
+                In order to have the size reduction available for all
+                balena-bootloader users we do these changes
+
+                directly here in the balena-bootloader class.
+              footer:
+                Changelog-entry: Reduce the size of the balena bootloader by removing unused
+                  functionality
+                changelog-entry: Reduce the size of the balena bootloader by removing unused
+                  functionality
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-6.10.12
+          title: ""
+          date: 2026-01-08T09:48:14.494Z
+        - commits:
+            - subject: Update balena-supervisor to v17.4.2
+              hash: 7fb52fa3483857556bababd4b5d8d2b20b13fa41
+              body: |
+                Update balena-supervisor from 17.4.1 to 17.4.2
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Parse multiple child contracts listed under an `or` clause
+                      hash: 5560744c8061bc2e008b4d5a1816fea04b611fd3
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-17.4.2
+                  title: ""
+                  date: 2026-01-06T19:34:23.699Z
+          version: meta-balena-6.10.11
+          title: ""
+          date: 2026-01-07T11:00:48.232Z
+        - commits:
+            - subject: Update balena-supervisor to v17.4.1
+              hash: bf6e8af96d18bacb0389a78536fe2d02b8ac25b6
+              body: |
+                Update balena-supervisor from 17.4.0 to 17.4.1
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: "backends: Enable configurable power modes and fan profiles for all
+                        Jetson Orin devices"
+                      hash: d7521507d10b9a5db1a15b960e2ca6f76bf41e3a
+                      body: >
+                        We do so because all Jetson Orin-based devices have been
+                        updated to
+
+                        Jetpack 6.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                        signed-off-by: Alexandru Costache <alexandru@balena.io>
+                      author: Alexandru Costache
+                      nested: []
+                  version: balena-supervisor-17.4.1
+                  title: ""
+                  date: 2026-01-05T18:32:02.308Z
+          version: meta-balena-6.10.10
+          title: ""
+          date: 2026-01-06T13:36:29.354Z
+        - commits:
+            - subject: "kernel-balena.bbclass: Enable DMA-BUF memory heaps"
+              hash: c3e207d8e8c5fa8f35c6f5e3f4ffc7962e579bd7
+              body: >
+                This is required by some external drivers (e.g. metis).
+
+
+                The configuration matches what Fedora 42 and Debian 13 have
+                enabled.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-6.10.9
+          title: ""
+          date: 2026-01-04T12:08:43.272Z
+        - commits:
+            - subject: Update tests/leviathan digest to c2b518d
+              hash: 31b602609f8ac21d41ca1e5b79774f2549485d0b
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Update Lock file maintenance
+                      hash: 0122f154f4e9e54cadfb835ca902d332964ef3f6
+                      body: |
+                        Update 
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.36.79
+                  title: ""
+                  date: 2025-12-29T01:05:55.390Z
+                - commits:
+                    - subject: Update Lock file maintenance
+                      hash: 353f2dcce89e641799309f5a8a41fc7f189fc2b7
+                      body: |
+                        Update 
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.36.78
+                  title: ""
+                  date: 2025-12-22T01:30:09.473Z
+          version: meta-balena-6.10.8
+          title: ""
+          date: 2026-01-01T11:32:30.962Z
+        - commits:
+            - subject: add extra firmware tests
+              hash: 3ae3e4c6edf0096423d367952d79e43c6469d9a8
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+                signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+              author: Yann CARDAILLAC
+              nested: []
+            - subject: "recipes-support/os-extra-firmware: Extract extra-firmware volume data
+                path"
+              hash: cc8a5cde75867e9842f8d9ca02f84f01af295300
+              body: >
+                The volume data path is currently
+                /var/lib/docker/volumes/extra-firmware/_data,
+
+                and might change in the future, so let's use the engine to
+                extract the
+
+                actual value.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru Costache
+              nested: []
+          version: meta-balena-6.10.7
+          title: ""
+          date: 2025-12-31T13:01:52.916Z
+        - commits:
+            - subject: Update balena-supervisor to v17.4.0
+              hash: f2e3318ff3ec03acb218fc154dabf3c0999fb8f8
+              body: |
+                Update balena-supervisor from 17.2.2 to 17.4.0
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Support sw.kernel version and slug requirements for container contracts
+                      hash: 768e93daf433b44f9f95b26c0c0261f2a030074e
+                      body: ""
+                      footer:
+                        See: https://balena.fibery.io/Work/Project/Add-kernel-and-OS-version-to-container-contracts-1916
+                        see: https://balena.fibery.io/Work/Project/Add-kernel-and-OS-version-to-container-contracts-1916
+                        Change-type: minor
+                        change-type: minor
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                    - subject: Support sw.os version and slug requirements for container contracts
+                      hash: 0d88a016ed54a27e17eb8e0fc2b0a54a8be4d49b
+                      body: ""
+                      footer:
+                        See: https://balena.fibery.io/Work/Project/Add-kernel-and-OS-version-to-container-contracts-1916
+                        see: https://balena.fibery.io/Work/Project/Add-kernel-and-OS-version-to-container-contracts-1916
+                        Change-type: minor
+                        change-type: minor
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-17.4.0
+                  title: ""
+                  date: 2025-12-19T20:33:21.268Z
+                - commits:
+                    - subject: Update systeminformation to v5.27.14 [SECURITY]
+                      hash: 1a8240f2038f1d7997a65caa2341703bc51533b6
+                      body: |
+                        Update systeminformation from 5.27.0 to 5.27.14
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: balena-supervisor-17.3.6
+                  title: ""
+                  date: 2025-12-18T22:28:33.551Z
+                - commits:
+                    - subject: "patch: only apply noop for download-then-kill strategy and fix
+                        integration tests"
+                      hash: be8652a548acf6975ac199f25cb2b4fa85ff5061
+                      body: ""
+                      footer: {}
+                      author: Rob Thein
+                      nested: []
+                    - subject: "patch: Fix premature locking for metadata-only changes"
+                      hash: a70ddb32ff6b00e5e2101c59533adb0a580108f0
+                      body: ""
+                      footer: {}
+                      author: Rob Thein
+                      nested: []
+                  version: balena-supervisor-17.3.5
+                  title: ""
+                  date: 2025-12-18T20:36:10.715Z
+                - commits:
+                    - subject: Update tsconfig.module to node20 and TS to 5.9.x
+                      hash: 9cb07c8e104a5b74e04b34a5ff1062ba84f0ad2b
+                      body: >
+                        This ensures that IDEs validate correctly the code in
+                        the open file
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: felipe
+                      nested: []
+                  version: balena-supervisor-17.3.4
+                  title: ""
+                  date: 2025-12-18T14:50:49.347Z
+                - commits:
+                    - subject: Log errors and warnings to stderr
+                      hash: b880e8e682351ac246e033ea32b21eddec9d02f0
+                      body: >
+                        All logs were being sent to stdout before. With this
+                        change, the
+
+                        supervisor journal logs can be filtered by priority if
+                        using the
+
+                        container id.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: felipe
+                      nested: []
+                    - subject: Revert moduleResolution to node16
+                      hash: 41a7f79c6ca07a5165d8a57d28a92700fb441804
+                      body: >
+                        `classic` nodeResolution was not working with some
+                        language servers
+
+                        during development.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: felipe
+                      nested: []
+                  version: balena-supervisor-17.3.3
+                  title: ""
+                  date: 2025-12-16T20:46:37.282Z
+                - commits:
+                    - subject: Update tsconfig targets for node22
+                      hash: 83767dce64516c4ae30d5e1449dc5807b4efd7d0
+                      body: >
+                        This matches tsconfig to the targets that node22
+                        supports and makes use
+
+                        of the native `Object.groupBy` function that typescript
+                        will now accept
+
+                        as supported and has better typings
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-17.3.2
+                  title: ""
+                  date: 2025-12-16T14:43:35.083Z
+                - commits:
+                    - subject: Remove unused direct dependency on pinejs-client-core
+                      hash: a1b2309e652b63f3e1ac4a0cdf9ff2ed81d98108
+                      body: >
+                        This also conflicts with the version
+                        pinejs-client-request depends on
+
+                        and as such could potentially cause weird interactions.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-17.3.1
+                  title: ""
+                  date: 2025-12-15T21:45:51.148Z
+                - commits:
+                    - subject: Purge extra-firmware system volume with purge action
+                      hash: b056ec6b48b8f14fb858ce9e62855f1f9fe1bf66
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                    - subject: Configure services to use extra-firmware volume if feature label
+                        present
+                      hash: a024c6d968dc8aba32d1d825415dc9393289b24c
+                      body: ""
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                    - subject: Create extra firmware volume on startup and write volume to config.json
+                      hash: 005fd1ba35a3a24b0453b977620f63584462fdaf
+                      body: ""
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                        See: https://balena.fibery.io/Work/Project/linux-firmware-updates-1840/Specification-RFC-Extra-Firmware-Volume-4254
+                        see: https://balena.fibery.io/Work/Project/linux-firmware-updates-1840/Specification-RFC-Extra-Firmware-Volume-4254
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-17.3.0
+                  title: ""
+                  date: 2025-12-15T19:47:28.986Z
+                - commits:
+                    - subject: Update lint-staged to v16
+                      hash: 904a945fe124ccc32a302b5f277074539ccf52d8
+                      body: |
+                        Update lint-staged from 15.4.3 to 16.2.7
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: balena-supervisor-17.2.5
+                  title: ""
+                  date: 2025-12-15T17:32:27.688Z
+                - commits:
+                    - subject: Update @types/sinon to v21
+                      hash: 788852b01359c5983554ccd742b7f1a9b3a5ab63
+                      body: |
+                        Update @types/sinon from 17.0.4 to 21.0.0
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: balena-supervisor-17.2.4
+                  title: ""
+                  date: 2025-12-15T16:42:40.944Z
+                - commits:
+                    - subject: Update @balena/compose to v7
+                      hash: 3bda9dc0bdfce0372b9d165d65e5f58f07bba7b6
+                      body: |
+                        Update @balena/compose from 6.0.0 to 7.2.1
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: balena-supervisor-17.2.3
+                  title: ""
+                  date: 2025-12-15T16:24:05.170Z
+          version: meta-balena-6.10.6
+          title: ""
+          date: 2025-12-24T16:46:43.015Z
+        - commits:
+            - subject: "classes/kernel-balena: Enable support for xz firmware compression"
+              hash: d6188bbc557e54989bc6307f285ab88c0a5315d2
+              body: |
+                Firmware is compressed using [xz](https://github.com/balena-os/meta-balena/blob/master/meta-balena-common/classes/balena-linux-firmware.bbclass#L64-L70) by default.
+
+                We thus we need to ensure support for firmware compressed with xz is enabled in the kernel.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                signed-off-by: Alexandru Costache <alexandru@balena.io>
+              author: Alexandru
+              nested: []
+          version: meta-balena-6.10.5
+          title: ""
+          date: 2025-12-23T15:35:30.964Z
+        - commits:
+            - subject: Update tests/leviathan digest to c80702b
+              hash: fdd04ce817ba785c1d9a0e0d25392dd31cadf39a
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Update docker/setup-buildx-action digest to 8d2750c
+                      hash: 53c1b3b7c93bd7f7f76220ce3b6cbcec88b7d342
+                      body: |
+                        Update docker/setup-buildx-action
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.36.77
+                  title: ""
+                  date: 2025-12-20T01:10:28.074Z
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.10.20
+                      hash: ceb7c8821ce44300169c59953e8f986d5ddd0452
+                      body: >
+                        Update balena-os/leviathan-worker from 2.10.18 to 2.10.20
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.36.76
+                  title: ""
+                  date: 2025-12-19T10:49:13.465Z
+                - commits:
+                    - subject: "Core: worker: enable configurable flashing timeout"
+                      hash: fb6228264bcda7fc0be5c0db4ece37ee85089b87
+                      body: >
+                        This is controlled via an env var on the worker - the
+                        worker will send back the time for the core to wait, if
+                        not the default.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Ryan Cooke <ryan@balena.io>
+                        signed-off-by: Ryan Cooke <ryan@balena.io>
+                      author: Ryan Cooke
+                      nested: []
+                  version: leviathan-2.36.75
+                  title: ""
+                  date: 2025-12-19T09:49:12.134Z
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.10.18
+                      hash: 22a8e952b4b2a38ff9218c52d5f09a97b8aed70f
+                      body: >
+                        Update balena-os/leviathan-worker from 2.10.17 to 2.10.18
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.36.74
+                  title: ""
+                  date: 2025-12-16T14:39:06.600Z
+                - commits:
+                    - subject: Update Lock file maintenance
+                      hash: 087cffba7ba15a707f558423d68bbdfec1370358
+                      body: |
+                        Update 
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.36.73
+                  title: ""
+                  date: 2025-12-15T01:04:43.814Z
+                - commits:
+                    - subject: Update actions/upload-artifact action to v6
+                      hash: 6ff3cfd5341a71f585ec5b631ef89e6777ce0fe1
+                      body: |
+                        Update actions/upload-artifact from 5 to 6
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.36.72
+                  title: ""
+                  date: 2025-12-13T02:40:01.305Z
+          version: meta-balena-6.10.4
+          title: ""
+          date: 2025-12-20T06:54:56.306Z
+        - commits:
+            - subject: remove disk watchdog logs
+              hash: 426c342e1c3ee87b752c88ef6805da093249bd51
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+                signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+              author: Yann CARDAILLAC
+              nested: []
+          version: meta-balena-6.10.3
+          title: ""
+          date: 2025-12-15T18:38:40.829Z
+        - commits:
+            - subject: Update balena-supervisor to v17.2.2
+              hash: 0d50a5c161c26f741a85aa48169328f989534a80
+              body: |
+                Update balena-supervisor from 17.2.1 to 17.2.2
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Improve issue of very early container logs potentially being dropped
+                      hash: b97dc2bba2ca7c560a88b497ce5a78e1ec77bb61
+                      body: >
+                        It is possible for logs to be received for a container
+                        before we have
+
+                        marked it for attachment and hence cause those logs to
+                        be skipped and
+
+                        never sent to the backend. Waiting for a lock before
+                        attaching makes
+
+                        this more likely to happen and is unnecessary as we are
+                        not directly
+
+                        interacting with/affecting the container and it only
+                        affects the
+
+                        journalctl tailing
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-17.2.2
+                  title: ""
+                  date: 2025-12-11T20:44:07.627Z
+          version: meta-balena-6.10.2
+          title: ""
+          date: 2025-12-13T01:27:35.362Z
+        - commits:
+            - subject: "balena-os.inc: Enable firmware compression by default"
+              hash: 67b37d3f74c4e589a195774fb15f5534dc648bae
+              body: >
+                The only requirement is kernel >= 5.3, we should default to
+                compressed
+
+                and opt-out on devices with older kernels.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-6.10.1
+          title: ""
+          date: 2025-12-11T21:36:10.715Z
+        - commits:
+            - subject: "networkmanager: update to 1.52.0"
+              hash: 2595dd8712d093d8fd4fc9166da2bfc40c77c038
+              body: >
+                This recipe is taken from meta-openembedded commit
+
+                33fec4b4f47ae5b86f274c352939437b641e7f8d with the only changes
+                being
+
+                that we removed the initd configuration which we don't use, and
+                removed
+
+                tag from the GIT URL because yocto spits an error when both tag
+
+                and SRCREV are used at the same time. Remaining tweaks are
+                handled
+
+                in bbappend.
+
+
+                Fixes #3677
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-6.10.0
+          title: ""
+          date: 2025-12-11T12:11:50.125Z
+        - commits:
+            - subject: "renovate.json: Remove custom balena-git package rules"
+              hash: 3b143a83bf6693ff42783f0c7a88107418440c12
+              body: >
+                Since 2533a1a we are no longer versioning or tagging balena
+                commits
+
+                to the engine, so this renovate package rule no longer applies.
+
+
+                Going forward, we will manually bump the commit hash unless we
+                are
+
+                moving to a new upstream tag.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-6.9.6
+          title: ""
+          date: 2025-12-11T01:33:51.039Z
+        - commits:
+            - subject: fix initramfs rootfs script wrong indent
+              hash: 4204dd9590e5bfeb740088ad2285edc67a634986
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+                signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+              author: Yann CARDAILLAC
+              nested: []
+          version: meta-balena-6.9.5
+          title: ""
+          date: 2025-12-10T18:36:27.261Z
+  version: 6.10.22
+  title: ""
+  date: 2026-01-28T17:55:14.384Z
+- commits:
     - subject: Update balena-yocto-scripts to 8dab33579c6e2fbafed0ca57735a6b0c0da40379
       hash: b397c968ac1101005d68006660ee7bc619072305
       body: Update balena-yocto-scripts
