@@ -1,6 +1,26 @@
 Change log
 -----------
 
+# v6.10.22+rev1
+## (2026-01-29)
+
+
+<details>
+<summary> Update balena-yocto-scripts to d4705f993634d478dac6b2dedcc0dad87b97f43f [balena-renovate[bot]] </summary>
+
+> ## balena-yocto-scripts-1.39.19
+> ### (2026-01-27)
+> 
+> * Update aws/aws-cli to v2.33.7 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.39.18
+> ### (2026-01-24)
+> 
+> * Update actions/checkout action to v6.0.2 [balena-renovate[bot]]
+> 
+
+</details>
+
 # v6.10.22
 ## (2026-01-28)
 
