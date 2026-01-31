@@ -1,6 +1,26 @@
 Change log
 -----------
 
+# v6.10.22+rev2
+## (2026-01-31)
+
+
+<details>
+<summary> Update balena-yocto-scripts to cc83969226e96a3d22652ba5340135b697e366bb [balena-renovate[bot]] </summary>
+
+> ## balena-yocto-scripts-1.39.21
+> ### (2026-02-01)
+> 
+> * Update docker/login-action action to v3.7.0 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.39.20
+> ### (2026-02-01)
+> 
+> * Update aws/aws-cli to v2.33.12 [balena-renovate[bot]]
+> 
+
+</details>
+
 # v6.10.22+rev1
 ## (2026-01-29)
 
