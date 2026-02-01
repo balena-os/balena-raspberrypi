@@ -1,6 +1,26 @@
 Change log
 -----------
 
+# v6.10.24
+## (2026-02-01)
+
+
+<details>
+<summary> Update layers/meta-balena to 5ceed2308a1ce8a2e453f0f2890039106c1ee7b0 [balena-renovate[bot]] </summary>
+
+> ## meta-balena-6.10.24
+> ### (Invalid date)
+> 
+> * extra firmware test fix bbb kernel module [Yann CARDAILLAC]
+> 
+> ## meta-balena-6.10.23
+> ### (2026-01-29)
+> 
+> * Revert "packagegroup-resin: Add systemd-analyze to production images as well" [Kyle Harding]
+> 
+
+</details>
+
 # v6.10.22+rev2
 ## (2026-01-31)
 
