@@ -176,6 +176,23 @@ BALENA_CONFIGS[iio_pressure_drivers] = " \
     CONFIG_BMP280=m \
 "
 
+# Enable BTF (BPF Type Format) for eBPF CO-RE programs
+# Required for Datadog Cloud Network Monitoring and other modern eBPF tools
+# Override the default no-debug-info config to enable BTF generation
+DEPENDS += "pahole-native"
+BALENA_CONFIGS:remove = "no-debug-info"
+BALENA_CONFIGS:append = " btf-debug-info"
+BALENA_CONFIGS_DEPS[btf-debug-info] = " \
+    CONFIG_BPF=y \
+    CONFIG_BPF_SYSCALL=y \
+"
+BALENA_CONFIGS[btf-debug-info] = " \
+    CONFIG_DEBUG_INFO=y \
+    CONFIG_DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT=y \
+    CONFIG_DEBUG_INFO_BTF=y \
+    CONFIG_DEBUG_INFO_BTF_MODULES=y \
+"
+
 # Fix dtbo loading on 64bits,
 # see commit 949b88bb for details
 get_cc_option () {
