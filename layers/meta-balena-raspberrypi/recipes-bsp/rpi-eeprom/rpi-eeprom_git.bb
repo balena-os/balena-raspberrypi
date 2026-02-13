@@ -37,7 +37,7 @@ RDEPENDS:${PN} = "dtc flashrom userlandtools"
 # the configuration that exists in the binary
 do_compile() {
     src_eeprom_bin="pieeprom-${LATEST_STABLE_PIEEPROM_FW}.bin"
-    tgt_eeprom_bin="pieeprom-latest-stable.bin"
+    tgt_eeprom_bin="pieeprom.upd"
     cp ${S}/rpi-eeprom-config "${WORKDIR}"
     cp "${S}/${FIRMWARE}/stable/${src_eeprom_bin}" "${WORKDIR}/"
     boot_conf="${WORKDIR}/default-config.txt"
@@ -55,6 +55,10 @@ do_compile() {
         ${PYTHON} "${WORKDIR}/rpi-eeprom-config" --config "${boot_conf}" \
               --out "${WORKDIR}/${tgt_eeprom_bin}" "${WORKDIR}/${src_eeprom_bin}"
     fi
+
+    # Generate the self-update signature file (sha256 + timestamp)
+    sha256sum "${WORKDIR}/${tgt_eeprom_bin}" | awk '{print $1}' > "${WORKDIR}/pieeprom.sig"
+    echo "ts: $(date -u +%s)" >> "${WORKDIR}/pieeprom.sig"
 }
 
 do_install() {
@@ -71,10 +75,8 @@ do_deploy () {
     fi
     mkdir ${DEPLOY_DIR_IMAGE}/rpi-eeprom/
 
-    cp ${WORKDIR}/pieeprom-latest-stable* ${DEPLOY_DIR_IMAGE}/rpi-eeprom/
-    if [ -f "${S}/${FIRMWARE}/critical/vl805-${VL805_FW_REV}.bin" ]; then
-        cp ${S}/${FIRMWARE}/critical/vl805-${VL805_FW_REV}.bin ${DEPLOY_DIR_IMAGE}/${PN}/vl805-latest-stable.bin
-    fi
+    cp ${WORKDIR}/pieeprom.upd ${DEPLOY_DIR_IMAGE}/rpi-eeprom/
+    cp ${WORKDIR}/pieeprom.sig ${DEPLOY_DIR_IMAGE}/rpi-eeprom/
 }
 
 # vl805 utility is deprecated, see https://github.com/raspberrypi/rpi-eeprom/commit/fed1ca62a5752cb5a990608c8c897ce0b077600a

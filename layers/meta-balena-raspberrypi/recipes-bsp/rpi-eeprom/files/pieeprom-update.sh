@@ -13,11 +13,16 @@ if type is_secured >/dev/null 2>&1 && is_secured; then
     exit 0
 fi
 
-NEW_IMG="${1:-pieeprom-latest-stable.bin}"
+NEW_IMG="${1:-pieeprom.upd}"
+FORCE_FLASHROM="${2:-}"
 CURR_IMG=pieeprom-current.bin.tmp
 CURR_IMG_PATH=/tmp
 NEW_IMG_PATH=/mnt/boot
 SPI_SPEED=16000
+DT_BOOTLOADER_TS="/proc/device-tree/chosen/bootloader/build-timestamp"
+# Minimum bootloader version that supports self-update (2022-04-26)
+# See https://github.com/raspberrypi/rpi-eeprom/blob/master/rpi-eeprom-update
+SELF_UPDATE_MIN_VER=1650968668
 
 # Unbind a device from a driver
 # Usage: device=$(driver_unbind <driver_path> <device_pattern>)
@@ -97,6 +102,36 @@ if [ "$(/usr/bin/vcgencmd bootloader_config | grep "FREEZE_VERSION=1" || true)" 
     exit 0
 fi
 
+# Get current bootloader version (unix timestamp)
+if [ -f "${DT_BOOTLOADER_TS}" ]; then
+    CURRENT_VERSION=$(printf "%d" "0x$(od "${DT_BOOTLOADER_TS}" -v -An -t x1 | tr -d ' ')")
+else
+    CURRENT_VERSION=$(/usr/bin/vcgencmd bootloader_version | grep timestamp | awk '{print $2}')
+fi
+if ! [ "${CURRENT_VERSION:-0}" -gt 0 ] 2>/dev/null; then
+    warn "Could not determine bootloader version, falling back to flashrom"
+    CURRENT_VERSION=0
+fi
+info "Current bootloader version: ${CURRENT_VERSION}"
+
+# Check if self-update is supported by the bootloader
+if [ -n "${FORCE_FLASHROM}" ]; then
+    info "Flashrom forced via argument, skipping self-update check"
+elif [ "${CURRENT_VERSION}" -ge "${SELF_UPDATE_MIN_VER}" ]; then
+    # Check if self-update has been explicitly disabled
+    if /usr/bin/vcgencmd bootloader_config | grep -q "ENABLE_SELF_UPDATE=0"; then
+        warn "Self-update is supported but disabled in EEPROM config (ENABLE_SELF_UPDATE=0)"
+    elif grep -q "bootloader_update=0" /mnt/boot/config.txt 2>/dev/null; then
+        warn "Self-update is supported but disabled in config.txt (bootloader_update=0)"
+    else
+        info "Bootloader supports self-update. EEPROM will be updated on next reboot if needed."
+        exit 0
+    fi
+fi
+
+info "Self-update not supported: bootloader version too old or forced update or self-update disabled"
+info "Falling back to flashrom"
+
 SPI_DEVICE=$(spi_unbind)
 if [ -z "${SPI_DEVICE}" ]; then
     fail "SPI device not found or failed to unbind, cannot proceed with EEPROM update"
@@ -129,9 +164,10 @@ if [ "$curr_eeprom_md5sum" = "$new_eeprom_md5sum" ]; then
 else
     info "Performing SPI EEPROM fw update..."
     /usr/sbin/flashrom -p "linux_spi:dev=/dev/spidev0.0,spispeed=${SPI_SPEED}" --write "${NEW_IMG_PATH}/${NEW_IMG}"
+    info "SPI EEPROM fw update successful"
 fi
 
-rm ${CURR_IMG_PATH}/$CURR_IMG
+rm ${CURR_IMG_PATH}/${CURR_IMG}
 
 SPI_DEVICE=$(spi_unbind)
 if [ -z "${SPI_DEVICE}" ]; then
