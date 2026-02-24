@@ -5,20 +5,11 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=d7810fab7487fb0aad327b76f1be7cd7"
 inherit module
 
 SRC_URI = " \
-	git://github.com/UniPiTechnology/unipi-kernel.git;protocol=https;nobranch=1 \
-	file://0001-unipi_tty-Fix-compile-on-kernel-5.10.patch \
-	file://0002-unipi_spi-use-new-structure-for-SPI-transfer-delays.patch \
-	file://0003-unipi_tty-remove-TTY_LDISC_MAGIC.patch \
-	file://0004-unipi_tty-remove-ldisc-number-in-tty_register_ldisc-.patch \
-	file://0005-unipi_tty-adapt-to-fp-of-tty_ldisc_ops-made-const.patch \
-	file://0006-unipi_spi-adapt-to-removal-of-spi_set_cs_timing.patch \
-	file://0007-rtc-unipi-Adapt-to-removal-of-nvram-ABI.patch \
-	file://0008-rtc-unipi-Add-devm-to-rtc_nvmem_register.patch \
-	file://0009-rtc-unipi-Adapt-to-rename-of-rtc_register_device.patch \
+	git://github.com/UniPiTechnology/unipi-kernel-modules.git;protocol=https;nobranch=1 \
 "
 
-# Corresponds to v1.80
-SRCREV = "4f09337d748936388e49ee7715854bf8aa3ee937"
+# Corresponds to 2.80.8
+SRCREV = "06ff9e5faa7a466e3feecbd6feefae5edb50f804"
 
 S = "${WORKDIR}/git"
 
