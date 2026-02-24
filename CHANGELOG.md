@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.10.24+rev2
+## (2026-02-24)
+
+* Update kernel to 6.12.61 and unipi-kernel-modules to version 2.80.8 for UniPi Neuron boards [Florin Sarbu]
+
 # v6.10.24+rev1
 ## (2026-02-09)
 

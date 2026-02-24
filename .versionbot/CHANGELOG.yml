@@ -1,4 +1,21 @@
 - commits:
+    - subject: Update kernel to 6.12.61 and unipi-kernel-modules to version 2.80.8 for
+        UniPi Neuron boards
+      hash: 0bfb1f6b6ca7ab9eee5728bb385ceb448a054c8b
+      body: ""
+      footer:
+        Changelog-entry: Update kernel to 6.12.61 and unipi-kernel-modules to version
+          2.80.8 for UniPi Neuron boards
+        changelog-entry: Update kernel to 6.12.61 and unipi-kernel-modules to version
+          2.80.8 for UniPi Neuron boards
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 6.10.24+rev2
+  title: ""
+  date: 2026-02-24T11:19:38.964Z
+- commits:
     - subject: Update balena-yocto-scripts to f7062da73711c2c5f2f33031d8ca1a91075e6998
       hash: 2e7e4bcf5b37dba4740f8680ca316a9a469c7522
       body: Update balena-yocto-scripts
