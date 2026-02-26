@@ -1,4 +1,73 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 2649a8d9024a2986d092dff178da9bd14c39f189
+      hash: 40c6a86fdb0c8789537d62bc609fb3b33c825d15
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 2649a8d9024a2986d092dff178da9bd14c39f189
+        changelog-entry: Update balena-yocto-scripts to 2649a8d9024a2986d092dff178da9bd14c39f189
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Update aws/aws-cli to v2.33.25
+              hash: 86a95ce38bfad52df52e4a4283abe7f4d540d1f3
+              body: |
+                Update aws/aws-cli from 2.33.18 to 2.33.25
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.39.28
+          title: ""
+          date: 2026-02-18T23:19:26.827Z
+        - commits:
+            - subject: Remove dead AMI script and its Dockerfile dependencies
+              hash: c1f8c608d4d72c45e5a311523f7d69a1b9e4174a
+              body: |
+                The workflow inlines all AMI logic directly and never calls
+                balena-generate-ami.sh. Remove the script along with its
+                Dockerfile COPY and the awscli/udev/python3-pip packages
+                that only existed to support it.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: Replace deprecated `balena key add` with `balena ssh-key add`
+              hash: ae66932650c91e6f5f3c61c6a4540961d1fa20e4
+              body: |
+                balena CLI v23.0.0 removed the `key add` alias. The AMI test
+                setup step still used it while the cleanup step already used
+                the new `ssh-key list`/`ssh-key rm` names.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.39.27
+          title: ""
+          date: 2026-02-13T11:14:39.619Z
+        - commits:
+            - subject: Update aws/aws-cli to v2.33.18
+              hash: c150c44a4c497ab38368182b3ff6bbf044868a3b
+              body: |
+                Update aws/aws-cli from 2.33.17 to 2.33.18
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.39.26
+          title: ""
+          date: 2026-02-10T00:58:39.245Z
+  version: 6.10.24+rev3
+  title: ""
+  date: 2026-02-26T09:30:29.566Z
+- commits:
     - subject: Update kernel to 6.12.61 and unipi-kernel-modules to version 2.80.8 for
         UniPi Neuron boards
       hash: 0bfb1f6b6ca7ab9eee5728bb385ceb448a054c8b
