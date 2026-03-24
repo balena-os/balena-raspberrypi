@@ -60,7 +60,7 @@ jobs:
       test_matrix: >
         {
           "test_suite": ["os","cloud","hup"],
-          "environment": ["bm.balena-dev.com"],
+          "environment": ["balena-cloud.com"],
           "runs_on": [["ubuntu-latest"]]
         }
       # Allow manual workflow runs to force finalize without checking previous test runs
