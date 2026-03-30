@@ -1,4 +1,18 @@
 - commits:
+    - subject: "workflows: workflows: Move test env to BC"
+      hash: cf1bb3e1a831f058da5a96131b89f2bda7458d4a
+      body: ""
+      footer:
+        Changelog-entry: "workflows: workflows: Move test env to BC"
+        changelog-entry: "workflows: workflows: Move test env to BC"
+        Signed-off-by: Ryan Cooke<ryan@balena.io>
+        signed-off-by: Ryan Cooke<ryan@balena.io>
+      author: Ryan Cooke
+      nested: []
+  version: 6.10.24+rev4
+  title: ""
+  date: 2026-03-30T13:29:28.828Z
+- commits:
     - subject: Update balena-yocto-scripts to 2649a8d9024a2986d092dff178da9bd14c39f189
       hash: 40c6a86fdb0c8789537d62bc609fb3b33c825d15
       body: Update balena-yocto-scripts

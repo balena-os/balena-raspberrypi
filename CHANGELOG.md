@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.10.24+rev4
+## (2026-03-30)
+
+* workflows: workflows: Move test env to BC [Ryan Cooke]
+
 # v6.10.24+rev3
 ## (2026-02-26)
 
