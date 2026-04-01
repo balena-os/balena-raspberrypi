@@ -20,15 +20,8 @@ IMAGE_ROOTFS_SIZE:raspberrypi5="655360"
 BALENA_BOOT_SIZE:raspberrypi5="81920"
 
 # Increase Root File system size
-IMAGE_ROOTFS_SIZE:revpi-connect-s ?= "319488"
-IMAGE_OVERHEAD_FACTOR:revpi-connect-s ?= "1.0"
-IMAGE_ROOTFS_EXTRA_SPACE:revpi-connect-s ?= "53248"
-IMAGE_ROOTFS_MAXSIZE:revpi-connect-s ?= "372736"
-
-IMAGE_ROOTFS_SIZE:revpi-connect-4 ?= "319488"
-IMAGE_OVERHEAD_FACTOR:revpi-connect-4 ?= "1.0"
-IMAGE_ROOTFS_EXTRA_SPACE:revpi-connect-4 ?= "53248"
-IMAGE_ROOTFS_MAXSIZE:revpi-connect-4 ?= "372736"
+IMAGE_ROOTFS_SIZE:revpi-connect-s = "372736"
+IMAGE_ROOTFS_SIZE:revpi-connect-4 = "372736"
 
 # Customize balenaos-img
 BALENA_IMAGE_BOOTLOADER:rpi = "rpi-bootfiles"
@@ -47,10 +40,6 @@ BALENA_BOOT_PARTITION_FILES:append:raspberrypi5 = " \
     balena-bootloader/${KERNEL_IMAGETYPE}-initramfs-${MACHINE}.bin:/${SDIMG_KERNELIMAGE} \
     balena-bootloader/bootenv:/bootenv \
     "
-
-BALENA_BOOT_PARTITION_FILES:append:revpi-core-3 = " revpi-core-dt-blob-overlay.dtb:/dt-blob.bin"
-
-BALENA_BOOT_PARTITION_FILES:append:revpi-connect = " revpi-connect-dt-blob-overlay.dtb:/dt-blob.bin"
 
 BALENA_BOOT_PARTITION_FILES:append:revpi-connect-s = " revpi-connect-dt-blob-overlay.dtb:/dt-blob.bin"
 

@@ -15,11 +15,6 @@ CMDLINE = "dwc_otg.lpm_enable=0 rootwait"
 CMDLINE += "${@bb.utils.contains('DISTRO_FEATURES','osdev-image',"console=tty1 console=serial0,115200"," vt.global_cursor_default=0 console=null",d)}"
 CMDLINE_DEBUG = ""
 
-# revpi-connect was previously added on overlay2,
-# so only the core 3 needs to include this module
-# further.
-BALENA_CONFIGS:append:revpi-core-3 = " aufs"
-
 BALENA_CONFIGS:append = " fbtft"
 BALENA_CONFIGS[fbtft] = " \
     CONFIG_STAGING=y \

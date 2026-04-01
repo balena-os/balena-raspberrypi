@@ -76,19 +76,6 @@ do_deploy:append:raspberrypi4-unipi-neuron() {
 	echo "dtoverlay=neuron-spi-new" >> ${DEPLOYDIR}/bootfiles/config.txt
 }
 
-do_deploy:append:revpi-core-3() {
-    cat >> ${DEPLOYDIR}/bootfiles/config.txt << EOF
-
-# serial port needs to be kept clean for RS485 communication
-avoid_warnings=1
-
-dtoverlay=revpi-core
-
-EOF
-    # prevent u-boot logging on uart
-    sed -i 's/enable_uart=1//' ${DEPLOYDIR}/bootfiles/config.txt
-}
-
 # On Raspberry Pi 3 and Raspberry Pi Zero WiFi, serial ttyS0 console is only
 # usable if ENABLE_UART = 1. On OS development images, we want serial console
 # available, production devices can enable it with a configuration variable.
