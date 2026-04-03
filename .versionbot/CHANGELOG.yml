@@ -1,4 +1,22 @@
 - commits:
+    - subject: Remove support for Revolution Pi Connect and Core 3
+      hash: 214767ee9f1322ca64ee232c2c7b4e99dd082ea5
+      body: >
+        It was decided we remove support for these boards since they are not
+        supported anymore
+
+        by the hardware vendor.
+      footer:
+        Changelog-entry: Remove support for Revolution Pi Connect and Core 3
+        changelog-entry: Remove support for Revolution Pi Connect and Core 3
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 6.12.3+rev1
+  title: ""
+  date: 2026-04-03T10:37:50.248Z
+- commits:
     - subject: Update layers/meta-balena to f3eea3ba73b68ef4cb633efc6077ac5baced1fe1
       hash: 39f24c77bba261661d9665a49e1163ee27d599c5
       body: Update layers/meta-balena
