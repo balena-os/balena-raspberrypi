@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v6.12.3+rev2
+## (2026-04-05)
+
+* Add back UniPi overlays to rootfs [Florin Sarbu]
+
 # v6.12.3+rev1
 ## (2026-04-03)
 

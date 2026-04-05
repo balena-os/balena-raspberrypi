@@ -1,4 +1,29 @@
 - commits:
+    - subject: Add back UniPi overlays to rootfs
+      hash: 174f40eeb04d10530bd0ce0b14096bd87a5c4341
+      body: >
+        When updating the UniPi boards to kernel 6.12.61 in commit
+        0bfb1f6b6ca7ab9eee5728bb385ceb448a054c8b
+
+        the overlays where not added for this kernel version.
+
+
+        We do not add these overlays to the RPi1 board since we don't know of
+        any UniPi boards based on it and also
+
+        for some unknown reason the DT overlay test fails for the RPi1 when
+        these overlays are present.
+      footer:
+        Changelog-entry: Add back UniPi overlays to rootfs
+        changelog-entry: Add back UniPi overlays to rootfs
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 6.12.3+rev2
+  title: ""
+  date: 2026-04-05T08:48:30.317Z
+- commits:
     - subject: Remove support for Revolution Pi Connect and Core 3
       hash: 214767ee9f1322ca64ee232c2c7b4e99dd082ea5
       body: >
