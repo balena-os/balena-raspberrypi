@@ -21,7 +21,10 @@ SRC_URI:append = " \
 	file://0001-waveshare-sim7600-Add-dtbo-for-this-modem.patch \
 	file://0001-overlays-Add-overlay-for-Seeed-reComputer-R1000.patch \
 	file://0001-overlays-Add-overlay-for-RPI-PLC-SC16IS752.patch \
+	file://0010-dts-overlays-Add-UniPi-overlays.patch \
 "
+
+SRC_URI:remove:raspberrypi = "file://0010-dts-overlays-Add-UniPi-overlays.patch"
 
 BALENA_CONFIGS:append = " fbtft"
 BALENA_CONFIGS[fbtft] = " \
