@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update balena-os/github-workflows to
+      hash: 4174aa5a22877842022d6ad17df4ed97fd91d83b
+      body: Update balena-os/github-workflows
+      footer:
+        Changelog-entry: Update balena-os/github-workflows to
+        changelog-entry: Update balena-os/github-workflows to
+      author: balena-renovate[bot]
+      nested: []
+  version: 6.12.3+rev3
+  title: ""
+  date: 2026-04-06T12:48:17.353Z
+- commits:
     - subject: Add back UniPi overlays to rootfs
       hash: 174f40eeb04d10530bd0ce0b14096bd87a5c4341
       body: >
