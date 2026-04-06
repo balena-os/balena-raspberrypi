@@ -95,3 +95,45 @@ BALENA_BOOT_PARTITION_FILES:append:raspberrypi4-64 = " \
     rpi-eeprom/pieeprom-latest-stable.bin:/pieeprom-latest-stable.bin \
     rpi-eeprom/vl805-latest-stable.bin:/vl805-latest-stable.bin \
 "
+
+COMMON_ALLOWED_PACKAGES = " \
+    linux-firmware-rtl8192su \
+    linux-firmware-rtl8723b-bt \
+    linux-firmware-wl12xx \
+    linux-firmware-wl18xx \
+    linux-firmware-wlcommon \
+"
+
+RPI_COMMON_ALLOWED_PACKAGES = " \
+    linux-firmware-iwlwifi-3160 \
+    linux-firmware-iwlwifi-7260 \
+    linux-firmware-iwlwifi-7265 \
+    linux-firmware-iwlwifi-7265d \
+    linux-firmware-iwlwifi-8000c \
+    linux-firmware-iwlwifi-9260 \
+"
+
+TEMPORARILY_ALLOWED_PACKAGES:raspberrypi4-64 ?= " ${COMMON_ALLOWED_PACKAGES} "
+TEMPORARILY_ALLOWED_PACKAGES:raspberrypi5 ?= " ${COMMON_ALLOWED_PACKAGES} "
+TEMPORARILY_ALLOWED_PACKAGES:raspberrypi ?= " ${COMMON_ALLOWED_PACKAGES} \
+    ${RPI_COMMON_ALLOWED_PACKAGES} \
+"
+
+TEMPORARILY_ALLOWED_PACKAGES:raspberrypi3 ?= " ${COMMON_ALLOWED_PACKAGES} \
+    ${RPI_COMMON_ALLOWED_PACKAGES} \
+"
+
+TEMPORARILY_ALLOWED_PACKAGES:raspberrypi2 ?= " ${COMMON_ALLOWED_PACKAGES} \
+    ${RPI_COMMON_ALLOWED_PACKAGES} \
+"
+
+# These files were not installed for the Pi Zero 2W 64bit
+TEMPORARILY_ALLOWED_PACKAGES:raspberrypi0-2w-64 ?= " linux-firmware-iwlwifi-3160 linux-firmware-wl12xx linux-firmware-wlcommon "
+TEMPORARILY_ALLOWED_PACKAGES:raspberrypicm4-ioboard ?= " linux-firmware-wl12xx linux-firmware-wlcommon "
+
+# meta-balena will override TEMPORARILY_ALLOWED_PACKAGES in the major release
+BALENA_ALLOWED_FIRMWARE_PACKAGES:append = "${TEMPORARILY_ALLOWED_PACKAGES}"
+
+# This is linux-ffirmware that will be removed
+# in the next major balenaOS release
+IMAGE_INSTALL:append = " ${TEMPORARILY_ALLOWED_PACKAGES} "
