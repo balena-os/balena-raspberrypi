@@ -4,7 +4,6 @@ CMDLINE += "${OS_KERNEL_CMDLINE}"
 
 # Add earlycon with OS_DEVELOPMENT=1
 CMDLINE:prepend:raspberrypi4-64 = " ${@bb.utils.contains('DISTRO_FEATURES','osdev-image',"earlycon=uart8250,mmio32,0xfe215040 console=tty1","",d)}"
-CMDLINE:prepend:raspberrypi400-64 = " ${@bb.utils.contains('DISTRO_FEATURES','osdev-image',"earlycon=uart8250,mmio32,0xfe215040 console=tty1","",d)}"
 CMDLINE:prepend:raspberrypicm4-ioboard = " ${@bb.utils.contains('DISTRO_FEATURES','osdev-image',"earlycon=uart8250,mmio32,0xfe215040 console=tty1","",d)}"
 CMDLINE:prepend:iotg-rpi5 = " ${@bb.utils.contains('DISTRO_FEATURES','osdev-image',"earlycon=pl011,0x107d001000,115200n8 console=tty1", "", d)}"
 
