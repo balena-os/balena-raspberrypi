@@ -7,6 +7,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=a6c5149578a16272119f3f9c13d6549b"
 SRC_URI = " \
     git://github.com/raspberrypi/rpi-eeprom.git;protocol=https;branch=master \
     file://pieeprom-update.sh \
+    file://pieeprom-flashrom.sh \
 "
 
 # EEPROM configuration default values for this version, as specified at
@@ -15,14 +16,16 @@ SRC_URI += " \
     file://default-config.txt \
 "
 
-SRCREV = "1793f5c4baa091941a8f85db756f6035c743ee5a"
-PV = "20250821+git${SRCPV}"
+SRCREV = "5fa9a43d66c0004d55f7c2c7bd8bdd48c2efc020"
+PV = "20260121+git${SRCPV}"
 
 # We use the latest stable version
 # which is available in "stable"
-LATEST_STABLE_PIEEPROM_FW:raspberrypi4-64 = "2025-08-20"
+LATEST_STABLE_PIEEPROM_FW:raspberrypi4-64 = "2026-01-09"
 VL805_FW_REV = "000138c0"
 FIRMWARE:raspberrypi4-64 = "firmware-2711"
+TGT_EEPROM_BIN = "pieeprom.upd"
+TGT_EEPROM_SIG = "pieeprom.sig"
 
 S = "${WORKDIR}/git"
 
@@ -37,8 +40,8 @@ RDEPENDS:${PN} = "dtc flashrom userlandtools"
 # the configuration that exists in the binary
 do_compile() {
     src_eeprom_bin="pieeprom-${LATEST_STABLE_PIEEPROM_FW}.bin"
-    tgt_eeprom_bin="pieeprom-latest-stable.bin"
     cp ${S}/rpi-eeprom-config "${WORKDIR}"
+    cp ${S}/rpi-eeprom-digest "${WORKDIR}"
     cp "${S}/${FIRMWARE}/stable/${src_eeprom_bin}" "${WORKDIR}/"
     boot_conf="${WORKDIR}/default-config.txt"
 
@@ -51,15 +54,25 @@ do_compile() {
         fi
     fi
 
+    # Configure for self-update so that the EEPROM can be updated on reboot
+    if grep -q "ENABLE_SELF_UPDATE=" "${boot_conf}"; then
+        sed -i 's/ENABLE_SELF_UPDATE=.*/ENABLE_SELF_UPDATE=1/g' "${boot_conf}"
+    else
+        echo "ENABLE_SELF_UPDATE=1" >> "${boot_conf}"
+    fi
+
     if [ "x${SIGN_API}" = "x" ]; then
         ${PYTHON} "${WORKDIR}/rpi-eeprom-config" --config "${boot_conf}" \
-              --out "${WORKDIR}/${tgt_eeprom_bin}" "${WORKDIR}/${src_eeprom_bin}"
+              --out "${WORKDIR}/${TGT_EEPROM_BIN}" "${WORKDIR}/${src_eeprom_bin}"
+
+        "${WORKDIR}/rpi-eeprom-digest" -i "${WORKDIR}/${TGT_EEPROM_BIN}" -o "${WORKDIR}/${TGT_EEPROM_SIG}"
     fi
 }
 
 do_install() {
-  install -d ${D}${libexecdir}
+	install -d ${D}${libexecdir}
 	install -m 0775 ${WORKDIR}/pieeprom-update.sh ${D}${libexecdir}/pieeprom-update.sh
+	install -m 0775 ${WORKDIR}/pieeprom-flashrom.sh ${D}${libexecdir}/pieeprom-flashrom.sh
 }
 do_install[depends] += "\
     rpi-bootfiles:do_deploy \
@@ -71,10 +84,11 @@ do_deploy () {
     fi
     mkdir ${DEPLOY_DIR_IMAGE}/rpi-eeprom/
 
-    cp ${WORKDIR}/pieeprom-latest-stable* ${DEPLOY_DIR_IMAGE}/rpi-eeprom/
     if [ -f "${S}/${FIRMWARE}/critical/vl805-${VL805_FW_REV}.bin" ]; then
         cp ${S}/${FIRMWARE}/critical/vl805-${VL805_FW_REV}.bin ${DEPLOY_DIR_IMAGE}/${PN}/vl805-latest-stable.bin
     fi
+    cp "${WORKDIR}/${TGT_EEPROM_BIN}" ${DEPLOY_DIR_IMAGE}/rpi-eeprom/
+    cp "${WORKDIR}/${TGT_EEPROM_SIG}" ${DEPLOY_DIR_IMAGE}/rpi-eeprom/
 }
 
 # vl805 utility is deprecated, see https://github.com/raspberrypi/rpi-eeprom/commit/fed1ca62a5752cb5a990608c8c897ce0b077600a
@@ -91,5 +105,5 @@ do_deploy[depends] += " \
     rpi-bootfiles:do_deploy \
 "
 
-FILES:${PN} = "${libexecdir}/pieeprom-update.sh"
+FILES:${PN} = "${libexecdir}/pieeprom-update.sh ${libexecdir}/pieeprom-flashrom.sh"
 COMPATIBLE_MACHINE = "raspberrypi4-64"
