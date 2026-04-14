@@ -1,5 +1,27 @@
+# Hostapp composition overlay for raspberrypi4-64.
+# Defines the hostapp and extension services for the composition build pipeline.
+# In production, the hostapp service will move to a base composition in meta-balena
+# and this file will only declare device-specific extensions.
 version: '2.4'
 services:
+
+  hostapp:
+    image: __BUILD_OUTPUT__
+    x-build:
+      assets:
+        - "*.manifest"
+        - "*.json"
+        - "*.md"
+        - "VERSION*"
+        - "licenses.tar.gz"
+        - "cyclonedx/*/*.json"
+        - "kernel_modules_headers.tar.gz"
+        - "secure-boot-lock.tar.gz"
+    labels:
+      io.balena.image.store: 'root'
+      io.balena.image.class: 'hostapp'
+      io.balena.update.requires-reboot: '1'
+
   kernel-modules:
     image: __BUILD_OUTPUT__
     x-build:
