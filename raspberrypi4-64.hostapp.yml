@@ -8,15 +8,6 @@ services:
   hostapp:
     image: __BUILD_OUTPUT__
     x-build:
-      assets:
-        - "*.manifest"
-        - "*.json"
-        - "*.md"
-        - "VERSION*"
-        - "licenses.tar.gz"
-        - "cyclonedx/*/*.json"
-        - "kernel_modules_headers.tar.gz"
-        - "secure-boot-lock.tar.gz"
     labels:
       io.balena.image.store: 'root'
       io.balena.image.class: 'hostapp'
