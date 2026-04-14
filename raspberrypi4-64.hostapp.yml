@@ -1,9 +1,7 @@
 version: '2.4'
 services:
   kernel-modules:
-    build:
-      context: build/tmp/deploy/images/${MACHINE}/balena-kernel-modules-block/
-      dockerfile: Dockerfile
+    image: __BUILD_OUTPUT__
     x-build:
       recipe: balena-kernel-modules-block
       layers:
