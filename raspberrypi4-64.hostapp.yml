@@ -12,6 +12,7 @@ services:
       io.balena.image.store: 'root'
       io.balena.image.class: 'hostapp'
       io.balena.update.requires-reboot: '1'
+      io.balena.private.hostapp.board-rev: '${DEVICE_REPO_REV}'
 
   kernel-modules:
     image: __BUILD_OUTPUT__
@@ -25,8 +26,4 @@ services:
     labels:
       io.balena.image.store: 'data'
       io.balena.image.class: 'overlay'
-      io.balena.image.requires-reboot: '1'
-      io.balena.image.profiles: 'kernel-modules'
-      io.balena.image.os-version: $OS_VERSION
-      io.balena.image.kernel-version: $KERNEL_VERSION
-      io.balena.image.kernel-abi-id: $KERNEL_ABI_ID
+      io.balena.update.requires-reboot: '1'

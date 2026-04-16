@@ -11,3 +11,14 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 do_kernel_extend_config[file-checksums] += "${THISDIR}/files/modules-selection.cfg:True"
 
 inherit kernel-modules-extension
+
+# Publish Module.symvers to DEPLOY_DIR_IMAGE so the image recipe can compute
+# the kernel ABI ID label for the extension .docker archive.
+do_deploy:append() {
+    for _symvers in "${B}/vmlinux.symvers" "${B}/Module.symvers"; do
+        if [ -f "${_symvers}" ]; then
+            install -m 0644 "${_symvers}" "${DEPLOYDIR}/Module.symvers"
+            break
+        fi
+    done
+}

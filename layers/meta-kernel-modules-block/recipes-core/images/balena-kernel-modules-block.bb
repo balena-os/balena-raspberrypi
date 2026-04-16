@@ -32,10 +32,24 @@ IMAGE_PREPROCESS_COMMAND += "remove_unnecessary_files;"
 
 do_create_docker_image() {
     TARBALL=$(find ${IMGDEPLOYDIR} -name "${IMAGE_NAME}*.rootfs.tar.gz" \( -type l -o -type f \) | head -1)
-    if [ -z "${TARBALL}" ]; then
-        bbfatal "No rootfs tarball found in ${IMGDEPLOYDIR}"
-    fi
-    docker import "${TARBALL}" "${IMAGE_NAME}:latest"
+    [ -n "${TARBALL}" ] || bbfatal "No rootfs tarball found in ${IMGDEPLOYDIR}"
+
+    KERNEL_VER=$(basename $(find ${IMAGE_ROOTFS}${nonarch_base_libdir}/modules -mindepth 1 -maxdepth 1 -type d | head -1))
+    [ -n "${KERNEL_VER}" ] || bbfatal "Could not determine kernel version from rootfs modules dir"
+
+    SYMVERS="${DEPLOY_DIR_IMAGE}/Module.symvers"
+    [ -f "${SYMVERS}" ] || bbfatal "Module.symvers not found at ${SYMVERS}"
+    KERNEL_ABI_ID=$(sha256sum "${SYMVERS}" | cut -c1-16)
+
+    docker import \
+        --change "LABEL io.balena.image.store=data" \
+        --change "LABEL io.balena.image.class=overlay" \
+        --change "LABEL io.balena.update.requires-reboot=1" \
+        --change "LABEL io.balena.image.os-version=${HOSTOS_VERSION}" \
+        --change "LABEL io.balena.image.kernel-version=${KERNEL_VER}" \
+        --change "LABEL io.balena.image.kernel-abi-id=${KERNEL_ABI_ID}" \
+        "${TARBALL}" "${IMAGE_NAME}:latest"
+
     docker save -o "${IMGDEPLOYDIR}/${IMAGE_NAME}.docker" "${IMAGE_NAME}:latest"
     docker rmi "${IMAGE_NAME}:latest" || true
 }
