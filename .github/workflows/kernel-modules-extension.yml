@@ -134,11 +134,20 @@ jobs:
           echo "os_version=${os_version_glob}" >> "${GITHUB_OUTPUT}"
 
       - name: Setup balena CLI
-        uses: balena-io-examples/setup-balena-action@v0.0.30
-        with:
-          balena-token: ${{ secrets.BALENA_API_DEPLOY_KEY }}
         env:
+          # renovate: datasource=github-releases depName=balena-io/balena-cli
+          BALENA_CLI_VERSION: 23.2.30
           BALENARC_BALENA_URL: ${{ inputs.deploy-environment || 'balena-staging.com' }}
+        run: |
+          # Install CLI from npm so the @balena/compose schema can be patched
+          # to allow service-level `profiles:` until balena-compose PR #118 ships.
+          npm install -g --force "balena-cli@${BALENA_CLI_VERSION}"
+          find "$(npm root -g)" -path "*@balena/compose/dist/parse/schemas/config_schema_v2.4.json" | while read -r schema; do
+            jq '.definitions.service.properties.profiles = {"type":"array","items":{"type":"string"},"uniqueItems":true}' \
+              "${schema}" > "${schema}.tmp" && mv "${schema}.tmp" "${schema}"
+            echo "Patched profiles into ${schema}"
+          done
+          balena login --token "${{ secrets.BALENA_API_DEPLOY_KEY }}"
 
       - name: Deploy to balenaCloud
         env:
