@@ -31,7 +31,7 @@ remove_unnecessary_files() {
 IMAGE_PREPROCESS_COMMAND += "remove_unnecessary_files;"
 
 do_create_docker_image() {
-    TARBALL=$(find ${DEPLOY_DIR_IMAGE} -name "${IMAGE_LINK_NAME}.rootfs.tar.gz" \( -type l -o -type f \) | head -1)
+    TARBALL=$(find ${DEPLOY_DIR_IMAGE} -name "${IMAGE_LINK_NAME}.tar.gz" \( -type l -o -type f \) | head -1)
     [ -n "${TARBALL}" ] || bbfatal "No rootfs tarball found in ${DEPLOY_DIR_IMAGE}"
 
     KERNEL_VER=$(basename $(find ${IMAGE_ROOTFS}${nonarch_base_libdir}/modules -mindepth 1 -maxdepth 1 -type d | head -1))
