@@ -16,9 +16,9 @@
 #
 # Note: Not all kernel versions have corresponding yocto-kernel-cache commits immediately
 
-LINUX_VERSION ?= "6.12.61"
+LINUX_VERSION ?= "6.12.62"
 LINUX_RPI_BRANCH ?= ""
 LINUX_RPI_KMETA_BRANCH ?= "yocto-6.12"
 
-SRCREV_machine = "21b410140c47ffab5668399f6f143c7d7b935c8b"
-SRCREV_meta = "b79e50adbe76c872daa7748ac7ac9c80b253e2b9"
+SRCREV_machine = "f8e11438119efd4bd88de4ff394acd5a596ce0a2"
+SRCREV_meta = "0bc72383691f29eb7fc4661afa9d67e106635929"
