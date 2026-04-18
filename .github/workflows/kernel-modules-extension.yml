@@ -1,0 +1,187 @@
+name: Kernel Modules Extension
+
+on:
+  push:
+    branches:
+      - 'alexgg/oci-runtime-v6.12.3'
+
+  workflow_call:
+    inputs:
+      machine:
+        required: true
+        type: string
+      os-version:
+        description: 'balenaOS version (e.g. from git tag)'
+        required: true
+        type: string
+      deploy-environment:
+        required: false
+        type: string
+        default: balena-staging.com
+    secrets:
+      BALENA_API_DEPLOY_KEY:
+        description: balena API key for the deploy environment
+        required: false
+
+  workflow_dispatch:
+    inputs:
+      machine:
+        description: 'Device type'
+        required: true
+        type: choice
+        options:
+          - raspberrypi4-64
+      os-version:
+        description: 'balenaOS version (e.g. from git tag)'
+        required: true
+        type: string
+      deploy-environment:
+        description: 'Deploy environment'
+        required: false
+        type: string
+        default: balena-staging.com
+
+env:
+  SHARED_BUILD_DIR: ${{ github.workspace }}/shared
+
+jobs:
+  build-extension:
+    name: Build kernel modules extension (${{ matrix.machine }})
+    runs-on:
+      - self-hosted
+      - X64
+      - yocto
+    environment: ${{ inputs.deploy-environment || 'balena-staging.com' }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        machine: ${{ inputs.machine && fromJSON(format('["{0}"]', inputs.machine)) || fromJSON('["raspberrypi4-64"]') }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Build kernel modules via Yocto
+        run: |
+          mkdir -p "${SHARED_BUILD_DIR}"
+
+          ./balena-yocto-scripts/build/balena-build.sh \
+            -d "${{ matrix.machine }}" \
+            -s "${SHARED_BUILD_DIR}" \
+            -i "balena-kernel-modules-block" \
+            -g "-t layers/meta-kernel-modules-block/conf/samples" \
+            | tee build.log
+
+          if ! grep -q "Build for ${{ matrix.machine }} suceeded" build.log; then
+            exit 1
+          fi
+
+      - name: Prepare deployment
+        id: prepare
+        run: |
+          mkdir -p kernel-modules-deploy/contents
+
+          # Find and extract the tarball
+          targz=$(find build/tmp/deploy/images/${{ matrix.machine }}/ -name "balena-kernel-modules-block*.tar.gz" -type l)
+          if [ -z "${targz}" ]; then
+            echo "ERROR: No balena-kernel-modules-block tarball found"
+            exit 1
+          fi
+          if [ "$(echo "${targz}" | wc -l)" -ne 1 ]; then
+            echo "ERROR: Expected exactly one tarball, found:"
+            echo "${targz}"
+            exit 1
+          fi
+          tar xf "${targz}" -C kernel-modules-deploy/contents
+
+          # Locate the shipped modules directory (usr/lib due to usrmerge) and
+          # derive M.m.p kernel version (e.g. 6.12.61-v8 -> 6.12.61) to match the
+          # format expected by mobynit and balena-extension-runtime's
+          # kernel-version filter.
+          modules_dir=$(ls -d kernel-modules-deploy/contents/usr/lib/modules/*/ | head -n1)
+          kernel_release=$(basename "${modules_dir}")
+          kernel_version=$(echo "${kernel_release}" | cut -d- -f1)
+          echo "kernel_version=${kernel_version}" >> "${GITHUB_OUTPUT}"
+
+          # Compute kernel ABI ID (hex-encoded sha256 of Module.symvers) for the
+          # io.balena.image.kernel-abi-id label. Hash the file that actually
+          # ships in the extension so the label matches what mobynit would
+          # compute at runtime if the label were ever stripped.
+          symvers="${modules_dir}Module.symvers"
+          if [ ! -f "${symvers}" ]; then
+            echo "ERROR: Module.symvers not found at ${symvers} (check balena-kernel-modules-block.bb)"
+            exit 1
+          fi
+          kernel_abi_id=$(sha256sum "${symvers}" | cut -d' ' -f1)
+          echo "kernel_abi_id=${kernel_abi_id}" >> "${GITHUB_OUTPUT}"
+
+          # Derive the io.balena.image.os-version label from the input OS
+          # version. The input is typically github.ref_name (e.g. "v2.119.0")
+          # but VERSION_ID in /etc/os-release is bare semver ("2.119.0") per
+          # meta-balena's os-release.bbappend, so strip any leading "v" before
+          # matching.
+          #
+          # Default policy is a minor-line glob (M.m.*): the extension
+          # survives patch-level HUPs and suffixed variants (e.g. -staging,
+          # +rev1) without re-pull, and is GC'd at the next minor HUP commit.
+          # Pipelines that need tighter pinning (signed kernel modules, strict
+          # ABI guarantees) should override this to an exact match.
+          raw_os_version="${{ inputs.os-version }}"
+          os_version_glob="$(echo "${raw_os_version#v}" | cut -d. -f1,2).*"
+          echo "os_version=${os_version_glob}" >> "${GITHUB_OUTPUT}"
+
+      - name: Setup balena CLI
+        env:
+          # renovate: datasource=github-releases depName=balena-io/balena-cli
+          BALENA_CLI_VERSION: 23.2.30
+          BALENARC_BALENA_URL: ${{ inputs.deploy-environment || 'balena-staging.com' }}
+        run: |
+          # Install CLI from npm so the @balena/compose schema can be patched
+          # to allow service-level `profiles:` until balena-compose PR #118 ships.
+          npm install -g --force "balena-cli@${BALENA_CLI_VERSION}"
+          find "$(npm root -g)" -path "*@balena/compose/dist/parse/schemas/config_schema_v2.4.json" | while read -r schema; do
+            jq '.definitions.service.properties.profiles = {"type":"array","items":{"type":"string"},"uniqueItems":true}' \
+              "${schema}" > "${schema}.tmp" && mv "${schema}.tmp" "${schema}"
+            echo "Patched profiles into ${schema}"
+          done
+          balena login --token "${{ secrets.BALENA_API_DEPLOY_KEY }}"
+
+      - name: Deploy to balenaCloud
+        env:
+          BALENARC_BALENA_URL: ${{ inputs.deploy-environment || 'balena-staging.com' }}
+          FLEET: kernel-modules-${{ matrix.machine }}
+          ORG: balena_os
+        run: |
+          # Create docker-compose.yml with extension labels
+          cat > kernel-modules-deploy/docker-compose.yml <<EOF
+          version: '2.4'
+          services:
+            kernel-modules:
+              build:
+                context: ./
+                dockerfile: Dockerfile
+                args:
+                  KERNEL_VERSION: '${{ steps.prepare.outputs.kernel_version }}'
+                  KERNEL_ABI_ID: '${{ steps.prepare.outputs.kernel_abi_id }}'
+                  OS_VERSION: '${{ steps.prepare.outputs.os_version }}'
+              profiles:
+                - kernel-modules-${{ matrix.machine }}
+              labels:
+                io.balena.image.store: 'data'
+                io.balena.image.class: 'overlay'
+                io.balena.update.requires-reboot: '1'
+                io.balena.image.kernel-version: '${{ steps.prepare.outputs.kernel_version }}'
+                io.balena.image.kernel-abi-id: '${{ steps.prepare.outputs.kernel_abi_id }}'
+                io.balena.image.os-version: '${{ steps.prepare.outputs.os_version }}'
+          EOF
+
+          # Create fleet if it doesn't exist
+          if ! balena fleet "${ORG}/${FLEET}" > /dev/null 2>&1; then
+            balena fleet create "${FLEET}" --type "${{ matrix.machine }}" --organization "${ORG}"
+          fi
+
+          # Deploy
+          balena deploy "${ORG}/${FLEET}" --source kernel-modules-deploy

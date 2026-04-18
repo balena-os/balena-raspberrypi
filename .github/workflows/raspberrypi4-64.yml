@@ -35,6 +35,11 @@ on:
         required: false
         type: string
         default: ''
+      extensions:
+        description: Space-separated list of OS block extension images to include
+        required: false
+        type: string
+        default: ''
 
 permissions:
   id-token: write # This is required for requesting the JWT #https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services#requesting-the-access-token
@@ -46,7 +51,7 @@ permissions:
 jobs:
   yocto:
     name: Yocto
-    uses: balena-os/balena-yocto-scripts/.github/workflows/yocto-build-deploy.yml@2649a8d9024a2986d092dff178da9bd14c39f189
+    uses: balena-os/balena-yocto-scripts/.github/workflows/yocto-build-deploy.yml@6abbbd645c9b78a211fdcb509de5259f9475f741
     # Prevent duplicate workflow executions for pull_request (PR) and pull_request_target (PRT) events.
     # Both PR and PRT will be triggered for the same pull request, whether it is internal or from a fork.
     # This condition will prevent the workflow from running twice for the same pull request while
@@ -69,3 +74,15 @@ jobs:
       deploy-environment: ${{ inputs.deploy-environment || 'balena-cloud.com' }}
       # Allow overriding the meta-balena ref for workflow dispatch events
       meta-balena-ref: ${{ inputs.meta-balena-ref || '' }}
+      # OS block extensions to include in the OS composition
+      extensions: ${{ inputs.extensions || '' }}
+
+  kernel-modules:
+    name: Kernel Modules Extension
+    needs: yocto
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    uses: ./.github/workflows/kernel-modules-extension.yml
+    secrets: inherit
+    with:
+      machine: raspberrypi4-64
+      os-version: ${{ github.ref_name }}
