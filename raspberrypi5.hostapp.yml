@@ -18,3 +18,14 @@ services:
       recipe: balena-ebpf-extension
       assets:
         - "images/__MACHINE__/kernel-extension/kernel_modules_headers.tar.gz"
+
+  tracing:
+    image: __BUILD_OUTPUT__
+    network_mode: none
+    runtime: extension
+    labels:
+      io.balena.image.class: 'overlay'
+    profiles:
+      - tracing
+    x-build:
+      recipe: balena-tracing-extension
