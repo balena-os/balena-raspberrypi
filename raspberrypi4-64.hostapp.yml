@@ -16,3 +16,13 @@ services:
       - ebpf
     x-build:
       recipe: balena-ebpf-extension
+  tracing:
+    image: __BUILD_OUTPUT__
+    labels:
+      io.balena.image.class: 'overlay'
+      io.balena.image.store: 'data'
+      io.balena.update.requires-reboot: '1'
+    profiles:
+      - tracing
+    x-build:
+      recipe: balena-tracing-extension
