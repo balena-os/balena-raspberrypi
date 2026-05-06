@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json
+version: '2.4'
+services:
+
+  kernel-modules:
+    image: __BUILD_OUTPUT__
+    x-build:
+      recipe: balena-kernel-modules-block
+      build_args:
+        - "-t"
+        - "layers/meta-kernel-modules-block/conf/samples"
+      profiles:
+        - kernel-modules
