@@ -1,4 +1,244 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 23eb6005eba2a46be19a28a8e94d382257966b52
+      hash: bf40a54e2a99a481c6d28469dd7a2d93888126e4
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 23eb6005eba2a46be19a28a8e94d382257966b52
+        changelog-entry: Update balena-yocto-scripts to 23eb6005eba2a46be19a28a8e94d382257966b52
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "yocto-build-deploy.yml: Wait for self-CI helper image before Build"
+              hash: 795ee59c2538578adb96117dec045e1666a5711b
+              body: >
+                Flowzone bakes the per-PR helper image in parallel with the
+                build
+
+                workflow, so when self-CI runs against this repo, the Build step
+
+                would race Flowzone's publish job and try to pull a tag that may
+
+                not exist yet. Wait on Flowzone's "Publish docker" checks
+                against
+
+                the PR head SHA before running Build — using check-regexp to
+                match
+
+                the per-target Publish variants. Only applies in self-CI on this
+
+                repo; downstream device repos consuming this reusable workflow
+                are
+
+                unaffected.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "yocto-build-deploy.yml: Override helper image tag for self-CI"
+              hash: 0a2536c6c9adbc89e316e185ee9c87e35f8684b9
+              body: >
+                When a PR opens against this repo, the build steps default to
+                pulling
+
+                the helper image at the master-tip VERSION (read from the
+                VERSION
+
+                file), which doesn't reflect changes proposed by the PR.
+                Flowzone's
+
+                bake pushes a per-commit image at
+                build-<head.sha>-yocto-build-env,
+
+                so override BALENA_YOCTO_SCRIPTS_VERSION to that tag prefix when
+                this
+
+                workflow is running self-CI on a pull_request event. The
+                empty-string
+
+                fallback preserves the VERSION-file default for downstream
+                device
+
+                repos that consume this reusable workflow.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "Dockerfile_yocto-build-env: Pin docker.io to 27.x"
+              hash: c10ee4194b9ccb0ddc19ecd26d691df9fb2f6cba
+              body: >
+                Ubuntu recently pushed docker.io 29.1.3 to jammy-updates. Docker
+                29.x
+
+                raised MIN_API_VERSION from 1.24 to 1.44, dropping support for
+                any
+
+                client speaking API < 1.44. The apt install of docker.io in this
+
+                Dockerfile is unpinned, so every helper-image rebuild silently
+                picks
+
+                up the latest version from jammy-updates — once 29.1.3 landed,
+
+                freshly baked images broke the API-1.41 client invoked by
+
+                mkfs-hostapp-native:do_compile.
+
+
+                Released image tags before v1.39.32 baked docker.io 28.2.2,
+                which
+
+                still accepted API-1.41 clients (Docker 26-28 kept
+                MIN_API_VERSION
+
+                at 1.24; only the *latest* API moved to 1.44). v1.39.32 — and
+                any
+
+                image rebuilt for a dev branch in the last few days — bakes
+                29.1.3.
+
+
+                Pin docker.io=27.* — the newest major in jammy that still
+                accepts
+
+                API-1.41 clients (currently 27.5.1-0ubuntu3~22.04.2 from
+                jammy-security).
+
+                The wildcard absorbs Ubuntu's future security patches within the
+                27.x
+
+                line without re-introducing this regression. Re-evaluate the pin
+                when
+
+                balena-engine moves to a newer major; jammy ships only 20.10 /
+                27.5
+
+                / 29.1 of docker.io, so for anything else, switch to docker-ce
+                from
+
+                Docker's official APT repo.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.39.33
+          title: ""
+          date: 2026-05-01T17:03:35.767Z
+        - commits:
+            - subject: Set the default source-mirror environment to
+                balena-production.us-east-1
+              hash: fd1aeffff07c05339cc928e9a87595c9e7c9bd47
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: Backup shared-downloads to S3 on build failure
+              hash: 0457daafd362362857bd8c4498cce3f0aa70dbe2
+              body: |
+                Avoid losing new downloaded files if the build
+                failed for unrelated reasons.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: ".github/workflows/yocto-build-deploy.yml: Add the rust crates to
+                MIRRORS"
+              hash: 9a9ee2ebc6140bf90ef87b5de937bea092a3b6b0
+              body: >
+                Lately fetching the rust crates has been rate limited so let's
+                make sure we
+
+                add our shared downloaded rust crates to MIRRORS in case we get
+                fetching errors
+
+                from upstream.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: balena-yocto-scripts-1.39.32
+          title: ""
+          date: 2026-04-30T00:59:39.473Z
+        - commits:
+            - subject: Update aws/aws-cli to v2.34.23
+              hash: 6dd4b0df079d84d31ea0157f30b086df6917de40
+              body: |
+                Update aws/aws-cli from 2.33.25 to 2.34.23
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.39.31
+          title: ""
+          date: 2026-04-03T08:24:34.624Z
+        - commits:
+            - subject: Update balena-io/balena-cli to v24
+              hash: e5c4beeab5837fda8514834663ede9098ccd6cea
+              body: |
+                Update balena-io/balena-cli from 23.2.30 to 24.0.3
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.39.30
+          title: ""
+          date: 2026-04-01T07:52:47.775Z
+        - commits:
+            - subject: stop running AMI delete on failure step if no AMI created, and stop AMI
+                deploy on non-finalised workflow-dispatch
+              hash: 703e2ddca64701f96903b8f0ec6d6e651847ae40
+              body: >
+                These 2 rules are there to stop accidental AMI creation or
+                deletion
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: Ryan Cooke
+              nested: []
+            - subject: "workflows: simplify esr check to tag comparison"
+              hash: e4cbdbab03bdf05a8fcda27584efe7511a402e9e
+              body: >
+                The workflow dispatch ESR check was erroneously matching ESR
+                versions.
+
+                This commit uses the same match for both workflow and dispatch
+                runs.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.39.29
+          title: ""
+          date: 2026-03-28T17:54:53.249Z
+  version: 6.12.3+rev4
+  title: ""
+  date: 2026-05-07T12:36:59.573Z
+- commits:
     - subject: Update balena-os/github-workflows to
       hash: 4174aa5a22877842022d6ad17df4ed97fd91d83b
       body: Update balena-os/github-workflows
