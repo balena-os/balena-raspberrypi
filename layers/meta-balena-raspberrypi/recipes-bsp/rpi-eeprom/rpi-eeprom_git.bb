@@ -23,6 +23,7 @@ PV = "20250821+git${SRCPV}"
 LATEST_STABLE_PIEEPROM_FW:raspberrypi4-64 = "2025-08-20"
 VL805_FW_REV = "000138c0"
 FIRMWARE:raspberrypi4-64 = "firmware-2711"
+FIRMWARE:raspberrypi5 = "firmware-2712"
 
 S = "${WORKDIR}/git"
 
@@ -92,4 +93,4 @@ do_deploy[depends] += " \
 "
 
 FILES:${PN} = "${libexecdir}/pieeprom-update.sh"
-COMPATIBLE_MACHINE = "raspberrypi4-64"
+COMPATIBLE_MACHINE = "^(raspberrypi4-64|raspberrypi5)$"

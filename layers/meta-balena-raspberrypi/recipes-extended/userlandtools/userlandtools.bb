@@ -10,7 +10,7 @@ SRC_URI = "\
            file://0001-dtoverlay_main-Fix-configfs-mount-failure.patch \
 "
 
-COMPATIBLE_MACHINE = "raspberrypi4-64"
+COMPATIBLE_MACHINE = "^(raspberrypi4-64|raspberrypi5)$"
 
 SRCBRANCH = "master"
 SRCFORK = "raspberrypi"
