@@ -30,11 +30,16 @@ PROVIDES = "virtual/kernel-extension"
 
 inherit kernel-balena-override
 
-KERNEL_BALENA_OVERRIDE_FRAGMENTS = "balena-os-drivers.cfg"
+KERNEL_BALENA_OVERRIDE_FRAGMENTS = "balena-os-drivers.cfg bpf-lsm-debug.cfg"
 
 # raspberrypi4-64 EEPROM/A-B rollback SPI drivers. Shared with the base kernel
 # via BALENA_CONFIGS[pieeprom] (early inject), so both stay in sync.
 require recipes-kernel/linux/pieeprom.inc
+
+# bpf-lsm-debug.cfg enables CONFIG_DEBUG_INFO_BTF, which kconfig gates on
+# PAHOLE_VERSION >= 121. Without pahole in the build, BTF is silently dropped
+# (and do_kernel_balena_verify_fragments then fails, as intended).
+DEPENDS += "pahole-native"
 
 # When modules are compressed, OR standard strip will not strip debug symbols.
 # Usually balenaOS does not set CONFIG_DEBUG_INFO=y, but this extension does

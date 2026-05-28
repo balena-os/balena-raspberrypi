@@ -3,7 +3,7 @@ LICENSE = "MIT"
 
 inherit balena-hostapp-extension
 
-IMAGE_INSTALL = "kernel-extension-modules kernel-extension-image-initramfs kernel-extension-devicetree"
+IMAGE_INSTALL = "kernel-extension-modules kernel-extension-image-initramfs kernel-extension-devicetree bpftool libbpf"
 
 # revisit once the poky submodule moves off kirkstone
 # Fixed in upstream openembedded-core
