@@ -3,7 +3,7 @@ LICENSE = "MIT"
 
 inherit balena-hostapp-extension
 
-IMAGE_INSTALL = "kernel-extension-modules kernel-extension-image-initramfs kernel-extension-devicetree"
+IMAGE_INSTALL = "kernel-extension-modules kernel-extension-image-initramfs kernel-extension-devicetree bpftool libbpf"
 
 HOSTAPP_EXTENSION_LABEL_OVERRIDE = "100"
 
