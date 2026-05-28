@@ -46,8 +46,3 @@ BALENA_CONFIGS[pieeprom] = " \
     CONFIG_SPI_BCM2835=y \
     CONFIG_SPI_SPIDEV=y \
 "
-
-BALENA_CONFIGS:append = " rtl8192"
-BALENA_CONFIGS[rtl8192] = " \
-    CONFIG_RTL8192CU=m \
-"
