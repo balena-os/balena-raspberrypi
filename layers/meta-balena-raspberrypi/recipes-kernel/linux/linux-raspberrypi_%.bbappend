@@ -1,5 +1,12 @@
 inherit kernel-balena
 
+# Add-only driver fragment. Previously merged via the kernel-balena glob (now
+# moved to kernel-balena-override, which the base kernel does not inherit). It
+# only adds symbols, so early do_kernel_configme merge + fetcher tracking is
+# correct. Scoped to this PN-specific bbappend so the bootloader (which requires
+# linux-raspberrypi.inc) does not pull in the drivers.
+SRC_URI += "file://balena-os-drivers.cfg"
+
 # These device types have been using the aufs storage driver,
 # and during a HUP the storage in the inactive sysroot will
 # still be aufs, so we need to include the aufs driver further
@@ -38,16 +45,6 @@ do_deploy[prefuncs] += "do_overlays"
 # the boot partition can be generated correctly
 do_install[nostamp] = "1"
 
-# Built-in SPI drivers needed for API EEPROM update
-# Otherwise on A/B rollback modules won't match running kernel
-BALENA_CONFIGS:append:raspberrypi4-64 = " pieeprom"
-BALENA_CONFIGS[pieeprom] = " \
-    CONFIG_SPI=y \
-    CONFIG_SPI_BCM2835=y \
-    CONFIG_SPI_SPIDEV=y \
-"
-
-BALENA_CONFIGS:append = " rtl8192"
-BALENA_CONFIGS[rtl8192] = " \
-    CONFIG_RTL8192CU=m \
-"
+# Built-in SPI drivers for the raspberrypi4-64 EEPROM update / A-B rollback
+# path. Shared with the override extension kernel via a common include.
+require recipes-kernel/linux/pieeprom.inc
