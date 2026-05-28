@@ -29,6 +29,16 @@ PROVIDES = "virtual/kernel-extension"
 
 inherit kernel-balena
 
+# When modules are compressed, OR standard strip will not strip debug symbols.
+# Usually balenaOS does not set CONFIG_DEBUG_INFO=y, but this extension does
+# so we need to make sure debug symbols are stripped, while keeping the BTF
+# data that survives the strip debug.
+do_install:prepend() {
+    if grep -q '^CONFIG_MODULE_COMPRESS=y$' "${B}/.config"; then
+        export INSTALL_MOD_STRIP=1
+    fi
+}
+
 # Track local fragments in the task hash; kernel-balena's
 # do_kernel_balena_merge_fragments does the actual *.cfg merge.
 python () {
