@@ -1,4 +1,1984 @@
 - commits:
+    - subject: Update layers/meta-balena to 75d172bf9df87b05612f66e651341f4a98d652f9
+      hash: 2d0fb7639d5cd7cdb0ddfb21beaba98c817cc65a
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 75d172bf9df87b05612f66e651341f4a98d652f9
+        changelog-entry: Update layers/meta-balena to 75d172bf9df87b05612f66e651341f4a98d652f9
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "balena: Remove aufs as a supported storage driver"
+              hash: b95114ed07adc01d510371e705a76d0a8d745560
+              body: >
+                Engine v25 drops aufs support. Update the sanity check to only
+                accept
+
+                overlay2, remove the conditional aufs-util-auplink dependency
+                from the
+
+                packagegroup, and fix the stale comment in balena-os.inc.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "balena: Remove aufs-to-overlay2 storage migration drop-in"
+              hash: 493c5d406a79eb22412b337e0e546e962c8004ce
+              body: >
+                Engine v25 removes aufs support entirely, making the
+
+                BALENA_MIGRATE_OVERLAY env var a no-op. Remove the systemd
+                drop-in
+
+                that set it and its install logic from the recipe.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "go: Upgrade to 1.24.6 from upstream walnascar recipes"
+              hash: c13d7b3f15cfe5b80f2efcf669735c3c89a557cb
+              body: >
+                Balena engine v25 requires Go 1.23+. OE-Core skipped 1.23
+                entirely
+
+                (scarthgap=1.22, walnascar=1.24), so we adopt the
+                upstream-validated
+
+                walnascar Go 1.24.6 recipes rather than hand-rolling untested
+                1.23
+
+                patches.
+
+
+                Changes from scarthgap 1.22.12:
+
+                - New source checksums and license md5 for Go 1.24.6
+
+                - Remove GOROOT_FINAL (Go 1.24 uses dynamic GOROOT discovery)
+
+                - Add -trimpath to shared lib install for reproducibility
+
+                - Add patch 0010 (GOROOT trimpath fix for shared builds)
+
+                - Add patch 6d265b (remove forced binutils-gold on aarch64)
+
+                - Drop 14 CVE patches (all fixed upstream in 1.24.6)
+
+                - Update line offsets in 9 existing patches
+
+
+                go-crosssdk.inc and go-cross-canadian.inc are intentionally kept
+                at
+
+                scarthgap versions to preserve SDK dependency naming
+                compatibility.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "balena: Update balena engine to v25.0.14"
+              hash: 75466c69edde68993e58512f94bd6e367d376cf3
+              body: |
+                This release removes support for aufs to overlay migration.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-7.2.0
+          title: ""
+          date: 2026-05-29T21:39:00.695Z
+        - commits:
+            - subject: Remove some docs in favor of moving them directly to the product docs
+              hash: 48b0fc4b2fff441067d9601219cef747b431c74d
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: Matthew Yarmolinsky
+              nested: []
+          version: meta-balena-7.1.1
+          title: ""
+          date: 2026-05-28T14:15:39.228Z
+        - commits:
+            - subject: remove all bins from nss to save some place
+              hash: e7124736f403316e53f373ef61c7cd06773e06d3
+              body: ""
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+                signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+              author: Yann CARDAILLAC
+              nested: []
+          version: meta-balena-7.1.0
+          title: ""
+          date: 2026-05-27T13:55:53.166Z
+        - commits:
+            - subject: Update tests/leviathan digest to 053da9e
+              hash: 078703410e0531f05fc4b9c74f9ec41523908950
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Update balena-io/balena-cli to v25
+                      hash: 21225003a53c571f4c4d1d3396dca862f8ad4703
+                      body: |
+                        Update balena-io/balena-cli from 22.5.5 to 25.1.6
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.36.111
+                  title: ""
+                  date: 2026-05-21T13:58:26.221Z
+                - commits:
+                    - subject: "e2e: probe supervisor /ping instead of /v1/healthy"
+                      hash: 8d1d5e8b554e0b63ed1320244543e4d114393436
+                      body: >
+                        balena-supervisor v17.6.26 fixed an inverted boolean in
+                        the connectivity
+
+                        healthcheck (balena-os/balena-supervisor@22e4d646), so
+                        /v1/healthy now
+
+                        correctly returns 500 when the device isn't actively
+                        reporting state to
+
+                        balena-cloud. The QEMU DUT in this suite is provisioned
+                        in local mode and
+
+                        isn't registered to a fleet, so the supervisor never
+                        establishes that
+
+                        report, deviceState.connected stays false, and the
+                        post-fix supervisor
+
+                        honestly reports unhealthy. This has blocked every
+                        leviathan-worker PR
+
+                        since 2026-04-30.
+
+
+                        /ping is what this test actually wants: unauthenticated,
+                        no internal
+
+                        checks, returns "OK" if the supervisor process is up.
+                        meta-balena did
+
+                        the same thing in tests/suites/cloud/suite.js after
+                        hitting this on
+
+                        2026-04-22 (balena-os/meta-balena@6afa76bd).
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Kyle Harding <kyle@balena.io>
+                        signed-off-by: Kyle Harding <kyle@balena.io>
+                      author: Kyle Harding
+                      nested: []
+                  version: leviathan-2.36.110
+                  title: ""
+                  date: 2026-05-20T18:40:21.433Z
+                - commits:
+                    - subject: Update Lock file maintenance
+                      hash: 70f8357cca3a4a73911c2e049be08c570a0e2bfb
+                      body: |
+                        Update 
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.36.109
+                  title: ""
+                  date: 2026-04-27T01:32:31.752Z
+                - commits:
+                    - subject: Update core/contracts digest to 7c3bf64
+                      hash: e24bce4eabaae877a5e9497dd8e5777bf10c66bf
+                      body: |
+                        Update core/contracts
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.36.108
+                  title: ""
+                  date: 2026-04-22T09:23:40.879Z
+                - commits:
+                    - subject: Update Lock file maintenance
+                      hash: fc31934417d90ee46827e6c75c028022c420922f
+                      body: |
+                        Update 
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.36.107
+                  title: ""
+                  date: 2026-04-20T01:29:14.347Z
+          version: meta-balena-7.0.7
+          title: ""
+          date: 2026-05-26T13:41:57.157Z
+        - commits:
+            - subject: "wpa_supplicant: enable OWE networks"
+              hash: 0e38fdbb14224c7ab537055ae8beef809617f84c
+              body: >
+                This patch adds two config options necessary to enable
+                Opportunistic
+
+                Wireless Encryption (open networks with client isolation). The
+                main
+
+                thing is CONFIG_OWE, which enables the feature.
+                CONFIG_IEEE80211W adds
+
+                management frame protection, which is optional in OWE, but we
+                expect
+
+                it to be necessary on most networks. It's also mandatory for
+                other WPA3
+
+                family protocols such as SAE.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-7.0.6
+          title: ""
+          date: 2026-05-25T06:22:47.338Z
+        - commits:
+            - subject: "image-balena: include size of boot directory in HUP check"
+              hash: 46af76930d0c23200d96350e26063672f0215aaa
+              body: >
+                As part of hostapp-update, after pulling the container image
+                into the
+
+                alternative root partition, a volume is created with the
+                contents of
+
+                `/boot`. If there is no space left for this, HUP will fail on
+                the
+
+                field with no space left on device.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-7.0.5
+          title: ""
+          date: 2026-05-21T14:53:59.471Z
+        - commits:
+            - subject: Update balena-supervisor to v17.8.2
+              hash: 69657084a424d2002dbd249b397b0cbcdb813d12
+              body: |
+                Update balena-supervisor from 17.7.1 to 17.8.2
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Pin back to Node 22 / Alpine 3.22
+                      hash: 063cfc03f7aefe20cbcfde3bcb19db72b22a5a00
+                      body: >
+                        Node 24's V8 engine has issues with rpi/armv6 arch,
+                        throwing
+
+                        `Fatal error in , line 0 unreachable code`.
+
+
+                        We still support RPi Zero devices in production, roughly
+                        3k
+
+                        at time of this commit.
+
+
+                        Revert RegExp.escape to lodash escapeRegExp as it isn't
+                        useable in Node 22.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-17.8.2
+                  title: ""
+                  date: 2026-05-19T18:28:44.611Z
+                - commits:
+                    - subject: Update systeminformation to v5.31.6 [SECURITY]
+                      hash: db278c1c91d4948d737108a9fd97f742640dc341
+                      body: |
+                        Update systeminformation from 5.31.4 to 5.31.6
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: balena-supervisor-17.8.1
+                  title: ""
+                  date: 2026-05-13T17:54:55.662Z
+                - commits:
+                    - subject: Add a `PATCH /v2/device/tags` endpoint to tell the supervisor device
+                        tags to report
+                      hash: ff0dca884b25711e34bd3ce29bed5da330bbf006
+                      body: |
+                        https://balena.fibery.io/Work/Project/1031
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-17.8.0
+                  title: ""
+                  date: 2026-05-01T12:30:03.307Z
+                - commits:
+                    - subject: Trim whitespaces around dtparam input values
+                      hash: c240c47363869335fbaf40ba11c494bd5ce1cfca
+                      body: |
+                        Slightly more defensive, and prevents boot config apply
+                        loop from surrounding whitespaces such as in
+                        `BALENA_HOST_CONFIG_dtparam=" "foo=1","bar=2""`
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Christina Ying Wang
+                      nested: []
+                    - subject: Fix dtparam parsing for comma-separated values
+                      hash: b1b3f8e9ee19339825066d81fb9924d02b25808c
+                      body: >
+                        The RPi config.txt spec allows multiple comma-separated
+                        params
+
+                        on a single dtparam line (e.g.
+                        `dtparam=audio=on,i2c_arm=on`).
+
+                        The supervisor itself always writes one param per line,
+                        so this
+
+                        bug only triggers when a user preloads a config.txt that
+                        uses
+
+                        the multi-param form.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-17.7.5
+                  title: ""
+                  date: 2026-04-30T16:49:37.368Z
+                - commits:
+                    - subject: Fix the network connectivity check
+                      hash: c377bbedd928dafe77d898efe048942f0463fd6e
+                      body: >
+                        The connectivity check function was receiving a `path`
+                        argument, added
+
+                        on #820. The function, that just connects to a socket
+                        was looking for a
+
+                        unix socket instead of connecting to the remote host,
+                        which means it was
+
+                        always failing.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-17.7.4
+                  title: ""
+                  date: 2026-04-29T20:31:23.602Z
+                - commits:
+                    - subject: Fix error propagation is fsUtils.touch
+                      hash: 29d84ac9ab8bd8e659d52acdcdd94efcf2040f24
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                    - subject: Convert code to async/await
+                      hash: a9e72a1533bd72d675401edf01a0f470dc00812e
+                      body: >
+                        This is how new code would be written and can result in
+                        better stack
+
+                        traces via zero cost async stack traces and less closure
+                        overhead
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-17.7.3
+                  title: ""
+                  date: 2026-04-20T16:16:49.325Z
+                - commits:
+                    - subject: "Firewall: avoid `exports.` to improve type-checking"
+                      hash: 553f884dd90f4187c44527f6b1ae4027d7ace245
+                      body: >
+                        `exports` is `any` so referencing it means no typings
+                        are applied in
+
+                        cases you would normally expect them to be and means
+                        that it's easy to
+
+                        introduce bugs due to expecting typescript to be able to
+                        catch them
+
+                        when in fact it's gone via a commonjs indirection. As an
+                        added benefit
+
+                        it also makes the code more ESM ready
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-17.7.2
+                  title: ""
+                  date: 2026-04-14T21:26:22.254Z
+          version: meta-balena-7.0.4
+          title: ""
+          date: 2026-05-20T16:31:29.825Z
+        - commits:
+            - subject: "plymouth: start after udev settle"
+              hash: 2c223c726e75bc0ecf0aafbf850bde5907e4107b
+              body: >
+                In commit 72706964b8dd308b6c1772fa22c4e89d1680d205 we have
+                reworked
+
+                the plymouth unit files to use drop-in configs and avoid the
+                need
+
+                to patch the sources.
+
+
+                During this process we have lost the plymouth-start's depenency
+
+                on systemd-udev-settle.service which creates a race condition
+                around
+
+                the GPU initialization. Sometimes plymouth starts too early,
+                displays
+
+                the splash screen on the early boot SW framebuffer, which then
+                gets
+
+                lost when the actual GPU driver takes over.
+
+
+                This patch re-adds the dependency on systemd-udev-settle.service
+
+                which should address the issue.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Michal Toman <michalt@balena.io>
+                signed-off-by: Michal Toman <michalt@balena.io>
+              author: Michal Toman
+              nested: []
+          version: meta-balena-7.0.3
+          title: ""
+          date: 2026-05-13T11:48:58.719Z
+        - commits:
+            - subject: "kernel-balena: address CVE-2026-43284"
+              hash: f774fd5ea5dff8e1751c19a62825330fce043425
+              body: >
+                This commit removes the esp4/esp6 and rxrpc modules as they are
+                vulnerable.
+
+
+                Devices will not be able to use IPSEC based VPNs (esp4/esp6).
+                The only
+
+                consumer of rxrpc is the in-kernel AFS (Andrew File System)
+                which is
+
+                experimental anyway.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-7.0.2
+          title: ""
+          date: 2026-05-11T13:58:10.857Z
+        - commits:
+            - subject: "kernel-balena: address CVE-2026-31431"
+              hash: d95ef53e5e65cabc0dcbb87db994463367bd2bad
+              body: |
+                Unconditionally remove CONFIG_CRYPTO_USER_API_AEAD.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-7.0.1
+          title: ""
+          date: 2026-05-08T11:09:20.703Z
+        - commits:
+            - subject: "mobynit: update to v1.0.0"
+              hash: d3c6c79ec6ff747fdcec1534bd704950b163f63b
+              body: >
+                This mobynit version mounts the rootfs as lowerdirs and is
+                intrinsically
+
+                read-only.
+              footer:
+                Change-type: major
+                change-type: major
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-7.0.0
+          title: ""
+          date: 2026-04-24T18:34:48.170Z
+        - commits:
+            - subject: "tests: cloud: Stop waiting for healthy supervisor in cloud suite
+                before preload test"
+              hash: 6afa76bd2f4cd1a342a3dd2339976a380e40b607
+              body: >
+                In the cloud suite we provision the device with no internet - to
+                test that the prloaded app starts on first boot without api
+                access. Supervisor 17.6.26 fixed a supervisor connectivity
+                healthcheck, that causes the supervisor to now correctly report
+                as non healthy if there is no connectivity. This caused a
+                failure in the cloud suite where we were waiting for a healthy
+                supervisor to continue to the preloaded app test, but as the
+                internet is disabled until we complete that test, we were
+                waiting until the test timed out.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: Ryan Cooke
+              nested: []
+          version: meta-balena-6.12.11
+          title: ""
+          date: 2026-04-23T05:56:40.348Z
+        - commits:
+            - subject: "balena-bootloader.bbclass: Add required CONFIG_NLS_ISO8859_1 as
+                built-in"
+              hash: 59ff5ba6b5583e14d7d05548930ccfa4a1f3ef92
+              body: |
+                Without this config the boot fails with:
+
+                FAT-fs (mmcblk0p1): IO charset iso8859-1 not found
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-6.12.10
+          title: ""
+          date: 2026-04-21T21:38:05.157Z
+        - commits:
+            - subject: Fix modemmanager build on dunfell
+              hash: e945ee3d1610d387a7e29b482b678d9a38d72b9d
+              body: ""
+              footer:
+                Changelog-entry: Fix modemmanager build on dunfell
+                changelog-entry: Fix modemmanager build on dunfell
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-6.12.9
+          title: ""
+          date: 2026-04-16T17:50:24.850Z
+        - commits:
+            - subject: Update tests/leviathan digest to 2e945b4
+              hash: e5f020562e656d4d554aaef11318855861428624
+              body: Update tests/leviathan
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Update Lock file maintenance
+                      hash: 6a2a4f57b4c99d957c88c7d3422549fb4575d6cb
+                      body: |
+                        Update 
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.36.106
+                  title: ""
+                  date: 2026-04-13T01:28:25.145Z
+                - commits:
+                    - subject: Update actions/upload-artifact digest to 043fb46
+                      hash: 62e14d3058fe31d156aff97853942f9dbaea9db5
+                      body: |
+                        Update actions/upload-artifact
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.36.105
+                  title: ""
+                  date: 2026-04-11T01:39:14.274Z
+                - commits:
+                    - subject: Update balena-os/leviathan-worker to v2.10.30
+                      hash: a8200231aa037f4bf9ddb4e7e6693527558be4ae
+                      body: >
+                        Update balena-os/leviathan-worker from 2.10.29 to 2.10.30
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.36.104
+                  title: ""
+                  date: 2026-04-10T13:17:58.036Z
+                - commits:
+                    - subject: Update Lock file maintenance
+                      hash: 8194a3c017cd0a86356e4a5e91e46801f02abc97
+                      body: |
+                        Update 
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: leviathan-2.36.103
+                  title: ""
+                  date: 2026-04-10T11:33:28.387Z
+                - commits:
+                    - subject: "core/contracts: Update submodule to v2.0.142"
+                      hash: a950ff11b6676135a00f246e4268123c13d26e22
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                        signed-off-by: Alexandru Costache <alexandru@balena.io>
+                      author: Alexandru Costache
+                      nested: []
+                  version: leviathan-2.36.102
+                  title: ""
+                  date: 2026-04-10T10:18:35.246Z
+          version: meta-balena-6.12.8
+          title: ""
+          date: 2026-04-13T11:49:42.542Z
+        - commits:
+            - subject: Update balena-supervisor to v17.7.1
+              hash: 94842a810c54fc4d8eb1feea8bfa111b658e75c4
+              body: |
+                Update balena-supervisor from 17.6.27 to 17.7.1
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: Fix bug in single -> multicontainer migration of legacy app.json
+                      hash: dadca5fd2f1651aa7c3cc0c13d197d27cd7bfbae
+                      body: >
+                        The use of `exports.` means that typescript couldn't
+                        spot the bug
+
+                        introduced in
+                        https://github.com/balena-os/balena-supervisor/pull/1765
+
+                        where the function was moved to another file. This
+                        switches to
+
+                        importing the function as expected.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-17.7.1
+                  title: ""
+                  date: 2026-04-08T16:07:56.710Z
+                - commits:
+                    - subject: Return updateStatus in /v2/applications/state
+                      hash: 16df0720d4682bc5004aec97c171bd0e3dc22fde
+                      body: >
+                        This updates the handler for the endpoint to use the
+                        result of
+
+                        application-manager.getState (augmented with data from
+                        the target apps)
+
+                        in order to include the `updateStatus` as part of the
+                        app report. This
+
+                        allows the method to be used by apps to identify when an
+                        app update has
+
+                        finished downloading in order to force an update.
+                      footer:
+                        Change-type: minor
+                        change-type: minor
+                      author: Felipe Lalanne
+                      nested: []
+                    - subject: Ensure all downloading images are reported
+                      hash: 51528674db4747ce1ab938f452a4dbb987249398
+                      body: >
+                        Previously, the report would only include the images
+                        that are in the
+
+                        process of being downloaded, without including images in
+                        the target
+
+                        state that will have to be downloaded eventually. This
+                        could also cause
+
+                        the `update_status` report to fluctuate between `done`
+                        and `downloading`
+
+                        while new image downloads were being queued up.
+
+
+                        The `getState` method in application-manager now checks
+                        the target apps
+
+                        and adds any target images as `Downloading` with
+                        progress `0` that are
+
+                        overrided by the current state. This method also now
+                        reports when an app
+
+                        has been rejected which was previously done in
+                        `getCurrentForReport`.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-17.7.0
+                  title: ""
+                  date: 2026-04-07T20:44:17.935Z
+                - commits:
+                    - subject: Convert many lodash usages to native equivalents
+                      hash: 6a28bb270f0f1f5d095631e142f23c9fe4d9b46d
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-17.6.32
+                  title: ""
+                  date: 2026-04-07T19:17:34.212Z
+                - commits:
+                    - subject: "Tests: remove unused file"
+                      hash: 6f54477ac9661258e7552d64be54d280113985c3
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-17.6.31
+                  title: ""
+                  date: 2026-04-07T15:59:33.996Z
+                - commits:
+                    - subject: Update to typescript 6.x / es2025
+                      hash: 3cdceb7af6d38b59465fad1be52c10dc82e619b9
+                      body: |
+                        This also makes use of the unlocked es2025 features
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                    - subject: Remove nodejs 20/22 from the test matrix as we only ship with/truly
+                        support 24.x
+                      hash: a8e652683e7c778730ecd171d7890a94ab8953b8
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-17.6.30
+                  title: ""
+                  date: 2026-04-06T14:30:27.547Z
+                - commits:
+                    - subject: Update lodash to v4.18.1 [SECURITY]
+                      hash: 614d1e001445ebeae314e256411b0628d08f3ddf
+                      body: |
+                        Update lodash from 4.17.23 to 4.18.1
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: balena-renovate[bot]
+                      nested: []
+                  version: balena-supervisor-17.6.29
+                  title: ""
+                  date: 2026-04-03T20:39:05.415Z
+                - commits:
+                    - subject: "config/backends: Allow setting custom dtb on iot-gate-imx8plus"
+                      hash: a0b267d7abc35e20647fd4dc5e42cfe1e1424eb2
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+                        signed-off-by: Alexandru Costache <alexandru@balena.io>
+                      author: Alexandru Costache
+                      nested: []
+                  version: balena-supervisor-17.6.28
+                  title: ""
+                  date: 2026-04-03T18:31:16.999Z
+          version: meta-balena-6.12.7
+          title: ""
+          date: 2026-04-11T12:09:48.444Z
+        - commits:
+            - subject: Update actions/checkout digest to de0fac2
+              hash: 71b5d16d84c284c2fdb2d50ec6fce0b5ebe6eb5a
+              body: >
+                Update actions/checkout to
+                de0fac2e4500dabe0009e67214ff5f5447ce83dd
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: meta-balena-6.12.6
+          title: ""
+          date: 2026-04-10T11:35:57.174Z
+        - commits:
+            - subject: ".github/workflows: Remove discontinued machines"
+              hash: 5f2ca2e4adaf3c7ef807e1f82e55c07537540dc2
+              body: |
+                It was decided to remove support for these machines based on
+                hardware being discontinued or lack of customer interest:
+
+                https://docs.balena.io/reference/hardware/versioning#discontinued
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: meta-balena-6.12.5
+          title: ""
+          date: 2026-04-09T01:53:25.209Z
+        - commits:
+            - subject: Update balena-supervisor to v17.6.27
+              hash: e7476f5ca220f62ae8c5b00bea27c1426bcf7d1c
+              body: |
+                Update balena-supervisor from 17.6.3 to 17.6.27
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested:
+                - commits:
+                    - subject: "Webpack: target the built js files directly"
+                      hash: 15e8fae76d9a1d61108f25daf2e7dd66b057fa23
+                      body: >
+                        This avoids the need to type check/transpile twice and
+                        as such removes
+
+                        the potential for confusion/surprises. As part of that
+                        it also means
+
+                        the lib/validation module is longer bundled twice, since
+                        currently it's
+
+                        bundled once due to src files and once due to
+                        build/migrations files.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-17.6.27
+                  title: ""
+                  date: 2026-04-01T19:20:43.463Z
+                - commits:
+                    - subject: Fix connectivity healthcheck
+                      hash: 22e4d64600eefba2f8cb6e498cb3de92069c4e6f
+                      body: >
+                        The removal of `stateReportErrors` on #2498 made
+                        apparent a bug on the
+
+                        connectivity healtcheck that was being masked by they
+                        unfalsifiable
+
+                        comparison of `stateReportErrors`.
+
+
+                        The connectivity healtcheck should fail only if the
+                        connectivity check
+
+                        is enabled AND the device is disconnected.
+
+
+                        This updates the logic that was reversed before
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Felipe Lalanne
+                      nested: []
+                  version: balena-supervisor-17.6.26
+                  title: ""
+                  date: 2026-04-01T19:01:44.680Z
+                - commits:
+                    - subject: Remove unused `stateReportErrors` variable
+                      hash: ed35c0bb17b74ac46d5d85ca2b861ee6a7645a0c
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-17.6.25
+                  title: ""
+                  date: 2026-03-30T16:31:37.612Z
+                - commits:
+                    - subject: Switch from pinejs-client-request to pinejs-client-fetch
+                      hash: e7e8dcf3adf9902bf7e2a5ad7be7bac34b316e97
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-17.6.24
+                  title: ""
+                  date: 2026-03-30T16:06:03.096Z
+                - commits:
+                    - subject: Fix inconsistent handling of `null` vs `undefined` for `getEntryPoint`
+                      hash: 06ec31a891c7408ad9ccfbf4120849b11e01c772
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-17.6.23
+                  title: ""
+                  date: 2026-03-30T13:46:26.090Z
+                - commits:
+                    - subject: Fix pify promisified method names
+                      hash: 92bde8917743339c0449bb175bc2c66885322ec4
+                      body: >
+                        pify replaces methods in-place, not with *Async suffixes.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-17.6.22
+                  title: ""
+                  date: 2026-03-28T00:34:04.667Z
+                - commits:
+                    - subject: "Migratinng legacy databases: fix handling no compatible releases"
+                      hash: b87805e48c1603147caa994d5eaff5253b60db12
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                    - subject: Update to using balena-api v7
+                      hash: 67b448cd0c60da24e8a720990694bbd5bfeff06b
+                      body: >
+                        This also makes use of the SDK's bundled typings to
+                        improve the typing
+
+                        and safety of all balena-api API calls
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-17.6.21
+                  title: ""
+                  date: 2026-03-27T14:07:46.050Z
+                - commits:
+                    - subject: Use `pify` for promisifying request
+                      hash: 4513969be16d2eb55dd11fe9839919e1c394171e
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                    - subject: Use `Promise` as the return type for async request methods
+                      hash: 0d4fe3ef5b486cc800b88897f25343c5b1c61fb7
+                      body: |
+                        This avoids accidentally relying on bluebird methods
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                    - subject: Replace `Bluebird.filter` with async/await equivalent
+                      hash: a2e1d2ceea9f85ee0e5ca58c17bf44dd2ec67562
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                    - subject: Remove bluebird from migration files by converting to async/await
+                      hash: 187f1f0017022a91ffdcd8f997efd8626805fcf4
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                    - subject: Replace `Bluebird.timeout` with `p-timeout`
+                      hash: 069adb8e674cdda8821d94ac1f896b41855b6422
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-17.6.20
+                  title: ""
+                  date: 2026-03-26T18:42:49.318Z
+                - commits:
+                    - subject: Avoid unnecessary `Promise`s in `ConfigBackend.matches` implementations
+                      hash: 381b7124840bd52c2753409e1ddd9ce8a6ff2405
+                      body: >
+                        This reduces some overhead and code size which is easily
+                        avoided when
+
+                        using async/await rather than `.then`
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-17.6.19
+                  title: ""
+                  date: 2026-03-26T18:05:24.906Z
+                - commits:
+                    - subject: Switch locks to using native resource management functionality
+                      hash: 0082941e3cae30d08ef913d218d1746b5adad3b5
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-17.6.18
+                  title: ""
+                  date: 2026-03-26T17:08:32.033Z
+                - commits:
+                    - subject: Convert `forEach` to `for` loops where appropriate
+                      hash: d19d4ad99f6397556377eed1d2cabff0fc027d17
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-17.6.17
+                  title: ""
+                  date: 2026-03-26T16:01:14.388Z
+                - commits:
+                    - subject: "mdns-lookup: improve typings"
+                      hash: e997a8aa3d1a3c01faec6edfa53e56996372d5bf
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                    - subject: "mdns-lookup: remove setting explicit `verbatim: true` as it already
+                        defaults true"
+                      hash: 2a388e1711628fc4a9be0ef8161ffc87884396f0
+                      body: |
+                        The default was changed to true in nodejs 17.0.0
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-17.6.16
+                  title: ""
+                  date: 2026-03-24T20:44:07.749Z
+                - commits:
+                    - subject: Update migration.ts
+                      hash: 922493b91d4cd4d5f17f09af66e948b62496a84d
+                      body: |
+                        Fix inverted variable bug
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: giuseppe443
+                      nested: []
+                  version: balena-supervisor-17.6.15
+                  title: ""
+                  date: 2026-03-24T19:43:46.569Z
+                - commits:
+                    - subject: "Build: avoid needing to `mv` all files immediately after compiling"
+                      hash: 2b8aae3baf74b8f8cfb02d0493ed67ec4d65c756
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-17.6.14
+                  title: ""
+                  date: 2026-03-20T18:48:37.000Z
+                - commits:
+                    - subject: "Tests: switch from `require` to `fs` for loading JSON fixtures"
+                      hash: ab40ec04d42b4ba9b365d85f380bf2886ac31db3
+                      body: >
+                        This is more compatible with ESM, albeit the
+                        `require.resolve` will
+
+                        need to be updated
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-17.6.13
+                  title: ""
+                  date: 2026-03-20T18:10:29.656Z
+                - commits:
+                    - subject: Remove legacy tests as they are not being run and no longer work
+                      hash: ef00b34d9b1db588a265103893c94922c84173be
+                      body: >
+                        They have been unable to run since 2024-12-06 when a
+                        source file was
+
+                        moved and the import was not updated
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-17.6.12
+                  title: ""
+                  date: 2026-03-18T15:45:31.738Z
+                - commits:
+                    - subject: Update to nodejs 24.x, alpine 3.23
+                      hash: 6e8d0aca0ab590d069b245da5de9d1c85436bf21
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-17.6.11
+                  title: ""
+                  date: 2026-03-18T15:05:41.978Z
+                - commits:
+                    - subject: Update dependencies
+                      hash: 7a1612b72b75eb8bf55e1f2fbb1380727a5f4fb4
+                      body: |
+                        Update @balena/systemd from 0.5.0 to 0.5.11
+                        Update @balena/compose from 7.2.1 to 7.4.0
+                        Update balena-register-device from 9.0.4 to 9.0.16
+                        Update docker-delta from 4.1.0 to 5.0.1
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested:
+                        - commits:
+                            - subject: Update dependency balena-config-karma to v4.0.3
+                              hash: 2c00ec989886848fb34f04ddea64d57071c5c906
+                              body: |
+                                Update balena-config-karma from 4.0.2 to 4.0.3
+                              footer:
+                                Change-type: patch
+                                change-type: patch
+                              author: balena-renovate[bot]
+                              nested: []
+                          version: balena-register-device-9.0.16
+                          title: ""
+                          date: 2026-02-22T02:41:52.607Z
+                        - commits:
+                            - subject: "Add id-token: write permission for NPM OIDC publishing"
+                              hash: c2d2a30df67c674ea6f6cc8548efaf29a9c69da9
+                              body: ""
+                              footer:
+                                Change-type: patch
+                                change-type: patch
+                                Signed-off-by: Kyle Harding <kyle@balena.io>
+                                signed-off-by: Kyle Harding <kyle@balena.io>
+                              author: Kyle Harding
+                              nested: []
+                          version: balena-register-device-9.0.15
+                          title: ""
+                          date: 2026-02-19T02:00:23.878Z
+                        - commits:
+                            - subject: Remove stub `@types/uuid` dependency
+                              hash: 9f1fc0290ff40c9364d2e999725f542d95c1cd66
+                              body: ""
+                              footer:
+                                Change-type: patch
+                                change-type: patch
+                              author: Pagan Gazzard
+                              nested: []
+                          version: balena-register-device-9.0.14
+                          title: ""
+                          date: 2025-11-24T15:55:44.915Z
+                        - commits:
+                            - subject: Update dependency uuid to v13
+                              hash: 367a6ea7d786d9ca3626e6d60e26b9f3625cb6cb
+                              body: |
+                                Update uuid from 11.1.0 to 13.0.0
+                              footer:
+                                Change-type: patch
+                                change-type: patch
+                              author: balena-renovate[bot]
+                              nested: []
+                          version: balena-register-device-9.0.13
+                          title: ""
+                          date: 2025-11-13T23:16:45.482Z
+                        - commits:
+                            - subject: Update dependency mocha to v11
+                              hash: 5df3c840397857a219571fc7f20f7140038ce91b
+                              body: |
+                                Update mocha from 10.8.2 to 11.7.5
+                              footer:
+                                Change-type: patch
+                                change-type: patch
+                              author: balena-renovate[bot]
+                              nested: []
+                          version: balena-register-device-9.0.12
+                          title: ""
+                          date: 2025-11-11T19:07:23.621Z
+                        - commits:
+                            - subject: Update dependency @types/mocha to v10
+                              hash: a18f3bc2320e318b2b1de2935476698d5575a3f9
+                              body: |
+                                Update @types/mocha from 9.1.1 to 10.0.10
+                              footer:
+                                Change-type: patch
+                                change-type: patch
+                              author: balena-renovate[bot]
+                              nested: []
+                          version: balena-register-device-9.0.11
+                          title: ""
+                          date: 2025-11-11T18:30:38.306Z
+                        - commits:
+                            - subject: Update dependency @balena/lint to v9
+                              hash: b657d505c7be30d59e386de1ecbf68aea5846fac
+                              body: |
+                                Update @balena/lint from 7.3.0 to 9.1.6
+                              footer:
+                                Change-type: patch
+                                change-type: patch
+                              author: balena-renovate[bot]
+                              nested: []
+                          version: balena-register-device-9.0.10
+                          title: ""
+                          date: 2025-11-11T18:14:26.738Z
+                        - commits:
+                            - subject: Update dependency buffer to v6
+                              hash: 5756a9006a380c6580710ea8fd9fe688eb629a7b
+                              body: |
+                                Update buffer from 5.7.1 to 6.0.3
+                              footer:
+                                Change-type: patch
+                                change-type: patch
+                              author: balena-renovate[bot]
+                              nested: []
+                          version: balena-register-device-9.0.9
+                          title: ""
+                          date: 2025-11-11T18:07:05.977Z
+                        - commits:
+                            - subject: Update uuid to v11
+                              hash: 217a6319820996afbda09866e94519dd7b5b3746
+                              body: |
+                                Update @types/uuid from 8.3.4 to 11.0.0
+                              footer:
+                                Change-type: patch
+                                change-type: patch
+                              author: balena-renovate[bot]
+                              nested: []
+                          version: balena-register-device-9.0.8
+                          title: ""
+                          date: 2025-11-11T17:56:44.788Z
+                        - commits:
+                            - subject: "Tests: remove use of chai-as-promised"
+                              hash: 6361987a4367a34c9864c04107a82ee042b80ffc
+                              body: ""
+                              footer:
+                                Change-type: patch
+                                change-type: patch
+                              author: Pagan Gazzard
+                              nested: []
+                          version: balena-register-device-9.0.7
+                          title: ""
+                          date: 2025-04-10T23:48:56.757Z
+                        - commits:
+                            - subject: Update dependency karma to v6 [SECURITY]
+                              hash: c13769fa1bec5cf372c79a59f89912ad67b34b90
+                              body: |
+                                Update karma from 5.2.3 to 6.4.4
+                              footer:
+                                Change-type: patch
+                                change-type: patch
+                              author: balena-renovate[bot]
+                              nested: []
+                          version: balena-register-device-9.0.6
+                          title: ""
+                          date: 2025-04-10T14:13:40.987Z
+                        - commits:
+                            - subject: Update dependency balena-config-karma to v4.0.2
+                              hash: bb1c75d13203dccf9b981d8dbdf7b11699964d48
+                              body: |
+                                Update balena-config-karma from 4.0.0 to 4.0.2
+                              footer:
+                                Change-type: patch
+                                change-type: patch
+                              author: balena-renovate[bot]
+                              nested: []
+                          version: balena-register-device-9.0.5
+                          title: ""
+                          date: 2025-03-19T15:56:03.806Z
+                        - commits:
+                            - subject: "Add id-token: write permission for NPM OIDC publishing"
+                              hash: 514fe8715c76ab669c0fa008f6b1e537d32287f0
+                              body: ""
+                              footer:
+                                Change-type: patch
+                                change-type: patch
+                                Signed-off-by: Kyle Harding <kyle@balena.io>
+                                signed-off-by: Kyle Harding <kyle@balena.io>
+                              author: Kyle Harding
+                              nested: []
+                          version: node-docker-delta-5.0.1
+                          title: ""
+                          date: 2026-02-19T21:49:35.376Z
+                        - commits:
+                            - subject: Remove bluebird dependency
+                              hash: e715af4171ef9490673ec1aa15b4320dc2a19a50
+                              body: ""
+                              footer:
+                                Change-type: major
+                                change-type: major
+                              author: Pagan Gazzard
+                              nested: []
+                            - subject: Update docker-toolbelt to 7.x, dropping support for docker < 1.10
+                                (released Feb 2016)
+                              hash: 4badf52ea783adc1c364b39487eacfb74390c258
+                              body: |
+                                Update docker-toolbelt from 6.0.13 to 7.0.0
+                              footer:
+                                Change-type: major
+                                change-type: major
+                              author: Pagan Gazzard
+                              nested:
+                                - commits:
+                                    - subject: Update @types/dockerode to 4.x
+                                      hash: 5c5cbbdd68b236e0da5c0ed9229c532eb52c7bd6
+                                      body: ""
+                                      footer:
+                                        Change-type: patch
+                                        change-type: patch
+                                      author: Pagan Gazzard
+                                    - subject: Switch to ESM
+                                      hash: 67961cf8f843088fd5d76d90f392e6077ab001cf
+                                      body: ""
+                                      footer:
+                                        Change-type: major
+                                        change-type: major
+                                      author: Pagan Gazzard
+                                    - subject: Update tsconfig target to es2024
+                                      hash: 82d9beb70a699a9149ea493d29b947667e58e2fc
+                                      body: ""
+                                      footer:
+                                        Change-type: major
+                                        change-type: major
+                                      author: Pagan Gazzard
+                                    - subject: Update minimum supported nodejs version to ^22.22.0 || >=24.13.0
+                                      hash: e4c62117fed82d4e413809feb72d682cd4c41670
+                                      body: ""
+                                      footer:
+                                        Change-type: major
+                                        change-type: major
+                                      author: Pagan Gazzard
+                                    - subject: Drop support for docker < 1.10 (released Feb 2016)
+                                      hash: 634fef0fb1f0e47ab46581720b6a2f9f2fb16280
+                                      body: >
+                                        This allows us to drop the balena-semver
+                                        dependency and avoid calls to
+
+                                        `docker.version()`
+                                      footer:
+                                        Change-type: major
+                                        change-type: major
+                                      author: Pagan Gazzard
+                                  version: docker-toolbelt-7.0.0
+                                  title: ""
+                                  date: 2026-02-02T19:11:04.201Z
+                                - commits:
+                                    - subject: Remove `event-stream` in favor of built-in alternatives
+                                      hash: 4019e32bff14c71675d1777c3fff69b31d37f7b8
+                                      body: ""
+                                      footer:
+                                        Change-type: patch
+                                        change-type: patch
+                                      author: Pagan Gazzard
+                                  version: docker-toolbelt-6.0.14
+                                  title: ""
+                                  date: 2025-10-07T11:51:49.360Z
+                            - subject: Switch to ESM
+                              hash: 0572596a9aa7c9a62a441a21597be2ca717b97bd
+                              body: ""
+                              footer:
+                                Change-type: major
+                                change-type: major
+                              author: Pagan Gazzard
+                              nested: []
+                            - subject: Update tsconfig target to es2024
+                              hash: 7c682d3e6be07c4032026e7dcdc2337fa15b5300
+                              body: ""
+                              footer:
+                                Change-type: major
+                                change-type: major
+                              author: Pagan Gazzard
+                              nested: []
+                            - subject: Update minimum supported nodejs version to ^22.22.0 || >=24.13.0
+                              hash: bff24a6660ec538901c773c4111a0b7489e52c2f
+                              body: ""
+                              footer:
+                                Change-type: major
+                                change-type: major
+                              author: Pagan Gazzard
+                              nested: []
+                          version: node-docker-delta-5.0.0
+                          title: ""
+                          date: 2026-02-04T11:49:03.656Z
+                        - commits:
+                            - subject: Update dependencies
+                              hash: 32caaf065c311641ef73f87aa376544750948473
+                              body: |
+                                Update docker-toolbelt from 6.0.2 to 6.0.13
+                              footer:
+                                Change-type: patch
+                                change-type: patch
+                              author: Pagan Gazzard
+                              nested:
+                                - commits:
+                                    - subject: Update actions/checkout digest to 08eba0b
+                                      hash: b9dadfd22fa93116029cf202f26ae7c01ebcb2d6
+                                      body: |
+                                        Update actions/checkout
+                                      footer:
+                                        Change-type: patch
+                                        change-type: patch
+                                      author: balena-renovate[bot]
+                                  version: docker-toolbelt-6.0.13
+                                  title: ""
+                                  date: 2025-10-06T17:00:02.813Z
+                                - commits:
+                                    - subject: Update dependencies
+                                      hash: 13b9d72f6d2b519a11f133094a3735c537c1d0b6
+                                      body: ""
+                                      footer:
+                                        Change-type: patch
+                                        change-type: patch
+                                      author: Pagan Gazzard
+                                  version: docker-toolbelt-6.0.12
+                                  title: ""
+                                  date: 2025-10-06T16:52:47.374Z
+                                - commits:
+                                    - subject: Update actions/setup-node digest to 49933ea
+                                      hash: 8f194b668a020fef896c13ec2378fcc54e78dddf
+                                      body: |
+                                        Update actions/setup-node
+                                      footer:
+                                        Change-type: patch
+                                        change-type: patch
+                                      author: balena-renovate[bot]
+                                  version: docker-toolbelt-6.0.11
+                                  title: ""
+                                  date: 2025-04-16T15:58:16.885Z
+                                - commits:
+                                    - subject: Update dependency typedoc to ^0.28.0
+                                      hash: 35c794774cc29e5c69a487a1112a1c31debad64a
+                                      body: |
+                                        Update typedoc from 0.25.13 to 0.28.2
+                                      footer:
+                                        Change-type: patch
+                                        change-type: patch
+                                      author: balena-renovate[bot]
+                                  version: docker-toolbelt-6.0.10
+                                  title: ""
+                                  date: 2025-04-11T16:16:42.949Z
+                                - commits:
+                                    - subject: Update peaceiris/actions-gh-pages action to v4
+                                      hash: 6538fc6787b038ed79a80512b27f2655f21500cb
+                                      body: >
+                                        Update peaceiris/actions-gh-pages from 3
+                                        to 4
+                                      footer:
+                                        Change-type: patch
+                                        change-type: patch
+                                      author: balena-renovate[bot]
+                                  version: docker-toolbelt-6.0.9
+                                  title: ""
+                                  date: 2025-04-10T15:25:13.216Z
+                                - commits:
+                                    - subject: Update dependency rimraf to v6
+                                      hash: 77916ac11bd7d65ea211404ae0d9336786df78ff
+                                      body: |
+                                        Update rimraf from 5.0.10 to 6.0.1
+                                      footer:
+                                        Change-type: patch
+                                        change-type: patch
+                                      author: balena-renovate[bot]
+                                  version: docker-toolbelt-6.0.8
+                                  title: ""
+                                  date: 2025-04-10T13:49:29.409Z
+                                - commits:
+                                    - subject: Update dependency balena-semver to v3
+                                      hash: f0d15dfe2745046a445e1e9b2802dcbc2557de96
+                                      body: |
+                                        Update balena-semver from 2.3.5 to 3.0.2
+                                      footer:
+                                        Change-type: patch
+                                        change-type: patch
+                                      author: balena-renovate[bot]
+                                  version: docker-toolbelt-6.0.7
+                                  title: ""
+                                  date: 2025-04-10T11:43:25.833Z
+                                - commits:
+                                    - subject: Update dependency mocha to v11
+                                      hash: e55a7e5a1267edb6035cf8dc12603ab6964328b9
+                                      body: |
+                                        Update mocha from 10.8.2 to 11.1.0
+                                      footer:
+                                        Change-type: patch
+                                        change-type: patch
+                                      author: balena-renovate[bot]
+                                  version: docker-toolbelt-6.0.6
+                                  title: ""
+                                  date: 2025-04-02T15:10:00.632Z
+                                - commits:
+                                    - subject: Update actions/setup-node action to v4
+                                      hash: 6f803301aecffc277b55febc8bce6f4c847b3f9f
+                                      body: |
+                                        Update actions/setup-node from 3 to 4
+                                      footer:
+                                        Change-type: patch
+                                        change-type: patch
+                                      author: balena-renovate[bot]
+                                  version: docker-toolbelt-6.0.5
+                                  title: ""
+                                  date: 2025-03-25T17:22:00.426Z
+                                - commits:
+                                    - subject: Pin dependencies
+                                      hash: 3da6898c9279eb301a5966838f1de20b3a3f95c3
+                                      body: |
+                                        Update actions/checkout
+                                      footer:
+                                        Change-type: patch
+                                        change-type: patch
+                                      author: balena-renovate[bot]
+                                  version: docker-toolbelt-6.0.4
+                                  title: ""
+                                  date: 2025-03-19T16:00:12.876Z
+                                - commits:
+                                    - subject: "CI: Update checkout settings"
+                                      hash: f33a331071d80e4408c07740037d154419eb9900
+                                      body: ""
+                                      footer:
+                                        Change-type: patch
+                                        change-type: patch
+                                      author: Pagan Gazzard
+                                  version: docker-toolbelt-6.0.3
+                                  title: ""
+                                  date: 2024-09-27T12:15:26.506Z
+                          version: node-docker-delta-4.1.1
+                          title: ""
+                          date: 2025-10-07T13:27:00.729Z
+                        - commits:
+                            - subject: "Add id-token: write permission for NPM OIDC publishing"
+                              hash: 9f0e36a17aec7efbd3ae00e32e11d54a0750378d
+                              body: ""
+                              footer:
+                                Change-type: patch
+                                change-type: patch
+                                Signed-off-by: Kyle Harding <kyle@balena.io>
+                                signed-off-by: Kyle Harding <kyle@balena.io>
+                              author: Kyle Harding
+                              nested: []
+                          version: node-systemd-0.5.11
+                          title: ""
+                          date: 2026-02-19T23:51:24.360Z
+                        - commits:
+                            - subject: Update dependency @balena/lint to v8
+                              hash: e65ae8d3a8fdf7514cba332e99e933ade1451959
+                              body: |
+                                Update @balena/lint from 7.3.0 to 8.2.8
+                              footer:
+                                Change-type: patch
+                                change-type: patch
+                              author: balena-renovate[bot]
+                              nested: []
+                          version: node-systemd-0.5.10
+                          title: ""
+                          date: 2025-04-10T15:22:52.625Z
+                        - commits:
+                            - subject: Update Rust crate tokio to v1.38.2 [SECURITY]
+                              hash: 99a940d0c7182302e6657ab89fd90510f7f76cea
+                              body: |
+                                Update tokio from 1.29.1 to 1.38.2
+                              footer:
+                                Change-type: patch
+                                change-type: patch
+                              author: balena-renovate[bot]
+                              nested: []
+                          version: node-systemd-0.5.9
+                          title: ""
+                          date: 2025-04-07T23:25:16.914Z
+                        - commits:
+                            - subject: Update dependency mocha to v11
+                              hash: 3eb46a4b7c99997c7ec9a33d8b62f67044e65fdb
+                              body: |
+                                Update mocha from 10.8.2 to 11.1.0
+                              footer:
+                                Change-type: patch
+                                change-type: patch
+                              author: balena-renovate[bot]
+                              nested: []
+                          version: node-systemd-0.5.8
+                          title: ""
+                          date: 2025-04-02T14:07:22.765Z
+                        - commits:
+                            - subject: Update docker/login-action action to v3.4.0
+                              hash: bc9929b499f41857178876ec89d990bc45ce5cb9
+                              body: |
+                                Update docker/login-action from 3.0.0 to 3.4.0
+                              footer:
+                                Change-type: patch
+                                change-type: patch
+                              author: balena-renovate[bot]
+                              nested: []
+                          version: node-systemd-0.5.7
+                          title: ""
+                          date: 2025-03-19T20:07:16.558Z
+                        - commits:
+                            - subject: Update actions/upload-artifact action to v4.6.2
+                              hash: aa7a93437074fdf1ed986ec32303b555b3063898
+                              body: >
+                                Update actions/upload-artifact from 4.6.1 to
+                                4.6.2
+                              footer:
+                                Change-type: patch
+                                change-type: patch
+                              author: balena-renovate[bot]
+                              nested: []
+                          version: node-systemd-0.5.6
+                          title: ""
+                          date: 2025-03-19T19:09:17.168Z
+                        - commits:
+                            - subject: Update ghcr.io/balena-os/mock-systemd-bus Docker tag to v0.2.3
+                              hash: cd84d03fb5075d3cd3f88c2b5406d507d4079a5f
+                              body: >
+                                Update ghcr.io/balena-os/mock-systemd-bus from
+                                0.2.0 to 0.2.3
+                              footer:
+                                Change-type: patch
+                                change-type: patch
+                              author: balena-renovate[bot]
+                              nested: []
+                          version: node-systemd-0.5.5
+                          title: ""
+                          date: 2025-03-19T18:07:01.095Z
+                        - commits:
+                            - subject: Pin actions/setup-node action to 1a4442c
+                              hash: 2a7d88a6a28e3d1332dfe4d7d03962c5fe72dae3
+                              body: |
+                                Update actions/setup-node
+                              footer:
+                                Change-type: patch
+                                change-type: patch
+                              author: balena-renovate[bot]
+                              nested: []
+                          version: node-systemd-0.5.4
+                          title: ""
+                          date: 2025-03-19T17:09:54.966Z
+                        - commits:
+                            - subject: Update actions/upload-artifact action to v4.6.1
+                              hash: 02db0b301d96b163b863c2a8659e04eaffdfd7c9
+                              body: >
+                                Update actions/upload-artifact from 4.6.0 to
+                                4.6.1
+                              footer:
+                                Change-type: patch
+                                change-type: patch
+                              author: balena-renovate[bot]
+                              nested: []
+                          version: node-systemd-0.5.3
+                          title: ""
+                          date: 2025-03-19T16:15:44.054Z
+                        - commits:
+                            - subject: Update to Node 20
+                              hash: 1d47ed81b55c782979d5c5a6d4d5504a8b7fbc0f
+                              body: ""
+                              footer:
+                                Change-type: patch
+                                change-type: patch
+                                Signed-off-by: Christina Ying Wang <christina@balena.io>
+                                signed-off-by: Christina Ying Wang <christina@balena.io>
+                              author: Christina Ying Wang
+                              nested: []
+                          version: node-systemd-0.5.2
+                          title: ""
+                          date: 2025-02-07T20:47:24.037Z
+                        - commits:
+                            - subject: Explicitly set GH_TOKEN permissions
+                              hash: 17da74cdbde5e5f9e6a1ca90ebb5949c4bedd131
+                              body: ""
+                              footer:
+                                change-type: patch
+                              author: Anton Belodedenko
+                              nested: []
+                          version: node-systemd-0.5.1
+                          title: ""
+                          date: 2024-11-18T20:29:25.502Z
+                        - commits:
+                            - subject: Mark balena-sdk v23 as supported
+                              hash: 50276caa4d2c6113898817aa7e317b9e50611a37
+                              body: ""
+                              footer:
+                                Change-type: minor
+                                change-type: minor
+                              author: Pagan Gazzard
+                              nested: []
+                            - subject: Mark balena-sdk to the peer dependency it is
+                              hash: 35cc16acc072f6e89bed91a7bf8b23f1bb23e250
+                              body: ""
+                              footer:
+                                Change-type: patch
+                                change-type: patch
+                              author: Pagan Gazzard
+                              nested: []
+                          version: balena-compose-7.4.0
+                          title: ""
+                          date: 2026-03-06T17:54:09.332Z
+                        - commits:
+                            - subject: "Add id-token: write permission for NPM OIDC publishing"
+                              hash: 5376c3909a496d76b354e65d9b0c975f63b87790
+                              body: ""
+                              footer:
+                                Change-type: patch
+                                change-type: patch
+                                Signed-off-by: Kyle Harding <kyle@balena.io>
+                                signed-off-by: Kyle Harding <kyle@balena.io>
+                              author: Kyle Harding
+                              nested: []
+                          version: balena-compose-7.3.3
+                          title: ""
+                          date: 2026-02-24T14:19:35.297Z
+                        - commits:
+                            - subject: Add ts-node to dev deps
+                              hash: f606cf1c36742956f7c6a1223eb08e3fc2ce79df
+                              body: ""
+                              footer:
+                                Change-type: patch
+                                change-type: patch
+                              author: joshbwlng
+                              nested: []
+                            - subject: Update dependency ts-mocha to v11
+                              hash: 5917cf2dd766eed8d045b0368d26d128b2afbce7
+                              body: |
+                                Update ts-mocha from 10.1.0 to 11.1.0
+                              footer:
+                                Change-type: patch
+                                change-type: patch
+                              author: balena-renovate[bot]
+                              nested: []
+                          version: balena-compose-7.3.2
+                          title: ""
+                          date: 2026-01-08T08:44:38.199Z
+                        - commits:
+                            - subject: Set label values to stringified number
+                              hash: dd653b1275db15261bbcaa075d547ab6e41e8d2f
+                              body: >
+                                ImageLabel.value needs to be a string and not a
+                                number.
+
+                                Currently our builder fails due to the API
+                                throwing a DB
+
+                                error due to the type mismatch.
+                              footer:
+                                Change-type: patch
+                                change-type: patch
+                              author: joshbwlng
+                              nested: []
+                          version: balena-compose-7.3.1
+                          title: ""
+                          date: 2026-01-06T22:38:31.440Z
+                        - commits:
+                            - subject: Support sw.os and sw.kernel contract requirement variants, allow
+                                multiple variants
+                              hash: 20e8c29485c5d337bc806b4bc7077761f55c90a5
+                              body: |
+                                This allows users to specify an OS slug as a contract requirement, for example
+                                io.balena.features.requires.sw.balena-os:>VERSION, which transforms to
+                                {type:'sw.os',slug:'balena-os',version:'>VERSION'}. Similarly,
+                                io.balena.features.requires.sw.linux:>VERSION transforms to
+                                {type:'sw.kernel',slug:'linux',version:'>VERSION'}. This allows for
+                                eventual flexibility in OS and kernel requirements for a container.
+
+                                Currently we only support the 'balena-os' sw.os variant and the
+                                'linux' sw.kernel variant.
+                              footer:
+                                See: https://balena.fibery.io/Work/Project/Add-kernel-and-OS-version-to-container-contracts-1916
+                                see: https://balena.fibery.io/Work/Project/Add-kernel-and-OS-version-to-container-contracts-1916
+                                Change-type: minor
+                                change-type: minor
+                                Signed-off-by: Christina Ying Wang <christina@balena.io>
+                                signed-off-by: Christina Ying Wang <christina@balena.io>
+                              author: Christina Ying Wang
+                              nested: []
+                          version: balena-compose-7.3.0
+                          title: ""
+                          date: 2025-12-19T20:37:30.004Z
+                  version: balena-supervisor-17.6.10
+                  title: ""
+                  date: 2026-03-17T16:34:17.928Z
+                - commits:
+                    - subject: Update alpine to 3.22 to get latest nodejs 22.x / npm 11.x
+                      hash: 2c46b1c6e64638367e493e8463ce86be2e13e722
+                      body: >
+                        alpine 3.21 is stuck on nodejs v22.15.1 whilst alpine
+                        3.22 currently
+
+                        has nodejs v22.22.0
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-17.6.9
+                  title: ""
+                  date: 2026-03-17T14:19:59.406Z
+                - commits:
+                    - subject: Update @types/dockerode to 3.3.47
+                      hash: 4bd37b1c9e4ea5f1a4a97b52e0d205beebe8f6c1
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-17.6.8
+                  title: ""
+                  date: 2026-03-16T21:36:56.640Z
+                - commits:
+                    - subject: Relax UUID regex in deconstructDockerName
+                      hash: a86e1c27f4e37cfb288620e6e5a48806b5c9be96
+                      body: >
+                        The regex required at least 32 hex characters, which
+                        caused
+
+                        failures for some network mockerode tests.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Christina Ying Wang <christina@balena.io>
+                        signed-off-by: Christina Ying Wang <christina@balena.io>
+                      author: Christina Ying Wang
+                      nested: []
+                  version: balena-supervisor-17.6.7
+                  title: ""
+                  date: 2026-03-16T21:15:27.993Z
+                - commits:
+                    - subject: "Typings: replace `UnwrappedPromise` with typescript built-in
+                        `Awaited`"
+                      hash: ba9632d782bd0e39513c5f37e2f0d88df73ef61d
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-17.6.6
+                  title: ""
+                  date: 2026-03-16T20:06:17.467Z
+                - commits:
+                    - subject: "Tests: add nodejs 24 to the automated nodejs test matrix"
+                      hash: cb31b637b160478267e37e771b2f4b39aeb3d571
+                      body: ""
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                      author: Pagan Gazzard
+                      nested: []
+                  version: balena-supervisor-17.6.5
+                  title: ""
+                  date: 2026-03-16T19:29:14.409Z
+                - commits:
+                    - subject: "mount-partitions: create data directory"
+                      hash: ed4406538db54c7d8be6d7e0c596f1db8007742d
+                      body: >
+                        This allows to stop bind mounting the data partition
+                        from the hostOS
+
+                        just to create this directory.
+                      footer:
+                        Change-type: patch
+                        change-type: patch
+                        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                        signed-off-by: Alex Gonzalez <alexg@balena.io>
+                      author: Alex Gonzalez
+                      nested: []
+                  version: balena-supervisor-17.6.4
+                  title: ""
+                  date: 2026-03-11T14:32:12.132Z
+          version: meta-balena-6.12.4
+          title: ""
+          date: 2026-04-02T08:51:46.389Z
+  version: 7.2.0
+  title: ""
+  date: 2026-06-01T15:13:23.855Z
+- commits:
     - subject: Update balena-yocto-scripts to 23eb6005eba2a46be19a28a8e94d382257966b52
       hash: bf40a54e2a99a481c6d28469dd7a2d93888126e4
       body: Update balena-yocto-scripts

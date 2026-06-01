@@ -1,6 +1,642 @@
 Change log
 -----------
 
+# v7.2.0
+## (2026-06-01)
+
+
+<details>
+<summary> Update layers/meta-balena to 75d172bf9df87b05612f66e651341f4a98d652f9 [balena-renovate[bot]] </summary>
+
+> ## meta-balena-7.2.0
+> ### (2026-05-29)
+> 
+> * balena: Remove aufs as a supported storage driver [Kyle Harding]
+> * balena: Remove aufs-to-overlay2 storage migration drop-in [Kyle Harding]
+> * go: Upgrade to 1.24.6 from upstream walnascar recipes [Kyle Harding]
+> * balena: Update balena engine to v25.0.14 [Kyle Harding]
+> 
+> ## meta-balena-7.1.1
+> ### (2026-05-28)
+> 
+> * Remove some docs in favor of moving them directly to the product docs [Matthew Yarmolinsky]
+> 
+> ## meta-balena-7.1.0
+> ### (2026-05-27)
+> 
+> * remove all bins from nss to save some place [Yann CARDAILLAC]
+> 
+> ## meta-balena-7.0.7
+> ### (2026-05-26)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 053da9e [balena-renovate[bot]] </summary>
+> 
+>> ### leviathan-2.36.111
+>> #### (2026-05-21)
+>> 
+>> * Update balena-io/balena-cli to v25 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.36.110
+>> #### (2026-05-20)
+>> 
+>> * e2e: probe supervisor /ping instead of /v1/healthy [Kyle Harding]
+>> 
+>> ### leviathan-2.36.109
+>> #### (2026-04-27)
+>> 
+>> * Update Lock file maintenance [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.36.108
+>> #### (2026-04-22)
+>> 
+>> * Update core/contracts digest to 7c3bf64 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.36.107
+>> #### (2026-04-20)
+>> 
+>> * Update Lock file maintenance [balena-renovate[bot]]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-7.0.6
+> ### (2026-05-25)
+> 
+> * wpa_supplicant: enable OWE networks [Michal Toman]
+> 
+> ## meta-balena-7.0.5
+> ### (2026-05-21)
+> 
+> * image-balena: include size of boot directory in HUP check [Alex Gonzalez]
+> 
+> ## meta-balena-7.0.4
+> ### (2026-05-20)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v17.8.2 [balena-renovate[bot]] </summary>
+> 
+>> ### balena-supervisor-17.8.2
+>> #### (2026-05-19)
+>> 
+>> * Pin back to Node 22 / Alpine 3.22 [Christina Ying Wang]
+>> 
+>> ### balena-supervisor-17.8.1
+>> #### (2026-05-13)
+>> 
+>> * Update systeminformation to v5.31.6 [SECURITY] [balena-renovate[bot]]
+>> 
+>> ### balena-supervisor-17.8.0
+>> #### (2026-05-01)
+>> 
+>> * Add a `PATCH /v2/device/tags` endpoint to tell the supervisor device tags to report [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-17.7.5
+>> #### (Invalid date)
+>> 
+>> * Trim whitespaces around dtparam input values [Christina Ying Wang]
+>> * Fix dtparam parsing for comma-separated values [Christina Ying Wang]
+>> 
+>> ### balena-supervisor-17.7.4
+>> #### (2026-04-29)
+>> 
+>> * Fix the network connectivity check [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-17.7.3
+>> #### (2026-04-20)
+>> 
+>> * Fix error propagation is fsUtils.touch [Pagan Gazzard]
+>> * Convert code to async/await [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-17.7.2
+>> #### (2026-04-14)
+>> 
+>> * Firewall: avoid `exports.` to improve type-checking [Pagan Gazzard]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-7.0.3
+> ### (2026-05-13)
+> 
+> * plymouth: start after udev settle [Michal Toman]
+> 
+> ## meta-balena-7.0.2
+> ### (2026-05-11)
+> 
+> * kernel-balena: address CVE-2026-43284 [Alex Gonzalez]
+> 
+> ## meta-balena-7.0.1
+> ### (2026-05-08)
+> 
+> * kernel-balena: address CVE-2026-31431 [Alex Gonzalez]
+> 
+> ## meta-balena-7.0.0
+> ### (2026-04-24)
+> 
+> * mobynit: update to v1.0.0 [Alex Gonzalez]
+> 
+> ## meta-balena-6.12.11
+> ### (2026-04-23)
+> 
+> * tests: cloud: Stop waiting for healthy supervisor in cloud suite before preload test [Ryan Cooke]
+> 
+> ## meta-balena-6.12.10
+> ### (2026-04-21)
+> 
+> * balena-bootloader.bbclass: Add required CONFIG_NLS_ISO8859_1 as built-in [Florin Sarbu]
+> 
+> ## meta-balena-6.12.9
+> ### (2026-04-16)
+> 
+> * Fix modemmanager build on dunfell [Florin Sarbu]
+> 
+> ## meta-balena-6.12.8
+> ### (2026-04-13)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 2e945b4 [balena-renovate[bot]] </summary>
+> 
+>> ### leviathan-2.36.106
+>> #### (2026-04-13)
+>> 
+>> * Update Lock file maintenance [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.36.105
+>> #### (2026-04-11)
+>> 
+>> * Update actions/upload-artifact digest to 043fb46 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.36.104
+>> #### (2026-04-10)
+>> 
+>> * Update balena-os/leviathan-worker to v2.10.30 [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.36.103
+>> #### (2026-04-10)
+>> 
+>> * Update Lock file maintenance [balena-renovate[bot]]
+>> 
+>> ### leviathan-2.36.102
+>> #### (2026-04-10)
+>> 
+>> * core/contracts: Update submodule to v2.0.142 [Alexandru Costache]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-6.12.7
+> ### (2026-04-11)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v17.7.1 [balena-renovate[bot]] </summary>
+> 
+>> ### balena-supervisor-17.7.1
+>> #### (2026-04-08)
+>> 
+>> * Fix bug in single -> multicontainer migration of legacy app.json [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-17.7.0
+>> #### (2026-04-07)
+>> 
+>> * Return updateStatus in /v2/applications/state [Felipe Lalanne]
+>> * Ensure all downloading images are reported [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-17.6.32
+>> #### (2026-04-07)
+>> 
+>> * Convert many lodash usages to native equivalents [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-17.6.31
+>> #### (2026-04-07)
+>> 
+>> * Tests: remove unused file [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-17.6.30
+>> #### (2026-04-06)
+>> 
+>> * Update to typescript 6.x / es2025 [Pagan Gazzard]
+>> * Remove nodejs 20/22 from the test matrix as we only ship with/truly support 24.x [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-17.6.29
+>> #### (2026-04-03)
+>> 
+>> * Update lodash to v4.18.1 [SECURITY] [balena-renovate[bot]]
+>> 
+>> ### balena-supervisor-17.6.28
+>> #### (2026-04-03)
+>> 
+>> * config/backends: Allow setting custom dtb on iot-gate-imx8plus [Alexandru Costache]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-6.12.6
+> ### (2026-04-10)
+> 
+> * Update actions/checkout digest to de0fac2 [balena-renovate[bot]]
+> 
+> ## meta-balena-6.12.5
+> ### (2026-04-09)
+> 
+> * .github/workflows: Remove discontinued machines [Florin Sarbu]
+> 
+> ## meta-balena-6.12.4
+> ### (2026-04-02)
+> 
+> 
+> <details>
+> <summary> Update balena-supervisor to v17.6.27 [balena-renovate[bot]] </summary>
+> 
+>> ### balena-supervisor-17.6.27
+>> #### (2026-04-01)
+>> 
+>> * Webpack: target the built js files directly [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-17.6.26
+>> #### (2026-04-01)
+>> 
+>> * Fix connectivity healthcheck [Felipe Lalanne]
+>> 
+>> ### balena-supervisor-17.6.25
+>> #### (Invalid date)
+>> 
+>> * Remove unused `stateReportErrors` variable [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-17.6.24
+>> #### (Invalid date)
+>> 
+>> * Switch from pinejs-client-request to pinejs-client-fetch [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-17.6.23
+>> #### (Invalid date)
+>> 
+>> * Fix inconsistent handling of `null` vs `undefined` for `getEntryPoint` [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-17.6.22
+>> #### (2026-03-28)
+>> 
+>> * Fix pify promisified method names [Christina Ying Wang]
+>> 
+>> ### balena-supervisor-17.6.21
+>> #### (2026-03-27)
+>> 
+>> * Migratinng legacy databases: fix handling no compatible releases [Pagan Gazzard]
+>> * Update to using balena-api v7 [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-17.6.20
+>> #### (2026-03-26)
+>> 
+>> * Use `pify` for promisifying request [Pagan Gazzard]
+>> * Use `Promise` as the return type for async request methods [Pagan Gazzard]
+>> * Replace `Bluebird.filter` with async/await equivalent [Pagan Gazzard]
+>> * Remove bluebird from migration files by converting to async/await [Pagan Gazzard]
+>> * Replace `Bluebird.timeout` with `p-timeout` [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-17.6.19
+>> #### (2026-03-26)
+>> 
+>> * Avoid unnecessary `Promise`s in `ConfigBackend.matches` implementations [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-17.6.18
+>> #### (2026-03-26)
+>> 
+>> * Switch locks to using native resource management functionality [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-17.6.17
+>> #### (2026-03-26)
+>> 
+>> * Convert `forEach` to `for` loops where appropriate [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-17.6.16
+>> #### (2026-03-24)
+>> 
+>> * mdns-lookup: improve typings [Pagan Gazzard]
+>> * mdns-lookup: remove setting explicit `verbatim: true` as it already defaults true [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-17.6.15
+>> #### (2026-03-24)
+>> 
+>> * Update migration.ts [giuseppe443]
+>> 
+>> ### balena-supervisor-17.6.14
+>> #### (2026-03-20)
+>> 
+>> * Build: avoid needing to `mv` all files immediately after compiling [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-17.6.13
+>> #### (2026-03-20)
+>> 
+>> * Tests: switch from `require` to `fs` for loading JSON fixtures [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-17.6.12
+>> #### (2026-03-18)
+>> 
+>> * Remove legacy tests as they are not being run and no longer work [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-17.6.11
+>> #### (2026-03-18)
+>> 
+>> * Update to nodejs 24.x, alpine 3.23 [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-17.6.10
+>> #### (2026-03-17)
+>> 
+>> 
+>> <details>
+>> <summary> Update dependencies [Pagan Gazzard] </summary>
+>> 
+>>> #### balena-register-device-9.0.16
+>>> ##### (2026-02-22)
+>>> 
+>>> * Update dependency balena-config-karma to v4.0.3 [balena-renovate[bot]]
+>>> 
+>>> #### balena-register-device-9.0.15
+>>> ##### (2026-02-19)
+>>> 
+>>> * Add id-token: write permission for NPM OIDC publishing [Kyle Harding]
+>>> 
+>>> #### balena-register-device-9.0.14
+>>> ##### (2025-11-24)
+>>> 
+>>> * Remove stub `@types/uuid` dependency [Pagan Gazzard]
+>>> 
+>>> #### balena-register-device-9.0.13
+>>> ##### (2025-11-13)
+>>> 
+>>> * Update dependency uuid to v13 [balena-renovate[bot]]
+>>> 
+>>> #### balena-register-device-9.0.12
+>>> ##### (2025-11-11)
+>>> 
+>>> * Update dependency mocha to v11 [balena-renovate[bot]]
+>>> 
+>>> #### balena-register-device-9.0.11
+>>> ##### (2025-11-11)
+>>> 
+>>> * Update dependency @types/mocha to v10 [balena-renovate[bot]]
+>>> 
+>>> #### balena-register-device-9.0.10
+>>> ##### (2025-11-11)
+>>> 
+>>> * Update dependency @balena/lint to v9 [balena-renovate[bot]]
+>>> 
+>>> #### balena-register-device-9.0.9
+>>> ##### (2025-11-11)
+>>> 
+>>> * Update dependency buffer to v6 [balena-renovate[bot]]
+>>> 
+>>> #### balena-register-device-9.0.8
+>>> ##### (2025-11-11)
+>>> 
+>>> * Update uuid to v11 [balena-renovate[bot]]
+>>> 
+>>> #### balena-register-device-9.0.7
+>>> ##### (2025-04-10)
+>>> 
+>>> * Tests: remove use of chai-as-promised [Pagan Gazzard]
+>>> 
+>>> #### balena-register-device-9.0.6
+>>> ##### (2025-04-10)
+>>> 
+>>> * Update dependency karma to v6 [SECURITY] [balena-renovate[bot]]
+>>> 
+>>> #### balena-register-device-9.0.5
+>>> ##### (2025-03-19)
+>>> 
+>>> * Update dependency balena-config-karma to v4.0.2 [balena-renovate[bot]]
+>>> 
+>>> #### node-docker-delta-5.0.1
+>>> ##### (2026-02-19)
+>>> 
+>>> * Add id-token: write permission for NPM OIDC publishing [Kyle Harding]
+>>> 
+>>> #### node-docker-delta-5.0.0
+>>> ##### (2026-02-04)
+>>> 
+>>> * Remove bluebird dependency [Pagan Gazzard]
+>>> 
+>>> <details>
+>>> <summary> Update docker-toolbelt to 7.x, dropping support for docker < 1.10 (released Feb 2016) [Pagan Gazzard] </summary>
+>>> 
+>>>> ##### docker-toolbelt-7.0.0
+>>>> ###### (2026-02-02)
+>>>> 
+>>>> * Update @types/dockerode to 4.x [Pagan Gazzard]
+>>>> * Switch to ESM [Pagan Gazzard]
+>>>> * Update tsconfig target to es2024 [Pagan Gazzard]
+>>>> * Update minimum supported nodejs version to ^22.22.0 || >=24.13.0 [Pagan Gazzard]
+>>>> * Drop support for docker < 1.10 (released Feb 2016) [Pagan Gazzard]
+>>>> 
+>>>> ##### docker-toolbelt-6.0.14
+>>>> ###### (2025-10-07)
+>>>> 
+>>>> * Remove `event-stream` in favor of built-in alternatives [Pagan Gazzard]
+>>>> 
+>>> 
+>>> </details>
+>>> 
+>>> * Switch to ESM [Pagan Gazzard]
+>>> * Update tsconfig target to es2024 [Pagan Gazzard]
+>>> * Update minimum supported nodejs version to ^22.22.0 || >=24.13.0 [Pagan Gazzard]
+>>> 
+>>> #### node-docker-delta-4.1.1
+>>> ##### (2025-10-07)
+>>> 
+>>> 
+>>> <details>
+>>> <summary> Update dependencies [Pagan Gazzard] </summary>
+>>> 
+>>>> ##### docker-toolbelt-6.0.13
+>>>> ###### (2025-10-06)
+>>>> 
+>>>> * Update actions/checkout digest to 08eba0b [balena-renovate[bot]]
+>>>> 
+>>>> ##### docker-toolbelt-6.0.12
+>>>> ###### (2025-10-06)
+>>>> 
+>>>> * Update dependencies [Pagan Gazzard]
+>>>> 
+>>>> ##### docker-toolbelt-6.0.11
+>>>> ###### (2025-04-16)
+>>>> 
+>>>> * Update actions/setup-node digest to 49933ea [balena-renovate[bot]]
+>>>> 
+>>>> ##### docker-toolbelt-6.0.10
+>>>> ###### (2025-04-11)
+>>>> 
+>>>> * Update dependency typedoc to ^0.28.0 [balena-renovate[bot]]
+>>>> 
+>>>> ##### docker-toolbelt-6.0.9
+>>>> ###### (2025-04-10)
+>>>> 
+>>>> * Update peaceiris/actions-gh-pages action to v4 [balena-renovate[bot]]
+>>>> 
+>>>> ##### docker-toolbelt-6.0.8
+>>>> ###### (2025-04-10)
+>>>> 
+>>>> * Update dependency rimraf to v6 [balena-renovate[bot]]
+>>>> 
+>>>> ##### docker-toolbelt-6.0.7
+>>>> ###### (2025-04-10)
+>>>> 
+>>>> * Update dependency balena-semver to v3 [balena-renovate[bot]]
+>>>> 
+>>>> ##### docker-toolbelt-6.0.6
+>>>> ###### (2025-04-02)
+>>>> 
+>>>> * Update dependency mocha to v11 [balena-renovate[bot]]
+>>>> 
+>>>> ##### docker-toolbelt-6.0.5
+>>>> ###### (2025-03-25)
+>>>> 
+>>>> * Update actions/setup-node action to v4 [balena-renovate[bot]]
+>>>> 
+>>>> ##### docker-toolbelt-6.0.4
+>>>> ###### (2025-03-19)
+>>>> 
+>>>> * Pin dependencies [balena-renovate[bot]]
+>>>> 
+>>>> ##### docker-toolbelt-6.0.3
+>>>> ###### (2024-09-27)
+>>>> 
+>>>> * CI: Update checkout settings [Pagan Gazzard]
+>>>> 
+>>> 
+>>> </details>
+>>> 
+>>> 
+>>> #### node-systemd-0.5.11
+>>> ##### (2026-02-19)
+>>> 
+>>> * Add id-token: write permission for NPM OIDC publishing [Kyle Harding]
+>>> 
+>>> #### node-systemd-0.5.10
+>>> ##### (2025-04-10)
+>>> 
+>>> * Update dependency @balena/lint to v8 [balena-renovate[bot]]
+>>> 
+>>> #### node-systemd-0.5.9
+>>> ##### (2025-04-07)
+>>> 
+>>> * Update Rust crate tokio to v1.38.2 [SECURITY] [balena-renovate[bot]]
+>>> 
+>>> #### node-systemd-0.5.8
+>>> ##### (2025-04-02)
+>>> 
+>>> * Update dependency mocha to v11 [balena-renovate[bot]]
+>>> 
+>>> #### node-systemd-0.5.7
+>>> ##### (2025-03-19)
+>>> 
+>>> * Update docker/login-action action to v3.4.0 [balena-renovate[bot]]
+>>> 
+>>> #### node-systemd-0.5.6
+>>> ##### (2025-03-19)
+>>> 
+>>> * Update actions/upload-artifact action to v4.6.2 [balena-renovate[bot]]
+>>> 
+>>> #### node-systemd-0.5.5
+>>> ##### (2025-03-19)
+>>> 
+>>> * Update ghcr.io/balena-os/mock-systemd-bus Docker tag to v0.2.3 [balena-renovate[bot]]
+>>> 
+>>> #### node-systemd-0.5.4
+>>> ##### (2025-03-19)
+>>> 
+>>> * Pin actions/setup-node action to 1a4442c [balena-renovate[bot]]
+>>> 
+>>> #### node-systemd-0.5.3
+>>> ##### (2025-03-19)
+>>> 
+>>> * Update actions/upload-artifact action to v4.6.1 [balena-renovate[bot]]
+>>> 
+>>> #### node-systemd-0.5.2
+>>> ##### (2025-02-07)
+>>> 
+>>> * Update to Node 20 [Christina Ying Wang]
+>>> 
+>>> #### node-systemd-0.5.1
+>>> ##### (2024-11-18)
+>>> 
+>>> * Explicitly set GH_TOKEN permissions [Anton Belodedenko]
+>>> 
+>>> #### balena-compose-7.4.0
+>>> ##### (2026-03-06)
+>>> 
+>>> * Mark balena-sdk v23 as supported [Pagan Gazzard]
+>>> * Mark balena-sdk to the peer dependency it is [Pagan Gazzard]
+>>> 
+>>> #### balena-compose-7.3.3
+>>> ##### (2026-02-24)
+>>> 
+>>> * Add id-token: write permission for NPM OIDC publishing [Kyle Harding]
+>>> 
+>>> #### balena-compose-7.3.2
+>>> ##### (2026-01-08)
+>>> 
+>>> * Add ts-node to dev deps [joshbwlng]
+>>> * Update dependency ts-mocha to v11 [balena-renovate[bot]]
+>>> 
+>>> #### balena-compose-7.3.1
+>>> ##### (2026-01-06)
+>>> 
+>>> * Set label values to stringified number [joshbwlng]
+>>> 
+>>> #### balena-compose-7.3.0
+>>> ##### (2025-12-19)
+>>> 
+>>> * Support sw.os and sw.kernel contract requirement variants, allow multiple variants [Christina Ying Wang]
+>>> 
+>> 
+>> </details>
+>> 
+>> 
+>> ### balena-supervisor-17.6.9
+>> #### (2026-03-17)
+>> 
+>> * Update alpine to 3.22 to get latest nodejs 22.x / npm 11.x [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-17.6.8
+>> #### (2026-03-16)
+>> 
+>> * Update @types/dockerode to 3.3.47 [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-17.6.7
+>> #### (2026-03-16)
+>> 
+>> * Relax UUID regex in deconstructDockerName [Christina Ying Wang]
+>> 
+>> ### balena-supervisor-17.6.6
+>> #### (2026-03-16)
+>> 
+>> * Typings: replace `UnwrappedPromise` with typescript built-in `Awaited` [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-17.6.5
+>> #### (2026-03-16)
+>> 
+>> * Tests: add nodejs 24 to the automated nodejs test matrix [Pagan Gazzard]
+>> 
+>> ### balena-supervisor-17.6.4
+>> #### (2026-03-11)
+>> 
+>> * mount-partitions: create data directory [Alex Gonzalez]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v6.12.3+rev4
 ## (2026-05-07)
 
