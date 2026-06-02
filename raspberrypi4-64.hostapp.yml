@@ -10,3 +10,12 @@ services:
       build_args:
         - "-t"
         - "layers/meta-kernel-block/conf/samples"
+  debug:
+    image: __BUILD_OUTPUT__
+    profiles:
+      - debug
+    x-build:
+      recipe: balena-debug-block
+      build_args:
+        - "-t"
+        - "layers/meta-debug/conf/samples"
