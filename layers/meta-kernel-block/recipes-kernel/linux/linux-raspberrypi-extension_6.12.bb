@@ -1,8 +1,8 @@
 require recipes-kernel/linux/linux-raspberrypi_6.12.inc
 
 # Bump the extension kernel ahead of the base kernel for HUP testing.
-LINUX_VERSION = "6.12.62"
-SRCREV_machine = "f8e11438119efd4bd88de4ff394acd5a596ce0a2"
+LINUX_VERSION = "6.12.63"
+SRCREV_machine = "cdde108380a3e0fb9cceba20fc12879a3bfd0fac"
 SRCREV_meta = "0bc72383691f29eb7fc4661afa9d67e106635929"
 
 KMETA = "kernel-meta"
