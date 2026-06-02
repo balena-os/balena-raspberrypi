@@ -18,3 +18,17 @@ services:
       build_args:
         - "-t"
         - "layers/meta-kernel-block/conf/samples"
+  debug:
+    image: __BUILD_OUTPUT__
+    labels:
+      io.balena.image.class: 'overlay'
+      io.balena.image.store: 'data'
+      io.balena.image.override: '200'
+      io.balena.update.requires-reboot: '1'
+    profiles:
+      - debug
+    x-build:
+      recipe: balena-debug-block
+      build_args:
+        - "-t"
+        - "layers/meta-debug/conf/samples"
