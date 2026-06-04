@@ -67,7 +67,7 @@ env:
   test_matrix: >
     {
       "test_suite": ["os","cloud","hup"],
-      "environment": ["bm.balena-dev.com"],
+      "environment": ["balena-cloud.com"],
       "runs_on": [["ubuntu-latest"]],
       "worker_type": ["testbot"]
     }
@@ -95,7 +95,7 @@ jobs:
 
   yocto:
     name: Yocto
-    uses: balena-os/balena-yocto-scripts/.github/workflows/yocto-build-deploy.yml@b8c1a165f7c1206d9f22a39dafc9d668cf57a05b
+    uses: balena-os/balena-yocto-scripts/.github/workflows/yocto-build-deploy.yml@23eb6005eba2a46be19a28a8e94d382257966b52
     needs: get_inputs
     # Prevent duplicate workflow executions for pull_request (PR) and pull_request_target (PRT) events.
     # Both PR and PRT will be triggered for the same pull request, whether it is internal or from a fork.
