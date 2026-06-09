@@ -1,4 +1,18 @@
 - commits:
+    - subject: Fix flashrom eeprom update and enable self update
+      hash: 4625749e3747809d5d97df71ac104ac0893f6611
+      body: ""
+      footer:
+        Changelog-entry: Fix flashrom eeprom update and enable self update
+        changelog-entry: Fix flashrom eeprom update and enable self update
+        Signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+        signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+      author: Yann CARDAILLAC
+      nested: []
+  version: 7.2.0+rev1
+  title: ""
+  date: 2026-06-09T08:04:31.763Z
+- commits:
     - subject: Update layers/meta-balena to 75d172bf9df87b05612f66e651341f4a98d652f9
       hash: 2d0fb7639d5cd7cdb0ddfb21beaba98c817cc65a
       body: Update layers/meta-balena

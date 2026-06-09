@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v7.2.0+rev1
+## (2026-06-09)
+
+* Fix flashrom eeprom update and enable self update [Yann CARDAILLAC]
+
 # v7.2.0
 ## (2026-06-01)
 
