@@ -4,7 +4,7 @@ set -e
 
 . /usr/libexec/os-helpers-logging
 
-if ! /usr/libexec/pieeprom-update.sh; then
+if ! /usr/libexec/pieeprom-flashrom.sh; then
 	error "Failed to update SPI EEPROM"
 	exit 1
 fi
