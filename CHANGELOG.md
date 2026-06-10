@@ -1,6 +1,31 @@
 Change log
 -----------
 
+# v7.4.0
+## (2026-06-10)
+
+
+<details>
+<summary> Update layers/meta-balena to 140f91eb3b28bf6d8da274b421999d2ba3520579 [balena-renovate[bot]] </summary>
+
+> ## meta-balena-7.4.0
+> ### (2026-06-09)
+> 
+> * systemd: add configuration to ignore lid switch events [Dr Bill Mcilhargey]
+> 
+> ## meta-balena-7.3.0
+> ### (2026-06-09)
+> 
+> * tests: pieeprom test raspberrypi4 and CM4 [Yann CARDAILLAC]
+> 
+> ## meta-balena-7.2.1
+> ### (2026-06-05)
+> 
+> * hostapp.yml: Add root hostapp composition for all boards [Kyle Harding]
+> 
+
+</details>
+
 # v7.2.0+rev1
 ## (2026-06-09)
 

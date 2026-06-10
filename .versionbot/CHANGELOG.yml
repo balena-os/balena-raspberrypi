@@ -1,4 +1,63 @@
 - commits:
+    - subject: Update layers/meta-balena to 140f91eb3b28bf6d8da274b421999d2ba3520579
+      hash: 6630b8b6f4f9f55d7cd12e850a6fc007a3ebc00d
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 140f91eb3b28bf6d8da274b421999d2ba3520579
+        changelog-entry: Update layers/meta-balena to 140f91eb3b28bf6d8da274b421999d2ba3520579
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "systemd: add configuration to ignore lid switch events"
+              hash: fa80d44b3bc0f4c23d468d23b0006d89af2c6def
+              body: >
+                Add a systemd-logind drop-in that sets HandleLidSwitch=ignore
+                and HandleLidSwitchDocked=ignore so closing the lid does not
+                suspend laptop-class hardware.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Dr Bill Mcilhargey
+                  <19168174+billmcilhargey@users.noreply.github.com>
+                signed-off-by: Dr Bill Mcilhargey
+                  <19168174+billmcilhargey@users.noreply.github.com>
+              author: Dr Bill Mcilhargey
+              nested: []
+          version: meta-balena-7.4.0
+          title: ""
+          date: 2026-06-09T23:56:00.838Z
+        - commits:
+            - subject: "tests: pieeprom test raspberrypi4 and CM4"
+              hash: c4589cf31d1d245a2fc19ad8809c2ae35c88c927
+              body: ""
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+                signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+              author: Yann CARDAILLAC
+              nested: []
+          version: meta-balena-7.3.0
+          title: ""
+          date: 2026-06-09T11:50:41.226Z
+        - commits:
+            - subject: "hostapp.yml: Add root hostapp composition for all boards"
+              hash: 487eaa85a5b8edb115cf2b8b33005155f8df4760
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: meta-balena-7.2.1
+          title: ""
+          date: 2026-06-05T13:27:23.444Z
+  version: 7.4.0
+  title: ""
+  date: 2026-06-10T13:21:43.446Z
+- commits:
     - subject: Fix flashrom eeprom update and enable self update
       hash: 4625749e3747809d5d97df71ac104ac0893f6611
       body: ""
