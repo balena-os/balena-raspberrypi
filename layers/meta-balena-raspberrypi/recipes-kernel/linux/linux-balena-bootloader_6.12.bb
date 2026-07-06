@@ -51,6 +51,8 @@ KERNEL_DTC_FLAGS += "-@ -H epapr"
 
 INITRAMFS_IMAGE = "balena-image-bootloader-initramfs"
 
+do_deploy[depends] += "${INITRAMFS_IMAGE}:do_image_complete"
+
 KERNEL_PACKAGE_NAME = "balena-bootloader"
 
 KERNEL_DEVICETREE = "${RPI_KERNEL_DEVICETREE}"

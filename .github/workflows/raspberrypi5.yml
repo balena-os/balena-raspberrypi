@@ -95,7 +95,7 @@ jobs:
 
   yocto:
     name: Yocto
-    uses: balena-os/balena-yocto-scripts/.github/workflows/yocto-build-deploy.yml@23eb6005eba2a46be19a28a8e94d382257966b52
+    uses: balena-os/balena-yocto-scripts/.github/workflows/yocto-build-deploy.yml@8ebc49919aa6439b3d5345b562365f2e5f24b923
     needs: get_inputs
     # Prevent duplicate workflow executions for pull_request (PR) and pull_request_target (PRT) events.
     # Both PR and PRT will be triggered for the same pull request, whether it is internal or from a fork.
@@ -115,3 +115,4 @@ jobs:
       deploy-environment: ${{ inputs.deploy-environment || 'balena-cloud.com' }}
       # Allow overriding the meta-balena ref for workflow dispatch events
       meta-balena-ref: ${{ inputs.meta-balena-ref || '' }}
+      build-args: "-d"
