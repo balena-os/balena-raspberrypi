@@ -75,3 +75,40 @@ REMOVED_FOR_HUP_SPACE = " \
 CONNECTIVITY_FIRMWARES:remove:raspberrypi400-64 = "${REMOVED_FOR_HUP_SPACE}"
 CONNECTIVITY_FIRMWARES:remove:raspberrypicm4-ioboard = "${REMOVED_FOR_HUP_SPACE}"
 CONNECTIVITY_FIRMWARES:remove:raspberrypi0-2w-64 = "${REMOVED_FOR_HUP_SPACE}"
+
+# List of packages which will no longer
+# be installed for most of the devices
+# in this repository because they are either too
+# old - rtl8192 was discontinued in 2012 - or
+# are used for non-essential cloud connectivity
+# - rtl8723b-bt, or because they are most frequently
+# used for chips which are soldered on the
+# SOM/SBC - wl183x on Beagleboards or VAR-SOM-MX6.
+BASE_EXCLUSION_LIST = " \
+    linux-firmware-rtl8192su \
+    linux-firmware-rtl8723b-bt \
+    linux-firmware-wl12xx \
+    linux-firmware-wl18xx \
+    linux-firmware-wlcommon \
+"
+
+# List of packages for modules
+# which primarily use PCI/PCIe. Devices which
+# exclude these do not include "pci"
+# in their MACHINE_FEATURES.
+PCI_WIRELESS_FIRMWARE = " \
+    linux-firmware-iwlwifi-3160 \
+    linux-firmware-iwlwifi-7260 \
+    linux-firmware-iwlwifi-7265 \
+    linux-firmware-iwlwifi-7265d \
+    linux-firmware-iwlwifi-8000c \
+    linux-firmware-iwlwifi-9260 \
+"
+
+BALENA_EXCLUDED_FIRMWARE:raspberrypi4-64 = " ${BASE_EXCLUSION_LIST} "
+BALENA_EXCLUDED_FIRMWARE:raspberrypi5 = " ${BASE_EXCLUSION_LIST} "
+BALENA_EXCLUDED_FIRMWARE:raspberrypi  = " ${BASE_EXCLUSION_LIST} ${PCI_WIRELESS_FIRMWARE} "
+BALENA_EXCLUDED_FIRMWARE:raspberrypi3 = " ${BASE_EXCLUSION_LIST} ${PCI_WIRELESS_FIRMWARE} "
+BALENA_EXCLUDED_FIRMWARE:raspberrypi2 = " ${BASE_EXCLUSION_LIST} ${PCI_WIRELESS_FIRMWARE} "
+BALENA_EXCLUDED_FIRMWARE:raspberrypi0-2w-64 = " linux-firmware-iwlwifi-3160 linux-firmware-wl12xx linux-firmware-wlcommon "
+
