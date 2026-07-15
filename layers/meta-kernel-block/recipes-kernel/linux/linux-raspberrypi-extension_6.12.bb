@@ -50,3 +50,19 @@ do_install:prepend() {
         export INSTALL_MOD_STRIP=1
     fi
 }
+
+# Single-pass initramfs bundling to avoid re-running pahole.
+KERNEL_EXTRA_ARGS:append = " CONFIG_INITRAMFS_SOURCE=${B}/usr/${INITRAMFS_IMAGE_NAME}.cpio"
+
+do_compile[depends] += "${INITRAMFS_IMAGE}:do_image_complete"
+do_compile:prepend() {
+    copy_initramfs
+}
+
+# The do_compile image already contains the initramfs, use it to
+# avoid re-running pahole
+do_bundle_initramfs() {
+    for imageType in ${KERNEL_IMAGETYPE_FOR_MAKE} ; do
+        cp -fL ${KERNEL_OUTPUT_DIR}/$imageType ${KERNEL_OUTPUT_DIR}/$imageType.initramfs
+    done
+}
