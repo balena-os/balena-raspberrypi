@@ -179,6 +179,21 @@ BALENA_CONFIGS[iio_pressure_drivers] = " \
     CONFIG_BMP280=m \
 "
 
+# Enable the kernel interfaces required by the Exein "lite" runtime
+# on the 32-bit Raspberry Pi 3. fanotify (with access-permission decisions)
+# provides filesystem monitoring, and the netlink connector's process-event
+# reporting feeds process tracking.
+# Note: CONFIG_PROC_EVENTS depends on CONNECTOR=y (built-in), so CONNECTOR is
+# promoted from its default =m to =y here. FANOTIFY's and CONNECTOR's own
+# prerequisites (FSNOTIFY, NET) are already =y in the base defconfig.
+BALENA_CONFIGS:append:raspberrypi3 = " exein-lite"
+BALENA_CONFIGS[exein-lite] = " \
+    CONFIG_FANOTIFY=y \
+    CONFIG_FANOTIFY_ACCESS_PERMISSIONS=y \
+    CONFIG_CONNECTOR=y \
+    CONFIG_PROC_EVENTS=y \
+"
+
 # Fix dtbo loading on 64bits,
 # see commit 949b88bb for details
 get_cc_option () {
