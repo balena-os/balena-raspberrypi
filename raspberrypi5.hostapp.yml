@@ -20,6 +20,24 @@ services:
         - "-t"
         - "layers/meta-kernel-block/conf/samples"
 
+  kernel-modules-rt:
+    image: __BUILD_OUTPUT__
+    labels:
+      io.balena.image.class: 'overlay'
+      io.balena.image.store: 'data'
+      # Alternative to kernel-modules (PREEMPT_RT build) -- same override
+      # priority since it's a full kernel replacement too, never meant to
+      # be installed alongside kernel-modules on the same device.
+      io.balena.image.override: '100'
+      io.balena.update.requires-reboot: '1'
+    profiles:
+      - kernel-modules-rt
+    x-build:
+      recipe: balena-kernel-block-rt
+      build_args:
+        - "-t"
+        - "layers/meta-kernel-block/conf/samples"
+
   debug:
     image: __BUILD_OUTPUT__
     labels:
