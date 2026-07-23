@@ -1,0 +1,46 @@
+## balenaOS hostapp-extension — v1 baseline audit ruleset
+## Loaded by `augenrules --load` when auditd starts.
+## Design: MUTABLE (no `-e 2`) so a privileged app container can add rules at
+## runtime via auditctl/NETLINK_AUDIT. High-signal / low-noise only. -> we haven't
+## tested this yet. v2 milestone?
+##
+## Syscall rules are PER-ARCH: aarch64 native = b64, 32-bit compat = b32.
+## RPi5 kernel has CONFIG_COMPAT=y + COMPAT_BINFMT_ELF=y, so 32-bit containers
+## run and b32 rules are accepted. b64 lines are listed first so that if a b32
+## line is ever rejected (kernel without COMPAT), the native rules still load.
+
+# ref: https://man7.org/linux/man-pages/man7/audit.rules.7.html
+
+## --- control rules ---
+-D                 # clear any pre-existing rules at load
+-b 8192            # kernel audit backlog buffer
+-f 1               # on backlog overflow: printk (1), not panic (2)
+
+## --- kernel module load/unload (same syscall names on both arches) ---
+-a always,exit -F arch=b64 -S init_module -S finit_module -S delete_module -k modules
+-a always,exit -F arch=b32 -S init_module -S finit_module -S delete_module -k modules
+
+## --- time changes ---
+-a always,exit -F arch=b64 -S settimeofday -S clock_settime -S adjtimex -k time
+-a always,exit -F arch=b32 -S settimeofday -S clock_settime -S adjtimex -k time
+## 32-bit userspace (glibc/Y2038) sets time via the time64 syscalls;
+## confirmed present in audit's arm table (clock_settime64=404, clock_adjtime64=405)
+-a always,exit -F arch=b32 -S clock_settime64 -S clock_adjtime64 -k time
+
+## --- filesystem mounts ---
+-a always,exit -F arch=b64 -S mount -k mounts
+-a always,exit -F arch=b32 -S mount -k mounts
+
+## --- balena device identity/config (path watches are arch-independent) ---
+-w /mnt/boot/config.json -p wa -k balena_config
+-w /mnt/boot/config.txt  -p wa -k balena_config
+
+## --- account / privilege files ---
+## Disabled by default: a watch on a nonexistent path makes augenrules error and
+## can stop the rest of the load. Uncomment each ONLY after confirming it exists
+## and is writable on the host overlay (`test -e <path>` on-device).
+#-w /etc/passwd     -p wa -k identity
+#-w /etc/shadow     -p wa -k identity
+#-w /etc/group      -p wa -k identity
+#-w /etc/sudoers    -p wa -k priv
+#-w /etc/sudoers.d/ -p wa -k priv

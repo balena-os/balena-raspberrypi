@@ -3,7 +3,8 @@ LICENSE = "MIT"
 
 inherit balena-hostapp-extension
 
-IMAGE_INSTALL = "auditd" # this takes package name and not binary name. we want binaries like auditd auditctl ausearch aureport autrace
+# this takes package name and not binary name. we want binaries like auditd auditctl ausearch aureport autrace
+IMAGE_INSTALL = "auditd audispd-plugins" 
 
 
 HOSTAPP_EXTENSION_LABEL_REQUIRES_REBOOT = "1"
