@@ -1,20 +1,33 @@
 ## balenaOS hostapp-extension — v1 baseline audit ruleset
-## Loaded by `augenrules --load` when auditd starts.
-## Design: MUTABLE (no `-e 2`) so a privileged app container can add rules at
-## runtime via auditctl/NETLINK_AUDIT. High-signal / low-noise only. -> we haven't
-## tested this yet. v2 milestone?
+##
+## Installed by audit_%.bbappend as /etc/audit/audit.rules and loaded at boot by
+## the stock auditd.service (ExecStartPost=/sbin/auditctl -R /etc/audit/audit.rules).
+## MUTABLE (no `-e 2`) so a privileged app container can layer rules at runtime
+## via auditctl/NETLINK_AUDIT(Still untested)
 ##
 ## Syscall rules are PER-ARCH: aarch64 native = b64, 32-bit compat = b32.
 ## RPi5 kernel has CONFIG_COMPAT=y + COMPAT_BINFMT_ELF=y, so 32-bit containers
 ## run and b32 rules are accepted. b64 lines are listed first so that if a b32
 ## line is ever rejected (kernel without COMPAT), the native rules still load.
-
-# ref: https://man7.org/linux/man-pages/man7/audit.rules.7.html
+##
+## Performance — auditctl(8) PERFORMANCE TIPS: every syscall rule is evaluated on
+## every syscall of every process, so syscalls sharing the same filter, action,
+## key, and fields are combined into ONE rule. File changes use -w watches, which
+## the kernel evaluates only on filesystem operations (cheaper than syscall rules).
+##
+## refs: https://man7.org/linux/man-pages/man8/auditctl.8.html  (PERFORMANCE TIPS)
+##       https://man7.org/linux/man-pages/man7/audit.rules.7.html
+##
+## NOTE: comments must be on their own line — a trailing comment after a directive
+## (e.g. `-D  # ...`) makes auditctl error ("Wrong number of options").
 
 ## --- control rules ---
--D                 # clear any pre-existing rules at load
--b 8192            # kernel audit backlog buffer
--f 1               # on backlog overflow: printk (1), not panic (2)
+## clear any pre-existing rules at load
+-D
+## kernel audit backlog buffer
+-b 8192
+## on backlog overflow: printk (1), not panic (2)
+-f 1
 
 ## --- kernel module load/unload (same syscall names on both arches) ---
 -a always,exit -F arch=b64 -S init_module -S finit_module -S delete_module -k modules
@@ -22,23 +35,22 @@
 
 ## --- time changes ---
 -a always,exit -F arch=b64 -S settimeofday -S clock_settime -S adjtimex -k time
--a always,exit -F arch=b32 -S settimeofday -S clock_settime -S adjtimex -k time
-## 32-bit userspace (glibc/Y2038) sets time via the time64 syscalls;
-## confirmed present in audit's arm table (clock_settime64=404, clock_adjtime64=405)
--a always,exit -F arch=b32 -S clock_settime64 -S clock_adjtime64 -k time
+## b32: legacy + time64 variants (glibc/Y2038) in ONE rule per the perf tip above
+## (clock_settime64=404, clock_adjtime64=405 in audit's arm table)
+-a always,exit -F arch=b32 -S settimeofday -S clock_settime -S adjtimex -S clock_settime64 -S clock_adjtime64 -k time
 
 ## --- filesystem mounts ---
 -a always,exit -F arch=b64 -S mount -k mounts
 -a always,exit -F arch=b32 -S mount -k mounts
 
-## --- balena device identity/config (path watches are arch-independent) ---
+## --- balena device identity/config (file watches; arch-independent) ---
 -w /mnt/boot/config.json -p wa -k balena_config
 -w /mnt/boot/config.txt  -p wa -k balena_config
 
 ## --- account / privilege files ---
-## Disabled by default: a watch on a nonexistent path makes augenrules error and
-## can stop the rest of the load. Uncomment each ONLY after confirming it exists
-## and is writable on the host overlay (`test -e <path>` on-device).
+## Disabled by default: a watch on a nonexistent path errors and can stop the
+## rest of the load. Uncomment each ONLY after confirming it exists on the host
+## (`test -e <path>` on-device).
 #-w /etc/passwd     -p wa -k identity
 #-w /etc/shadow     -p wa -k identity
 #-w /etc/group      -p wa -k identity
