@@ -1,4 +1,30 @@
 - commits:
+    - subject: layers/meta-balena-rpi-sb to b8976be76b9cc7f6c48f6e3849060ab8bb8c3c0f
+      hash: 36c73da0794ca8feb33a4a45572245390eb03339
+      body: ""
+      footer:
+        Changelog-entry: layers/meta-balena-rpi-sb to b8976be76b9cc7f6c48f6e3849060ab8bb8c3c0f
+        changelog-entry: layers/meta-balena-rpi-sb to b8976be76b9cc7f6c48f6e3849060ab8bb8c3c0f
+        Signed-off-by: guille-vega <guillermo.vega@balena.io>
+        signed-off-by: guille-vega <guillermo.vega@balena.io>
+      author: guille-vega
+      nested: []
+    - subject: Set explicit partition size overrides for each machine
+      hash: da5a736470e1caf0d7c22727400d3e3c8a44420a
+      body: |
+        Ensure IMAGE_ROOTFS_SIZE, BALENA_BOOT_SIZE, and BALENA_STATE_SIZE are
+        explicitly defined for every machine target
+      footer:
+        Changelog-entry: Set explicit partition size overrides for each machine
+        changelog-entry: Set explicit partition size overrides for each machine
+        Signed-off-by: guille-vega <guillermo.vega@balena.io>
+        signed-off-by: guille-vega <guillermo.vega@balena.io>
+      author: guille-vega
+      nested: []
+  version: 7.4.0+rev2
+  title: ""
+  date: 2026-08-05T08:45:46.979Z
+- commits:
     - subject: Update balena-yocto-scripts to 7d1760c79d5584f3d6bf9a1c2d0e796b6a5b5d82
       hash: 2be78f4e3bceecaef154037ceac88b24519cafed
       body: Update balena-yocto-scripts

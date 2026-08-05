@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v7.4.0+rev2
+## (2026-08-05)
+
+* layers/meta-balena-rpi-sb to b8976be76b9cc7f6c48f6e3849060ab8bb8c3c0f [guille-vega]
+* Set explicit partition size overrides for each machine [guille-vega]
+
 # v7.4.0+rev1
 ## (2026-07-07)
 
