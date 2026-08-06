@@ -10,35 +10,32 @@
 #
 # ---------------------------------------------------------------------------
 # Why a .bbappend (not a separate recipe)
-#   Everything we touch lives under ${sysconfdir}/audit/, which the `audit`
+#   Everything touched here lives under ${sysconfdir}/audit/, which the `audit`
 #   recipe already owns. Modifying those files from within the SAME recipe
 #   avoids the file-ownership conflict a second recipe would hit at rootfs
-#   assembly. `audit_%` is version-agnostic so this survives upstream bumps
-#   (currently kirkstone, audit 3.0.8-r0).
+#   assembly. `audit_%` is version-agnostic, so this survives upstream bumps.
 #
 # ---------------------------------------------------------------------------
-# Design note: balenaOS rootfs is READ-ONLY at runtime
-#   A hostapp extension mutates the rootfs at boot-time composition, never at
-#   runtime, so every file must be correct as a static build artifact. Two
-#   consequences drive the choices below:
+# The balenaOS rootfs is read-only at runtime: an extension composes into it at
+# boot, never afterwards, so every file must be correct as a static build
+# artifact. That drives both choices below.
 #
-#   * syslog.conf — we do NOT ship our own copy. audit 3.x dropped the old
-#     `type=builtin`/`builtin_syslog` form (a hand-written copy of that broke
-#     with "Unknown builtin builtin_syslog"). Instead we `sed` the stock file
-#     that audispd-plugins installs, flipping only `active`. This can never
-#     drift from the audit version's own path/type/args.
+#   * syslog.conf — sed the stock file that audispd-plugins installs, flipping
+#     only `active`, rather than shipping our own copy. The stock file is
+#     authoritative for the plugin path/type/args of whatever audit version is
+#     built, so this cannot drift.
 #
-#   * rules — we install the ruleset directly as /etc/audit/audit.rules, the
-#     file the stock auditd.service already loads:
+#   * rules — installed directly as /etc/audit/audit.rules, the file the stock
+#     auditd.service already loads:
 #         ExecStartPost=/sbin/auditctl -R /etc/audit/audit.rules
-#     We deliberately DO NOT use rules.d + augenrules: augenrules is a runtime
+#     rules.d + augenrules is deliberately not used: augenrules is a runtime
 #     generator that *writes* the compiled set back to audit.rules, which is
 #     read-only here. Pre-placing the final artifact needs no generator, no
 #     systemd drop-in, and no edit to the vendor unit. The ruleset is mutable
 #     (no `-e 2`) so a privileged container can still layer rules via auditctl.
 #
 # ---------------------------------------------------------------------------
-# Files (via SRC_URI file:// -> ${WORKDIR}; ${WORKDIR} is correct on kirkstone)
+# Files (via SRC_URI file:// -> ${WORKDIR})
 #   files/10-balena.rules  ->  ${sysconfdir}/audit/audit.rules   (owned by auditd)
 
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"

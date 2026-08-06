@@ -1,14 +1,14 @@
-## balenaOS hostapp-extension — v1 baseline audit ruleset
+## balenaOS hostapp-extension — baseline audit ruleset
 ##
 ## Installed by audit_%.bbappend as /etc/audit/audit.rules and loaded at boot by
 ## the stock auditd.service (ExecStartPost=/sbin/auditctl -R /etc/audit/audit.rules).
 ## MUTABLE (no `-e 2`) so a privileged app container can layer rules at runtime
-## via auditctl/NETLINK_AUDIT(Still untested)
+## via auditctl/NETLINK_AUDIT.
 ##
 ## Syscall rules are PER-ARCH: aarch64 native = b64, 32-bit compat = b32.
-## RPi5 kernel has CONFIG_COMPAT=y + COMPAT_BINFMT_ELF=y, so 32-bit containers
-## run and b32 rules are accepted. b64 lines are listed first so that if a b32
-## line is ever rejected (kernel without COMPAT), the native rules still load.
+## A kernel with CONFIG_COMPAT=y + COMPAT_BINFMT_ELF=y runs 32-bit containers and
+## accepts b32 rules. b64 lines are listed first so that if a b32 line is ever
+## rejected (kernel without COMPAT), the native rules still load.
 ##
 ## Performance — auditctl(8) PERFORMANCE TIPS: every syscall rule is evaluated on
 ## every syscall of every process, so syscalls sharing the same filter, action,
@@ -44,8 +44,13 @@
 -a always,exit -F arch=b32 -S mount -k mounts
 
 ## --- balena device identity/config (file watches; arch-independent) ---
--w /mnt/boot/config.json -p wa -k balena_config
--w /mnt/boot/config.txt  -p wa -k balena_config
+## A watch on a directory covers its subtree, so the second rule catches any
+## NetworkManager profile under system-connections being added, edited or removed.
+## Both paths live on the boot partition and only resolve once /mnt/boot is
+## mounted; a watch on a path that does not exist at load time errors and can
+## stop the rest of the load (same caveat as the account watches below).
+-w /mnt/boot/config.json        -p wa -k balena_config
+-w /mnt/boot/system-connections -p wa -k system_connections
 
 ## --- account / privilege files ---
 ## Disabled by default: a watch on a nonexistent path errors and can stop the
