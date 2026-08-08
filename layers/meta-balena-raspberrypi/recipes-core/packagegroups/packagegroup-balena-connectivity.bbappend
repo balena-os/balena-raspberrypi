@@ -30,6 +30,11 @@ CONNECTIVITY_FIRMWARES:remove:raspberrypi0-2w-64 = " \
     bluez-firmware-rpidistro-bcm4345c0-hcd \
 "
 
+CONNECTIVITY_FIRMWARES:remove = " \
+    linux-firmware-wl12xx \
+    linux-firmware-wl18xx \
+"
+
 REMOVED_FOR_HUP_SPACE = " \
     linux-firmware-bcm43455 \
     linux-firmware-ibt-11-5 \
@@ -66,7 +71,6 @@ REMOVED_FOR_HUP_SPACE = " \
     linux-firmware-iwlwifi-7265d \
     linux-firmware-iwlwifi-8000c \
     linux-firmware-iwlwifi-8265 \
-    linux-firmware-wl18xx \
     linux-firmware-sd8887 \
 "
 
