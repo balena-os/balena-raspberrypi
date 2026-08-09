@@ -29,7 +29,7 @@ SRC_URI:append:rt-rpi-300 = " \
 "
 
 # The shared driver list comes from balena-os-drivers.cfg, added to SRC_URI by
-# linux-raspberrypi_%.bbappend. This carries only the symbols that do not exist
+# linux-raspberrypi-balena.inc. This carries only the symbols that do not exist
 # on newer kernels.
 SRC_URI += "file://balena-os-drivers-5.15.cfg"
 
