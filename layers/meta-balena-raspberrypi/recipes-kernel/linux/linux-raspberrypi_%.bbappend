@@ -17,6 +17,10 @@ BALENA_CONFIGS:append:raspberrypi2 = " aufs"
 BALENA_CONFIGS:append:raspberrypi3-64 = " aufs"
 BALENA_CONFIGS:append:raspberrypi3 = " aufs"
 
+# Do not share do_overlays with the extension kernel. It writes
+# ${DEPLOY_DIR_IMAGE}/overlays.txt, which drives the boot partition. Two
+# recipes that write that path overwrite each other. The extension kernel
+# ships its dtbs in the extension image.
 python do_overlays() {
     import glob, re, os
     overlays = []
