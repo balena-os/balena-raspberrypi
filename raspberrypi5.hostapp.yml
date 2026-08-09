@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/balena-os/balena-yocto-scripts/refs/heads/master/schemas/hostapp-composition.json
+version: '2.4'
+# Every service must set network_mode. If it does not, compose-go injects a
+# `default` network into the published composition. The supervisor then
+# creates a real bridge for it. That bridge gets a subnet that can collide
+# with the device LAN. `networks: {}` does not prevent this.
+services:
+
+  ebpf:
+    image: __BUILD_OUTPUT__
+    network_mode: none
+    runtime: extension
+    labels:
+      io.balena.image.class: 'overlay'
+    profiles:
+      - ebpf
+    x-build:
+      recipe: balena-ebpf-extension
