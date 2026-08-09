@@ -1,5 +1,12 @@
 require recipes-kernel/linux/linux-raspberrypi-balena.inc
 
+# Do not share do_overlays with the extension kernel. It writes
+# ${DEPLOY_DIR_IMAGE}/overlays.txt, which drives the boot partition. Two
+# recipes that write that path overwrite each other.
+#
+# Without this prefunc the extension kernel packages the base dtbs only, not
+# the dtbo overlays. The hostapp overlays stay visible through the lower layer
+# of the overlay mount. Both kernels build from one SRCREV.
 python do_overlays() {
     import glob, re, os
     overlays = []
