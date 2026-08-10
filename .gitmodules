@@ -34,3 +34,7 @@
 	path = layers/meta-balena-rpi-sb
 	url = https://github.com/balena-os/meta-balena-rpi-sb.git
 	branch = master
+[submodule "layers/meta-compulab-rpi5"]
+	path = layers/meta-compulab-rpi5
+	url = https://github.com/compulab-yokneam/meta-compulab-rpi5.git
+	branch = balena-kirkstone
