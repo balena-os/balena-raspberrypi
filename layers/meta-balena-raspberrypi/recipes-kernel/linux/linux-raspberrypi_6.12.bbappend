@@ -194,6 +194,17 @@ BALENA_CONFIGS[exein-lite] = " \
     CONFIG_PROC_EVENTS=y \
 "
 
+# Since kernel 6.12 the renesas family of PCIe/xHCI controllers needs
+# a new xhci_pci_renesas driver and doesn't work with just xhci_pci as before.
+# The driver is built as a module by default, but we want the board to be able
+# to boot from USB3 devices plugged through it, so we want the driver built-in.
+# Only relevant for devices with a PCIe port.
+BALENA_CONFIGS:append:raspberrypicm4-ioboard = " xhci_renesas"
+BALENA_CONFIGS:append:raspberrypi5 = " xhci_renesas"
+BALENA_CONFIGS[xhci_renesas] = " \
+    CONFIG_USB_XHCI_PCI_RENESAS=y \
+"
+
 # Fix dtbo loading on 64bits,
 # see commit 949b88bb for details
 get_cc_option () {
