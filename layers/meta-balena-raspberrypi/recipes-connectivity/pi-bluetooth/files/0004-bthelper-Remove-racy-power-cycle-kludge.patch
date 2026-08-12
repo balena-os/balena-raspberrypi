@@ -1,0 +1,48 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Ryan <ryan@balena.io>
+Date: Wed, 12 Aug 2026 12:00:00 +0000
+Subject: [PATCH] bthelper: Remove racy power-cycle kludge
+
+bthelper backgrounds "(sleep 5; bluetoothctl power off;
+bluetoothctl power on) &" to force adapter reinitialisation. The
+";" between the two bluetoothctl calls only waits for the first
+process to exit, not for its underlying D-Bus/mgmt request to
+bluetoothd to actually complete. On a real boot, bluetoothd is
+mid-way through its own AutoEnable-driven power-up at the same
+5-second mark, and the "power off" call still has its Set Powered
+request in flight when "power on" fires immediately after. BlueZ
+correctly rejects the second, conflicting request with
+org.bluez.Error.Busy, which bluetoothctl does not check or report
+loudly. Net effect: the adapter is left powered off for the rest
+of that boot, 100% reproducible on a fresh flash.
+
+bluetoothd's own AutoEnable (main.conf, Policy.AutoEnable=true)
+already powers the adapter on cleanly during normal startup,
+including Secure Simple Pairing and every other setting this
+kludge claimed to be forcing "for currently unknown reasons".
+Confirmed via bluetoothd debug trace: SSP etc. are already applied
+via the daemon's normal adapter-setup sequence before this kludge
+ever fires. Remove it rather than trying to fix the race in place,
+since upstream itself was never confident it was needed.
+
+Signed-off-by: Ryan <ryan@balena.io>
+---
+ usr/bin/bthelper | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/usr/bin/bthelper b/usr/bin/bthelper
+index 30b8e1c..1234567 100755
+--- a/usr/bin/bthelper
++++ b/usr/bin/bthelper
+@@ -33,9 +33,3 @@ fi
+
+ # Route SCO packets to the HCI interface (enables HFP/HSP)
+ /usr/bin/hcitool -i $dev cmd 0x3f 0x1c 0x01 0x02 0x00 0x01 0x01 > /dev/null
+-
+-# Force reinitialisation to allow extra features such as Secure Simple Pairing
+-# to be enabled, for currently unknown reasons. This requires bluetoothd to be
+-# running, which it isn't yet. Use this kludge of forking off another shell
+-# with a delay, pending a complete understanding of the issues.
+-(sleep 5; /usr/bin/bluetoothctl power off; /usr/bin/bluetoothctl power on) &
+--
+2.17.1

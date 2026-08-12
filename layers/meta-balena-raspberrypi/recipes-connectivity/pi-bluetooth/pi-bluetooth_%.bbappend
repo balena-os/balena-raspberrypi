@@ -8,6 +8,7 @@ SRC_URI:remove = "file://0001-bthelper-correct-path-for-hciconfig-under-Yocto.pa
 SRC_URI:append = " \
 	file://0002-bthelper-correct-path-for-hciconfig-under-Yocto.patch \
 	file://0003-bthelper-Set-BDADDR-if-not-initialized.patch \
+    file://0004-bthelper-Remove-racy-power-cycle-kludge.patch \
 "
 
 do_install:append () {
