@@ -1,0 +1,19 @@
+[Unit]
+Description=DKMS build/load service for out-of-tree kernel modules
+After=resin-data.service
+Requires=resin-data.service
+
+[Service]
+# No RemainAfterExit: balena-dkms.path only re-arms its watch once this
+# unit returns to inactive (documented systemd path-unit behavior -- a
+# path unit's associated Unit= going back to "running" doesn't reset the
+# watch, only inactive does). RemainAfterExit=yes would leave this
+# permanently "active (exited)" after the first run, so the path unit
+# would never see it go inactive again and would stop re-triggering on
+# new module drops -- confirmed on-device: it got stuck in the "running"
+# substate immediately, before any change to watch for was even possible.
+Type=oneshot
+ExecStart=@BINDIR@/balena-dkms
+
+[Install]
+WantedBy=multi-user.target
