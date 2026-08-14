@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v7.4.0+rev3
+## (2026-08-14)
+
+* recipes-connectivity: pi-bluetooth: remove power cycle kludge from bthelper to address race condition [Ryan Cooke]
+
 # v7.4.0+rev2
 ## (2026-08-05)
 
