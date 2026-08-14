@@ -1,28 +1,11 @@
 #!/bin/bash
-#
-# Builds and loads out-of-tree kernel modules dropped as standard dkms
-# source trees under $SRC_ROOT. See layers/meta-dkms/dkms-ext-PRD.md and
-# dkms-shaping.md for the full design; this script implements the v1 slice
-# only: modules with no *module* dependencies (hello-world case). Resolving
-# dependencies against other dkms-built modules is deliberately out of
-# scope until a module that needs it is being tested -- see the TODO below
-# and dkms-shaping.md's "Depmod Option A vs. B" section.
-#
-# --dkmstree/--sourcetree/--kernelsourcedir are used instead of
-# /etc/dkms/framework.conf because balena-hostapp-extension.bbclass strips
-# /etc from every extension image; a shipped framework.conf would never
-# survive into the built image. Flag names below are per dkms(8) usage as
-# commonly documented; not yet confirmed against this exact v3.4.2 build
-# (no network access to fetch the source in this environment) -- verify
-# with `dkms --help` once buildable.
 
 set -u
 
 SRC_ROOT="/mnt/data/dkms-src"
 DKMS_TREE="/mnt/data/dkms/dkms_tree"
 KVER="$(uname -r)"
-READONLY_KERNEL_SRC_DIR="/usr/src/${KVER}/build"
-KERNEL_SRC_DIR="/mnt/data/dkms/kernel-src/${KVER}/build"
+KERNEL_SRC_DIR="/usr/src/${KVER}/build"
 
 CROSS_COMPILE=""
 if ! command -v gcc >/dev/null 2>&1; then
@@ -39,49 +22,10 @@ case "$(uname -m)" in
     x86_64) export ARCH=x86_64 ;;
 esac
 
-HOSTCC="${CROSS_COMPILE}gcc"
-HOSTCXX="${CROSS_COMPILE}g++"
-
-# kernel-devsrc.bb bakes .config/include/config/* directly into the tree it
-# ship, which is fine
-# for its usual writable /usr/src/<kver> -- build in-place, the same tree is
-# both srctree and objtree. Two things break once that tree ships inside our
-# read-only extension rootfs instead:
-#   - modules_prepare (an implicit prerequisite of `make ... modules`) can't
-#     write the arch/${ARCH}/include/generated/* headers it's missing (e.g.
-#     asm/types.h), since it has nowhere to write them.
-#   - Redirecting kbuild's output elsewhere via KBUILD_OUTPUT/O= doesn't
-#     work around that: kbuild's own scripts/mkmakefile refuses to treat a
-#     tree that already has .config/include/config/ in it as a valid
-#     pristine srctree for a separate objdir ("source tree is not clean,
-#     please run 'make mrproper'") -- and mrproper would need to write into
-#     the read-only tree too.
-# So there's no way to build against $READONLY_KERNEL_SRC_DIR directly, in
-# any mode. Cloning it once into a writable copy and building in-place
-# there, exactly like kernel-devsrc.bb's own usual model, sidesteps both:
-# modules_prepare succeeds normally since the clone is writable, and there's
-# no O= involved for mkmakefile to object to. Cached per kernel version,
-# same as the module build cache -- a HUP's new kernel ABI gets a fresh
-# clone rather than reusing a stale one.
-if [ ! -d "$KERNEL_SRC_DIR" ]; then
-    mkdir -p "$(dirname "$KERNEL_SRC_DIR")"
-    cp -a "$READONLY_KERNEL_SRC_DIR" "$KERNEL_SRC_DIR"
-
-    # `dkms build`'s own module=... build does NOT build kbuild's host
-    # tools (fixdep, modpost, kconfig's conf, dtc, genksyms) as an implicit
-    # prerequisite -- confirmed on-device: it just fails trying to *use*
-    # fixdep, rather than building it first. modules_prepare is the
-    # standard, documented target for preparing a kernel tree to build
-    # out-of-tree modules against (distinct from `scripts`, which built
-    # fixdep/conf/dtc/genksyms).
-    make -C "$KERNEL_SRC_DIR" HOSTCC="$HOSTCC" HOSTCXX="$HOSTCXX" modules_prepare
-fi
-
 mkdir -p "$SRC_ROOT" "$DKMS_TREE"
 
 status_write() {
-    moddir="$1"; modname="$2"; state="$3"; message="$4"
-    statusdir="$moddir/.status/$modname"
+    statusdir="$1"; modname="$2"; state="$3"; message="$4"
     mkdir -p "$statusdir"
     cat > "$statusdir/status.json" <<EOF
 {
@@ -111,80 +55,74 @@ for src in "$SRC_ROOT"/*/; do
     fi
     modname="$PACKAGE_NAME"
     modver="$PACKAGE_VERSION"
-    statusdir="$moddir/.status/$modname"
-    mkdir -p "$statusdir"
+    statusdir="$DKMS_TREE/$modname/$modver/$KVER/.status"
 
-    # Content hash of the source tree only (kernel ABI isn't part of this
-    # hash) -- excludes our own .status output so writing status doesn't
-    # invalidate the cache. The kernel-ABI dependency comes separately, from
-    # kofile below being looked up under a $KVER-scoped path: a kernel
-    # change alone (hash unchanged) still makes kofile come up empty for
-    # the new $KVER, so the "AND" below still forces a rebuild.
-    hash=$(find "$moddir" -path "$statusdir" -prune -o -type f -print \
-        | sort | xargs sha256sum | sha256sum)
+    hash=$(find "$moddir" -type f -print | sort | xargs sha256sum | sha256sum)
     hash="${hash%% *}"
     cachefile="$statusdir/built.hash"
-    # kmod here is built with zlib+xz+zstd support (PACKAGECONFIG:append in
-    # meta-balena-common's kmod bbappend), and dkms compresses its own
-    # dkms_tree cache to match this kernel's CONFIG_MODULE_COMPRESS_ZSTD --
-    # confirmed on-device: the built module was hello.ko.zst, not hello.ko.
-    # insmod/kmod decompress supported formats transparently.
+    kohashfile="$statusdir/built.ko.hash"
+
     kofile=$(find "$DKMS_TREE/$modname/$modver/$KVER" \
         \( -name '*.ko' -o -name '*.ko.zst' -o -name '*.ko.gz' -o -name '*.ko.xz' \) \
         2>/dev/null | head -n1)
 
-    if [ -f "$cachefile" ] && [ "$(cat "$cachefile")" = "$hash" ] && [ -n "$kofile" ]; then
-        : # already built for this source+kernel, fall through to the load check
+    cache_hit=false
+
+    # if the sources didn't changed and neither did the module.
+    # this cache mechanism doesn't verify the kernel ABI
+    # the module was built against
+    if [ -f "$cachefile" ] && [ "$(cat "$cachefile")" = "$hash" ] \
+        && [ -n "$kofile" ] && [ -f "$kohashfile" ] \
+        && [ "$(cat "$kohashfile")" = "$(sha256sum "$kofile" | cut -d' ' -f1)" ]; then
+        cache_hit=true
+    fi
+
+    if [ "$cache_hit" = true ]; then
+        :
     else
-        status_write "$moddir" "$modname" "building" "building $modname-$modver against $KVER"
+        status_write "$statusdir" "$modname" "building" "building $modname-$modver against $KVER"
 
         dkms add -m "$modname" -v "$modver" --dkmstree "$DKMS_TREE" --sourcetree "$SRC_ROOT" \
             >>"$statusdir/build.log" 2>&1
-        # "add" fails harmlessly if already registered from a previous run;
-        # rely on build's own exit status below, not add's.
 
         if dkms build -m "$modname" -v "$modver" -k "$KVER" \
             --dkmstree "$DKMS_TREE" --sourcetree "$SRC_ROOT" --kernelsourcedir "$KERNEL_SRC_DIR" \
             >>"$statusdir/build.log" 2>&1
         then
-            # same compressed-extension match as above
             kofile=$(find "$DKMS_TREE/$modname/$modver/$KVER" \
                 \( -name '*.ko' -o -name '*.ko.zst' -o -name '*.ko.gz' -o -name '*.ko.xz' \) \
                 2>/dev/null | head -n1)
             if [ -z "$kofile" ]; then
-                status_write "$moddir" "$modname" "failed" "build reported success but no .ko found under $DKMS_TREE/$modname/$modver/$KVER"
+                status_write "$statusdir" "$modname" "failed" "build reported success but no .ko found under $DKMS_TREE/$modname/$modver/$KVER"
                 continue
             fi
             echo "$hash" > "$cachefile"
-            status_write "$moddir" "$modname" "built" "built $kofile"
+            sha256sum "$kofile" | cut -d' ' -f1 > "$kohashfile"
+            status_write "$statusdir" "$modname" "built" "built $kofile"
         else
-            status_write "$moddir" "$modname" "failed" "dkms build failed, see build.log"
+            status_write "$statusdir" "$modname" "failed" "dkms build failed, see build.log"
             continue
         fi
     fi
 
     modtag="${modname//-/_}"
     if lsmod | grep -q "^${modtag} "; then
-        status_write "$moddir" "$modname" "loaded" "$modname already loaded"
+        status_write "$statusdir" "$modname" "loaded" "$modname already loaded"
         continue
     fi
 
-    # Resolve declared dependencies against the stock, unmodified
-    # /lib/modules/<kver> tree -- read-only, untouched, fine, since in-tree
-    # modules are already correctly indexed there -- then insert the
-    # out-of-tree module directly by path. insmod doesn't consult
-    # modules.dep at all, so this never needs depmod against the OOT tree.
-    # Chains of *other* dkms-built modules depending on each other are not
-    # handled yet; see the file header TODO.
+    # untested
     depends=$(modinfo -F depends "$kofile" 2>/dev/null | tr ',' ' ')
     for dep in $depends; do
         [ -n "$dep" ] || continue
         modprobe "$dep" >>"$statusdir/build.log" 2>&1
     done
 
+    # we won't be able to load modules that have dependencies on our own dkms modules
+    # as we don't update depmod
     if insmod "$kofile" >>"$statusdir/build.log" 2>&1; then
-        status_write "$moddir" "$modname" "loaded" "loaded $kofile"
+        status_write "$statusdir" "$modname" "loaded" "loaded $kofile"
     else
-        status_write "$moddir" "$modname" "reboot-required" "insmod failed for $kofile, see build.log"
+        status_write "$statusdir" "$modname" "reboot-required" "insmod failed for $kofile, see build.log"
     fi
 done
