@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v7.4.0+rev4
+## (2026-08-15)
+
+* Enable kernel configs for Exein lite runtime on Raspberry Pi 3 [Shaun Mulligan]
+
 # v7.4.0+rev3
 ## (2026-08-14)
 

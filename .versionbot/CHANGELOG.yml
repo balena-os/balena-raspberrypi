@@ -1,4 +1,36 @@
 - commits:
+    - subject: Enable kernel configs for Exein lite runtime on Raspberry Pi 3
+      hash: 16f24c25b41aa1a87021faf88949057f551fc3b9
+      body: >
+        Enable the kernel interfaces required by the Exein "lite" runtime on the
+
+        32-bit Raspberry Pi 3. fanotify (with access-permission decisions)
+        provides
+
+        filesystem monitoring, and the netlink connector's process-event
+        reporting
+
+        feeds process tracking.
+
+
+        CONFIG_PROC_EVENTS depends on CONNECTOR=y (built-in), so CONNECTOR is
+        promoted
+
+        from its default =m to =y. FANOTIFY's and CONNECTOR's other
+        prerequisites
+
+        (FSNOTIFY, NET) are already =y in the base defconfig.
+      footer:
+        Changelog-entry: Enable kernel configs for Exein lite runtime on Raspberry Pi 3
+        changelog-entry: Enable kernel configs for Exein lite runtime on Raspberry Pi 3
+        Signed-off-by: Shaun Mulligan <shaun.mulligan@balena.io>
+        signed-off-by: Shaun Mulligan <shaun.mulligan@balena.io>
+      author: Shaun Mulligan
+      nested: []
+  version: 7.4.0+rev4
+  title: ""
+  date: 2026-08-15T15:07:38.250Z
+- commits:
     - subject: "recipes-connectivity: pi-bluetooth: remove power cycle kludge from
         bthelper to address race condition"
       hash: 6e975dd7f2b83c3118dbad2b13061d40c9bd79ef
