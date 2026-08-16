@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update layers/poky to 445a6223929b9a7a62b575093659e3d9e1aba982
+      hash: fdeac63ed19ff77baaaf87f6872c681762f0df53
+      body: Update layers/poky
+      footer:
+        Changelog-entry: Update layers/poky to 445a6223929b9a7a62b575093659e3d9e1aba982
+        changelog-entry: Update layers/poky to 445a6223929b9a7a62b575093659e3d9e1aba982
+      author: balena-renovate[bot]
+      nested: []
+  version: 7.4.0+rev5
+  title: ""
+  date: 2026-08-16T08:59:05.140Z
+- commits:
     - subject: Enable kernel configs for Exein lite runtime on Raspberry Pi 3
       hash: 16f24c25b41aa1a87021faf88949057f551fc3b9
       body: >
