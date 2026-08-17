@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v7.4.0+rev6
+## (2026-08-17)
+
+* Enable kernel configs for Exein lite runtime on Raspberry Pi 4 (64-bit) [Shaun Mulligan]
+
 # v7.4.0+rev5
 ## (2026-08-16)
 

@@ -1,4 +1,55 @@
 - commits:
+    - subject: Enable kernel configs for Exein lite runtime on Raspberry Pi 4 (64-bit)
+      hash: 34425f47679ed87550fc60d320eca3fd9f6018e8
+      body: >
+        Attach the existing exein-lite kernel config fragment to raspberrypi4-64
+        as
+
+        well, so the Exein "lite" runtime has the interfaces it needs on the
+        64-bit
+
+        Raspberry Pi 4: fanotify (with access-permission decisions) for
+        filesystem
+
+        monitoring, and the netlink connector's process-event reporting for
+        process
+
+        tracking.
+
+
+        CONFIG_PROC_EVENTS depends on CONNECTOR=y, so CONNECTOR must be built in
+
+        rather than a module. FANOTIFY's and CONNECTOR's other prerequisites
+
+        (FSNOTIFY, NET) are already =y in the bcm2711 defconfig, matching
+        bcm2709.
+
+
+        Because raspberrypi4-64 is in MACHINEOVERRIDES for the Pi 4 derived
+        machines,
+
+        this also enables the fragment on raspberrypi400-64,
+        raspberrypi4-superhub,
+
+        raspberrypi4-unipi-neuron, raspberrypicm4-ioboard and rt-rpi-300.
+
+
+        Also correct the fragment comment: CONNECTOR is not set at all in the
+        base
+
+        defconfigs, rather than defaulting to =m as the comment previously
+        claimed.
+      footer:
+        Changelog-entry: Enable kernel configs for Exein lite runtime on Raspberry Pi 4 (64-bit)
+        changelog-entry: Enable kernel configs for Exein lite runtime on Raspberry Pi 4 (64-bit)
+        Signed-off-by: Shaun Mulligan <shaun.mulligan@balena.io>
+        signed-off-by: Shaun Mulligan <shaun.mulligan@balena.io>
+      author: Shaun Mulligan
+      nested: []
+  version: 7.4.0+rev6
+  title: ""
+  date: 2026-08-17T22:47:59.043Z
+- commits:
     - subject: Update layers/poky to 445a6223929b9a7a62b575093659e3d9e1aba982
       hash: fdeac63ed19ff77baaaf87f6872c681762f0df53
       body: Update layers/poky
