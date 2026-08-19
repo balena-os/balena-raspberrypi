@@ -1,6 +1,12 @@
 Change log
 -----------
 
+# v7.4.0+rev7
+## (2026-08-19)
+
+* remove recovery module from initramfs [Alex Gonzalez]
+* remove TI Wilink firmware [Alex Gonzalez]
+
 # v7.4.0+rev6
 ## (2026-08-17)
 

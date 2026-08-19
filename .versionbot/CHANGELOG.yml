@@ -1,4 +1,35 @@
 - commits:
+    - subject: remove recovery module from initramfs
+      hash: b25bf10610c530ad36f1ac40aed0854ab6987a00
+      body: |
+        These device types do not have enough space available for this opt-in.
+      footer:
+        Changelog-entry: remove recovery module from initramfs
+        changelog-entry: remove recovery module from initramfs
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: remove TI Wilink firmware
+      hash: de38b50463ffd1c9fc395277dee9b7a70a25d0ae
+      body: >
+        No RPi board has it, and no kernel in this layer builds the drivers that
+
+        would load it (CONFIG_WLCORE, CONFIG_WL12XX and CONFIG_WL18XX are unset
+        on
+
+        both linux-raspberrypi 6.12 and 5.15).
+      footer:
+        Changelog-entry: remove TI Wilink firmware
+        changelog-entry: remove TI Wilink firmware
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 7.4.0+rev7
+  title: ""
+  date: 2026-08-19T16:54:26.772Z
+- commits:
     - subject: Enable kernel configs for Exein lite runtime on Raspberry Pi 4 (64-bit)
       hash: 34425f47679ed87550fc60d320eca3fd9f6018e8
       body: >
