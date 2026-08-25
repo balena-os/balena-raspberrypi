@@ -1,6 +1,13 @@
 Change log
 -----------
 
+# v7.4.0+rev8
+## (2026-08-25)
+
+* use kernel configuration fragments [Alex Gonzalez]
+* name serial devices directly to get a working serial console [Alex Gonzalez]
+* remove legacy autohat leftovers [Alex Gonzalez]
+
 # v7.4.0+rev7
 ## (2026-08-19)
 

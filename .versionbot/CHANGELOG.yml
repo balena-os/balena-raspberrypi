@@ -1,4 +1,50 @@
 - commits:
+    - subject: use kernel configuration fragments
+      hash: f936447a55ddfad5d4a9ef40a0121a6ca08e5c0f
+      body: |
+        Using fragments allows to reuse configuration amongst sibling kernels.
+      footer:
+        Changelog-entry: use kernel configuration fragments
+        changelog-entry: use kernel configuration fragments
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: name serial devices directly to get a working serial console
+      hash: 5355614aeee160b6ba8b6a5ba5dcc697df7851c3
+      body: >
+        The Pi 5 primary UART is on the debug header (ttyAMA10).
+
+
+        balenaOS does not ship the udev rule that creates the /dev/serial0
+        symlink,
+
+        so the getty for serial0 is skipped by ConditionPathExists.
+
+
+        Naming the device directly so developmentMode gets a working console.
+      footer:
+        Changelog-entry: name serial devices directly to get a working serial console
+        changelog-entry: name serial devices directly to get a working serial console
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: remove legacy autohat leftovers
+      hash: e2507134b8790dc4d46ccae8fa18fbe8f60ffb89
+      body: |
+        These are no longer in use.
+      footer:
+        Changelog-entry: remove legacy autohat leftovers
+        changelog-entry: remove legacy autohat leftovers
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 7.4.0+rev8
+  title: ""
+  date: 2026-08-25T18:27:25.351Z
+- commits:
     - subject: remove recovery module from initramfs
       hash: b25bf10610c530ad36f1ac40aed0854ab6987a00
       body: |
