@@ -1,4 +1,25 @@
 - commits:
+    - subject: Allow USB booting through Renesas PCIe/USB3 controllers
+      hash: 7b834785dfbe0a4fd4d80792ee502c8aeff93bf5
+      body: |
+        Since linux 6.12 the renesas family of PCIe/USB3 controllers needs
+        a new xhci_pci_renesas driver. At this moment we built this as a module,
+        which makes it work in userspace, but doesn't allow booting from USB
+        devices plugged through it, as the initrd doesn't have the module.
+
+        This patch makes xhci_pci_renesas built in on devices that expose a PCIe
+        port (at this moment CM4 and the Pi5 family).
+      footer:
+        Changelog-entry: Allow USB booting through Renesas PCIe/USB3 controllers
+        changelog-entry: Allow USB booting through Renesas PCIe/USB3 controllers
+        Signed-off-by: Michal Toman <michalt@balena.io>
+        signed-off-by: Michal Toman <michalt@balena.io>
+      author: Michal Toman
+      nested: []
+  version: 7.4.0+rev9
+  title: ""
+  date: 2026-08-26T10:36:48.781Z
+- commits:
     - subject: use kernel configuration fragments
       hash: f936447a55ddfad5d4a9ef40a0121a6ca08e5c0f
       body: |

@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v7.4.0+rev9
+## (2026-08-26)
+
+* Allow USB booting through Renesas PCIe/USB3 controllers [Michal Toman]
+
 # v7.4.0+rev8
 ## (2026-08-25)
 
