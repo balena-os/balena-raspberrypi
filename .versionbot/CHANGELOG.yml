@@ -1,4 +1,22 @@
 - commits:
+    - subject: unpin flowzone, track @master
+      hash: eb3dc5e52fd19fd7b7b827c46673d6fd1bf4b175
+      body: |
+        renovate pinned this to a sha by accident, config is fixed now. dropping
+        the `# master` comment since the ref self-documents.
+
+        See: https://balena.fibery.io/Security/Information_Security_and_Reliability_Incident/Renovate-infinite-pinning-actions-PRs-198
+      footer:
+        Changelog-entry: unpin flowzone, track @master
+        changelog-entry: unpin flowzone, track @master
+        Signed-off-by: Kyle Harding <kyle@balena.io>
+        signed-off-by: Kyle Harding <kyle@balena.io>
+      author: Kyle Harding
+      nested: []
+  version: 7.4.0+rev10
+  title: ""
+  date: 2026-08-28T15:46:32.124Z
+- commits:
     - subject: Allow USB booting through Renesas PCIe/USB3 controllers
       hash: 7b834785dfbe0a4fd4d80792ee502c8aeff93bf5
       body: |
