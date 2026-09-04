@@ -1,0 +1,28 @@
+From 30836d3579b3536ce174082f451acf7fea638a8d Mon Sep 17 00:00:00 2001
+From: Andrei Gherzan <andrei@resin.io>
+Date: Mon, 1 Aug 2016 23:51:45 +0200
+Subject: [PATCH] Use modules_install as wanted by yocto
+
+Upstream-Status: Pending
+
+Signed-off-by: Andrei Gherzan <andrei@resin.io>
+---
+ Makefile | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/Makefile b/Makefile
+index 70c609a..b5ecf55 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1051,6 +1051,9 @@ all: modules
+ modules:
+ 	$(MAKE) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) -C $(KSRC) M=$(shell pwd)  modules
+ 
++modules_install:
++	$(MAKE) ARCH=$(ARCH) CROSS_COMPILE=$(CROSS_COMPILE) -C $(KSRC) M=$(shell pwd)  modules_install
++
+ strip:
+ 	$(CROSS_COMPILE)strip $(MODULE_NAME).ko --strip-unneeded
+ 
+-- 
+2.1.4
