@@ -20,5 +20,5 @@ on:
 jobs:
   esr:
     name: Create ESR branch and tag
-    uses: balena-os/github-workflows/.github/workflows/esr.yml@2d14bf53d533299a79db01b442d433f640edcdf1 # master
+    uses: balena-os/github-workflows/.github/workflows/esr.yml@08a88ee3ca2a070d59140fa334be2784f17918e0 # master
     secrets: inherit
