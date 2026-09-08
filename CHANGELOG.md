@@ -1,6 +1,33 @@
 Change log
 -----------
 
+# v8.0.9
+## (2026-09-08)
+
+
+<details>
+<summary> Update layers/meta-balena to 52a7cea12239941bcf068a78c960e11093db289c [balena-renovate[bot]] </summary>
+
+> ## meta-balena-8.0.9
+> ### (2026-09-07)
+> 
+> * kernel-headers-test: Pin apt to the snapshot archive [Kyle Harding]
+> * kernel-headers-test: Replace deprecated balenalib base with debian:bullseye [Kyle Harding]
+> * .gitmodules: Declare a branch for every submodule [Kyle Harding]
+> 
+> ## meta-balena-8.0.8
+> ### (2026-09-03)
+> 
+> * docs: Fix obsolete link to application update locking documentation [Ken Bannister]
+> 
+> ## meta-balena-8.0.7
+> ### (2026-09-03)
+> 
+> * initrdscripts: more robustness looking for active root [Michal Toman]
+> 
+
+</details>
+
 # v8.0.6+rev1
 ## (2026-09-05)
 
