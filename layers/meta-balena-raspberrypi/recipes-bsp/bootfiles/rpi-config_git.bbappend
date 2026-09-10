@@ -54,10 +54,8 @@ do_deploy:append:revpi-connect-4() {
 }
 
 do_deploy:append:raspberrypi3-unipi-neuron() {
-	# Use the dt overlays required by the UniPi Neuron family of boards
-	echo "dtoverlay=neuronee" >> ${DEPLOYDIR}/bootfiles/config.txt
-	echo "dtoverlay=i2c-rtc,mcp7941x" >> ${DEPLOYDIR}/bootfiles/config.txt
-	echo "dtoverlay=neuron-spi-new" >> ${DEPLOYDIR}/bootfiles/config.txt
+	# Required so that the unipiid utility from https://github.com/UnipiTechnology/os-configurator can read the various board data from the EEPROM
+	echo "dtoverlay=unipi_id" >> ${DEPLOYDIR}/bootfiles/config.txt
 }
 
 do_deploy:append:raspberrypi4-superhub() {
@@ -80,10 +78,8 @@ do_deploy:append:raspberrypi4-superhub() {
 }
 
 do_deploy:append:raspberrypi4-unipi-neuron() {
-	# Use the dt overlays required by the UniPi Neuron family of boards
-	echo "dtoverlay=neuronee" >> ${DEPLOYDIR}/bootfiles/config.txt
-	echo "dtoverlay=i2c-rtc,mcp7941x" >> ${DEPLOYDIR}/bootfiles/config.txt
-	echo "dtoverlay=neuron-spi-new" >> ${DEPLOYDIR}/bootfiles/config.txt
+	# Required so that the unipiid utility from https://github.com/UnipiTechnology/os-configurator can read the various board data from the EEPROM
+	echo "dtoverlay=unipi_id" >> ${DEPLOYDIR}/bootfiles/config.txt
 }
 
 # On Raspberry Pi 3 and Raspberry Pi Zero WiFi, serial ttyS0 console is only

@@ -8,10 +8,10 @@ SRC_URI = " \
 	git://github.com/UniPiTechnology/unipi-kernel-modules.git;protocol=https;nobranch=1 \
 "
 
-# Corresponds to 2.80.8
-SRCREV = "06ff9e5faa7a466e3feecbd6feefae5edb50f804"
+# Corresponds to 3.10
+SRCREV = "ffc6bfaf4d26adcdf3c85e5ee642f58b6d9d3117"
 
 S = "${WORKDIR}/git"
 
-MODULES_MODULE_SYMVERS_LOCATION = "modules/unipi"
+MODULES_MODULE_SYMVERS_LOCATION = "modules/unipi-mfd"
 EXTRA_OEMAKE:append = " LINUX_DIR_PATH=${STAGING_KERNEL_DIR}"

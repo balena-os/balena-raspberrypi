@@ -40,10 +40,7 @@ SRC_URI:append = " \
 	file://0001-waveshare-sim7600-Add-dtbo-for-this-modem.patch \
 	file://0001-overlays-Add-overlay-for-Seeed-reComputer-R1000.patch \
 	file://0001-overlays-Add-overlay-for-RPI-PLC-SC16IS752.patch \
-	file://0010-dts-overlays-Add-UniPi-overlays.patch \
 "
-
-SRC_URI:remove:raspberrypi = "file://0010-dts-overlays-Add-UniPi-overlays.patch"
 
 # The Pi3-64 and Pi4-64 are the only boards very low on rootfs space for now
 # so we add this as per https://github.com/balena-os/meta-balena/pull/2411
