@@ -12,7 +12,13 @@ SRCREV = "23153abdade9f5defaca58a8b9e21d408468f840"
 S = "${WORKDIR}/git"
 
 DEPENDS = "dtc-native"
-RDEPENDS:${PN} += "unipi-os-configurator"
+# unipi-os-configurator (and its python3 RDEPENDS) is NOT currently required:
+# the shipped fix hardcodes the per-model overlay in config.txt rather than
+# relying on this package's daemon to detect the model and stage udev rules
+# dynamically, and python3 alone is a meaningful chunk of an already-tight
+# HUP size budget on this existing device type. Re-add this RDEPENDS if/when
+# real per-unit dynamic model detection is built on top of this package's
+# staged (but currently unused) udev rules.
 
 COMPATIBLE_MACHINE = "(raspberrypi3-unipi-neuron|raspberrypi4-unipi-neuron)"
 
@@ -54,9 +60,28 @@ FILES:${PN} += " \
 #      flat at DEPLOY_DIR_IMAGE/<name>.dtbo (matching where the kernel's own
 #      compiled overlays land) - not in any overlays/ or bootfiles/overlays/
 #      subdirectory (both tried and confirmed wrong before this).
+#
+# The .dtbo files themselves go through ${DEPLOYDIR} (inherit deploy's own
+# sstate-cached staging dir, promoted to DEPLOY_DIR_IMAGE by sstate.bbclass's
+# sstate_install - a plain relative-path-preserving copy, confirmed against
+# sstate.bbclass directly, so the flat DEPLOY_DIR_IMAGE/<name>.dtbo layout
+# point 3 above depends on is unaffected). Writing them straight into the
+# shared DEPLOY_DIR_IMAGE, as before, bypassed sstate/cleansstate entirely.
+#
+# overlays.txt is different and deliberately NOT routed through DEPLOYDIR:
+# it's a single shared manifest another recipe (the kernel) already wrote
+# directly into DEPLOY_DIR_IMAGE, and this task only ever appends one line
+# to it. Sstate promotion is a directory copy, not a merge - staging our own
+# copy in DEPLOYDIR and promoting it would overwrite the kernel's entries
+# instead of appending to them. This one line keeps the same direct-write,
+# ordering-dependent shape (do_deploy[depends] on the kernel's do_deploy,
+# below) it always had - that's inherent to a cross-recipe shared manifest,
+# not something this recipe can fix on its own.
 do_deploy() {
+    install -d ${DEPLOYDIR}
+    install -m 0644 ${S}/overlays/*.dtbo ${DEPLOYDIR}/
+
     install -d ${DEPLOY_DIR_IMAGE}
-    install -m 0644 ${S}/overlays/*.dtbo ${DEPLOY_DIR_IMAGE}/
     for f in ${S}/overlays/*.dtbo; do
         echo -n " overlays/$(basename ${f})" >> ${DEPLOY_DIR_IMAGE}/overlays.txt
     done

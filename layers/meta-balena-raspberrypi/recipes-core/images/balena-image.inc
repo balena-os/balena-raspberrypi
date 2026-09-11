@@ -78,6 +78,15 @@ do_image_balenaos_img[depends] += "${@oe.utils.conditional('MACHINE','raspberryp
 
 do_resin_boot_dirgen_and_deploy[depends] += "virtual/kernel:do_install"
 
+# UniPi Neuron per-model overlays: unipi-os-configurator-data-neuron's
+# do_deploy appends to DEPLOY_DIR_IMAGE/overlays.txt, which
+# overlay_dtbs_handler (above) reads to build KERNEL_DEVICETREE - it has to
+# have finished before this task runs, not merely before final image
+# assembly. MACHINE-conditional here (not in the machine.conf) since this
+# is the recipe-metadata layer this kind of cross-recipe task dependency
+# belongs in, and bb.utils.contains keeps it a no-op for every other MACHINE.
+do_resin_boot_dirgen_and_deploy[depends] += "${@bb.utils.contains('MACHINE', ['raspberrypi3-unipi-neuron', 'raspberrypi4-unipi-neuron'], 'unipi-os-configurator-data-neuron:do_deploy', '', d)}"
+
 RPI_KERNEL_DEVICETREE:remove:revpi = "bcm2708-rpi-zero-w.dtb bcm2710-rpi-3-b-plus.dtb bcm2711-rpi-4-b.dtb"
 
 # this being a pi4 based board, increase to 400 MiB (up from 320 MiB) to make sure we have enough space in the rootfs
