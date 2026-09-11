@@ -12,7 +12,13 @@ SRCREV = "23153abdade9f5defaca58a8b9e21d408468f840"
 S = "${WORKDIR}/git"
 
 DEPENDS = "dtc-native"
-RDEPENDS:${PN} += "unipi-os-configurator"
+# unipi-os-configurator (and its python3 RDEPENDS) is NOT currently required:
+# the shipped fix hardcodes the per-model overlay in config.txt rather than
+# relying on this package's daemon to detect the model and stage udev rules
+# dynamically, and python3 alone is a meaningful chunk of an already-tight
+# HUP size budget on this existing device type. Re-add this RDEPENDS if/when
+# real per-unit dynamic model detection is built on top of this package's
+# staged (but currently unused) udev rules.
 
 COMPATIBLE_MACHINE = "(raspberrypi3-unipi-neuron|raspberrypi4-unipi-neuron)"
 
