@@ -1,8 +1,25 @@
 SUMMARY = "UniPi OS Configurator - detects connected Neuron/Axon/Iris/Patron/G1 hardware and activates the matching device-tree overlay and udev rules"
 DESCRIPTION = "Package containing binary tools which detect connected UniPi HW and alter the behaviour of the OS: changing device tree overlays, setting udev rules, enabling/disabling daemons. Needs a product-specific unipi-os-configurator-data-<product> package for the actual per-model overlays/rules - see unipi-os-configurator-data-neuron."
 HOMEPAGE = "https://github.com/UniPiTechnology/os-configurator"
-LICENSE = "GPL-3.0-or-later"
-LIC_FILES_CHKSUM = "file://debian/copyright;md5=29243d19147dc9084f17c3e208fc70fb"
+# Per-file headers in the upstream source at this SRCREV (checked directly):
+#   GPL-2.0-or-later: src/unipiid-loader.c, src/unipiid-getter.c (SPDX),
+#                     src/uniee_crc.c (SPDX GPL-2.0+), src/sw_485.c
+#                     (header text, "version 2 ... or any later version")
+#   LGPL-2.1-or-later: src/unipi_id.h, src/uniee_crc.h,
+#                     unipi-hardware-id/include/unipi_eprom.h (SPDX LGPL-2.1+)
+# debian/copyright's GPL-3.0+ only claims debian/* (the packaging), not the
+# code built here. It is still tracked below because do_install ships four
+# systemd unit files straight from debian/ (the `install -m 0644 ...
+# debian/unipi-os-configurator.*` step), which that file declares GPL-3.0+.
+# LICENSE above deliberately omits that - a decision for the maintainers, not
+# something to settle silently in a recipe comment.
+LICENSE = "GPL-2.0-or-later & LGPL-2.1-or-later"
+LIC_FILES_CHKSUM = " \
+    file://src/unipiid-loader.c;beginline=1;endline=8;md5=5a7bbe832ac671fa576792db8bfda398 \
+    file://src/uniee_crc.c;beginline=1;endline=22;md5=e107d35fe7e9ac1102050e718b7547fa \
+    file://src/unipi_id.h;beginline=1;endline=7;md5=b6136c76423e6c235578f9a9a500daf7 \
+    file://debian/copyright;md5=29243d19147dc9084f17c3e208fc70fb \
+"
 
 SRC_URI = "git://github.com/UniPiTechnology/os-configurator.git;protocol=https;branch=main"
 
@@ -23,6 +40,11 @@ RDEPENDS:${PN} += "bash python3"
 # GNU_HASH etc). TARGET_CC_ARCH folds into $(CC) itself, so the Makefile
 # picks it up without needing to be patched. Same fix as unipi-tools.bb.
 TARGET_CC_ARCH += "${LDFLAGS}"
+# That only covers linking. The Makefile's compile rule is
+# `$(CC) -c $(CPFLAGS) ...` (it never reads CFLAGS), and CPFLAGS defaults to
+# empty, so OE's CFLAGS (optimisation, hardening, sysroot/prefix-map) never
+# reached the objects either.
+EXTRA_OEMAKE = "CPFLAGS='${CFLAGS} ${LDFLAGS}'"
 
 inherit systemd
 
