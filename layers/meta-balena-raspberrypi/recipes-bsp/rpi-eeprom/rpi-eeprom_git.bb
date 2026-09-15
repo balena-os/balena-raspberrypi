@@ -45,12 +45,19 @@ do_compile() {
     cp "${S}/${FIRMWARE}/stable/${src_eeprom_bin}" "${WORKDIR}/"
     boot_conf="${WORKDIR}/default-config.txt"
 
-    # Configure for development UART output
     if ${@bb.utils.contains('DISTRO_FEATURES','osdev-image','true','false',d)}; then
+        # Enable bootloader UART logs if osdev-image is true (development image)
         if grep -q "BOOT_UART=" "${boot_conf}"; then
             sed -i 's/BOOT_UART=.*/BOOT_UART=1/g' "${boot_conf}"
         else
             echo "BOOT_UART=1" >> "${boot_conf}"
+        fi
+    else
+        # Disable bootloader HDMI logs if osdev-image is false (production image)
+        if grep -q "DISABLE_HDMI=" "${boot_conf}"; then
+            sed -i 's/DISABLE_HDMI=.*/DISABLE_HDMI=1/g' "${boot_conf}"
+        else
+            echo "DISABLE_HDMI=1" >> "${boot_conf}"
         fi
     fi
 
