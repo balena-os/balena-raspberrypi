@@ -48,6 +48,10 @@ do_deploy:append:raspberrypi3-unipi-neuron() {
 	echo "dtoverlay=neuronee" >> ${DEPLOYDIR}/bootfiles/config.txt
 	echo "dtoverlay=i2c-rtc,mcp7941x" >> ${DEPLOYDIR}/bootfiles/config.txt
 	echo "dtoverlay=neuron-spi-new" >> ${DEPLOYDIR}/bootfiles/config.txt
+	# Declares the 24c01 ID EEPROM at i2c1@0x57 (unipi-os-configurator-data-neuron)
+	# so unipiid's udev rule fires, detects the attached model, and stages the
+	# matching per-model overlay/udev rules for os-configurator.
+	echo "dtoverlay=unipi_id" >> ${DEPLOYDIR}/bootfiles/config.txt
 }
 
 do_deploy:append:raspberrypi4-superhub() {
@@ -73,7 +77,21 @@ do_deploy:append:raspberrypi4-unipi-neuron() {
 	# Use the dt overlays required by the UniPi Neuron family of boards
 	echo "dtoverlay=neuronee" >> ${DEPLOYDIR}/bootfiles/config.txt
 	echo "dtoverlay=i2c-rtc,mcp7941x" >> ${DEPLOYDIR}/bootfiles/config.txt
-	echo "dtoverlay=neuron-spi-new" >> ${DEPLOYDIR}/bootfiles/config.txt
+	# Declares the 24c01 ID EEPROM at i2c1@0x57 (unipi-os-configurator-data-neuron)
+	# so unipiid's udev rule fires, detects the attached model, and stages the
+	# matching per-model udev rules for os-configurator.
+	echo "dtoverlay=unipi_id" >> ${DEPLOYDIR}/bootfiles/config.txt
+	# TEMPORARY DIAGNOSTIC ONLY Test device is a
+	# known S103. neuron-spi-new (generic, all-model) declares spi0 channel 1
+	# with compatible="unipispi" and no modbus-address/iogroup child, which
+	# unipi-kernel-modules' unipi_channel_init() silently ignores (no ttyNS).
+	# unipi_s103 fully re-declares that same spi0/channel-1 node with the
+	# modbus-address + iogroup(uart/gpio/aio) data the driver actually needs,
+	# so it replaces neuron-spi-new rather than adding to it - hence removed
+	# above. This hardcodes one specific model and is NOT the production fix
+	# (that needs per-unit model selection, not a build-time hardcode) - it's
+	# here only to empirically confirm the hypothesis on real hardware.
+	echo "dtoverlay=unipi_s103" >> ${DEPLOYDIR}/bootfiles/config.txt
 }
 
 # On Raspberry Pi 3 and Raspberry Pi Zero WiFi, serial ttyS0 console is only
