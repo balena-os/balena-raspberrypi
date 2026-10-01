@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v8.0.9+rev2
+## (2026-10-01)
+
+* secureboot remove unnecessary files from rpi clear boot partition [Yann CARDAILLAC]
+
 # v8.0.9+rev1
 ## (2026-09-15)
 

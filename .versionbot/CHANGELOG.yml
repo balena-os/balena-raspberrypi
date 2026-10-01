@@ -1,4 +1,18 @@
 - commits:
+    - subject: secureboot remove unnecessary files from rpi clear boot partition
+      hash: 4610bff2c775f800fa66cf10d47d280b02855037
+      body: ""
+      footer:
+        Changelog-entry: secureboot remove unnecessary files from rpi clear boot partition
+        changelog-entry: secureboot remove unnecessary files from rpi clear boot partition
+        Signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+        signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+      author: Yann CARDAILLAC
+      nested: []
+  version: 8.0.9+rev2
+  title: ""
+  date: 2026-10-01T08:29:27.567Z
+- commits:
     - subject: Update flowzonify to 0.4.4
       hash: b14475c6ce10a504d7ac2263417e8f8956c179ee
       body: Update flowzonify
