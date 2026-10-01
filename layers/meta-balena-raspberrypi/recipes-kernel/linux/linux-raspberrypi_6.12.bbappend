@@ -26,6 +26,14 @@ SRC_URI:append = " \
 
 SRC_URI:remove:raspberrypi = "file://0010-dts-overlays-Add-UniPi-overlays.patch"
 
+# NOTE: this 2021 patch's overlays (neuronee, neuron-spi-new)
+# are NOT superseded by unipi-os-configurator-data-neuron - rpi-config's
+# do_deploy:append:raspberrypi{3,4}-unipi-neuron already loads them via
+# dtoverlay= lines in config.txt and they provide the base SPI/hardware
+# wiring these boards need regardless of vendor kernel-module version. The
+# new os-configurator-data-neuron overlays are the vendor's ADDITIVE
+# per-model refinement on top of this, not a replacement - keep both.
+
 # The Pi3-64 and Pi4-64 are the only boards very low on rootfs space for now
 # so we add this as per https://github.com/balena-os/meta-balena/pull/2411
 BALENA_CONFIGS:append:raspberrypi4-64 = " optimize-size"
