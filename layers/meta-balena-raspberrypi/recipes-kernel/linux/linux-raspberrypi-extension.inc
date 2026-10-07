@@ -27,3 +27,6 @@ KERNEL_BALENA_OVERRIDE_FRAGMENTS:append = " balena-os-drivers.cfg"
 # raspberrypi4-64 EEPROM and A-B rollback SPI drivers. The base kernel uses
 # the same BALENA_CONFIGS[pieeprom], so both kernels stay in sync.
 require recipes-kernel/linux/pieeprom.inc
+
+# Pi 5 crash log backend. Shared with the base kernel the same way.
+require recipes-kernel/linux/pstore.inc
