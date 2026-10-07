@@ -17,6 +17,16 @@ BALENA_CONFIGS:append:raspberrypi2 = " aufs"
 BALENA_CONFIGS:append:raspberrypi3-64 = " aufs"
 BALENA_CONFIGS:append:raspberrypi3 = " aufs"
 
+# Overlay sources shared by every linux-raspberrypi version. do_overlays below
+# globs the kernel tree, so an overlay needs no further wiring. The explicit
+# path keeps the lookup working whichever layer provides the recipe.
+FILESEXTRAPATHS:prepend := "${THISDIR}/linux-raspberrypi:"
+SRC_URI:append:raspberrypi5 = " file://balena-ramoops-overlay.dts"
+
+do_configure:prepend:raspberrypi5() {
+	install -m 0644 ${UNPACKDIR}/balena-ramoops-overlay.dts ${S}/arch/arm/boot/dts/overlays/
+}
+
 python do_overlays() {
     import glob, re, os
     overlays = []
@@ -46,3 +56,7 @@ do_install[nostamp] = "1"
 # Built-in SPI drivers for the raspberrypi4-64 EEPROM update / A-B rollback
 # path. Shared with the override extension kernel via a common include.
 require recipes-kernel/linux/pieeprom.inc
+
+# Pi 5 crash log backend. Shared with the override extension kernel, which
+# stage 1 can kexec as the OS kernel.
+require recipes-kernel/linux/pstore.inc
