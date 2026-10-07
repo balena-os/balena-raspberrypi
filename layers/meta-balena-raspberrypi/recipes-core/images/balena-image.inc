@@ -69,7 +69,7 @@ python overlay_dtbs_handler () {
 
 do_resin_boot_dirgen_and_deploy[prefuncs] += "overlay_dtbs_handler"
 
-IMAGE_INSTALL:append:rpi = " u-boot"
+IMAGE_INSTALL:append:rpi = " u-boot os-helpers-reset-reason"
 IMAGE_INSTALL:remove:raspberrypi5 = " u-boot"
 IMAGE_INSTALL:append:raspberrypi5 = " grub-editenv"
 
