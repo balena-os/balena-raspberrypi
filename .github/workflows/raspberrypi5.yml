@@ -64,12 +64,32 @@ on:
 # worker_type defaults to testbot
 # worker_fleets defaults to balena/testbot-rig,balena/testbot-rig-partners,balena/testbot-rig-x86,balena/testbot-rig-partners-x86
 env:
+  # The include form, because the cloud suite runs on staging while os and hup
+  # stay on production. worker_environment keeps the rig lookup on production
+  # for every leg, so no staging rigs are needed.
   test_matrix: >
     {
-      "test_suite": ["os","cloud","hup"],
-      "environment": ["balena-cloud.com"],
-      "runs_on": [["ubuntu-latest"]],
-      "worker_type": ["testbot"]
+      "include": [
+        {
+          "test_suite": "os",
+          "environment": "balena-cloud.com",
+          "runs_on": ["ubuntu-latest"],
+          "worker_type": "testbot"
+        },
+        {
+          "test_suite": "hup",
+          "environment": "balena-cloud.com",
+          "runs_on": ["ubuntu-latest"],
+          "worker_type": "testbot"
+        },
+        {
+          "test_suite": "cloud",
+          "environment": "balena-staging.com",
+          "worker_environment": "balena-cloud.com",
+          "runs_on": ["ubuntu-latest"],
+          "worker_type": "testbot"
+        }
+      ]
     }
 
 permissions:
