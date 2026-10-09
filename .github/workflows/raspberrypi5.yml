@@ -86,6 +86,7 @@ env:
           "test_suite": "cloud",
           "environment": "balena-staging.com",
           "worker_environment": "balena-cloud.com",
+          "supervisor_release_id": 238658,
           "runs_on": ["ubuntu-latest"],
           "worker_type": "testbot"
         }
