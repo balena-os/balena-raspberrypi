@@ -1,6 +1,103 @@
 Change log
 -----------
 
+# v9.0.2
+## (2026-10-21)
+
+
+<details>
+<summary> Update layers/meta-balena to 16e45e384145977bf3ea1c70947238f41f9e4c7f [balena-renovate[bot]] </summary>
+
+> ## meta-balena-9.0.2
+> ### (2026-10-21)
+> 
+> * extract-balena-ca: Rebuild the CA bundle when its inputs change [Kyle Harding]
+> * ca-certificates: Distrust roots chaining to compromised eMudhra CAs [Kyle Harding]
+> 
+> ## meta-balena-9.0.1
+> ### (2026-10-20)
+> 
+> * redsocks: Fix segfault on startup with 64-bit time_t [guille-vega]
+> 
+> ## meta-balena-9.0.0
+> ### (2026-10-16)
+> 
+> * rollback-health: stop ordering after balena.service [Alex Gonzalez]
+> * kexec: strip every inherited balena_kernel_abi token [Alex Gonzalez]
+> * initrdscripts: reject a malformed kernel override ABI [Alex Gonzalez]
+> * balena-extension-runtime to v2.0.1 [Alex Gonzalez]
+> * Update mobynit to v1.2.0 [Alex Gonzalez]
+> * docs: add host extensions development [Alex Gonzalez]
+> * kernel-override-hooks: move activation into the extension runtime [Alex Gonzalez]
+> * kexec: do not boot an override no extension claims [Alex Gonzalez]
+> * balena-rollback: validate a kernel override armed by an extension [Alex Gonzalez]
+> * balena-rollback: record the ABI a rollback rejected [Alex Gonzalez]
+> * os-helpers-bootenv: withdraw a committed override from every slot [Alex Gonzalez]
+> * balena: order the engine after the boot partition mounts [Alex Gonzalez]
+> * balena-rollback: write the boot environment through os-helpers [Alex Gonzalez]
+> * hostapp-update-hooks: write the bootenv through os-helpers [Alex Gonzalez]
+> * os-helpers-bootloader-config: write the bootenv in place [Alex Gonzalez]
+> * os-helpers-bootenv: serialise the block writers on a lock [Alex Gonzalez]
+> * hostapp-update-hooks: do not let one commit hook cancel the rest [Alex Gonzalez]
+> * balena-tracing-extension: add tracing extension [Alex Gonzalez]
+> * balena-ebpf-extension: add recipe for ebpf hostapp extension [Alex Gonzalez]
+> * classes: add shared hostapp extensions support [Alex Gonzalez]
+> 
+> ## meta-balena-8.0.15
+> ### (2026-10-15)
+> 
+> * classes/balena-bootloader: Don't include SDMA driver [Alexandru Costache]
+> 
+> ## meta-balena-8.0.14
+> ### (2026-10-01)
+> 
+> * os-extra-firmware.service: use bash instead of sh [guille-vega]
+> 
+> ## meta-balena-8.0.13
+> ### (2026-09-25)
+> 
+> * renovate: Use minor change-type for supervisor major updates [Kyle Harding]
+> 
+> ## meta-balena-8.0.12
+> ### (2026-09-23)
+> 
+> * kernel-balena.bbclass: Add aufs patches for 6.18 kernels [Florin Sarbu]
+> 
+> ## meta-balena-8.0.11
+> ### (2026-09-22)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to bac9173 [balena-renovate[bot]] </summary>
+> 
+>> ### leviathan-2.36.133
+>> #### (2026-09-22)
+>> 
+>> * core/contracts: Update to v2.0.150 [Alexandru Costache]
+>> 
+> 
+> </details>
+> 
+> 
+> ## meta-balena-8.0.10
+> ### (2026-09-11)
+> 
+> 
+> <details>
+> <summary> Update tests/leviathan digest to 466e576 [balena-renovate[bot]] </summary>
+> 
+>> ### leviathan-2.36.132
+>> #### (2026-09-02)
+>> 
+>> * Update Node.js [balena-renovate[bot]]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v8.0.9+rev2
 ## (2026-10-01)
 
