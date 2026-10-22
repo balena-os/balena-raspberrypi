@@ -1,4 +1,60 @@
 - commits:
+    - subject: Update layers/meta-balena to 7f1a0e5c983a45cea4a4aad23c56134e3a3cea2f
+      hash: 1ee07cc3d6fac7a1193ad831403e335f7aea2fbe
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 7f1a0e5c983a45cea4a4aad23c56134e3a3cea2f
+        changelog-entry: Update layers/meta-balena to 7f1a0e5c983a45cea4a4aad23c56134e3a3cea2f
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "start-balena-supervisor: Trust the hostOS CA bundle"
+              hash: fa51000e79a3b01c0db4b810e95f1666c1951fd1
+              body: >
+                The supervisor trusts the CA bundle in its image. A hostOS
+                update that
+
+                distrusts roots, like the eMudhra fix (CVE-2026-111943), leaves
+                the
+
+                supervisor trusting them until a new supervisor image ships.
+
+
+                The supervisor node is built with --openssl-use-def-ca-store, so
+                it reads
+
+                SSL_CERT_FILE and SSL_CERT_DIR. Point SSL_CERT_FILE at the
+                hostOS bundle
+
+                through the existing /mnt/root mount, and hide the image CA
+                directory.
+
+                Fall back to the image defaults when the hostOS bundle is
+                missing, because
+
+                an empty SSL_CERT_FILE leaves the supervisor with no roots.
+
+
+                Add both variables to configIsUnchanged, so a hostOS update
+                recreates an
+
+                existing supervisor container.
+              footer:
+                See: https://emudhra.we-have-a-problem.com
+                see: https://emudhra.we-have-a-problem.com
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Shaun Mulligan <switchflip.shaun@gmail.com>
+                signed-off-by: Shaun Mulligan <switchflip.shaun@gmail.com>
+              author: Shaun Mulligan
+              nested: []
+          version: meta-balena-9.0.3
+          title: ""
+          date: 2026-10-22T00:20:57.018Z
+  version: 9.0.3
+  title: ""
+  date: 2026-10-22T13:24:10.284Z
+- commits:
     - subject: Update layers/meta-balena to 16e45e384145977bf3ea1c70947238f41f9e4c7f
       hash: 0b11051bc4ec1d9d0e08a09d7a3b68b97822b0e6
       body: Update layers/meta-balena
