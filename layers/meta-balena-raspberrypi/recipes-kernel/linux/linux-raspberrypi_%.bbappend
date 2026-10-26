@@ -1,22 +1,12 @@
-inherit kernel-balena
+require recipes-kernel/linux/linux-raspberrypi-balena.inc
 
-# Driver fragments shared by every linux-raspberrypi version.
+# Do not share do_overlays with the extension kernel. It writes
+# ${DEPLOY_DIR_IMAGE}/overlays.txt, which drives the boot partition. Two
+# recipes that write that path overwrite each other.
 #
-FILESEXTRAPATHS:prepend := "${THISDIR}/fragments:"
-SRC_URI += "file://balena-os-drivers.cfg"
-
-# These device types have been using the aufs storage driver,
-# and during a HUP the storage in the inactive sysroot will
-# still be aufs, so we need to include the aufs driver further
-# for them, as per the internal thread
-# https://www.flowdock.com/app/rulemotion/resin-devices/threads/K2TQiSUfNDqBT5Ih6cciNI2d9QJ
-BALENA_CONFIGS:append:fincm3 = " aufs"
-BALENA_CONFIGS:append:npe-x500-m3 = " aufs"
-BALENA_CONFIGS:append:raspberrypi = " aufs"
-BALENA_CONFIGS:append:raspberrypi2 = " aufs"
-BALENA_CONFIGS:append:raspberrypi3-64 = " aufs"
-BALENA_CONFIGS:append:raspberrypi3 = " aufs"
-
+# Without this prefunc the extension kernel packages the base dtbs only, not
+# the dtbo overlays. The hostapp overlays stay visible through the lower layer
+# of the overlay mount. Both kernels build from one SRCREV.
 python do_overlays() {
     import glob, re, os
     overlays = []
@@ -42,7 +32,3 @@ do_deploy[prefuncs] += "do_overlays"
 # we have to ensure the overlays list is populated so that
 # the boot partition can be generated correctly
 do_install[nostamp] = "1"
-
-# Built-in SPI drivers for the raspberrypi4-64 EEPROM update / A-B rollback
-# path. Shared with the override extension kernel via a common include.
-require recipes-kernel/linux/pieeprom.inc
