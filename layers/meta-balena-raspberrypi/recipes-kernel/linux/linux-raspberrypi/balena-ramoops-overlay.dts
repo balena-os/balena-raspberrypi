@@ -1,0 +1,27 @@
+// Reserves the ramoops region on BCM2712 boards.
+//
+// The firmware applies this before the stage-1 kernel starts, which is the
+// only point early enough: an unreserved region is ordinary RAM to stage 1,
+// and stage 1 would overwrite the records left by the crashed boot.
+//
+// The region at 0x0b000000 is the address the stock ramoops overlays use.
+
+/dts-v1/;
+/plugin/;
+
+/ {
+	compatible = "brcm,bcm2712";
+
+	fragment@0 {
+		target-path = "/reserved-memory";
+		__overlay__ {
+			ramoops@b000000 {
+				/* No compatible, so neither kernel binds the node */
+				reg = <0x0 0x0b000000 0x40000>;
+				record-size = <0x4000>;
+				console-size = <0x20000>;
+				no-map;
+			};
+		};
+	};
+};
