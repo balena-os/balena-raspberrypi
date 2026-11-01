@@ -16,6 +16,8 @@ services:
       - ebpf
     x-build:
       recipe: balena-ebpf-extension
+      assets:
+        - "images/__MACHINE__/kernel-extension/kernel_modules_headers.tar.gz"
 
   tracing:
     image: __BUILD_OUTPUT__
