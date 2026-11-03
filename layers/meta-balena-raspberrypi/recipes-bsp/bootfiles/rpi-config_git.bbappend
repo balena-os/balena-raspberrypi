@@ -23,11 +23,6 @@ do_deploy:append:npe-x500-m3() {
   echo "dtoverlay=npe-x500-m3" >> ${DEPLOYDIR}/bootfiles/config.txt
 }
 
-do_deploy:append:revpi-connect() {
-	# Use the RevPi Connect device tree overlay
-	echo "dtoverlay=revpi-connect" >> ${DEPLOYDIR}/bootfiles/config.txt
-}
-
 do_deploy:append:revpi-connect-s() {
 	# Use the RevPi Connect device tree overlay
 	echo "dtoverlay=revpi-connect" >> ${DEPLOYDIR}/bootfiles/config.txt
