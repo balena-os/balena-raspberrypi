@@ -1,3 +1,13 @@
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}/iotg-rpi5:"
+
+SRC_URI:append:iotg-rpi5 = " \
+    file://config.in \
+"
+
+do_deploy:append:iotg-rpi5() {
+    cat ${WORKDIR}/config.in > $CONFIG
+}
+
 do_deploy:append() {
     # Enable i2c by default
     echo "dtparam=i2c_arm=on" >>${DEPLOYDIR}/bootfiles/config.txt
