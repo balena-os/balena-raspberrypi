@@ -1,3 +1,4 @@
+FILESEXTRAPATHS:prepend := "${THISDIR}/linux-raspberrypi/${MACHINE}:"
 
 require linux-raspberrypi_6.12.inc
 
@@ -12,6 +13,17 @@ SRC_URI:remove = "file://vc4graphics.cfg"
 SRC_URI:remove = "file://default-cpu-governor.cfg"
 
 require recipes-kernel/linux/linux-raspberrypi.inc
+
+# IOTG-RPI5 uses a different kernel device-tree, defined in its Yocto machine
+SRC_URI:append:iotg-rpi5 = " \
+    file://0001-dts-rpi-cm5-add-support-for-iotg-rpi5-device-tree.patch \
+    file://0002-overlays-add-support-for-iotg-rpi5-device-tree-overl.patch \
+    file://0003-overlays-iotg-rpi5-add-CMD-button-overlay.patch \
+    file://0004-overlays-iotg-rpi5-add-Modem-Reset-overlay.patch \
+    file://0005-overlays-iotg-rpi5-add-Digital-I-O-block-overlay.patch \
+    file://0006-dts-iotg-rpi5-move-board-specific-implementation-to-.patch \
+    file://0007-dts-iotg-rpi5-add-support-for-CM5-Lite-based-device.patch \
+"
 
 inherit balena-bootloader
 

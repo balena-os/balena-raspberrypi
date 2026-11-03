@@ -1,0 +1,99 @@
+From 7067f283bc10d316ec0eb9d8fa0feb2de0360dbe Mon Sep 17 00:00:00 2001
+From: Ilya Ledvich <ilya@compulab.co.il>
+Date: Wed, 7 Jan 2026 14:40:09 +0200
+Subject: [PATCH] overlays: iotg-rpi5: add CMD button overlay
+
+Upstream-Status: Pending
+
+Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
+---
+ arch/arm/boot/dts/overlays/iotg-rpi5/Makefile |  3 +-
+ arch/arm/boot/dts/overlays/iotg-rpi5/README   | 15 +++++++
+ .../iotg-rpi5-cmd-button-overlay.dts          | 41 +++++++++++++++++++
+ 3 files changed, 58 insertions(+), 1 deletion(-)
+ create mode 100644 arch/arm/boot/dts/overlays/iotg-rpi5/iotg-rpi5-cmd-button-overlay.dts
+
+diff --git a/arch/arm/boot/dts/overlays/iotg-rpi5/Makefile b/arch/arm/boot/dts/overlays/iotg-rpi5/Makefile
+index 25593e8dc407..d756b1d310b5 100644
+--- a/arch/arm/boot/dts/overlays/iotg-rpi5/Makefile
++++ b/arch/arm/boot/dts/overlays/iotg-rpi5/Makefile
+@@ -4,7 +4,8 @@ dtbo-$(CONFIG_ARCH_BCM2835) += \
+ 	iotg-rpi5-gmc.dtbo \
+ 	iotg-rpi5-io-a.dtbo \
+ 	iotg-rpi5-io-b.dtbo \
+-	iotg-rpi5-b2b.dtbo
++	iotg-rpi5-b2b.dtbo \
++	iotg-rpi5-cmd-button.dtbo
+ 
+ targets += dtbs dtbs_install
+ targets += $(dtbo-y)
+diff --git a/arch/arm/boot/dts/overlays/iotg-rpi5/README b/arch/arm/boot/dts/overlays/iotg-rpi5/README
+index cff63becf2ae..5b17d651d3d9 100644
+--- a/arch/arm/boot/dts/overlays/iotg-rpi5/README
++++ b/arch/arm/boot/dts/overlays/iotg-rpi5/README
+@@ -42,3 +42,18 @@ Info:   Configures the Board to Board Connector on the
+ Load:   dtoverlay=iotg-rpi5-b2b
+ Params: <None>
+ 
++
++Name:   iotg-rpi5-cmd-button
++Info:   Configures the CMD button on the Compulab IOTG-RPi5.
++        The CMD button is implemented as gpio-keys device.
++Load:   dtoverlay=iotg-rpi5-cmd-button,<param>=<val>
++Params: label                   Set a label for the button.
++                                Default: 'cmd-button'
++                                (string, optional)
++        keycode                 Set key code for the button.
++                                Default: 171 (KEY_CONFIG)
++                                (optional)
++        autorepeat              Enable key autorepeat.
++                                Enabled by default
++                                (bool, optional)
++
+diff --git a/arch/arm/boot/dts/overlays/iotg-rpi5/iotg-rpi5-cmd-button-overlay.dts b/arch/arm/boot/dts/overlays/iotg-rpi5/iotg-rpi5-cmd-button-overlay.dts
+new file mode 100644
+index 000000000000..177cc2a87136
+--- /dev/null
++++ b/arch/arm/boot/dts/overlays/iotg-rpi5/iotg-rpi5-cmd-button-overlay.dts
+@@ -0,0 +1,41 @@
++// Definitions for IOTG-RPI5 CMD button
++
++/dts-v1/;
++/plugin/;
++
++#include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/input/linux-event-codes.h>
++
++/ {
++	compatible = "brcm,bcm2712";
++
++	fragment@0 {
++		target = <&gpio_keys>;
++		__overlay__ {
++			autorepeat;
++		};
++	};
++
++	fragment@1 {
++		target-path = "/";
++		__overlay__ {
++			gpio_keys: gpio-keys {
++				compatible = "gpio-keys";
++				status = "okay";
++
++				cmd_button: cmd-button {
++					label = "cmd-button";
++					gpios = <&gpio 18 GPIO_ACTIVE_LOW>;
++					linux,code = <KEY_CONFIG>; /* 171 */
++				};
++			};
++		};
++	};
++
++	__overrides__ {
++		label =      <&cmd_button>,"label";
++		keycode =    <&cmd_button>,"linux,code:0";
++		autorepeat = <0>,"=0";
++	};
++
++};
