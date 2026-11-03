@@ -1,4 +1,4 @@
-name: RevPi Connect S/SE
+name: RevPi Connect S/SE (legacy)
 
 on:
   # https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#onpushbranchestagsbranches-ignoretags-ignore
