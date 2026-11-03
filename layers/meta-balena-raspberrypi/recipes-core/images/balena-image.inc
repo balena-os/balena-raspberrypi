@@ -73,8 +73,8 @@ IMAGE_INSTALL:append:rpi = " u-boot"
 IMAGE_INSTALL:remove:raspberrypi5 = " u-boot"
 IMAGE_INSTALL:append:raspberrypi5 = " grub-editenv"
 
-do_rootfs[depends] += "${@oe.utils.conditional('MACHINE','raspberrypi5',' virtual/balena-bootloader:do_deploy','',d)}"
-do_image_balenaos_img[depends] += "${@oe.utils.conditional('MACHINE','raspberrypi5',' virtual/balena-bootloader:do_deploy','',d)}"
+do_rootfs[depends] += "${@bb.utils.contains_any('MACHINE','raspberrypi5 iotg-rpi5',' virtual/balena-bootloader:do_deploy','',d)}"
+do_image_balenaos_img[depends] += "${@bb.utils.contains_any('MACHINE','raspberrypi5 iotg-rpi5',' virtual/balena-bootloader:do_deploy','',d)}"
 
 do_resin_boot_dirgen_and_deploy[depends] += "virtual/kernel:do_install"
 
@@ -145,3 +145,11 @@ BALENA_STATE_SIZE:revpi-connect-s = "20480"
 IMAGE_ROOTFS_SIZE:rt-rpi-300 = "327680"
 BALENA_BOOT_SIZE:rt-rpi-300 = "40960"
 BALENA_STATE_SIZE:rt-rpi-300 = "20480"
+
+# IOT-GATE-RPI5 inherits Pi5's traits,
+# but since it is a new DT it should use the
+# new balenaOS v8 defaults
+BALENA_BOOT_SIZE:iotg-rpi5 = "102400"
+IMAGE_ROOTFS_SIZE:iotg-rpi5= "655360"
+BALENA_STATE_SIZE:iotg-rpi5= "81920"
+
