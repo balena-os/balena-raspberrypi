@@ -1,0 +1,377 @@
+From 5a96141ca6fbaea64b085e4579b32484283f1885 Mon Sep 17 00:00:00 2001
+From: Ilya Ledvich <ilya@compulab.co.il>
+Date: Tue, 6 Jan 2026 17:04:02 +0200
+Subject: [PATCH] dts: rpi cm5: add support for iotg-rpi5 device tree
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Upstream-Status: Pending
+
+Add basic support for iotg-rpi5 peripherals and interfaces via device tree, including:
+ - Gateway Management Circuitry (GMC) — EEPROM, TPM, GPIO expander, user LEDs
+ - Industrial I/O interfaces — RS485 and CAN, DIO
+ - Board-to-board connector
+
+Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
+---
+ arch/arm64/boot/dts/Makefile               |   1 +
+ arch/arm64/boot/dts/compulab/Makefile      |  11 +
+ arch/arm64/boot/dts/compulab/iotg-rpi5.dts | 318 +++++++++++++++++++++
+ 3 files changed, 330 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/compulab/Makefile
+ create mode 100644 arch/arm64/boot/dts/compulab/iotg-rpi5.dts
+
+diff --git a/arch/arm64/boot/dts/Makefile b/arch/arm64/boot/dts/Makefile
+index 4b79ed838b12..ef3a9cce2509 100644
+--- a/arch/arm64/boot/dts/Makefile
++++ b/arch/arm64/boot/dts/Makefile
+@@ -12,6 +12,7 @@ subdir-y += arm
+ subdir-y += bitmain
+ subdir-y += broadcom
+ subdir-y += cavium
++subdir-y += compulab
+ subdir-y += exynos
+ subdir-y += freescale
+ subdir-y += hisilicon
+diff --git a/arch/arm64/boot/dts/compulab/Makefile b/arch/arm64/boot/dts/compulab/Makefile
+new file mode 100644
+index 000000000000..bf1a69256f5b
+--- /dev/null
++++ b/arch/arm64/boot/dts/compulab/Makefile
+@@ -0,0 +1,11 @@
++# SPDX-License-Identifier: GPL-2.0
++
++# Enables support for device-tree overlays
++DTC_FLAGS := -@
++
++dtb-$(CONFIG_ARCH_BCM2835) += iotg-rpi5.dtb
++
++# Enable fixups to support overlays on BCM2835 platforms
++ifeq ($(CONFIG_ARCH_BCM2835),y)
++	DTC_FLAGS += -@
++endif
+diff --git a/arch/arm64/boot/dts/compulab/iotg-rpi5.dts b/arch/arm64/boot/dts/compulab/iotg-rpi5.dts
+new file mode 100644
+index 000000000000..be856ee62c38
+--- /dev/null
++++ b/arch/arm64/boot/dts/compulab/iotg-rpi5.dts
+@@ -0,0 +1,318 @@
++// SPDX-License-Identifier: GPL-2.0
++/dts-v1/;
++
++#include "../broadcom/bcm2712-rpi-cm5.dtsi"
++
++#include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/input/linux-event-codes.h>
++#include <dt-bindings/leds/common.h>
++
++
++/******** IOTG-RPI5 Gateway Management Circuitry (GMC) ********/
++/ {
++	cl-model = "CompuLab IOT-GATE-RPi5";
++	compatible = "compulab,iotg-rpi5", "raspberrypi,5-compute-module", "brcm,bcm2712";
++
++	/* LEDs */
++	user_leds: user-leds {
++		compatible = "gpio-leds";
++		status = "okay";
++
++		uleda_red: user-led-a-red {
++			label = "Red_A"; /* LED1_RED */
++			color = <LED_COLOR_ID_RED>;
++			gpios = <&pca9555_sb 13 GPIO_ACTIVE_HIGH>;
++			default-state = "off";
++		};
++		uleda_green: user-led-a-green {
++			label = "Green_A"; /* LED1_GREEN */
++			color = <LED_COLOR_ID_GREEN>;
++			gpios = <&pca9555_sb 14 GPIO_ACTIVE_HIGH>;
++			default-state = "off";
++		};
++
++		pled_amber: power-led-abmer {
++			label = "PowerLED_Amber";
++			color = <LED_COLOR_ID_AMBER>;
++			gpios = <&pca9555_sb 11 GPIO_ACTIVE_HIGH>;
++			default-state = "off";
++		};
++		pled_blue: power-led-blue {
++			label = "PowerLED_Blue";
++			color = <LED_COLOR_ID_BLUE>;
++			gpios = <&pca9555_sb 12 GPIO_ACTIVE_HIGH>;
++			linux,default-trigger = "heartbeat";
++		};
++	};
++};
++
++&gpio {
++	tpm_rstn: tpm-rstn {
++		gpio-hog;
++		gpios = <16 GPIO_ACTIVE_HIGH>;
++		output-high;
++		line-name = "TPM_RSTn";
++		status = "okay";
++	};
++};
++
++&i2c3 {
++	#address-cells = <1>;
++	#size-cells = <0>;
++	clock-frequency = <400000>;
++	pinctrl-0 = <&rp1_i2c3_22_23>;
++	status = "okay";
++
++	eeprom_sb: eeprom-sb@50 {
++		compatible = "atmel,24c08";
++		reg = <0x50>;
++		pagesize = <16>;
++	};
++
++	pca9555_sb: pca9555-sb@27 {
++		compatible = "nxp,pca9555";
++		gpio-controller;
++		#gpio-cells = <2>;
++		reg = <0x27>;
++		gpio-line-names =
++			"DO0", "DO1", "DO2", "DO3",
++			"POE_PRESENCE", "RF_KILLn", "EDGE_RSTn", "POE_ASSEM_EN",
++			"EN_5V_ISO1", "SEL_CAN_RS485_A", "eMMC_RST_EXP", "LED_AMBR_CNTL",
++			"PLED_BLUE", "ULED1_RED", "ULED1_GREEN", "SEL_CAN_RS485_B";
++	};
++
++	slb9673: slb9673-i2c3@2e {
++		compatible = "infineon,slb9673";
++		reg = <0x2e>;
++		status = "okay";
++	};
++};
++/******** IOTG-RPI5 GMC - End ********/
++
++/******** IOTG-RPI5 Industrial I/O ********/
++/ {
++	clocks {
++		clk_mcp251xfd_osc: mcp251xfd-osc {
++			#clock-cells = <0>;
++			compatible = "fixed-clock";
++			clock-frequency = <40000000>;
++			clock-output-names = "mcp251xfd-osc";
++		};
++	};
++
++	reg_en_5v_iso1: regulator-en-5v-iso1 {
++		compatible = "regulator-fixed";
++		regulator-name = "5V_EN_ISO1_REG";
++		regulator-min-microvolt = <5000000>;
++		regulator-max-microvolt = <5000000>;
++		gpio = <&pca9555_sb 8 GPIO_ACTIVE_HIGH>;
++		regulator-always-on;
++		/* By default, it remains disabled and can only be enabled
++		   by adding an ad-hoc device tree overlay with the
++		   'enable-active-high' property specified
++		*/
++	};
++};
++
++/******** Industrial I/O Part A ********/
++/* MUX SEL A */
++&pca9555_sb {
++	sel_a: sel-a {
++		gpio-hog;
++		gpios = <9 GPIO_ACTIVE_HIGH>;
++		status = "disabled";
++	};
++};
++
++/* RS485 A */
++rs485_a: &uart4 {
++	pinctrl-0 = <&uart4_pins>;
++	status = "disabled";
++};
++
++/* CAN A */
++&gpio {
++	can_a_irq: can-a-irq {
++		pins = "gpio24";
++		function = "gpio";
++		bias-pull-up;
++		input-enable;
++		status = "disabled";
++	};
++};
++
++&spi2 {
++	/* needed to avoid dtc warning */
++	#address-cells = <1>;
++	#size-cells = <0>;
++	cs-gpios = <&gpio 0 GPIO_ACTIVE_LOW>;
++	status = "disabled";
++
++	can_a: mcp251xfd_a@0 {
++		compatible = "microchip,mcp251xfd";
++		reg = <0>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&can_a_irq>;
++		spi-max-frequency = <15000000>;
++		interrupt-parent = <&gpio>;
++		interrupts = <24 IRQ_TYPE_LEVEL_LOW>;
++		clocks = <&clk_mcp251xfd_osc>;
++	};
++};
++/******** Industrial I/O Part A - End ********/
++
++/******** Industrial I/O Part B ********/
++/* MUX SEL B */
++&pca9555_sb {
++	sel_b: sel-b {
++		gpio-hog;
++		gpios = <15 GPIO_ACTIVE_HIGH>;
++		status = "disabled";
++	};
++};
++
++/* RS485 B */
++rs485_b: &uart2 {
++	pinctrl-0 = <&uart2_pins>;
++	status = "disabled";
++};
++
++/* CAN B */
++&spidev0 {
++	status = "disabled";
++};
++&spidev1 {
++	status = "disabled";
++};
++
++&gpio {
++	can_b_irq: can_b_irq {
++		pins = "gpio26";
++		function = "gpio";
++		bias-pull-up;
++		input-enable;
++		status = "disabled";
++	};
++};
++
++&spi0 {
++	/* needed to avoid dtc warning */
++	#address-cells = <1>;
++	#size-cells = <0>;
++	pinctrl-0 = <&spi0_pins>;
++	cs-gpios = <&gpio 8 GPIO_ACTIVE_LOW>;
++	status = "disabled";
++
++	can_b: mcp251xfd_b@0 {
++		compatible = "microchip,mcp251xfd";
++		reg = <0>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&can_b_irq>;
++		spi-max-frequency = <15000000>;
++		interrupt-parent = <&gpio>;
++		interrupts = <26 IRQ_TYPE_LEVEL_LOW>;
++		clocks = <&clk_mcp251xfd_osc>;
++	};
++};
++/******** Industrial I/O Part B - End ********/
++
++/******** Industrial I/O: DIxOx ********/
++/******** Digital Inputs ********/
++/*
++ * By default, all Digital Inputs (DIs) are enabled.
++ * In this implementation, the underlying GPIOs are configured
++ * as inputs with the pull-down enabled.
++ * As a result, these GPIOs are accessible from userspace.
++ *
++ * To disable a specific DI, the corresponding GPIO must be hogged
++ * as an input by means of an ad-hoc device tree overlay.
++ */
++&gpio {
++	pinctrl-0 = <&di0 &di1 &di2 &di3>;
++	pinctrl-names = "default";
++
++	di0: di_0@0 {
++		pins = "gpio6";
++		function = "gpio";
++		bias-pull-down;
++		input-enable;
++	};
++	di1: di_1@1 {
++		pins = "gpio19";
++		function = "gpio";
++		bias-pull-down;
++		input-enable;
++	};
++	di2: di_2@2 {
++		pins = "gpio25";
++		function = "gpio";
++		bias-pull-down;
++		input-enable;
++	};
++	di3: di_3@3 {
++		pins = "gpio27";
++		function = "gpio";
++		bias-pull-down;
++		input-enable;
++	};
++};
++/******** Digital Inputs - End ********/
++
++/******** Digital Ouputs ********/
++ /*
++ * By default, all Digital Outputs (DOs) are disabled.
++ * In this implementation, all underlying GPIOs are configured
++ * as outputs driven to the low state (gpio-hog).
++ * As a result, these GPIOs cannot be accessed from userspace.
++ *
++ * To enable a specific DO, the underlying output GPIO must be un-hogged
++ * by means of an ad-hoc device tree overlay.
++ */
++&pca9555_sb {
++	do0: do_0@0 {
++		gpio-hog;
++		gpios = <0 GPIO_ACTIVE_HIGH>;
++		output-low;
++		line-name = "DO0 disabled";
++		status = "okay";
++	};
++	do1: do_1@1 {
++		gpio-hog;
++		gpios = <1 GPIO_ACTIVE_HIGH>;
++		output-low;
++		line-name = "DO1 disabled";
++		status = "okay";
++	};
++	do2: do_2@0 {
++		gpio-hog;
++		gpios = <2 GPIO_ACTIVE_HIGH>;
++		output-low;
++		line-name = "DO2 disabled";
++		status = "okay";
++	};
++	do3: do_3@0 {
++		gpio-hog;
++		gpios = <3 GPIO_ACTIVE_HIGH>;
++		output-low;
++		line-name = "DO3 disabled";
++		status = "okay";
++	};
++};
++/******** Digital Ouputs - End ********/
++/******** Industrial I/O: DIxOx - End ********/
++/******** IOTG-RPI5 Industrial I/O - End ********/
++
++
++/******** IOTG-RPI5 Board to Board Connector (B2B) ********/
++i2c_b2b: &i2c6 {
++	pinctrl-0 = <&rp1_i2c6_38_39>;
++	pinctrl-names = "default";
++	clock-frequency = <400000>;
++	status = "okay";
++};
++
++i2c_csi_dsi0: &i2c_b2b {};
++i2c_csi_dsi1: &i2c3 {};
++i2c_csi_dsi: &i2c_csi_dsi1 { };
++/******** IOTG-RPI5 B2B - End ********/
++

@@ -1,5 +1,15 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:${THISDIR}/${MACHINE}:"
 
+SRC_URI:append:iotg-rpi5 = " \
+    file://0001-dts-rpi-cm5-add-support-for-iotg-rpi5-device-tree.patch \
+    file://0002-overlays-add-support-for-iotg-rpi5-device-tree-overl.patch \
+    file://0003-overlays-iotg-rpi5-add-CMD-button-overlay.patch \
+    file://0004-overlays-iotg-rpi5-add-Modem-Reset-overlay.patch \
+    file://0005-overlays-iotg-rpi5-add-Digital-I-O-block-overlay.patch \
+    file://0006-dts-iotg-rpi5-move-board-specific-implementation-to-.patch \
+    file://0007-dts-iotg-rpi5-add-support-for-CM5-Lite-based-device.patch \
+"
+
 SRC_URI:append:raspberrypi4-superhub = " \
 	file://0001-Add-gpio-wdt-DT-overlay-for-Phoenix-Board.patch \
 	file://0002-Add-infineon-tpm-DT-overlay-for-Phoenix-Board.patch \

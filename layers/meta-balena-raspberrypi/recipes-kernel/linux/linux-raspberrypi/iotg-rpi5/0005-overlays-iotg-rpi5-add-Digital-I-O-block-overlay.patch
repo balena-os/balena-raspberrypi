@@ -1,0 +1,189 @@
+From a13036441a5112ce7f017f094776fe30da22ba3e Mon Sep 17 00:00:00 2001
+From: Ilya Ledvich <ilya@compulab.co.il>
+Date: Wed, 11 Mar 2026 16:00:31 +0200
+Subject: [PATCH] overlays: iotg-rpi5: add Digital I/O block overlay
+
+Upstream-Status: Pending
+
+Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
+---
+ arch/arm/boot/dts/overlays/iotg-rpi5/Makefile |   1 +
+ arch/arm/boot/dts/overlays/iotg-rpi5/README   |  23 ++++
+ .../iotg-rpi5/iotg-rpi5-dio-overlay.dts       | 122 ++++++++++++++++++
+ 3 files changed, 146 insertions(+)
+ create mode 100644 arch/arm/boot/dts/overlays/iotg-rpi5/iotg-rpi5-dio-overlay.dts
+
+diff --git a/arch/arm/boot/dts/overlays/iotg-rpi5/Makefile b/arch/arm/boot/dts/overlays/iotg-rpi5/Makefile
+index 61cf89d727b0..37c58196b4aa 100644
+--- a/arch/arm/boot/dts/overlays/iotg-rpi5/Makefile
++++ b/arch/arm/boot/dts/overlays/iotg-rpi5/Makefile
+@@ -6,6 +6,7 @@ dtbo-$(CONFIG_ARCH_BCM2835) += \
+ 	iotg-rpi5-io-b.dtbo \
+ 	iotg-rpi5-b2b.dtbo \
+ 	iotg-rpi5-cmd-button.dtbo \
++	iotg-rpi5-dio.dtbo \
+ 	iotg-rpi5-modem-reset.dtbo
+ 
+ targets += dtbs dtbs_install
+diff --git a/arch/arm/boot/dts/overlays/iotg-rpi5/README b/arch/arm/boot/dts/overlays/iotg-rpi5/README
+index 4ac2b36fbb1b..473651c5455e 100644
+--- a/arch/arm/boot/dts/overlays/iotg-rpi5/README
++++ b/arch/arm/boot/dts/overlays/iotg-rpi5/README
+@@ -57,6 +57,29 @@ Params: label                   Set a label for the button.
+                                 Enabled by default
+                                 (bool, optional)
+ 
++
++Name:   iotg-rpi5-dio
++Info:   Configures the Digital I/O block on the Compulab IOTG-RPi5.
++        Provides four pins that can be configured as either Digital
++        Inputs or Digital Outputs.
++Load:   dtoverlay=iotg-rpi5-dio,<param>=<val>
++Params: o0                      Configure pin 0 as a Digital Output.
++                                Default: Digital Input
++                                (bool, optional)
++
++        o1                      Configure pin 1 as a Digital Output.
++                                Default: Digital Input
++                                (bool, optional)
++
++        o2                      Configure pin 2 as a Digital Output.
++                                Default: Digital Input
++                                (bool, optional)
++
++        o3                      Configure pin 3 as a Digital Output.
++                                Default: Digital Input
++                                (bool, optional)
++
++
+ Name:   iotg-rpi5-modem-reset
+ Info:   Configures the modem emergency reset mechanism for the
+         Compulab IOTG-RPi5.
+diff --git a/arch/arm/boot/dts/overlays/iotg-rpi5/iotg-rpi5-dio-overlay.dts b/arch/arm/boot/dts/overlays/iotg-rpi5/iotg-rpi5-dio-overlay.dts
+new file mode 100644
+index 000000000000..bc4ccc8097d8
+--- /dev/null
++++ b/arch/arm/boot/dts/overlays/iotg-rpi5/iotg-rpi5-dio-overlay.dts
+@@ -0,0 +1,122 @@
++// Definitions for IOTG-RPI5 I/O: DIx Part
++
++/dts-v1/;
++/plugin/;
++
++#include <dt-bindings/gpio/gpio.h>
++
++/ {
++	compatible = "brcm,bcm2712";
++
++	/* DO0 */
++	fragment@0 {
++		target = <&do0>;
++		__dormant__ {
++		     status = "disabled";
++		};
++	};
++	fragment@1 {
++		target = <&do0>;
++		__overlay__ {
++		     status = "okay";
++		};
++	};
++
++	/* DO1 */
++	fragment@2 {
++		target = <&do1>;
++		__dormant__ {
++		     status = "disabled";
++		};
++	};
++	fragment@3 {
++		target = <&do1>;
++		__overlay__ {
++		     status = "okay";
++		};
++	};
++
++	/* DO2 */
++	fragment@4 {
++		target = <&do2>;
++		__dormant__ {
++		     status = "disabled";
++		};
++	};
++	fragment@5 {
++		target = <&do2>;
++		__overlay__ {
++		     status = "okay";
++		};
++	};
++
++	/* DO3 */
++	fragment@6 {
++		target = <&do3>;
++		__dormant__ {
++		     status = "disabled";
++		};
++	};
++	fragment@7 {
++		target = <&do3>;
++		__overlay__ {
++		     status = "okay";
++		};
++	};
++
++	/* DI0 */
++	fragment@8 {
++		target = <&gpio>;
++		__dormant__ {
++			di_hog0: di_hog_0@0 {
++			     gpio-hog;
++			     gpios = <6 GPIO_ACTIVE_HIGH>;
++			     input;
++			     line-name = "DI0 disabled";
++			};
++		};
++	};
++	/* DI1 */
++	fragment@9 {
++		target = <&gpio>;
++		__dormant__ {
++			di_hog1: di_hog_1@1 {
++				gpio-hog;
++				gpios = <19 GPIO_ACTIVE_HIGH>;
++				input;
++				line-name = "DI1 disabled";
++			};
++		};
++	};
++	/* DI2 */
++	fragment@10 {
++		target = <&gpio>;
++		__dormant__ {
++			di_hog2: di_hog_2@2 {
++				gpio-hog;
++				gpios = <25 GPIO_ACTIVE_HIGH>;
++				input;
++				line-name = "DI2 disabled";
++			};
++		};
++	};
++	/* DI3 */
++	fragment@11 {
++		target = <&gpio>;
++		__dormant__ {
++			di_hog3: di_hog_3@3 {
++				gpio-hog;
++				gpios = <27 GPIO_ACTIVE_HIGH>;
++				input;
++				line-name = "DI3 disabled";
++			};
++		};
++	};
++
++	__overrides__ {
++		o0 = <0>, "+0-1+8";
++		o1 = <0>, "+2-3+9";
++		o2 = <0>, "+4-5+10";
++		o3 = <0>, "+6-7+11";
++	};
++};
