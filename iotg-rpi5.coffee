@@ -4,7 +4,7 @@ deviceTypesCommon = require '@resin.io/device-types/common'
 module.exports =
 	version: 1
 	slug: 'iotg-rpi5'
-	name: 'CompuLab IOTG rpi5'
+	name: 'Compulab IOT-GATE-RPI5'
 	arch: 'aarch64'
 	state: 'released'
 
