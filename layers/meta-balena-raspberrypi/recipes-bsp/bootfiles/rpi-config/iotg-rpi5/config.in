@@ -1,0 +1,17 @@
+enable_uart=1
+dtoverlay=vc4-kms-v3d,cma-320
+
+dtparam=i2c_arm=on
+dtparam=spi=on
+disable_splash=1
+dtparam=audio=on
+
+[all]
+device_tree=iotg-rpi5.dtb
+dtoverlay=iotg-rpi5/iotg-rpi5-dio
+
+[cm5]
+dtoverlay=dwc2,dr_mode=host
+
+[cm5l]
+device_tree=iotg-rpi5l.dtb
