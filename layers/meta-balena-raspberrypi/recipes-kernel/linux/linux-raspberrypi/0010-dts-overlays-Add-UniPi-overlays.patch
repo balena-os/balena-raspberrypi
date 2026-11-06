@@ -7,7 +7,7 @@ These are taken from
 https://git.unipi.technology/UniPi/unipi-tools/-/tree/master/overlays at
 revision 9b8ff652e9315d56b46a38f7c910f4314ecead8b
 
-Upstream-status: Pending
+Upstream-Status: Pending
 Signed-off-by: Florin Sarbu <florin@balena.io>
 ---
  arch/arm/boot/dts/overlays/ds2482-overlay.dts      |  22 +++++

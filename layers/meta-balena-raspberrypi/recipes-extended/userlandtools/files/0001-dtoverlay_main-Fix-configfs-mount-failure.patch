@@ -9,7 +9,7 @@ but the configfs already contains device-tree.
 Also, remove useless calls to command processor
 since we don't need or install lxpanelctl scripts.
 
-Upstream-status: Inappropriate [configuration]
+Upstream-Status: Inappropriate [configuration]
 Signed-off-by: Alexandru Costache <alexandru@balena.io>
 ---
  .../linux/apps/dtoverlay/dtoverlay_main.c              | 10 ++++++----

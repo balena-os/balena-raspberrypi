@@ -6,7 +6,7 @@ Subject: [PATCH] ch432t: Add driver for this chip
 Add driver for this chip, which is present
 on the rt-rpi board.
 
-Upstream-status: Inappropriate [Backport]
+Upstream-Status: Inappropriate [Backport]
 Signed-off-by: Alexandru Costache <alexandru@balena.io>
 ---
  drivers/misc/ch432.c | 1274 ++++++++++++++++++++++++++++++++++++++++++

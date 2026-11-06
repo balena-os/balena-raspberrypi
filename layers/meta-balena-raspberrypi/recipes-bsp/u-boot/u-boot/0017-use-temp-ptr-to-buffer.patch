@@ -10,7 +10,7 @@ Fixes: 704e040a51d2 ("nvme: Apply cache operations on the DMA buffers")
 
 Patch source: https://lists.denx.de/pipermail/u-boot/2021-September/461882.html
 
-Upstream-status: Backport
+Upstream-Status: Backport
 Signed-off-by: Stefan Agner <stefan at agner.ch>
 Signed-off-by: Alexandru Costache <alexandru@balena.io>
 ---

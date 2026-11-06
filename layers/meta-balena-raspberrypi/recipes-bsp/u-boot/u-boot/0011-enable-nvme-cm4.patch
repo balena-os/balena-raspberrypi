@@ -3,7 +3,7 @@ From: Alexandru Costache <alexandru@balena.io>
 Date: Mon, 7 Mar 2022 13:52:31 +0100
 Subject: [PATCH] Enable NVME configs on CM4 IO Board
 
-Upstream-status: Inappropriate [configuration]
+Upstream-Status: Inappropriate [configuration]
 Signed-off-by: Alexandru Costache <alexandru@balena.io>
 ---
  configs/rpi_arm64_defconfig | 3 +++

@@ -9,7 +9,7 @@ They each are taken from:
   square                       a9c442f Updated README
   square-pi4                   eebabef Update README.md
 
-Upstream-status: Inappropriate [not author]
+Upstream-Status: Inappropriate [not author]
 Signed-off-by: Florin Sarbu <florin@balena.io>
 ---
  arch/arm/boot/dts/overlays/Makefile           |   4 +
