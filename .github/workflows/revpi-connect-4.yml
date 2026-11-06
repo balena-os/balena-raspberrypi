@@ -1,4 +1,4 @@
-name: Revolution Pi Connect 4
+name: RevPi Connect 4 (legacy)
 
 on:
   # https://docs.github.com/en/actions/writing-workflows/workflow-syntax-for-github-actions#onpushbranchestagsbranches-ignoretags-ignore
