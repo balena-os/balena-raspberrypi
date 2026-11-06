@@ -64,12 +64,33 @@ on:
 # worker_type defaults to testbot
 # worker_fleets defaults to balena/testbot-rig,balena/testbot-rig-partners,balena/testbot-rig-x86,balena/testbot-rig-partners-x86
 env:
+  # The include form, because the cloud suite runs on staging while os and hup
+  # stay on production. worker_environment keeps the rig lookup on production
+  # for every leg, so no staging rigs are needed.
   test_matrix: >
     {
-      "test_suite": ["os","cloud","hup"],
-      "environment": ["balena-cloud.com"],
-      "runs_on": [["ubuntu-latest"]],
-      "worker_type": ["testbot"]
+      "include": [
+        {
+          "test_suite": "os",
+          "environment": "balena-cloud.com",
+          "runs_on": ["ubuntu-latest"],
+          "worker_type": "testbot"
+        },
+        {
+          "test_suite": "hup",
+          "environment": "balena-cloud.com",
+          "runs_on": ["ubuntu-latest"],
+          "worker_type": "testbot"
+        },
+        {
+          "test_suite": "cloud",
+          "environment": "balena-staging.com",
+          "worker_environment": "balena-cloud.com",
+          "supervisor_release_id": 238658,
+          "runs_on": ["ubuntu-latest"],
+          "worker_type": "testbot"
+        }
+      ]
     }
 
 permissions:
@@ -95,7 +116,7 @@ jobs:
 
   yocto:
     name: Yocto
-    uses: balena-os/balena-yocto-scripts/.github/workflows/yocto-build-deploy.yml@e040066f030e2ba6577fe9bc481c22e614ec336a
+    uses: balena-os/balena-yocto-scripts/.github/workflows/yocto-build-deploy.yml@d354afd2e81caf16ae71fa3950c905ac0659c9b5
     needs: get_inputs
     # Prevent duplicate workflow executions for pull_request (PR) and pull_request_target (PRT) events.
     # Both PR and PRT will be triggered for the same pull request, whether it is internal or from a fork.
@@ -115,3 +136,4 @@ jobs:
       deploy-environment: ${{ inputs.deploy-environment || 'balena-cloud.com' }}
       # Allow overriding the meta-balena ref for workflow dispatch events
       meta-balena-ref: ${{ inputs.meta-balena-ref || '' }}
+      build-args: "-d"
