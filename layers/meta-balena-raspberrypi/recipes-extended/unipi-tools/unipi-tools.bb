@@ -1,6 +1,22 @@
 DESCRIPTION = "UniPi Neuron Modbus utilities"
-LICENSE = "GPL-3.0-only"
-LIC_FILES_CHKSUM = "file://../debian/copyright;md5=2ae0c739310d5de8f2d85519ac1f2a50"
+# Licence basis (upstream checked at this SRCREV): per-file headers are mixed.
+# Most source files (armspi.c/.h, spicrc.c/.h, virtual_regs.c/.h, unipiutil.h,
+# nb_modbus.h) say GPL "version 2 of the License" (no "or later"); nb_modbus.c
+# is LGPL-2.1+; bandwidth-client.c and unipi_tcp_server.c say GPL version 3 or
+# later. debian/copyright claims GPL-3.0+ for "Files: *" but is an unfilled
+# template ("<years> <put author's name...>"). Upstream's current tip declares
+# GPL-2.0 (README + COPYING); this pinned revision predates both.
+# DOCUMENTED ASSUMPTION: GPL-2.0-only, the project's chosen fallback where the
+# licence is in doubt and what most headers and upstream's own README say.
+# KNOWN CONFLICT: the installed unipi_tcp_server is built from
+# unipi_tcp_server.c (GPL-3.0-or-later header) together with the GPL-2.0-only
+# objects, which upstream's own licensing does not reconcile - not resolvable
+# in this recipe.
+LICENSE = "GPL-2.0-only"
+LIC_FILES_CHKSUM = " \
+    file://armspi.c;beginline=8;endline=10;md5=3eace9d0d9abe7a03cb2de68a14ee849 \
+    file://../debian/copyright;md5=2ae0c739310d5de8f2d85519ac1f2a50 \
+"
 
 SRC_URI = "git://github.com/UniPiTechnology/unipi-tools.git;protocol=https;nobranch=1"
 
