@@ -1,0 +1,37 @@
+From dcba36d09bae0ace28821ea2348ff75bbd892676 Mon Sep 17 00:00:00 2001
+From: Ilya Ledvich <ilya@compulab.co.il>
+Date: Sun, 26 Jul 2026 14:18:22 +0300
+Subject: [PATCH] dts: iotg-rpi5: add support for CM5 Lite based device
+
+Upstream-Status: Pending
+
+Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
+---
+ arch/arm64/boot/dts/compulab/Makefile       | 1 +
+ arch/arm64/boot/dts/compulab/iotg-rpi5l.dts | 5 +++++
+ 2 files changed, 6 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/compulab/iotg-rpi5l.dts
+
+diff --git a/arch/arm64/boot/dts/compulab/Makefile b/arch/arm64/boot/dts/compulab/Makefile
+index bf1a69256f5b..c3ffa3703f6e 100644
+--- a/arch/arm64/boot/dts/compulab/Makefile
++++ b/arch/arm64/boot/dts/compulab/Makefile
+@@ -4,6 +4,7 @@
+ DTC_FLAGS := -@
+ 
+ dtb-$(CONFIG_ARCH_BCM2835) += iotg-rpi5.dtb
++dtb-$(CONFIG_ARCH_BCM2835) += iotg-rpi5l.dtb
+ 
+ # Enable fixups to support overlays on BCM2835 platforms
+ ifeq ($(CONFIG_ARCH_BCM2835),y)
+diff --git a/arch/arm64/boot/dts/compulab/iotg-rpi5l.dts b/arch/arm64/boot/dts/compulab/iotg-rpi5l.dts
+new file mode 100644
+index 000000000000..5965fa9f5e2a
+--- /dev/null
++++ b/arch/arm64/boot/dts/compulab/iotg-rpi5l.dts
+@@ -0,0 +1,5 @@
++// SPDX-License-Identifier: GPL-2.0
++/dts-v1/;
++
++#include "../broadcom/bcm2712-rpi-cm5l.dtsi"
++#include "iotg-rpi5.dtsi"

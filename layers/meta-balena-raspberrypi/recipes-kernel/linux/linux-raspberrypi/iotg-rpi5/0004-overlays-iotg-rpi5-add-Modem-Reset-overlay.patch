@@ -1,0 +1,99 @@
+From c06fb4c704c456eb5af4b67af8a1c6620d37d220 Mon Sep 17 00:00:00 2001
+From: Ilya Ledvich <ilya@compulab.co.il>
+Date: Mon, 9 Mar 2026 09:47:04 +0200
+Subject: [PATCH] overlays: iotg-rpi5: add Modem Reset overlay
+
+Upstream-Status: Pending
+
+Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
+---
+ arch/arm/boot/dts/overlays/iotg-rpi5/Makefile |  3 +-
+ arch/arm/boot/dts/overlays/iotg-rpi5/README   | 11 +++++
+ .../iotg-rpi5-modem-reset-overlay.dts         | 45 +++++++++++++++++++
+ 3 files changed, 58 insertions(+), 1 deletion(-)
+ create mode 100644 arch/arm/boot/dts/overlays/iotg-rpi5/iotg-rpi5-modem-reset-overlay.dts
+
+diff --git a/arch/arm/boot/dts/overlays/iotg-rpi5/Makefile b/arch/arm/boot/dts/overlays/iotg-rpi5/Makefile
+index d756b1d310b5..61cf89d727b0 100644
+--- a/arch/arm/boot/dts/overlays/iotg-rpi5/Makefile
++++ b/arch/arm/boot/dts/overlays/iotg-rpi5/Makefile
+@@ -5,7 +5,8 @@ dtbo-$(CONFIG_ARCH_BCM2835) += \
+ 	iotg-rpi5-io-a.dtbo \
+ 	iotg-rpi5-io-b.dtbo \
+ 	iotg-rpi5-b2b.dtbo \
+-	iotg-rpi5-cmd-button.dtbo
++	iotg-rpi5-cmd-button.dtbo \
++	iotg-rpi5-modem-reset.dtbo
+ 
+ targets += dtbs dtbs_install
+ targets += $(dtbo-y)
+diff --git a/arch/arm/boot/dts/overlays/iotg-rpi5/README b/arch/arm/boot/dts/overlays/iotg-rpi5/README
+index 5b17d651d3d9..4ac2b36fbb1b 100644
+--- a/arch/arm/boot/dts/overlays/iotg-rpi5/README
++++ b/arch/arm/boot/dts/overlays/iotg-rpi5/README
+@@ -57,3 +57,14 @@ Params: label                   Set a label for the button.
+                                 Enabled by default
+                                 (bool, optional)
+ 
++Name:   iotg-rpi5-modem-reset
++Info:   Configures the modem emergency reset mechanism for the
++        Compulab IOTG-RPi5.
++        The modem reset circuit is implemented as a gpio-led device
++        with the 'oneshot' trigger bound to it.
++Load:   dtoverlay=iotg-rpi5-modem-reset,<param>=<val>
++Params: delay_ms                Specify (in ms) the delay_on and delay_off
++                                parameters of the oneshot trigger.
++                                Both are set to the same value.
++                                Minimum value: 300 ms.
++                                Default: 300 ms (optional)
+diff --git a/arch/arm/boot/dts/overlays/iotg-rpi5/iotg-rpi5-modem-reset-overlay.dts b/arch/arm/boot/dts/overlays/iotg-rpi5/iotg-rpi5-modem-reset-overlay.dts
+new file mode 100644
+index 000000000000..93547431f924
+--- /dev/null
++++ b/arch/arm/boot/dts/overlays/iotg-rpi5/iotg-rpi5-modem-reset-overlay.dts
+@@ -0,0 +1,45 @@
++// Definitions for IOTG-RPI5 Board to Board Connector 
++
++/dts-v1/;
++/plugin/;
++
++#include <dt-bindings/gpio/gpio.h>
++
++/ {
++	compatible = "brcm,bcm2712";
++
++	fragment@0 {
++		target = <&gpio>;
++		__overlay__ {
++			modem_rst_pinctrl: modem-rst-pinctrl {
++				pins = "gpio7";
++				function = "gpio";
++				bias-disable;
++			};
++		};
++	};
++
++	fragment@1 {
++		target-path = "/";
++		__overlay__ {
++			modem_rst_ctrl: modem-rst-ctrl {
++				pinctrl-names = "default";
++				pinctrl-0 = <&modem_rst_pinctrl>;
++				compatible = "gpio-leds";
++				status = "okay";
++
++				modem_rst: modem-rst {
++					label = "MODEM_RST";
++					gpios = <&gpio 7 GPIO_ACTIVE_HIGH>;
++					linux,default-trigger = "oneshot";
++					led-pattern = <300 300>;
++				};
++			};
++		};
++	};
++
++	__overrides__ {
++		active_low = <&modem_rst>,"gpios:8";
++		delay_ms = <&modem_rst>,"led-pattern:0",<&modem_rst>,"led-pattern:4";
++	};
++};

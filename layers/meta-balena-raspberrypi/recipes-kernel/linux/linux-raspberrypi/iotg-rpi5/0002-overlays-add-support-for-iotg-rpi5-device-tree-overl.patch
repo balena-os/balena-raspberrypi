@@ -1,0 +1,400 @@
+From bb6c456f5539c83a2ad651a68ee88ab779ff206d Mon Sep 17 00:00:00 2001
+From: Ilya Ledvich <ilya@compulab.co.il>
+Date: Wed, 7 Jan 2026 14:02:53 +0200
+Subject: [PATCH] overlays: add support for iotg-rpi5 device tree overlays
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Upstream-Status: Pending
+
+Add basic support for iotg-rpi5 peripherals and interfaces via device tree
+overlays, including:
+ - Gateway Management Circuitry (GMC) — EEPROM, TPM, GPIO expander, user LEDs
+ - Industrial I/O interfaces:
+   - Block A: RS485 and CAN
+   - Block B: RS485 and CAN
+ - Board-to-board connector
+
+Signed-off-by: Ilya Ledvich <ilya@compulab.co.il>
+---
+ arch/arm/boot/dts/overlays/Makefile           |   2 +
+ arch/arm/boot/dts/overlays/iotg-rpi5/Makefile |  13 ++
+ arch/arm/boot/dts/overlays/iotg-rpi5/README   |  44 +++++++
+ .../iotg-rpi5/iotg-rpi5-b2b-overlay.dts       |  21 ++++
+ .../iotg-rpi5/iotg-rpi5-gmc-overlay.dts       | 111 ++++++++++++++++++
+ .../iotg-rpi5/iotg-rpi5-io-a-overlay.dts      |  64 ++++++++++
+ .../iotg-rpi5/iotg-rpi5-io-b-overlay.dts      |  64 ++++++++++
+ 7 files changed, 319 insertions(+)
+ create mode 100644 arch/arm/boot/dts/overlays/iotg-rpi5/Makefile
+ create mode 100644 arch/arm/boot/dts/overlays/iotg-rpi5/README
+ create mode 100644 arch/arm/boot/dts/overlays/iotg-rpi5/iotg-rpi5-b2b-overlay.dts
+ create mode 100644 arch/arm/boot/dts/overlays/iotg-rpi5/iotg-rpi5-gmc-overlay.dts
+ create mode 100644 arch/arm/boot/dts/overlays/iotg-rpi5/iotg-rpi5-io-a-overlay.dts
+ create mode 100644 arch/arm/boot/dts/overlays/iotg-rpi5/iotg-rpi5-io-b-overlay.dts
+
+diff --git a/arch/arm/boot/dts/overlays/Makefile b/arch/arm/boot/dts/overlays/Makefile
+index f8c13f656bb5..10bb39c8b4e1 100644
+--- a/arch/arm/boot/dts/overlays/Makefile
++++ b/arch/arm/boot/dts/overlays/Makefile
+@@ -364,5 +364,7 @@ dtbo-$(CONFIG_ARCH_BCM2835) += \
+ targets += dtbs dtbs_install
+ targets += $(dtbo-y)
+ 
++subdir-y	:= iotg-rpi5
++
+ always-y	:= $(dtbo-y)
+ clean-files	:= *.dtbo
+diff --git a/arch/arm/boot/dts/overlays/iotg-rpi5/Makefile b/arch/arm/boot/dts/overlays/iotg-rpi5/Makefile
+new file mode 100644
+index 000000000000..25593e8dc407
+--- /dev/null
++++ b/arch/arm/boot/dts/overlays/iotg-rpi5/Makefile
+@@ -0,0 +1,13 @@
++# Overlays for the IOT-GATE-RPI5
++
++dtbo-$(CONFIG_ARCH_BCM2835) += \
++	iotg-rpi5-gmc.dtbo \
++	iotg-rpi5-io-a.dtbo \
++	iotg-rpi5-io-b.dtbo \
++	iotg-rpi5-b2b.dtbo
++
++targets += dtbs dtbs_install
++targets += $(dtbo-y)
++
++always-y	:= $(dtbo-y)
++clean-files	:= *.dtbo
+diff --git a/arch/arm/boot/dts/overlays/iotg-rpi5/README b/arch/arm/boot/dts/overlays/iotg-rpi5/README
+new file mode 100644
+index 000000000000..cff63becf2ae
+--- /dev/null
++++ b/arch/arm/boot/dts/overlays/iotg-rpi5/README
+@@ -0,0 +1,44 @@
++Name:   iotg-rpi5-gmc
++Info:   Configures the Gateway Management Circuitry (GMC) on the
++        Compulab IOTG-RPi5:
++        - EEPROM on I2C3: used for storing sensitive manufacturing data
++          and must not be changed or modified
++        - TPM on I2C3
++        - GPIO expander on I2C3
++        - GPIO-controlled user LEDs
++Load:   dtoverlay=iotg-rpi5-gmc
++Params: <None>
++
++
++Name:   iotg-rpi5-io-a
++Info:   Configures the Industrial I/O interface block A on the
++        Compulab IOTG-RPi5:
++        - RS485 / CAN
++Load:   dtoverlay=iotg-rpi5-io-a,<param>=<val>
++Params: can                 Configure MCP251xFD CAN controller
++                            over SPI2 bus, CS0
++                            (boolean, optional)
++        rs485               Configure UART4 on GPIOs 12,13
++                            (boolean, optional)
++
++
++Name:   iotg-rpi5-io-b
++Info:   Configures the Industrial I/O interface block B on the
++        Compulab IOTG-RPi5:
++        - RS485 / CAN
++Load:   dtoverlay=iotg-rpi5-io-b,<param>=<val>
++Params: can                 Configure MCP251xFD CAN controller
++                            over SPI0 bus, CS0
++                            (boolean, optional)
++        rs485               Configure UART2 on GPIOs 4,5
++                            (boolean, optional)
++
++
++Name:   iotg-rpi5-b2b
++Info:   Configures the Board to Board Connector on the
++        Compulab IOTG-RPi5:
++        - I2C6 bus normally allocated to the MIPI0 interface,
++	  but can be used as a general I2C bus
++Load:   dtoverlay=iotg-rpi5-b2b
++Params: <None>
++
+diff --git a/arch/arm/boot/dts/overlays/iotg-rpi5/iotg-rpi5-b2b-overlay.dts b/arch/arm/boot/dts/overlays/iotg-rpi5/iotg-rpi5-b2b-overlay.dts
+new file mode 100644
+index 000000000000..e01e480883ff
+--- /dev/null
++++ b/arch/arm/boot/dts/overlays/iotg-rpi5/iotg-rpi5-b2b-overlay.dts
+@@ -0,0 +1,21 @@
++// Definitions for IOTG-RPI5 Board to Board Connector 
++
++/dts-v1/;
++/plugin/;
++
++#include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/interrupt-controller/irq.h>
++
++/ {
++	compatible = "brcm,bcm2712";
++
++	fragment@0 {
++		target = <&i2c6>;
++		i2c_csi_dsi0: __overlay__ {
++			pinctrl-0 = <&rp1_i2c6_38_39>;
++			pinctrl-names = "default";
++			clock-frequency = <100000>;
++			status = "okay";
++		};
++	};
++};
+diff --git a/arch/arm/boot/dts/overlays/iotg-rpi5/iotg-rpi5-gmc-overlay.dts b/arch/arm/boot/dts/overlays/iotg-rpi5/iotg-rpi5-gmc-overlay.dts
+new file mode 100644
+index 000000000000..13228d82e59a
+--- /dev/null
++++ b/arch/arm/boot/dts/overlays/iotg-rpi5/iotg-rpi5-gmc-overlay.dts
+@@ -0,0 +1,111 @@
++// Definitions for IOTG-RPI5 Gateway Management Circuitry (GMC)
++
++/dts-v1/;
++/plugin/;
++
++#include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/leds/common.h>
++
++/ {
++	compatible = "brcm,bcm2712";
++
++	fragment@0 {
++		target = <&gpio>;
++		__overlay__ {
++			tpm_rstn: tpm-rstn {
++				gpio-hog;
++				gpios = <16 GPIO_ACTIVE_HIGH>;
++				output-high;
++				line-name = "TPM_RSTn";
++				status = "okay";
++			};
++		};
++	};
++
++	fragment@1 {
++		target = <&i2c3>;
++		__overlay__ {
++			#address-cells = <1>;
++			#size-cells = <0>;
++			clock-frequency = <400000>;
++			pinctrl-0 = <&rp1_i2c3_22_23>;
++			status = "okay";
++		};
++	};
++
++	fragment@2 {
++		target = <&i2c3>;
++		__overlay__ {
++			eeprom_sb: eeprom-sb@50 {
++				compatible = "atmel,24c08";
++				reg = <0x50>;
++				pagesize = <16>;
++			};
++		};
++	};
++
++	fragment@3 {
++		target = <&i2c3>;
++		__overlay__ {
++			pca9555_sb: pca9555-sb@27 {
++				compatible = "nxp,pca9555";
++				gpio-controller;
++				#gpio-cells = <2>;
++				reg = <0x27>;
++				gpio-line-names =
++					"DO0", "DO1", "DO2", "DO3",
++					"POE_PRESENCE", "RF_KILLn", "EDGE_RSTn", "POE_ASSEM_EN",
++					"EN_5V_ISO1", "SEL_CAN_RS485_A", "eMMC_RST_EXP", "LED_AMBR_CNTL",
++					"PLED_BLUE", "ULED1_RED", "ULED1_GREEN", "SEL_CAN_RS485_B";
++			};
++		};
++	};
++
++	fragment@4 {
++		target = <&i2c3>;
++		__overlay__ {
++			slb9673: slb9673-i2c3@2e {
++				compatible = "infineon,slb9673";
++				reg = <0x2e>;
++				status = "okay";
++			};
++		};
++	};
++
++	fragment@5 {
++		target-path = "/";
++		__overlay__ {
++			user_leds: user-leds {
++				compatible = "gpio-leds";
++				status = "okay";
++
++				uleda_red: user-led-a-red {
++					label = "Red_A"; /* LED1_RED */
++					color = <LED_COLOR_ID_RED>;
++					gpios = <&pca9555_sb 13 GPIO_ACTIVE_HIGH>;
++					default-state = "off";
++				};
++				uleda_green: user-led-a-green {
++					label = "Green_A"; /* LED1_GREEN */
++					color = <LED_COLOR_ID_GREEN>;
++					gpios = <&pca9555_sb 14 GPIO_ACTIVE_HIGH>;
++					default-state = "off";
++				};
++
++				pled_amber: power-led-abmer {
++					label = "PowerLED_Amber";
++					color = <LED_COLOR_ID_AMBER>;
++					gpios = <&pca9555_sb 11 GPIO_ACTIVE_HIGH>;
++					default-state = "off";
++				};
++				pled_blue: power-led-blue {
++					label = "PowerLED_Blue";
++					color = <LED_COLOR_ID_BLUE>;
++					gpios = <&pca9555_sb 12 GPIO_ACTIVE_HIGH>;
++					linux,default-trigger = "heartbeat";
++				};
++			};
++		};
++	};
++
++};
+diff --git a/arch/arm/boot/dts/overlays/iotg-rpi5/iotg-rpi5-io-a-overlay.dts b/arch/arm/boot/dts/overlays/iotg-rpi5/iotg-rpi5-io-a-overlay.dts
+new file mode 100644
+index 000000000000..2e08cef0465d
+--- /dev/null
++++ b/arch/arm/boot/dts/overlays/iotg-rpi5/iotg-rpi5-io-a-overlay.dts
+@@ -0,0 +1,64 @@
++// Definitions for IOTG-RPI5 I/O Part A
++
++/dts-v1/;
++/plugin/;
++
++#include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/interrupt-controller/irq.h>
++
++/ {
++	compatible = "brcm,bcm2712";
++
++	/* RS485 A */
++	fragment@0 {
++		target = <&rs485_a>;
++		__dormant__ {
++			status = "okay";
++		};
++	};
++	/* SEL A: RS485 */
++	fragment@1 {
++		target = <&sel_a>;
++		__dormant__ {
++			output-high;
++			line-name = "SEL_A_RS485";
++			status = "okay";
++		};
++	};
++
++	/* CAN A */
++	fragment@2 {
++		target = <&can_a_irq>;
++		__dormant__ {
++			status = "okay";
++		};
++	};
++	fragment@3 {
++		target = <&spi2>;
++		__dormant__ {
++			status = "okay";
++		};
++	};
++	/* SEL A: CAN */
++	fragment@4 {
++		target = <&sel_a>;
++		__dormant__ {
++			output-low;
++			line-name = "SEL_A_CAN";
++			status = "okay";
++		};
++	};
++
++	/* 5V_EN_ISO1 Regulator */
++	fragment@5 {
++		target = <&reg_en_5v_iso1>;
++		__dormant__ {
++			enable-active-high;
++		};
++	};
++
++	__overrides__ {
++		rs485 = <0>, "+0+1+5";
++		can   = <0>, "+2+3+4+5";
++	};
++};
+diff --git a/arch/arm/boot/dts/overlays/iotg-rpi5/iotg-rpi5-io-b-overlay.dts b/arch/arm/boot/dts/overlays/iotg-rpi5/iotg-rpi5-io-b-overlay.dts
+new file mode 100644
+index 000000000000..247fecbcab47
+--- /dev/null
++++ b/arch/arm/boot/dts/overlays/iotg-rpi5/iotg-rpi5-io-b-overlay.dts
+@@ -0,0 +1,64 @@
++// Definitions for IOTG-RPI5 I/O Part A
++
++/dts-v1/;
++/plugin/;
++
++#include <dt-bindings/gpio/gpio.h>
++#include <dt-bindings/interrupt-controller/irq.h>
++
++/ {
++	compatible = "brcm,bcm2712";
++
++	/* RS485 B */
++	fragment@0 {
++		target = <&rs485_b>;
++		__dormant__ {
++			status = "okay";
++		};
++	};
++	/* SEL B: RS485 */
++	fragment@1 {
++		target = <&sel_b>;
++		__dormant__ {
++			output-high;
++			line-name = "SEL_B_RS485";
++			status = "okay";
++		};
++	};
++
++	/* CAN B */
++	fragment@2 {
++		target = <&can_b_irq>;
++		__dormant__ {
++			status = "okay";
++		};
++	};
++	fragment@3 {
++		target = <&spi0>;
++		__dormant__ {
++			status = "okay";
++		};
++	};
++	/* SEL B: CAN */
++	fragment@4 {
++		target = <&sel_b>;
++		__dormant__ {
++			output-low;
++			line-name = "SEL_B_CAN";
++			status = "okay";
++		};
++	};
++
++	/* 5V_EN_ISO1 Regulator */
++	fragment@5 {
++		target = <&reg_en_5v_iso1>;
++		__dormant__ {
++			enable-active-high;
++		};
++	};
++
++	__overrides__ {
++		rs485 = <0>, "+0+1+5";
++		can   = <0>, "+2+3+4+5";
++	};
++};
