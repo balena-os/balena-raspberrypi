@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v2026.7.2
+## (2026-11-10)
+
+* layers/recipes-kernel: bump kernel to 6.12.113 for 6.12.x device types [Ryan Cooke]
+
 # v2026.7.1
 ## (2026-10-22)
 

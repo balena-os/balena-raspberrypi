@@ -1,4 +1,48 @@
 - commits:
+    - subject: "layers/recipes-kernel: bump kernel to 6.12.113 for 6.12.x device types"
+      hash: 2368a739375d01ba5c3f3b2d0df698c01f1001b4
+      body: >
+        To mitigate CVE-2026-98432
+
+        This kernel is used by device types:
+
+        raspberrypi
+
+        raspberrypi0-2w-64
+
+        raspberrypi2
+
+        raspberrypi3
+
+        raspberrypi3-64
+
+        raspberrypi3-unipi-neuron
+
+        raspberrypi400-64
+
+        raspberrypi4-64
+
+        raspberrypi4-superhub
+
+        raspberrypi4-unipi-neuron
+
+        raspberrypi5
+
+        raspberrypicm4-ioboard (the raspberrypicm4-ioboard-sb device type uses
+        this machine too)
+      footer:
+        Changelog-entry: "layers/recipes-kernel: bump kernel to 6.12.113 for 6.12.x
+          device types"
+        changelog-entry: "layers/recipes-kernel: bump kernel to 6.12.113 for 6.12.x
+          device types"
+        Signed-off-by: Ryan Cooke <ryan@balena.io>
+        signed-off-by: Ryan Cooke <ryan@balena.io>
+      author: Ryan Cooke
+      nested: []
+  version: 2026.7.2
+  title: ""
+  date: 2026-11-10T17:10:04.795Z
+- commits:
     - subject: Update layers/meta-balena to 1b781862ebc83556e4b51985b4ac5b3bbf3f3688
       hash: 8df1ae12cb33d7366c014cdcd7d4190b48364d09
       body: |
