@@ -1,0 +1,63 @@
+# Copyright 2026 Balena Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# Raspberry Pi reset reason, reported through the reset_reason_report hook that
+# balena-reset-reason calls when this file is installed.
+#
+
+RPI_RSTS="/proc/device-tree/chosen/bootloader/rsts"
+RPI_OVER_CURRENT="/proc/device-tree/chosen/power/usb_over_current_detected"
+
+# drivers/watchdog/bcm2835_wdt.c
+PM_RSTS_HADWRH=0x40
+
+# Device tree properties are big-endian binary, not text
+rpi_dt_hex() {
+	[ -r "$1" ] || return 1
+	od -An -tx1 "$1" 2>/dev/null | tr -d ' \n'
+}
+
+# Compatible strings are NUL separated; the shell drops the NULs
+rpi_soc_is_bcm2712() {
+	case "$(cat /proc/device-tree/compatible 2>/dev/null)" in
+	*bcm2712*) return 0 ;;
+	esac
+	return 1
+}
+
+# On a Raspberry Pi 5 a watchdog timeout and a panic reboot both leave 0x20,
+# so no bit in PM_RSTS marks the watchdog there. Older SoCs set HADWRH.
+rpi_report_rsts() {
+	_hex=$(rpi_dt_hex "${RPI_RSTS}") || return 0
+	[ -n "${_hex}" ] || return 0
+	_val=$(printf '%d' "0x${_hex}" 2>/dev/null) || _val=0
+	if ! rpi_soc_is_bcm2712 && [ $(( _val & PM_RSTS_HADWRH )) -ne 0 ]; then
+		warn "previous reset: watchdog (PM_RSTS=0x${_hex})"
+		return 0
+	fi
+	info "previous reset: PM_RSTS=0x${_hex}"
+}
+
+rpi_report_over_current() {
+	_hex=$(rpi_dt_hex "${RPI_OVER_CURRENT}") || return 0
+	[ -n "${_hex}" ] || return 0
+	_val=$(printf '%d' "0x${_hex}" 2>/dev/null) || return 0
+	[ "${_val}" -ne 0 ] || return 0
+	warn "firmware reported USB over-current (0x${_hex})"
+}
+
+reset_reason_report() {
+	rpi_report_rsts
+	rpi_report_over_current
+}

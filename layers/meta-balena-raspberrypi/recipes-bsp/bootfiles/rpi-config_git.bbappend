@@ -13,6 +13,12 @@ do_deploy:append() {
     echo "dtparam=audio=on" >> ${DEPLOYDIR}/bootfiles/config.txt
 }
 
+do_deploy:append:raspberrypi5() {
+	if ${@bb.utils.contains('DISTRO_FEATURES','osdev-image','true','false',d)}; then
+		echo "dtoverlay=balena-ramoops" >> ${DEPLOYDIR}/bootfiles/config.txt
+	fi
+}
+
 do_deploy:append:fincm3() {
 	# Use the Balena Fin device tree overlay
 	echo "dtoverlay=balena-fin" >> ${DEPLOYDIR}/bootfiles/config.txt
