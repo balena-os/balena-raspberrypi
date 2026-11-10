@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v9.0.3+rev2
+## (2026-11-10)
+
+* avoid race condition on incomplete resin-boot in hostapp [Yann CARDAILLAC]
+
 # v9.0.3+rev1
 ## (2026-11-06)
 

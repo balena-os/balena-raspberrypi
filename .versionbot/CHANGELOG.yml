@@ -1,4 +1,18 @@
 - commits:
+    - subject: avoid race condition on incomplete resin-boot in hostapp
+      hash: d44d6eb69b8d1ccaf1ee348d83828a8ddba4256e
+      body: ""
+      footer:
+        Changelog-entry: avoid race condition on incomplete resin-boot in hostapp
+        changelog-entry: avoid race condition on incomplete resin-boot in hostapp
+        Signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+        signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+      author: Yann CARDAILLAC
+      nested: []
+  version: 9.0.3+rev2
+  title: ""
+  date: 2026-11-10T14:24:18.857Z
+- commits:
     - subject: "layers/recipes-kernel: bump kernel to 6.12.113 for 6.12.x device types"
       hash: a83ad4da2fbaa30921cc025345652182e0f07c5f
       body: >
