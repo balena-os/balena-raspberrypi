@@ -1,6 +1,14 @@
 Change log
 -----------
 
+# v9.0.5
+## (2026-11-11)
+
+* layers/meta-balena: Update to v9.0.5 [Alexandru Costache]
+* layers/meta-balena: Update to v9.0.4 [Alexandru Costache]
+* recipes-core/images: Use new default partition sizes for the IOT-GATE-RPI [Alexandru Costache]
+* Add iotg-rpi5 machine based on Raspberry Pi5 [Valentin Raevsky]
+
 # v9.0.3+rev2
 ## (2026-11-10)
 

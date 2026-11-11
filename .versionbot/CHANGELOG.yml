@@ -1,4 +1,51 @@
 - commits:
+    - subject: "layers/meta-balena: Update to v9.0.5"
+      hash: c0e3231dc72af79d6fafa6353f6ff2c4885fee1b
+      body: ""
+      footer:
+        Changelog-entry: "layers/meta-balena: Update to v9.0.5"
+        changelog-entry: "layers/meta-balena: Update to v9.0.5"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+    - subject: "layers/meta-balena: Update to v9.0.4"
+      hash: d6a34b87a9799ae40edb738b8634254c74abfc82
+      body: ""
+      footer:
+        Changelog-entry: "layers/meta-balena: Update to v9.0.4"
+        changelog-entry: "layers/meta-balena: Update to v9.0.4"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+    - subject: "recipes-core/images: Use new default partition sizes for the
+        IOT-GATE-RPI"
+      hash: 904b5e5dc9d22cfc7f408d9559e6f7058d26b57b
+      body: ""
+      footer:
+        Changelog-entry: "recipes-core/images: Use new default partition sizes for the
+          IOT-GATE-RPI"
+        changelog-entry: "recipes-core/images: Use new default partition sizes for the
+          IOT-GATE-RPI"
+        Signed-off-by: Alexandru Costache <alexandru@balena.io>
+        signed-off-by: Alexandru Costache <alexandru@balena.io>
+      author: Alexandru Costache
+      nested: []
+    - subject: Add iotg-rpi5 machine based on Raspberry Pi5
+      hash: ebf6af34a71f3e05766cb2b5aa476d7912e54488
+      body: ""
+      footer:
+        Changelog-entry: Add iotg-rpi5 machine based on Raspberry Pi5
+        changelog-entry: Add iotg-rpi5 machine based on Raspberry Pi5
+        Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
+        signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
+      author: Valentin Raevsky
+      nested: []
+  version: 9.0.5
+  title: ""
+  date: 2026-11-11T12:56:33.451Z
+- commits:
     - subject: avoid race condition on incomplete resin-boot in hostapp
       hash: d44d6eb69b8d1ccaf1ee348d83828a8ddba4256e
       body: ""
