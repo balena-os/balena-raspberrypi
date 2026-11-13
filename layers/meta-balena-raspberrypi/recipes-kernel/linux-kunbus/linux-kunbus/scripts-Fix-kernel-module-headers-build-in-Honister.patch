@@ -8,7 +8,7 @@ built with a newer gcc.
 
 See: https://lkml.org/lkml/2020/4/1/1206
 
-Upstream-status: Backport
+Upstream-Status: Backport
 Signed-off-by: Alexandru Costache <alexandru@balena.io>
 ---
  scripts/dtc/dtc-lexer.l | 1 -
