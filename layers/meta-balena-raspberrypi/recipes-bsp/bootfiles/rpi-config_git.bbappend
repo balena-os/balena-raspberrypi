@@ -33,16 +33,10 @@ do_deploy:append:npe-x500-m3() {
   echo "dtoverlay=npe-x500-m3" >> ${DEPLOYDIR}/bootfiles/config.txt
 }
 
-do_deploy:append:revpi-connect() {
-	# Use the RevPi Connect device tree overlay
-	echo "dtoverlay=revpi-connect" >> ${DEPLOYDIR}/bootfiles/config.txt
-}
-
 do_deploy:append:revpi-connect-s() {
-	# Use the RevPi Connect device tree overlay
-	echo "dtoverlay=revpi-connect" >> ${DEPLOYDIR}/bootfiles/config.txt
-        echo "dtoverlay=dwc2" >> ${DEPLOYDIR}/bootfiles/config.txt
-        echo "dr_mode=host" >> ${DEPLOYDIR}/bootfiles/config.txt
+	# No HAT EEPROM, so the overlay has to be named. It also fits the Connect SE.
+	echo "dtoverlay=revpi-connect-s" >> ${DEPLOYDIR}/bootfiles/config.txt
+	echo "dtoverlay=dwc2,dr_mode=host" >> ${DEPLOYDIR}/bootfiles/config.txt
 }
 
 # the RevPi Connect 4 features a HAT EEPROM and the overlay name to be used is available the EEPROM so no need for a dtoverlay statement for that

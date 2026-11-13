@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2024 KUNBUS GmbH
+# SPDX-FileCopyrightText: 2024-2026 KUNBUS GmbH
 #
 # SPDX-License-Identifier: GPL-2.0-or-later
 
@@ -6,14 +6,12 @@
 # NOTE: Original file was downloaded from https://gitlab.com/revolutionpi/revpi-base-files/-/blob/master/udev/50-revpi.rules?ref_type=heads
 #
 
-PROGRAM="/bin/grep -F -m 1 'kunbus,revpi-' /sys/firmware/devicetree/base/compatible"
-RESULT=="kunbus,revpi-core", GOTO="revpi_core"
-RESULT=="kunbus,revpi-core-2022", GOTO="revpi_core"
-RESULT=="kunbus,revpi-core-s-2022", GOTO="revpi_core"
-RESULT=="kunbus,revpi-core-se-2022", GOTO="revpi_core"
-RESULT=="kunbus,revpi-connect", GOTO="revpi_connect"
-RESULT=="kunbus,revpi-connect-se", GOTO="revpi_connect"
-RESULT=="kunbus,revpi-connect4", GOTO="revpi_connect4"
+PROGRAM="/bin/grep -Fz -m 1 'kunbus,revpi-' /sys/firmware/devicetree/base/compatible"
+RESULT=="kunbus,revpi-core*", GOTO="revpi_core"
+RESULT=="kunbus,revpi-connect5-can-can", GOTO="revpi_connect5_can_can"
+RESULT=="kunbus,revpi-connect5*", GOTO="revpi_connect5"
+RESULT=="kunbus,revpi-connect4*", GOTO="revpi_connect4"
+RESULT=="kunbus,revpi-connect*", GOTO="revpi_connect"
 RESULT=="kunbus,revpi-compact", GOTO="revpi_compact"
 RESULT=="kunbus,revpi-flat-s-2022", GOTO="revpi_flat_s"
 RESULT=="kunbus,revpi-flat", GOTO="revpi_flat"
@@ -41,6 +39,17 @@ ACTION=="add", SUBSYSTEM=="tty", DEVPATH=="*/fe201a00.serial/tty/*", SYMLINK+="t
 ACTION=="add", SUBSYSTEM=="net", ATTR{type}=="1", DEVPATH=="*/fd580000.ethernet/net/*", NAME="eth0", PROGRAM="revpi_mac %k 0"
 ACTION=="add", SUBSYSTEM=="net", ATTR{type}=="1", DEVPATH=="*/usb2/2-3/2-3:1.0/net/*", NAME="eth1"
 ACTION=="add", SUBSYSTEM=="net", ATTR{type}=="1", DEVPATH=="*/fe300000.mmcnr/mmc_host/mmc1/mmc1:0001/mmc1:0001:1/net/*", NAME="wlan0", PROGRAM="revpi_mac %k 2"
+GOTO="revpi_end"
+
+LABEL="revpi_connect5"
+SUBSYSTEM=="tty", DEVPATH=="*/1f00040000.serial/tty/*", SYMLINK+="ttyRS485"
+LABEL="revpi_connect5_can_can"
+ACTION=="add", SUBSYSTEM=="net", ATTR{type}=="1", DEVPATH=="*/1f00100000.ethernet/net/*", NAME="eth0", PROGRAM="revpi_mac %k 0"
+ACTION=="add", SUBSYSTEM=="net", ATTR{type}=="1", DEVPATH=="*/1000110000.pcie/*:02:01.0/*/net/*", NAME="eth1"
+# pileft and piright don't have an eeprom attached, thus configure the mac via revpi_mac
+ACTION=="add", SUBSYSTEM=="net", ATTR{type}=="1", DEVPATH=="*/1000110000.pcie/*:02:02.0/*/net/*", NAME="pileft", PROGRAM="revpi_mac %k 2"
+ACTION=="add", SUBSYSTEM=="net", ATTR{type}=="1", DEVPATH=="*/1000110000.pcie/*:02:03.0/*/net/*", NAME="piright", PROGRAM="revpi_mac %k 3"
+ACTION=="add", SUBSYSTEM=="net", ATTR{type}=="1", DEVPATH=="*/mmc1:0001:1/net/*", NAME="wlan0", PROGRAM="revpi_mac %k 4"
 GOTO="revpi_end"
 
 LABEL="revpi_compact"
