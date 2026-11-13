@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v9.0.5+rev1
+## (2026-11-13)
+
+* disable HDMI bootloader logs for production images [Yann CARDAILLAC]
+
 # v9.0.5
 ## (2026-11-11)
 

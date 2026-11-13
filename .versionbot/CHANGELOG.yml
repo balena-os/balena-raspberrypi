@@ -1,4 +1,18 @@
 - commits:
+    - subject: disable HDMI bootloader logs for production images
+      hash: e3877a7337845886be2ee56cc30e02aab0a7c250
+      body: ""
+      footer:
+        Changelog-entry: disable HDMI bootloader logs for production images
+        changelog-entry: disable HDMI bootloader logs for production images
+        Signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+        signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+      author: Yann CARDAILLAC
+      nested: []
+  version: 9.0.5+rev1
+  title: ""
+  date: 2026-11-13T15:58:24.489Z
+- commits:
     - subject: "layers/meta-balena: Update to v9.0.5"
       hash: c0e3231dc72af79d6fafa6353f6ff2c4885fee1b
       body: ""
