@@ -1,4 +1,274 @@
 - commits:
+    - subject: Update layers/meta-balena to 6ce4cc6078d2f518a7141afc18f1a131d61e9da6
+      hash: d1b04156cd0e5a7acd9738dc124a1f1b9f8e9637
+      body: Update layers/meta-balena
+      footer:
+        Changelog-entry: Update layers/meta-balena to 6ce4cc6078d2f518a7141afc18f1a131d61e9da6
+        changelog-entry: Update layers/meta-balena to 6ce4cc6078d2f518a7141afc18f1a131d61e9da6
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "kirkstone: perf: build without libtraceevent"
+              hash: 2e29fc7a8320aa18b4dcddc374e15bcbe253dc1f
+              body: >
+                Linux 6.2 removed the bundled copy of libtraceevent from
+
+                tools/lib/traceevent. From 6.2 on, perf links against the
+                library from
+
+                the sysroot. As Kirkstone has no libtraceevent recipe in poky or
+
+                meta-openembedded, perf fails to build against newer kernels on
+
+                kirkstone device types.
+
+
+                perf loses the tracepoint commands that need the library, such
+                as "perf trace"
+
+                and tracepoint parsing in "perf script". The other perf features
+                do not
+
+                change.
+
+
+                The change is in meta-balena-kirkstone only. Later Yocto
+                releases ship
+
+                libtraceevent and keep full perf support.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "docs: document the kernel recipe split for extension kernels"
+              hash: 2386cbeb306d8a6e485d8e8cba0900e37e028a6c
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "kernel-devsrc: build and test headers for the extension kernel"
+              hash: 473e6adf3fdd3a3c7a95595afa9b4efa444a8f21
+              body: ""
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "kernel-extension: stage the extension kernel in work-shared"
+              hash: ecb6e99b7d376bce4d3644ea3ac55e7e6b62204f
+              body: >
+                kernel-devsrc reads the configured tree through
+                STAGING_KERNEL_DIR
+
+                and STAGING_KERNEL_BUILDDIR. For a kernel that is not "kernel",
+
+                kernel.bbclass moves both into WORKDIR, where no other recipe
+                can
+
+                find them. Give the extension kernel its own work-shared pair.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "kernel-extension: run depmod against the extension System.map"
+              hash: dd0b204a95f3d95c8ab7b27083758978ea665d25
+              body: >
+                The stock kernel-extension-base postinst calls depmodwrapper,
+                which
+
+                reads the base kernel's pkgdata. When the extension shares the
+                base
+
+                kernel's version string, the index was built against the base
+
+                System.map. When the versions differ, depmodwrapper drops -F and
+                the
+
+                index is never validated. USE_DEPMOD does not reach the
+                postinst.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "kernel-balena-override: append to CONFIG_LSM from a variable"
+              hash: 20fad2605a27b37e501b5cd87cc3975b21c43505
+              body: >
+                A kernel config fragment can only replace CONFIG_LSM, never
+                extend it, so
+
+                every device repo that adopts the eBPF extension kernel had to
+                carry the
+
+                same task. Move it here behind KERNEL_LSM_APPEND, which defaults
+                to empty
+
+                and leaves a kernel that does not set it untouched.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "mobynit: update to v1.3.0"
+              hash: 444605516a7b49c1825f923e1635fb46e6f9403d
+              body: |
+                Update from v1.2.0 to v1.3.0
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "balena-extension-runtime: update to v2.0.2"
+              hash: e39a2c817a74ebf706d303e775e9fdbea4fa3e21
+              body: |
+                Update from v2.0.1 to v2.0.2.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-9.1.0
+          title: ""
+          date: 2026-11-13T18:27:01.068Z
+        - commits:
+            - subject: "systemd: break unit ordering loop cycle"
+              hash: 07d020686a7854155789aa7354e2a97df6c3ce58
+              body: >
+                Every balenaOS boot since v2.73.8 carries a systemd ordering
+                cycle that
+
+                systemd breaks by deleting one job randomly from the boot
+                transaction.
+
+                When the deleted job is `var-volatile.mount`, the device goes
+                offline.
+
+
+                The cycle is:
+
+
+                `resin-state-reset.service -> var-volatile.mount ->
+                local-fs-pre.target
+                    -> systemd-remount-fs.service -> systemd-fsck-root.service
+                    -> fake-hwclock.service -> etc-fake-hwclock.mount
+                    -> resin-state-reset.service`
+
+                A second loop goes from `etc-fake-hwclock.mount` to
+                `local-fs-pre.target`
+
+                through the default dependencies of the mount, and back through
+                the
+
+                same fsck edge.
+
+
+                This commit:
+
+
+                - Drops `var-volatile.mount` from `resin-state-reset.service`.
+                The reset
+                  script only writes to `/mnt/state` and never touches `/var/volatile`.
+                - Drops `systemd-fsck-root.service` from the `Before=` list of
+                  `fake-hwclock.service`. The edge has no function: `e2fsck.conf` sets
+                  `broken_system_clock=1`, so fsck ignores the clock. With the edge, any
+                  ordering from the state units to an ordinary mount closes the loop
+                  again.
+                - Adds `DefaultDependencies=no` to `etc-fake-hwclock.mount`.
+                This removes
+                  the implicit `After=local-fs-pre.target`, so `fake-hwclock` still sets
+                  the clock before journald starts and does not wait for the local
+                  filesystems.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "test: add systemd unit ordering check"
+              hash: 79e6561050f22ae148e33dfcd6ddc9479f587603
+              body: >
+                Check that no circular cycles exist that systemd detects and
+                breaks.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-9.0.7
+          title: ""
+          date: 2026-11-12T10:02:50.364Z
+        - commits:
+            - subject: "tests: os: config-json: use the shared journal helper"
+              hash: 1d5b4bc2985617007bb62d5179683467b85e290a
+              body: ""
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "dnsmasq: move the settings to a conf.d drop-in"
+              hash: 37dde807ac5e7494c1b38a50acbb05f4b2df038b
+              body: >
+                The v2.92 update stopped installing file://dnsmasq.conf, which
+                carried
+
+                enable-dbus, domain-needed and bogus-priv.
+
+
+                enable-dbus lets any container with io.balena.features.dbus set
+                the
+
+                upstream servers. That is the documented contract of the label.
+
+
+                This commit moves  them into a balena-files directory so they
+                can not be missed
+
+                again.
+
+
+                Devices running without these options forwarded plain names and
+
+                private reverse lookups upstream.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: meta-balena-9.0.6
+          title: ""
+          date: 2026-11-09T12:21:03.299Z
+  version: 9.1.0
+  title: ""
+  date: 2026-11-14T15:25:29.194Z
+- commits:
     - subject: disable HDMI bootloader logs for production images
       hash: e3877a7337845886be2ee56cc30e02aab0a7c250
       body: ""
