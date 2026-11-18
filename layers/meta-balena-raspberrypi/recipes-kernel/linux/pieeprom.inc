@@ -3,8 +3,8 @@
 #
 # Kept as a standalone include, rather than inlined into the bbappend, so that
 # an out-of-tree layer building a derived raspberrypi4-64 kernel can require it
-# and stay in sync with the base kernel. In this layer the only consumer is
-# linux-raspberrypi_%.bbappend.
+# and stay in sync with the base kernel. In this layer linux-raspberrypi-balena.inc
+# requires it, so the hostapp kernel and the kernel extension both get it.
 #
 # Injected via BALENA_CONFIGS (do_kernel_resin_injectconfig) rather than shipped
 # as a fragment because it must apply only under :append:raspberrypi4-64.

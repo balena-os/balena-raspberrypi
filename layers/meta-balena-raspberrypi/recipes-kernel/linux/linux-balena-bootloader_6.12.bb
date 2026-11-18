@@ -59,8 +59,6 @@ do_deploy:append () {
 
 do_deploy[depends] += " grub-native:do_populate_sysroot"
 
-KERNEL_DTC_FLAGS += "-@ -H epapr"
-
 INITRAMFS_IMAGE = "balena-image-bootloader-initramfs"
 
 KERNEL_PACKAGE_NAME = "balena-bootloader"
