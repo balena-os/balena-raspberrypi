@@ -1,6 +1,15 @@
 Change log
 -----------
 
+# v9.1.0+rev1
+## (2026-11-18)
+
+* deploy tracing extension for raspberrypi5 [Kyle Harding]
+* deploy ebpf extension for raspberrypi5 [Alex Gonzalez]
+* add bpf to the kernel LSM list [Alex Gonzalez]
+* add ebpf support to the linux-raspberrypi extension kernel [Alex Gonzalez]
+* add override support to the linux-raspberrypi kernel [Alex Gonzalez]
+
 # v9.1.0
 ## (2026-11-14)
 

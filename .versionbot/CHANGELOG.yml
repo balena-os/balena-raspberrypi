@@ -1,4 +1,69 @@
 - commits:
+    - subject: deploy tracing extension for raspberrypi5
+      hash: ead479a8c661446323786edb9d30ba21743724b0
+      body: ""
+      footer:
+        Changelog-entry: deploy tracing extension for raspberrypi5
+        changelog-entry: deploy tracing extension for raspberrypi5
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Kyle Harding
+      nested: []
+    - subject: deploy ebpf extension for raspberrypi5
+      hash: 9d62d0dd69b6abd8c5a8a286f133284d71d369f5
+      body: >
+        The extension runs its own kernel. Out-of-tree modules for it need the
+
+        headers of that kernel, not the base ones. CI attaches the tarball as
+        the
+
+        release asset
+        service/ebpf/kernel-extension/kernel_modules_headers.tar.gz.
+      footer:
+        Changelog-entry: deploy ebpf extension for raspberrypi5
+        changelog-entry: deploy ebpf extension for raspberrypi5
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: add bpf to the kernel LSM list
+      hash: e7d2c453efa48faaa89f3077f7ce3a5d2ac96196
+      body: |
+        Raspberry Pi in-tree defconfigs pin CONFIG_LSM. A fragment cannot add an
+        entry to that list, it can only replace the list. The extension kernel
+        opts in with KERNEL_LSM_APPEND. meta-balena appends the entry after the
+        fragment merge and keeps the existing initialization order.
+      footer:
+        Changelog-entry: add bpf to the kernel LSM list
+        changelog-entry: add bpf to the kernel LSM list
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: add ebpf support to the linux-raspberrypi extension kernel
+      hash: b5665d1a42a32b48778f676535e2d58d49a62e83
+      body: ""
+      footer:
+        Changelog-entry: add ebpf support to the linux-raspberrypi extension kernel
+        changelog-entry: add ebpf support to the linux-raspberrypi extension kernel
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+    - subject: add override support to the linux-raspberrypi kernel
+      hash: bbd57e7347698e817156ec0e7a6bae6dc940472c
+      body: ""
+      footer:
+        Changelog-entry: add override support to the linux-raspberrypi kernel
+        changelog-entry: add override support to the linux-raspberrypi kernel
+        Signed-off-by: Alex Gonzalez <alexg@balena.io>
+        signed-off-by: Alex Gonzalez <alexg@balena.io>
+      author: Alex Gonzalez
+      nested: []
+  version: 9.1.0+rev1
+  title: ""
+  date: 2026-11-18T07:05:01.387Z
+- commits:
     - subject: Update layers/meta-balena to 6ce4cc6078d2f518a7141afc18f1a131d61e9da6
       hash: d1b04156cd0e5a7acd9738dc124a1f1b9f8e9637
       body: Update layers/meta-balena
