@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v9.1.0+rev2
+## (2026-11-19)
+
+* Remove discontinued device raspberrypi400-64 [Florin Sarbu]
+
 # v9.1.0+rev1
 ## (2026-11-18)
 

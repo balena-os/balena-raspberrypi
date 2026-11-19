@@ -1,4 +1,19 @@
 - commits:
+    - subject: Remove discontinued device raspberrypi400-64
+      hash: 7ceda4890e1792ec8b5b46f08c823875e9a4f065
+      body: |
+        As per https://docs.balena.io/reference/hardware/versioning#discontinued
+      footer:
+        Changelog-entry: Remove discontinued device raspberrypi400-64
+        changelog-entry: Remove discontinued device raspberrypi400-64
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Florin Sarbu
+      nested: []
+  version: 9.1.0+rev2
+  title: ""
+  date: 2026-11-19T15:02:23.049Z
+- commits:
     - subject: deploy tracing extension for raspberrypi5
       hash: ead479a8c661446323786edb9d30ba21743724b0
       body: ""
