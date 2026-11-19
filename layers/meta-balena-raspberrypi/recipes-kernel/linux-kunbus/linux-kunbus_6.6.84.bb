@@ -4,7 +4,7 @@ LINUX_VERSION = "6.6.84"
 
 SRCREV = "v6.6.84-rt52-revpi9"
 SRC_URI = " \
-	git://github.com/RevolutionPi/linux;protocol=https;branch=revpi-6.6 \
+	git://gitlab.com/revolutionpi/linux;protocol=https;branch=revpi-6.6 \
 "
 require recipes-kernel/linux/linux-raspberrypi.inc
 
