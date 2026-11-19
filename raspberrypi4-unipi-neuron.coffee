@@ -20,7 +20,7 @@ module.exports =
 		machine: 'raspberrypi4-unipi-neuron'
 		image: 'balena-image'
 		fstype: 'balenaos-img'
-		version: 'yocto-kirkstone'
+		version: 'yocto-scarthgap'
 		deployArtifact: 'balena-image-raspberrypi4-unipi-neuron.balenaos-img'
 		compressed: true
 

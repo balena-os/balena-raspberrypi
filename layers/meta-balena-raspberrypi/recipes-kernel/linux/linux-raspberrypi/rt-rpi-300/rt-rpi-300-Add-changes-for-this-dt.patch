@@ -6,7 +6,7 @@ Subject: [PATCH] rt-rpi-300: Add changes for this dt
 This patch adds the necessary confguration
 for the rt-rpi-300 device type.
 
-Upstream-status: Inappropriate [configuration]
+Upstream-Status: Inappropriate [configuration]
 Signed-off-by: Alexandru Costache <alexandru@balena.io>
 ---
  arch/arm/boot/dts/bcm2711-rpi-4-b.dts | 30 ++++++++++++++++++++++-----
