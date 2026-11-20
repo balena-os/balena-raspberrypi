@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/balena-os/balena-yocto-scripts/refs/heads/master/schemas/hostapp-composition.json
+version: '2.4'
+services:
+
+  hostapp:
+    x-build:
+      # Only the secure boot build (raspberrypicm4-ioboard-sb) deploys this.
+      assets:
+        - "images/__MACHINE__/rpi-eeprom/secure-boot-lock/"
