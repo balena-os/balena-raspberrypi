@@ -41,7 +41,7 @@ BALENA_BOOT_PARTITION_FILES:append:raspberrypi5 = " \
     balena-bootloader/bootenv:/bootenv \
     "
 
-BALENA_BOOT_PARTITION_FILES:append:revpi-connect-s = " revpi-connect-dt-blob-overlay.dtb:/dt-blob.bin"
+BALENA_BOOT_PARTITION_FILES:append:revpi-connect-s = " revpi-connect-s-dt-blob.dtbo:/dt-blob.bin"
 
 python overlay_dtbs_handler () {
     # Add all the dtb files programatically
