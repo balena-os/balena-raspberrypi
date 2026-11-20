@@ -1,4 +1,250 @@
 - commits:
+    - subject: Update balena-yocto-scripts to d4d2564a897cb117a47fe3991605bdd7ce1544c4
+      hash: 73572f3852c35d6c7f2ea320f7462f9bb3d4f7f7
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to d4d2564a897cb117a47fe3991605bdd7ce1544c4
+        changelog-entry: Update balena-yocto-scripts to d4d2564a897cb117a47fe3991605bdd7ce1544c4
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: "yocto-build-deploy: Build hostapp and extensions in one bitbake
+                invocation"
+              hash: 8438f5f50e199a99208525b2c49c15a538e5bbb2
+              body: >
+                The build matrix ran one job per x-build service. Each job took
+                its own
+
+                runner, parsed every layer, and rebuilt the shared task graph
+                (toolchain,
+
+                kernel, libc) on a cold cache. The jobs also built from
+                different
+
+                configurations: signing vars and the caller's build-args reached
+                the
+
+                hostapp job only, so an extension could build against a kernel
+                that
+
+                differs from the hostapp kernel.
+
+
+                Replace the matrix with a single build job that passes every
+                target to
+
+                one bitbake call. The hostapp target now comes from the device
+                type's
+
+                yocto.image, as barys only falls back to it when no -i is given.
+
+
+                Per-service x-build.build_args become a top-level x-build-args
+                list,
+
+                since one build has one configuration. The meta-balena base list
+                comes
+
+                first, then the device overlay, then the caller's build-args
+                input, so
+
+                a later source overrides an earlier one. The old per-service
+                field
+
+                fails the parse. The caller's build-args input now also reaches
+                every
+
+                target.
+
+
+                The parse step moves to github-script so the logic stays inline
+                rather
+
+                than in a submodule script. It also fails when the hostapp
+                declares no
+
+                assets, when more than one service is a hostapp, or when an
+                extension
+
+                names no recipe.
+
+
+                Container images ship in one container-images artifact. The
+                build job
+
+                expands each extension's asset globs once, stages the matches
+                under
+
+                service/<name>/, and uploads them as one
+                release-assets-extensions
+
+                artifact that the deploy job extracts in place. The build job
+                also
+
+                checks every service's image and assets, so a missing extension
+                output
+
+                fails the PR rather than the deploy after merge.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+            - subject: "yocto-build-deploy: Match built images to services by name"
+              hash: 5575e6ffa3fbadbc187f3c97aaa77de51f2a075b
+              body: >
+                The deploy step re-derived each service's archive name in yq,
+
+                duplicating the rule from the composition parse. It also built
+                yq
+
+                paths by interpolation, so a dotted service name such as
+                my-ext.v2
+
+                resolved to a nested key and failed as an orphan archive.
+
+
+                Emit a service, archive and image class mapping from the parse
+                step
+
+                and drive the load loop from it, reading the service key with
+
+                strenv().
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.43.0
+          title: ""
+          date: 2026-11-19T21:27:22.677Z
+        - commits:
+            - subject: Update Lock file maintenance
+              hash: 4be9cd19f94e88acd1c678fefbcf8a2159641f54
+              body: |
+                Update 
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.42.20
+          title: ""
+          date: 2026-11-18T23:33:26.645Z
+        - commits:
+            - subject: "hostapp-deploy: Stop depending on s3-deploy"
+              hash: 667d2aad52da867ba651c5169ac7e0e410e5e309
+              body: >
+                web-artifacts are now the required release artifact and fail the
+
+                deploy if missing. S3 is legacy and slated for deprecation, so
+                an S3
+
+                failure should no longer block the hostapp release.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.42.19
+          title: ""
+          date: 2026-11-18T17:07:59.256Z
+        - commits:
+            - subject: "build/barys: Follow symlinks when looking for conf sample files"
+              hash: 7ce9e549c2efc31a9c0058b49345a6a81d5da2f7
+              body: >
+                When using additional layers like the ones adding secure boot
+                support
+
+                (which would have conf/templates as symlink to conf/samples in
+                order to support
+
+                multiple Yocto releases at the same time) we need to make sure
+                the "find" command
+
+                is able to search into such symkinked directories.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Florin Sarbu <florin@balena.io>
+                signed-off-by: Florin Sarbu <florin@balena.io>
+              author: Florin Sarbu
+              nested: []
+          version: balena-yocto-scripts-1.42.18
+          title: ""
+          date: 2026-11-13T19:35:23.517Z
+        - commits:
+            - subject: "hostapp-composition(overlays): extend schema to check for runtime"
+              hash: 29a5adcbec208f1f723d464c5dcce3ae81ac0b75
+              body: >
+                An image declaring io.balena.image.class as overlay needs to
+                define
+
+                what runtime to use.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.42.17
+          title: ""
+          date: 2026-10-13T20:35:35.076Z
+        - commits:
+            - subject: Update ubuntu:22.04 Docker digest to b8b6ee6
+              hash: 13d81e84787dfd8d7f090de65c38faeade4af4f8
+              body: |
+                Update ubuntu
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.42.16
+          title: ""
+          date: 2026-10-02T08:34:42.921Z
+        - commits:
+            - subject: Update actions/download-artifact action to v8
+              hash: 6889fb775db182554bfc6299f6c4656f61b0271f
+              body: |
+                Update actions/download-artifact from 7.0.0 to 8.0.1
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.42.15
+          title: ""
+          date: 2026-09-15T00:23:21.877Z
+        - commits:
+            - subject: Fix ESR tagging step
+              hash: f2c61d1131f1e65491cc00970f669b742121295e
+              body: >
+                THere was a flaw in the ESR tagging logic that would tag the
+                most recently published ESR release as next etc. even if it was
+                an older base version - this could happen in the case of
+                backports
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Ryan Cooke <ryan@balena.io>
+                signed-off-by: Ryan Cooke <ryan@balena.io>
+              author: Ryan Cooke
+              nested: []
+          version: balena-yocto-scripts-1.42.14
+          title: ""
+          date: 2026-09-14T19:03:42.788Z
+  version: 9.1.0+rev3
+  title: ""
+  date: 2026-11-20T06:31:17.598Z
+- commits:
     - subject: Remove discontinued device raspberrypi400-64
       hash: 7ceda4890e1792ec8b5b46f08c823875e9a4f065
       body: |
