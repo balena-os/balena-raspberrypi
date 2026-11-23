@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v9.1.0+rev4
+## (2026-11-23)
+
+* CM4 sb verify entropy and disable PCIe [Yann CARDAILLAC]
+
 # v9.1.0+rev3
 ## (2026-11-20)
 

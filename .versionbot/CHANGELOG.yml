@@ -1,4 +1,18 @@
 - commits:
+    - subject: CM4 sb verify entropy and disable PCIe
+      hash: d02e295e2e2ee30b3c2df23fa4e91b59700378c4
+      body: ""
+      footer:
+        Changelog-entry: CM4 sb verify entropy and disable PCIe
+        changelog-entry: CM4 sb verify entropy and disable PCIe
+        Signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+        signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+      author: Yann CARDAILLAC
+      nested: []
+  version: 9.1.0+rev4
+  title: ""
+  date: 2026-11-23T12:17:15.282Z
+- commits:
     - subject: Update balena-yocto-scripts to d4d2564a897cb117a47fe3991605bdd7ce1544c4
       hash: 73572f3852c35d6c7f2ea320f7462f9bb3d4f7f7
       body: Update balena-yocto-scripts
