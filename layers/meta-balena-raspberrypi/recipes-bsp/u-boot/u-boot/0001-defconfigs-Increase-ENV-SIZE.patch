@@ -7,7 +7,7 @@ A value of 4096 is not a large increase and is sufficient
 for fixing boot issues on some CM4s with u-boot
 built for production.
 
-Upstream-status: Inappropriate [configuration]
+Upstream-Status: Inappropriate [configuration]
 Signed-off-by: Alexandru Costache <alexandru@balena.io>
 ---
  configs/rpi_0_w_defconfig      | 2 +-
