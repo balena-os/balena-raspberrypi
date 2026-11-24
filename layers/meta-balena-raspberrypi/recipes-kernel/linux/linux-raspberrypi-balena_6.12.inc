@@ -40,6 +40,7 @@ SRC_URI:append = " \
 	file://0001-waveshare-sim7600-Add-dtbo-for-this-modem.patch \
 	file://0001-overlays-Add-overlay-for-Seeed-reComputer-R1000.patch \
 	file://0001-overlays-Add-overlay-for-RPI-PLC-SC16IS752.patch \
+	file://0001-ASoC-dwc-Revert-i2s_stop-to-the-upstream-version.patch \
 "
 
 # The Pi3-64 and Pi4-64 are the only boards very low on rootfs space for now
