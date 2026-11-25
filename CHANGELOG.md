@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v9.1.0+rev5
+## (2026-11-25)
+
+* Update unipi kernel modules and add new device tree overlays needed for kernel 6.12 [Ryan Cooke]
+
 # v9.1.0+rev4
 ## (2026-11-23)
 

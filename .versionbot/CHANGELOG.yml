@@ -1,4 +1,32 @@
 - commits:
+    - subject: Update unipi kernel modules and add new device tree overlays needed for
+        kernel 6.12
+      hash: c689643418d4c3108067ffa81b71b772951fe9e7
+      body: >
+        Remove unipi-tools as we encourage people to use unipi-tools from the
+        app container instead.
+
+
+        The new overlays should be added to config.txt via the Supervisor API
+        after it has been decided
+
+        which overlays are to be used (one can run the unipiid binary present in
+        the os-configurator package
+
+        via an user app container for example).
+      footer:
+        Changelog-entry: Update unipi kernel modules and add new device tree overlays
+          needed for kernel 6.12
+        changelog-entry: Update unipi kernel modules and add new device tree overlays
+          needed for kernel 6.12
+        Signed-off-by: Florin Sarbu <florin@balena.io>
+        signed-off-by: Florin Sarbu <florin@balena.io>
+      author: Ryan Cooke
+      nested: []
+  version: 9.1.0+rev5
+  title: ""
+  date: 2026-11-25T09:24:45.431Z
+- commits:
     - subject: CM4 sb verify entropy and disable PCIe
       hash: d02e295e2e2ee30b3c2df23fa4e91b59700378c4
       body: ""
