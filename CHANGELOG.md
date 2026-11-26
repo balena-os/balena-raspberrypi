@@ -1,6 +1,41 @@
 Change log
 -----------
 
+# v9.1.2
+## (2026-11-26)
+
+
+<details>
+<summary> Update layers/meta-balena to 2c5bb6e19fb0b26a962e9a0a4b662345cb38e89d [balena-renovate[bot]] </summary>
+
+> ## meta-balena-9.1.2
+> ### (2026-11-25)
+> 
+> * tests: chrony: Check sync status via chronyc instead of timedatectl [Florin Sarbu]
+> 
+> ## meta-balena-9.1.1
+> ### (2026-11-18)
+> 
+> * tests/os: Detach recover-sshd-socket connections from the SSH session [guille-vega]
+> * tests/cloud: Restart the os-config timer instead of changing the clock [guille-vega]
+> * tests/os: Detach the safe-reboot lock holder from the SSH session [guille-vega]
+> 
+> <details>
+> <summary> Update tests/leviathan digest to e50cc2b [balena-renovate[bot]] </summary>
+> 
+>> ### leviathan-2.36.135
+>> #### (2026-11-13)
+>> 
+>> * core: worker: Keep the DUT port forwards alive [guille-vega]
+>> * core: utils: Keep SSH sessions through the proxy alive [guille-vega]
+>> 
+> 
+> </details>
+> 
+> 
+
+</details>
+
 # v9.1.0+rev5
 ## (2026-11-25)
 
