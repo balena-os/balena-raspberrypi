@@ -9,7 +9,7 @@ REVPI_POWEROFF = "When flashing is complete, power off the board and unplug the 
 module.exports =
 	version: 1
 	slug: 'revpi-connect-4'
-	name: 'Revolution Pi Connect 4'
+	name: 'RevPi Connect 4 (legacy)'
 	arch: 'aarch64'
 	state: 'new'
 

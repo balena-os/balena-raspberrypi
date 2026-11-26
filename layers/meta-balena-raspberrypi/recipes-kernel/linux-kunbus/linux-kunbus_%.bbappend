@@ -2,14 +2,6 @@ inherit kernel-resin
 
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-SRC_URI:append:revpi-connect = " \
-    file://0001-Add-revpi-connect-can-overlay.patch \
-"
-
-SRC_URI:append:revpi-connect-s = " \
-    file://0001-Add-revpi-connect-can-overlay.patch \
-"
-
 # Set console accordingly to build type
 CMDLINE = "dwc_otg.lpm_enable=0 rootwait"
 CMDLINE += "${@bb.utils.contains('DISTRO_FEATURES','osdev-image',"console=tty1 console=serial0,115200"," vt.global_cursor_default=0 console=null",d)}"
