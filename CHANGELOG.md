@@ -1,6 +1,11 @@
 Change log
 -----------
 
+# v9.1.2+rev1
+## (2026-11-26)
+
+* backport dwc sound soc from upstream [Yann CARDAILLAC]
+
 # v9.1.2
 ## (2026-11-26)
 

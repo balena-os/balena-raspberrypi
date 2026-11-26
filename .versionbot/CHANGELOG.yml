@@ -1,4 +1,21 @@
 - commits:
+    - subject: backport dwc sound soc from upstream
+      hash: d21aad5706f7c94b69d5848bbe7d1818dc9fe35e
+      body: |
+        A customer on support 6995 had an issue with a DAC
+        not functionning properly, this was fiw on 6.18
+        https://github.com/raspberrypi/linux/commit/8946ad8626ecacee8a8a9cffa433a23f0b118dcd
+      footer:
+        Changelog-entry: backport dwc sound soc from upstream
+        changelog-entry: backport dwc sound soc from upstream
+        Signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+        signed-off-by: Yann CARDAILLAC <yann.cardaillac@balena.io>
+      author: Yann CARDAILLAC
+      nested: []
+  version: 9.1.2+rev1
+  title: ""
+  date: 2026-11-26T16:55:35.899Z
+- commits:
     - subject: Update layers/meta-balena to 2c5bb6e19fb0b26a962e9a0a4b662345cb38e89d
       hash: 53c88b0ea57b54b85fc75ccb0419db8f8ecdf8e0
       body: Update layers/meta-balena
