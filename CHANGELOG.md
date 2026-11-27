@@ -1,6 +1,54 @@
 Change log
 -----------
 
+# v9.1.2+rev2
+## (2026-11-27)
+
+
+<details>
+<summary> Update balena-yocto-scripts to 067c1a2c06ecae0f26e5ffe2e10b17f9485b5bb9 [balena-renovate[bot]] </summary>
+
+> ## balena-yocto-scripts-1.44.4
+> ### (2026-11-27)
+> 
+> * Update ubuntu:22.04 Docker digest to b000e69 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.44.3
+> ### (2026-11-27)
+> 
+> * Update coffee-script to ~1.12.0 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.44.2
+> ### (2026-11-26)
+> 
+> * Update balena-io/balena-cli to v25.2.44 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.44.1
+> ### (2026-11-26)
+> 
+> * yocto-build-deploy: fail when the hostapp release lookup finds nothing [Alex Gonzalez]
+> * yocto-build-deploy: stage kernel headers in the extension suites [Alex Gonzalez]
+> * yocto-build-deploy: pass the hostapp release ids to the cloud suite [Alex Gonzalez]
+> * yocto-build-deploy: stage extension images for the hup suite [Alex Gonzalez]
+> 
+> ## balena-yocto-scripts-1.44.0
+> ### (2026-11-24)
+> 
+> * yocto-build-deploy: Attach all service assets under flat keys [Kyle Harding]
+> 
+> ## balena-yocto-scripts-1.43.2
+> ### (2026-11-20)
+> 
+> * Update aws/aws-cli to v2.41.2 [balena-renovate[bot]]
+> 
+> ## balena-yocto-scripts-1.43.1
+> ### (2026-11-20)
+> 
+> * Update ubuntu:22.04 Docker digest to f64b2ff [balena-renovate[bot]]
+> 
+
+</details>
+
 # v9.1.2+rev1
 ## (2026-11-26)
 

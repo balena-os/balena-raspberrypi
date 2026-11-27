@@ -1,4 +1,203 @@
 - commits:
+    - subject: Update balena-yocto-scripts to 067c1a2c06ecae0f26e5ffe2e10b17f9485b5bb9
+      hash: ff917de08ea9f4b454f9760a7593f45b4b79f049
+      body: Update balena-yocto-scripts
+      footer:
+        Changelog-entry: Update balena-yocto-scripts to 067c1a2c06ecae0f26e5ffe2e10b17f9485b5bb9
+        changelog-entry: Update balena-yocto-scripts to 067c1a2c06ecae0f26e5ffe2e10b17f9485b5bb9
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Update ubuntu:22.04 Docker digest to b000e69
+              hash: c14fb3244cd21272fd6b8f705e3f5a97a2b50f08
+              body: |
+                Update ubuntu
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.44.4
+          title: ""
+          date: 2026-11-27T07:27:22.474Z
+        - commits:
+            - subject: Update coffee-script to ~1.12.0
+              hash: 166f23a8d206a84a499be7b93be89465d00a4c7f
+              body: |
+                Update coffee-script from 1.10.0 to 1.12.7
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.44.3
+          title: ""
+          date: 2026-11-27T03:11:43.064Z
+        - commits:
+            - subject: Update balena-io/balena-cli to v25.2.44
+              hash: e0c6060164f90b188d5f0e890a508ac1fe6e1e05
+              body: |
+                Update balena-io/balena-cli from 25.1.10 to 25.2.44
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.44.2
+          title: ""
+          date: 2026-11-26T22:49:09.825Z
+        - commits:
+            - subject: "yocto-build-deploy: fail when the hostapp release lookup finds
+                nothing"
+              hash: 14d8f6a7fe9368de35441bd47df69303e2736067
+              body: >
+                jq prints "null" and exits 0 for an empty result set and for an
+                error
+
+                body, so a failed lookup exported release_id=null. The ESR tag
+                step and
+
+                the cloud suite both consume that id.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "yocto-build-deploy: stage kernel headers in the extension suites"
+              hash: 8dd0418cb39e9a82abae1b9d67fa4102cad4792a
+              body: >
+                The hup and cloud module probes build test modules against the
+                base and
+
+                the extension kernels, but only the os suite received headers.
+                The cloud
+
+                suite needs no images, because helios pulls them from the
+                release.
+
+
+                Release asset keys drop the service name, so the build job maps
+                each
+
+                extension to its headers. Until extensions publish headers, it
+                logs a
+
+                skip. The hostapp headers are base.tar.gz, so an extension named
+                base
+
+                fails the step.
+
+
+                Checkout does not clean the meta-balena submodule, so each leg
+                removes
+
+                the inputs that an earlier run staged before it stages its own.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "yocto-build-deploy: pass the hostapp release ids to the cloud suite"
+              hash: 33423c72d3920127e73bf2cafd9d704362bfad37
+              body: >
+                The cloud extension tests need the hostapp release that this run
+
+                deployed and a supervisor release that carries helios. Leviathan
+                passes
+
+                no workflow values to a suite, so the test job stages both ids
+                in it.
+
+
+                A release id is only valid on the cloud that deployed it. A leg
+                that
+
+                tests on another cloud skips the ids and logs a warning.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+            - subject: "yocto-build-deploy: stage extension images for the hup suite"
+              hash: a1f26fbee9792495e5464baaf5f20ca250d39012
+              body: >
+                The hup extension tests install the extensions that this run
+                built, but
+
+                the suite had no way to receive their images.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Alex Gonzalez <alexg@balena.io>
+                signed-off-by: Alex Gonzalez <alexg@balena.io>
+              author: Alex Gonzalez
+              nested: []
+          version: balena-yocto-scripts-1.44.1
+          title: ""
+          date: 2026-11-26T18:09:23.594Z
+        - commits:
+            - subject: "yocto-build-deploy: Attach all service assets under flat keys"
+              hash: 2c9ac676f3f869de9df462dec3f877d181fe3175
+              body: >
+                The build job collects every service's assets into one
+                release-assets
+
+                artifact and applies the flat key transform there. Extension
+                assets get
+
+                the same keys as hostapp assets, and a PR build fails on a key
+                conflict
+
+                instead of the deploy overwriting or 409ing. Overlay asset lists
+                append
+
+                to the meta-balena base list instead of merging by index.
+              footer:
+                Change-type: minor
+                change-type: minor
+                Signed-off-by: Kyle Harding <kyle@balena.io>
+                signed-off-by: Kyle Harding <kyle@balena.io>
+              author: Kyle Harding
+              nested: []
+          version: balena-yocto-scripts-1.44.0
+          title: ""
+          date: 2026-11-24T13:40:10.507Z
+        - commits:
+            - subject: Update aws/aws-cli to v2.41.2
+              hash: b31c51d62cfa91c1337dcc27957dcc8b4126e04e
+              body: |
+                Update aws/aws-cli from 2.36.33 to 2.41.2
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.43.2
+          title: ""
+          date: 2026-11-20T19:28:27.130Z
+        - commits:
+            - subject: Update ubuntu:22.04 Docker digest to f64b2ff
+              hash: 8b8e3f01f2b96b189cd55d83b0e90e9606f05cd2
+              body: |
+                Update ubuntu
+              footer:
+                Change-type: patch
+                change-type: patch
+              author: balena-renovate[bot]
+              nested: []
+          version: balena-yocto-scripts-1.43.1
+          title: ""
+          date: 2026-11-20T15:58:37.452Z
+  version: 9.1.2+rev2
+  title: ""
+  date: 2026-11-27T14:32:15.290Z
+- commits:
     - subject: backport dwc sound soc from upstream
       hash: d21aad5706f7c94b69d5848bbe7d1818dc9fe35e
       body: |
