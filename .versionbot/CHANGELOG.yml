@@ -1,4 +1,36 @@
 - commits:
+    - subject: Update contracts to d3c1db43a35fd33802623d0f30acfb2f0bf095e2
+      hash: 5be82e9ae845c11f1f5353068378381a7ddaf5a3
+      body: Update contracts
+      footer:
+        Changelog-entry: Update contracts to d3c1db43a35fd33802623d0f30acfb2f0bf095e2
+        changelog-entry: Update contracts to d3c1db43a35fd33802623d0f30acfb2f0bf095e2
+      author: balena-renovate[bot]
+      nested:
+        - commits:
+            - subject: Mark revpi-connect-4 and revpi-connect-s as legacy
+              hash: f88d15f5128228e7247c48d6bfcbf5ebbbb9c4b9
+              body: >
+                New RevPi devices will be supported by a single device type
+                based on
+
+                meta-revolutionpi. Signal that these are not meant for new
+                deployments.
+
+                The Connect S device type covers the Connect SE as well.
+              footer:
+                Change-type: patch
+                change-type: patch
+                Signed-off-by: Nicolai Buchwitz <n.buchwitz@kunbus.com>
+                signed-off-by: Nicolai Buchwitz <n.buchwitz@kunbus.com>
+              author: Nicolai Buchwitz
+          version: contracts-2.0.152
+          title: ""
+          date: 2026-11-17T09:08:39.748Z
+  version: 9.1.2+rev4
+  title: ""
+  date: 2026-11-28T18:30:31.999Z
+- commits:
     - subject: Update balena-os/github-workflows to
         ab3dfdb723d81d9f3c25b67fee68a74eeb9ac48b
       hash: e25f54dbf58f9992e854259a37c653f5f9cc727b
